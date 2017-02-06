@@ -6,7 +6,7 @@
 %%% Tikz Magic %%%
 \include{Setup_files/tikz_magi}
 
-% Forindhold - Kun romer tal
+% Frontmatter - Roman page numbering
 
 \frontmatter
 \makeevenfoot{AAU}{\thepage}{}{}
@@ -16,19 +16,16 @@
 \include{report/introduction/introduction_main}
 \tableofcontents*
 
-% Hovedindhold - nummereres fra ''side 1 af sidste side''b
+% Mainmater - normal page numbering
 \mainmatter 
-
 \makeevenfoot{AAU}{\thepage \text{} of \pageref{LastPage}}{}{}
 \makeoddfoot{AAU}{}{}{\thepage \text{} of \pageref{LastPage}}
 
-% %Den første del af problemnalyseng
+%%%% Analysis %%%%
 \include{report/analysis/analysis_main}
-
-%kravspec
 \include{report/requirements/requirements_main}
 
-%Design
+%%%% Design %%%%
 \include{report/design/design_main}
 
 %%%% Conclusion and verification %%%%
