@@ -1,58 +1,53 @@
-\input{Clean_up/preamble}
+\input{Setup_files/preamble}
 \raggedbottom
 
 \begin{document}
 
 %%% Tikz Magic %%%
-\include{Clean_up/tikz_magi}    
+\include{Setup_files/tikz_magi}
 
 % Forindhold - Kun romer tal
 
-%\frontmatter.
+\frontmatter
+\makeevenfoot{AAU}{\thepage}{}{}
+\makeoddfoot{AAU}{}{}{\thepage}
 
 %Formalia
-\include{report/introduktion/main} %%%%%%%     <->    Front page, synopsis and preface included in this
-
-
-\include{report/Start_Templates/The_Four_W}
-\include{report/Start_Templates/Test_template}
-
-
+\include{report/introduction/introduction_main}
 \tableofcontents*
 
 % Hovedindhold - nummereres fra ''side 1 af sidste side''b
-\mainmatter
+\mainmatter 
+
 \makeevenfoot{AAU}{\thepage \text{} of \pageref{LastPage}}{}{}
 \makeoddfoot{AAU}{}{}{\thepage \text{} of \pageref{LastPage}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\%
-% Delete this before turning in
+
+% %Den første del af problemnalyseng
+\include{report/analysis/analysis_main}
+
+%kravspec
+\include{report/requirements/requirements_main}
+
+%Design
+\include{report/design/design_main}
+
+%%%% Conclusion and verification %%%%
+\part{ Conclusion and verification}
+\label{conclusion_and_verification}
+\include{report/conclusion_and_verification/acceptance_test}
+\include{report/conclusion_and_verification/discussion}
+\include{report/conclusion_and_verification/conclusion}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Include sections here   %
-
-\include{report/introduktion/intro}
-
-
-%\include{rapport/Simulation/matlab_simulation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Bilag  %
-\bibliography{Clean_up/Bibliography}
-
-
-\appendix
-% \addcontentsline{toc}{part}{Appendix}
-
-
-\addtocontents{toc}{\protect\contentsline{part}{\appendixname}{}{}}
-
-%\chapter{Appendix}
-
-
-
-
-
+%%%% Apendix %%%%
+\include{report/appendix/appendix_main}
 \clearpage
+
+%%%% Litteratur	%%%%
+%\bibliography{Setup_files/Bibliography}
+
+%%%%% List of things that should be corrected %%%% 
+\listoffixmes
+\listoftodos
 
 \end{document}

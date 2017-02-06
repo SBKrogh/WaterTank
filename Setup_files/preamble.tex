@@ -7,16 +7,38 @@
 \usepackage[english]{babel}					% Dokumentets sprog
 \usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
-%\usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
+\usepackage{mfirstuc}
 
+
+% ¤¤ Packages for the solar panel figure ¤¤ %
+\usepackage{xcolor}
+%\usepackage[usenames,dvipsnames]{color}
+\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+\usepackage{siunitx}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+
+\definecolor{AleeRed}{rgb}{0.5,0,0}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+																			
 % ¤¤ Figurer og tabeller (floats) ¤¤ %
 \usepackage{graphicx} 						% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
 \usepackage{multirow}                		% Fletning af raekker og kolonner (\multicolumn og \multirow)
 \usepackage{multicol}         	        	% Muliggoer output i spalter
 \usepackage{rotating}						% Rotation af tekst med \begin{sideways}...\end{sideways}
 \usepackage{colortbl} 						% Farver i tabeller (fx \columncolor og \rowcolor)
-\usepackage[table]{xcolor}					% Definer farver med \definecolor. Se mere: http://en.wikibooks.org/wiki/LaTeX/Colors
-\usepackage{xcolor}
+
 
 \usepackage{flafter}						% Soerger for at floats ikke optraeder i teksten foer deres reference
 \let\newfloat\relax 						% Justering mellem float-pakken og memoir
@@ -24,7 +46,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \usepackage{pdflscape}	 					% Giver mulighed for landacape mode
 \usepackage{longtable}						% Giver mulighed for talber over flere side
-\usepackage{subcaption}
+%\usepackage{subcaption}
 
 % ¤¤ Matematik mm. ¤¤
 \usepackage{amsmath}						% Avancerede matematik-udvidelser
@@ -37,18 +59,16 @@
 % ¤¤ Kode indsat i rapport ¤¤ %
 \usepackage{listings}						% Placer kildekode i dokumentet med \begin{lstlisting}...\end{lstlisting}
 
-\raggedbottom
-
 
 % ¤¤ Matematik funktioner ¤¤				% Sikre alle funktioner står med ordinær skriftype
 	\newcommand{\e}{\text{e}}
-	\newcommand{\dB}{\text{dB}}
-	\newcommand{\I}{\text{I}}
+	\newcommand{\dB}{\text{dB}}	
+	\newcommand{\I}{\text{I}}	
 	\newcommand{\V}{\text{V}}
 	\newcommand{\A}{\text{A}}
 	\newcommand{\W}{\text{W}}
 	\newcommand{\F}{\text{F}}
-	\renewcommand{\S}{\text{S}}
+	\renewcommand{\S}{\text{S}}	
 	\newcommand{\rms}{\text{rms}}
 	\newcommand{\m}{\text{m}}
 	\newcommand{\n}{\text{n}}
@@ -61,22 +81,22 @@
 	\renewcommand{\c}{\text{c}}
 	\newcommand{\T}{\text{T}}
 	\newcommand{\km}{\text{km}}
-	\newcommand{\h}{\text{h}}
+	\newcommand{\h}{\text{h}}		
 	\newcommand{\s}{\text{s}}
 	\newcommand{\cm}{\text{cm}}
 	\newcommand{\ms}{\text{ms}}
 
 
-% ¤¤ Opsætning af enheder ¤¤ %
-	\newcommand{\enhed}[1]{\hfill\left[\mathrm{ #1}\right]} 	% Skriv \enhed{"din enhed"} og dem bliver rykket til højre
+% ¤¤ Opsætning af enheder ¤¤ % 
+	\newcommand{\unit}[1]{\hfill\left[\mathrm{ #1}\right]} 	% Skriv \enhed{"din enhed"} og dem bliver rykket til højre
 
 % ¤¤ Referencer og kilder ¤¤ %
-
-\usepackage[square, numbers, comma, sort&compress]{natbib}
+			
+\usepackage[square, numbers, comma, sort&compress]{natbib}			
 \bibliographystyle{ieeetr}
 % Udseende af litteraturlisten.
 
-% ¤¤ Textlable setup ¤¤ %
+% ¤¤ Textlable setup ¤¤ % 
 \makeatletter
 \newcommand*{\textlabel}[2]{				% Gør \textlabel mulig
   \edef\@currentlabel{#1}					% Set target label
@@ -86,7 +106,7 @@
 % ¤¤ Misc. ¤¤ %
 \usepackage{lipsum}							% Dummy text \lipsum[..]
 \usepackage[shortlabels]{enumitem}			% Muliggoer enkelt konfiguration af lister
-\usepackage{pdfpages}						% Goer det muligt at inkludere pdf-dokumenter med kommandoen \includepdf[pages={x-y}]{fil.pdf}
+\usepackage{pdfpages}						% Goer det muligt at inkludere pdf-dokumenter med kommandoen \includepdf[pages={x-y}]{fil.pdf}	
 \pdfoptionpdfminorversion=6					% Muliggoer inkludering af pdf dokumenter, af version 1.6 og hoejere
 \pretolerance=2500 							% Justering af afstand mellem ord (hoejt tal, mindre orddeling og mere luft mellem ord)
 
@@ -107,15 +127,15 @@
 \linespread{1}								% Linie afstand
 
 % ¤¤ Indholdsfortegnelse ¤¤ %
-\setsecnumdepth{subsection}		 			% Dybden af nummerede overkrifter (part/chapter/section/subsection)
-\maxsecnumdepth{subsection}					% Dokumentklassens graense for nummereringsdybde
-\settocdepth{subsection} 						% Dybden af indholdsfortegnelsen
+\setsecnumdepth{subsubsection}		 			% Dybden af nummerede overkrifter (part/chapter/section/subsection)
+\maxsecnumdepth{subsubsection}				% Dokumentklassens graense for nummereringsdybde
+\settocdepth{subsubsection} 					% Dybden af indholdsfortegnelsen
 
 % ¤¤ Lister ¤¤ %
 \setlist{
   topsep=0pt,								% Vertikal afstand mellem tekst og listen
   itemsep=-1ex,								% Vertikal afstand mellem items
-}
+} 
 
 % ¤¤ Visuelle referencer ¤¤ %
 \usepackage[colorlinks]{hyperref}			% Danner klikbare referencer (hyperlinks) i dokumentet.
@@ -130,50 +150,12 @@
 \captiontitlefont{\small}					% Opsaetning af nummerering
 \captiondelim{. }							% Seperator mellem nummerering og figurtekst
 \hangcaption								% Venstrejusterer flere-liniers figurtekst under hinanden
-\captionsetup{width=1\textwidth}
 \setlength{\belowcaptionskip}{0pt}			% Afstand under figurteksten
-
-
-
-
-% ¤¤ Opsætning til caption i listings ¤¤ %
-\DeclareCaptionFormat{listing}{
-  \colorbox[RGB]{255,255,255}{
-    \parbox{\textwidth}{\centering#1#2#3}
-  }
-}
-\captionsetup[lstlisting]{ format=listing, singlelinecheck=false, margin=0pt, font={normalsize} }
-\renewcommand{\lstlistingname}{Code}		% Gør at der står kode og ikke listing i captionnamefont
-
-% ¤¤ Opsaetning af listings ¤¤ %
-\definecolor{commentGreen}{RGB}{34,139,24}	% Farver der bliver brugt senere
-\definecolor{stringPurple}{RGB}{208,76,239}	% farver der bliver brugt senere
-
-\lstset{language=VHDL,						% Sprog
-	basicstyle=\ttfamily\small,				% Opsaetning af teksten
-	keywords={for,if,while,else,elseif,		% Noegleord at fremhaeve
-			  end,when,return,case,
-			  switch,function,process,begin,
-			  JUMP,test,ORG,in, out,
-			  COMP, INT, DINT,ret
-			  or, and, call, load, or,
-			  then, elsif, add, sub},
-	keywordstyle=\color{blue},				% Opsaetning af noegleord
-	commentstyle=\color{commentGreen},		% Opsaetning af kommentarer
-	stringstyle=\color{stringPurple},		% Opsaetning af strenge
-	showstringspaces=false,					% Mellemrum i strenge enten vist eller blanke
-	numbers=left, numberstyle=\tiny,		% Linjenumre
-	extendedchars=true, 					% Tillader specielle karakterer
-	columns=flexible,						% Kolonnejustering
-	breaklines, breakatwhitespace=true,		% Bryd lange linjer
-	captionpos=b,							% Sæt caption i bunden
-	xleftmargin=14pt,						% Start margin x pt til højre(+) eller venstre(-)
-}
 
 % ¤¤ Navngivning ¤¤ %
 \addto\captionsdanish{
 	\renewcommand\appendixname{Appendix}
-	\renewcommand\contentsname{Table of contest}
+	\renewcommand\contentsname{Table of contest}	
 	\renewcommand\appendixpagename{Appendix}
 	\renewcommand\appendixtocname{Appendix}
 	\renewcommand\cftchaptername{\chaptername~}				% Skriver "Kapitel" foran kapitlerne i indholdsfortegnelsen
@@ -195,7 +177,7 @@
     \noindent
     \ifchapternonum
     \begin{tabularx}{\textwidth}{X}
-    {\let\\\newline\chaptitlefont ##1\par}
+    {\let\\\newline\chaptitlefont ##1\par} 
     \end{tabularx}
     \par\vskip-2.5mm\hrule
     \else
@@ -225,7 +207,7 @@
 \nouppercaseheads											% Ingen Caps oenskes
 
 
-\makeevenhead{AAU}{Group 735}{}{\leftmark}					% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
+\makeevenhead{AAU}{Group 733}{}{\leftmark}					% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
 \makeoddhead{AAU}{\rightmark}{}{Aalborg University}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
 \makeheadrule{AAU}{\textwidth}{0.5pt}						% Tilfoejer en streg under sidehovedets indhold
 \makefootrule{AAU}{\textwidth}{0.5pt}{1mm}					% Tilfoejer en streg under sidefodens indhold
@@ -236,7 +218,7 @@
 \makeheadrule{AAUchap}{\textwidth}{0pt}
 \aliaspagestyle{chapter}{AAUchap}							% Den ny style vaelges til at gaelde for chapters
 															% ... her
-
+															
 \pagestyle{AAU}												% Valg af sidehoved og sidefod
 
 
@@ -245,7 +227,6 @@
 % ¤¤ Specielle tegn ¤¤ %
 \newcommand{\decC}{^{\circ}\text{C}}
 \newcommand{\dec}{^{\circ}}
-\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
 
 
 %%%% ORDDELING %%%%
@@ -255,37 +236,17 @@
 %%%% GlOSSARIES %%%%
 \usepackage[toc,nowarn]{glossaries}
 \makeglossaries
-\input{Clean_up/Glossaries}
+\input{Setup_files/Glossaries}
 
 
 %%%% COOL EXTRA FEATURES %%%%%
 \usepackage{lastpage}
 \usepackage{todonotes}
-\newcommand{\todoc}[1]{\todo[color=green, author=Christoffer]{#1}}
-\graphicspath{{./report/pictures/}}
-\newcommand{\todor}[1]{\todo[color=red, author=Read:]{#1}}
-\graphicspath{{./report/pictures/}}
-\newcommand{\todom}[1]{\todo[color=Yellow, author=Move?:]{#1}}
+\newcommand{\todotom}[1]{\todo[color=red!40, author=Anders]{#1}}
+\graphicspath{{./rapport/billeder/}}
+\newcommand{\todohusk}[1]{\todo[color=red, author=HUSK:]{#1}}
+\graphicspath{{./rapport/billeder/}}
 \usepackage{epstopdf}
-
-
-%% For Tikz figure
-\usepackage{schemabloc}
-\usetikzlibrary{circuits}
-\usetikzlibrary{decorations.pathreplacing}
-\usepackage{environ}
-\makeatletter
-\newsavebox{\measure@tikzpicture}
-\NewEnviron{scaletikzpicturetowidth}[1]{%
-  \def\tikz@width{#1}%
-  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
-  \BODY
-  \end{lrbox}%
-  \pgfmathparse{#1/\wd\measure@tikzpicture}%
-  \edef\tikzscale{\pgfmathresult}%
-  \BODY
-}
-\makeatother
 
 
 %%%% WARNING HACKS %%%%
@@ -312,29 +273,25 @@
 \usepackage{schemabloc}
 \usetikzlibrary{circuits}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows,automata,positioning,matrix}
+\usetikzlibrary{shapes,arrows}
 \usepackage{pgfplots}
 \usetikzlibrary{plotmarks}
-\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings}
-
 \pgfplotsset{compat=newest}
 \pgfplotsset{filter discard warning=false}
-\usepackage[americanresistors,americaninductors,american voltages]{circuitikz}
-\usepackage{pgf}
-
-\tikzset{
-	state/.style={
-		rectangle,
-		rounded corners,
-		draw=black, very thick,
-		minimum height=2em,
-		inner sep=2pt,
-		text centered,
-	},
-}
-
-
-\renewcommand{\lstlistingname}{Listing}
+%\usepackage[americanresistors,americaninductors,american voltages]{circuitikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns}
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+\definecolor{AleeRed}{rgb}{0.5,0,0}
 
 
 %%%% CDO FIX %%%%
@@ -343,4 +300,3 @@
 \WarningFilter{latex}{Marginpar on page}
 \WarningFilter{memoir}{You are using the caption package with the memoir class}
 \WarningsOff[latex]
-\usepackage{breakurl}
