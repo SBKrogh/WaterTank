@@ -1,0 +1,96 @@
+%\documentclass{article}
+
+%\begin{document}
+
+
+\chapter{Introduction}\label{introduction}
+
+The last decades were characterized by rapidly developing information technology and electronics. Today, we're on the brink of a fourth industrial revolution, which blurs the line between physical and computer systems \cite{4th_indust}. One of the great beneficiary of this recent development was the health industry. The present project aims to analyze and improve one of the products of the fusion between control engineering and health industry, a minimally invasive surgical robot (MISR).The specimen being analyzed is a da Vinci robot manufactured by Intuitive Surgical.
+
+The da Vinci robot is controlled by a specially trained surgeon. The robot extends the capabilities of the surgeon. It assists in performing minimally invasive surgeries (MIS) and minimizing the insertion cut inflicted on the patient.
+%i.e. it sets the surgical tools in the patient's body using thin tubes, thus minimizing the required cut inflicted. 
+This results in faster recovery time for the patient\cite{rec_time}. The surgical tools are teleoperated by the surgeon using a control station equipped with spatial controllers and 3D video feed from the tools. The robot is able to improve on the surgeon's precision. A further advantage of the da Vinci robot is the possibility of remote control. The surgeon can be hundreds of kilometers away from the robot, still able to control it through the internet. This characteristic can prove to be quite useful in rural areas, where medical care is limited. Whenever an operation needs to be executed, a specialist from the specific field can sign into the robot and conduct a surgery. The technology can even be adjusted for military purposes. If an injured soldier needs treatment in a highly dangerous zone, the medic can send the robot to the soldier and conduct the required surgery, without risking their life. The main issue in increasing the distance is the delay in the communication also increases, which eventually can lead to an unstable behaviour in the system.  
+
+With all these advantages there comes a significant drawback compared to classical direct surgery. The operator has to solely rely on what is seen on the 3D video feed, since the controller lacks force feedback feature\cite{lack_fb}. This means losing kinesthetic sense during operation, which sets back the accuracy of the surgeon and can lead to surgical accidents.
+
+Studies show that an added force feedback feature increases the success rate of robotic surgeries\cite{lack_fb}. Therefore the present project aims to implement the high demand feature of force feedback. The original da Vinci robot's controller station lacks any actuators, which means that the force feedback feature can not be implemented in it, thus another controller has to be used. This project utilizes a spatial haptic controller Geomagic Touch (GT) haptic device as the controller directing the da Vinci robot's end-manipulator called EndoWrist. 
+%{\color{red}Since the tool has one more DOF than the GT has actuated DOF, direct mapping can not be implemented. The GT needs to control the 4 rotational DOFs utilizing its 3 actuated translational DOF.} \todo{don't give the solution}
+
+%{\color{red}
+%The GT is a spatial haptic controller with 6 degrees of freedom (DOF), out of which the 3 translational DOFs are equipped with actuators\cite{gt_spec}. The GT can only provide force feedback to the actuated DOFs.} \todo{Explained in system description}
+
+
+%{\color{red}The complete da Vinci robot has 6-7 actuated DOFs during operation. The arm provides 3 translational degrees of freedom, while the surgical tools used as end-manipulator have 3 to 4 rotational DOFs, depending on the tool.} \todo{in description} 
+
+
+
+
+In order to provide the sensation of directly controlling the EndoWrist, the GT needs to output the force affecting the EndoWrist to the surgeon. Two aspect is needed to be covered. The first one is including the force fed back and the other one is the communication between the GT and the EndoWrist. 
+
+The main issue in feeding back the force is that the force cannot be directly measured. Regulations states that each surgical tool needs to undergo a sterilization process between operations, where the tool is treated with high temperature detergents. Furthermore, The EndoWrist has to be discarded after a number of uses\cite{catalog_davinci}. These two regulation makes it economically not worthwhile to implement expensive, high temperature tolerant force sensors on the end-manipulator, just to be discarded after a couple of uses. A different approach needs to be sought.\\
+The current applied to the actuators of the EndoWrist is highly correlated with the force applied, but due to the fact that the tool is nonlinear the force calculated directly form the current will be misleading to fed back. Therefore a model of the EndoWrists dynamic including the actuators is needed to give a better estimate of the actual force applied to the EndoWrist.
+
+It is commonly accepted that in order to have a realistic force feedback, the feedback loop should have a frequency equal or superior to 1000 Hz\cite{coles2011role}. However, this value is widely debated as a frequency of 300 Hz has been proven to provide an acceptable estimation of the force\cite{burdea1996force}. Similar studies have shown that the minimal acceptable frequency would lie between 550 and 600 Hz \cite{booth2003influence}. The main difference in these studies may lie in what a "realistic" force is as it could denote an accurate estimation of the force or simply estimate the trend without great precision. In this study, the goal is to build a model that will estimate the trend of the force. Thus, it is not required to reach 1000 Hz. The available equipment set constraints on the frequency achievable, the present project aims at reaching the frequency of 550 Hz given by \cite{booth2003influence}.
+
+
+
+% The communication speed between the GT and the EndoWrist   needs to be 
+
+% {\color{green}
+% From \cite{coles2011role}, it is stated that it is commonly accepted for the feedback loop of force feedback to be a 1000 Hz, which poses a speed demand on the communication. 
+% }
+
+% {\color{red} 
+% Haptic devices needs to have a refresh rate around 600 Hz in order to give the consumer the sense of touch\cite{coles2011role}, which poses a speed demand on the communication.}% otherwise the delay and granularity (???) becomes too much of an issue. The main issue is that this force can not be directly measured. The regulations state that each surgical tool needs to undergo a sterilization process between operations, where the tool is treated with high temperature detergents. Furthermore, The EndoWrist has to be discarded after a number of uses\cite{catalog_davinci}. These two regulation makes it economically unworthwhile to implement expensive, high temperature tolerant force sensors on the end-manipulator, just to be discarded after a couple of uses uses. A different approach needs to be sought.
+
+%{\color{red}
+%The current applied to the motors for actuating the end-manipulator is known. The current is highly correlated with the force affecting the end-effector. By having a model of the EndoWrist and motor dynamics, the output force can be estimated. Hence this projects aims at experimentally deriving the dynamical model of the motor-end-effector system.}
+%\todo{Solution}
+
+This project is based on a previous research. The previous setup could only reach 100 Hz in communication frequency\cite{Chris_Surgical}, which does not satisfy the refresh rate demand of force feedback. Therefore this project aims at increasing the connection speed to the minimum
+requirement of a 1000 Hz.
+Furthermore this project aims at implementing a force feedback control loop utilizing the setup available at Aalborg university based on a dynamic model of the surgical tool.
+
+
+
+% As the project is limited on time, the system setup is a striped version of the da Vinci robot. It includes one surgical tool that can be actuated, one computer and one haptic device which is controlled by an operator. 
+
+% \begin{figure}
+% \centering
+% \begin{tikzpicture}
+% \node[box] (hum) at (0,0) {Human};
+% \node[box] (Hap) at ($(3,0) + (hum)$) {Haptic device};
+% \node[box] (com) at ($(3,0) + (Hap)$) {Computer};
+% \node[box] (sur) at ($(3,0) + (com)$) {Surgical tool};
+
+% \draw[<->, ultra thick] (hum.east) -- (Hap.west);
+% \draw[<->, ultra thick] (Hap.east) -- (com.west);
+% \draw[<->, ultra thick] (com.east) -- (sur.west);
+
+% \end{tikzpicture}
+% \caption{Simple illustration of the communication setup between the operator and the surgical tool.}
+% \label{fig:introduction_setup}
+% \end{figure}
+
+%{\color{red}The system setup used is a stripped version of the da Vinci robot. It includes the end effector of the robot which is controlled by a distributed system imitating the da Vinci robots control architecture, where the GT controller and the end-effector has several layers between them. The embedded system actuating the robot communicates through an ethernet cable with the computer running connected to the GT device. This computer also runs the high computation demanding tasks.}
+
+
+%{\color{red}The communication through the ethernet cable is implemented using internet protocol (IP), which means distance scalability for the setup. The controller can be kilometers away from the end-manipulator, still able to control it by communicating through the internet.} {\color{yellow} The main issue arising from high distance control is the added delay time, which can eventually lead to unstable behavior in the system. The test setup was tested using internet protocol with direct ethernet connection, making these delays less of an issue.}\todo{move up to long distance and make the flow such that. Long distance is possible but it also include longer delays in the system.}
+
+%{\color{red}
+%The project is based on a previous research that implemented TCP/IP as means of ethernet communication. This setup could only reach 100 Hz in communication frequency, which does not satisfy the refresh rate demand of the haptic device\cite{Chris_Surgical}\cite{coles2011role}. Therefore this project aims at increasing the connection speed, making the system more transparent, i.e. providing the user with the sensation of directly controlling the EndoWrist.} \todo{is described in previous work}
+
+%{\color{red}
+%The two endpoints of the system setup, the GT and the EndoWrist, are both actuated. The embedded system controlling the EndoWrist receives position setpoints from the GT and tracks it with the built in position controller.
+%The Geomagic Touch device receives force estimates based on the currents flowing through the EndoWrist's motors. This force is propagated to the GT device held by the operator. The operator, as part of the control system, decides the setpoints for the Endowrist using the force output of the GT.}\todo{sum up the problems and derive a problem formulation}%However, the operator can not perfectly enforce his/her will, as the human is also a subject of the law of physics, and has a certain arm stiffness and reaction time.
+
+%If the force is directly propagated to the GT based on the current measurements, instability problems can arise, e.g. the EndoWrist hits a solid object, the current increases suddenly, the GT outputs a sudden force, to which the human is unable to react instantly. The human's arm and thus the EndoWrist is moved to the opposite direction from his/her intentions. The output current on the EndoWrist drops before the human can react. The human outputs a force trying to counteract the surge with a delay, but at this moment the surge is already gone, thus the human overreacts the force, making the EndoWris hit the surface again. This behavior can lead to ever-growing vibrations in some cases, thus should be avoided. One of the main challenges arising in the force feeback control is to stabilize the system.
+
+\subsection*{Summary}
+
+In this project two main challenges were addressed in order to implement force feedback:
+
+\begin{itemize}
+\item Increasing the refresh rate of the communication between the embedded system and the computer.
+\item Deriving and implementing a model that estimates the force applied to the end effector using only the data available on a da Vinci robot. A model that reliably reproduces the trend of the force without precisely giving back the absolute value is deemed to be sufficient.
+\end{itemize}

@@ -1,0 +1,109 @@
+\section{Kinematics for the Geomagic Touch}
+
+As shown on \figref{fig:dhnotatso2}, the Geomagic Touch has 6 joints.
+The coordinate frame for these joints can be derived as shown on \figref{fig:dhgeoframe1}. 
+The 6 frames on the DH scheme correspond to the links on the Geomagic Touch and define their orientation and position.
+
+%geo_kino.png
+
+% \begin{minipage}[H]{.65\textwidth}
+% \centering
+% \begin{figure}[H]
+% \centering
+% \vspace{0pt}
+% %\includegraphics[width=\textwidth]{Geomagic_dh.png}
+% \input{rapport/pictures/Geomagic_dh}
+% \caption{Coordinate frame for the\newline Geomagic Touch.}
+% \label{fig:Frame_phantom}
+% \end{figure}
+% \end{minipage}%\hfill
+% \begin{minipage}[H]{.35\textwidth}
+
+
+
+
+% \end{minipage}
+
+
+\begin{figure}[H]
+
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{geo_kino.png}
+		\caption{The Geomagic touch with defined joints numbers and the translations parameters.}
+		\label{fig:Endo_plates11}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\vspace{5pt}
+		\input{rapport/pictures/Geomagic_dh}
+		\caption{The different frames for the Geomagic touch.}
+		\label{fig:dhgeoframe1}
+	\end{subfigure}
+\caption{Shows joints positions, the translations \gls{DH} parameters and the coordinate frame for each joint. The base frame is difined as $O_{0}$.}
+\label{fig:dhnotatso2}
+\end{figure}
+
+
+
+The DH notations for the Geomagic touch, can be derived as shown in \tabref{tab:kin_geo}.
+
+
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ $j_i$ 	  & $a_i$    & $d_i$ & $\alpha_i$ 		 & $\theta_i$ 			 	\\ \hline
+ 1  	  &  $0$     & $d_1$ & $0$	 			 & $q_1$ 			    	 \\ \hline
+ 2  	  &  $0$     & $0$ 	 & $\frac{\pi}{2}$ 	 & $q_2 + \theta_1$ 		 \\ \hline
+ 3  	  &  $a_3$	 & $0$   & $0$ 		 		 & $q_3$ 					  \\ \hline
+ 4  	  &  $0$	 & $d_4$ & $\frac{\pi}{2}$ 	 & $q_4$ 			 		  \\ \hline
+ 5  	  &  $0$	 & $0$   & $-\frac{\pi}{2}$  & $-\frac{\pi}{2} + q_5$	 \\ \hline
+ 6  	  &  $0$	 & $0$   & $-\frac{\pi}{2}$  & $\frac{\pi}{2}+q_6$ 		 \\ \hline
+\end{tabular}
+\hspace{2cm}\caption{The DH notations for the\newline Geomagic Touch}
+\label{tab:kin_geo}
+\end{table}
+
+
+
+
+% \begin{figure}[H]
+% 	\centering
+% 	\begin{subfigure}{.49\textwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{Fast_draw_Kino.jpg}
+% 		\caption{Geomagic touch with all rotational joints and their \gls{DH} parameters.}
+% 		\label{fig:1}
+% 	\end{subfigure}
+% 	\begin{subfigure}{.49\textwidth}
+% 		\centering
+% 		\includegraphics[width=\linewidth]{Fast_draw_kino2.jpg}
+% 		\caption{Frame coordinate system for the Geomagic touch to the deviation of the kinematics.}
+% 		\label{fig:Endo_plates}
+% 	\end{subfigure}
+% \caption{Shows joints positions, the different \gls{DH} parameters and the coordinate frame for each joint. The base frame is difined as $O_{0}$.}
+% \label{fig:2}
+% \end{figure}
+
+
+% \begin{table}[H]
+% \centering
+% \begin{tabular}{|l|l|l|l|l|}
+% \hline
+%  $j_i$ 	  & $a_i$    & $d_i$ & $\alpha_i$ 		 & $\theta_i$ 			 \\ \hline
+%  1  	  &  $0$     & $d_1$ & $\frac{\pi}{2}$	 & $q_1$ 			     \\ \hline
+%  2  	  &  $a_2$   & $0$ 	 & $0$ 		 		 & $q_2 + \theta_1$ 	 \\ \hline
+%  \rom{1}  &  $0$	 & $0$ 	 & $\frac{\pi}{2}$ 	 & $\frac{\pi}{2} + q_3$ \\ \hline
+%  3  	  &  $0$	 & $d_3$ & $0$ 		 		 & $0$ 					 \\ \hline
+%  4  	  &  $0$	 & $d_4$ & $\frac{\pi}{2}$ 	 & $\pi + q_4$ 			 \\ \hline
+%  \rom{2}  &  $0$	 & $0$ 	 & $\frac{\pi}{2}$   & $\pi +q_5$ 			 \\ \hline
+%  5  	  &  $0$	 & $d_5$ & $0$ 		 		 & $0$ 	 				 \\ \hline
+%  %6  	  &  $0$	 & $d_6$ & $\theta$ 		 & $q_6$ 				 \\ \hline
+% \end{tabular}
+% \caption{Tabular which contain the kinematics for the Geomagic touch described in \secref{sec:geo_magic}.The Roman numbers defines the fictional joints}
+% \label{tab:kin_geo}
+% \end{table}
