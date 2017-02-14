@@ -1,0 +1,86 @@
+\section{Hydraulic Model}
+
+Water distribution networks are designed to provide good water quality to the community and industries, in 
+terms of sufficient pressure and appropriate chemical levels. In order to supply this service, a water distribution 
+system is conformed by four main components: pipes, pumps, valves and reservoirs. 
+\\
+
+The understanding of a water distribution is done in the following chapter by the hydraulic approach, 
+where the models of each component of the network will be defined. 
+
+\textbf{Pipe Model} \\ 
+Pipes are the major components of a water distribution system, considering that they are commonly used to carry the flow. 
+Therefore especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, 
+thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
+\\
+
+The equation of continuity is applied to analyze the pipe flow. It is assumed a steady flow and an uniform 
+mass flow in the pipe. Hence, the water flow can be described as: 
+
+\begin{equation}
+  Q=Area \cdot V
+	\label{EquationOfContinuity}
+\end{equation}
+
+Where: 
+
+\begin{itemize}
+  \item  A = Area of a pipe
+  \item V = Average flow velocity
+  \item Q = Volumetric rate of flow
+\end{itemize}
+
+
+On the other hand, The Bernoulli Equation is considered to obtain the conservation of energy principle for the fluids flowing in the pipe.
+
+\begin{equation}
+z_1 + h_1 + \frac{v_1^{2}}{2g} = z_2 + h_2 + \frac{v_2^{2}}{2g} + h_L
+\end{equation}
+
+(This equation its a derivation of the general Bernoulli equation of energy but divided by the density and 
+gravity)\\
+
+\begin{itemize}
+  \item   z1 and z2 are the elevations of the centerline
+  \item   h1 and h2 are pressure heads
+  \item   v1 and v2 average flow velocity
+  \item   hl loss between sections 1 and 2
+\end{itemize}
+
+The $h_L$ term is conformed by two different losses. One due to the surface resistance $(h_F)$ and the other one due to form resistance $(h_M)$. 
+
+\begin{equation}
+  h_L = h_F + h_M
+\end{equation}
+
+\textbf{Surface Resistance} \\ 
+
+\textbf{Form Resistance} \\ 
+
+\textbf{Valve Model}  \\
+ Valves are used in water distribution networks to control the flow through the pipe, the pressure and in 
+ the case that there is a reservoir to control its level. 
+ 
+ \textbf{Pump Model} \\
+ 
+ \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
+ Kirchhoff´s law represents the interconnection of the elements of an electrical circuit. An hydraulic approach 
+ can be done to Kirchhoff´s law in order to carry out the analysis of the hydraulic network of a system, having to satisfied Kirchhoff´s 
+ current law (KCL) and voltage law (KVL). Therefore, voltage and currents are replaced by pressure and flows, respectively. 
+
+The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
+The pressure drops taking place in the pipes and valves can be considered as inductors and nonlinear resistors, respectively. 
+
+\textit{Maybe here before we start with the Graph Theory could be nice to make a figure showing the changes between the hydraulic circuit to the electrical 
+one.}
+
+The analogy between hydraulic and electrical circuits described above is applied in the graph theory…(start explaining Graph Theory).
+
+
+
+
+
+
+
+
+
