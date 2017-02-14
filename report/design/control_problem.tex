@@ -4,13 +4,42 @@
 The water distribution system explained in \secref{system_overview} need to be controlled according the \secref{Requirements}. The requirements can be summarized as: 
 
 \begin{itemize}
-	\item Minimum pressure at CP, $\rho > x \:[\text{bar}]$
+	\item Minimum pressure at CP, $\rho > x \:[\text{bar}]$\todo{put in numbers}
 	\item Minimum flow through water tank, $q_{wt} > x \:[\frac{m^3}{h}]$
 	\item Minimizing the total cost of running the system
 \end{itemize}
 
-The pressure at a given CP can be controlled by both the water level in the water tank and the rotational speed of the pump connected to the given PMA. To for filed the requirement of a minimum pressure at a given CP a controller have to be develop that takes both pressure actuators into account. 
+The pressure at a given CP can be controlled by both the water level in the WT and the rotational speed of the pump connected to the given PMA. To fulfill the requirement of a minimum pressure at a given CP a controller have to be develop that takes both pressure actuators into account. 
 
-The flow through the water tank is controlled by the main pump. Whenever  
+The flow through the WT is controlled by a pump, \todo{name of WT pump}. Whenever the pump, \todo{name of WT pump}, is pumping water into the WT can be seen as a consumer. This mean that the others pumps have to do ensure pressure at all CP. Furthermore the flow rate, $q_{WT}$, must meet a minimum requirement to insure the water quality. This can be seen as a constrain of the operation area of the system. 
 
-This include achieving the correct pressure at the CP and at the same time minimizing the total cost of running the system. 
+At the same time the total cost of running the system should be minimized. Therefor a cost function is needed. This cost function purpose is to find the optimal control signal which minimize the cost of running the pumps. Thereby spending the least money on running the total system. 
+
+Considering both the cost function and the constrain, this leads to a description of the systems operate area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_t$ this can be seen as a minimization problem:
+\begin{equation}
+\underset{u}{min} \: \: \: \: C_T(\Delta{p}_i,q_i) \\
+\end{equation}
+\vspace*{-0.4mm}
+s.t 
+\vspace*{-0.4mm}
+\begin{align*}
+p_i &\geq x \\
+q_4 &\geq x 
+\end{align*}
+
+\begin{minipage}[t]{0.20\textwidth}
+
+Where\\
+\hspace*{8mm} $\Delta{p}_i$ \\
+and \hspace*{0.7mm} $q_i$	
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the pressure gain over a pump,\\
+is the flow at a pump.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{Bar}$\\
+\textcolor{White}{te}$\unit{m^3 \cdot s^{-1}}$
+\end{minipage}
