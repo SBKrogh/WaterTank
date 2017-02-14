@@ -1,4 +1,16 @@
 \section{Control Problem}
 \label{control_problem}
 
-The water distribution system explained in \secref{system_overview} need to be controlled according the 
+The water distribution system explained in \secref{system_overview} need to be controlled according the \secref{Requirements}. The requirements can be summarized as: 
+
+\begin{itemize}
+	\item Minimum pressure at CP, $\rho > x \:[\text{bar}]$
+	\item Minimum flow through water tank, $q_{wt} > x \:[\frac{m^3}{h}]$
+	\item Minimizing the total cost of running the system
+\end{itemize}
+
+The pressure at a given CP can be controlled by both the water level in the water tank and the rotational speed of the pump connected to the given PMA. To for filed the requirement of a minimum pressure a controller have to be develop that takes both pressure actuators into account.
+
+
+
+This include achieving the correct pressure at the CP and at the same time minimizing the total cost of running the system. 
