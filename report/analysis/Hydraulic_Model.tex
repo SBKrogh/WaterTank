@@ -1,4 +1,5 @@
 \section{Hydraulic Model}
+\label{HydraulicModel}
 
 Water distribution networks are designed to provide good water quality to the community and industries, in 
 terms of sufficient pressure and appropriate chemical levels. In order to supply this service, a water distribution 
@@ -9,6 +10,7 @@ The understanding of a water distribution is done in the following chapter by th
 where the models of each component of the network will be defined. 
 
 \textbf{Pipe Model} \\ 
+\label{PipeModel}
 Pipes are the major components of a water distribution system, considering that they are commonly used to carry the flow. 
 Therefore especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, 
 thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
@@ -34,6 +36,8 @@ Where:
 On the other hand, The Bernoulli Equation is considered to obtain the conservation of energy principle for the fluids flowing in the pipe.
 
 \begin{equation}
+  \label{Bernoulliequation}
+\end{equation}
 z_1 + h_1 + \frac{v_1^{2}}{2g} = z_2 + h_2 + \frac{v_2^{2}}{2g} + h_L
 \end{equation}
 
@@ -58,12 +62,15 @@ The $h_L$ term is conformed by two different losses. One due to the surface resi
 \textbf{Form Resistance} \\ 
 
 \textbf{Valve Model}  \\
+\label{ValveModel}
  Valves are used in water distribution networks to control the flow through the pipe, the pressure and in 
  the case that there is a reservoir to control its level. 
  
  \textbf{Pump Model} \\
+ \label{PumpModel}
  
  \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
+ \label{KirchhoffLaw}
  Kirchhoff´s law represents the interconnection of the elements of an electrical circuit. An hydraulic approach 
  can be done to Kirchhoff´s law in order to carry out the analysis of the hydraulic network of a system, having to satisfied Kirchhoff´s 
  current law (KCL) and voltage law (KVL). Therefore, voltage and currents are replaced by pressure and flows, respectively. 
