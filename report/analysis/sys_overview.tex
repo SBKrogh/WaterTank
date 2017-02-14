@@ -23,3 +23,27 @@ The system consists of different parts, the main part being a water reservoir pl
 Another water reservoir is connected to the water ring by a dedicated pump. This reservoir is elevated and can, when filled, be used to pressurize the system. 
 From the water ring two PMA's are connected via their own pump, inside each PMA a measuring point is placed and the pressure at this point shall be kept. Furthermore the are placed two consumers inside each PMA.         
 
+\begin{figure}[H]
+\begin{tikzpicture}
+
+%\draw(0,0) circle (2);
+%pump
+\draw(0,0) circle (1);
+\draw(1,0) -- (0,1);
+\draw(1,0) -- (0,-1);
+
+\begin{scope} [rotate=30]
+    \draw[transform shape] (0,0) circle (1);
+\draw[transform shape] (1,0) -- (0,1);
+\draw[transform shape] (1,0) -- (0,-1);
+  \end{scope}
+
+\begin{scope} [rotate=60, shift={(-2.4451,-1.7951)}]
+    \draw[transform shape] (0,0) circle (1);
+\draw[transform shape] (1,0) -- (0,1);
+\draw[transform shape] (1,0) -- (0,-1);
+  \end{scope}
+
+
+\end{tikzpicture}
+\end{figure}
