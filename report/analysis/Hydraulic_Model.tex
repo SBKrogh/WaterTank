@@ -14,7 +14,47 @@ where the models of each component of the network will be defined.
 Pipes are the major components of a water distribution system, considering that they are commonly used to carry the flow. 
 Therefore especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, 
 thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
+%
 \\
+The dynamic model of a pipe can be originate from Newton´s second law, which relates the sum of the 
+forces acting on an element, a pipe in this case, to the rate of change of momentum.
+
+\begin{equation}
+  \frac{dP}{dt} = \sum F
+  \label{NewtonLaw}
+\end{equation} 
+
+Where: 
+
+\begin{itemize}
+  \item  $F$ = Forces working on the control volume 
+  \item $P$ = Linear momentum
+\end{itemize}
+
+It is assumed the water to be incompressible and the pipes to be filled of water at every moment. 
+An incompressible fluid is a fluid with constant density
+This yields that the density of the water and the volume will be constant, causing the mass of the water to be so. 
+\\
+Rewriting \ref{NewtonLaw} to be dependent on the time derivative of the product 
+of the mass and velocity, the mass of the water can be taken out of the derivative due to its constant behavior.
+
+\begin{equation}
+  \frac{dP}{dt} = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
+\end{equation} 
+
+\begin{itemize}
+  \item  $M$ = Mass of the water
+  \item $v$ = Velocity of the water
+\end{itemize}
+
+The sum of the forces working on the control volume can be listed as: input forces, output forces and resistance forces.  
+These forces will be converted in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
+
+The diameter of the pipe is assumed constant and since they are cylindrical pipes as well:
+\begin{equation}
+  A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
+\end{equation}
+
 The equation of continuity is applied to analyze the pipe flow. It is assumed a steady flow and an uniform 
 mass flow in the pipe. Hence, the water flow can be described as: 
 
@@ -26,10 +66,30 @@ mass flow in the pipe. Hence, the water flow can be described as:
 Where: 
 
 \begin{itemize}
-  \item  A = Area of a pipe
-  \item V = Average flow velocity
-  \item Q = Volumetric rate of flow
+  \item  $A$ = Area of a pipe
+  \item $V$ = Average flow velocity
+  \item $Q$ = Volumetric rate of flow
 \end{itemize}
+
+\begin{equation}
+  M_w \frac{dv}{dt} = F_in - F_out - F_res \\
+\end{equation}
+
+\begin{equation}
+    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+\end{equation}
+
+\begin{equation}
+    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+\end{equation}
+
+\begin{equation}
+    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
+\end{equation}
+
+\begin{equation}
+    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
+\end{equation}
 
 
 On the other hand, The Bernoulli Equation is considered to obtain the conservation of energy principle for the fluids flowing in the pipe.
@@ -80,9 +140,6 @@ The pressure drops taking place in the pipes and valves can be considered as ind
 one.}
 
 The analogy between hydraulic and electrical circuits described above is applied in the graph theory…(start explaining Graph Theory).
-
-
-
 
 
 
