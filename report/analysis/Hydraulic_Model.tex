@@ -21,10 +21,9 @@ and the relationship of the two state parameters of each component is introduced
 
 \subsection{Pipe Model} 
 \label{PipeModel}
-Pipes are major components of a water distribution system since they are used for carrying pressurized and treated fresh water. There  of especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
+Pipes are major components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in a general form in order to describe the relationship of pressure and flow in each pipe component in the network.  
 %
-The dynamic model of a pipe can be originate from Newton´s second law, which relates the sum of the 
-forces acting on an element, a pipe in this case, to the rate of change of momentum.
+The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes that the rate of change of the momentum of the fluid in the pipe is proportional to the force acting on it.
 \begin{equation}
   \frac{d}{dt} P = \sum F
   \label{NewtonLaw}
@@ -47,15 +46,12 @@ is the linear momentum of the water flow.
 \textcolor{White}{te}$\unit{\frac{kgm}{s}}$
 \end{minipage}
 
-It is assumed the water to be incompressible and the pipes to be filled of water at every moment. 
-An incompressible fluid is a fluid with constant density
-This yields that the density of the water and the volume will be constant, causing the mass of the water to be so. 
+The dynamics of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time and the water is assumed to be incompressible. Thus the density of water and the volume of the fluid is constant in time, as the mass of the water is.
 \\
-Rewriting \ref{NewtonLaw} to be dependent on the time derivative of the product 
-of the mass and velocity, the mass of the water can be taken out of the derivative due to its constant behavior.
+Rewriting \ref{NewtonLaw} to be dependent on the time derivative of the product of the mass and velocity, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{dP}{dt} = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
+  \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
 \end{equation} 
 
 \begin{itemize}
