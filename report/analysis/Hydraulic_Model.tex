@@ -1,35 +1,40 @@
 \section{Hydraulic Model}
 \label{HydraulicModel}
 
-Water distribution networks are designed to provide good water quality to the community and industries, in 
-terms of sufficient pressure and appropriate chemical levels. In order to supply this service, a water distribution 
-system is conformed by four main components: pipes, pumps, valves and reservoirs. 
+Water distribution networks are designed to provide good water quality to communities and industries in 
+terms of sufficient pressure and appropriate chemical composition. In order to achieve this, such a distribution system is generally conformed by four main components: pipes, pumps, valves and reservoirs. 
 \\
 
-The understanding of a water distribution is done in the following chapter by the hydraulic approach, 
-where the models of each component of the network will be defined. 
+In the following chapter the hidraulic model analysis of the system is done by control volume approach \cite{Hunt_Fluidmechanics}, 
+where the mechanical model of each component are defined in the network. 
 
-\textbf{Pipe Model} \\ 
+\subsection{Pipe Model} 
 \label{PipeModel}
-Pipes are the major components of a water distribution system, considering that they are commonly used to carry the flow. 
-Therefore especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, 
-thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
+Pipes are major components of a water distribution system since they are used for carrying pressurized and treated fresh water. There  of especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
 %
-\\
 The dynamic model of a pipe can be originate from Newton´s second law, which relates the sum of the 
 forces acting on an element, a pipe in this case, to the rate of change of momentum.
-
 \begin{equation}
-  \frac{dP}{dt} = \sum F
+  \frac{d}{dt} P = \sum F
   \label{NewtonLaw}
 \end{equation} 
 
-Where: 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $F$ \\
+\hspace*{8mm} $P$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the force acting on the volume of water,\\
+is the linear momentum of the water flow.
 
-\begin{itemize}
-  \item  $F$ = Forces working on the control volume 
-  \item $P$ = Linear momentum
-\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{N}$\\
+\textcolor{White}{te}$\unit{\frac{kgm}{s}}$
+\end{minipage}
 
 It is assumed the water to be incompressible and the pipes to be filled of water at every moment. 
 An incompressible fluid is a fluid with constant density
