@@ -1,12 +1,23 @@
 \section{Hydraulic Model}
 \label{HydraulicModel}
 
-Water distribution networks are designed to provide good water quality to communities and industries in 
-terms of sufficient pressure and appropriate chemical composition. In order to achieve this, such a distribution system is generally conformed by four main components: pipes, pumps, valves and reservoirs. 
-\\
+Water distribution networks are designed to deliver water  to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally conformed by four main components: pipes, pumps, valves and reservoirs. The common property of pipes, pumps and valves is that they are all two-terminal components, therefore they can be characterized by two algebraic or dynamic relationship between two variables. The pressure drop accross the two endpoints and the flow through the element, as the state vector of one component shows in \eqref{ComponentState}. \cite{Kallesoe2009} 
 
-In the following chapter the hidraulic model analysis of the system is done by control volume approach \cite{Hunt_Fluidmechanics}, 
-where the mechanical model of each component are defined in the network. 
+\begin{equation}
+\label{ComponentState}
+ \begin{bmatrix}
+    \Delta P \\
+    q
+\end{bmatrix}
+=
+ \begin{bmatrix}
+    P_{in} - P_{out} \\
+    q
+\end{bmatrix}
+\end{equation}
+\\
+In the following chapter the hydraulic model analysis of the system is done by control volume approach \cite{Hunt_Fluidmechanics}, 
+and the relationship of the two state parameters of each component is introduced.
 
 \subsection{Pipe Model} 
 \label{PipeModel}
