@@ -167,9 +167,74 @@ loss, form resistance, $h_{m}$, which is the loss on account to the change in
 shape of the pipe, and the resistance due to change of elevation, $\Delta z$. 
 
 
-\textbf{Surface Resistance ($h_f$)} \\ 
+\subsubsection{Surface Resistance ($h_f$)} 
+The flow of a liquid through a pipe suffers a resistance force resulting from 
+the turbulences occurring along the internal walls of the pipe, created by the surface roughness of the pipe material. This surface 
+resistance is given by The Darcy-Weisbach equation. 
 
-\textbf{Form Resistance ($h_m$)} \\ 
+\begin{equation}
+  h_f = \frac{fLV^2}{2gD}
+  \label{Darcy}
+\end{equation}
+
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $f$ \\
+\hspace*{8mm} $g$ \\
+\hspace*{8mm} $D$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the Moody friction factor\\
+is acceleration due to gravity\\
+is the diameter of the pipe
+
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{\frac{m}{s^2}}$\\
+\textcolor{White}{te}$\unit{m}$
+\end{minipage}
+
+Applying the continuity equation the velocity can be substitute by the volumetric flow and pipe area, resulting in:
+
+\begin{equation}
+  h_f = \frac{8fLQ^2}{\pi^{2}gD^5}
+  \label{DarcyWeisbach}
+\end{equation} 
+ 
+ The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
+ which is a non-dimensional factor and is function of the Reynold´s number. This friction factor depends on the flow, 
+ if it is laminar, transient or turbulent, and the roughness of the tube. \\
+ 
+ 
+The Reynold´s number can be used to determine if the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
+$Re>4000$ as turbulent \cite{Intro_Fluid}. 
+\begin{equation}
+   Re = \frac{vD}{\nu}
+   \label{Reynolds}
+ \end{equation}
+ 
+  \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\nu$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the kinematic viscosity
+
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{\frac{kg}{ms}}$
+\end{minipage}
+
+The kinematic viscosity is given by 
+ 
+ 
+%
+\subsubsection{Form Resistance ($h_m$)} 
 
 \textbf{Valve Model}  \\
 \label{ValveModel}
