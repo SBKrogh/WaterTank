@@ -22,7 +22,7 @@ and the relationship of the two state parameters of each component is introduced
 \subsection{Pipe Model} 
 \label{PipeModel}
 Pipes are major components of a water distribution system since they are used for carrying pressurized and treated fresh water. There  of especial attention should be focused in the design of the types of pipes and in the setup of the dynamic model, thus a detailed model can be obtained that describes the effect of pressure and flow in a network. 
-%
+
 The dynamic model of a pipe can be originate from Newton´s second law, which relates the sum of the 
 forces acting on an element, a pipe in this case, to the rate of change of momentum.
 \begin{equation}
@@ -37,8 +37,8 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the force acting on the volume of water,\\
-is the linear momentum of the water flow.
+is the force acting on the volume of water\\
+is the linear momentum of the water flow
 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -48,82 +48,141 @@ is the linear momentum of the water flow.
 \end{minipage}
 
 It is assumed the water to be incompressible and the pipes to be filled of water at every moment. 
-An incompressible fluid is a fluid with constant density
+%An incompressible fluid is a fluid with constant density
 This yields that the density of the water and the volume will be constant, causing the mass of the water to be so. 
 \\
-Rewriting \ref{NewtonLaw} to be dependent on the time derivative of the product 
+%
+Rewriting \eqref{NewtonLaw} to be dependent on the time derivative of the product 
 of the mass and velocity, the mass of the water can be taken out of the derivative due to its constant behavior.
 
 \begin{equation}
   \frac{dP}{dt} = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
 \end{equation} 
 
-\begin{itemize}
-  \item  $M$ = Mass of the water
-  \item $v$ = Velocity of the water
-\end{itemize}
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $M$ \\
+\hspace*{8mm} $v$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+Mass of the water\\
+Velocity of the water
+
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{kg}$\\
+\textcolor{White}{te}$\unit{\frac{m}{s}}$
+\end{minipage}
+
 
 The sum of the forces working on the control volume can be listed as: input forces, output forces and resistance forces.  
 These forces will be converted in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
-The diameter of the pipe is assumed constant and since they are cylindrical pipes as well:
+The diameter of the pipe is assumed constant and since they have cylindrical structure:
 \begin{equation}
   A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
 \end{equation}
 
-The equation of continuity is applied to analyze the pipe flow. It is assumed a steady flow and an uniform 
-mass flow in the pipe. Hence, the water flow can be described as: 
+The equation of continuity is applied to analyze the pipe flow. A steady flow and an uniform 
+mass flow in the pipe are assumed. Hence, the water flow can be described as: 
 
 \begin{equation}
   Q=Area \cdot V
 	\label{EquationOfContinuity}
 \end{equation}
 
-Where: 
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $A$ \\
+\hspace*{8mm} $Q$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+Area of a pipe\\
+Volumetric rate of flow
 
-\begin{itemize}
-  \item  $A$ = Area of a pipe
-  \item $V$ = Average flow velocity
-  \item $Q$ = Volumetric rate of flow
-\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{m^{2}}$\\
+\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
+\end{minipage}
+
+ In \eqref{LinearMomentum} the forces acting on the system are added, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
+ between two endpoints.
 
 \begin{equation}
-  M_w \frac{dv}{dt} = F_in - F_out - F_res \\
+  M_w \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  \label{LinearMomentum}
 \end{equation}
 
-\begin{equation}
+In order to obtain a equation depending on pressure the relationship between forces and pressures is applied.
+
+
+ \begin{equation}
     A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
+
+The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity 
+equation.
 
 \begin{equation}
     A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
 
+Reducing the area to obtain an expression for the pressure: 
+
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
 \end{equation}
 
+Finally, the desired pressure drop between two endpoint is obtained.
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
 \end{equation}
 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $L$ \\
+\hspace*{8mm} $\rho$ \\
+\hspace*{8mm} $\Delta p$ \\
+\hspace*{8mm} $F_{res}$ 
+\end{minipage}
 
-On the other hand, The Bernoulli Equation is considered to obtain the conservation of energy principle for the fluids flowing in the pipe.
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+Length of a pipe\\
+Water density\\
+Pressure drop\\
+Resistance force
 
-\begin{equation}
-  \label{Bernoulliequation}
-z_1 + h_1 + \frac{v_1^{2}}{2g} = z_2 + h_2 + \frac{v_2^{2}}{2g} + h_L
-\end{equation}
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{m}$\\
+\textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$\\
+\textcolor{White}{te}$\unit{Pa}$\\
+\textcolor{White}{te}$\unit{N}$
+\end{minipage}
 
-(This equation its a derivation of the general Bernoulli equation of energy but divided by the density and 
-gravity)\\
-
-\begin{itemize}
-  \item   z1 and z2 are the elevations of the centerline
-  \item   h1 and h2 are pressure heads
-  \item   v1 and v2 average flow velocity
-  \item   hl loss between sections 1 and 2
-\end{itemize}
+%On the other hand, The Bernoulli Equation is considered to obtain the conservation of energy principle for the fluids flowing in the pipe.
+%
+%\begin{equation}
+%  \label{Bernoulliequation}
+%z_1 + h_1 + \frac{v_1^{2}}{2g} = z_2 + h_2 + \frac{v_2^{2}}{2g} + h_L
+%\end{equation}
+%
+%(This equation its a derivation of the general Bernoulli equation of energy but divided by the density and 
+%gravity)\\
+%
+%\begin{itemize}
+%  \item   z1 and z2 are the elevations of the centerline
+%  \item   h1 and h2 are pressure heads
+%  \item   v1 and v2 average flow velocity
+%  \item   hl loss between sections 1 and 2
+%\end{itemize}
 
 The $h_L$ term is conformed by two different losses. One due to the surface resistance $(h_F)$ and the other one due to form resistance $(h_M)$. 
 
