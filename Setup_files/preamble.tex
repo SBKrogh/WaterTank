@@ -46,6 +46,7 @@
 \usepackage{pdflscape}	 					% Giver mulighed for landacape mode
 \usepackage{longtable}						% Giver mulighed for talber over flere side
 %\usepackage{subcaption}
+\usepackage{capt-of}
 
 % ¤¤ Matematik mm. ¤¤
 \usepackage{amsmath}						% Avancerede matematik-udvidelser
@@ -275,6 +276,7 @@
 \usetikzlibrary{shapes,arrows}
 \usepackage{pgfplots}
 \usetikzlibrary{plotmarks}
+\usetikzlibrary{fit}
 \pgfplotsset{compat=newest}
 \pgfplotsset{filter discard warning=false}
 %\usepackage[americanresistors,americaninductors,american voltages]{circuitikz}
@@ -291,7 +293,9 @@
 \tikzstyle{every node}=[font=\small]
 \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
 \definecolor{AleeRed}{rgb}{0.5,0,0}
-
+\newcommand\addvmargin[1]{
+  \node[fit=(current bounding box),inner ysep=#1,inner xsep=0]{};
+}
 
 %%%% CDO FIX %%%%
 \usepackage{silence}

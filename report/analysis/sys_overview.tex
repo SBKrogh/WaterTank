@@ -14,36 +14,42 @@ Such a setup is available at Aalborg university, this test setup is based on a r
 \end{figure}
 
 
-The test setup represents a real systems, thus the same structure concerning piping, leveling and components are used. To achieve different elevations levels between systems parts the setup is mounted on a wall, this also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios other equipment is also present in the test setup shown in \figref{fig:test_setup}. A diagram representing the part of the test setup that will be used in this project is shown in figref. 
+The test setup represents a real systems, thus the same structure concerning piping, leveling and components are used. To achieve different elevations levels between systems parts the setup is mounted on a wall, this also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios other equipment is also present in the test setup shown in \figref{fig:test_setup}. This enables the test system to mimic a variety of different system types and scenarios. A diagram representing the part of the test setup that will be used in this project is shown in \figref{fig:sys_model_overview}. 
 
 %tikz of our system
-
+\begin{figure}[H]
+\centering
+\input{report/tikz/sys_model_overview.tex} 
+\caption{Overview of the reduced system that fulfills the scenario of this project.}
+\label{fig:sys_model_overview}
+\end{figure}
 
 The system consists of different parts, the main part being a water reservoir placed at ground level, used to supply the system. Two pumps are connected to the reservoir, these supply water to the main water ring formed around the consumers. 
 Another water reservoir is connected to the water ring by a dedicated pump. This reservoir is elevated and can, when filled, be used to pressurize the system. 
 From the water ring two PMA's are connected via their own pump, inside each PMA a measuring point is placed and the pressure at this point shall be kept. Furthermore the are placed two consumers inside each PMA.         
-
-\begin{figure}[H]
-\begin{tikzpicture}
-
-%\draw(0,0) circle (2);
-%pump
-\draw(0,0) circle (1);
-\draw(1,0) -- (0,1);
-\draw(1,0) -- (0,-1);
-
-\begin{scope} [rotate=30]
-    \draw[transform shape] (0,0) circle (1);
-\draw[transform shape] (1,0) -- (0,1);
-\draw[transform shape] (1,0) -- (0,-1);
-  \end{scope}
-
-\begin{scope} [rotate=60, shift={(-2.4451,-1.7951)}]
-    \draw[transform shape] (0,0) circle (1);
-\draw[transform shape] (1,0) -- (0,1);
-\draw[transform shape] (1,0) -- (0,-1);
-  \end{scope}
-
-
-\end{tikzpicture}
+	
+\begin{figure}
+	\centering
+	\begin{minipage}[b]{0.4\textwidth}
+		\centering
+		\input{report/tikz/basic_example_sys.tex} 
+		\caption{Basic water distribution network.}
+		\label{fig:Basic_example_sys}
+	\end{minipage}
+	\hspace{15pt}
+	\begin{minipage}[b]{0.4\textwidth}
+		\begin{tabular}{|c|c|} \hline
+  			\bfseries Symbol 	 					&   \bfseries Name 					\\ \hline
+			\input{report/tikz/pump.tex} 		  	&	Pump							\\ \hline
+			\input{report/tikz/manual_valve.tex} 	&	Manual valve					\\ \hline
+			\input{report/tikz/elec_valve.tex} 		&	Electronic valve				\\ \hline
+			\input{report/tikz/pipe.tex} 		  	&	Pipe segment					\\ \hline
+			\input{report/tikz/pressure_sensor.tex} &	Pressure sensor					\\ \hline
+			\input{report/tikz/dif_pres_sens.tex} 	&	Differential pressure sensor	\\ \hline
+			\input{report/tikz/gnd.tex} 		  	&	Gnd								\\ \hline
+		\end{tabular}
+		\captionof{table}{Symbol and name for component in the water network.}	
+		\label{tab:sys_comp_overview}
+	\end{minipage}
 \end{figure}
+%\end{minipage}
