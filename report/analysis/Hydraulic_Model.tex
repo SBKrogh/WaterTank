@@ -281,6 +281,73 @@ is the average roughness of the wall inside the pipe
 
 %
 \subsubsection{Form Resistance ($h_m$)} 
+The form resistance losses appear any time the flow changes direction, such an elbow and bends,
+or due to enlargers and reducers. It is a particular frictional resistance due to the 
+fittings of a pipe. Form loss can be expressed as:
+\begin{equation}
+  h_m = k_f \frac{V^2}{2g}
+\end{equation}
+
+Applying the continuity equation:
+
+\begin{equation}
+  h_m = k_f \frac{8Q^2}{\pi^2gD^4}
+  \label{Formloss}
+\end{equation}
+
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $k_f$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the form-loss coefficient  
+ \end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$
+\end{minipage}
+
+The form-loss coefficient can be split into different loss depending on the 
+fitting of the pipes: pipe bend and elbows. 
+\\
+Pipe bends principally is determined by the 
+bend angle $\alpha$ and bend radius $R$, it is given by the following 
+expression \cite{Design_Water}: 
+
+\begin{equation}
+  k_f = \bigg[0.0733 + 0.923 \bigg(\frac{D}{R}\bigg)^{3.5}\bigg]\alpha^{0.5}
+\end{equation}
+
+Pipe elbows are also used to change the direction of the flow but providing 
+sharp turns in pipelines. The coefficient for the losses in elbows is determined by the elbows angle $\alpha$ and is given by:
+
+\begin{equation}
+  k_f = 0.442\alpha^{2.17}
+\end{equation}
+
+\subsection{Complete Pipe Model}
+Once all the elements taking part in a pipe are identified it is possible to 
+derive the complete model of a pipe. In \refeq{DarcyWeisbach} and \refeq{Formloss} 
+the head loss of the respective friction losses have been determined, this terms are 
+introduced in \refeq{PressureDrop} in terms of pressure. Thus, the friction 
+factor are multiplied by the water density and gravity. Nevertheless, the head 
+loss due to elevation has to be added in the model, resulting the final 
+expression in:
+
+\begin{equation}
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho p 
+\end{equation}
+
+Substituting the terms $h_f$ and $h_m$ with their respective values:
+\begin{equation}
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
+\end{equation}
+
+Taking out the flow $q$ as the common:
+\begin{equation}
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
+\end{equation}
 
 \textbf{Valve Model}  \\
 \label{ValveModel}
