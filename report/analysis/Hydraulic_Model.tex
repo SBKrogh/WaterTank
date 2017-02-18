@@ -230,9 +230,55 @@ is the kinematic viscosity
 \textcolor{White}{te}$\unit{\frac{kg}{ms}}$
 \end{minipage}
 
-The kinematic viscosity is given by 
- 
- 
+The kinematic viscosity in \cite{Design_Water} is given by :
+\begin{equation}
+  \nu = 1.792 \cdot 10^{-6} \bigg[1+{\bigg(\frac{T}{25}\bigg)}^{1.165} \bigg]^{-1}
+\end{equation}
+
+  \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $T$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the water temperature  
+ \end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{^{\circ} C}$
+\end{minipage}
+
+In order to estimate the range of the Reynolds number that a common water 
+distribution has, typical values of the temperature, velocity and the radius of 
+the pipes are considered \cite{Urban_Design}. 
+
+\begin{itemize}
+  \item $v = 0.5 - 1.5  \quad \frac{m}{s}$
+  \item $D = 50 - 1500\quad mm$
+  \item $T = 10 - 20 \quad ^{\circ} C$
+\end{itemize}
+
+This values result in a Reynolds number between 19000 and 225000, which yields the fluid to be turbulent. For turbulent flow the 
+Moody friction factor is given by \cite{Design_Water} : 
+
+\begin{equation}
+  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{R^{0.9}}\bigg)\bigg)^{-2}
+  \label{turbulent}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\epsilon$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the average roughness of the wall inside the pipe
+ \end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$
+\end{minipage}
+
 %
 \subsubsection{Form Resistance ($h_m$)} 
 
