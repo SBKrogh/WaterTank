@@ -1,7 +1,7 @@
 \section{Hydraulic Model}
 \label{HydraulicModel}
 
-Water distribution networks are designed to deliver water  to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally conformed by four main components: pipes, pumps, valves and reservoirs. The common property of pipes, pumps and valves is that they are all two-terminal components, therefore they can be characterized by two algebraic or dynamic relationship between two variables. The pressure drop accross the two endpoints and the flow through the element, as the state vector of one component shows in \eqref{ComponentState}. \cite{Kallesoe2009} 
+Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property of these is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element. \cite{Kallesoe2009}  \eqref{ComponentState} shows the state vector of one component. 
 
 \begin{equation}
 \label{ComponentState}
@@ -16,14 +16,15 @@ Water distribution networks are designed to deliver water  to consumers in terms
 \end{bmatrix}
 \end{equation}
 \\
-In the following chapter the hydraulic model analysis of the system is done by control volume approach \cite{Hunt_Fluidmechanics}, 
-and the relationship of the two state parameters of each component is introduced.
+In the following chapter the hydraulic model analysis of the system is done by control volume approach. \cite{Hunt_Fluidmechanics} 
+The two state parameters are introduced for each component in the hydraulic network.
 
 \subsection{Pipe Model} 
 \label{PipeModel}
-Pipes are major components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in a general form in order to describe the relationship of pressure and flow in each pipe component in the network.  
+Pipes are major components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in a general form in order to describe the relationship of pressure and flow for each pipe component.  
 %
-The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes that the rate of change of the momentum of the fluid in the pipe is proportional to the force acting on it.
+The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the fluid(water) and the force acting on it.
+
 \begin{equation}
   \frac{d}{dt} P = \sum F
   \label{NewtonLaw}
@@ -48,7 +49,7 @@ is the linear momentum of the water flow.
 
 The dynamics of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time and the water is assumed to be incompressible. Thus the density of water and the volume of the fluid is constant in time, as the mass of the water is.
 \\
-Rewriting \ref{NewtonLaw} to be dependent on the time derivative of the product of the mass and velocity, the mass of the water can be taken out in front of the derivative.
+Rewriting \eqref{NewtonLaw}, for the above-mentioned consideration the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
   \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
@@ -62,7 +63,7 @@ Where\\
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the mass of the water,\\
-is the absolute value of the velocity of the water.
+is the absolute value of the velocity of the water at each point of the pipe.
 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -71,19 +72,18 @@ is the absolute value of the velocity of the water.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
-The sum of the forces working on the control volume can be listed as: input forces, output forces and resistance forces.  
-These forces will be converted in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
+The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet) and resistance forces.  
+These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
-The diameter of the pipe is assumed constant and since they have cylindrical structure:
+The diameter of the pipe is assumed to be constant and to have cylindrical structure:
 \begin{equation}
   A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
 \end{equation}
 
-The equation of continuity is applied to analyze the pipe flow. A steady flow and an uniform 
-mass flow in the pipe are assumed. Hence, the water flow can be described as: 
+Continuity law in fluid mechanics is applied to analyse the flow in the pipe. \cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
 
 \begin{equation}
-  Q=Area \cdot V
+  Q=A \cdot V
 	\label{EquationOfContinuity}
 \end{equation}
 
@@ -94,7 +94,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the area of a pipe\\
+is the cross sectional area of a pipe\\
 is the volumetric rate of flow
 
 \end{minipage}
@@ -104,35 +104,34 @@ is the volumetric rate of flow
 \textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
 \end{minipage}
 
- In \eqref{LinearMomentum} the forces acting on the system are added, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
+ In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
  between two endpoints.
 
 \begin{equation}
-  M_w \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  M \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
   \label{LinearMomentum}
 \end{equation}
 
-In order to obtain a equation depending on pressure the relationship between forces and pressures is applied.
+In order to obtain an equation consisting of only pressure parameters, the relationship between forces and pressures is used.
 
 
  \begin{equation}
     A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
 
-The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity 
-equation.
+The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
 
 \begin{equation}
     A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
 
-Reducing the area to obtain an expression for the pressure: 
+Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
 \end{equation}
 
-Finally, the desired pressure drop between two endpoint is obtained.
+Thus the desired pressure drop between two endpoint is obtained.
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
     \label{PressureDrop}
@@ -150,7 +149,7 @@ Where\\
 is the length of a pipe\\
 is the resistance force\\
 is the pressure drop across the two endpoints\\
-is the water density.
+is the density of water.
 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -162,15 +161,14 @@ is the water density.
 \end{minipage}
 
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
-pipe, which is composed of two parts: surface resistance, $h_{f}$, the friction 
-loss, form resistance, $h_{m}$, which is the loss on account to the change in 
-shape of the pipe, and the resistance due to change of elevation, $\Delta z$. 
+pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
+loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
 
 
 \subsubsection{Surface Resistance ($h_f$)} 
 The flow of a liquid through a pipe suffers a resistance force resulting from 
 the turbulences occurring along the internal walls of the pipe, created by the surface roughness of the pipe material. This surface 
-resistance is given by The Darcy-Weisbach equation. 
+resistance is given by the Darcy-Weisbach equation.\todo{cite reference}
 
 \begin{equation}
   h_f = \frac{fLV^2}{2gD}
@@ -185,11 +183,12 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the Moody friction factor\\
+is the Moody friction factor\\ 
 is acceleration due to gravity\\
-is the diameter of the pipe
+is the diameter of the pipe.
 
 \end{minipage}
+\todo{cite reference1}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{-}$\\
@@ -197,7 +196,7 @@ is the diameter of the pipe
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Applying the continuity equation the velocity can be substitute by the volumetric flow and pipe area, resulting in:
+Applying the continuity law, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
 
 \begin{equation}
   h_f = \frac{8fLQ^2}{\pi^{2}gD^5}
@@ -205,8 +204,7 @@ Applying the continuity equation the velocity can be substitute by the volumetri
 \end{equation} 
  
  The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
- which is a non-dimensional factor and is function of the Reynold´s number. This friction factor depends on the flow, 
- if it is laminar, transient or turbulent, and the roughness of the tube. \\
+ which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on the flow if it is laminar, transient or turbulent, and the roughness of the tube. \\
  
  
 The Reynold´s number can be used to determine if the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
@@ -272,7 +270,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the average roughness of the wall inside the pipe
+is the average roughness of the wall inside the pipe.
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -288,7 +286,7 @@ fittings of a pipe. Form loss can be expressed as:
   h_m = k_f \frac{V^2}{2g}
 \end{equation}
 
-Applying the continuity equation:
+Applying the continuity law:
 
 \begin{equation}
   h_m = k_f \frac{8Q^2}{\pi^2gD^4}
@@ -301,7 +299,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the form-loss coefficient  
+is the form-loss coefficient.  
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -327,17 +325,12 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
 \end{equation}
 
 \subsection{Complete Pipe Model}
-Once all the elements taking part in a pipe are identified it is possible to 
-derive the complete model of a pipe. In \refeq{DarcyWeisbach} and \refeq{Formloss} 
-the head loss of the respective friction losses have been determined, this terms are 
-introduced in \refeq{PressureDrop} in terms of pressure. Thus, the friction 
-factor are multiplied by the water density and gravity. Nevertheless, the head 
-loss due to elevation has to be added in the model, resulting the final 
-expression in:
+In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. Thus, the friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho p 
 \end{equation}
+\todo{zpp has to be corrected in these equations}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
 \begin{equation}
