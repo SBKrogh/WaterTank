@@ -19,6 +19,7 @@ Water distribution networks are designed to deliver water to consumers in terms 
 In the following chapter the hydraulic model analysis of the system is done by control volume approach. \cite{Hunt_Fluidmechanics} 
 The two state parameters are introduced for each component in the hydraulic network.
 
+
 \subsection{Pipe Model} 
 \label{PipeModel}
 Pipes are major components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in a general form in order to describe the relationship of pressure and flow for each pipe component.  
@@ -164,11 +165,10 @@ In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
 loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
 
-
 \subsubsection{Surface Resistance ($h_f$)} 
 The flow of a liquid through a pipe suffers a resistance force resulting from 
 the turbulences occurring along the internal walls of the pipe, created by the surface roughness of the pipe material. This surface 
-resistance is given by the Darcy-Weisbach equation.\todo{cite reference}
+resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.\todo{cite reference}
 
 \begin{equation}
   h_f = \frac{fLV^2}{2gD}
@@ -286,6 +286,7 @@ fittings of a pipe. Form loss can be expressed as:
   h_m = k_f \frac{V^2}{2g}
 \end{equation}
 
+
 Applying the continuity law:
 
 \begin{equation}
@@ -318,7 +319,7 @@ expression \cite{Design_Water}:
 \end{equation}
 
 Pipe elbows are also used to change the direction of the flow but providing 
-sharp turns in pipelines. The coefficient for the losses in elbows is determined by the elbows angle $\alpha$ and is given by:
+sharp turns in pipelines. The coefficient for the losses in elbows is determined by the elbows angle $\alpha$ and it is given by:
 
 \begin{equation}
   k_f = 0.442\alpha^{2.17}
@@ -328,19 +329,20 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
 In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. Thus, the friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho p 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho 
+   g
 \end{equation}
 \todo{zpp has to be corrected in these equations}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
 \begin{equation}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
 
-Taking out the flow $q$ as the common:
+Taking out the flow $q$ as the common factor:
 \begin{equation}
 \label{FinalPipeModel}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
 
 \subsection{Valve Model}  
