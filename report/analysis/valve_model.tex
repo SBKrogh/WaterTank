@@ -1,0 +1,20 @@
+\subsection{Valve Model}  
+\label{ValveModel}
+
+Valves in the water distribution system are modelled according to the same principle as pipes with the difference that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
+In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
+Recalling \eqref{FinalPipeModel}, it simplifies as follows: 
+
+\begin{equation}
+\label{ValveModel}
+ \Delta p =  - k_f \frac{8q^2}{\pi^2gD^4} \rho g 
+\end{equation}
+
+In \eqref{ValveModel}, the form-loss coefficient is taken into account in order to determine the pressure drop. Although $k_f$ is a coefficient that describes the resistance of the valve, manufacturers provide another constant which indicates the valve capacity instead.  
+
+%\cite{kvvalve}
+ 
+ 
+ 
+ 
+ 

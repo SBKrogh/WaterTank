@@ -165,7 +165,9 @@ In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
 loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
 
-\subsubsection{Surface Resistance ($h_f$)} 
+%\subsubsection{Surface Resistance \texorpdfstring{$h_f$}} 
+\subsubsection{Surface Resistance \texorpdfstring{$h_f$}{}} 
+
 The flow of a liquid through a pipe suffers a resistance force resulting from 
 the turbulences occurring along the internal walls of the pipe, created by the surface roughness of the pipe material. This surface 
 resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.\todo{cite reference}
@@ -278,7 +280,8 @@ is the average roughness of the wall inside the pipe.
 \end{minipage}
 
 %
-\subsubsection{Form Resistance ($h_m$)} 
+\subsubsection{Form Resistance \texorpdfstring{$h_m$}{}} 
+
 The form resistance losses appear any time the flow changes direction, such an elbow and bends,
 or due to enlargers and reducers. It is a particular frictional resistance due to the 
 fittings of a pipe. Form loss can be expressed as:
@@ -344,58 +347,3 @@ Taking out the flow $q$ as the common factor:
 \label{FinalPipeModel}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
-
-\subsection{Valve Model}  
-\label{ValveModel}
-
-Valves in the water distribution system are modelled according to the same principle as pipes with the difference that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
-In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
-Recalling \eqref{FinalPipeModel}, it simplifies as follows: 
-
-\begin{equation}
-\label{ValveModel}
- \Delta p =  - k_f \frac{8q^2}{\pi^2gD^4} \rho g 
-\end{equation}
-
-In \eqref{ValveModel}, the form-loss coefficient is taken into account in order to determine the pressure drop. Although $k_f$ is a coefficient that describes the resistance of the valve, manufacturers provide another constant which indicates the valve capacity instead. 
- 
-
-
- 
- \cite{kvvalve}
- 
- 
- 
- 
- 
- 
- 
-\subsection{Pump Model} 
-\label{PumpModel}
-
-
-
-
-
-
-
- 
- \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
- \label{KirchhoffLaw}
- Kirchhoff´s law represents the interconnection of the elements of an electrical circuit. An hydraulic approach 
- can be done to Kirchhoff´s law in order to carry out the analysis of the hydraulic network of a system, having to satisfied Kirchhoff´s 
- current law (KCL) and voltage law (KVL). Therefore, voltage and currents are replaced by pressure and flows, respectively. 
-
-The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
-The pressure drops taking place in the pipes and valves can be considered as inductors and nonlinear resistors, respectively. 
-
-\textit{Maybe here before we start with the Graph Theory could be nice to make a figure showing the changes between the hydraulic circuit to the electrical 
-one.}
-
-The analogy between hydraulic and electrical circuits described above is applied in the graph theory…(start explaining Graph Theory).
-
-
-
-
-
-
