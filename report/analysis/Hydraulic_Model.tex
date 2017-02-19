@@ -81,7 +81,7 @@ The diameter of the pipe is assumed to be constant and to have cylindrical struc
 \end{equation}
 
 Continuity law in fluid mechanics is applied to analyse the flow in the pipe. \cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
-
+\todo{From here, Q is used for q, inconsequently}
 \begin{equation}
   Q=A \cdot V
 	\label{EquationOfContinuity}
@@ -289,8 +289,8 @@ fittings of a pipe. Form loss can be expressed as:
 Applying the continuity law:
 
 \begin{equation}
-  h_m = k_f \frac{8Q^2}{\pi^2gD^4}
-  \label{Formloss}
+   h_m = k_f \frac{8Q^2}{\pi^2gD^4}
+\label{Formloss}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
@@ -339,16 +339,40 @@ Substituting the terms $h_f$ and $h_m$ with their respective values:
 
 Taking out the flow $q$ as the common:
 \begin{equation}
+\label{FinalPipeModel}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
 \end{equation}
 
 \subsection{Valve Model}  
 \label{ValveModel}
- Valves are used in water distribution networks to control the flow through the pipe, the pressure and in 
- the case that there is a reservoir to control its level. 
+
+Valves in the water distribution system are modelled according to the same principle as pipes with the difference that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
+In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
+Recalling \eqref{FinalPipeModel}, it simplifies as follows: 
+
+\begin{equation}
+\label{ValveModel}
+ \Delta p =  - k_f \frac{8q^2}{\pi^2gD^4} \rho g 
+\end{equation}
+
  
- \textbf{Pump Model} \\
- \label{PumpModel}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\subsection{Pump Model} 
+\label{PumpModel}
+
+
+
+
+
+
+
  
  \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
  \label{KirchhoffLaw}
