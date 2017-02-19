@@ -24,7 +24,7 @@ In \eqref{ValveModel}, the form-loss coefficient is taken into account in order 
 \subsubsection{Valve conductivity function $k_v(OD)$}
 \label{OD}
 
-Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too. \cite{Kallesoe2009}
+Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too. \cite{Kallesoe2009}
 
 All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all valves. 
 
@@ -116,28 +116,38 @@ As it is shown, the conductivity function of the valve consists of two types of 
 		\left\{
 		\begin{array}{ll}
 		
-		k(\theta_{OD}) \sim linear() \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
+		k_v(\theta_{OD}) \sim linear() \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
 \\
-		k(\theta_{OD}) \sim exponential() \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
+		k_v(\theta_{OD}) \sim exponential() \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
 
 		\end{array}
 		\right.
 \end{equation}	
 
-Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and as it is shown, it is predetermined by $n_{gl}$. \citep{Kallesoe2009} \cite{keller}
+Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and predetermined by $n_{gl}$. \citep{Kallesoe2009} \cite{keller}
 
-\subsubsection{Unit transformation}
-\label{unittransform}
 
 \subsubsection{Complete valve model}
 \label{unittransform}
 
+Using \eqref{kvequation} with the conductivity function $k_v(OD)$ and expressing $\Delta p$ yields: 
 
-\cite{kvvalve}
- 
-sds \cite{valvedatasheet}
+\begin{equation}
+\label{CompleteValveModel}
+ \Delta p = \frac{1}{k_v(OD)^2} |q| q
+\end{equation}
 
-erer \cite{keller}
+Expressing it in a compact form for the $k$th valve  in the network yields: 
+
+\begin{equation}
+\label{CompactValveModel}
+ \Delta p_k = \mu_k(q_k,k_v(OD)) 
+\end{equation}
+
+\subsubsection{Unit transformation}
+\label{unittransform}
+
+
  
  
  
