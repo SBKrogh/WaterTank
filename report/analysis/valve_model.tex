@@ -3,7 +3,7 @@
 
 %R2015-1-S1 type valve
 
-Valves in the water distribution system are modelled according to the same principle as pipes with the difference that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore, it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints, considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
+Valves in the water distribution system are modelled according to the same principle as pipes with the difference that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
 In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
 Due to the above-mentioned considerations, by recalling \eqref{FinalPipeModel}, it simplifies as follows: 
 
@@ -24,9 +24,107 @@ In \eqref{ValveModel}, the form-loss coefficient is taken into account in order 
 \subsubsection{Valve conductivity function $k_v(OD)$}
 \label{OD}
 
-Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values. \cite{Kallesoe2009}
+Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too. \cite{Kallesoe2009}
 
-All valves in the system share the same characteristics
+All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all valves. 
+
+%k_v valve characteristics
+\begin{figure}[H]
+\label{valve_conductivity}
+\centering
+\includegraphics[width=0.5\textwidth]{report/pictures/missingfigure}
+\caption{Valve characteristics - Valve conductivity in the function of OD}
+\end{figure}
+
+According to \cite{keller}, the following definition can be written up for the conductivity function, $k_v(OD)$:
+
+
+\begin{equation}
+\label{kvFunction}
+ k_v(OD) =
+		\left\{
+		\begin{array}{ll}
+		
+		k_{v100} \, \frac{\theta_{OD}}{\theta_{max}} \, n_{gl} \, e^{(1-n_{gl})} \text{,} & \mbox{ if } 								\frac{\theta_{OD}}{\theta_{max}} \leq \frac{1}					{n_{gl}} \text{;}
+\\
+		k_{v100} \, e^{(n_{gl} \,(\frac{\theta_{OD}}{\theta_{max}}-1))} \text{,} & \mbox{ if } \frac{\theta_{OD}}{\theta_{max}} \geq \frac{1}{n_{gl}}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\theta_{OD}$ \\
+\hspace*{8mm} $\theta_{max}$ \\
+\hspace*{8mm} $n_{gl}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the opening degree\\ 
+is the maximum of the opening degree\\
+is the valve characteristic curve factor.
+
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{\degree}$\\
+\textcolor{White}{te}$\unit{\degree}$\\
+\textcolor{White}{te}$\unit{-}$
+\end{minipage}	
+
+As can be seen, a new parameter, $\theta_{max}$ is introduced which describes the maximum angle where the actuator closes the valve. The same can be stated for a minimum angle. The valve is closed when the position of the actuator $\in [0\degree,15\degree]$. As a consequence, there is an offset in the curve as it is shown in \figref{valve_conductivity}. Introducing the following angle:
+
+\begin{equation}
+\label{ValveAngle}
+ \gamma =  \frac{\theta_{OD}-\theta_{off}}{\theta_{max}-\theta_{off}}
+\end{equation}
+
+  \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\theta_{off}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the minimum angle where the valve opens.
+
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{\degree}$
+\end{minipage}
+
+\eqref{kvFunction} modifies to: 
+
+\begin{equation}
+ k_v(OD) =
+		\left\{
+		\begin{array}{ll}
+		
+		k_{v100} \, \gamma \, n_{gl} \, e^{(1-n_{gl})} \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
+\\
+		k_{v100} \, e^{(n_{gl} \,\gamma)} \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+As it is shown, the conductivity function of the valve consists of two types of functions: 
+
+\begin{equation}
+ k_v(OD) =
+		\left\{
+		\begin{array}{ll}
+		
+		k(\theta_{OD}) \sim linear() \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
+\\
+		k(\theta_{OD}) \sim exponential() \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and as it is shown, it is predetermined by $n_{gl}$. \citep{Kallesoe2009} \cite{keller}
 
 \subsubsection{Unit transformation}
 \label{unittransform}
