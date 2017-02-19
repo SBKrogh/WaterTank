@@ -1,7 +1,7 @@
 \section{Hydraulic Model}
 \label{HydraulicModel}
 
-Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property of these is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element. \cite{Kallesoe2009}  \eqref{ComponentState} shows the state vector of one component. 
+Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element.\cite{Kallesoe2009}  \eqref{ComponentState} shows the state vector of one component. 
 
 \begin{equation}
 \label{ComponentState}
@@ -16,8 +16,8 @@ Water distribution networks are designed to deliver water to consumers in terms 
 \end{bmatrix}
 \end{equation}
 \\
-In the following chapter the hydraulic model analysis of the system is done by control volume approach. \cite{Hunt_Fluidmechanics} 
-The two state parameters are introduced for each component in the hydraulic network.
+In the following chapter the hydraulic model analysis of the system is done by control volume approach.\cite{Hunt_Fluidmechanics} 
+The relationship between the two state parameters are introduced for each component in the hydraulic network.
 
 
 \subsection{Pipe Model} 
@@ -50,7 +50,7 @@ is the linear momentum of the water flow.
 
 The dynamics of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time and the water is assumed to be incompressible. Thus the density of water and the volume of the fluid is constant in time, as the mass of the water is.
 \\
-Rewriting \eqref{NewtonLaw}, for the above-mentioned consideration the mass of the water can be taken out in front of the derivative.
+Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
   \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
@@ -81,22 +81,21 @@ The diameter of the pipe is assumed to be constant and to have cylindrical struc
   A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
 \end{equation}
 
-Continuity law in fluid mechanics is applied to analyse the flow in the pipe. \cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
-\todo{From here, Q is used for q, inconsequently}
+Continuity law in fluid mechanics is applied to analyse the flow in the pipe.\cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
 \begin{equation}
-  Q=A \cdot V
+  q=A \cdot V
 	\label{EquationOfContinuity}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $A$ \\
-\hspace*{8mm} $Q$ 
+\hspace*{8mm} $q$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the cross sectional area of a pipe\\
-is the volumetric rate of flow
+is the volumetric rate of flow.
 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -165,12 +164,9 @@ In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
 loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
 
-%\subsubsection{Surface Resistance \texorpdfstring{$h_f$}} 
-\subsubsection{Surface Resistance \texorpdfstring{$h_f$}{}} 
-
-The flow of a liquid through a pipe suffers a resistance force resulting from 
-the turbulences occurring along the internal walls of the pipe, created by the surface roughness of the pipe material. This surface 
-resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.\todo{cite reference}
+\subsubsection{Surface Resistance ($h_f$)} 
+The flow of a liquid through a pipe suffers resistance from 
+the turbulence occurring along the internal walls of the pipe, caused by the roughness of the surface. This surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
 
 \begin{equation}
   h_f = \frac{fLV^2}{2gD}
@@ -188,9 +184,7 @@ Where\\
 is the Moody friction factor\\ 
 is acceleration due to gravity\\
 is the diameter of the pipe.
-
 \end{minipage}
-\todo{cite reference1}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{-}$\\
@@ -201,7 +195,7 @@ is the diameter of the pipe.
 Applying the continuity law, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
 
 \begin{equation}
-  h_f = \frac{8fLQ^2}{\pi^{2}gD^5}
+  h_f = \frac{8fLq^2}{\pi^{2}gD^5}
   \label{DarcyWeisbach}
 \end{equation} 
  
@@ -209,7 +203,7 @@ Applying the continuity law, the velocity can be substituted by the volumetric f
  which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on the flow if it is laminar, transient or turbulent, and the roughness of the tube. \\
  
  
-The Reynold´s number can be used to determine if the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
+The Reynold´s number can be used to determine the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
 $Re>4000$ as turbulent \cite{Intro_Fluid}. 
 \begin{equation}
    Re = \frac{vD}{\nu}
@@ -248,9 +242,9 @@ is the water temperature
 \textcolor{White}{te}$\unit{^{\circ} C}$
 \end{minipage}
 
-In order to estimate the range of the Reynolds number that a common water 
-distribution has, typical values of the temperature, velocity and the radius of 
-the pipes are considered \cite{Urban_Design}. 
+In order to estimate the range of the Reynolds number of a common water 
+distribution, typical values of the temperature, velocity and the radius of 
+the pipes are considered.\cite{Urban_Design}. 
 
 \begin{itemize}
   \item $v = 0.5 - 1.5  \quad \frac{m}{s}$
@@ -258,7 +252,7 @@ the pipes are considered \cite{Urban_Design}.
   \item $T = 10 - 20 \quad ^{\circ} C$
 \end{itemize}
 
-This values result in a Reynolds number between 19000 and 225000, which yields the fluid to be turbulent. For turbulent flow the 
+These values result in a Reynold's number between 19000 and 225000, which yields a turbulent fluid flow. For turbulent flow the 
 Moody friction factor is given by \cite{Design_Water} : 
 
 \begin{equation}
@@ -280,9 +274,8 @@ is the average roughness of the wall inside the pipe.
 \end{minipage}
 
 %
-\subsubsection{Form Resistance \texorpdfstring{$h_m$}{}} 
-
-The form resistance losses appear any time the flow changes direction, such an elbow and bends,
+\subsubsection{Form Resistance ($h_m$)} 
+Form resistance losses appear at any time the flow changes direction, due to elbows, bends,
 or due to enlargers and reducers. It is a particular frictional resistance due to the 
 fittings of a pipe. Form loss can be expressed as:
 \begin{equation}
@@ -293,7 +286,7 @@ fittings of a pipe. Form loss can be expressed as:
 Applying the continuity law:
 
 \begin{equation}
-   h_m = k_f \frac{8Q^2}{\pi^2gD^4}
+   h_m = k_f \frac{8q^2}{\pi^2gD^4}
 \label{Formloss}
 \end{equation}
 
@@ -322,7 +315,7 @@ expression \cite{Design_Water}:
 \end{equation}
 
 Pipe elbows are also used to change the direction of the flow but providing 
-sharp turns in pipelines. The coefficient for the losses in elbows is determined by the elbows angle $\alpha$ and it is given by:
+sharp turns in pipelines. The coefficient for the losses in elbows is determined by the angle of an elbow $\alpha$ and is given by:
 
 \begin{equation}
   k_f = 0.442\alpha^{2.17}
@@ -335,15 +328,20 @@ In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction los
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho 
    g
 \end{equation}
-\todo{zpp has to be corrected in these equations}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
 \begin{equation}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
 
 Taking out the flow $q$ as the common factor:
 \begin{equation}
 \label{FinalPipeModel}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
+
+
+
+
+
+
