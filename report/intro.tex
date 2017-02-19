@@ -1,30 +1,120 @@
 \chapter{Introduction}
 
-Water pressure management is a vital part of the infrastructure all over the world. It ensures that a positive water pressure is present such that the consumers are supplied with water at all time. Maintaining a minimum pressure in the network is an important task as the end user is ensured a decent water pressure and also for minimizing the risk of contamination in the water system\cite{national2005public}.%, which ensure clean/healthy water to the consumers. %Another important part for the pressure is to make sure that the end consumers also is ensured water. 
+Water pressure management is a vital part of the infrastructure all over the world. It ensures that a positive water pressure is present such that the consumers are supplied with water at all time. Maintaining a minimum pressure in the network is an important task as the end user is ensured a decent water pressure and also for minimizing the risk of contamination in the water system\cite{national2005public}.
 
-% Implementing one large pressure pump at the water supply is one solution to this problem. It could pressurize the water to a point such that the end consumers get the pressure needed. However this solution is simple it is not beneficial as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. Before any water is distributed out to the consumers the water got to be prepared e.g cleaned for filth, bacteria etc and then pressurized. In \cite{appelbaum2002water} it is stated that the U.S use 4 \% of the national energy consumption is used on moving and treating water/wastewater. The estimated world wide water loss is estimated to 30 \%\cite{feldman2009aspects}, thus a high amount of energy is lost on preparing water.\\ 
-% Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water} , which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it also have a negative impact on the traffic flow. 
+In the U.S alone 4 \% of the national energy consumption is used on moving and treating water/wastewater\cite{appelbaum2002water}. With an increasing focus on green energy, more and more renewable energy sources is added to the grid. This result in the available power fluctuating. Furthermore time-dependent consumer
+preferences results in fluctuating energy demands. This means that the price for electric power is also fluctuating \cite{fluctuating_price}. For minimizing the cost of running a water distribution network, potential energy can be used. Then electric prices are low, water is pumped to a higher altitude, a water tower (WT), and thereby energy is stored. The potential energy stored in the WT can then used to maintain a minimum pressure that is required at the end consumer. If the pressure however should become to low, the pumps can be activated to increase the pressure again. 
 
-% ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Maximum allowed pressure should also be considered as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. In \cite{feldman2009aspects} it is stated that the estimated world wide water loss is at 30 \%, so the energy used on cleaning the water for filth, bacteria and pressurizing it is lost. 
 
-Implementing one large pressure pump at the water supply is one solution to this problem. It could pressurize the water to a point such that the end consumers get the pressure needed. However this solution is simple it is not beneficial as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. In \cite{feldman2009aspects} it is stated that the estimated world wide water loss is at 30 \%, so the energy used on cleaning the water for filth, bacteria and pressurizing it is lost. In the U.S alone 4 \% of the national energy consumption is used on moving and treating water/wastewater\cite{appelbaum2002water}. Thus it is necessary to minimize the pressure to a point, where the end consumer are satisfied and the leakage is kept to a minimum to decrease the losses.\\
-Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water}, which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it can have a negative impact on the traffic flow. 
-
-% Before any water is distributed out to the consumers the water got to be prepared e.g cleaned for filth, bacteria etc and then pressurized. In \cite{appelbaum2002water} it is stated that the U.S use 4 \% of the national energy consumption is used on moving and treating water/wastewater. The estimated world wide water loss is estimated to 30 \%\cite{feldman2009aspects}, thus a high amount of energy is lost on preparing water.\\ 
-% Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water} , which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it also have a negative impact on the traffic flow. 
-
-To reduce the pressure, the water network is separated into subsystems called "pressure management areas" (PMA). Each PMA covers a certain area e.g residential area, industrial area etc with the purpose of controlling the pressure in a specific area. Each PMA includes one or more pressure reduction valves (PRV), which is connected to the water supply. The PRVs reduces the pressure inside the PMA , such that the pressure is kept at a minimum\cite{fallis2011guidelines}. There is a different PRVs, here including fixed and time based. The fixed keep the valve opened at a certain level at all time, where the time based open and closes depending on the flow rate. 
-
-With an increasing focus green energy, it is wanted to keep the energy consumption to the water distribution network as low as possible. For minimizing the energy on pumps, potential energy can be used. This is where the pump is pumping the water to a higher altitude that the PMA, to a so called water tower. The potential energy stored in the tower is then used to maintain the minimum pressure for the different PMAs. If the pressure however should become to low, the pumps can be activated to increase the pressure again. Some constraints to this solution is still needed to be taken into account. One of them being the quality of the water. If stored for too long the quality of the water will start to decrease due to a decreasing oxygen level [\cite{Lenntech},\cite{DO}], thus the water should not be stored for to long. 
-
-\todo{include water price variance}
+Some constraints to this solution is still needed to be taken into account. One of them being the quality of the water. If stored for too long the quality of the water will start to decrease due to a decreasing oxygen level \cite{Lenntech,DO}, thus the water should not be stored for to long. 
 
 
-This project aims at two control optimization problems:
+%
+%http://www.mit.edu/~jnt/Papers/J154-15-Yunjian-electricity-EJOR-fin.pdf
+
+This leads to the following problem statement:
 \begin{itemize}
-\item Find the optimal operating point for a water tower, which ensure a correct pressure to a specific PMA case.
-\item Find an optimal control strategy for keeping the energy consumption to the pumps to a minimum.
+\item \textit{How can a water tower, implemented in a water distribution network, be controlled to minimize the cost of running a water distribution network.}
 \end{itemize} 
+
+% Implementing one large pressure pump at the water supply is one solution to this problem. It could pressurize the water to a point such that the end consumers get the pressure needed. However this solution is simple it is not beneficial as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. In \cite{feldman2009aspects} it is stated that the estimated world wide water loss is at 30 \%, so the energy used on cleaning the water for filth, bacteria and pressurizing it is lost. 
+
+%  Thus it is necessary to minimize the pressure to a point, where the end consumer are satisfied and the leakage is kept to a minimum to decrease the losses.\\
+% Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water}, which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it can have a negative impact on the traffic flow. 
+
+
+% To reduce the pressure, the water network is separated into subsystems called "pressure management areas" (PMA). Each PMA covers a certain area e.g residential area, industrial area etc with the purpose of controlling the pressure in a specific area. Each PMA includes one or more pressure reduction valves (PRV), which is connected to the water supply. The PRVs reduces the pressure inside the PMA , such that the pressure is kept at a minimum\cite{fallis2011guidelines}. There is a different PRVs, here including fixed and time based. The fixed keep the valve opened at a certain level at all time, where the time based open and closes depending on the flow rate. 
+
+% One PMA ensure that a certain area of a larger system have the correct pressure in the system. A PMA contains a number of pumps and valves. The pumps are implemented at critical points where the pressure needs to be increased again where the valves works as pressure drops such that the con
+
+% Each PMA have a water supply where attached pumps or valves are included to maintain a correct pressure for a certain area. 
+
+% Each subsystem have its own or multiple pressure pumps implemented at critical points, where the pressure drop is too low. This have an positive impact on the pressure as it can be kept at a minimum and reduce the wear on the pipes and water loss. This solution however requires more pumps 
+
+% Implementing pressure pumps into the system is one solution to this problem. When the pressure get to low the pressure pumps will be activated to increase the pressure again. If the network is large, this solution is not as beneficial as 
+% A simple solution to this problem could be implementing a large pump at the water station, which pumped
+% In the U.S 4 \% of the nations electricity is used on purifying and pumping water to the consumers. 
+% Before water is send out to the consumers, some steps for preparing the water got to be fulfilled, one of them being purification from filth and bacteria.  
+
+% The solution to this problem could be as simple as implementing a pressure pump at the water station, that ensured a pressure high enough such that distribution of water to the end user where sufficient. This simple solution have however some drawbacks. The pressure in the system have a direct correlation to water leakage which end up in a higher increase of water that . The extra increase 
+
+% Typically the water network is distributed into sub-systems called "Pressure management areas". These areas is connected to a water supply system, where the water is pressurized to t  
+
+
+
+
+%Therefore if the pressure is not sufficient it can become a health issue for the consumers. The pressure must be high enough to ensure that the end consumers have a certain amount of  
+
+ 
+% \begin{itemize}
+% \item Water pressure. 
+
+% Health, consumer satisfaction
+% \item Why is it necessary to increase the efficiency in PMAs?
+
+% Large amount of energy used to prepare water and to distributing it to the users. 
+% % http://www.epri.com/abstracts/Pages/ProductAbstract.aspx?ProductId=000000000001006787&Mode=download
+% \item Leakage 30 \%
+% \item Disadvantages of high pressure: Water Hammer, leaking water heater, banging 
+% water pipes. % source ==> http://www.watts.com/pages/faq.asp?catId=64&faqId=7
+% % https://pdfs.semanticscholar.org/1c7f/cee3eee8bf510c8846ec5c7bfeb03079a544.pdf
+% \item Decrease of water quality when stored. 
+% \begin{itemize}
+% \item The oxygen ($O_2$) level at the consumer should be no lower than 5 $mg/L$. 
+% \item Depending factors for water lifespan in a tank. (Quality of the water, open/closed tank, chemical treatments, room light and temperature )  % Source in Spanish https://www.soloarquitectura.com/foros/threads/cuanto-tiempo-puede-estar-el-agua-en-un-deposito-sin-pudrirse.53557/
+% \end{itemize}
+% %http://www.energibesparelser-vand.dk/Iltning-1239.aspx
+% %https://www.retsinformation.dk/Forms/R0710.aspx?id=174907#id81b8fb56-c281-4ff0-ae5c-4f0d56b03060
+% Health and oxygen 
+% \end{itemize}
+
+
+
+% Health 
+% https://www.nap.edu/read/11262/chapter/5#21
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OLD VERSION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Water pressure management is a vital part of the infrastructure all over the world. It ensures that a positive water pressure is present such that the consumers are supplied with water at all time. Maintaining a minimum pressure in the network is an important task as the end user is ensured a decent water pressure and also for minimizing the risk of contamination in the water system\cite{national2005public}.%, which ensure clean/healthy water to the consumers. %Another important part for the pressure is to make sure that the end consumers also is ensured water. 
+
+% % Implementing one large pressure pump at the water supply is one solution to this problem. It could pressurize the water to a point such that the end consumers get the pressure needed. However this solution is simple it is not beneficial as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. Before any water is distributed out to the consumers the water got to be prepared e.g cleaned for filth, bacteria etc and then pressurized. In \cite{appelbaum2002water} it is stated that the U.S use 4 \% of the national energy consumption is used on moving and treating water/wastewater. The estimated world wide water loss is estimated to 30 \%\cite{feldman2009aspects}, thus a high amount of energy is lost on preparing water.\\ 
+% % Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water} , which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it also have a negative impact on the traffic flow. 
+
+% % ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+% Implementing one large pressure pump at the water supply is one solution to this problem. It could pressurize the water to a point such that the end consumers get the pressure needed. However this solution is simple it is not beneficial as the water leakage increases proportional to the pressure\cite{feldman2009aspects}, thus increasing the water losses which leads to a higher energy consumption. In \cite{feldman2009aspects} it is stated that the estimated world wide water loss is at 30 \%, so the energy used on cleaning the water for filth, bacteria and pressurizing it is lost. In the U.S alone 4 \% of the national energy consumption is used on moving and treating water/wastewater\cite{appelbaum2002water}. Thus it is necessary to minimize the pressure to a point, where the end consumer are satisfied and the leakage is kept to a minimum to decrease the losses.\\
+% Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water}, which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it can have a negative impact on the traffic flow. 
+
+% % Before any water is distributed out to the consumers the water got to be prepared e.g cleaned for filth, bacteria etc and then pressurized. In \cite{appelbaum2002water} it is stated that the U.S use 4 \% of the national energy consumption is used on moving and treating water/wastewater. The estimated world wide water loss is estimated to 30 \%\cite{feldman2009aspects}, thus a high amount of energy is lost on preparing water.\\ 
+% % Another problem that should be highlighted to a high pressure is that a high pressure will increase the ware on the pipes in a system\cite{Watts_water} , which leads to higher maintenances as they got to be replaced more often. This is not an easy task, since the pipes usually is under ground and needs to be dug up which is an expensive part, especially in a city since it also have a negative impact on the traffic flow. 
+
+% To reduce the pressure, the water network is separated into subsystems called "pressure management areas" (PMA). Each PMA covers a certain area e.g residential area, industrial area etc with the purpose of controlling the pressure in a specific area. Each PMA includes one or more pressure reduction valves (PRV), which is connected to the water supply. The PRVs reduces the pressure inside the PMA , such that the pressure is kept at a minimum\cite{fallis2011guidelines}. There is a different PRVs, here including fixed and time based. The fixed keep the valve opened at a certain level at all time, where the time based open and closes depending on the flow rate. 
+
+% With an increasing focus green energy, it is wanted to keep the energy consumption to the water distribution network as low as possible. For minimizing the energy on pumps, potential energy can be used. This is where the pump is pumping the water to a higher altitude that the PMA, to a so called water tower. The potential energy stored in the tower is then used to maintain the minimum pressure for the different PMAs. If the pressure however should become to low, the pumps can be activated to increase the pressure again. Some constraints to this solution is still needed to be taken into account. One of them being the quality of the water. If stored for too long the quality of the water will start to decrease due to a decreasing oxygen level [\cite{Lenntech},\cite{DO}], thus the water should not be stored for to long. 
+
+% \todo{include water price variance}
+
+
+% This project aims at two control optimization problems:
+% \begin{itemize}
+% \item Find the optimal operating point for a water tower, which ensure a correct pressure to a specific PMA case.
+% \item Find an optimal control strategy for keeping the energy consumption to the pumps to a minimum.
+% \end{itemize} 
 
 
 % One PMA ensure that a certain area of a larger system have the correct pressure in the system. A PMA contains a number of pumps and valves. The pumps are implemented at critical points where the pressure needs to be increased again where the valves works as pressure drops such that the con
@@ -74,6 +164,8 @@ This project aims at two control optimization problems:
 
 % Health 
 % https://www.nap.edu/read/11262/chapter/5#21
+
+
 
 
 
