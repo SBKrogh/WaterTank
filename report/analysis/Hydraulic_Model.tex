@@ -131,7 +131,7 @@ Reducing the cross sectional area to obtain an expression for the pressure:
     \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
 \end{equation}
 
-Thus the desired pressure drop between two endpoint is obtained.
+Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
     \label{PressureDrop}
@@ -324,7 +324,7 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
   k_f = 0.442\alpha^{2.17}
 \end{equation}
 
-\subsection{Complete Pipe Model}
+\subsubsection{Complete Pipe Model}
 In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. Thus, the friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
@@ -342,7 +342,7 @@ Taking out the flow $q$ as the common:
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLQ^2}{\pi^{2}gD^5} \rho g - k_f \frac{8Q^2}{\pi^2gD^4} \rho g - \Delta z \rho p 
 \end{equation}
 
-\textbf{Valve Model}  \\
+\subsection{Valve Model}  
 \label{ValveModel}
  Valves are used in water distribution networks to control the flow through the pipe, the pressure and in 
  the case that there is a reservoir to control its level. 
