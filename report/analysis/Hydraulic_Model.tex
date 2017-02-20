@@ -340,8 +340,31 @@ Taking out the flow $q$ as the common factor:
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
 
+\eqref{FinalPipeModel} describes the rate of flow in terms of pressure losses due to pressure change, frictions and elevation. A more compact form can be expressed for the $k$th component as such:
 
+\begin{equation}
+\label{FinalPipeModelCompact}
+   J_k \dot{q_k} = \Delta p_k - \lambda_k(q_k) - \zeta_k 
+\end{equation}
 
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $J_k$ \\
+\hspace*{8mm} $\lambda_k(q_k)$ \\
+\hspace*{8mm} $\zeta_k$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is an analogous parameter as inertia for the pipe\\ 
+is the friction as a function of flow\\
+is the friction due to the elevation.
+\end{minipage}
 
+As can be seen in \eqref{FinalPipeModelCompact}, the dynamics of the pump is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. However, the presence of the water tower in the system has a slow effect on the flow due to its slow integration behaviour. In other words it means that the water tank has a relatively bigger time constant compared to the time constant of the pipe. Due to this consideration it is a fair assumption that the dynamics of the pipe will not influence the flow significantly in the system, therefore it can be neglected. \eqref{FinalPipeModelCompact} then simplifies to the following expression: 
+  
+\begin{equation}
+\label{FinalPipeModelSimplified}
+  \Delta p_k  =   \lambda_k(q_k) + \zeta_k 
+\end{equation}
 
 
