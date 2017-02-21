@@ -27,18 +27,18 @@ Pipes are major components of water distribution systems since they are used for
 The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the fluid(water) and the force acting on it.
 
 \begin{equation}
-  \frac{d}{dt} M = \sum F
+  \frac{d}{dt} P = \sum F
   \label{NewtonLaw}
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $F$ \\
-\hspace*{8mm} $M$ 
+\hspace*{8mm} $P$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the force acting on the water,\\
+is the set of forces acting on the water,\\
 is the linear momentum of the water flow.
 
 \end{minipage}
@@ -53,12 +53,12 @@ The dynamics of a pipe component is derived under the assumption that the flow o
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum F
+  \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $m$ \\
+\hspace*{8mm} $M$ \\
 \hspace*{8mm} $v$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -73,7 +73,7 @@ is the absolute value of the velocity of the water at each point of the pipe.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
-The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet), resistance forces and gravitational force effect.  
+The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet) and resistance forces.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
 The diameter of the pipe is assumed to be constant and to have cylindrical structure:
@@ -108,54 +108,46 @@ is the volumetric rate of flow.
  between two endpoints.
 
 \begin{equation}
-  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev}\\
+  M \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
   \label{LinearMomentum}
 \end{equation}
-
- \begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{8mm} $F_{res}$ \\
-\hspace*{8mm} $F_{elev}$ \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-are the resistance forces\\
-is the force due to change in elevation.
-\end{minipage}
 
 In order to obtain an equation consisting of only pressure parameters, the relationship between forces and pressures is used.
 
 
  \begin{equation}
-    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev} \\
+    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
 
 The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
 
 \begin{equation}
-    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
+    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
 \end{equation}
 
 Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A}\\
+    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
 \end{equation}
 
 Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
     \label{PressureDrop}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $L$ \\
+\hspace*{8mm} $F_{res}$ \\
 \hspace*{8mm} $\Delta p$ \\
 \hspace*{8mm} $\rho$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the length of a pipe\\
+is the resistance force\\
 is the pressure drop across the two endpoints\\
 is the density of water.
 
@@ -163,13 +155,14 @@ is the density of water.
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{m}$\\
+\textcolor{White}{te}$\unit{N}$\\
 \textcolor{White}{te}$\unit{Pa}$\\
 \textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
 \end{minipage}
 
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
-loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the force of gravity due to change of elevation, $\Delta z$. 
+loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
 
 \subsubsection{Surface Resistance ($h_f$)} 
 The flow of a liquid through a pipe suffers resistance from 
