@@ -11,20 +11,20 @@ A model describing the pressure drop is derived which was presented in
 \cite{Phd_Carsten}, where the head introduced by the pump is given by:
 
 \begin{equation}
-  H = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
+  \Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
   \label{PumpModel}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $H$ \\
+\hspace*{8mm} $\Delta p$ \\
 \hspace*{8mm} $q_i$ \\
 \hspace*{8mm} $\omega_r$ 
 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the head produced by the water\\
+is the head produced by the pump\\
 is the volume flow through the impeller\\
 is the impeller speed
 \end{minipage}
@@ -48,7 +48,7 @@ The parameters inserted in \refeq{PumpModel} are given by:
   \bigg(\frac{r_2}{gA_2}cot(\beta_2)-\frac{r_1}{gA_1}cot(\beta_1)\bigg)-K_s{K_d}^2
 \end{equation}
 
-
+\todo{We need the model of the power consumption of the pump to minimize the cost of power consumed - Tom}
 
  
 % \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
@@ -69,14 +69,6 @@ The parameters inserted in \refeq{PumpModel} are given by:
 %
 
 
-
-%tikz of our system
-\begin{figure}[H]
-\centering
-\input{report/tikz/water_tower.tex} 
-\caption{Overview of the reduced system that fulfills the scenario of this project.}
-\label{fig:sys_model_overview}
-\end{figure}
 
 
 

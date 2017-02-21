@@ -1,4 +1,4 @@
-\section{Hydraulic Model}
+\section{Hydraulic Modeling}
 \label{HydraulicModel}
 
 Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element.\cite{Kallesoe2009}  \eqref{ComponentState} shows the dual variables which describes one component. 
@@ -16,25 +16,25 @@ Water distribution networks are designed to deliver water to consumers in terms 
 \end{bmatrix}
 \end{equation}
 \\
-In the following chapter the hydraulic model analysis of the system is done by control volume approach.\cite{Hunt_Fluidmechanics} 
+In the following chapter the hydraulic model of the system is derived by control volume approach.\cite{Hunt_Fluidmechanics} 
 The relationship between the two variables are introduced for each component in the hydraulic network.
 
 
 \subsection{Pipe Model} 
 \label{PipeModel}
-Pipes are major components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in a general form in order to describe the relationship of pressure and flow for each pipe component.  
+Pipes are important components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in order to describe the relationship of pressure and flow for each pipe component.  
 %
 The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the fluid(water) and the force acting on it.
 
 \begin{equation}
-  \frac{d}{dt} P = \sum F
+  \frac{d}{dt} M = \sum_i F_i
   \label{NewtonLaw}
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $F$ \\
-\hspace*{8mm} $P$ 
+\hspace*{8mm} $M$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -48,17 +48,17 @@ is the linear momentum of the water flow.
 \textcolor{White}{te}$\unit{\frac{kgm}{s}}$
 \end{minipage}
 
-The dynamics of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time and the water is assumed to be incompressible. Thus the density of water and the volume of the fluid is constant in time, as the mass of the water is.
+The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
 \\
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
+  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum F
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $M$ \\
+\hspace*{8mm} $m$ \\
 \hspace*{8mm} $v$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -73,17 +73,19 @@ is the absolute value of the velocity of the water at each point of the pipe.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
+\todo{Insert here a free-body diagram - Tom}
 The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet) and resistance forces.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
-The diameter of the pipe is assumed to be constant and to have cylindrical structure:
+The pipe is assumed to be constant and to have cylindrical structure. Furthermore $A(x)$ is constant for every $x$ $\in$ $[0,L]$, where $L$ is the length of the pipe:
+
 \begin{equation}
   A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
 \end{equation}
 
-Continuity law in fluid mechanics is applied to analyse the flow in the pipe.\cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
+Continuity law in fluid mechanics is applied to analyze the flow in the pipe.\cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
 \begin{equation}
-  q=A \cdot V
+  q=A \cdot v
 	\label{EquationOfContinuity}
 \end{equation}
 
@@ -104,15 +106,15 @@ is the volumetric rate of flow.
 \textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
 \end{minipage}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
+ In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ indicates the pressure drop 
  between two endpoints.
 
 \begin{equation}
-  M \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
   \label{LinearMomentum}
 \end{equation}
 
-In order to obtain an equation consisting of only pressure parameters, the relationship between forces and pressures is used.
+In order to obtain an equation consisting of only pressure variables, the relationship between forces and pressures is used.
 
 
  \begin{equation}
@@ -163,6 +165,7 @@ is the density of water.
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
 loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
+\todo{Ignacio! Something should be done with this sentence and Tom's comment: $\Delta z$ is not a resistance}
 
 \subsubsection{Surface Resistance (\texorpdfstring{$h_f$}{})} 
 The flow of a liquid through a pipe suffers resistance from 
@@ -176,22 +179,26 @@ the turbulence occurring along the internal walls of the pipe, caused by the rou
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $f$ \\
+\hspace*{8mm} $h_f$ \\
 \hspace*{8mm} $g$ \\
 \hspace*{8mm} $D$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the Moody friction factor\\ 
+is the pressure given in head\\ 
 is acceleration due to gravity\\
 is the diameter of the pipe.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{m}$\\
 \textcolor{White}{te}$\unit{\frac{m}{s^2}}$\\
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
+\eqref{Darcy} is under the assumption that $V>0$, therefore it is not dependant on $|V|V$ but on $V^2$. \\
 Applying the continuity law, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
 
 \begin{equation}
@@ -200,7 +207,7 @@ Applying the continuity law, the velocity can be substituted by the volumetric f
 \end{equation} 
  
  The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
- which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on the flow if it is laminar, transient or turbulent, and the roughness of the tube. \\
+ which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe. \\
  
  
 The Reynold´s number can be used to determine the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if

@@ -7,25 +7,25 @@
         }
         -- (3.5,-0.5) -- (2,-0.5) -- (2,-1.5) -- (1.5,-1.5) -- (1.5,-0.5) --(1.5,-0.5) -- (0,-0.5) -- cycle;
 
-  \draw (0,3.5) -- (0,2.5) -- (0,-0.5) -- (1.5,-0.5) -- (1.5,-0.5) -- (1.5,-1.5);
-  \draw (0,2) -- (0,3) -- (0,3.5) -- (3.5,3.5) -- (3.5,-0.5) -- (2,-0.5) -- (2,-1.5);
+  \draw [-,line width=0.85pt]  (0,3.5) -- (0,2.5) -- (0,-0.5) -- (1.5,-0.5) -- (1.5,-0.5) -- (1.5,-1.5);
+  \draw [-,line width=0.85pt](0,2) -- (0,3) -- (0,3.5) -- (3.5,3.5) -- (3.5,-0.5) -- (2,-0.5) -- (2,-1.5);
   \draw[|-|] (-0.2,-0.5) --
         node[fill=white,font=\footnotesize,inner ysep=2pt,inner
                 xsep=0]{$h$}(-0.2,2);
                 
   \draw[|-|] (3.5,3.75) --
         node[fill=white,font=\footnotesize,inner ysep=2pt,inner
-                xsep=0]{$d$}(0,3.75);
+                xsep=0]{$D$}(0,3.75);
  
  \draw[red,fill=black] (1.75,-0.5) circle (.25ex);
   \draw[red,fill=black] (1.75,2) circle (.25ex);
 
-\node at (2,2) {\scriptsize{$p_1$}};
-\node at (2,-0.34) {\scriptsize{$p_2$}};
+\node at (2,2) {\footnotesize{$p_1$}};
+\node at (2,-0.34) {\footnotesize{$p_2$}};
 
 \draw [-latex](1.75,3.0) -- (1.75,2.29);
-\node at (2,2.7) {\scriptsize{$q_1$}};
-
+\node at (2,2.7) {\footnotesize{$q_1$}};
+\node at (1.9,-1.67) {\footnotesize{$q_2$}};
 \draw [-latex](1.75,-0.7) -- (1.75,-1.5);
 
 \end{tikzpicture}%
