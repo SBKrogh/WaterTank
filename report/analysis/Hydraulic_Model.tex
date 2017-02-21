@@ -27,14 +27,14 @@ Pipes are major components of water distribution systems since they are used for
 The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the fluid(water) and the force acting on it.
 
 \begin{equation}
-  \frac{d}{dt} P = \sum F
+  \frac{d}{dt} M = \sum F
   \label{NewtonLaw}
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $F$ \\
-\hspace*{8mm} $P$ 
+\hspace*{8mm} $M$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -53,12 +53,12 @@ The dynamics of a pipe component is derived under the assumption that the flow o
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{d}{dt} P = {\frac{d(M v)}{dt}} = M \frac{dv}{dt} = \sum F
+  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum F
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $M$ \\
+\hspace*{8mm} $m$ \\
 \hspace*{8mm} $v$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -104,11 +104,11 @@ is the volumetric rate of flow.
 \textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
 \end{minipage}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
- between two endpoints.
+ In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ which represents the pressure drop 
+ between two endpoints and the resistance forces $F_{res}$.
 
 \begin{equation}
-  M \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
   \label{LinearMomentum}
 \end{equation}
 
