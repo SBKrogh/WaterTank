@@ -1,9 +1,9 @@
 \subsection{Water Tower} 
 \label{WaterTankModel}
 
-Water towers are commonly used to maintain the correct pressure level in the system, ensure the reliability of the system 
-and to improve the water supply in emergency cases. The water tower is a fundamental part of the system when controlling the pressure, therefore it is 
+Water towers are used to maintain the correct pressure level in the system, ensure reliability and to improve the optimality of the water supply. The water tower is a fundamental part of the system when controlling the pressure, therefore it is 
 necessary to obtain its dynamic model. 
+\todo{There is no pressure control with the water tank, we control flow}
 
 In the same way as done in the modelling of the pipes, valves and pumps, the pressure difference needs to be found. 
 To do so, Bernoulli´s principle is applied between two points (see figure...).
@@ -106,6 +106,8 @@ Simplifying \refeq{integheight}:
 
 Once the equation describing $h$ is obtained, it can be inserted in \refeq{Pressuredifference} 
 resulting in the final expression for the water tower model:
+
+\todo{Maybe write down the analogous expression for electric circuits ( capacitors) and make a comparison}
 
 \begin{equation}
   \Delta p =  \frac{\rho g}{A}  \int  \Delta q dt
