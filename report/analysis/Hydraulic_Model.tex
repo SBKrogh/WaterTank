@@ -73,7 +73,7 @@ is the absolute value of the velocity of the water at each point of the pipe.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
-The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet) and resistance forces.  
+The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet), resistance forces and gravitational force effect.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
 The diameter of the pipe is assumed to be constant and to have cylindrical structure:
@@ -104,50 +104,58 @@ is the volumetric rate of flow.
 \textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
 \end{minipage}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ which represents the pressure drop 
- between two endpoints and the resistance forces $F_{res}$.
+ In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ represents the pressure drop 
+ between two endpoints.
 
 \begin{equation}
-  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev}\\
   \label{LinearMomentum}
 \end{equation}
+
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $F_{res}$ \\
+\hspace*{8mm} $F_{elev}$ \end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+are the resistance forces\\
+is the force due to change in elevation.
+\end{minipage}
 
 In order to obtain an equation consisting of only pressure parameters, the relationship between forces and pressures is used.
 
 
  \begin{equation}
-    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev} \\
 \end{equation}
 
 The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
 
 \begin{equation}
-    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
 \end{equation}
 
 Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A}\\
 \end{equation}
 
 Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
     \label{PressureDrop}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $L$ \\
-\hspace*{8mm} $F_{res}$ \\
 \hspace*{8mm} $\Delta p$ \\
 \hspace*{8mm} $\rho$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the length of a pipe\\
-is the resistance force\\
 is the pressure drop across the two endpoints\\
 is the density of water.
 
@@ -155,14 +163,13 @@ is the density of water.
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{m}$\\
-\textcolor{White}{te}$\unit{N}$\\
 \textcolor{White}{te}$\unit{Pa}$\\
 \textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
 \end{minipage}
 
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
-loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
+loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the force of gravity due to change of elevation, $\Delta z$. 
 
 \subsubsection{Surface Resistance ($h_f$)} 
 The flow of a liquid through a pipe suffers resistance from 
