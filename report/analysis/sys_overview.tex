@@ -14,7 +14,7 @@ Such a setup is available at Aalborg university which is based on a real water d
 \end{figure}
 
 
-The test setup represents a real system, thus the same structure concerning piping, levelling and all the other components. To achieve different elevation levels between system parts, the setup is mounted on a wall. This also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios other equipment are also present in the test setup shown in \figref{fig:test_setup}, enabling the test system to mimic a variety of different system types and scenarios. A diagram representing the part of the test setup that will be used in this project is shown in \figref{fig:sys_model_overview}. 
+The test setup represents a real system, thus the same structure concerning piping, leveling and all the other components. To achieve different elevation levels between system parts, the setup is mounted on a wall. This also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios other equipment is also present in the test setup shown in \figref{fig:test_setup}, enabling the test system to mimic a variety of different system types and scenarios. A simplified diagram representing the structure of the test setup that will be used in this project is shown in \figref{fig:sys_model_overview}. 
 
 %tikz of our system
 \begin{figure}[H]
@@ -23,22 +23,24 @@ The test setup represents a real system, thus the same structure concerning pipi
 \caption{Overview of the reduced system that fulfills the scenario of this project.}
 \label{fig:sys_model_overview}
 \end{figure}
-\todo{Should we consider changing the name "elevated reservoir" to "water tower". We have uesed the word water tower in the introduction}
 
-The system consists of different parts, the main part being a water reservoir placed on ground level, used to supply the system. Two pumps are connected to the reservoir and they supply water to the main water ring formed around the consumers. 
-Another water reservoir is connected to the water ring by a dedicated pump. This reservoir is elevated and can, when filled, be used to pressurize the system. 
-From the water ring two PMA's are connected via their own pump. In each PMA a measuring point is placed and the pressure at this point shall be kept. Furthermore two consumers are placed in each PMAs.         
+The system can be split up into different parts, where the main part is a water reservoir placed at ground level, used to supply the system. Two pumps are connected to the reservoir and they supply water to a main water ring formed around the PMA's. 
+A water tower is also connected to the main water ring, and will act both as an additional water reservoir and pressurize the ring due to the elevation of the tower. The direction of water flow with respect to the tower will depend on the pressure in the main ring and the tower can thus be filled by pressurizing the ring or be used to pressurize and supply water to the ring instead of the pumps.  
+From the water ring two PMA's are connected, each via their own pump. In each PMA a measuring point is placed and the pressure at this point shall be kept to accommodate supply demands of the consumers. Furthermore two consumers are placed in each PMA, these are simulated by valves with a variable opening degreed where the water flows back to the main reservoir.   compromising       
+
+
+As the test setup consist of different components as valves, pumps and pipes, a basic water distribution network is shown in \figref{fig:Basic_example_sys} which will be used to illustrate and explain the individual components in the system and there functionality.   
 	
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\begin{minipage}[b]{0.6\textwidth}
+	\begin{minipage}[b]{0.45\textwidth}
 		\centering
 		\input{report/tikz/basic_example_sys.tex} 
 		\caption{Basic water distribution network.}
 		\label{fig:Basic_example_sys}
 	\end{minipage}
 	\hspace{15pt}
-	\begin{minipage}[b]{0.3\textwidth}
+	\begin{minipage}[b]{0.45\textwidth}
 		\begin{tabular}{|c|c|} \hline
   			\bfseries Symbol 	 					&   \bfseries Name 					\\ \hline
 			\input{report/tikz/pump.tex} 		  	&	Pump							\\ \hline
@@ -53,4 +55,13 @@ From the water ring two PMA's are connected via their own pump. In each PMA a me
 		\label{tab:sys_comp_overview}
 	\end{minipage}
 \end{figure}
-%\end{minipage}
+
+In the system two different types of Grundfos pumps are used. For supplying the water ring two pumps of the type UPMXL GEO 25-125 are used. Where the pumps used in each PMA are of the type UPM2 25-60 which is a smaller pump and typically used at the end-user. 
+
+In order to close off parts of the system that will not be used for a specific scenario or to simulate faulty behavior, manual rotary ball valves are placed trough out the system. 
+To simulate a consumer, an electronically controlled belimo valve is used. Thereby is it possible to vary the opening degree of the valve over time according to a specific consumer behavior.   
+
+For the pipes there are used two different material types. The pipes used in the main ring and the connections to both the reservoir and the water tower are made of polyethylene grade 80 called PE80. The pipes used to connect the PMA's to the ring and the internal connections in the PMA's are made of polyethylene with cross-links called PEX. In addition to the pipes, fittings, bends, and elbows are also present and found in various metals as iron and brass.     
+
+The pressure measuring in each PMA is done with a Jumo pressure sensor. Furthermore both the differential pressure over each pump and the absolute pressure at the pump is measured with a Grundfos direct sensor DPI v.1 and a Danfoss mbs32/33 pressure sensor, respectively.    
+
