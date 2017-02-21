@@ -61,6 +61,20 @@
 \usepackage{listings}						% Placer kildekode i dokumentet med \begin{lstlisting}...\end{lstlisting}
 
 
+
+\usetikzlibrary{decorations.pathmorphing}
+%\usepackage[detect-all]{siunitx}
+
+\tikzset{
+   ragged border/.style={ decoration={random steps, segment length=1mm, amplitude=0.5mm},
+           decorate,
+   }
+}
+
+  \usetikzlibrary{arrows}
+
+
+
 % ¤¤ Matematik funktioner ¤¤				% Sikre alle funktioner står med ordinær skriftype
 	\newcommand{\e}{\text{e}}
 	\newcommand{\dB}{\text{dB}}	
