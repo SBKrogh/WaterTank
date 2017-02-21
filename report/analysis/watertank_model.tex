@@ -1,4 +1,104 @@
 \subsection{Water Tower} 
 \label{WaterTankModel}
 
-123
+Water towers are commonly used to maintain the correct pressure level in the system, ensure the reliability of the system 
+and to improve the water supply in emergency cases. The water tower is a fundamental part of the system when controlling the pressure, therefore it is 
+necessary to obtain its dynamic model. 
+
+In the same way as done in the modelling of the pipes, valves and pumps, the pressure difference needs to be found. 
+To do so, Bernoulli´s principle is applied between two points (see figure...).
+
+\begin{equation}
+  \label{bernoulli}
+  h_1\rho g + p_1 + \frac{1}{2}\rho {v_1}^2 = h_2\rho g + p_2 + \frac{1}{2}\rho {v_2}^2
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $h_i$ \\
+\hspace*{8mm} $\rho$ \\
+\hspace*{8mm} $p_i$ \\
+\hspace*{8mm} $v_i$ \\
+
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the elevation of the points represented\\
+is the water density\\
+is the pressure at the chosen point\\
+is the fluid flow speed at the chosen point
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{m}$\\
+\textcolor{White}{te}$\unit{\frac{kg}{m^3}}$\\
+\textcolor{White}{te}$\unit{Pa}$\\
+\textcolor{White}{te}$\unit{\frac{m}{s}}$
+\end{minipage}
+
+%The pressure at point $1$ ($p_1$) is considered to be equal to the atmospherical pressure 
+%so it is set to be $0$. 
+The bottom of the tank is taken as the reference point. The height at point $2$ ($h_2$) matches with the reference level 
+where the height is equal to 0. The flow speeds are equal in both $1$ 
+and $2$, so they omit between each other. \refeq{bernoulli} results in: 
+
+\begin{equation}
+  \Delta p = h \rho g
+  \label{Pressuredifference}
+\end{equation}
+
+In \refeq{Pressuredifference} the gravity and the density will remain constant, 
+however the height will change depending on time. 
+To derive the equation that describes the behavior of the height according to 
+time the law of conservation mass is applied. This law can be specifically used for the flow in the water tower, describing the difference between the inlet and outlet flow 
+to be equal to the velocity by which the tank volume increases or decreases. 
+
+\begin{equation}
+  q_{out} - q_{in} = \frac{dV_t}{dt} = \frac{dAh}{dt} = A \frac{dh}{dt} = \frac{\pi}{4} D^2 {dh}
+  \label{FlowConservation}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $q_i$ \\
+\hspace*{8mm} $V_t$ \\
+\hspace*{8mm} $D$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the inlet and outlet flow\\
+is the volume of the water tower\\
+is the diameter of the tank 
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{\frac{kg}{m^3}}$
+\textcolor{White}{te}$\unit{m^3}$
+\textcolor{White}{te}$\unit{m}$
+\end{minipage}
+
+Rewriting \refeq{FlowConservation} in a simplified way:
+
+\begin{equation}
+  \Delta q =  \frac{\pi}{4} D^2 {dh}
+\end{equation}
+
+In order to solve for $h$ both sides are integrated: 
+\begin{equation}
+  \int dh = \int \frac{1}{A} \Delta q dt
+  \label{integheight}
+\end{equation}
+
+Simplifying \refeq{integheight}:
+\begin{equation}
+  h =\frac{1}{A}  \int  \Delta q dt
+\end{equation}
+
+Once the equation describing $h$ is obtained, it can be inserted in \refeq{Pressuredifference} 
+resulting in the final expression for the water tower model:
+
+\begin{equation}
+  \Delta p =  \frac{\rho g}{A}  \int  \Delta q dt
+\end{equation}
+
+
