@@ -1,19 +1,20 @@
 \subsection{Water Tower} 
 \label{WaterTankModel}
 
-Water towers are used to maintain the correct pressure level in the system, ensure reliability and to improve the optimality of the water supply. The water tower is a fundamental part of the system when controlling the pressure, therefore it is 
+Water towers are used to maintain the correct pressure level in the system, ensure reliability and to improve the optimality of the water supply. 
+Pressure in the system is principally determined by the water level of the WT, therefore it remains fundamental to control the flow through the WT. Consequently, it is 
 necessary to obtain its dynamic model. 
 \todo{There is no pressure control with the water tank, we control flow}
 
 In the same way as done in the modelling of the pipes, valves and pumps, the pressure difference needs to be found. 
-To do so, Bernoulli´s principle is applied between two points (see figure...).
+To do so, Bernoulli´s principle is applied between two points, see \figref{fig:watertower_sketch}.
 
 
 %tikz of our system
 \begin{figure}[H]
 \centering
 \input{report/tikz/water_tower.tex} 
-\caption{Sketch of the water tower}
+\caption{Sketch of the WT}
 \label{fig:watertower_sketch}
 \end{figure}
 
@@ -50,17 +51,17 @@ is the fluid flow speed at the chosen point
 %so it is set to be $0$. 
 The bottom of the tank is taken as the reference point. The height at point $2$ ($h_2$) matches with the reference level 
 where the height is equal to 0. The flow speeds are equal in both $1$ 
-and $2$, so they omit between each other. \refeq{bernoulli} results in: 
+and $2$, so they omit between each other. \eqref{bernoulli} results in: 
 
 \begin{equation}
   \Delta p = h \rho g
   \label{Pressuredifference}
 \end{equation}
 
-In \refeq{Pressuredifference} the gravity and the density will remain constant, 
+In \eqref{Pressuredifference} the gravity and the density will remain constant, 
 however the height will change depending on time. 
 To derive the equation that describes the behavior of the height according to 
-time the law of conservation mass is applied. This law can be specifically used for the flow in the water tower, describing the difference between the inlet and outlet flow 
+time, the law of conservation mass is applied. This law can be specifically used for the flow in the WT, describing the difference between the inlet and outlet flow 
 to be equal to the velocity by which the tank volume increases or decreases. 
 
 \begin{equation}
@@ -76,9 +77,9 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the inlet and outlet flow\\
-is the volume of the water tower\\
-is the diameter of the tank 
+is the flow through the WT\\
+is the volume of the WT\\
+is the diameter of the WT 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -87,7 +88,7 @@ is the diameter of the tank
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Rewriting \refeq{FlowConservation} in a simplified way:
+Rewriting \eqref{FlowConservation} in a simplified way:
 
 \begin{equation}
   \Delta q =  \frac{\pi}{4} D^2 {dh}
@@ -99,18 +100,45 @@ In order to solve for $h$ both sides are integrated:
   \label{integheight}
 \end{equation}
 
-Simplifying \refeq{integheight}:
+Simplifying \eqref{integheight}:
 \begin{equation}
   h =\frac{1}{A}  \int  \Delta q dt
 \end{equation}
 
-Once the equation describing $h$ is obtained, it can be inserted in \refeq{Pressuredifference} 
-resulting in the final expression for the water tower model:
+Once the equation describing $h$ is obtained, it can be inserted in \eqref{Pressuredifference} 
+resulting in the final expression for the WT model:
 
 \todo{Maybe write down the analogous expression for electric circuits ( capacitors) and make a comparison}
 
 \begin{equation}
   \Delta p =  \frac{\rho g}{A}  \int  \Delta q dt
+  \label{WTequation}
 \end{equation}
 
+An analogy can be made between an electronic circuit and the water distribution, where the WT acts as a 
+capacitor.  Observing the relationship between the voltage across the capacitor and the 
+capacitor´s charge:
+\begin{equation}
+  U = \frac{1}{C} \int I dt
+  \label{ElecCircuirt}
+\end{equation}
 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $U$ \\
+\hspace*{8mm} $C$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the voltage\\
+is the capacitance 
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{V}$
+\textcolor{White}{te}$\unit{F}$
+\end{minipage}
+
+In the \eqref{WTequation} the volume flow rate ($q$) is equivalent to the current ($I$) in a 
+circuit and the constant term \big($\frac{A}{\rho g}$\big) is equivalent to the 
+capacitance of a capacitor ($C$).
