@@ -15,7 +15,7 @@ Water distribution networks are designed to deliver water to consumers in terms 
     q
 \end{bmatrix}
 \end{equation}
-\\
+
 In the following chapter the hydraulic model of the system is derived by control volume approach.\cite{Hunt_Fluidmechanics} 
 The relationship between the two variables are introduced for each component in the hydraulic network.
 
@@ -134,6 +134,7 @@ Reducing the cross sectional area to obtain an expression for the pressure:
 \end{equation}
 
 Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
+
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
     \label{PressureDrop}
@@ -214,6 +215,7 @@ Applying the continuity law, the velocity can be substituted by the volumetric f
  
 The Reynold´s number can be used to determine the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
 $Re>4000$ as turbulent \cite{Intro_Fluid}. 
+
 \begin{equation}
    Re = \frac{vD}{\nu}
    \label{Reynolds}
@@ -287,6 +289,7 @@ is the average roughness of the wall inside the pipe.
 Form resistance losses appear at any time the flow changes direction, due to elbows, bends,
 or due to enlargers and reducers. It is a particular frictional resistance due to the 
 fittings of a pipe. Form loss can be expressed as:
+
 \begin{equation}
   h_m = k_f \frac{V^2}{2g}
 \end{equation}
@@ -339,11 +342,13 @@ In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction los
 \end{equation}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
+
 \begin{equation}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
 \end{equation}
 
 Taking out the flow $q$ as the common factor:
+
 \begin{equation}
 \label{FinalPipeModel}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 

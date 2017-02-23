@@ -167,6 +167,11 @@
 \hangcaption								% Venstrejusterer flere-liniers figurtekst under hinanden
 \setlength{\belowcaptionskip}{0pt}			% Afstand under figurteksten
 
+
+\let\oldequation=\equation
+\let\endoldequation=\endequation
+\renewenvironment{equation}{\vspace{-6mm}\begin{oldequation}}{\end{oldequation}\vspace{-6mm}}
+
 % ¤¤ Navngivning ¤¤ %
 \addto\captionsdanish{
 	\renewcommand\appendixname{Appendix}
