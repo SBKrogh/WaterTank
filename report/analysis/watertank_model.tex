@@ -1,23 +1,23 @@
 \subsection{Water Tower} 
 \label{WaterTankModel}
 
-Water towers are used to maintain the correct pressure level in the system, ensure reliability and to improve the optimality of the water supply. 
-Pressure in the system is principally determined by the water level of the WT, therefore it remains fundamental to control the flow through the WT. Consequently, it is 
-necessary to obtain its dynamic model. 
-\todo{There is no pressure control with the water tank, we control flow}
+Water towers are used to maintain the correct pressure level in the system, ensure reliability and to improve the optimality of the water supply. The water tower is a determinative part of the system when the flow is controlled, therefore its dynamic model should be derived. 
 
-In the same way as done in the modelling of the pipes, valves and pumps, the pressure difference needs to be found. 
-To do so, Bernoulli´s principle is applied between two points, see \figref{fig:watertower_sketch}.
+Similarly to the modelling of the other components, the relation between the two dual variables, pressure difference and flow are  derived.
+\\
+The structure of the WT is illustrated in \figref{fig:watertower_sketch}.
 
+%To do so, Bernoulli´s principle is applied between two points (see figure...).
 
-%tikz of our system
+%tikz of the water tower
 \begin{figure}[H]
 \centering
 \input{report/tikz/water_tower.tex} 
-\caption{Sketch of the WT}
+\caption{Sketch of the water tower}
 \label{fig:watertower_sketch}
 \end{figure}
 
+Two reference points are selected which represent the pressure at specific heights inside the tank. $p_1$ represents the pressures on the surface of the water level, therefore it is the atmospheric pressure at all time. Point $p_2$ equals to the pressure value on the bottom of the tank. In order to get an expression for pressure differences in the function of the water level $h$, Bernoulli's law is applied as it is shown in \eqref{bernoulli}: 
 
 \begin{equation}
   \label{bernoulli}
@@ -37,7 +37,7 @@ Where\\
 is the elevation of the points represented\\
 is the water density\\
 is the pressure at the chosen point\\
-is the fluid flow speed at the chosen point
+is the velocity of the water level at the chosen point
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -47,25 +47,25 @@ is the fluid flow speed at the chosen point
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
+
 %The pressure at point $1$ ($p_1$) is considered to be equal to the atmospherical pressure 
 %so it is set to be $0$. 
-The bottom of the tank is taken as the reference point. The height at point $2$ ($h_2$) matches with the reference level 
-where the height is equal to 0. The flow speeds are equal in both $1$ 
-and $2$, so they omit between each other. \eqref{bernoulli} results in: 
+As a reference point in \eqref{bernoulli}, the bottom of the tank is chosen. The height at this point($h_2$) therefore is equal to 0. The flow rates are equal in both point $1$ 
+and point $2$, so are the velocities of the water. \\
+Due to the these considerations \refeq{bernoulli} simplifies to: 
 
 \begin{equation}
-  \Delta p = h \rho g
+  \Delta p = p_2 - p_1 = \rho g h
   \label{Pressuredifference}
 \end{equation}
 
-In \eqref{Pressuredifference} the gravity and the density will remain constant, 
-however the height will change depending on time. 
+In \refeq{Pressuredifference} the gravity and the density are constants, however the height of the water level changes proportional to the pressure difference. 
+\\
 To derive the equation that describes the behavior of the height according to 
-time, the law of conservation mass is applied. This law can be specifically used for the flow in the WT, describing the difference between the inlet and outlet flow 
-to be equal to the velocity by which the tank volume increases or decreases. 
+time, the law of conservation mass is applied. This law can be specifically used for the flow in the water tower, describing the difference between the inlet and outlet flow to be equal to the velocity by which the tank volume increases or decreases. 
 
 \begin{equation}
-  q_{out} - q_{in} = \frac{dV_t}{dt} = \frac{dAh}{dt} = A \frac{dh}{dt} = \frac{\pi}{4} D^2 {dh}
+  q_{2} - q_{1} - q_2 = \frac{d}{dt}V_t = \frac{d}{dt}Ah = A \frac{d}{dt}h = \frac{\pi}{4} D^2 \frac{d}{dt} h
   \label{FlowConservation}
 \end{equation}
 
@@ -77,9 +77,9 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the flow through the WT\\
-is the volume of the WT\\
-is the diameter of the WT 
+is the inlet and outlet flow\\
+is the volume of the water tower\\
+is the diameter of the tank 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -88,36 +88,25 @@ is the diameter of the WT
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Rewriting \eqref{FlowConservation} in a simplified way:
+In \eqref{FlowConservation}, $q1$ is zero since only $q_2$ is taken into consideration as a two-directional in- or outlet flow. 
+\\
+By integrating \eqref{FlowConservation} according to time the following yields:
 
 \begin{equation}
-  \Delta q =  \frac{\pi}{4} D^2 {dh}
-\end{equation}
-
-In order to solve for $h$ both sides are integrated: 
-\begin{equation}
-  \int dh = \int \frac{1}{A} \Delta q dt
+  \int dh = \int \frac{1}{A} q_2 dt
   \label{integheight}
 \end{equation}
 
-Simplifying \eqref{integheight}:
-\begin{equation}
-  h =\frac{1}{A}  \int  \Delta q dt
-\end{equation}
-
-Once the equation describing $h$ is obtained, it can be inserted in \eqref{Pressuredifference} 
-resulting in the final expression for the WT model:
-
-\todo{Maybe write down the analogous expression for electric circuits ( capacitors) and make a comparison}
+Plugging \eqref{integheight} into \eqref{Pressuredifference}, the following overall expression can be given between pressure and flow: 
 
 \begin{equation}
-  \Delta p =  \frac{\rho g}{A}  \int  \Delta q dt
-  \label{WTequation}
+\label{WTequation}
+  \Delta p =  \frac{\rho g}{A}  \int   q_2 dt
 \end{equation}
 
-An analogy can be made between an electronic circuit and the water distribution, where the WT acts as a 
-capacitor.  Observing the relationship between the voltage across the capacitor and the 
-capacitor´s charge:
+An analogy can be made between an electronic circuit and the water distribution, where the WT acts as a capacitor.  Deriving the relationship between the voltage across the capacitor and the 
+charge of the capacitor:
+
 \begin{equation}
   U = \frac{1}{C} \int I dt
   \label{ElecCircuirt}
@@ -140,5 +129,33 @@ is the capacitance
 \end{minipage}
 
 In the \eqref{WTequation} the volume flow rate ($q$) is equivalent to the current ($I$) in a 
-circuit and the constant term \big($\frac{A}{\rho g}$\big) is equivalent to the 
-capacitance of a capacitor ($C$).
+circuit and the constant term \big($\frac{A}{\rho g}$\big) is equivalent to the capacitance of a capacitor ($C$). The voltage drop is analogous to to pressure drop in the water system.
+
+%
+%Rewriting \eqref{Pressuredifference} in a simplified way:
+%
+%\begin{equation}
+%  \Delta q =  \frac{\pi}{4} D^2 {dh}
+%\end{equation}
+%
+%In order to solve for $h$ both sides are integrated: 
+%\begin{equation}
+%  \int dh = \int \frac{1}{A} \Delta q dt
+%  \label{integheight}
+%\end{equation}
+%
+%Simplifying \refeq{integheight}:
+%\begin{equation}
+%  h =\frac{1}{A}  \int  \Delta q dt
+%\end{equation}
+%
+%Once the equation describing $h$ is obtained, it can be inserted in \refeq{Pressuredifference} 
+%resulting in the final expression for the water tower model:
+%
+%\todo{Maybe write down the analogous expression for electric circuits ( capacitors) and make a comparison}
+%
+%\begin{equation}
+%  \Delta p =  \frac{\rho g}{A}  \int  \Delta q dt
+%\end{equation}
+
+
