@@ -6,24 +6,25 @@ Gathering up the final expressions of each component a complete component model 
 
 \begin{equation}
   \label{CompleteModel}
-  \Delta P_k = \lambda_k (q_k) + \mu (q_k,k_v) - \alpha (u) + \zeta_k + \frac{1}{C_H}  \int   q_k dt 
+  \Delta P_k = \lambda_k (q_k) + \mu (q_k, k_v) - \alpha (u) + \zeta_k + \frac{1}{C_H}  \int   q_k dt 
 \end{equation}
 
-Nevertheless, \refeq{CompleteModel} is only used to represent the terms that correspond to each component. At the time of modelling the components
-the proper components will be annul to zero. Table shows the 
+Nevertheless, \eqref{CompleteModel} is only used to represent the terms that correspond to each component. At the time of modelling the 
+components, the proper components will be annulled to zero. \tabref{tab:parametrization_model} shows the 
 parametrization of the model.
 
 \begin{figure}[H]
 	\centering
 \begin{tabular}{c|ccccc} 
-  			\bfseries Component    &   $\frac{1}{C_H}$    &    \bfseries $\lambda_k$    &    \bfseries $\mu_k$    &    \bfseries $\alpha_k$    &    \bfseries $\zeta_k$  					\\ 
+  			\bfseries Component    &   $\frac{1}{C_H}$    &     $\lambda_k$    &     $\mu_k$    &     $\alpha_k$    &     $\zeta_k$  					\\ 
   			\hline
 			kth Pipe		  	      &      0                    &         $\lambda_k$                            &    0                             &            0                       &      $\zeta_k$   		                         \\ 
 			kth Valve           	      &      0                    &         0                            &    $\mu_k$                             &            0                       &      0    					 \\ 
 			kth Pump 		      &      0                    &         0                            &    0                             &            $\alpha_k$                       &      0    				         \\ 
-			kth WT                           &      $\frac{1}{C_H}$                   &         0                            &    0                             &            0                       &      0      
-			
+			kth WT                           &      $\frac{1}{C_H}$                   &         0                            &    0                             &            0                       &      0     
 \end{tabular}
 \captionof{table}{Complete model parametrization.}
+		\label{tab:parametrization_model}
+
 \end{figure}	
 
