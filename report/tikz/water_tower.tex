@@ -8,17 +8,17 @@
         -- (3.5,-0.5) -- (2,-0.5) -- (2,-1.5) -- (1.5,-1.5) -- (1.5,-0.5) --(1.5,-0.5) -- (0,-0.5) -- cycle;
 
   \draw [-,line width=1.1pt]  (0,3.5) -- (0,2.5) -- (0,-0.5) -- (1.5,-0.5) -- (1.5,-0.5) -- (1.5,-1.5);
-  \draw [-,line width=1.1pt](0,2) -- (0,3) -- (0,3.5) -- (3.5,3.5) -- (3.5,-0.5) -- (2,-0.5) -- (2,-1.5);
-  \draw[|-|] (-0.2,-0.5) --
+  \draw [-,line width=1.1pt] (3.5,3.5) --  (3.5,-0.5) -- (2,-0.5) -- (2,-1.5);
+  \draw[|-|] (-0.5,-0.5) --
         node[fill=white,font=\normalsize,inner ysep=2pt,inner
-                xsep=0]{$h$}(-0.2,2);
+                xsep=0]{$h_1$}(-0.5,2);
                 
-  \draw[|-|] (3.5,3.75) --
+  \draw[|-|] (3.5,4) --
         node[fill=white,font=\normalsize,inner ysep=2pt,inner
-                xsep=0]{$D$}(0,3.75);
+                xsep=0]{$D$}(0,4);
  
- \draw[red,fill=black] (1.75,-0.5) circle (.25ex);
-  \draw[red,fill=black] (1.75,2) circle (.25ex);
+ \draw[red,fill=black] (1.75,-0.5) circle (.3ex);
+  \draw[red,fill=black] (1.75,2) circle (.3ex);
 
 \node at (2,2) {\normalsize{$p_1$}};
 \node at (2,-0.34) {\normalsize{$p_2$}};
@@ -27,5 +27,8 @@
 \node at (2,2.7) {\normalsize{$q_1$}};
 \node at (1.9,-1.67) {\normalsize{$q_2$}};
 \draw [-latex](1.75,-0.7) -- (1.75,-1.5);
+
+%\draw [dashdotdotted](1.75,3.75) -- (1.75,-2.0);
+
 
 \end{tikzpicture}%
