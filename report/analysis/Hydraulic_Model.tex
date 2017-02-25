@@ -74,7 +74,7 @@ is the value of the velocity of the water at each point of the pipe.
 \end{minipage}
 
 \todo{Insert here a free-body diagram - Tom}
-The sum of the forces acting on the control volume can be seen as input forces(acting on the inlet of the pipe), output forces(acting on the outlet) and resistance forces.  
+The sum of the forces acting on the control volume can be seen as input forces (acting on the inlet of the pipe), output forces (acting on the outlet), resistance forces and gravitational force effect.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
 The pipe is assumed to be constant and to have cylindrical structure. Furthermore $A(x)$ is constant for every $x$ $\in$ $[0,L]$, where $L$ is the length of the pipe:
@@ -106,11 +106,11 @@ is the volumetric rate of flow.
 \textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
 \end{minipage}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ indicates the pressure drop 
- between two endpoints.
+ In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ which indicates the pressure drop 
+ between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
 
 \begin{equation}
-  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} \\
+  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev} \\
   \label{LinearMomentum}
 \end{equation}
 
@@ -118,39 +118,37 @@ In order to obtain an equation consisting of only pressure variables, the relati
 
 
  \begin{equation}
-    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev} \\
 \end{equation}
 
 The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
 
 \begin{equation}
-    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} \\
+    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
 \end{equation}
 
 Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
 \end{equation}
 
 Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
     \label{PressureDrop}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $L$ \\
-\hspace*{8mm} $F_{res}$ \\
 \hspace*{8mm} $\Delta p$ \\
 \hspace*{8mm} $\rho$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the length of a pipe\\
-is the resistance force\\
 is the pressure drop across the two endpoints\\
 is the density of water.
 
@@ -158,14 +156,13 @@ is the density of water.
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{m}$\\
-\textcolor{White}{te}$\unit{N}$\\
 \textcolor{White}{te}$\unit{Pa}$\\
 \textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
 \end{minipage}
 
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
-loss, form resistance($h_{m}$) and the resistance due to change of elevation, $\Delta z$. 
+loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the force of gravity due to change of elevation, $\Delta z$.
 \todo{Ignacio! Something should be done with this sentence and Tom's comment: $\Delta z$ is not a resistance}
 
 \subsubsection{Surface Resistance (\texorpdfstring{$h_f$}{})} 
@@ -290,7 +287,7 @@ or due to enlargers and reducers. It is a particular frictional resistance due t
 fittings of a pipe. Form loss can be expressed as:
 
 \begin{equation}
-  h_m = k_f \frac{V^2}{2g}
+  h_m = k_f \frac{v^2}{2g}
 \end{equation}
 
 
