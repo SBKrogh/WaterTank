@@ -53,7 +53,6 @@ In \eqref{bernoulli}, the reference point on the bottom of the tank remains fixe
 %As a reference point in \eqref{bernoulli}, the bottom of the tank is chosen.
 Therefore the height at this point($h_2$) is set to 0. 
 \\
-
 The flow rates are equal in both point $1$ 
 and point $2$, so are the velocities of the water. \\
 Due to the these considerations \eqref{bernoulli} simplifies to: 
@@ -63,7 +62,8 @@ Due to the these considerations \eqref{bernoulli} simplifies to:
   \label{Pressuredifference}
 \end{equation}
 
-In \eqref{Pressuredifference} the gravity and the density are constants, however the height of the water level changes proportional to the pressure difference. 
+In \eqref{Pressuredifference} the gravity and the density are constants, however the height of the water level changes proportional to the pressure difference. The total pressure on the inside of the bottom tank wall is a result of the pressure due to the water $p_2$, plus the
+atmospheric pressure $p_1$. However the model is derived according to the pressure difference between inside and outside, therefore $p_1$ atmospheric pressure is set to zero. 
 \\
 To derive the equation that describes the change of the height according to 
 time, the law of conservation mass is applied. This law can be specifically used for the flow in the water tower, describing the difference between the inlet and outlet flow to be equal to the velocity by which the tank volume increases or decreases. 
@@ -82,7 +82,7 @@ Where\\
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the inlet and outlet flow\\
-is the volume of the water tower\\
+is the volume of the water in the tower\\
 is the diameter of the tank 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -92,7 +92,7 @@ is the diameter of the tank
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-In \eqref{FlowConservation}, $q1$ is zero since only $q_2$ is taken into consideration as a two-directional in- or outlet flow. 
+In \eqref{FlowConservation}, $q_11$ is zero since only $q_2$ is taken into consideration as a two-directional in- or outlet flow. 
 \\
 By integrating \eqref{FlowConservation} according to time the following yields:
 
@@ -105,7 +105,7 @@ Plugging \eqref{integheight} into \eqref{Pressuredifference}, the following over
 
 \begin{equation}
 \label{WTequation}
-  \Delta p =  \frac{\rho g}{A}  \int   q_2 dt = \frac{1}{C_H} \int   q_2 dt
+  p_2 =  \frac{\rho g}{A}  \int   q_2 dt = \frac{1}{C_H} \int   q_2 dt
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -120,6 +120,8 @@ is the hydraulic capacitance
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{\frac{m^3}{N/m^2}}$
 \end{minipage}
+
+In \eqref{WTequation}, the time integral of the flow gives back the volume of the water in the water tower. This equation shows proportionality between pressure and the volume of water which is exactly the defining characteristic of a fluid capacitor. When the fluid capacitance $C_H$ is large, corresponding to a tank with a large area, a large increase in volume is accompanied by a small increase in pressure. 
 
 An analogy can be made between an electronic circuit and the hydraulic system, where the WT acts as a capacitor.  Deriving the relationship between the voltage across the capacitor and the 
 charge of the capacitor:
