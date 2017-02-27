@@ -1,7 +1,7 @@
 \section{Hydraulic Modeling}
 \label{HydraulicModel}
 
-Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element.\cite{Kallesoe2009}  \eqref{ComponentState} shows the dual variables which describes one component. 
+Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element\cite{Kallesoe2009}.  \eqref{ComponentState} shows the dual variables which describes one component. 
 
 \begin{equation}
 \label{ComponentState}
@@ -16,15 +16,29 @@ Water distribution networks are designed to deliver water to consumers in terms 
 \end{bmatrix}
 \end{equation}
 
-In the following chapter the hydraulic model of the system is derived by control volume approach.\cite{Hunt_Fluidmechanics} 
-The relationship between the two variables are introduced for each component in the hydraulic network.
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\Delta p$ \\
+\hspace*{8mm} $q$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the pressure drop across the two endpoints\\
+is the flow through the element.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{Pa}$\\
+\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
+\end{minipage}
 
+In the following chapter the hydraulic model of the system is derived by control volume approach\cite{Hunt_Fluidmechanics}. The relationship between the two variables are introduced for each component in the hydraulic network.
 
 \subsection{Pipe Model} 
 \label{PipeModel}
 Pipes are important components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in order to describe the relationship of pressure and flow for each pipe component.  
 %
-The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the fluid(water) and the force acting on it.
+The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the water and the force acting on it.
 
 \begin{equation}
   \frac{d}{dt} M = \sum_i F_i
@@ -33,19 +47,18 @@ The dynamic model of a pipe can be originated from Newton's second law. \eqref{N
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $F$ \\
-\hspace*{8mm} $M$ 
+\hspace*{8mm} $M$ \\
+\hspace*{8mm} $F$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the set of forces acting on the water,\\
-is the linear momentum of the water flow.
-
+is the linear momentum of the water flow\\
+is the set of forces acting on the water.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{N}$\\
-\textcolor{White}{te}$\unit{\frac{kgm}{s}}$
+\textcolor{White}{te}$\unit{\frac{kgm}{s}}$\\
+\textcolor{White}{te}$\unit{N}$
 \end{minipage}
 
 The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
@@ -63,7 +76,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the mass of the water,\\
+is the mass of the water\\
 is the value of the velocity of the water at each point of the pipe.
 
 \end{minipage}
@@ -74,37 +87,36 @@ is the value of the velocity of the water at each point of the pipe.
 \end{minipage}
 
 \todo{Insert here a free-body diagram - Tom}
-The sum of the forces acting on the control volume can be seen as input forces (acting on the inlet of the pipe), output forces (acting on the outlet), resistance forces and gravitational force effect.  
+The sum of the forces acting on the control volume can be seen as input forces, acting on the inlet of the pipe, output forces, acting on the outlet, resistance forces and gravitational force effect.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
 
-The pipe is assumed to be constant and to have cylindrical structure. Furthermore $A(x)$ is constant for every $x$ $\in$ $[0,L]$, where $L$ is the length of the pipe:
+The pipe is assumed to be constant and to have cylindrical structure. Furthermore, the cross section of the pipe, $A(x)$, is constant for every $x \in [0,L]$, where $L$ is the length of the pipe:
 
 \begin{equation}
   A_{in} = A_{out} = \frac{1}{4}\pi D^{2}
 \end{equation}
 
-Continuity law in fluid mechanics is applied to analyze the flow in the pipe.\cite{Hunt_Fluidmechanics} A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
-\begin{equation}
-  q=A \cdot v
-	\label{EquationOfContinuity}
-\end{equation}
-
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $A$ \\
-\hspace*{8mm} $q$ 
+\hspace*{8mm} $D$
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the cross sectional area of a pipe\\
-is the volumetric rate of flow.
-
+is the diameter of the pipe.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{m^{2}}$\\
-\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
+\textcolor{White}{te}$\unit{m}$
 \end{minipage}
+
+Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
+\begin{equation}
+  q=A \cdot v
+	\label{EquationOfContinuity}
+\end{equation}
 
  In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ which indicates the pressure drop 
  between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
@@ -121,6 +133,28 @@ In order to obtain an equation consisting of only pressure variables, the relati
     A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev} \\
 \end{equation}
 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $A$ \\
+\hspace*{8mm} $L$ \\
+\hspace*{8mm} $\rho$\\
+\hspace*{8mm} $p$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the cross sectional area of a pipe\\
+is the length of a pipe\\
+is the density of water\\
+is the pressure at a point.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{m^2}$\\
+\textcolor{White}{te}$\unit{m}$\\
+\textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
+\textcolor{White}{te}$\unit{Pa}$\\
+\end{minipage}
+%
 The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
 
 \begin{equation}
@@ -140,30 +174,9 @@ Thus the desired pressure drop between two endpoint is obtained. \eqref{Pressure
     \label{PressureDrop}
 \end{equation}
 
- \begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{8mm} $L$ \\
-\hspace*{8mm} $\Delta p$ \\
-\hspace*{8mm} $\rho$ 
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-is the length of a pipe\\
-is the pressure drop across the two endpoints\\
-is the density of water.
-
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-\vspace*{2mm}
-\textcolor{White}{te}$\unit{m}$\\
-\textcolor{White}{te}$\unit{Pa}$\\
-\textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
-\end{minipage}
-
 In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
 loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the force of gravity due to change of elevation, $\Delta z$.
-\todo{Ignacio! Something should be done with this sentence and Tom's comment: $\Delta z$ is not a resistance}
 
 \subsubsection{Surface Resistance (\texorpdfstring{$h_f$}{})} 
 The flow of a liquid through a pipe suffers resistance from 
@@ -222,7 +235,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the kinematic viscosity
+is the kinematic viscosity.
 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -260,10 +273,10 @@ the pipes are considered.\cite{Urban_Design}.
 \end{itemize}
 
 These values result in a Reynold's number between 19000 and 225000, which yields a turbulent fluid flow. For turbulent flow the 
-Moody friction factor is given by \cite{Design_Water} : 
+Moody friction factor is given by \cite{Design_Water}: 
 
 \begin{equation}
-  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{R^{0.9}}\bigg)\bigg)^{-2}
+  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{Re^{0.9}}\bigg)\bigg)^{-2}
   \label{turbulent}
 \end{equation}
 
@@ -277,7 +290,7 @@ is the average roughness of the wall inside the pipe.
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{-}$
+\textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
 %
@@ -338,12 +351,6 @@ In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction los
 \end{equation}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
-
-\begin{equation}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
-\end{equation}
-
-Taking out the flow $q$ as the common factor:
 
 \begin{equation}
 \label{FinalPipeModel}
