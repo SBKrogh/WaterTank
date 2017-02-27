@@ -5,8 +5,10 @@ Writing up the final expression of each component, a complete system model can b
 
 \begin{equation}
   \label{CompleteModel}
-  \Delta P_k = \lambda_k (q_k) + \mu (q_k, k_v) - \alpha (u) + \zeta_k + \frac{1}{C_H}  \int   q_k dt 
+  \Delta P_k = \underbrace{\lambda_k (q_k) + \zeta_k}_\text{Pipe} + \underbrace{\mu (q_k, k_v)}_\text{Valve} - \underbrace{\alpha (u)}_\text{Pump} + \underbrace{\frac{1}{C_H}  \int   q_k dt }_\text{Water tower}
 \end{equation}
+
+
 
 Nevertheless, \eqref{CompleteModel} is only used to represent the terms that correspond to each component. At the time of modelling the 
 components, the proper components will be annulled to zero. \tabref{tab:parametrization_model} shows the 
