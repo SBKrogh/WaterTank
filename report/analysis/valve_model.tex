@@ -3,7 +3,7 @@
 
 %R2015-1-S1 type valve
 
-Valves in the water distribution system are modelled according to the consideration that the length of each valve($L$) and the change in elevation($\Delta z$) are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
+Valves in the water distribution system are modelled according to the consideration that the length of each valve, $L$, and the change in elevatio, $\Delta z$, are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
 In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. 
 
 %Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
@@ -28,7 +28,7 @@ In case of valves, manufacturers provide a parameter which indicates the valve c
 \subsubsection{Valve conductivity function \texorpdfstring{$k_v(OD)$}{}}
 \label{OD}
 
-Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too. \cite{Kallesoe2009}
+Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too \cite{Kallesoe2009}.
 
 All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all valves. 
 
@@ -128,7 +128,7 @@ As it is shown, the conductivity function of the valve consists of two types of 
 		\right.
 \end{equation}	
 
-Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and predetermined by $n_{gl}$. \citep{Kallesoe2009} \cite{keller}
+Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and predetermined by $n_{gl}$ \citep{Kallesoe2009,keller} 
 
 
 \subsubsection{Complete valve model}
