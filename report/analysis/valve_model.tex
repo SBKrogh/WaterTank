@@ -33,11 +33,18 @@ Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function 
 All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all valves. 
 
 %k_v valve characteristics
+%\begin{figure}[H]
+%\label{valve_conductivity}
+%\centering
+%\includegraphics[width=0.5\textwidth]{report/pictures/missingfigure}
+%\caption{Valve characteristics - Valve conductivity in the function of OD}
+%\end{figure}
+
 \begin{figure}[H]
-\label{valve_conductivity}
 \centering
-\includegraphics[width=0.5\textwidth]{report/pictures/missingfigure}
+\input{report/tikz/valve_model.tex} 
 \caption{Valve characteristics - Valve conductivity in the function of OD}
+\label{valve_conductivity}
 \end{figure}
 
 According to \cite{keller}, the following definition can be written up for the conductivity function, $k_v(OD)$:
