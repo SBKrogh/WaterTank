@@ -56,10 +56,10 @@ state/.style ={ draw,shape=circle}]
 
 \node[circle,fill,inner sep=3pt,label=above:$n_{3}$] (N) at (-3,0) {};
 \node[circle,fill,inner sep=3pt,label= above right:$n_{2}$] (O) at (-8,2) {};
-\node[circle,fill,inner sep=3pt,label= above left :$n_{18}$] (P) at (-6,6) {};
+\node[circle,fill,inner sep=3pt,label= above left :$n_{18}$] (P) at (-4,6) {};
 
 \path (A) edge  node[below] {$e$} (N);
-\path (P) edge [bend right = -40] node[below =0.15 cm] {$e$} (M);
+\path (P) edge [bend right = -50] node[below =0.15 cm] {$e$} (M);
 \path (O) edge [bend right = -50] node[below =0.15 cm] {$e$} (M);
 \path (N) edge  node[below] {$e$} (O);
 \path (N) edge  node[right] {$e$} (P);
@@ -70,6 +70,7 @@ state/.style ={ draw,shape=circle}]
 \path (D) edge  node[below] {$e$} (Q);
 \path (Q) edge  node[below right ] {$e$} (R);
 \path (R) edge [bend left = -40] node[below =0.15 cm] {$e$} (M);
+\path (N) edge [bend left = -20] node[below =0.15 cm] {$e$} (Q);
 
 
 
