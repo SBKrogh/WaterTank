@@ -61,7 +61,7 @@ is the set of forces acting on the water.
 \textcolor{White}{te}$\unit{N}$
 \end{minipage}
 
-The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe and the flow is turbulent. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
+The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
 \\
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
 
@@ -210,10 +210,10 @@ is the diameter of the pipe.
 \end{minipage}
 
 \eqref{Darcy} is under the assumption that $v>0$, therefore it is not dependant on $|v|v$ but on $v^2$. \\
-Applying the continuity law, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
+Applying the continuity law and assuming that the flow is not unidirectional, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
 
 \begin{equation}
-  h_f = \frac{8fLq^2}{\pi^{2}gD^5}
+  h_f = \frac{8fL}{\pi^{2}gD^5} |q| q
   \label{DarcyWeisbach}
 \end{equation} 
  
@@ -272,7 +272,7 @@ the pipes are considered.\cite{Urban_Design}.
   \item $T = 10 - 20 \quad ^{\circ} C$
 \end{itemize}
 
-These values result in a Reynold's number between 19000 and 225000, which yields a turbulent fluid flow. For turbulent flow the 
+These values result in a Reynold's number between 19000 and 225000, which yields to consider a turbulent fluid flow through the pipes. For turbulent flow the 
 Moody friction factor is given by \cite{Design_Water}: 
 
 \begin{equation}
@@ -307,7 +307,7 @@ fittings of a pipe. Form loss can be expressed as:
 Applying the continuity law:
 
 \begin{equation}
-   h_m = k_f \frac{8q^2}{\pi^2gD^4}
+   h_m = k_f \frac{8}{\pi^2gD^4}  |q| q
 \label{Formloss}
 \end{equation}
 
@@ -354,7 +354,7 @@ Substituting the terms $h_f$ and $h_m$ with their respective values:
 
 \begin{equation}
 \label{FinalPipeModel}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fLq^2}{\pi^{2}gD^5} \rho g - k_f \frac{8q^2}{\pi^2gD^4} \rho g - \Delta z \rho g 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fL}{\pi^{2}gD^5} \rho g  |q| q - k_f \frac{8}{\pi^2gD^4} \rho g |q| q - \Delta z \rho g 
 \end{equation}
 
 \eqref{FinalPipeModel} describes the rate of flow in terms of pressure losses due to pressure change, frictions and elevation. A more compact form can be expressed for the $k$th component as such:
