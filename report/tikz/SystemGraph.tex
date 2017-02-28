@@ -1,0 +1,81 @@
+\documentclass{article}
+
+% example taken from 
+% http://www.guitex.org/home/images/doc/GuideGuIT/introingtikz.pdf
+
+\usepackage {tikz}
+\usepackage{rotating}
+\usetikzlibrary {positioning}
+
+
+
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+\begin {document}
+\begin{sidewaysfigure}[htb]
+\begin {center}
+\begin {tikzpicture}[-latex ,auto ,node distance =4 cm and 8cm ,on grid ,
+semithick ,
+state/.style ={ draw,shape=circle}]
+\node[circle,fill,inner sep=3pt,label=below right:$n_4$] (A) at (0,0) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_8$] (B) at (0,4) {};
+\node[circle,fill,inner sep=3pt,label=below right:$n_9$] (C) at (0,8) {};
+\path (A) edge  node[right] {$e$} (B);
+\path (B) edge  node[right] {$e$} (C);
+\node[circle,fill,inner sep=3pt,label=right:$n_{10}$] (G) at (2,11) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{11}$] (H) at (-1,10) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{12}$] (I) at (-1,12) {};
+\path (C) edge  node[right] {$e$} (G);
+\path (C) edge  node[right] {$e$} (H);
+\path (H) edge  node[right] {$e$} (I);
+
+
+
+%
+\node[circle,fill,inner sep=3pt,label=below right:$n_5$] (D) at (8,0) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{13}$] (E) at (8,4) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{14}$] (F) at (8,8) {};
+\path (D) edge  node[right] {$e$} (E);
+\path (E) edge  node[right] {$e$} (F);
+\node[circle,fill,inner sep=3pt,label=right:$n_{15}$] (J) at (9,11) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{16}$] (K) at (7,10) {};
+\node[circle,fill,inner sep=3pt,label=right:$n_{17}$] (L) at (6,12) {};
+\path (F) edge  node[right] {$e$} (J);
+\path (F) edge  node[right] {$e$} (K);
+\path (K) edge  node[right] {$e$} (L);
+
+\node[circle,fill,inner sep=3pt,label=above:$n_{1}$] (M) at (4,14) {};
+
+\path (A) edge  node[below] {$e$} (D);
+\path (F) edge  node[below] {$e$} (C);
+\path (G) edge [bend right = -15] node[below =0.15 cm] {$e$} (M);
+\path (L) edge [bend left = -15] node[below =0.15 cm] {$e$} (M);
+\path (I) edge [bend right = -15] node[below =0.15 cm] {$e$} (M);
+\path (J) edge [bend left = -15] node[below =0.15 cm] {$e$} (M);
+
+
+\node[circle,fill,inner sep=3pt,label=above:$n_{3}$] (N) at (-3,0) {};
+\node[circle,fill,inner sep=3pt,label= above right:$n_{2}$] (O) at (-8,2) {};
+\node[circle,fill,inner sep=3pt,label= above left :$n_{18}$] (P) at (-6,6) {};
+
+\path (A) edge  node[below] {$e$} (N);
+\path (P) edge [bend right = -40] node[below =0.15 cm] {$e$} (M);
+\path (O) edge [bend right = -50] node[below =0.15 cm] {$e$} (M);
+\path (N) edge  node[below] {$e$} (O);
+\path (N) edge  node[right] {$e$} (P);
+
+
+\node[circle,fill,inner sep=3pt,label=above right:$n_{6}$] (Q) at (11,0) {};
+\node[circle,fill,inner sep=3pt,label=above right :$n_{7}$] (R) at (14,6) {};
+\path (D) edge  node[below] {$e$} (Q);
+\path (Q) edge  node[below right ] {$e$} (R);
+\path (R) edge [bend left = -40] node[below =0.15 cm] {$e$} (M);
+
+
+
+
+\end{tikzpicture}
+\end{center}
+\end{sidewaysfigure}
+
+\end{document}
