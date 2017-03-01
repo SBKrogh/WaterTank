@@ -20,7 +20,7 @@ The rate of change of the fluid volume in the water tower is proportional to the
 
 \begin{equation}
   q = \frac{dV_t}{dt} = A \frac{dh}{dt}
-  \label{Pressuredifference}
+  \label{Flowequation}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -71,7 +71,7 @@ Assuming the side walls of the WT are vertical,\eqref{Newton_WT} can be rewritte
   \label{Pressuredifference}
 \end{equation}
 
-The total pressure on the bottom of the WT is a result of the pressure difference due to the fluid $(p)$ and the atmospheric pressure $(p_a)$. However, the model is derived in such a way that the atmospheric pressure is set to zero. Therefore, if the water is assumed to be incompressible(density does not change with pressure), \eqref{Pressuredifference} can be written as: 
+The total pressure on the bottom of the WT is a result of the pressure difference due to the fluid $(p)$ and the atmospheric pressure $(p_a)$. However, the model is derived in such a way that the atmospheric pressure is set to zero. Therefore, if the water is assumed to be incompressible(density does not change with pressure), \eqref{Flowequation} can be written as: 
 
 \begin{equation}
 q = \frac{dV}{dt} = \frac{A}{\rho g} \frac{d}{dt} \Delta p = C_H \dot{\Delta p}
