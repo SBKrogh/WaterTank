@@ -11,7 +11,31 @@ voltage and currents, respectively.
 
 \subsection{Incidence Matrix} 
 
-%The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
+The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
+This components are considered as nodes, the paths connecting nodes are denoted as edges. 
+In order to show the relationship between the nodes conforming a graph the 
+incidence matrix is calculated. In hydraulic networks contest, the edges have a 
+direction associated with them, this characteristic leads to have a incidence matrix, A, where:
+
+\begin{equation}
+\label{DiGraph}
+ A =
+		\left\{
+		\begin{array}{ll}
+		
+		1 			&      \text{if the edges is incidence out of the node}	
+\\
+		-1                       &     \text{if the edges is incidence into the node}
+\\
+
+                0                       &      \text{otherwise}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+
+ 
 %The pressure drops taking place in the pipes and valves can be considered as inductors and nonlinear resistors, respectively. 
 %
 %\textit{Maybe here before we start with the Graph Theory could be nice to make a figure showing the changes between the hydraulic circuit to the electrical 
