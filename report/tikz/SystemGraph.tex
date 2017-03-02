@@ -1,16 +1,17 @@
 
-\usepackage {tikz}
-\usepackage{rotating}
-\usepackage{amsmath}
-\usetikzlibrary {positioning}
+%\usepackage {tikz}
+%\usepackage{rotating}
+%\usepackage{amsmath}
+%\usetikzlibrary {positioning}
 
 
 %\usepackage {xcolor}
-\begin{sidewaysfigure}[htb]
-\begin {center}
-\begin {tikzpicture}[-latex ,auto ,node distance =4 cm and 8cm ,on grid ,
+%\begin{sidewaysfigure}[ht]
+\begin{center}
+\begin{tikzpicture}[-latex ,auto ,node distance =4 cm and 8cm ,on grid ,
 semithick ,
 state/.style ={ draw,shape=circle}]
+
 \node[circle,fill,inner sep=3pt,label=below right:$n_4$] (A) at (0,0) {};
 \node[circle,fill,inner sep=3pt,label=right:$n_8$] (B) at (0,4) {};
 \node[circle,fill,inner sep=3pt,label=below right:$n_9$] (C) at (0,8) {};
@@ -68,8 +69,6 @@ state/.style ={ draw,shape=circle}]
 \path (Q) edge [bend right = -20] node[below =0.15 cm] {$e_6 c_{12;13}$} (N);
 
 
-
-
 \end{tikzpicture}
 \end{center}
-\end{sidewaysfigure}
+%\end{sidewaysfigure}
