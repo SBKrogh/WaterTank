@@ -1,5 +1,6 @@
 \section{Hydraulic Modeling}
 \label{HydraulicModel}
+\todo{Continuity law?}
 
 Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consist of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop accross the two endpoints and the flow through the element\cite{Kallesoe2009}.  \eqref{ComponentState} shows the dual variables which describes one component. 
 
@@ -48,7 +49,7 @@ The dynamic model of a pipe can be originated from Newton's second law. \eqref{N
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $M$ \\
-\hspace*{8mm} $F$ 
+\hspace*{8mm} $F_i$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -63,7 +64,7 @@ is the set of forces acting on the water.
 
 The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
 \\
-Rewriting \eqref{NewtonLaw}, because of the above-mentioned consideration, the mass of the water can be taken out in front of the derivative.
+Rewriting \eqref{NewtonLaw}, because of the above-mentioned asumptions, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
   \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum F
@@ -161,7 +162,8 @@ The velocity can be written in terms of volumetric water flow and cross sectiona
     A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
 \end{equation}
 
-Reducing the cross sectional area to obtain an expression for the pressure: 
+By dividing the equation with the cross sectional area, A, it can be seen that the equation is depeding on the pressure difference between two endpoints. \todo{Is this paragraph okay? else include the out comment.}
+%Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
     \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
@@ -209,7 +211,7 @@ is the diameter of the pipe.
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-\eqref{Darcy} is under the assumption that $v>0$, therefore it is not dependant on $|v|v$ but on $v^2$. \\
+\eqref{Darcy} is under the assumption that $v>0$.%, therefore it is not dependant on $|v|v$ but on $v^2$. \\
 Applying the continuity law and assuming that the flow is not unidirectional, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
 
 \begin{equation}
@@ -218,11 +220,11 @@ Applying the continuity law and assuming that the flow is not unidirectional, th
 \end{equation} 
  
  The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
- which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe. \\
+ which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe\cite{Intro_Fluid}. \\
  
  
-The Reynold´s number can be used to determine the regime of the flow. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
-$Re>4000$ as turbulent \cite{Intro_Fluid}. 
+The Reynold´s number can be used to determine the regime of the flow\cite{Intro_Fluid}. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
+$Re>4000$ as turbulent. 
 
 \begin{equation}
    Re = \frac{vD}{\nu}
@@ -264,13 +266,20 @@ is the water temperature
 
 In order to estimate the range of the Reynolds number of a common water 
 distribution, typical values of the temperature, velocity and the radius of 
-the pipes are considered.\cite{Urban_Design}. 
+the pipes are considered\cite{Urban_Design}. 
+
+% \begin{itemize}
+%   \item $v = 0.5 - 1.5  \quad \frac{m}{s}$
+%   \item $D = 50 - 1500\quad mm$
+%   \item $T = 10 - 20 \quad ^{\circ} C$
+% \end{itemize}
 
 \begin{itemize}
-  \item $v = 0.5 - 1.5  \quad \frac{m}{s}$
-  \item $D = 50 - 1500\quad mm$
-  \item $T = 10 - 20 \quad ^{\circ} C$
+  \item $0.5 \leq v \leq 1.5  \quad \frac{m}{s}$
+  \item $50 \leq D \leq 1500\quad mm$
+  \item $10 \leq T \leq 20 \quad ^{\circ} C$
 \end{itemize}
+
 
 These values result in a Reynold's number between 19000 and 225000, which yields to consider a turbulent fluid flow through the pipes. For turbulent flow the 
 Moody friction factor is given by \cite{Design_Water}: 
