@@ -4,14 +4,16 @@
 The water distribution system explained in \secref{system_overview} need to be controlled according the \secref{Requirements_and_constraints}. The requirements can be summarized as: 
 
 \begin{itemize}
-	\item Minimum pressure at CP, $\rho > x \:[\text{bar}]$\todo{put in numbers}
-	\item Minimum flow through water tower, $q_{wt} > x \:[\frac{m^3}{h}]$
+	\item Pressure at CP, $0.08 < p_{cp} < 0.14 \:[\text{bar}]$
+%
+	\item Minimum water exchange , $\bar{q}_{wt} > 0.06 \: \big[\frac{m^3}{day}\big]$
+%
 	\item Minimizing the total cost of running the system
 \end{itemize}
 
-The pressure at a given CP can be controlled by both the water level in the WT and the rotational speed of the pump connected to the given PMA. To fulfill the requirement of a minimum pressure at a given CP a controller have to be develop that takes both pressure actuators into account. 
+The pressure at a given CP can be controlled by both the water level in the WT and the rotational speed of the pump connected to the given PMA. To fulfill the requirement of a minimum pressure at a given CP a controller have to be develop that takes the pressure actuators into account. 
 
-The flow through the WT is controlled by a pump, \todo{name of WT pump}. Whenever the pump, \todo{name of WT pump}, is pumping water into the WT can be seen as a consumer. This mean that the others pumps have to do ensure pressure at all CP. Furthermore the flow rate, $q_{WT}$, must meet a minimum requirement to insure the water quality. This can be seen as a constrain of the operation area of the system. 
+The flow through the WT is controlled by pressure in the outer ring. Whenever the pressure is higher in the outer ring than in the WT, water is being pump into the WT. Furthermore the average flow rate, $\bar{q}_{wt}$, through the WT must meet the minimum requirement to insure the water quality. This can be seen as a constrain of the operation area of the system. 
 
 At the same time the total cost of running the system should be minimized. Therefor a cost function is needed. This cost function purpose is to find the optimal control signal which minimize the cost of running the pumps. Thereby spending the least money on running the total system. 
 
@@ -24,23 +26,23 @@ Considering both the cost function and the constrain, this leads to a descriptio
 s.t 
 \vspace*{-0.4mm}
 \begin{align*}
-p_i &\geq x \\
-q_4 &\geq x 
+0.08 < p_{cp} < 0.14 \:[\text{bar}]\\
+\bar{q}_{wt} > 0.06 \: \big[\frac{m^3}{day}\big] x 
 \end{align*}
 
 \begin{minipage}[t]{0.20\textwidth}
 
 Where\\
-\hspace*{8mm} $\Delta{p}_i$ \\
-and \hspace*{0.7mm} $q_i$	
+\hspace*{8mm} $p_{cp}$ \\
+and \hspace*{0.7mm} $\bar{q}_{wt}$	
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the pressure gain over a pump,\\
-is the flow at a pump.
+is the pressure at a given CP,\\
+is the average flow rate through the WT.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{Bar}$\\
-\textcolor{White}{te}$\unit{m^3 \cdot s^{-1}}$
+\textcolor{White}{te}$\unit{\frac{m^3}{day}}$
 \end{minipage}
