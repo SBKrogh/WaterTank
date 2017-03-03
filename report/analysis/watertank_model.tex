@@ -27,19 +27,23 @@ The rate of change of the fluid volume in the water tower is proportional to the
 Where\\
 \hspace*{8mm} $h$ \\
 \hspace*{8mm} $V_t$ \\
+\hspace*{8mm} $A$ \\
 \hspace*{8mm} $q$ \\
+
 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the height of the fluid in the WT\\
 is the volume of the WT\\
+is the cross section of the WT which is assumed to be constant for $y \in [0,h]$\\
 is the volumetric flow
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{m}$\\
 \textcolor{White}{te}$\unit{m^3}$\\
+\textcolor{White}{te}$\unit{m^2}$\\
 \textcolor{White}{te}$\unit{\frac{m^3}{s}}$
 \end{minipage}
 
@@ -64,7 +68,7 @@ is the density of water.
 \end{minipage}
 
 
-Assuming the side walls of the WT are vertical,\eqref{Newton_WT} can be rewritten in terms of pressure such as: 
+\eqref{Newton_WT} can be rewritten in terms of pressure such as: 
 
 \begin{equation}
   \frac{F}{A} = \rho g h = p - p_a = \Delta p
