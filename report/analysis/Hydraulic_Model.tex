@@ -113,7 +113,10 @@ is the diameter of the pipe.
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
+Water flow, q, can be described in terms of water velocity, $v$, and cross sectional 
+area, A, resulting in:
+%Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
+
 \begin{equation}
   q=A \cdot v
 	\label{EquationOfContinuity}
@@ -156,7 +159,8 @@ is the pressure at a point.
 \textcolor{White}{te}$\unit{Pa}$\\
 \end{minipage}
 %
-The velocity can be written in terms of volumetric water flow and cross sectional area according to the continuity law.
+Rewriting the velocity in terms of volumetric water flow and cross sectional 
+area. 
 
 \begin{equation}
     A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
@@ -212,7 +216,7 @@ is the diameter of the pipe.
 \end{minipage}
 
 \eqref{Darcy} is under the assumption that $v>0$.%, therefore it is not dependant on $|v|v$ but on $v^2$. \\
-Applying the continuity law and assuming that the flow is not unidirectional, the velocity can be substituted by the volumetric flow and pipe area, resulting in:
+Assuming that the flow is not unidirectional and substituting the velocity by the volumetric flow and pipe area:
 
 \begin{equation}
   h_f = \frac{8fL}{\pi^{2}gD^5} |q| q
@@ -313,7 +317,7 @@ fittings of a pipe. Form loss can be expressed as:
 \end{equation}
 
 
-Applying the continuity law:
+Applying the definition of volumetric flow:
 
 \begin{equation}
    h_m = k_f \frac{8}{\pi^2gD^4}  |q| q
