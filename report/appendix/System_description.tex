@@ -1,0 +1,85 @@
+\chapter{System description}
+\label{system_description}
+
+
+\section{System topology}
+\label{systemdiagram}
+%tikz of system diagram
+\begin{figure}[H]
+\centering
+\resizebox{0.78\linewidth}{!}{\input{report/tikz/full_sys_diagram.tex}}
+%\input{report/tikz/full_sys_diagram.tex} 
+%\caption{system diagram}
+\label{systemdiagram}
+\end{figure}
+
+\section{System graph}
+\label{systemgraph}
+\begin{figure}[H]
+\centering
+%\input{report/tikz/SystemGraph.tex} 
+\resizebox{1\linewidth}{!}{\input{report/tikz/SystemGraph.tex}}
+\end{figure}
+
+\section{Spanning tree}
+\label{spanningtree}
+\begin{figure}[H]
+\centering
+%\input{report/tikz/SpanningTree.tex} 
+\resizebox{0.9\linewidth}{!}{\input{report/tikz/SpanningTree.tex}}
+\end{figure}
+
+
+\begin{sidewaysfigure}[htb]
+\begin{equation}
+  \label{graph_nodes}
+H
+=
+\left[
+\begin{array}{*{26}c}
+   $ 18x24$ & e2 & e3 & e4 & e5 & e6 & e11 & e21 & e23 & e1 & e7 & e8 & e9 & e10 & e12 & e13 & e14 & e15 & e16 & e17 & e18 & e19 & e20 & e22 & e24 & 
+e25 \\
+n1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & -1 & 0 & 0 & 0 & 0 & -1 & -1 & 0 & -1 
+\\
+n2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n3 & -1 & 1 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 
+\\
+n4 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\\
+n5 & 0 & 0 & -1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n6 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 
+0 \\
+n7 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n9 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n10 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 
+0\\
+n11 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n12 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n13  &  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 
+\\
+n14 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 & 0 
+\\
+n15 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 
+\\
+n16 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 & 0 
+\\
+n17 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 0 
+\\
+n18 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -1 & 1 
+
+
+\end{array}
+\right]
+\end{equation}
+\end{sidewaysfigure}
+
+
+
