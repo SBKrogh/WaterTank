@@ -3,8 +3,8 @@
 
 %R2015-1-S1 type valve
 
-Valves in the water distribution system are modelled according to the consideration that the length of each valve, $L$, and the change in elevatio, $\Delta z$, are assumed to be zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints considering the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
-In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable opening degree(OD) which influences the pressure drop across the endpoints. 
+Valves in the water distribution system are modelled according to the assumption that the length of each valve, $L$, and the change in elevation, $\Delta z$, are zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints. This is due to the fact that the length of a valve is considerably smaller than the length of a pipe. Another fair assumption is that in case of a valve, elevation is not present. \\
+In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable Opening Degree(OD) which influences the pressure drop across the endpoints. 
 
 %Valves can be also seen as pipe fittings where the OD is constant for all times, however there are not any fittings in the system, moreover the model of pipes covers it anyway. \\
 %Due to the above-mentioned considerations, by recalling \eqref{FinalPipeModel}, it simplifies as follows: 
@@ -41,9 +41,9 @@ is the valve maximum capacity factor
 \subsubsection{Valve conductivity function \texorpdfstring{$k_v(OD)$}{}}
 \label{OD}
 
-Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies too \cite{Kallesoe2009}.
+Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies. \cite{Kallesoe2009}.
 
-All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all valves. 
+All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all of them. 
 
 %k_v valve characteristics
 %\begin{figure}[H]
@@ -60,7 +60,7 @@ All valves in the system share the same characteristics, therefore the following
 \label{valve_conductivity}
 \end{figure}
 
-According to \cite{keller}, the following definition can be written up for the conductivity function, $k_v(OD)$:
+According to \cite{keller}, the following definition can be written up generally for the conductivity function, $k_v(OD)$:
 
 
 \begin{equation}
@@ -86,7 +86,7 @@ Where\\
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the opening degree\\ 
-is the maximum of the opening degree\\
+is the upper interval of the opening degree where the conductivity does not change $\in [90\degree, 100 \degree]$ \\
 is the valve characteristic curve factor.
 
 \end{minipage}
@@ -97,7 +97,7 @@ is the valve characteristic curve factor.
 \textcolor{White}{te}$\unit{\cdot}$
 \end{minipage}	
 
-A new parameter, $\theta_{max}$, is introduced which describes the maximum angle where the actuator closes the valve. The same can be stated for a minimum angle\todo{is theta\_max fully open or closed?}. The valve is closed when the position of the actuator $\in [0\degree,15\degree]$. As a consequence, there is an offset in the curve as it is shown in \figref{valve_conductivity}. Introducing the following angle:
+A new parameter, $\theta_{max}$, is introduced which describes the maximum angle where the actuator closes the valve. The same can be stated for a minimum angle. The valve is closed when the position of the actuator $\in [0\degree,15\degree]$. As a consequence, there is an offset in the curve as it is shown in \figref{valve_conductivity}. Introducing the following angle:
 
 \begin{equation}
 \label{ValveAngle}
@@ -118,7 +118,7 @@ is the minimum angle where the valve opens.
 \textcolor{White}{te}$\unit{\degree}$
 \end{minipage}
 
-\eqref{kvFunction} modifies to: 
+In case of the water distribution system \eqref{kvFunction} modifies to: 
 
 \begin{equation}
  k_v(OD) =
@@ -148,7 +148,7 @@ As it is shown, the conductivity function of the valve consists of two types of 
 		\right.
 \end{equation}	
 
-Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential part has to be continuously differentiable and predetermined by $n_{gl}$ \citep{Kallesoe2009,keller} 
+Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential has to be continuously differentiable and predetermined by $n_{gl}$ \citep{Kallesoe2009,keller} 
 
 
 \subsubsection{Complete valve model}
@@ -161,7 +161,7 @@ Using \eqref{kvequation} with the conductivity function $k_v(OD)$ and expressing
  \Delta p = \frac{1}{k_v(OD)^2} |q| q
 \end{equation}
 
-Expressing it in a compact form for the $k$th valve  in the network yields: 
+Describing it in a compact form for the $k^{th}$ valve in the network yields: 
 
 \begin{equation}
 \label{CompactValveModel}
