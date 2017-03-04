@@ -1,0 +1,45 @@
+\begin{tikzpicture} [scale=1.1,transform shape]
+
+  \draw[|-|] (4.1,-2.6) --
+        node[fill=white,font=\scriptsize,inner ysep=2pt,inner
+                xsep=20]{$\Delta z$}(4.1,-0.4) node (v5) {};
+                
+ \draw[|-|] (2.85,0.8) --
+        node[fill=white,font=\scriptsize,inner ysep=0pt,inner
+                xsep=20]{$L$}(-2.85,-0.75)  {};
+                
+ \fill[cyan!15] (-2.5,-2) circle (0.6cm);
+\draw [line width=0.4mm, black ] (-2.5,-2) node (v2) {} circle (0.6cm);
+
+
+\draw [line width=0.4mm, black ] (-2.75,-1.45) node (v6) {} -- (2.9,0.1);
+
+\draw [line width=0.4mm, black ] (3.45,-0.967) node (v1) {} arc (-58:113:0.6);
+
+\draw[black,fill=black] (-2.5,-2) node (v7) {} circle (.2ex);
+
+\draw [line width=0.4mm, black ] (-2.4,-2.6) node (v3) {} -- (3.45,-0.967);
+\draw [black,fill=black] (3.25,-0.4) node (v4) {} circle (.2ex);
+
+\draw [dashed=on 2pt off 3pt on 4pt off 4pt](v3) -- (4.1,-2.6) ;
+\draw [dashed=on 2pt off 3pt on 4pt off 4pt](v4) -- (v5);
+
+
+\draw [dashed](v7) -- (-2.85,-0.75);
+\draw [dashed](v4) -- (2.85,0.8);
+\draw [dashed](v7) -- (v4);
+
+
+\draw [line width=0.3mm, black ] [-latex](-3.6,-2.3) -- (-2.75,-2.05);
+
+\draw [line width=0.3mm, black ] [-latex](4.55,-0.05) -- (3.8,-0.25);
+
+\draw [line width=0.3mm, black ] [-latex](2.61,-0.58) -- (1.85,-0.79);
+
+\draw [line width=0.3mm, black ] [-latex](0.61,-1.14) -- (-0.15,-1.35);
+
+\node at (-3.55,-2) {\small{$F_{in}$}};
+\node at (4.2,0.1) {\small{$F_{out}$}};
+\node at (2.15,-0.45) {\small{$F_{res}$}};
+\node at (0.1,-1) {\small{$F_{elev}$}};
+\end{tikzpicture}%

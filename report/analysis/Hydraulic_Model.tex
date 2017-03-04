@@ -67,7 +67,7 @@ The dynamic model of a pipe component is derived under the assumption that the f
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned asumptions, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum F
+  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum_i F_i
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -87,9 +87,16 @@ is the value of the velocity of the water at each point of the pipe.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
-\todo{Insert here a free-body diagram - Tom}
 The sum of the forces acting on the control volume can be seen as input forces, acting on the inlet of the pipe, output forces, acting on the outlet, resistance forces and gravitational force effect.  
-These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. 
+These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. In \figref{fig:pipe_freebody} all forces acting on a pipe segment is shown:
+
+%tikz of the pipe freebody diagram
+\begin{figure}[H]
+\centering
+\input{report/tikz/pipe_freebody.tex} 
+\caption{Free-body diagram describing the forces acting on a segment of a pipe}
+\label{fig:pipe_freebody}
+\end{figure}
 
 The pipe is assumed to have cylindrical structure. Furthermore, the cross section of the pipe, $A(x)$, is constant for every $x \in [0,L]$, where $L$ is the length of the pipe:
 
@@ -113,8 +120,8 @@ is the diameter of the pipe.
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Water flow, q, can be described in terms of water velocity, $v$, and cross sectional 
-area, A, resulting in:
+Water flow($q$) can be expressed in terms of velocity($v$) and cross sectional 
+area($A$), resulting in:
 %Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
 
 \begin{equation}
@@ -166,7 +173,7 @@ area.
     A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
 \end{equation}
 
-By dividing the equation with the cross sectional area, A, it can be seen that the equation is depeding on the pressure difference between two endpoints. \todo{Is this paragraph okay? else include the out comment.}
+By dividing the equation with the cross sectional area, A, it can be seen that the equation is dependant on the pressure difference between two endpoints.
 %Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
