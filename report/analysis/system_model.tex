@@ -1,4 +1,18 @@
 \section{System structure}  
 \label{SystemModel}
 
-1234
+After deriving the dynamics of all components in the network, the complete system can be drawn. In the appendix, \secref{systemdiagram}, the topology of the test system is described in detail. In the following, all the statements are based on the notations and relation system of the system figure in the appendix. 
+\\
+The way of modelling of the hydraulic system is analogous to an electric circuit. Most of the various hydraulic components can be represented as electronic equivalents and vice versa. In the block diagram of the system nodes are introduced which usually represent different potentials in an electronic system. In general, this is equivalent to hydraulic heads. In other words, nodes represent points in the system where pressure has different values. These nodes are introduced arbitrarily but taking into account that each individual component in the system has an effect on the pressure drop on their two corresponding endpoints. Therefore nodes are placed at all places where the modelling requires it. 
+\\
+In the network, volume flow rate is equivalent to current and the quantity of water has the same physical meaning as electric charge in an electric circuit. 
+\\ 
+Although nodes can be placed across all the endpoints of components in the system, some simplifications are carried out. There are two different types of simplification in the network. For a better transparency, these parts of the system are shown in \figref{fig:subsys_1} and ....: 
+
+%picture of test system
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{report/pictures/missingfigure}
+\caption{Simplification when the pump is not used}
+\label{fig:subsys_1}
+\end{figure}
