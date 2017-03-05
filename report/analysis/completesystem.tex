@@ -1,37 +1,47 @@
 \section{Complete system model} 
 \label{CompleteSystemModel}
 
-Writing up the final expression of each component, a complete system model can be obtained. This model includes pipe, valve and pump components. The water tower is not described in this model but instead by the final expression obtained in \secref{WaterTankModel}:
+Using the final expression of each component, a complete system model can be obtained. This model includes pipe, valve, pump components and the WT. 
+
+The model of the water tower is described by a first order differential equation, consisting of the first time derivative of the pressure drop. The final expression is shown in \secref{WaterTankModel}:
 
 \begin{equation}
   \label{CompleteWTModel}
-  \Delta \dot{p_k} = \underbrace{\frac{1}{C_H}q_k}_\text{Water tank} 
+  \Delta {\dot{p}_{WT;k}} = \frac{1}{C_{H;k}} q_k 
 \end{equation}
 
+The complete model consists of the pipe model, \eqref{CompactValveModel} the valve model, \eqref{PumpModel} the pump model and \eqref{CompleteWTModel} the WT model. For the pressure drop of the $k^{th}$ component the following expression can be written: 
 
- The complete model is based on \eqref{CompleteModel} the pipe model, \eqref{CompactValveModel} the valve model and \eqref{PumpModel} the pump model which are combined as shown:
+%\begin{equation}
+%\label{CompletePressure}
+%\Delta P_k + \Delta p_{WT;k} = 0
+%\end{equation}
+%
+%Where $\Delta P_k$ represents the pressure drop across the $k^{th}$ component and $\Delta p_{WT;k}$ represents
 
 \begin{equation}
-  \label{CompleteModel}
-  \Delta P_k = \underbrace{\lambda_k (q_k) + \zeta_k}_\text{Pipe} + \underbrace{\mu (q_k, k_v)}_\text{Valve} - \underbrace{\alpha (u)}_\text{Pump} 
+\label{CompleteModel}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k - J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu (q_k, k_v)}_\text{Valve} - \underbrace{\alpha (u)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
 \end{equation}
 
-
-
-The complete system model, \eqref{CompleteModel} is used to represent each components except the WT which is described by \eqref{WTequation}. In order to describe each component by \eqref{CompleteModel} the parameters that correspond to the specific component are chosen accordingly and the remaining are set to zero as they are not used to describe the specific component. 
+The complete system model, \eqref{CompleteModel} is used to represent the pressure contribution of each component. In order to describe each component by \eqref{CompleteModel} the parameters that correspond to the specific component are chosen accordingly and the remaining are set to zero as they are not used to describe the specific component. 
 %At the time of modelling the components, the proper components will be annulled to zero. 
 The relation seen in \tabref{tab:parametrization_model} shows the parametrization of the system.
 
 \begin{figure}[H]
 	\centering
-\begin{tabular}{c|cccc} 
-  			\bfseries Component    &     $\lambda_k$    &    $\mu_k$    &   $\alpha_k$    &  $\zeta_k$  		\\ \hline
-			kth Pipe		  	   &     $\lambda_k$    &    0          &   0             &  $\zeta_k$   	    \\ 
-			kth Valve              &     0              &    $\mu_k$    &   0 		      &  0    				\\ 
-			kth Pump 		       &     0              &    0          &   $\alpha_k$    &  0    			    
+\begin{tabular}{c|cccccc} 
+  			\bfseries Component    &     $J_k$    &     $\lambda_k$    &    $\mu_k$    &   $\alpha_k$    &  $\zeta_k$   &	$\Delta p_{WT;k}$	\\ \hline
+			kth Pipe		  	   &     $J_k$    &     $\lambda_k$    &    0          &   0             &  $\zeta_k$   &   0	    			\\ 
+			kth Valve              &     0        &     0              &    $\mu_k$    &   0 		     &  0    		&   0					\\ 
+			kth Pump 		       &     0        &     0              &    0          &   $\alpha_k$    &  0    		&   0	    			\\
+			kth Water tower 	   &     0        &     0              &    0          &   0             &  0    		&   $\Delta p_{WT;k}$	    
 \end{tabular}
 \captionof{table}{Complete model parametrization.}
 		\label{tab:parametrization_model}
 
 \end{figure}	
+
+\subsubsection{Unit transformation}
+\label{unittransform}
 
