@@ -1,7 +1,7 @@
 \chapter{Unit conversion}
 \label{unitCON}
 
-Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to bar is made. This conversion is used throughout this report. 
+Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to bar is made.
 
 The final pipe model from \eqref{FinalPipeModel}, is shown below.   
 
@@ -13,17 +13,17 @@ The final pipe model from \eqref{FinalPipeModel}, is shown below.
 \label{UnitCon_eq}
 \end{equation}
 
-The notation for bar i going to be denoted as $p_{bar}$, which is equal to $1\cdot p_{bar}[\text{bar}] = \frac{p}{10^5}[\text{Pa}]$. From this we can rewrite \eqref{UnitCon_eq} to 
+$1 [\text{bar}] = 10^5[\text{Pa}]$. Therefore we can rewrite \eqref{UnitCon_eq} to: 
 
 \begin{equation}
 \begin{split}
-   \frac{L \rho}{A\cdot10^5} \frac{dq}{dt} &= \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g |q| q - \frac{\Delta z \rho g}{\cdot10^5}\\
-   \frac{L \rho}{A\cdot10^5} \frac{dq}{dt} &= \Delta p_{bar} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g |q| q - \frac{\Delta z \rho g}{\cdot10^5}
+   \frac{L \rho}{A\cdot10^5} \frac{dq}{dt} &= \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g |q| q - \frac{\Delta z \rho g}{10^5}\\
+   \frac{L \rho}{A\cdot10^5} \frac{dq}{dt} &= \Delta p_{bar} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g |q| q - \frac{\Delta z \rho g}{10^5}
 \end{split}
 \end{equation}
 
-The conversion from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ is $\frac{m^3}{s}*3600 = \frac{m^3}{s}$. With this in mind \eqref{UnitCon} can be written as 
+The conversion from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ is $\frac{m^3}{s} 3600 = \frac{m^3}{s}$. \eqref{UnitCon_eq} can be written as:
 
 \begin{equation}
-   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{\cdot10^5}
+   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{10^5}
 \end{equation}
