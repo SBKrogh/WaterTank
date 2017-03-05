@@ -33,4 +33,18 @@ Although nodes can be placed across all the endpoints of components in the syste
 \end{minipage}
 \end{figure}
 
-In \figref{fig:subsys_1}
+In \figref{fig:subsys_1} three components between $n_3$ and $n_{18}$ are shown. This is the part of the system where the WT connects. In this particular case the pump is turned off, however contributes to the pressure drop because its resistance is not zero. The same can be said for the valves, except that they are fully open but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead they are seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pipe, \eqref{PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega = 0$:
+
+\begin{equation}
+  \Delta p = \Big(\frac{2}{k_v(OD)^2} - a_{h2}\Big)|q| q 
+  \label{omega_zero}
+\end{equation}
+
+And the following when $\omega \neq 0$
+
+\begin{equation}
+  \Delta p = \Big(\frac{2}{k_v(OD)^2} - a_{h2}\Big)|q| q  + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
+  \label{omega_notzero}
+\end{equation}
+
+The case when $\omega = 0$ applies to the components between $n_4$-$n_8$, $n_3$-$n_18$  and to $n_5$-$n_{13}$. The case when $\omega \neq 0$ applies to the two main pumps, between $n_1$-$n_2$ and $n_1$-$n_7$. All these subsystems are modelled as described here in the system. 
