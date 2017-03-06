@@ -1,0 +1,36 @@
+\tikzset{connect/.style={draw,circle, inner sep=0pt, text width=2mm, align=center,fill=black}}
+
+\begin{tikzpicture}
+%pump
+\node[draw,circle,minimum size=1cm] (p0) at (0,0) {};
+\node(p1) at ($(p0)+(-0.5,0)$) {};
+\node(p2) at ($(p1)+(0.5,0.5)$) {};
+\node(p3) at ($(p1)+(1,0)$) {};
+\draw(p1.center) -- (p2.center) -- (p3.center);
+\node at ($(p1)+(1.5,0)$) {\Large $C_{2}$};
+
+%man-valve
+\node(n1) at (0.25,2) {};
+\draw(n1.center) -- ($(n1)-(0.5,0)$) --
+($(n1)-(0,1)$) -- ($(n1)-(0.5,1)$) --  (n1.center);
+\draw($(n1)-(0.75,0.25)$) -- ($(n1)-(0.75,0.75)$) -- 
+($(n1)-(0.75,0.5)$) --  ($(n1)-(0.25,0.5)$);
+
+%man-valve
+\node(n1) at (0.25,-1) {};
+\draw(n1.center) -- ($(n1)-(0.5,0)$) --
+($(n1)-(0,1)$) -- ($(n1)-(0.5,1)$) --  (n1.center);
+\draw($(n1)-(0.75,0.25)$) -- ($(n1)-(0.75,0.75)$) -- 
+($(n1)-(0.75,0.5)$) --  ($(n1)-(0.25,0.5)$);
+
+\node[connect] (N) at (0,2.5) {};
+\node at ($(N)+(0.5,0)$) {\Large $n_{2}$};
+\node[connect] (N) at (0,-2.5) {};
+\node at ($(N)+(0.5,0)$) {\Large $n_{1}$};
+
+\draw(0,2.5) -- (0,2);
+\draw(0,0.5) -- (0,1);
+\draw(0,-0.5) -- (0,-1);
+\draw(0,-2.5) -- (0,-2);
+
+\end{tikzpicture}
