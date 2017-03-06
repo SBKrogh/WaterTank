@@ -14,12 +14,14 @@
 
 \draw [line width=0.4mm, black ] (-2.75,-1.45) node (v6) {} -- (2.9,0.1);
 
-\draw [line width=0.4mm, black ] (3.45,-0.967) node (v1) {} arc (-58:113:0.6);
+\draw [line width=0.4mm, black] (3.45,-0.967) node (v1) {} arc (-58:113:0.6);
+\draw [line width=0.4mm, black, dashed] (3.45,-0.967) node (v1) {} arc (302:100:0.6); %% Dashed circle
+
 
 \draw[black,fill=black] (-2.5,-2) node (v7) {} circle (.2ex);
 
-\draw [line width=0.4mm, black ] (-2.4,-2.6) node (v3) {} -- (3.45,-0.967);
-\draw [black,fill=black] (3.25,-0.4) node (v4) {} circle (.2ex);
+\draw [line width=0.4mm, black ] (-2.4,-2.6) node (v3) {} -- (3.4,-1); %% Lower line
+\draw [black,fill=black] (3.14,-0.46) node (v4) {} circle (.2ex); 	% Upper dot
 
 \draw [dashed=on 2pt off 3pt on 4pt off 4pt](v3) -- (4.1,-2.6) ;
 \draw [dashed=on 2pt off 3pt on 4pt off 4pt](v4) -- (v5);
