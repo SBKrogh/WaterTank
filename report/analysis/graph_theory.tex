@@ -11,15 +11,13 @@ voltage and currents, respectively.
 
 \subsection{Incidence Matrix} 
 
-The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
-This components are considered as nodes and the paths connecting them are denoted as edges. 
-In order to show the relationship between the nodes conforming a graph the 
-incidence matrix is calculated. In hydraulic networks contest, the edges have a 
-direction associated with them, this characteristic leads to have a incidence matrix, A, where:
+The incidence matrix (H) of a graph with \textit{n} vertices, \textit{e} edges is 
+defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of vertices and edges respectively.
+In hydraulic networks contest, the edges have a direction associated with them, this characteristic leads to have a directed incidence matrix:
 
 \begin{equation}
 \label{DiGraph}
- A =
+ a_{ij} =
 		\left\{
 		\begin{array}{ll}
 		
@@ -33,6 +31,11 @@ direction associated with them, this characteristic leads to have a incidence ma
 		\end{array}
 		\right.
 \end{equation}	
+
+The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
+This components are considered as nodes and the paths connecting them are denoted as edges. 
+In \appref{IncidenceSection} the corresponding incidence matrix of the system is 
+shown. 
 
 
  
