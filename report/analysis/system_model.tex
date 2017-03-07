@@ -3,7 +3,7 @@
 
 After deriving the dynamics of all components in the network, the complete system can be drawn. In \appref{systemdiagram}, the topology of the test system is described in detail. In the following, all the statements are based on the notation and relation system of the figure in the appendix. 
 \\
-The way of modelling the hydraulic system is analogous to an electric circuit. Most of the various hydraulic components can be represented as electronic equivalents and vice versa.
+The way of modelling the hydraulic system is analogous to an electric circuit. Most of the various hydraulic components can be represented as electronic equivalents and vice versa. 
 \\
 In the block diagram of the system nodes are introduced which  normally represent different potentials in an electronic system. In general, this is equivalent to hydraulic heads. Nodes represent points in the system where pressure has different values. These points are introduced arbitrarily while taking into account the fact that each individual component in the system has an effect on the pressure drop on their two corresponding endpoints. Therefore nodes are placed at all places where the modelling requires it. 
 \\
@@ -50,3 +50,22 @@ And the following when $\omega \neq 0$
 \end{equation}
 
 The case when $\omega = 0$ applies to components between $n_4$-$n_8$, $n_3$-$n_{18}$  and to $n_5$-$n_{13}$. The case when $\omega \neq 0$ applies to the two main pumps, between $n_1$-$n_2$ and $n_1$-$n_7$. All these subsystems are modelled as described above. 
+\\
+Since the components influence the pressure between the endpoints, as it was mentioned before, they can be represented as electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and it has a resistance depending on the OD. Pipes are modelled similarly as linear inductors with a nonlinear term. The pressure drop across their endpoints is the first derivative and quadratic function of the flow. The pumps provide pressure and therefore flow to the system. They can be seen as voltage generators. The WT is a simple capacitor, as it was described previously. The equivalence between the hydraulic and electric system is summarized in \tabref{tab:hydraulic_electrical}.
+
+\begin{figure}[H]
+	\centering
+\begin{tabular}{c|c} 
+  			\bfseries Hydraulic system    &     \bfseries Electrical system  \\ \hline
+			Valve		  	  &     Nonlinear resistor   \\ 
+			Pipe              &     Linear inductor with a nonlinear drift term       \\ 
+			WT 		          &     Capacitor       \\
+			Pressure	 	  &     Voltage    \\
+			Flow 		      &     Current       \\  
+			Pumps 		      &     Voltage source           
+\end{tabular}
+\captionof{table}{Comparison of electrical and hydraulic network.}
+		\label{tab:hydraulic_electrical}
+
+\end{figure}	
+	
