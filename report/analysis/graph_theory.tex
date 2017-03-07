@@ -3,16 +3,14 @@
 A graph is a formal mathematical way of representation of a network which can be applicable, among others, 
 in engineering or scientist research e.g., mechanicals systems, electrical circuits or hydraulic networks \cite{graph_intro}. 
 
-In order to make the modelling of the water distribution network the Graph Theory is used. The graph is constructed 
+In order to make the modelling of the water distribution network the Graph Theory is used. The graph, G, is constructed 
 based on the affinity between both electrical circuits and hydraulic networks. 
-The behavior of the network is function of the characteristics of the 
-electrical elements and how they are connected together. The pressures and flows are considered as 
-voltage and currents, respectively.
-
+Each terminal of the network is associated with a vertices, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
+\todo{Add reference to table of correlation}
 \subsection{Incidence Matrix} 
 
-The incidence matrix (H) of a graph with \textit{n} vertices, \textit{e} edges is 
-defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of vertices and edges respectively.
+The incidence matrix, H, of a graph with \textit{n} vertices and \textit{e} edges is 
+defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of vertices, i, and edges, j, respectively.
 In hydraulic networks contest, the edges have a direction associated with them, this characteristic leads to have a directed incidence matrix:
 
 \begin{equation}
@@ -32,30 +30,57 @@ In hydraulic networks contest, the edges have a direction associated with them, 
 		\right.
 \end{equation}	
 
-The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
-This components are considered as nodes and the paths connecting them are denoted as edges. 
+%The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
+%This components are considered as nodes and the paths connecting them are denoted as edges. 
 In \appref{IncidenceSection} the corresponding incidence matrix of the system is 
-shown. 
+shown. % In this particular hydraulic network.  H is conformed by $25$ edges and $18$ nodes.  
 
+%Regarding the rank of the H matrix it is necessary to point out that the last row is result of the rows above it. Since the rows conforming the incidence matrix are not linearly independent the 
+%rank of the H matrix is less than n, this yields the rank to be $\text{rank(A)} \leq 
+%n-1$.
 
- 
-%The pressure drops taking place in the pipes and valves can be considered as inductors and nonlinear resistors, respectively. 
-%
-%\textit{Maybe here before we start with the Graph Theory could be nice to make a figure showing the changes between the hydraulic circuit to the electrical 
-%one.}
-%
-%The analogy between hydraulic and electrical circuits described above is applied in the graph theory…(start explaining Graph Theory).
+\subsection{Cycle Matrix}
+\label{CycleSection}
+A spanning tree, T, of a G is a subgraph which contains all vertices of G but has no cycles. 
+In order to obtain the spanning tree it is necessary to delete an edge from each 
+circuit of the graph, the removed edges are called chords. To obtain the number 
+of chords, \textit{l}, the following relationship is applied:
 
-%%tikz of system diagram
-%\begin{figure}[H]
-%\centering
-%\resizebox{1.1\linewidth}{!}{\input{report/tikz/full_sys_diagram.tex}}
-%%\input{report/tikz/full_sys_diagram.tex} 
-%\caption{system diagram}
-%\label{fig:systemdiagram}
-%\end{figure}
- 
-\subsection{Cycle Matrix} 
+\begin{equation}
+  \label{Numberofchords}
+  l = e - n +1
+\end{equation}
+
+Adding any one chord to T will create one circuit which is called fundamental 
+circuit. A graph is conformed by as many fundamental circuits as number of chords it has.  
+This set of fundamental circuits correspond to the fundamental circuit matrix 
+$B_f$, such as the number of rows is equal to the amount of fundamental circuits and the columns are  
+given by the edges. 
+
+Similarly to the incidence matrix, the edges conforming the fundamental circuit 
+matrix have a direction associated with them. Then, the B matrix can be 
+expressed with $B = [b_{ij}]$ and
+
+\begin{equation}
+\label{DiGraphCycle}
+ b_{ij} =
+		\left\{
+		\begin{array}{ll}
+		
+		1 			&      \text{if the edges is in the circuit i and the directions match}	
+\\
+		-1                       &     \text{if the edges is in the circuit i and the directions are opposite}
+\\
+
+                0                       &      \text{otherwise}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+In \appref{CycleAppendix} the corresponding incidence matrix of the system is 
+shown.
+
 
 \todo{For the graph representation an idea for the logical order of the section:}
 1. Describe how the system diagram can be expressed as a graph \\
