@@ -5,12 +5,12 @@ in engineering or scientist research e.g., mechanicals systems, electrical circu
 
 In order to make the modelling of the water distribution network the Graph Theory is used. The graph, G, is constructed 
 based on the affinity between both electrical circuits and hydraulic networks. 
-Each terminal of the network is associated with a vertices, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
+Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \todo{Add reference to table of correlation}
 \subsection{Incidence Matrix} 
 
-The incidence matrix, H, of a graph with \textit{n} vertices and \textit{e} edges is 
-defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of vertices, i, and edges, j, respectively.
+The incidence matrix, H, of a graph with \textit{n} nodes and \textit{e} edges is 
+defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes, i, and edges, j, respectively.
 In hydraulic networks contest, the edges have a direction associated with them, this characteristic leads to have a directed incidence matrix:
 
 \begin{equation}
@@ -41,7 +41,7 @@ shown. % In this particular hydraulic network.  H is conformed by $25$ edges and
 
 \subsection{Cycle Matrix}
 \label{CycleSection}
-A spanning tree, T, of a G is a subgraph which contains all vertices of G but has no cycles. 
+A spanning tree, T, of a G is a subgraph which contains all nodes of G but has no cycles. 
 In order to obtain the spanning tree it is necessary to delete an edge from each 
 circuit of the graph, the removed edges are called chords. To obtain the number 
 of chords, \textit{l}, the following relationship is applied:
@@ -80,9 +80,6 @@ expressed with $B = [b_{ij}]$ and
 In \appref{CycleAppendix} the corresponding incidence matrix of the system is 
 shown.
 
+\subsection{Kirchhoff Law}
+\label{KirchhoffSection}
 
-\todo{For the graph representation an idea for the logical order of the section:}
-1. Describe how the system diagram can be expressed as a graph \\
-2. Describe graph theory(matrices, relations) and our graph\\
-3. Derive/describe the matrix/vector equations between dynamics and graph theory\\
-4. KVL, KCL does it apply to the system 
