@@ -24,15 +24,16 @@ Although nodes can be placed across all the endpoints of each component, some si
 \begin{minipage}{0.4\textwidth}
   \centering
   \input{report/tikz/valve_pump_wt_simple.tex} 
-  \captionof{figure}{$\omega = 0$}
+  %\captionof{figure}{$\omega = 0$}
   \label{fig:subsys_1}
 \end{minipage}%
 \begin{minipage}{0.4\textwidth}
   \centering
   \input{report/tikz/valve_pump_n1_n2.tex} 
-  \captionof{figure}{$\omega \neq 0$}
+  %\captionof{figure}{$\omega \neq 0$}
   \label{fig:subsys_2}
 \end{minipage}
+\captionof{figure}{Simplifications: In the left when $\omega = 0$ and in the right one when $\omega \neq 0$}
 \end{figure}
 
 In \figref{fig:subsys_1} three components are shown between $n_3$ and $n_{18}$. This is the part where the WT connects in the system. In this particular case the pump is turned off, however contributes to the pressure drop due its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead they are seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pipe, \eqref{PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega = 0$:
