@@ -1,14 +1,17 @@
 \section{Graph Representation}  
 \label{GraphTheory}
 A graph is a formal mathematical way for representing a network which can be applicable, among others, 
-in engineering or scientistific research, mechanical systems, electrical circuits or hydraulic networks \cite{graph_intro}. 
+in engineering or scientific research, mechanical systems, electrical circuits or hydraulic networks \cite{graph_intro}. 
 
-In order to make the modelling of the water distribution network, Graph Theory is used. A graph, G, is constructed based on the affinity between electrical and hydraulic networks. 
+In order to make the modelling of the water distribution network, Graph Theory is used. 
 Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \subsection{Incidence Matrix} 
 
-The incidence matrix, H, of a graph with \textit{n} nodes and \textit{e} edges is 
-defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes, i, and edges, j, respectively.
+The incidence matrix, $H$, of a graph with \textit{n} nodes and \textit{e} edges is 
+defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
+Additionally, the particular node and edge is denoted with the indices $i$ and 
+$j$, respectively.
+
 In case of hydraulic networks, edges have a direction which results in a directed incidence matrix:
 
 \begin{equation}
@@ -17,10 +20,11 @@ In case of hydraulic networks, edges have a direction which results in a directe
 		\left\{
 		\begin{array}{ll}
 		
-		1 			&      \text{if the edges is incidence out of the node}	
+		1 			&      \text{if the $j_{th}$ edge is incident out of the $i_{th}$ node}	
 \\
-		-1                       &     \text{if the edges is incidence into the node}
+		-1                       &     \text{if the $j_{th}$ edge is incident into the $i_{th}$ node}
 \\
+
 
                 0                       &      \text{otherwise}
 
@@ -33,8 +37,8 @@ shown.
 
 \subsection{Cycle Matrix}
 \label{CycleSection}
-A spanning tree, $T \in G$ is a subgraph which contains all nodes of G but has no cycles \cite{GraphModel}. 
-In order to obtain the spanning tree it is necessary to delete an edge from each circuit of the graph. The removed edges are called chords. To obtain the number 
+A spanning tree, $T \in G$ is a subgraph which contains all nodes of $G$ but has no cycles \cite{GraphModel}. 
+In order to obtain the spanning tree it is necessary to delete an edge from each cycle of the graph. The removed edges are called chords. To obtain the number 
 of chords, \textit{l}, the following applies:
 
 \begin{equation}
@@ -42,13 +46,13 @@ of chords, \textit{l}, the following applies:
   l = e - n +1
 \end{equation}
 
-Adding any one chord to T, it is created one circuit which is called fundamental circuit. A graph is conformed by as many fundamental circuits as number of chords it has \cite{GraphModel}.  
-This set of fundamental circuits correspond to the fundamental circuit matrix 
-$B_f$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
+Adding any one chord to $T$, creates one cycle which is called fundamental cycle. A graph is conformed by as many fundamental cycles as number of chords it has \cite{GraphModel}.  
+This set of fundamental cycle correspond to the fundamental cycle matrix 
+$B$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-Similarly to the incidence matrix, the edges conforming the fundamental circuit 
-matrix have a direction associated with them. Then, the B matrix can be 
-expressed with $B = [b_{ij}]$ and
+Then, the cycle matrix of a directed graph can be 
+expressed with $B = [b_{ij}]$ where $i$ and $j$ denote the particular chord and 
+edge, respectively. 
 
 \begin{equation}
 \label{DiGraphCycle}
@@ -56,9 +60,9 @@ expressed with $B = [b_{ij}]$ and
 		\left\{
 		\begin{array}{ll}
 		
-		1 			&      \text{if the edges is in the circuit i and the directions match}	
+		1 			&      \text{if the edges $j_{th}$ is in the cycle $i_{th}$ and the directions match}	
 \\
-		-1                       &     \text{if the edges is in the circuit i and the directions are opposite}
+		-1                       &     \text{if the edges $j_{th}$ is in the cycle $i_{th}$ and the directions are opposite}
 \\
 
                 0                       &      \text{otherwise}
@@ -75,7 +79,7 @@ shown.
 
 The directed graph of a hydraulic network has assigned to its edges two variables: 
 the pressure, $p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
-the voltage across the edges, where:
+the voltage across the edges. Where:
 
 
 \begin{minipage}{0.45\linewidth}
@@ -101,6 +105,8 @@ q(t) =
 \end{bmatrix}
 \end{equation}
 \end{minipage}
+
+ \todo{I don´t know how to put this two matrices in the same line!}
  
 In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
 that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
@@ -119,6 +125,8 @@ B = [B_c  \quad B_f]
 \end{equation}
 \end{minipage}
 
+\todo{Same here....}
+
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $H_c \quad \text{and} \quad B_c$ \\
@@ -133,14 +141,14 @@ Where\\
 Since the edges variables are elements interconnected to form a network, 
 they must obey Kirchhoff´s node and loops law \cite{GraphModel}. 
 
-Kirchhoff´s Current Law (KCL) states that the net sum of all the currents 
+Kirchhoff´s Current Law (KCL) states that the net sum of all the flows 
 leaving the node is zero. Formulating this statement in matrix form:
 
 \begin{equation}
   Hq(t) = 0
 \end{equation}
 
-Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the voltage around a cycle 
+Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure around a cycle 
 is zero. In terms of matrix form:
 
 \begin{equation}
