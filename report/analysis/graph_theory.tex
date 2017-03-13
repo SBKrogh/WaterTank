@@ -81,21 +81,40 @@ The directed graph of a hydraulic network has assigned to its edges two variable
 the pressure, $p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
 the voltage across the edges. Where:
 
+% \begin{minipage}{0.45\linewidth}
+% \begin{equation}
+% p(t) =
+% \begin{bmatrix}
+%          p_1 \\
+% 	p_2 \\ 
+% 	\vdots \\
+% 	p_e \\
+% \end{bmatrix}  \nonumber
+% \end{equation}  
+% \end{minipage}
 
-\begin{minipage}{0.45\linewidth}
+% \begin{minipage}{0.45\linewidth}
+%  \begin{equation}
+% q(t) =
+% \begin{bmatrix}
+%          q_1 \\
+% 	q_2 \\ 
+% 	\vdots \\
+% 	q_e \\
+% \end{bmatrix}
+% \end{equation}
+% \end{minipage}
+
 \begin{equation}
+%\[
 p(t) =
 \begin{bmatrix}
          p_1 \\
 	p_2 \\ 
 	\vdots \\
 	p_e \\
-\end{bmatrix}  \nonumber
-\end{equation}  
-\end{minipage}
-
-\begin{minipage}{0.45\linewidth}
- \begin{equation}
+\end{bmatrix}
+\text{and}\hspace{0.3cm}
 q(t) =
 \begin{bmatrix}
          q_1 \\
@@ -103,29 +122,33 @@ q(t) =
 	\vdots \\
 	q_e \\
 \end{bmatrix}
+%\]
 \end{equation}
-\end{minipage}
-
- \todo{I don´t know how to put this two matrices in the same line!}
  
 In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
 that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
 Therefore, it has been decided to choose the numbering of the columns of the 
 H and B matrix, such as:
 
-\begin{minipage}{0.45\textwidth}
+% \begin{minipage}{0.45\textwidth}
+% \begin{equation}
+% H = [H_c \quad H_f]
+% \end{equation}   \nonumber
+% \end{minipage}
+
+% \begin{minipage}{0.45\textwidth}
+% \begin{equation}
+% B = [B_c  \quad B_f]
+% \end{equation}
+% \end{minipage}
+
 \begin{equation}
+%\[
 H = [H_c \quad H_f]
-\end{equation}   \nonumber
-\end{minipage}
-
-\begin{minipage}{0.45\textwidth}
-\begin{equation}
+\hspace{0.1cm} \text{and}\hspace{0.3cm}
 B = [B_c  \quad B_f]
+%\]
 \end{equation}
-\end{minipage}
-
-\todo{Same here....}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
