@@ -1,0 +1,141 @@
+\section{Parameter Estimation}  
+\label{ParameterEstimation}
+Once the corresponding incidence and cycle matrix have been identified and the analogy between hydraulic and
+electrical circuits has been made, it is possible to derive a model for the hydraulic network. 
+
+In the parameter estimation the WT will be discarded from the hydraulic system, 
+in order to facilitate the process of estimation. Consequently, the WT will be isolated from the other components of the
+system.  
+
+In \secref{IncidenceSection} the form of the incidence matrix has been shown, it 
+is worth mentioning that it is been also followed the structure such as the last 
+column of the H matrix agrees with the WT edge. Hence, the H matrix can 
+be written as
+
+\begin {equation}
+H = [H_1 \quad H_0]
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $H_1 \epsilon \mathbb{R}^{nxe-1}$  \\
+\hspace*{8mm} $H_0 \epsilon \mathbb{R}^{nx1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the H matrix without the edge corresponding to the WT\\
+\hspace*{4mm} is the H matrix with the column corresponding to the WT 
+\end{minipage}
+
+In the same way, the fundamental cycle matrix has been structured such as the last column agrees with the WT edges.
+
+\begin{equation}
+  B = [B_1 \quad B_0]
+\end{equation} 
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $B_1 \epsilon \mathbb{R}^{lxe-1}$  \\
+\hspace*{8mm} $B_0 \epsilon \mathbb{R}^{lx1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the B matrix without the edge corresponding to the WT\\
+\hspace*{4mm} is the B matrix with the column corresponding to the WT 
+\end{minipage}
+
+As mentioned above, $q$ is a vector containing all the individual flows, which 
+is re-structured as following
+
+\begin{equation}
+q =
+\begin{bmatrix}
+         q_1 \\
+	q_0 
+\end{bmatrix}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $q_1 \epsilon \mathbb{R}^{e-1x1}$  \\
+\hspace*{8mm} $q_0 \epsilon \mathbb{R} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the flow through all components expect for WT\\
+\hspace*{4mm} is the flow through the WT 
+\end{minipage}
+
+The vector containing the pressures at the nodes is also re-structured as
+
+\begin{equation}
+p =
+\begin{bmatrix}
+         p_1 \\
+	p_0 
+\end{bmatrix}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $p_1 \epsilon \mathbb{R}^{n-1x1}$  \\
+\hspace*{8mm} $p_0 \epsilon \mathbb{R} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the pressure at all the nodes expect for WT\\
+\hspace*{4mm} is the pressure in the WT 
+\end{minipage}
+
+In \eqref{KCL} KCL law is applied for a connected directed graph, where it is stated that the sum of all the flows entering 
+into a node must be equal the the sum of all the nodes out of the node.
+
+Therefore, a $n-1$ linearly independent equations with $e$ unknowns are obtained. By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
+flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}. Thus, reducing the
+number of unknowns in the system. These elements of $z$ are called the free 
+flows of the system and the independent variables \cite{GraphTheoryCarsten}.
+
+\begin{equation}
+  q_1 = B_1 ^{T}  z
+  \label{ChordRelation}
+\end{equation}
+
+The following hydraulic network model shows an overall model along with the above considerations. 
+
+\begin{equation}
+  \Delta p_1 = J \dot{q}_1 + f(q_1, w, k_v)
+  \label{NoTowerModel}
+\end{equation}
+
+In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
+flow through all the nodes. In order to reduce the order of the model and hence, 
+the amount of unknowns \eqref{ChordRelation} is applied. 
+
+\begin{equation}
+  \Delta p_1 = J {B_1}^T \dot{z} + f(z, w, k_v)
+  \label{ChordsModel}
+\end{equation}
+
+Making use of the identity shown in \eqref{KVL}, the following is obtained
+
+\begin{equation}
+  0 = B_1 \Delta p_1 = B_1 [J {B_1}^T \dot{z} + f(z, w, k_v)] 
+ \end{equation}
+
+Isolating the inertia matrix to the left side
+
+\begin{equation}
+  B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
+ \end{equation}
+
+It is wanted to know the value of the flow through the chords, hence the above equation is solved 
+for $\dot{z}$. Nevertheless, (B_1 J {B_1}^T) has to be invertible.
+
+\todo{Explain why B_1 J {B_1}^T is invertible}
+
+\begin{equation}
+   \dot{z}  = (B_1 J {B_1}^T)^-1 + B_1 f(z, w, k_v)
+   \label{ParatModelFinal}
+ \end{equation}
+
+

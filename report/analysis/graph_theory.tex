@@ -6,7 +6,7 @@ in engineering or scientific research, mechanical systems, electrical circuits o
 In order to make the modelling of the water distribution network, Graph Theory is used. 
 Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \subsection{Incidence Matrix} 
-
+\label{IncidenceSection}
 The incidence matrix, $H$, of a graph with \textit{n} nodes and \textit{e} edges is 
 defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
 Additionally, the particular node and edge is denoted with the indices $i$ and 
@@ -168,6 +168,7 @@ Kirchhoff´s Current Law (KCL) states that the net sum of all the flows
 leaving the node is zero. Formulating this statement in matrix form:
 
 \begin{equation}
+  \label{KCL}
   Hq(t) = 0
 \end{equation}
 
@@ -175,7 +176,8 @@ Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any t
 is zero. In terms of matrix form:
 
 \begin{equation}
-  B\Delta p (t) = 0
+ \label{KVL} 
+ B\Delta p (t) = 0
 \end{equation}
 
 Where the fundamental loops have a reference direction given by the direction of the 
