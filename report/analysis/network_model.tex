@@ -7,12 +7,10 @@ In the parameter estimation the WT will be discarded from the hydraulic system,
 in order to facilitate the process of estimation. Consequently, the WT will be isolated from the other components of the
 system.  
 
-
-
-In \secref{IncidenceSection} the form of the incidence matrix has been shown. It is worth mentioning that the last column of the H matrix agrees with the WT edge. Hence, the H matrix can be written as 
-% It is worth mentioning that it is been also followed the structure such as the last 
-% column of the H matrix agrees with the WT edge. Hence, the H matrix can 
-% be written as
+In \secref{IncidenceSection} the form of the incidence matrix has been shown, it 
+is worth mentioning that it is been also followed the structure such as the last 
+column of the H matrix agrees with the WT edge. Hence, the H matrix can 
+be written as
 
 \begin {equation}
 H = [H_1 \quad H_0]
@@ -20,16 +18,16 @@ H = [H_1 \quad H_0]
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $H_1 \epsilon \mathbb{R}^{nxe-1}$  \\
-\hspace*{8mm} $H_0 \epsilon \mathbb{R}^{nx1} $ 
+\hspace*{7mm} $H_1 \in \mathbb{R}^{nxe-1}$  \\
+\hspace*{7mm} $H_0 \in \mathbb{R}^{nx1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the H matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the H matrix without the edge corresponding to the WT\\
 \hspace*{4mm} is the H matrix with the column corresponding to the WT 
 \end{minipage}
 
-In the same way, the fundamental cycle matrix has been structured such that the last column agrees with the WT edges.
+In the same way, the fundamental cycle matrix has been structured such as the last column agrees with the WT edges.
 
 \begin{equation}
   B = [B_1 \quad B_0]
@@ -37,12 +35,12 @@ In the same way, the fundamental cycle matrix has been structured such that the 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $B_1 \epsilon \mathbb{R}^{lxe-1}$  \\
-\hspace*{8mm} $B_0 \epsilon \mathbb{R}^{lx1} $ 
+\hspace*{8mm} $B_1 \in \mathbb{R}^{lxe-1}$  \\
+\hspace*{8mm} $B_0 \in \mathbb{R}^{lx1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the B matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the B matrix without the edge corresponding to the WT\\
 \hspace*{4mm} is the B matrix with the column corresponding to the WT 
 \end{minipage}
 
@@ -59,16 +57,16 @@ q =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $q_1 \epsilon \mathbb{R}^{e-1x1}$  \\
-\hspace*{8mm} $q_0 \epsilon \mathbb{R} $ 
+\hspace*{8mm} $q_1 \in \mathbb{R}^{e-1x1}$  \\
+\hspace*{8mm} $q_0 \in \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the flow through all components expect for WT,\\
+\hspace*{4mm} is the flow through all components expect for WT\\
 \hspace*{4mm} is the flow through the WT 
 \end{minipage}
 
-The vector containing the pressures at the each node is also re-structured accordantly
+The vector containing the pressures at the nodes is also re-structured as
 
 \begin{equation}
 p =
@@ -80,8 +78,8 @@ p =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $p_1 \epsilon \mathbb{R}^{n-1x1}$  \\
-\hspace*{8mm} $p_0 \epsilon \mathbb{R} $ 
+\hspace*{8mm} $p_1 \in \mathbb{R}^{n-1x1}$  \\
+\hspace*{8mm} $p_0 \in \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -89,7 +87,8 @@ Where\\
 \hspace*{4mm} is the pressure in the WT 
 \end{minipage}
 
-In \eqref{KCL}, KCL is applied for a connected directed graph, where it is stated that the sum of all flows entering a node must be equal to the sum of flows out of the node.
+In \eqref{KCL} KCL law is applied for a connected directed graph, where it is stated that the sum of all the flows entering 
+into a node must be equal the the sum of all the nodes out of the node.
 
 Therefore, a $n-1$ linearly independent equations with $e$ unknowns are obtained. By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
 flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}. Thus, reducing the
@@ -101,7 +100,29 @@ flows of the system and the independent variables \cite{GraphTheoryCarsten}.
   \label{ChordRelation}
 \end{equation}
 
------------------------------------------------------------------------------------
+
+
+In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $q_1$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
+
+\begin{equation}
+  \tilde{f}_i(q_1, \omega, k_v) = \lambda_i(q_1) + \zeta_i + \nu_i(q_1, k_v) - \alpha_i(\omega)
+  \label{ComponentFunction}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{2mm} $\tilde{f}_i = -C_{pi} q_i |q_i|$  \\
+\hspace*{2mm} $\tilde{f}_i = -C_{vi} q_i |q_i|$  \\
+\hspace*{2mm} $\tilde{f}_i = \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|q_i| q_i  + a_{h1i} \omega_{i} q_i + a_{h0i}{\omega_i}^2$  
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{25mm} if i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23\\
+\hspace*{25mm} if i = 13,15,20,22						   \\
+\hspace*{65mm} if i = 1,8,9,16						   
+\end{minipage}
+
+
 
 The following hydraulic network model shows an overall model along with the above considerations. 
 
@@ -110,8 +131,9 @@ The following hydraulic network model shows an overall model along with the abov
   \label{NoTowerModel}
 \end{equation}
 
-In \eqref{NoTowerModel}, the hydraulic network model is described in terms of the 
-flow through all the nodes. In order to reduce the order of the model and the amount of unknowns, \eqref{ChordRelation} is applied. 
+In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
+flow through all the nodes. In order to reduce the order of the model and hence, 
+the amount of unknowns \eqref{ChordRelation} is applied. 
 
 \begin{equation}
   \Delta p_1 = J {B_1}^T \dot{z} + f(z, w, k_v)
@@ -130,9 +152,8 @@ Isolating the inertia matrix to the left side
   B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
  \end{equation}
 
-It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. Nevertheless, in order to divide by $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
-
+It is wanted to know the value of the flow through the chords, hence the above equation is solved 
+for $\dot{z}$. Nevertheless, $(B_1 J {B_1}^T)$ has to be invertible.
 
 \todo{Explain why $B_1 J {B_1}^T$ is invertible}
 
