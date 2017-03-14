@@ -152,14 +152,40 @@ Isolating the inertia matrix to the left side
   B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
  \end{equation}
 
-It is wanted to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. Nevertheless, $(B_1 J {B_1}^T)$ has to be invertible.
+It is desired to know the value of the flow through the chords, hence the above equation is solved 
+for $\dot{z}$. Nevertheless, in order to divide by $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
+
+Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be invertible its 
+determinant has to be nonzero. Observe that $\mathcal{J}$ is
+
+\begin{equation}
+  \label{Jequation}
+  \mathcal{J} = (I \quad B_f) 
+  \begin{pmatrix}
+    J_c    &    0    \\
+    0       &    J_f
+  \end{pmatrix}
+  \begin{pmatrix}
+    I    \\
+    {B_f}^T
+  \end{pmatrix}
+  = J_c + B_f J_f {B_f}^T
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $J_c \in \mathbb{R}^{lxl}$  \\
+\hspace*{8mm} $J_f \in \mathbb{R^{e-lxe-l}} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the inertia in the chords components\\
+\hspace*{4mm} is the inertia in the component of the spanning tree 
+\end{minipage}
 
 \todo{Explain why $B_1 J {B_1}^T$ is invertible}
 
 \begin{equation}
-   \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
+   \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v) 
    \label{ParatModelFinal}
  \end{equation}
-
-
