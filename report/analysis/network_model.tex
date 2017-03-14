@@ -25,11 +25,11 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the H matrix without the edge corresponding to the WT\\
+\hspace*{4mm} is the H matrix without the edge corresponding to the WT,\\
 \hspace*{4mm} is the H matrix with the column corresponding to the WT 
 \end{minipage}
 
-In the same way, the fundamental cycle matrix has been structured such as the last column agrees with the WT edges.
+In the same way, the fundamental cycle matrix has been structured such that the last column agrees with the WT edges.
 
 \begin{equation}
   B = [B_1 \quad B_0]
@@ -42,7 +42,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the B matrix without the edge corresponding to the WT\\
+\hspace*{4mm} is the B matrix without the edge corresponding to the WT,\\
 \hspace*{4mm} is the B matrix with the column corresponding to the WT 
 \end{minipage}
 
@@ -64,11 +64,11 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the flow through all components expect for WT\\
+\hspace*{4mm} is the flow through all components expect for WT,\\
 \hspace*{4mm} is the flow through the WT 
 \end{minipage}
 
-The vector containing the pressures at the nodes is also re-structured as
+The vector containing the pressures at the each node is also re-structured accordantly
 
 \begin{equation}
 p =
@@ -89,8 +89,7 @@ Where\\
 \hspace*{4mm} is the pressure in the WT 
 \end{minipage}
 
-In \eqref{KCL} KCL law is applied for a connected directed graph, where it is stated that the sum of all the flows entering 
-into a node must be equal the the sum of all the nodes out of the node.
+In \eqref{KCL}, KCL is applied for a connected directed graph, where it is stated that the sum of all flows entering a node must be equal to the sum of flows out of the node.
 
 Therefore, a $n-1$ linearly independent equations with $e$ unknowns are obtained. By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
 flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}. Thus, reducing the
@@ -109,9 +108,8 @@ The following hydraulic network model shows an overall model along with the abov
   \label{NoTowerModel}
 \end{equation}
 
-In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
-flow through all the nodes. In order to reduce the order of the model and hence, 
-the amount of unknowns \eqref{ChordRelation} is applied. 
+In \eqref{NoTowerModel}, the hydraulic network model is described in terms of the 
+flow through all the nodes. In order to reduce the order of the model and the amount of unknowns, \eqref{ChordRelation} is applied. 
 
 \begin{equation}
   \Delta p_1 = J {B_1}^T \dot{z} + f(z, w, k_v)
