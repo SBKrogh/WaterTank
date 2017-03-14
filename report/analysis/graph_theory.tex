@@ -20,9 +20,9 @@ In case of hydraulic networks, edges have a direction which results in a directe
 		\left\{
 		\begin{array}{ll}
 		
-		1 			&      \text{if the $j^{th}$ edge is incident out of the $i^{th}$ node}	
+		1 			&      \text{if the $j_{th}$ edge is incident out of the $i_{th}$ node}	
 \\
-		-1                       &     \text{if the $j^{th}$ edge is incident into the $i^{th}$ node}
+		-1                       &     \text{if the $j_{th}$ edge is incident into the $i_{th}$ node}
 \\
 
 
@@ -37,19 +37,22 @@ shown.
 
 \subsection{Cycle Matrix}
 \label{CycleSection}
-A spanning tree, $T \in \mathcal{G}$ is a subgraph which contains all nodes of $\mathcal{G}$ but has no cycles \cite{GraphModel}. 
-In order to obtain the spanning tree it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. To obtain the number of chords, $l$, the following applies:
+A spanning tree, $T \in G$ is a subgraph which contains all nodes of $G$ but has no cycles \cite{GraphModel}. 
+In order to obtain the spanning tree it is necessary to delete an edge from each cycle of the graph. The removed edges are called chords. To obtain the number 
+of chords, \textit{l}, the following applies:
 
 \begin{equation}
   \label{Numberofchords}
   l = e - n +1
 \end{equation}
 
-Adding any additional chord to $T$, creates one cycle which is called fundamental cycle. A graph is conformed by as many fundamental cycles as number of chords it has \cite{GraphModel}.  
-The set of fundamental cycles correspond to the fundamental cycle matrix $B$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
+Adding any one chord to $T$, creates one cycle which is called fundamental cycle. A graph is conformed by as many fundamental cycles as number of chords it has \cite{GraphModel}.  
+This set of fundamental cycle correspond to the fundamental cycle matrix 
+$B$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-The cycle matrix of a directed graph can be expressed with $B = [b_{ij}]$ where $i$ and $j$ denote the specific chords and 
-edges respectively. 
+Then, the cycle matrix of a directed graph can be 
+expressed with $B = [b_{ij}]$ where $i$ and $j$ denote the particular chord and 
+edge, respectively. 
 
 \begin{equation}
 \label{DiGraphCycle}
@@ -57,9 +60,9 @@ edges respectively.
 		\left\{
 		\begin{array}{ll}
 		
-		1 			&      \text{if the edges $j^{th}$ is in the cycle $i^{th}$ and the directions match}	
+		1 			&      \text{if the edges $j_{th}$ is in the cycle $i_{th}$ and the directions match}	
 \\
-		-1                       &     \text{if the edges $j^{th}$ is in the cycle $i^{th}$ and the directions are opposite}
+		-1                       &     \text{if the edges $j_{th}$ is in the cycle $i_{th}$ and the directions are opposite}
 \\
 
                 0                       &      \text{otherwise}
@@ -76,7 +79,7 @@ shown.
 
 The directed graph of a hydraulic network has assigned to its edges two variables: 
 the pressure, $p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
-the voltage across the edges. Where:
+the pressure across the edges. Where:
 
 % \begin{minipage}{0.45\linewidth}
 % \begin{equation}
@@ -122,7 +125,7 @@ q(t) =
 %\]
 \end{equation}
  
-In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
+In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These variables have the characteristics 
 that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
 Therefore, it has been decided to choose the numbering of the columns of the 
 H and B matrix, such as:
@@ -158,11 +161,11 @@ Where\\
 \hspace*{8mm} are the matrix corresponding to the spanning tree 
 \end{minipage}
 
-Since the edges variables are elements interconnected to form a network, 
+Since the edge variables are elements interconnected to form a network, 
 they must obey Kirchhoff´s node and loops law \cite{GraphModel}. 
 
 Kirchhoff´s Current Law (KCL) states that the net sum of all the flows 
-leaving the node is zero. Formulating this statement in matrix form:
+to or from a node is zero. Formulating this statement in matrix form:
 
 \begin{equation}
   \label{KCL}
