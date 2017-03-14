@@ -7,10 +7,12 @@ In the parameter estimation the WT will be discarded from the hydraulic system,
 in order to facilitate the process of estimation. Consequently, the WT will be isolated from the other components of the
 system.  
 
-In \secref{IncidenceSection} the form of the incidence matrix has been shown, it 
-is worth mentioning that it is been also followed the structure such as the last 
-column of the H matrix agrees with the WT edge. Hence, the H matrix can 
-be written as
+
+
+In \secref{IncidenceSection} the form of the incidence matrix has been shown. It is worth mentioning that the last column of the H matrix agrees with the WT edge. Hence, the H matrix can be written as 
+% It is worth mentioning that it is been also followed the structure such as the last 
+% column of the H matrix agrees with the WT edge. Hence, the H matrix can 
+% be written as
 
 \begin {equation}
 H = [H_1 \quad H_0]
@@ -18,8 +20,8 @@ H = [H_1 \quad H_0]
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{7mm} $H_1 \in \mathbb{R}^{nxe-1}$  \\
-\hspace*{7mm} $H_0 \in \mathbb{R}^{nx1} $ 
+\hspace*{8mm} $H_1 \epsilon \mathbb{R}^{nxe-1}$  \\
+\hspace*{8mm} $H_0 \epsilon \mathbb{R}^{nx1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -35,8 +37,8 @@ In the same way, the fundamental cycle matrix has been structured such as the la
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $B_1 \in \mathbb{R}^{lxe-1}$  \\
-\hspace*{8mm} $B_0 \in \mathbb{R}^{lx1} $ 
+\hspace*{8mm} $B_1 \epsilon \mathbb{R}^{lxe-1}$  \\
+\hspace*{8mm} $B_0 \epsilon \mathbb{R}^{lx1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -57,8 +59,8 @@ q =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $q_1 \in \mathbb{R}^{e-1x1}$  \\
-\hspace*{8mm} $q_0 \in \mathbb{R} $ 
+\hspace*{8mm} $q_1 \epsilon \mathbb{R}^{e-1x1}$  \\
+\hspace*{8mm} $q_0 \epsilon \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -78,8 +80,8 @@ p =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $p_1 \in \mathbb{R}^{n-1x1}$  \\
-\hspace*{8mm} $p_0 \in \mathbb{R} $ 
+\hspace*{8mm} $p_1 \epsilon \mathbb{R}^{n-1x1}$  \\
+\hspace*{8mm} $p_0 \epsilon \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -99,30 +101,6 @@ flows of the system and the independent variables \cite{GraphTheoryCarsten}.
   q_1 = B_1 ^{T}  z
   \label{ChordRelation}
 \end{equation}
-
-
-
-In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $q_1$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
-
-\begin{equation}
-  \tilde{f}_i(q_1, \omega, k_v) = \lambda_i(q_1) + \zeta_i + \nu_i(q_1, k_v) - \alpha_i(\omega)
-  \label{ComponentFunction}
-\end{equation}
-
-\begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{2mm} $\tilde{f}_i = -C_{pi} q_i |q_i|$  \\
-\hspace*{2mm} $\tilde{f}_i = -C_{vi} q_i |q_i|$  \\
-\hspace*{2mm} $\tilde{f}_i = \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|q_i| q_i  + a_{h1i} \omega_{i} q_i + a_{h0i}{\omega_i}^2$  
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-\hspace*{25mm} if i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23\\
-\hspace*{25mm} if i = 13,15,20,22						   \\
-\hspace*{65mm} if i = 1,8,9,16						   
-\end{minipage}
-
-
 
 The following hydraulic network model shows an overall model along with the above considerations. 
 
@@ -152,40 +130,14 @@ Isolating the inertia matrix to the left side
   B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
  \end{equation}
 
-It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. Nevertheless, in order to divide by $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
-
-Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be invertible its 
-determinant has to be nonzero. Observe that $\mathcal{J}$ is
-
-\begin{equation}
-  \label{Jequation}
-  \mathcal{J} = (I \quad B_f) 
-  \begin{pmatrix}
-    J_c    &    0    \\
-    0       &    J_f
-  \end{pmatrix}
-  \begin{pmatrix}
-    I    \\
-    {B_f}^T
-  \end{pmatrix}
-  = J_c + B_f J_f {B_f}^T
-\end{equation}
-
-\begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{8mm} $J_c \in \mathbb{R}^{lxl}$  \\
-\hspace*{8mm} $J_f \in \mathbb{R^{e-lxe-l}} $ 
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-\hspace*{4mm} is the inertia in the chords components\\
-\hspace*{4mm} is the inertia in the component of the spanning tree 
-\end{minipage}
+It is wanted to know the value of the flow through the chords, hence the above equation is solved 
+for $\dot{z}$. Nevertheless, $(B_1 J {B_1}^T)$ has to be invertible.
 
 \todo{Explain why $B_1 J {B_1}^T$ is invertible}
 
 \begin{equation}
-   \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v) 
+   \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
    \label{ParatModelFinal}
  \end{equation}
+
+
