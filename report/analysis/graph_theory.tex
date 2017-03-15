@@ -75,7 +75,7 @@ shown.
 \label{KirchhoffSection}
 
 The directed graph of a hydraulic network assigns two variables to each edges: 
-the pressure, $p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
+the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
 the pressure across them:
 
 % \begin{minipage}{0.45\linewidth}
@@ -104,24 +104,25 @@ the pressure across them:
 
 \begin{equation}
 %\[
-p(t) =
+\Delta p(t) =
 \begin{bmatrix}
-         p_1 \\
-	p_2 \\ 
+         \Delta p_c \\
+	\Delta p_f \\ 
 	\vdots \\
-	p_e \\
+	\Delta p_e \\
 \end{bmatrix}
 \text{and}\hspace{0.3cm}
 q(t) =
 \begin{bmatrix}
-         q_1 \\
-	q_2 \\ 
+         q_c \\
+	q_f \\ 
 	\vdots \\
 	q_e \\
 \end{bmatrix}
 %\]
 \end{equation}
- 
+
+
 In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
 that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
 Therefore, it has been decided to choose the numbering of the columns of the 
@@ -145,6 +146,7 @@ H = [H_c \quad H_f]
 \hspace{0.1cm} \text{and}\hspace{0.3cm}
 B = [B_c  \quad B_f] = [I \quad B_f]
 %\]
+\label{HandB}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}

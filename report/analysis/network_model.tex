@@ -16,6 +16,7 @@ In \secref{IncidenceSection} the form of the incidence matrix has been shown. It
 
 \begin {equation}
 H = [H_1 \quad H_0]
+\label{Hmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -55,6 +56,7 @@ q =
          q_1 \\
 	q_0 
 \end{bmatrix}
+\label{qmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -92,15 +94,12 @@ Where\\
 In \eqref{KCL} KCL law is applied for a connected directed graph, where it is stated that the sum of all the flows entering 
 into a node must be equal the the sum of all the nodes out of the node.
 
-Therefore, a $n-1$ linearly independent equations with $e$ unknowns are obtained. By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
-flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}. Thus, reducing the
-number of unknowns in the system. These elements of $z$ are called the free 
-flows of the system and the independent variables \cite{GraphTheoryCarsten}.
+By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
+flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
 
-\begin{equation}
-  q_1 = B_1 ^{T}  z
-  \label{ChordRelation}
-\end{equation}
+Thus, reducing the number of unknowns in the system. These elements of $z$ are called the free 
+flows of the system and are independent variables \cite{GraphTheoryCarsten}.
+
 
 In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $q_1$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
 
