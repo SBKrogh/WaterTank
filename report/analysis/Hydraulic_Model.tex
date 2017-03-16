@@ -314,6 +314,7 @@ is the average roughness of the wall inside the pipe.
 
 %
 \subsubsection{Form Resistance (\texorpdfstring{$h_m$}{})} 
+
 Form resistance losses appear at any time the flow changes direction, due to elbows, bends,
 or due to enlargers and reducers. It is a particular frictional resistance due to the 
 fittings of a pipe. Form loss can be expressed as:
@@ -362,6 +363,8 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
 \end{equation}
 
 \subsubsection{Complete Pipe Model}
+\label{CompletePipe}    % If we remove this subsection we have to change the 
+% reference to it in the Parameter Estimation subsection
 In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. Thus, the friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
@@ -396,7 +399,9 @@ is the friction as a function of flow\\
 is the pressure drop due to the elevation.
 \end{minipage}
 
-As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. However, it is assumed(prior to the tests carried out on the system) that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. In other words it means that the water tower might have a relatively big time constant compared to the time constant of the pipe. Due to this consideration it would be a fair assumption that the parameter $J_k$ does not influence the flow significantly in the system, therefore it could be neglected. However, the parameter is kept until this assumption is not verified by tests. The complete model of a pipe yields: 
+As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. Where $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $J = diag(J_i)$.
+
+However, it is assumed(prior to the tests carried out on the system) that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. In other words it means that the water tower might have a relatively big time constant compared to the time constant of the pipe. Due to this consideration it would be a fair assumption that the parameter $J_k$ does not influence the flow significantly in the system, therefore it could be neglected. However, the parameter is kept until this assumption is not verified by tests. The complete model of a pipe yields: 
   
 \begin{equation}
 \label{FinalPipeModelSimplified}

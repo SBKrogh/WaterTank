@@ -21,8 +21,8 @@ H = [H_1 \quad H_0]
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $H_1 \epsilon \mathbb{R}^{nxe-1}$  \\
-\hspace*{8mm} $H_0 \epsilon \mathbb{R}^{nx1} $ 
+\hspace*{8mm} $H_1 \epsilon \mathbb{R}^{n \times e-1}$  \\
+\hspace*{8mm} $H_0 \epsilon \mathbb{R}^{n \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -30,7 +30,7 @@ Where\\
 \hspace*{4mm} is the H matrix with the column corresponding to the WT 
 \end{minipage}
 
-In the same way, the fundamental cycle matrix has been structured such as the last column agrees with the WT edges.
+In the same way, the fundamental cycle matrix, B, has been structured such as the last column agrees with the WT edge.
 
 \begin{equation}
   B = [B_1 \quad B_0]
@@ -38,8 +38,8 @@ In the same way, the fundamental cycle matrix has been structured such as the la
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $B_1 \epsilon \mathbb{R}^{lxe-1}$  \\
-\hspace*{8mm} $B_0 \epsilon \mathbb{R}^{lx1} $ 
+\hspace*{8mm} $B_1 \epsilon \mathbb{R}^{l \times e-1}$  \\
+\hspace*{8mm} $B_0 \epsilon \mathbb{R}^{l \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -61,7 +61,7 @@ q =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $q_1 \epsilon \mathbb{R}^{e-1x1}$  \\
+\hspace*{8mm} $q_1 \epsilon \mathbb{R}^{e-1 \times 1}$  \\
 \hspace*{8mm} $q_0 \epsilon \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -82,7 +82,7 @@ p =
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $p_1 \epsilon \mathbb{R}^{n-1x1}$  \\
+\hspace*{8mm} $p_1 \epsilon \mathbb{R}^{n-1 \times 1}$  \\
 \hspace*{8mm} $p_0 \epsilon \mathbb{R} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -96,10 +96,13 @@ into a node must be equal the the sum of all the nodes out of the node.
 
 By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
 flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
-
 Thus, reducing the number of unknowns in the system. These elements of $z$ are called the free 
 flows of the system and are independent variables \cite{GraphTheoryCarsten}.
 
+\begin{equation}
+  q_1 = B_1 ^{T}  z
+  \label{ChordRelation}
+\end{equation}
 
 In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $q_1$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
 
@@ -124,6 +127,7 @@ Where\\
 \todo{Fixe structuring error}
 
 The following hydraulic network model shows an overall model along with the above considerations. 
+Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
   \Delta p_1 = J \dot{q}_1 + f(q_1, w, k_v)
@@ -152,37 +156,62 @@ Isolating the inertia matrix to the left side
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. Nevertheless, in order to divide by $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
+for $\dot{z}$. Nevertheless, in order to invert $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
 
-%Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be invertible its 
-%determinant has to be nonzero. Observe that $\mathcal{J}$ is
-%
-%\begin{equation}
-%  \label{Jequation}
-%  \mathcal{J} = (I \quad B_f) 
-%  \begin{pmatrix}
-%    J_c    &    0    \\
-%    0       &    J_f
-%  \end{pmatrix}
-%  \begin{pmatrix}
-%    I    \\
-%    {B_f}^T
-%  \end{pmatrix}
-%  = J_c + B_f J_f {B_f}^T
-%\end{equation}
-%
-%\begin{minipage}[t]{0.20\textwidth}
-%Where\\
-%\hspace*{8mm} $J_c \in \mathbb{R}^{lxl}$  \\
-%\hspace*{8mm} $J_f \in \mathbb{R^{e-lxe-l}} $ 
-%\end{minipage}
-%\begin{minipage}[t]{0.68\textwidth}
-%\vspace*{2mm}
-%\hspace*{4mm} is the inertia in the chords components\\
-%\hspace*{4mm} is the inertia in the component of the spanning tree 
-%\end{minipage}
+Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be positive-definite it has to be a square matrix and its 
+determinant has to be nonzero. Observe that $\mathcal{J}$ is
 
-\todo{Explain why $B_1 J {B_1}^T$ is invertible}
+\begin{equation}
+  \label{Jequation}
+  \mathcal{J} = (I \quad B_f) 
+  \begin{pmatrix}
+    J_c    &    0    \\
+    0       &    J_f
+  \end{pmatrix}
+  \begin{pmatrix}
+    I    \\
+    {B_f}^T
+  \end{pmatrix}
+  = J_c + B_f J_f {B_f}^T
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $J_c \in \mathbb{R}^{l \times l}$  \\
+\hspace*{8mm} $J_f \in \mathbb{R}^{f \times f} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the inertia in the chords components\\
+\hspace*{4mm} is the inertia in the component of the spanning tree 
+\end{minipage}
+
+$J_c$ is the diagonal inertia matrix containing the chords elements,  since all 
+the components corresponding to a chord in $\mathcal{G}$ are pipes, all the 
+diagonal term are positive. Thus, $J_c > 0$. 
+
+Nevertheless, if there would be at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
+will continue being positive-definite as long as there is a possibility to create a spanning tree containing all 
+chord as pipes elements from $\mathcal{G}$ \cite{TowerModel}.
+
+For the remaining term $B_f J_f {B_f}^T$, $J_f$ is non-negative matrix as all its elements are zero or pipe´s inertia. 
+Multiplying $B_f J_f {B_f}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x^{T}}$
+
+\begin{equation}
+  \mathbf{x^{T}} B_f J_f {B_f}^T \mathbf{x}
+  \label{PosDefi}
+\end{equation}
+
+Creating a new variable $y = {B_f}^T$ and applying the positive semi-definite matrix definition
+
+\begin{equation}
+  y^{T} J_f y \geqslant 0
+  \label{PosDefEq}
+\end{equation}
+
+Thus, \eqref{Jequation} is positive definite a sufficient condition for $\mathcal{J}$ being invertible. 
+
+Therefore, the system model can be written as follows
 
 \begin{equation}
    \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
