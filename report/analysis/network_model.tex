@@ -130,7 +130,7 @@ The following hydraulic network model shows an overall model along with the abov
 Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
-  \Delta p_1 = J \dot{q}_1 + f(q_1, w, k_v)
+  \Delta p_1 =  J \dot{q}_1 + f(q_1, w, k_v)
   \label{NoTowerModel}
 \end{equation}
 
@@ -139,20 +139,20 @@ flow through all the nodes. In order to reduce the order of the model and hence,
 the amount of unknowns \eqref{ChordRelation} is applied. 
 
 \begin{equation}
-  \Delta p_1 = J {B_1}^T \dot{z} + f(z, w, k_v)
+  \Delta p_1 =  J {B_1}^T \dot{z} + f(z, w, k_v)
   \label{ChordsModel}
 \end{equation}
 
 Making use of the identity shown in \eqref{KVL}, the following is obtained
 
 \begin{equation}
-  0 = B_1 \Delta p_1 = B_1 [J {B_1}^T \dot{z} + f(z, w, k_v)] 
+  0 = B_1 \Delta p_1 = B_1 [ J {B_1}^T \dot{z} + f(z, w, k_v)] 
  \end{equation}
 
 Isolating the inertia matrix to the left side
 
 \begin{equation}
-  B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
+ - B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the above equation is solved 
@@ -215,7 +215,7 @@ Thus, \eqref{Jequation} is positive definite a sufficient condition for $\mathca
 Therefore, the system model can be written as follows
 
 \begin{equation}
-   \dot{z}  = (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
+   \dot{z}  = - (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
    \label{ParatModelFinal}
  \end{equation}
 
