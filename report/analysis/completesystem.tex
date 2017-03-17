@@ -21,7 +21,7 @@ The complete model consists of the pipe model, \eqref{CompactValveModel} the val
 
 \begin{equation}
 \label{CompleteModel}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k - J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(u)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(u)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
 \end{equation}
 
 The complete component model, \eqref{CompleteModel} is used to represent the pressure contribution of each component. In order to describe each part of the system by \eqref{CompleteModel} the parameters and functions that correspond to the specific components are chosen. The remaining are set to zero if they do not match the model of the specific part of the network. 
