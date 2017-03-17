@@ -1,4 +1,4 @@
-\section{Parameter Estimation}  
+\section{Model for the Parameter Estimation}  
 \label{ParameterEstimation}
 Once the corresponding incidence and cycle matrix have been identified and the analogy between hydraulic and
 electrical circuits has been made, it is possible to derive a model for the hydraulic network. 
@@ -218,5 +218,39 @@ Therefore, the system model can be written as follows
    \dot{z}  = - (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
    \label{ParatModelFinal}
  \end{equation}
+
+\subsection{Model Relations}
+\label{ModelRelationSection}
+
+As a consequence of the system model established above, a new set of relations for the parameter estimation can be 
+obtained. Starting from the component complete model
+
+\begin{equation}
+  \Delta p_1 =  J \dot{q}_1 + f(q_1, w, k_v)
+  \label{RecallModel}
+\end{equation}
+
+Recall that previously, in \eqref{ChordRelation}, a new state, $z$, has been defined for the independent flows in 
+the graph
+
+\begin{equation}
+  \Delta p_1 =  J {B_1}^T \dot{z} + f(z, w, k_v)
+ \end{equation}
+
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \Delta p_1 $ can be rewritten as
+
+\begin{equation}
+  \Delta p_1 =  J {B_1}^T [- (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)] + f(z, w, k_v)
+  \label{PressureLarge}
+ \end{equation}
+ 
+ Rewritten it in a shorter form
+ 
+ \begin{equation}
+  \Delta p_1 =  (-J {B_1}^T (B_1 J {B_1}^T)^{-1}B_1 + \mathcal{I}) f(z, w, k_v)
+  \label{PressureShort}
+ \end{equation}
+
+
 
 
