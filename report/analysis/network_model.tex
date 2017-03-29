@@ -251,6 +251,86 @@ The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the e
   \label{PressureShort}
  \end{equation}
 
+\subsection{The Estimation Method}
+\label{SubSecEstimation}
 
+Applying KVL to the hydraulic model, the following expression is obtained. Moreover, the parameter estimation will be carried out for steady-state 
+situation where the inertia, $J$, will not act. Thus, the term containing the diagonal matrix $J$ can be disregarded from the equation. 
 
+\begin{equation}
+  0 = B_1 \Delta p_1 = B_1 [ J {B_1}^T \dot{z} + f(z, w, k_v)]  =  B_1 (f(z, w, k_v))
+  \label{esteq}
+ \end{equation}
+ 
+The pressure difference in the pumps have been specified as inputs, by reason of those pressures can be obtained from the setup available so they are considered 
+as known parameters. Thereby, in \eqref{esteq} the term can be split up as following:
+ 
+\begin{equation}
+ 0 = f(z,k_v)+ f(z,w)
+ \label{ModelNoInertia}
+\end{equation}
 
+The term $f(z,w)$ is set as input, it is renamed as U and it represents the pressure difference in the $4$ pumps acting on the system. Therefore, 
+\eqref{ModelNoInertia} is considered as the input equation where the flow through the chords and the friction parameter of the pipes are unknown. 
+
+An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
+to the data measured in the setup and proceed to estimate the unknown parameters. 
+
+From the system setup $8$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$.
+
+In order to compare the measurements from the system setup and the data obtained from the simulation in Matlab, a reference point has to be set in the 
+simulation to calculate the desired data. 
+
+The atmospheric is set as reference point and the pressures obtained from the simulation are dependant on it. The relationship between pressures, where DpCXX describes
+the pressure difference for the XX component, can be defined as:
+
+\text{\underline{Node 2}} 
+\vspace{4mm}
+\begin{equation}
+    DpC2 = y_1
+\end{equation}
+
+\text{\underline{Node 7}}
+\vspace{4mm}
+\begin{equation}
+  DpC16 = y_2
+\end{equation}
+
+\text{\underline{Node 4}}
+\vspace{4mm}
+\begin {equation}
+    DpC18 + DpC19 + DpC23 + DpC24 = y_3
+\end{equation}
+
+\text{\underline{Node 5}}
+\vspace{4mm}
+\begin {equation}
+    DpC25 + DpC26 + DpC30 + DpC31 = y_4
+\end{equation}
+
+\text{\underline{Node 10}}
+\vspace{4mm}
+\begin {equation}
+    DpC24 = y_5
+\end{equation}
+
+\text{\underline{Node 11}}
+\vspace{4mm}
+\begin {equation}
+    DpC20 + DpC21= y_6
+\end{equation}
+
+\text{\underline{Node 15}}
+\vspace{4mm}
+\begin {equation}
+    DpC31 = y_7
+\end{equation}
+
+\text{\underline{Node 16}}
+\vspace{4mm}
+\begin {equation}
+    DpC28 + DpC27 = y_8
+\end{equation}
+
+With the $8$ equations depicted above the output vector $y$ is obtained. 
