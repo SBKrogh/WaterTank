@@ -8,6 +8,8 @@
 		WT			&&	Water Tower						\\ \hline
 		MP		  	&&	Minimization Problem			\\ \hline
 		OD 			&&  Opening degree					\\ \hline
+		KVL 		&&  Kirchhoff´s Voltage Law 		\\ \hline
+		KCL 		&&  Kirchhoff´s Current Law			\\ \hline
 	\end{tabular}
 
 \section*{Symbols}
@@ -20,34 +22,42 @@
 	$C$				&	Electric capacitance								   		& [$F$]\\
 	$C_H$			&	Hydraulic capacitance								   		& [$m^3/(N/m^2)$]\\
 	$D$				&	Diameter									     			& [$m$]\\
-	$f$				&	Moody friction factor									    & [$-$]\\
+	$f$				&	Moody friction factor									    & [$\cdot$]\\
 	$F$				&	Force									     				& [$N$]\\
 	$g$				&	Acceleration due to gravity									& [$m/s^2$]\\
 	$h_f$			&	Pressure given in head									    & [$m$]\\
-	$h_m$			&	Form loss									    			& [$?$]\\
+	$h_m$			&	Form loss									    			& [$m$]\\
 	$J_k$			&	Water inertia of the $k^{th}$ component						& [$kg/m^4$]\\
-	$k_f$			&	Form loss coefficient								    	& [$-$]\\
+	$k_f$			&	Form loss coefficient								    	& [$\cdot$]\\
 	$L$				&	Length									     				& [$m$]\\
 	$m$				&	Mass of body									     		& [$kg$]\\
 	$M$				&	Linear momentum									     		& [$kgm/s$]\\
 	$n_i$			&	The $i^{th}$ node of the distribution network     			& [$\cdot$]\\
-	$n_{gl}$		&	Valve characteristic curve factor							& [$-$]\\
-	$p_a$			&	Atmospheric pressure							      		& [$Pa$]\\
-	$\Delta p_k$	&	The pressure drop across the $i^{th}$ component      		& [$Pa$]\\
+	$n_{gl}$		&	Valve characteristic curve factor							& [$\cdot$]\\
+	$p_a$			&	Atmospheric pressure							      		& [$bar$]\\
+	$\Delta p_k$	&	The pressure drop across the $i^{th}$ component      		& [$bar$]\\
 	$q_k$			&	Flow through the $k^{th}$ component 		     			& [$m^3/h$]\\
+	$\pmb{Re}$		&	Reynolds Number								     			& [$\cdot$]\\
 	$T$				&	Temperature									     			& [$\degree$]\\
 	$v$				&	Velocity									     			& [$m/s$]\\
-	$V_t$			&	Volume of the water in the water tower									& [$m^3$]\\
-	$\alpha_k(.)$	&	The pressure boost given by the	$k^{th}$ pump				& [$Pa$]\\
-	$\epsilon$		&	Average roughness									     	& [$-$]\\
-	$\zeta$			&	Pressure drop from elevation difference across the $k^{th}$ component	& [$Pa$]\\
+	$V_t$			&	Volume of the water in the water tower						& [$m^3$]\\
+	$\alpha_k(.)$	&	The pressure boost given by the	$k^{th}$ pump				& [$bar$]\\
+	$\epsilon$		&	Average roughness									     	& [$\cdot$]\\
+	$\zeta$			&	Pressure drop from elevation difference across the $k^{th}$ component	& [$bar$]\\
 	$\theta_{max}$	&	Maximum angle of the opening degree						    & [$\degree$]\\
 	$\theta_{off}$	&	Minimum angle where the valve closes						& [$\degree$]\\
 	$\theta_{OD}$	&	Angle of opening degree										& [$\degree$]\\
-	$\lambda_k(.)$	&	Function of hydraulic resistance in the $k^{th}$ pipe		& [$Pa$]\\
-	$\mu_k(.)$		&	Function of hydraulic resistance in the $k^{th}$ valve		& [$Pa$]\\
+	$\lambda_k(.)$	&	Function of hydraulic resistance in the $k^{th}$ pipe		& [$bar$]\\
+	$\mu_k(.)$		&	Function of hydraulic resistance in the $k^{th}$ valve		& [$bar$]\\
 	$\nu$			&	Kinematic viscosity									     	& [$kg/ms$]\\
 	$\rho$			&	Density									     				& [$kg/m^3$]\\
 	$\omega_r$		&	Impeller angular velocity									& [$rad/s$]\\
 	
 \end{tabular}
+
+
+% We should write somthing about notation: 
+
+% * Matricies /vector notation 
+% * Intervals
+% * Upper/lower bounds 

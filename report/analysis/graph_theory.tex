@@ -7,8 +7,8 @@ In order to make the modelling of the water distribution network, Graph Theory i
 Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \subsection{Incidence Matrix} 
 \label{IncidenceSection}
-The incidence matrix, $H$, of a graph with \textit{n} nodes and \textit{e} edges is 
-defined by $H = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
+The incidence matrix, $\pmb{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
+defined by $\pmb{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
 Additionally, the particular node and edge is denoted with the indices $i$ and 
 $j$, respectively.
 
@@ -48,7 +48,7 @@ In order to obtain the spanning tree it is necessary to remove an edge from each
 Adding any additional chord to $T$, creates one cycle which is called fundamental cycle. A graph is conformed by as many fundamental cycles as number of chords it has \cite{GraphModel}.  
 The set of fundamental cycles correspond to the fundamental cycle matrix $B$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-The cycle matrix of a directed graph can be expressed with $B = [b_{ij}]$ where $i$ and $j$ denote the specific chords and 
+The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the specific chords and 
 edges respectively. 
 
 \begin{equation}
@@ -104,7 +104,7 @@ the pressure across them:
 
 \begin{equation}
 %\[
-\Delta p(t) =
+\pmb{\Delta p(t)} =
 \begin{bmatrix}
          \Delta p_c \\
 	\Delta p_f \\ 
@@ -112,7 +112,7 @@ the pressure across them:
 	\Delta p_e \\
 \end{bmatrix}
 \text{and}\hspace{0.3cm}
-q(t) =
+\pmb{q(t)} =
 \begin{bmatrix}
          q_c \\
 	q_f \\ 
@@ -126,7 +126,7 @@ q(t) =
 In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
 that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
 Therefore, it has been decided to choose the numbering of the columns of the 
-H and B matrix, such as:
+$\pmb{H}$ and $\pmb{B}$ matrix, such as:
 
 % \begin{minipage}{0.45\textwidth}
 % \begin{equation}
@@ -142,22 +142,22 @@ H and B matrix, such as:
 
 \begin{equation}
 %\[
-H = [H_c \quad H_f]
+\pmb{H} = [\pmb{H_c} \quad \pmb{H_f}]
 \hspace{0.1cm} \text{and}\hspace{0.3cm}
-B = [B_c  \quad B_f] = [I \quad B_f]
+\pmb{B} = [\pmb{B_c}  \quad \pmb{B_f}] = [\pmb{I} \quad \pmb{B_f}]
 %\]
 \label{HandB}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $H_c \quad \text{and} \quad B_c$ \\
-\hspace*{8mm} $H_f \quad \text{and} \quad B_f$ 
+\hspace*{8mm} $\pmb{H_c} \quad \text{and} \quad \pmb{B_c}$ \\
+\hspace*{8mm} $\pmb{H_f} \quad \text{and} \quad \pmb{B_f}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{8mm} are the matrices corresponding to the chords\\
-\hspace*{8mm} are the matrices corresponding to the spanning tree 
+\hspace*{8mm} are the matrices corresponding to the chords,\\
+\hspace*{8mm} are the matrices corresponding to the spanning tree. 
 \end{minipage}
 
 Since the edges variables are elements interconnected to form a network, 
@@ -167,7 +167,7 @@ Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving 
 
 \begin{equation}
   \label{KCL}
-  Hq(t) = 0
+  \pmb{H} \cdot \pmb{q(t)} = 0
 \end{equation}
 
 Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure around a cycle 
@@ -175,7 +175,7 @@ is zero. In terms of matrix form:
 
 \begin{equation}
  \label{KVL} 
- B\Delta p (t) = 0
+ \pmb{B} \cdot \pmb{\Delta p (t)} = 0
 \end{equation}
 
 Where the fundamental loops have a reference direction given by the direction of the 

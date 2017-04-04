@@ -11,42 +11,53 @@ The water distribution system explained in \secref{system_overview} need to be c
 	\item Minimizing the total cost of running the system
 \end{itemize}
 
+The WT is introduced to reduce the operation cost of the water distribution network. Therefor the system have to be controlled in a way that obtain the cheapest cost of operation. 
 
-The pressure at a given CP can be controlled by the water level in the WT which is controlled by the rotational speed of the pumps. To fulfill the requirement of a minimum pressure at a given CP the water level in the WT have to be within a operations area. A controller have to be develop that takes the pressure actuators into account. 
-
-The flow through the WT is controlled by pressure in the outer ring. Whenever the pressure is higher in the outer ring than in the WT, water is being pump into the WT. Furthermore the average flow rate, $\bar{q}_{wt}$, through the WT must meet the minimum requirement to insure the water quality. This can be seen as a constrain of the operation area of the system. 
-
-At the same time the total cost of running the system should be minimized. Therefor a cost function is needed. This cost function purpose is to find the optimal control signal which minimize the cost of running the pumps. Thereby spending the least money on running the total system. 
-
-Considering both the cost function and the constrain, this leads to a description of the systems operate area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_t$ this can be seen as a minimization problem:
-
-\begin{equation}
-\underset{u, \:q}{min} \: C_T(\Delta{p}_i,q_i) = \underset{u, \:q}{min} \: \sum_{i=1}^{N} C_T(\Delta{p}_i,q_i)  \\
-\end{equation}
-\vspace*{-0.5mm}
-s.t 
-
-\begin{align*}\vspace{0.1mm}
-0.08 < p_{cp} < 0.14 \\
-\bar{q}_{wt} > 0.06 
+Considering both the model of the water distribution network, cost function for the pumps and the constrain, this leads to a description of the systems operate area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
+\todo{inset network model in minimization problem}
+\begin{align*}
+\underset{\pmb{u}, \:\pmb{q}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} C_{T_i}(\Delta{p}_i,q_i)  \\
+%
+s.t \:\:\:\:\: & Inset \:model \\
+%
+& \underline{p_{cp}} < \pmb{p_{cp}} < \overline{p_{cp}} \\
+%
+& \bar{q}_{wt} > \underline{\bar{q}_{wt}}
 \end{align*}
 
-\begin{minipage}[t]{0.20\textwidth}
+ \begin{minipage}[t]{0.20\textwidth}
+ Where\\
+ \hspace*{8mm} $C_T(\Delta{p}_i,q_i)$ \\
+ \hspace*{8mm} N \\
+ \hspace*{8mm} $p_{cp}$ \\
+ \hspace*{8mm}  \textcolor{White}{te}\\
+ and \hspace*{0.7mm} $\bar{q}_{wt}$	
+ \end{minipage}
+ \begin{minipage}[t]{0.68\textwidth}
+ \vspace*{2mm}
+ is the power consumption of the $i^{th}$ pump,\\
+ is the number of pumps,\\
+ is the pressure at a given CP, $\overline{p_{cp}}$ and $\underline{p_{cp}}$ are the upper and lower bounds,\\
+ is the average flow rate through the WT, $\underline{\bar{q}_{wt}}$ is the lower bound.
+ \end{minipage}
+ \begin{minipage}[t]{0.10\textwidth}
+ \vspace*{2mm}
+ \textcolor{White}{te}$\unit{W}$\\
+ \textcolor{White}{te}$\unit{\cdot}$\\
+ \textcolor{White}{te}$\unit{Bar}$\\
+ \hspace*{8mm}  \textcolor{White}{te}\\
+ \textcolor{White}{te}$\unit{\frac{m^3}{day}}$
+ \end{minipage}
 
-Where\\
-\hspace*{8mm} $C_T(\Delta{p}_i,q_i)$ \\
-\hspace*{8mm} $p_{cp}$ \\
-and \hspace*{0.7mm} $\bar{q}_{wt}$	
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-is the power consumption of the $i^{th}$ pump,\\
-is the pressure at a given CP,\\
-is the average flow rate through the WT.
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-\vspace*{2mm}
-\textcolor{White}{te}$\unit{W}$\\
-\textcolor{White}{te}$\unit{Bar}$\\
-\textcolor{White}{te}$\unit{\frac{m^3}{day}}$
-\end{minipage}
+From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+
+%\begin{align*}
+%\pmb{B}
+%\end{align*}
+
+
+% The pressure at a given CP can be controlled by the water level in the WT which is controlled by the rotational speed of the pumps. To fulfill the requirement of a minimum pressure at a given CP the water level in the WT have to be within a operations area. A controller have to be develop that takes the pressure actuators into account. 
+
+% The flow through the WT is controlled by pressure in the outer ring. Whenever the pressure is higher in the outer ring than in the WT, water is being pump into the WT. Furthermore the average flow rate, $\bar{q}_{wt}$, through the WT must meet the minimum requirement to insure the water quality. This can be seen as a constrain of the operation area of the system. 
+
+% At the same time the total cost of running the system should be minimized. Therefor a cost function is needed. This cost function purpose is to find the optimal control signal which minimize the cost of running the pumps. Thereby spending the least money on running the total system. 

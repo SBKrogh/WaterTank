@@ -1,6 +1,8 @@
 \section{Hydraulic Modeling}
 \label{HydraulicModel}
 
+\todo{All matrices should be bold font}
+
 Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consisting of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop across the two endpoints and the flow through the element \cite{Kallesoe2009}.  \eqref{ComponentState} shows the dual variables which describes one component. 
 
 \begin{equation}
@@ -19,11 +21,11 @@ Water distribution networks are designed to deliver water to consumers in terms 
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $\Delta p$ \\
-\hspace*{8mm} $q$ 
+and \hspace*{0.7mm} $q$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the pressure drop across the two endpoints\\
+is the pressure drop across the two endpoints,\\
 is the flow through the element.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -48,11 +50,11 @@ The dynamic model of a pipe can be originated from Newton's second law. \eqref{N
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $M$ \\
-\hspace*{8mm} $F_i$ 
+and \hspace*{0.7mm}  $F_i$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the linear momentum of the water flow\\
+is the linear momentum of the water flow,\\
 is the set of forces acting on the water.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -66,19 +68,18 @@ The dynamic model of a pipe component is derived under the assumption that the f
 Rewriting \eqref{NewtonLaw}, because of the above-mentioned asumptions, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
-  \frac{d}{dt} M = {\frac{d(m v)}{dt}} = m \frac{dv}{dt} = \sum_i F_i
+  \frac{d}{dt} M = {\frac{d(m_w v)}{dt}} = m_w \frac{dv}{dt} = \sum_i F_i
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $m$ \\
-\hspace*{8mm} $v$ 
+\hspace*{8mm} $m_w$ \\
+and \hspace*{0.7mm} $v$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the mass of the water\\
+is the mass of the water,\\
 is the value of the velocity of the water at each point of the pipe.
-
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -106,11 +107,11 @@ The pipe is assumed to have a cylindrical structure. Furthermore, the cross sect
  \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $A$ \\
-\hspace*{8mm} $D$
+and \hspace*{0.7mm} $D$
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the cross sectional area of a pipe\\
+is the cross sectional area of a pipe,\\
 is the diameter of the pipe.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -119,8 +120,8 @@ is the diameter of the pipe.
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-Water flow($q$) can be expressed in terms of velocity($v$) and cross sectional 
-area($A$), resulting in:
+Water flow, $q$, can be expressed in terms of velocity, $v$, and cross sectional 
+area, $A$, resulting in:
 %Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
 
 \begin{equation}
@@ -132,7 +133,7 @@ area($A$), resulting in:
  between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
 
 \begin{equation}
-  m \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev} \\
+  m_w \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev} \\
   \label{LinearMomentum}
 \end{equation}
 
@@ -148,13 +149,13 @@ Where\\
 \hspace*{8mm} $A$ \\
 \hspace*{8mm} $L$ \\
 \hspace*{8mm} $\rho$\\
-\hspace*{8mm} $p$ 
+and \hspace*{0.7mm} $p$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the cross sectional area of a pipe\\
-is the length of a pipe\\
-is the density of water\\
+is the cross sectional area of a pipe,\\
+is the length of a pipe,\\
+is the density of water,\\
 is the pressure at a point.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
@@ -194,6 +195,7 @@ loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the fo
 The flow of a liquid through a pipe suffers resistance from 
 the turbulence occurring along the internal walls of the pipe, caused by the roughness of the surface. This surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
 
+\todo{Should we find another formulation then "pressure given in head"}
 \begin{equation}
   h_f = \frac{fLv^2}{2gD}
   \label{Darcy}
@@ -204,24 +206,24 @@ Where\\
 \hspace*{8mm} $f$ \\
 \hspace*{8mm} $h_f$ \\
 \hspace*{8mm} $g$ \\
-\hspace*{8mm} $D$ 
+and \hspace*{0.7mm} $D$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the Moody friction factor\\ 
-is the pressure given in head\\ 
-is acceleration due to gravity\\
+is the Moody friction factor,\\ 
+is the pressure given in head,\\ 
+is acceleration due to gravity,\\
 is the diameter of the pipe.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{m}$\\
 \textcolor{White}{te}$\unit{\frac{m}{s^2}}$\\
 \textcolor{White}{te}$\unit{m}$
 \end{minipage}
 
-\eqref{Darcy} is under the assumption that $v>0$.%, therefore it is not dependant on $|v|v$ but on $v^2$. \\
+\eqref{Darcy} is under the assumption that $v>0$. %, therefore it is not dependant on $|v|v$ but on $v^2$. \\
  Assuming that the flow is not unidirectional and substituting the velocity by the volumetric flow and pipe area:
 
 \begin{equation}
@@ -233,11 +235,11 @@ is the diameter of the pipe.
  which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
  
  
-The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
-$Re>4000$ as turbulent. 
+The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $\pmb{Re}<2300$ as laminar, if $2300<\pmb{Re}<4000$ as transient and if
+$\pmb{Re}>4000$ as turbulent. 
 
 \begin{equation}
-   Re = \frac{vD}{\nu}
+   \pmb{Re} = \frac{vD}{\nu}
    \label{Reynolds}
  \end{equation}
  
@@ -267,7 +269,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the water temperature  
+is the water temperature.
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -289,13 +291,13 @@ the pipes are considered \cite{Urban_Design}.
   \item $50 \leq D \leq 1500\quad mm$
   \item $10 \leq T \leq 20 \quad ^{\circ} C$
 \end{itemize}
-
+\todo{this is not how we have writen intervals other places ex. v < [0.5,1.5]}
 
 These values result in a Reynold's number between 19000 and 225000, which yields to consider a turbulent fluid flow through the pipes. For turbulent flow the 
 Moody friction factor is given by \cite{Design_Water}: 
 
 \begin{equation}
-  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{Re^{0.9}}\bigg)\bigg)^{-2}
+  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{\pmb{Re}^{0.9}}\bigg)\bigg)^{-2}
   \label{turbulent}
 \end{equation}
 
@@ -341,7 +343,7 @@ is the form-loss coefficient.
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{-}$
+\textcolor{White}{te}$\unit{\cdot}$
 \end{minipage}
 
 The form-loss coefficient can be split into different losses depending on the 
@@ -390,18 +392,18 @@ Substituting the terms $h_f$ and $h_m$ with their respective values:
 Where\\
 \hspace*{8mm} $J_k$ \\
 \hspace*{8mm} $\lambda_k(q_k)$ \\
-\hspace*{8mm} $\zeta_k$ 
+and \hspace*{0.7mm} $\zeta_k$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is an analogous parameter as inertia for the water\\ 
-is the friction as a function of flow\\
+is an analogous parameter as inertia for the water,\\ 
+is the friction as a function of flow,\\
 is the pressure drop due to the elevation.
 \end{minipage}
 
-As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. Where $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $J = diag(J_i)$.
+As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. Where $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $\pmb{J} = diag(J_i)$.
 
-However, it is assumed(prior to the tests carried out on the system) that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. In other words it means that the water tower might have a relatively big time constant compared to the time constant of the pipe. Due to this consideration it would be a fair assumption that the parameter $J_k$ does not influence the flow significantly in the system, therefore it could be neglected. However, the parameter is kept until this assumption is not verified by tests. The complete model of a pipe yields: 
+However, it is assumed, prior to the tests carried out on the system, that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. In other words it means that the water tower might have a relatively big time constant compared to the time constant of the pipe. Due to this consideration it would be a fair assumption that the parameter $J_k$ does not influence the flow significantly in the system, therefore it could be neglected. However, the parameter is kept until this assumption is not verified by tests. The complete model of a pipe yields: 
   
 \begin{equation}
 \label{FinalPipeModelSimplified}

@@ -3,7 +3,7 @@
 
 Using the final expression of each component, a complete system model can be obtained. This model includes pipe, valve, pump components and the WT. 
 
-The model of the water tower is described by a first order differential equation, consisting of the first time derivative of the pressure drop. The final expression is shown in \secref{WaterTankModel}:
+The model of the WT is described by a first order differential equation, consisting of the first time derivative of the pressure drop. The final expression is shown in \secref{WaterTankModel}:
 
 \begin{equation}
   \label{CompleteWTModel}
@@ -31,11 +31,11 @@ The relation seen in \tabref{tab:parametrization_model} shows the parametrizatio
 \begin{figure}[H]
 	\centering
 \begin{tabular}{c|cccccc} 
-  			\bfseries Component    &     $J_k$    &     $\lambda_k$    &    $\mu_k$    &   $\alpha_k$    &  $\zeta_k$   &	$\Delta p_{WT;k}$	\\ \hline
-			kth Pipe		  	   &     $J_k$    &     $\lambda_k$    &    0          &   0             &  $\zeta_k$   &   0	    			\\ 
-			kth Valve              &     0        &     0              &    $\mu_k$    &   0 		     &  0    		&   0					\\ 
-			kth Pump 		       &     0        &     0              &    0          &   $\alpha_k$    &  0    		&   0	    			\\
-			kth Water tower 	   &     0        &     0              &    0          &   0             &  0    		&   $\Delta p_{WT;k}$	    
+		\bfseries Component    &     $J_k$  &$\lambda_k$    &    $\mu_k$    &   $\alpha_k$   &  $\zeta_k$   &  $\Delta p_{WT;k}$ \\\hline
+		Pipe			  	   &     $J_k$  &$\lambda_k$    &    0          &   0            &  $\zeta_k$   &  0	    			\\ 
+		Valve       	       &     0      &0              &    $\mu_k$    &   0 		     &  0    		&  0					\\ 
+		Pump 		    	   &     0      &0              &    0          &   $\alpha_k$   &  0    		&  0	    			\\
+		Water tower 	   	   &     0      &0              &    0          &   0            &  0    		&  $\Delta p_{WT;k}$	    
 \end{tabular}
 \captionof{table}{Complete model parametrization.}
 		\label{tab:parametrization_model}
@@ -45,10 +45,10 @@ The relation seen in \tabref{tab:parametrization_model} shows the parametrizatio
 \subsection{Unit Transformation}
 \label{unittransform}
 
-During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it will be concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to bars and from seconds[s] to hours[h]. Another reason which makes this conversion reasonable is that the conductivity function,$k_v100$ in \secref{OD}, relies on the condition that the pressure drop is one bar. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow in $[m^3/h]$ instead of$[m^3/s]$. 
+During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it will be concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to bars and from seconds[s] to hours[h]. Another reason which makes this conversion reasonable is that the conductivity function,$k_v100$ in \secref{OD}, relies on the condition that the pressure drop is one bar. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow in $[m^3/h]$ instead of $[m^3/s]$. 
 \\
 The detailed derivation of the unit conversion can be found in \appref{unitCON}. The result is stated here: 
 
 \begin{equation}
-   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{10^5}
+   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - \Big(\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}\Big) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{10^5}
 \end{equation}
