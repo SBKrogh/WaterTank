@@ -136,7 +136,7 @@ Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
 flow through all the nodes. In order to reduce the order of the model and hence, 
-the amount of unknowns \eqref{ChordRelation} is applied. 
+the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
 
 \begin{equation}
   \Delta p_1 =  J {B_1}^T \dot{z} + f(z, w, k_v)
@@ -156,10 +156,10 @@ Isolating the inertia matrix to the left side
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. Nevertheless, in order to invert $(B_1 J {B_1}^T)$ it has to be nonsingular i.e. invertible. 
+for $\dot{z}$. In order to be able to invert $(B_1 J {B_1}^T)$ it has to be non-singular i.e. invertible. 
 
 Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be positive-definite it has to be a square matrix and its 
-determinant has to be nonzero. Observe that $\mathcal{J}$ is
+determinant has to be non-zero. Observe that $\mathcal{J}$ is
 
 \begin{equation}
   \label{Jequation}
@@ -186,13 +186,12 @@ Where\\
 \hspace*{4mm} is the inertia in the component of the spanning tree 
 \end{minipage}
 
-$J_c$ is the diagonal inertia matrix containing the chords elements,  since all 
+$J_c$ is the diagonal inertia matrix containing the chord elements, since all 
 the components corresponding to a chord in $\mathcal{G}$ are pipes, all the 
-diagonal term are positive. Thus, $J_c > 0$. 
+diagonal terms are positive. Thus, $J_c > 0$. 
 
-Nevertheless, if there would be at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
-will continue being positive-definite as long as there is a possibility to create a spanning tree containing all 
-chord as pipes elements from $\mathcal{G}$ \cite{TowerModel}.
+Nevertheless, if there was at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
+would be positive-definite as long as there is a possibility to create a spanning tree containing all chords as pipe elements from $\mathcal{G}$ \cite{TowerModel}.
 
 For the remaining term $B_f J_f {B_f}^T$, $J_f$ is non-negative matrix as all its elements are zero or pipe´s inertia. 
 Multiplying $B_f J_f {B_f}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x^{T}}$
