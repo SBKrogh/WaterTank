@@ -96,41 +96,33 @@ into a node must be equal the the sum of all the nodes out of the node.
 
 By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
 flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
-Thus, reducing the number of unknowns in the system. These elements of $z$ are called the free 
+Thus, reducing the number of unknowns in the system. These elements of $\pmb{z}$ are called the free 
 flows of the system and are independent variables \cite{GraphTheoryCarsten}.
 
 \begin{equation}
-  q_1 = B_1 ^{T}  z
+  \pmb{q_1} = \pmb{B_1} ^{T}  \pmb{z}
   \label{ChordRelation}
 \end{equation}
 
-In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $q_1$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
+In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\pmb{q_1}$, angular velocity, $\omega$, and conductivity factor, $k_v$ as follows:
 
 \begin{equation}
-  \tilde{f}_i(q_1, \omega, k_v) = \lambda_i(q_1) + \zeta_i + \nu_i(q_1, k_v) - \alpha_i(\omega)
+  \tilde{f}_i(\pmb{q_1}, \pmb{\omega}, \pmb{k_v}) = \lambda_i(\pmb{q_1}) + \zeta_i + \nu_i(\pmb{q_1}, \pmb{k_v}) - \alpha_i(\pmb{\omega})
   \label{ComponentFunction}
 \end{equation}
 
-\begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{2mm} $\tilde{f}_i = -C_{pi} q_i |q_i|$  \\
-\hspace*{2mm} $\tilde{f}_i = -C_{vi} q_i |q_i|$  \\
-\hspace*{2mm} $\tilde{f}_i = \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|q_i| q_i  + a_{h1i} \omega_{i} q_i + a_{h0i}{\omega_i}^2$  
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-\hspace*{25mm} if i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23\\
-\hspace*{25mm} if i = 13,15,20,22						   \\
-\hspace*{65mm} if i = 1,8,9,16						   
-\end{minipage}
-
-\todo{Fixe structuring error}
+\begin{align}
+\tilde{f}_i &= -\pmb{C_{pi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
+\tilde{f}_i &= -\pmb{C_{vi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\:i = 13,15,20,22\\
+\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\pmb{q_i}| \pmb{q_i}  + a_{h1i} \pmb{\omega_{i}} \pmb{q_i} + a_{h0i}\pmb{{\omega_i}}^2 \hskip 2cm  \text{for}\: i = 1,8,9,16
+\end{align}
 
 The following hydraulic network model shows an overall model along with the above considerations. 
 Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
-  \Delta p_1 =  J \dot{q}_1 + f(q_1, w, k_v)
+  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + f(\pmb{q_1}, \pmb{w}, \pmb{k_v})
   \label{NoTowerModel}
 \end{equation}
 
@@ -139,46 +131,46 @@ flow through all the nodes. In order to reduce the order of the model and hence,
 the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
 
 \begin{equation}
-  \Delta p_1 =  J {B_1}^T \dot{z} + f(z, w, k_v)
+  \Delta \pmb{p_1} =  \pmb{J} {\pmb{B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})
   \label{ChordsModel}
 \end{equation}
 
 Making use of the identity shown in \eqref{KVL}, the following is obtained
 
 \begin{equation}
-  0 = B_1 \Delta p_1 = B_1 [ J {B_1}^T \dot{z} + f(z, w, k_v)] 
+  0 = \pmb{B_1} \pmb{\Delta p_1} = \pmb{B_1} [ \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})] 
  \end{equation}
 
 Isolating the inertia matrix to the left side
 
 \begin{equation}
- - B_1 J {B_1}^T \dot{z}  = B_1 f(z, w, k_v)
+ - \pmb{B_1} \pmb{J} \pmb{{B_1}}^T \pmb{\dot{z}}  = \pmb{B_1} f(\pmb{z}, \pmb{w}, \pmb{k_v})
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\dot{z}$. In order to be able to invert $(B_1 J {B_1}^T)$ it has to be non-singular i.e. invertible. 
+for $\pmb{\dot{z}}$. In order to be able to invert $(\pmb{B_1 J} \pmb{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
 
-Setting $\mathcal{J} = B_1 J {B_1}^T $, for $\mathcal{J}$ to be positive-definite it has to be a square matrix and its 
-determinant has to be non-zero. Observe that $\mathcal{J}$ is
+Setting $\pmb{\mathcal{J}} = \pmb{B_1 J} \pmb{{B_1}}^T $, for $\pmb{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
+determinant has to be non-zero. Observe that $\pmb{\mathcal{J}}$ is
 
 \begin{equation}
   \label{Jequation}
-  \mathcal{J} = (I \quad B_f) 
+  \pmb{\mathcal{J}} = (\pmb{I \quad B_f}) 
   \begin{pmatrix}
-    J_c    &    0    \\
-    0       &    J_f
+    \pmb{J_c}    &    \pmb{0 }   \\
+    \pmb{0}       &   \pmb{ J_f}
   \end{pmatrix}
   \begin{pmatrix}
-    I    \\
-    {B_f}^T
+    \pmb{I}    \\
+    \pmb{{B_f}}^T
   \end{pmatrix}
-  = J_c + B_f J_f {B_f}^T
+  = \pmb{J_c} + \pmb{B_f J_f} \pmb{{B_f}}^T
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $J_c \in \mathbb{R}^{l \times l}$  \\
-\hspace*{8mm} $J_f \in \mathbb{R}^{f \times f} $ 
+\hspace*{8mm} $\pmb{J_c} \in \mathbb{R}^{l \times l}$  \\
+\hspace*{8mm} $\pmb{J_f} \in \mathbb{R}^{f \times f} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -186,35 +178,35 @@ Where\\
 \hspace*{4mm} is the inertia in the component of the spanning tree 
 \end{minipage}
 
-$J_c$ is the diagonal inertia matrix containing the chord elements, since all 
-the components corresponding to a chord in $\mathcal{G}$ are pipes, all the 
-diagonal terms are positive. Thus, $J_c > 0$. 
+$\pmb{J_c}$ is the diagonal inertia matrix containing the chord elements, since all 
+the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
+diagonal terms are positive. Thus, $\pmb{J_c} > 0$. 
 
 Nevertheless, if there was at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
-would be positive-definite as long as there is a possibility to create a spanning tree containing all chords as pipe elements from $\mathcal{G}$ \cite{TowerModel}.
+would be positive-definite as long as there is a possibility to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
 
-For the remaining term $B_f J_f {B_f}^T$, $J_f$ is non-negative matrix as all its elements are zero or pipe´s inertia. 
-Multiplying $B_f J_f {B_f}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x^{T}}$
+For the remaining term $\pmb{B_f J_f {B_f}}^T$, $\pmb{J_f}$ is non-negative matrix as all its elements are zero or pipe´s inertia. 
+Multiplying $\pmb{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
 
 \begin{equation}
-  \mathbf{x^{T}} B_f J_f {B_f}^T \mathbf{x}
+  \pmb{x}^{T} \pmb{B_f J_f {B_f}}^T \pmb{x}
   \label{PosDefi}
 \end{equation}
 
-Creating a new variable $y = {B_f}^T \mathbf{x}$ and applying the positive semi-definite matrix definition 
+Creating a new variable $\pmb{y} = \pmb{B_f}^T \mathbf{x}$ and applying the positive semi-definite matrix definition 
 \cite{MatrixBook}
 
 \begin{equation}
-  y^{T} J_f y \geqslant 0
+  \pmb{y}^{T} \pmb{J_f y} \geqslant 0
   \label{PosDefEq}
 \end{equation}
 
-Thus, \eqref{Jequation} is positive definite a sufficient condition for $\mathcal{J}$ being invertible. 
+Thus, \eqref{Jequation} is positive definite a sufficient condition for $\pmb{\mathcal{J}}$ being invertible. 
 
 Therefore, the system model can be written as follows
 
 \begin{equation}
-   \dot{z}  = - (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)
+   \pmb{\dot{z}}  = - (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f(\pmb{z},\pmb{ w}, \pmb{k_v})
    \label{ParatModelFinal}
  \end{equation}
 
@@ -225,28 +217,28 @@ As a consequence of the system model established above, a new set of relations f
 obtained. Starting from the component complete model
 
 \begin{equation}
-  \Delta p_1 =  J \dot{q}_1 + f(q_1, w, k_v)
+  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + f(\pmb{q_1}, \pmb{w}, \pmb{k_v})
   \label{RecallModel}
 \end{equation}
 
-Recall that previously, in \eqref{ChordRelation}, a new state, $z$, has been defined for the independent flows in 
+Recall that previously, in \eqref{ChordRelation}, a new state, $\pmb{z}$, has been defined for the independent flows in 
 the graph
 
 \begin{equation}
-  \Delta p_1 =  J {B_1}^T \dot{z} + f(z, w, k_v)
+  \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})
  \end{equation}
 
-The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \Delta p_1 $ can be rewritten as
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \pmb{\Delta p_1} $ can be rewritten as
 
 \begin{equation}
-  \Delta p_1 =  J {B_1}^T [- (B_1 J {B_1}^T)^{-1}B_1 f(z, w, k_v)] + f(z, w, k_v)
+ \pmb{ \Delta p_1} = \pmb{ J {B_1}}^T [- (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f(\pmb{z},\pmb{ w}, \pmb{k_v})] + f(\pmb{z},\pmb{ w}, \pmb{k_v})
   \label{PressureLarge}
  \end{equation}
  
  Rewritten it in a shorter form
  
  \begin{equation}
-  \Delta p_1 =  (-J {B_1}^T (B_1 J {B_1}^T)^{-1}B_1 + \mathcal{I}) f(z, w, k_v)
+  \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f(\pmb{z}, \pmb{w}, \pmb{k_v})
   \label{PressureShort}
  \end{equation}
 
@@ -257,7 +249,7 @@ Applying KVL to the hydraulic model, the following expression is obtained: Moreo
 situation where the inertia, $J$, will not act. Thus, the term containing the diagonal matrix $J$ can be disregarded from the equation. 
 
 \begin{equation}
-  0 = B_1 \Delta p_1 = B_1 [ J {B_1}^T \dot{z} + f(z, w, k_v)]  =  B_1 (f(z, w, k_v))
+  0 = \pmb{B_1 \Delta p_1 }= \pmb{B_1} [ \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z},\pmb{ w}, \pmb{k_v})]  = \pmb{ B_1} (f(\pmb{z}, \pmb{w},\pmb{ k_v}))
   \label{esteq}
  \end{equation}
  
@@ -265,11 +257,11 @@ The pressure difference in the pumps have been specified as inputs, by reason of
 as known parameters. Thereby, in \eqref{esteq} the term can be split up as following:
  
 \begin{equation}
- 0 = f(z,k_v)+ f(z,w)
+ 0 = f(\pmb{z},\pmb{k_v})+ f(\pmb{z},\pmb{w})
  \label{ModelNoInertia}
 \end{equation}
 
-The term $f(z,w)$ is set as input, it is renamed as U and it represents the pressure difference in the $4$ pumps acting on the system. Therefore, 
+The term $f(\pmb{z},\pmb{w})$ is set as input, it is renamed as U and it represents the pressure difference in the $4$ pumps acting on the system. Therefore, 
 \eqref{ModelNoInertia} is considered as the input equation where the flow through the chords and the friction parameter of the pipes are unknown. 
 
 An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
@@ -332,4 +324,4 @@ the pressure difference for the XX component, can be defined as:
     DpC28 + DpC27 = y_8
 \end{equation}
 
-With the $8$ equations depicted above the output vector $y$ is obtained. 
+With the $8$ equations depicted above the output vector $\pmb{y}$ is obtained. 
