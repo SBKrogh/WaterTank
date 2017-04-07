@@ -13,10 +13,10 @@ The water distribution system explained in \secref{system_overview} need to be c
 
 The WT is introduced to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
 
-Considering both the model of the water distribution network, cost function for the pumps and the constrains , this leads to a description of the systems operating area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
+Considering both the model of the water distribution network, cost function for the pumps and the constrains , this leads to a description of the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q})$ wherein the system must operate. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
 \todo{inset network model in minimization problem}
 \begin{align*}
-\underset{\pmb{u}, \:\pmb{q}}{min} \: C(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} Q_i(\Delta{p}_i,q_i) P_E  \\
+\underset{\pmb{u}, \:\pmb{q}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} Q_i(\Delta{p}_i,q_i) P_E  \\
 %
 s.t \:\:\:\:\: & Inset \:model \\
 %
@@ -29,7 +29,7 @@ s.t \:\:\:\:\: & Inset \:model \\
 
  \begin{minipage}[t]{0.20\textwidth}
  Where\\
- \hspace*{8mm} $C(\Delta{p}_i,q_i)$ \\
+ \hspace*{8mm} $C_T(\Delta{p}_i,q_i)$ \\
  \hspace*{8mm} $Q_i(\Delta{p}_i,q_i)$ \\
  \hspace*{8mm} N \\
  \hspace*{8mm} $p_{cp}$ \\
@@ -51,7 +51,7 @@ s.t \:\:\:\:\: & Inset \:model \\
  \end{minipage}
  \begin{minipage}[t]{0.10\textwidth}
  \vspace*{2mm}
- \textcolor{White}{te}$\unit{DKK}$\\
+ \textcolor{White}{te}$\unit{\frac{DKK}{W}}$\\
  \textcolor{White}{te}$\unit{W}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{Bar}$\\
@@ -63,6 +63,16 @@ s.t \:\:\:\:\: & Inset \:model \\
  \end{minipage}
 
 From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+
+
+The system consists of four pumps, two local PMA pumps and two main pumps. Because the focus of this project is to balance between the mains pumps and the WT a simpler controller is implemented to keep a specific differential pressure over the PMA pumps.
+
+A more advanced controller, controlling the main pumps, are designed to minimize the cost of running the system. This is done by using Model Predictive Control, MPC. The advantage of MPC, compared to eg. LQR is that the MPC can optimize a state keeping the expectation of the future into account. 
+
+In the following sections the design of the descried control system is explained. 
+
+
+%The purpose is to let the WT do the work when the price of running the pumps are high.
 
 %\begin{align*}
 %\pmb{B}
