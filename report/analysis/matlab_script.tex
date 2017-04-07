@@ -44,7 +44,7 @@ In case of the valves the pressure across them is obtained as following
   mu = (1/C_v^2)* abs(q)*q /3600^2;
 \end{equation}
 
-The value of $C_v$ is obtained from the input data. 
+The value of $C_v$ is obtained from the input data. When the valve is closed $\mu$ is set to 0. 
 
 For the pumps, as from the lab the pressure across them can be obtained that value is set as $\alpha$. 
 
@@ -109,8 +109,34 @@ Isolating $p_r$ from the equation the pressure at each node is obtained
 
 $H_r^{\dagger}$ being the pseude-inverse of matrix $H_r$.
 
-\subsection{NonLinear Grey Box Model}
-The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. 
+The outputs for are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
+to the data from the lab. 
 
+\subsection{NonLinear Grey Box Model}
+The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraints to be 
+positive is set. 
+
+The estimator compares the output. 
+
+Several test have been done, with different inputs and outputs from the lab.
+
+
+\begin{figure}[H]
+\centering
+\resizebox{0.75\linewidth}{!}{\input{report/tikz/InputPlot.tex}}
+%\input{report/tikz/full_sys_diagram.tex} 
+%\caption{system diagram}
+\label{systemdiagram}
+\end{figure} 
+
+\begin{figure}[H]
+\centering
+\resizebox{0.75\linewidth}{!}{\input{report/tikz/OutputPlot.tex}}
+%\input{report/tikz/full_sys_diagram.tex} 
+%\caption{system diagram}
+\label{systemdiagram}
+\end{figure} 
+
+Together with the inputs from the lab and the nonlinear differential model the parameter estimation is done. 
 
 
