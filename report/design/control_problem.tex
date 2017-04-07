@@ -11,42 +11,55 @@ The water distribution system explained in \secref{system_overview} need to be c
 	\item Minimizing the total cost of running the system
 \end{itemize}
 
-The WT is introduced to reduce the operation cost of the water distribution network. Therefor the system have to be controlled in a way that obtain the cheapest cost of operation. 
+The WT is introduced to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
 
-Considering both the model of the water distribution network, cost function for the pumps and the constrain, this leads to a description of the systems operate area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
+Considering both the model of the water distribution network, cost function for the pumps and the constrains , this leads to a description of the systems operating area, $C_T(\Delta{p}_i,q_i)$ wherein the system must operate. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
 \todo{inset network model in minimization problem}
 \begin{align*}
-\underset{\pmb{u}, \:\pmb{q}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} C_{T_i}(\Delta{p}_i,q_i)  \\
+\underset{\pmb{u}, \:\pmb{q}}{min} \: C(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} Q_i(\Delta{p}_i,q_i) P_E  \\
 %
 s.t \:\:\:\:\: & Inset \:model \\
 %
 & \underline{p_{cp}} < \pmb{p_{cp}} < \overline{p_{cp}} \\
+%
+& \underline{p_{wt}} < \pmb{p_{wt}} < \overline{p_{wt}} \\
 %
 & \bar{q}_{wt} > \underline{\bar{q}_{wt}}
 \end{align*}
 
  \begin{minipage}[t]{0.20\textwidth}
  Where\\
- \hspace*{8mm} $C_T(\Delta{p}_i,q_i)$ \\
+ \hspace*{8mm} $C(\Delta{p}_i,q_i)$ \\
+ \hspace*{8mm} $Q_i(\Delta{p}_i,q_i)$ \\
  \hspace*{8mm} N \\
  \hspace*{8mm} $p_{cp}$ \\
  \hspace*{8mm}  \textcolor{White}{te}\\
- and \hspace*{0.7mm} $\bar{q}_{wt}$	
+ \hspace*{8mm} $p_{wt}$ \\
+ \hspace*{8mm}  \textcolor{White}{te}\\
+ \hspace*{8mm} $P_E$ \\
+  and \hspace*{0.7mm} $\bar{q}_{wt}$	
  \end{minipage}
  \begin{minipage}[t]{0.68\textwidth}
  \vspace*{2mm}
+ is the cost of running the system, \\
  is the power consumption of the $i^{th}$ pump,\\
  is the number of pumps,\\
  is the pressure at a given CP, $\overline{p_{cp}}$ and $\underline{p_{cp}}$ are the upper and lower bounds,\\
+ is the pressure at the WT outlet, $\overline{p_{wt}}$ and $\underline{p_{wt}}$ are the upper and lower bounds,\\
+ is the price of electricity,\\ 
  is the average flow rate through the WT, $\underline{\bar{q}_{wt}}$ is the lower bound.
  \end{minipage}
  \begin{minipage}[t]{0.10\textwidth}
  \vspace*{2mm}
+ \textcolor{White}{te}$\unit{DKK}$\\
  \textcolor{White}{te}$\unit{W}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{Bar}$\\
  \hspace*{8mm}  \textcolor{White}{te}\\
- \textcolor{White}{te}$\unit{\frac{m^3}{day}}$
+ \textcolor{White}{te}$\unit{Bar}$\\
+ \hspace*{8mm}  \textcolor{White}{te}\\
+ \textcolor{White}{te}$\unit{DKK}$\\
+  \textcolor{White}{te}$\unit{\frac{m^3}{day}}$
  \end{minipage}
 
 From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
