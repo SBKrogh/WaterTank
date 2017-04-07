@@ -46,7 +46,7 @@ In case of the valves the pressure across them is obtained as following
 
 The value of $C_v$ is obtained from the input data. When the valve is closed $\mu$ is set to 0. 
 
-For the pumps, as from the lab the pressure across them can be obtained that value is set as $\alpha$. 
+For the pumps, the pressure across them is obtained from the lab and is set as $\alpha$. 
 
 As pointed out earlier, the inertia of the pipes is taken into account in the model and is calculated as
 
@@ -85,7 +85,7 @@ Known the derivative of the chords, the derivative of the flow through the edges
   \label{DeltaP}
 \end{equation}
 
-Now the pressure across the edges are obtained, nevertheless, from the data of the lab the relative pressure at the nodes are obtained. This implies to 
+Now the pressure across the edges are calculated, nevertheless, from the data of the lab the relative pressure at the nodes are obtained. This implies to 
 have to calculate the pressure in the nodes so the comparison is done correctly. 
 
 The pressure at each node can be found by applying 
@@ -109,11 +109,11 @@ Isolating $p_r$ from the equation the pressure at each node is obtained
 
 $H_r^{\dagger}$ being the pseude-inverse of matrix $H_r$.
 
-The outputs for are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
+The outputs are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
 to the data from the lab. 
 
 \subsection{NonLinear Grey Box Model}
-The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraints to be 
+The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraint to be 
 positive is set. 
 
 The estimator compares the output. 
