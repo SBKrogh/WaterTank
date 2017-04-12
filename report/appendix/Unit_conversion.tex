@@ -1,7 +1,7 @@
 \chapter{Unit Conversion}
 \label{unitCON}
 
-Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to bar is made.
+Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to Bar is made.
 
 The final pipe model from \eqref{FinalPipeModel}, is shown below.   
 
@@ -27,3 +27,8 @@ The conversion from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ is $\frac{m^3}{s} 360
 \begin{equation}
    \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{10^5}
 \end{equation}
+
+There is no need to apply the unit conversion to the final valve model from \eqref{CompleteValveModel}, due to the parameter $k_v$ being designed for the water flow in $m^3$
+through the  valve in one hour and at a pressure drop across the valve of 1 Bar. 
+
+In the pump final model \eqref{PumpModel} the constants are scaled so the pump equation has the units in Bar and the flow has the units in $m^3/h$.

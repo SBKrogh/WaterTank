@@ -13,6 +13,7 @@ A model describing the pressure drop is derived which is presented in detail in 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $\Delta p$ \\
+\hspace*{8mm} $a_{h2}$, $a_{h1}$, $a_{h0}$ \\
 \hspace*{8mm} $q_i$ \\
 and \hspace*{0.7mm} $\omega_r$ 
 
@@ -20,58 +21,55 @@ and \hspace*{0.7mm} $\omega_r$
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the head produced by the pump,\\
+are constants describing the pump,\\
 is the volume flow through the impeller,\\
 is the impeller speed.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{Pa}$\\
+\textcolor{White}{te}$\unit{-}$\\
 \textcolor{White}{te}$\unit{\frac{m^3}{s}}$\\
 \textcolor{White}{te}$\unit{\frac{rad}{s}}$
 \end{minipage}	
 
-\todo{We need the model of the power consumption of the pump to minimize the cost of power consumed - Tom}
+\subsubsection*{Pump Power Consumption}
+In \secref{introduction} it has been introduced the aim of the project, consisting on minimizing the power consumption of the pumps in order to reduce 
+the cost of running the hydraulic setup. Therefore, a model of the pump power consumption is needed so it can be used afterwards. In \cite{Phd_Carsten} 
+an expression for the torque produced in a centrifugal pump is derived. 
 
-%The parameters inserted in \refeq{PumpModel} are given by:
-%
-%\begin{minipage}[t]{0.20\textwidth}
-%\begin{equation*}
-%  a_{h2} = K_s + K_f
-%\end{equation*}
-%\end{minipage}
-%\begin{minipage}[t]{0.68\textwidth}
-%\begin{equation*}
-%  a_{h0} = 2K_sK_d - \sigma_s 
-%  \bigg(\frac{{r_2}^2}{g}-\frac{{r_1}^2}{g}\bigg)
-%\end{equation*}
-%\end{minipage}
-%
-%\begin{equation}
-%  a_{h1} = \sigma_s 
-%  \bigg(\frac{r_2}{gA_2}cot(\beta_2)-\frac{r_1}{gA_1}cot(\beta_1)\bigg)-K_s{K_d}^2
-%\end{equation}
+\begin{equation}
+  \tau = -a_{t2}{q_i}^2 + a_{t1} {\omega}_r {q_i} + a_{t0} {{\omega}_r}^2
+  \label{pumptorque}
+\end{equation}
 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $a_{t2}$, $a_{t1}$, $a_{t0}$ \\
+\hspace*{8mm} $q_i$ \\
+and \hspace*{0.7mm} $\omega_r$ 
 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+are constants describing the pump\\
+is the volume flow through the impeller,\\
+is the impeller speed.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{\frac{m^3}{s}}$\\
+\textcolor{White}{te}$\unit{\frac{rad}{s}}$
+\end{minipage}	
 
- 
-% \textbf{Kirchhoff´s Law implementation for hydraulic networks}\\
-% \label{KirchhoffLaw}
-% Kirchhoff´s law represents the interconnection of the elements of an electrical circuit. An hydraulic approach 
-% can be done to Kirchhoff´s law in order to carry out the analysis of the hydraulic network of a system, having to satisfied Kirchhoff´s 
-% current law (KCL) and voltage law (KVL). Therefore, voltage and currents are replaced by pressure and flows, respectively. 
-%
-%The critical points in a closed hydraulic system are usually the inlets and outlets of elements such as pipes, pumps and valves. 
-%The pressure drops taking place in the pipes and valves can be considered as inductors and nonlinear resistors, respectively. 
-%
-%\textit{Maybe here before we start with the Graph Theory could be nice to make a figure showing the changes between the hydraulic circuit to the electrical 
-%one.}
-%
-%The analogy between hydraulic and electrical circuits described above is applied in the graph theory…(start explaining Graph Theory).
-%
-%
-%
+Making use of the relation between torque and electrical power, $P_e = \tau \omega$, the above expression can be rewritten in terms of electrical 
+power. 
 
-
+\begin{equation}
+  P_e = -a_{t2}{q_i}^2{\omega}_r + a_{t1} {{\omega}_r}^2 {q_i} + a_{t0} {{\omega}_r}^3
+  \label{pumptorque}
+\end{equation}
 
 
 
