@@ -16,7 +16,7 @@ In the given system, valves are considered as end-user components since they are
 
 %In \eqref{ValveModel}, the form-loss coefficient is taken into account in order to determine the pressure drop. Although $k_f$ is a coefficient that describes the resistance of the valve,
 
-In case of valves, manufacturers provide a parameter which indicates the valve capacity. This coefficient is called the $k_{v100}$- factor that describes the conductivity of the valve at maximum OD. According to the definition of this parameter, it sets the relationship between the capacity through the valve and the pressure drop of $\Delta p = 1 [bar]$ at a fully open state of the valve. According to \cite{kvvalve}, the properties of water fulfil the requirements which allows to write up the following expression for flow and pressure: 
+In case of valves, manufacturers provide a parameter which indicates the valve capacity. This coefficient is called the $k_{v100}$- factor that describes the conductivity of the valve at maximum OD. This parameter sets the relationship between the water flow through the valve in $m^{3}$ in one hour. The experiments were carried out with a pressure drop of $\Delta p = 1 [bar]$ at a fully open state of the valve. According to \cite{kvvalve}, the properties of water fulfil the requirements which allows to write up the following expression for flow and pressure: 
 
 \begin{equation}
 \label{kvequation}
@@ -33,7 +33,7 @@ is the valve maximum capacity factor.
  \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
+\textcolor{White}{te}$\unit{\frac{m^{3}}{h}}$
 \end{minipage}
 
 \eqref{kvequation} can be derived in detail using the law of continuity for each endpoint of the valve, however the exact derivations can be found in the datasheet \cite{kvvalve}. In the further description and derivations, the coefficients and all the technical considerations are based on this datasheet.  
