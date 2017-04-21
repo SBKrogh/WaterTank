@@ -1,0 +1,55 @@
+\chapter{Linearization}
+\label{chap:Lin}
+
+
+The Kv value as a function of the opening degree is given by:
+
+\begin{equation}
+	Kv(OD)=kv_{100} \, e^{(n_{gl} \, \gamma)}
+\end{equation}
+
+
+The pressure across the valve as a function of the flow is given by:
+
+\begin{equation}
+	\mu(q)=\frac{1}{(Kv)^2} \, q \, |q|
+\end{equation}
+
+
+The pressure across the valve as a combined function of both flow and opening degree
+
+\begin{equation}
+	M(q,OD)=\frac{1}{(kv_{100} \, e^{(n_{gl} \, \gamma)})^2} \, q \, |q| 
+\end{equation}	
+
+
+The linerization of $M(q,OD)$ by multi variable Taylor expansion in $\bar{q}$ and $\bar{OD}$ is given by the form
+
+\begin{equation}
+\begin{split}
+	M(q,OD) &\approx M(a,b) + \frac{\partial}{\partial x} (M(a,b)) \, (a-x) + \frac{\partial}{\partial y} (M(a,b)) \, (b-y) \\
+			&\approx e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{q} \, |\bar{q}| -2 \, \frac{e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, n_{gl} \, \hat{OD} \, \bar{q} \, |\bar{q}|}{\theta_{max}-\theta_{off}} + 2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \hat{q} \, |\bar{q}|
+\end{split}
+\end{equation}
+ \begin{minipage}[t]{0.40\textwidth}
+Where\\
+\hspace*{8mm} $a=\bar{q}$ \\
+\hspace*{8mm} $x=\bar{q}+\hat{q}$ \\
+\hspace*{8mm} $b=\bar{OD}$ \\
+and \hspace*{0.7mm} $y=\bar{OD}+\hat{OD}$ 
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+\vspace*{2mm}
+\hspace*{8mm}
+\hspace*{8mm}
+\hspace*{8mm}
+\hspace*{8mm}
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{\frac{m^3}{s}}$\\
+\textcolor{White}{te}$\unit{\frac{m^3}{s}}$\\
+\textcolor{White}{te}$\unit{\degree}$\\
+\textcolor{White}{te}$\unit{\degree}$
+\end{minipage}	
+
