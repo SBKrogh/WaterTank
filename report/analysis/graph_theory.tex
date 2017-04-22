@@ -36,18 +36,17 @@ shown.
 \subsection{Cycle Matrix}
 \label{CycleSection}
 A spanning tree, $T \in \mathcal{G}$ is a subgraph which contains all nodes of $\mathcal{G}$ but has no cycles \cite{GraphModel}. 
-In order to obtain the spanning tree it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. To obtain the number of chords, $l$, the following applies:
+In order to obtain the spanning tree it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, are governed by the following expression:
 
 \begin{equation}
   \label{Numberofchords}
   l = e - n +1
 \end{equation}
 
-Adding any additional chord to $T$, creates one cycle which is called fundamental cycle. A graph is conformed by as many fundamental cycles as number of chords it has \cite{GraphModel}.  
-The set of fundamental cycles correspond to the fundamental cycle matrix $B$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
+By adding any additional chord to $T$, a new cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as many chords it has \cite{GraphModel}.  
+The set of fundamental cycles correspond to the fundamental cycle matrix $\pmb{B}$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the specific chords and 
-edges respectively. 
+The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges respectively. 
 
 \begin{equation}
 \label{DiGraphCycle}
@@ -66,15 +65,15 @@ edges respectively.
 		\right.
 \end{equation}	
 
-In \appref{CycleAppendix} the corresponding incidence matrix of the system is 
+In \appref{CycleAppendix} the corresponding cycle matrix of the system is 
 shown.
 
 \subsection{Kirchhoff's Law}
 \label{KirchhoffSection}
 
-The directed graph of a hydraulic network assigns two variables to each edges: 
-the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$. These two variables are vectors containing the individual flows through the edges and 
-the pressure across them:
+The graph of a hydraulic network assigns two variables to every edge: 
+the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$ in the function of time. These two variables are vectors containing the individual flows through the edges and 
+the pressure drop across them:
 
 % \begin{minipage}{0.45\linewidth}
 % \begin{equation}
@@ -121,9 +120,8 @@ the pressure across them:
 \end{equation}
 
 
-In order to derive a model of the hydraulic network a set of independent flow variables has to be identified \cite{TowerModel}. These flow variables have the characteristic 
-that their values can be set independently from other flows in the network, and coincide with the flows through the chords. 
-Therefore, it has been decided to choose the numbering of the columns of the 
+In order to derive a model for the hydraulic network a set of independent flow variables are identified \cite{TowerModel}. These flow variables have the property that their values can be set independently from other flows in the network, and they coincide with the flows through the chords. 
+Therefore it is convenient to choose the column indexing of the 
 $\pmb{H}$ and $\pmb{B}$ matrix, such as:
 
 % \begin{minipage}{0.45\textwidth}
@@ -158,10 +156,10 @@ Where\\
 \hspace*{8mm} are the matrices corresponding to the spanning tree. 
 \end{minipage}
 
-Since the edges variables are elements interconnected to form a network, 
+Since the edge variables are governed by elements interconnected in the network, 
 they must obey the law of conservation of mass and pressure \cite{GraphModel}. 
 
-Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving and entering the node is zero. Formulating this statement in matrix form:
+Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving and entering a node is zero. Formulating this statement in matrix form:
 
 \begin{equation}
   \label{KCL}
@@ -176,7 +174,7 @@ is zero. In terms of matrix form:
  \pmb{B} \cdot \pmb{\Delta p (t)} = 0
 \end{equation}
 
-Where the fundamental loops have a reference direction given by the direction of the 
+where the fundamental loops have a reference direction given by the direction of the 
 chords. 
 
 
