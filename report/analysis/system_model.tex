@@ -10,7 +10,6 @@ In the block diagram of the system, nodes are introduced which represent differe
 In the network, volume flow rate is equivalent to current and the quantity of water has similar representation as charge in an electric circuit. Again, it should be noted that e.g. the water quantity cannot be affected by magnetic fields, therefore the word: similar.
 \\ 
 Although nodes can be placed across all the endpoints of each component, some simplifications are introduced. There are two different types of simplification in the network. %For a better transparency, these parts of the system are shown in \figref{fig:subsys_1} and \figref{fig:subsys_2}: 
-\todo{VINKEL: I removed a figure, someone should read this and say it's okay.}
 
 %%picture of test system
 %\begin{figure}[H]
@@ -37,7 +36,7 @@ Although nodes can be placed across all the endpoints of each component, some si
 \caption{Simplifications: The rotational speed of the pump, $\omega = 0$ and therefor this part i modeled differently.}
 \end{figure}
 
-The WT is connected to the remaining system with three components, a pump, $C_{32}$, and a value on each side. This is shown in \figref{fig:subsys_1}, here the components are shown between $n_3$ and $n_{18}$. 
+The WT is connected to the remaining system with three components, a pump, $C_{32}$, and a valve on each side. This is shown in \figref{fig:subsys_1}, where the components are shown between $n_3$ and $n_{18}$. 
 The latter is the node where the WT connects to the system. In this particular case the pump is turned off, however contributes to the pressure drop due to its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead the series connection is seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pump, \eqref{PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega = 0$:
 
 \begin{equation}
@@ -54,7 +53,8 @@ For the case where $\omega \neq 0$ a model including the pump and both valves ca
 
 The case when $\omega = 0$ applies to components between ($n_4$-$n_8$), ($n_3$-$n_{18}$)  and to ($n_5$-$n_{13}$). The case when $\omega \neq 0$ applies to the two main pumps, between ($n_1$-$n_2$) and ($n_1$-$n_7$). All these subsystems are modelled as described above. 
 \\
-Since the components influence the pressure between the endpoints, as it was mentioned before, they can be represented as electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and it has a resistance depending on the OD. The model of the pipes is equivalent to a series connection of a linear inductor, a non-linear resistor and a voltage source which stands for the elevation, gravity term. The pumps provide pressure and therefore flow to the system. They can be seen as voltage generators. The WT is a simple capacitor, as it was described previously. The equivalence between the hydraulic and electric system is summarized in \tabref{tab:hydraulic_electrical}.
+Since the components influence the pressure between the endpoints, as it was mentioned before, they can be represented as electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and they have a resistance depending on the OD. The model of the pipes is equivalent to a series connection of a linear inductor and a non-linear resistor. %and a voltage source which stands for the elevation, gravity term%
+The pumps provide pressure and therefore flow to the system. They can be seen as voltage generators. The WT is a simple capacitor, as it was described previously. The equivalence between the hydraulic and electric system is summarized in \tabref{tab:hydraulic_electrical}.
 
 \begin{figure}[H]
 	\centering

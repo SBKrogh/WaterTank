@@ -21,7 +21,7 @@ The complete model consists of the pipe model, \eqref{CompactValveModel} the val
 
 \begin{equation}
 \label{CompleteModel}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(u)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(u_k)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
 \end{equation}
 
 The complete component model, \eqref{CompleteModel} is used to represent the pressure contribution of each component. In order to describe each part of the system by \eqref{CompleteModel} the parameters and functions that correspond to the specific components are chosen. The remaining are set to zero if they do not match the model of the specific part of the network. 
@@ -45,7 +45,7 @@ The relation seen in \tabref{tab:parametrization_model} shows the parametrizatio
 \subsection{Unit Transformation}
 \label{unittransform}
 
-During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it will be concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to bars and from seconds[s] to hours[h]. Another reason which makes this conversion reasonable is that the conductivity function,$k_v100$ in \secref{OD}, relies on the condition that the pressure drop is one bar. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow in $[m^3/h]$ instead of $[m^3/s]$. 
+During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it will be concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to bars and from seconds[s] to hours[h]. Another reason which makes this conversion reasonable is that the conductivity function,$k_{v100}$ in \secref{OD}, relies on the condition that the pressure drop is one bar. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow in $[m^3/h]$ instead of $[m^3/s]$. 
 \\
 The detailed derivation of the unit conversion can be found in \appref{unitCON}. The result is stated here: 
 
