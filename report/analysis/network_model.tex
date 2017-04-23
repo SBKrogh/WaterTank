@@ -48,7 +48,7 @@ As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, w
 \pmb{q} =
 \begin{bmatrix}
          \pmb{q_1} \\
-	q_0 
+	\pmb{q_0} 
 \end{bmatrix}
 \label{qmatrix}
 \end{equation}
@@ -56,7 +56,7 @@ As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, w
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $\pmb{q_1} \epsilon \mathbb{R}^{(e-w) \times 1}$  \\
-\hspace*{8mm} $q_0 \epsilon \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\pmb{q_0} \epsilon \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -70,14 +70,14 @@ The vector containing the pressures at the nodes can be also structured as
 \pmb{p} =
 \begin{bmatrix}
          \pmb{p_1} \\
-	p_0 
+	\pmb{p_0} 
 \end{bmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $\pmb{p_1} \epsilon \mathbb{R}^{(n-w) \times 1}$  \\
-\hspace*{8mm} $p_0 \epsilon \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\pmb{p_0} \epsilon \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -123,20 +123,20 @@ flow through all the nodes. In order to reduce the order of the model and hence,
 the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
 
 \begin{equation}
-  \Delta \pmb{p_1} =  \pmb{J} {\pmb{B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})
+  \Delta \pmb{p_1} =  \pmb{J} {\pmb{B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
   \label{ChordsModel}
 \end{equation}
 
 Making use of the identity shown in \eqref{KVL}, the following is obtained
 
 \begin{equation}
-  0 = \pmb{B_1} \pmb{\Delta p_1} = \pmb{B_1} [ \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})] 
+  0 = \pmb{B_1} \pmb{\Delta p_1} = \pmb{B_1} [ \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})] 
  \end{equation}
 
 Isolating the inertia matrix to the left side
 
 \begin{equation}
- - \pmb{B_1} \pmb{J} \pmb{{B_1}}^T \pmb{\dot{z}}  = \pmb{B_1} f(\pmb{z}, \pmb{w}, \pmb{k_v})
+ - \pmb{B_1} \pmb{J} \pmb{{B_1}}^T \pmb{\dot{z}}  = \pmb{B_1} f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
  \label{isolateZ}
  \end{equation}
 
@@ -198,7 +198,7 @@ Thus, \eqref{Jequation} is positive definite and it provides a sufficient condit
 Therefore, the system can be described as follows
 
 \begin{equation}
-   \pmb{\dot{z}}  = - (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f(\pmb{z},\pmb{ w}, \pmb{k_v})
+   \pmb{\dot{z}}  = - (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})
    \label{ParatModelFinal}
  \end{equation}
 
@@ -216,20 +216,20 @@ This equation describes the system by the pressures across each elements except 
 The same equation can be however expressed with a reduced set of equation system with the help of chord flows as it was introduced before: 
 
 \begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})
+  \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
  \end{equation}
 
 The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \pmb{\Delta p_1} $ can be rewritten as
 
 \begin{equation}
- \pmb{ \Delta p_1} = \pmb{ J {B_1}}^T [- (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f(\pmb{z},\pmb{ w}, \pmb{k_v})] + f(\pmb{z},\pmb{ w}, \pmb{k_v})
+ \pmb{ \Delta p_1} = \pmb{ J {B_1}}^T [- (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})] + f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})
   \label{PressureLarge}
  \end{equation}
  
 Writing in a complex, short form:
  
  \begin{equation}
-  \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f(\pmb{z}, \pmb{w}, \pmb{k_v})
+  \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
   \label{PressureShort}
  \end{equation}
 
