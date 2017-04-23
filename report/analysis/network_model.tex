@@ -1,8 +1,10 @@
 \section{Network Model}  
 \label{ParameterEstimation}
-Once the corresponding incidence and cycle matrices are identified and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact form as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
+Once the corresponding incidence and cycle matrices are identified and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact, generalized form as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
 \\
-In \secref{IncidenceSection} the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edges that belong to the WT. (In case of the network, the number of edges representing the WT is two and in the further model description is denoted with w.) Hence, the $\pmb{H}$ matrix can be written as 
+In \secref{IncidenceSection} the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edges that belong to the WT. (In case of the network, the number of edges representing the WT is two and in the further model description is denoted with w.) 
+\\
+Hence, the $\pmb{H}$ matrix can be written as 
 % It is worth mentioning that it is been also followed the structure such as the last 
 % column of the H matrix agrees with the WT edge. Hence, the H matrix can 
 % be written as
@@ -112,7 +114,7 @@ The following hydraulic network model shows an overall model along with the abov
 Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + f(\pmb{q_1}, \pmb{w}, \pmb{k_v})
+  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
   \label{NoTowerModel}
 \end{equation}
 
@@ -200,19 +202,18 @@ Therefore, the system can be described as follows
    \label{ParatModelFinal}
  \end{equation}
 
-\subsection{Model Relations}
+\subsection{Pressure Drop Across the Nodes}
 \label{ModelRelationSection}
 
-As a consequence of the system model established above, a new set of relations for the parameter estimation can be 
-obtained. Starting from the component complete model
+For making the relations easy to read, the complete component model, \eqref{NoTowerModel} is repeated: 
 
 \begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + f(\pmb{q_1}, \pmb{w}, \pmb{k_v})
+  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
   \label{RecallModel}
 \end{equation}
 
-Recall that previously, in \eqref{ChordRelation}, a new state, $\pmb{z}$, has been defined for the independent flows in 
-the graph
+This equation describes the system by the pressures across each elements except the part including the water tower. The dynamics are determined by the inertia of the pipes, while the pressure relations are described by f vectorfield. 
+The same equation can be however expressed with a reduced set of equation system with the help of chord flows as it was introduced before: 
 
 \begin{equation}
   \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f(\pmb{z}, \pmb{w}, \pmb{k_v})
@@ -225,12 +226,14 @@ The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the e
   \label{PressureLarge}
  \end{equation}
  
- Rewritten it in a shorter form
+Writing in a complex, short form:
  
  \begin{equation}
   \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f(\pmb{z}, \pmb{w}, \pmb{k_v})
   \label{PressureShort}
  \end{equation}
+
+a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following chapters this general model is used in a slightly different form according to different estimation methods. 
 
 \subsection{The Estimation Method}
 \label{SubSecEstimation}
