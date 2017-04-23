@@ -233,7 +233,7 @@ Writing in a complex, short form:
   \label{PressureShort}
  \end{equation}
 
-a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following chapters this general model is used in a slightly different form according to the different estimation methods. 
+a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following sections this general model is used in a slightly different form that is suitable for the different estimation methods. 
 
 \subsection{Parameter Identification}
 \label{SubSecEstimation}
@@ -243,6 +243,17 @@ The modelling of the complete water distribution system is governed by the previ
 In case of the valves, the conductivity function is defined in the function of OD, therefore the behavior of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the datasheet provided by the manufacturer, these values are only acceptable for new pipes, as over time and depending on the material, these elements can rust. On the other hand however, the inertia parameters of the pipes are defined accurately since they are dependant on the physical parameters of the pipes. 
 \\
 Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to set up a simulation that represents the real test setup. 
+
+The parameter estimation is introduced for two different cases with different approaches. One being an estimation method with the model being kept non-linear, the other being a method where the model is  linearized before the estimation. 
+
+The block diagram of a general parameter identification method is described in \figref{fig:parame_block} below: 
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/param_block.tex} 
+\caption{Parameter identification block diagram. }
+\label{fig:parame_block}
+\end{figure}
 
 Applying KVL to the hydraulic model, the following expression is obtained: Moreover, the parameter estimation is carried out for steady-state 
 situation where the inertia, $J$, will not act. Thus, the term containing the diagonal matrix $J$ can be disregarded from the equation. 
