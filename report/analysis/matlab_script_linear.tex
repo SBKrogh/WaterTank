@@ -1,0 +1,78 @@
+\section{Linear Model Implementation} 
+\label{MatlabScriptLinear}
+
+Unlike for the nonlinear model, in the linear model the WT is taken into consideration. Therefore, the state vector is augmented into a $9x1$ vector, 
+containing the 8 chord flows and the pressure across the WT. For the linear model a state-space system is designed.
+
+The state matrix, $A$, is conformed by the linearized friction provided by the pipes, the linearized part of the valve function corresponding to the state and pressure contribution
+of the WT.
+
+Pipes contribution:
+
+\begin{equation}
+  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))
+  \label{lambdafun}
+\end{equation}
+
+\eqref{lambdafun} only affects to the 8 chords of the water distribution, lambda ends up being a $25x1$ matrix. However, we will have a lambda expression for all pipes
+edges, resulting in a $25x25$ adding $0$ for those non-pipe edges. 
+
+Valve contribution:
+
+\vspace{4mm}
+\begin{equation}
+  {\mu}_e = e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad \quad - \\
+  2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_1}^{T} abs(\hat{z}) \, |\bar{z}|
+  \label{mufun}
+\end{equation}
+
+The above expression has been derived in \appref{chap:Lin}, for the state matrix only the part corresponding to the states is taken. In the same way 
+as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This extended to all the edges will end up into a $25x25$ matrix, with $0$ in the 
+non-valve edges. 
+
+When augmenting the system with the WT, two new edges show up in the water distribution. This two new edges are the WT itself and a pump connected to the WT.
+The pump connected to the WT is running with $0$ rotational speed, thus the mathematical model results in:
+
+\begin{equation}
+    \Delta p = -a_{h2}{q_i}^2 
+\end{equation}
+
+Along with the pump there are two pumps, gathering all the components expressions:
+
+\begin{equation}
+      \Delta p = (\frac{2}{{k_v}^2-a_{h2}}){q_i}^2 
+\end{equation} \todo{Add the linearization explanation into the Appendix}
+
+The above equation needs to be linearized and consequently separate into the state and the input part. The contribution to the $A$ matrix is as 
+following:
+
+\begin{equation}
+  \alpha = 2 * e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad - \\
+  4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} abs(\hat{z}) \, |\bar{z}| - 2 * {B_0}^{T} abs(\hat{z}) * c.Ah22
+\end{equation}
+
+The cycle matrix, $B_0$ corresponding to the augmented system is used with dimensions $8x2$. The $\alpha$ function results in a $2x2$ matrix with $0$ in 
+the column corresponding to the non-pump edge. 
+
+In regards to the WT edge, the pressure across it is treated as a new state for the system $\Delta p_{WT}$. 
+
+Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied as explained in \secref{} resulting in
+the following $A$ matrix.
+
+\begin{equation}
+  A = B_1 * \lambda * {B_1}^T + B_1 * \mu * {B_1}^T + B_0 * \alpha * {B_0}^T
+\end{equation}
+
+The remain $A$ matriz has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix. 
+
+The input matrix, $B$, is conformed by the input into the system. These are the opening degree of the valves and the pressure contribution of the main 
+and PMA pumps. 
+
+Previously, for the $A$ matrix the valve expression has been linearized this time the input term of the linearized expression will be taken:
+
+\begin{equation}
+  \mu = -2 \, \frac{e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2}
+   \, n_{gl} \, \hat{OD} \, \bar{q} \, |\bar{q}|}{\theta_{max}-\theta_{off}}
+\end{equation}
+
+
