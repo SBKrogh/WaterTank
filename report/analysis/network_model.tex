@@ -2,7 +2,7 @@
 \label{ParameterEstimation}
 Once the corresponding incidence and cycle matrices are identified and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact form as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
 \\
-In \secref{IncidenceSection} the form of the incidence matrix is shown. It is worth mentioning that the last column of the $\pmb{H}$ matrix agrees with the WT edge. Hence, the $\pmb{H}$ matrix can be written as 
+In \secref{IncidenceSection} the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edges that belong to the WT. (In case of the network, the number of edges representing the WT is two and in the further model description is denoted with w.) Hence, the $\pmb{H}$ matrix can be written as 
 % It is worth mentioning that it is been also followed the structure such as the last 
 % column of the H matrix agrees with the WT edge. Hence, the H matrix can 
 % be written as
@@ -14,16 +14,16 @@ In \secref{IncidenceSection} the form of the incidence matrix is shown. It is wo
 
 \begin{minipage}[t]{0.18\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{H_1} \epsilon \: \mathbb{R}^{n \times e-1}$  \\
-and \hspace*{0.4mm} $\pmb{H_0} \epsilon \: \mathbb{R}^{n \times 1} $ 
+\hspace*{8mm} $\pmb{H_1} \epsilon \: \mathbb{R}^{n \times (e-w)}$  \\
+and \hspace*{0.4mm} $\pmb{H_0} \epsilon \: \mathbb{R}^{n \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the $\pmb{H}$ matrix without the edge corresponding to the WT,\\
-\hspace*{4mm} is the $\pmb{H}$ matrix with the column corresponding to the WT. 
+\hspace*{4mm} is the $\pmb{H}$ matrix without the edges corresponding to the WT,\\
+\hspace*{4mm} is the $\pmb{H}$ matrix with the columns corresponding to the WT. 
 \end{minipage}
 
-In the same way, the fundamental cycle matrix, B, has been structured such as the last column agrees with the WT edge.
+Similarly, the fundamental cycle matrix, B, is structured such as the last columns agree with the edges representing the WT.
 
 \begin{equation}
   \pmb{B} = [\pmb{B_1} \quad \pmb{B_0}]
@@ -31,17 +31,16 @@ In the same way, the fundamental cycle matrix, B, has been structured such as th
 
 \begin{minipage}[t]{0.18\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{B_1} \: \epsilon \mathbb{R}^{l \times e-1}$  \\
-and \hspace*{0.4mm} $\pmb{B_0} \: \epsilon \mathbb{R}^{l \times 1} $ 
+\hspace*{8mm} $\pmb{B_1} \: \epsilon \mathbb{R}^{l \times (e-w)}$  \\
+and \hspace*{0.4mm} $\pmb{B_0} \: \epsilon \mathbb{R}^{l \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the $\pmb{B}$ matrix without the edge corresponding to the WT,\\
-\hspace*{4mm} is the $\pmb{B}$ matrix with the column corresponding to the WT.
+\hspace*{4mm} is the $\pmb{B}$ matrix without the edges corresponding to the WT,\\
+\hspace*{4mm} is the $\pmb{B}$ matrix with the columns corresponding to the WT.
 \end{minipage}
 
-As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, which 
-is re-structured as following
+As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, which can be structured as follows:
 
 \begin{equation}
 \pmb{q} =
@@ -54,16 +53,16 @@ is re-structured as following
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{q_1} \epsilon \mathbb{R}^{e-1 \times 1}$  \\
-\hspace*{8mm} $q_0 \epsilon \mathbb{R} $ 
+\hspace*{8mm} $\pmb{q_1} \epsilon \mathbb{R}^{(e-w) \times 1}$  \\
+\hspace*{8mm} $q_0 \epsilon \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 \hspace*{4mm} is the flow through all edges expect for WT,\\
-\hspace*{4mm} is the flow through the WT. 
+\hspace*{4mm} is the flow through the edges belonging to the WT. 
 \end{minipage}
 
-The vector containing the pressures at the nodes is also re-structured as
+The vector containing the pressures at the nodes can be also structured as
 
 \begin{equation}
 \pmb{p} =
@@ -75,22 +74,19 @@ The vector containing the pressures at the nodes is also re-structured as
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{p_1} \epsilon \mathbb{R}^{n-1 \times 1}$  \\
-\hspace*{8mm} $p_0 \epsilon \mathbb{R} $ 
+\hspace*{8mm} $\pmb{p_1} \epsilon \mathbb{R}^{(n-w) \times 1}$  \\
+\hspace*{8mm} $p_0 \epsilon \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 \hspace*{4mm} is the pressure at all the nodes expect for WT,\\
-\hspace*{4mm} is the pressure in the WT.
+\hspace*{4mm} is the pressure in the WT and the corresponding connection.
 \end{minipage}
 
-In \eqref{KCL} KCL law is applied for a connected directed graph, where it is stated that the sum of all the flows entering 
-into a node must be equal the the sum of all the nodes out of the node.
+In \eqref{KCL} KCL is applied to $\mathcal{G}$, which states that the sum of all the flows entering into a node must be equal to the sum of all the flows leaving the node.
 
-By choosing an independent set of flows, corresponding to the chords of a spanning tree, the 
-flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
-Thus, reducing the number of unknowns in the system. These elements of $\pmb{z}$ are called the free 
-flows of the system and are independent variables \cite{GraphTheoryCarsten}.
+By choosing an independent set of flows corresponding to the chords of a spanning tree, the flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
+The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\pmb{z}$ are called the free flows of the system and are independent from each other, as mentioned previously \cite{GraphTheoryCarsten}.
 
 \begin{equation}
   \pmb{q_1} = \pmb{B_1} ^{T}  \pmb{z}
@@ -108,10 +104,11 @@ Where\\
 \begin{align}
 \tilde{f}_i &= -\pmb{C_{pi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
 \tilde{f}_i &= -\pmb{C_{vi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\:i = 13,15,20,22\\
-\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\pmb{q_i}| \pmb{q_i}  + a_{h1i} \pmb{\omega_{i}} \pmb{q_i} + a_{h0i}\pmb{{\omega_i}}^2 \hskip 2cm  \text{for}\: i = 1,8,9,16
+\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\pmb{q_i}| \pmb{q_i}  + a_{h1i} \pmb{\omega_{i}} \pmb{q_i} + a_{h0i}\pmb{{\omega_i}}^2 \hskip 2cm  \text{for}\: i = 1,8,9,16,24 \\
+\tilde{f}_i &= \Delta p_{WT}  \hskip 2cm  \text{for}\:i = 25
 \end{align}
-\todo{SIGNS! , maybe kv should be Cv}
-The following hydraulic network model shows an overall model along with the above considerations. 
+
+The following hydraulic network model shows an overall model along with the above-mentioned considerations. 
 Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
@@ -141,11 +138,11 @@ Isolating the inertia matrix to the left side
  \label{isolateZ}
  \end{equation}
 
-It is desired to know the value of the flow through the chords, hence the above equation is solved 
-for $\pmb{\dot{z}}$. In order to be able to invert $(\pmb{B_1 J} \pmb{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
+It is desired to know the value of the flow through the chords, hence the equation above is solved 
+for $\pmb{\dot{z}}$. In order to invert $(\pmb{B_1 J} \pmb{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
 
 Setting $\pmb{\mathcal{J}} = \pmb{B_1 J} \pmb{{B_1}}^T $, for $\pmb{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
-determinant has to be non-zero. Observe that $\pmb{\mathcal{J}}$ is
+determinant has to be non-zero. Note that $\pmb{\mathcal{J}}$ is
 
 \begin{equation}
   \label{Jequation}
@@ -168,18 +165,17 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the inertia in the chords components\\
+\hspace*{4mm} is the inertia in the chord components\\
 \hspace*{4mm} is the inertia in the component of the spanning tree 
 \end{minipage}
 
-$\pmb{J_c}$ is the diagonal inertia matrix containing the chord elements, since all 
-the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
+$\pmb{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
 diagonal terms are positive. Thus, $\pmb{J_c} > 0$. 
 
-Nevertheless, if there was at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
-would be positive-definite as long as there is a possibility to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
+Nevertheless, if there is at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
+would be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
 
-For the remaining term $\pmb{B_f J_f {B_f}}^T$, $\pmb{J_f}$ is non-negative matrix as all its elements are zero or pipe´s inertia. 
+For the remaining term $\pmb{B_f J_f {B_f}}^T$, $\pmb{J_f}$ is a non-negative matrix as all its elements are zero or describe the inertia of a pipe. 
 Multiplying $\pmb{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
 
 \begin{equation}
@@ -187,7 +183,7 @@ Multiplying $\pmb{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and
   \label{PosDefi}
 \end{equation}
 
-Creating a new variable $\pmb{y} = \pmb{B_f}^T \mathbf{x}$ and applying the positive semi-definite matrix definition 
+Creating a new variable $\pmb{y} = \pmb{B_f}^T \mathbf{x}$ and applying the definition of positive semi-definiteness 
 \cite{MatrixBook}
 
 \begin{equation}
@@ -195,9 +191,9 @@ Creating a new variable $\pmb{y} = \pmb{B_f}^T \mathbf{x}$ and applying the posi
   \label{PosDefEq}
 \end{equation}
 
-Thus, \eqref{Jequation} is positive definite a sufficient condition for $\pmb{\mathcal{J}}$ being invertible. 
+Thus, \eqref{Jequation} is positive definite and it provides a sufficient condition for $\pmb{\mathcal{J}}$ being invertible. 
 
-Therefore, the system model can be written as follows
+Therefore, the system can be described as follows
 
 \begin{equation}
    \pmb{\dot{z}}  = - (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f(\pmb{z},\pmb{ w}, \pmb{k_v})
