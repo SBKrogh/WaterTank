@@ -255,6 +255,47 @@ The block diagram of a general parameter identification method is described in \
 \label{fig:parame_block}
 \end{figure}
 
+As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation. In general, the inputs are the same for both systems, however some modifications has to be included in the case of the linearized model. This is explained in detail in the section covering the linear parameter identification method.
+\\
+In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. In general, the inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
+
+\begin{equation}
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD})
+ \label{InputOutputmodel}
+\end{equation}
+
+where the vectorfield $u(.)$ contains all the models for the elements which are dependant on the inputs, while the vectorfield $g(.)$ contains the rest of the component models which are responsible for the pressure drops in any part of the network. Although $u(.)$ is the function of $\omega$ and the $OD$, in the simulation however the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. 
+\\
+In the system, output equations are defined as differential pressures according to the available sensors on the test setup. During the estimation these measurements are compared to the data obtained from the simulation and vary the parameters according to it. The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. The number of parameters are equal to the number of pipe elements in the network. The general parameter estimation problem is the problem of the minimization of a certain objective function over the variable $\pmb{z}$: 
+
+%\begin{equation}
+%
+%  \sum_{i=1}^{n}\Big(g_{\pmb(Cp)}(\pmb{B}^T \pmb{z}_i)\Big)
+%
+%\label{ObjectiveFunction}
+%\end{equation}
+
+ \begin{equation}
+ min \sum_{i=1}^{n}\Big(g_{Cp}(z_i) + \pmb{B}^Tu\Big)^T \Big(g_{Cp}(z_i)     + \pmb{B}^Tu\Big) + \big(y_i - y_{Cp}(z_i)\big)^T  \big(y_i - y_{Cp}(z_i)\big)
+  \label{esteq}
+ \end{equation}
+ 
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $y_i$ \\
+\hspace*{8mm} $y_{Cp}(z_i)$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the output data from the measurement,\\
+is the output data from the model.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{bar}$
+\textcolor{White}{te}$\unit{bar}$
+\end{minipage}
+
 Applying KVL to the hydraulic model, the following expression is obtained: Moreover, the parameter estimation is carried out for steady-state 
 situation where the inertia, $J$, will not act. Thus, the term containing the diagonal matrix $J$ can be disregarded from the equation. 
 
