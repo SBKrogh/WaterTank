@@ -6,10 +6,102 @@
 
 asdf
 
+\begin{equation}
+ \hat{\Delta p} = \Delta p -  \overset{*}{\Delta p}
+\label{p_operating}
+\end{equation}
+
+asdf
+
+\begin{equation}
+ \hat{z} = z -  \overset{*}{z}
+\label{p_operating}
+\end{equation}
+
 \subsection{Linearization of System Model}
 \label{LinearizationIntro}
 
 asdf
+
+\begin{equation}
+ \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
+\label{WTeq1}
+\end{equation}
+
+\begin{equation}
+ \pmb{ \Delta p} = \pmb{J \dot{q_1}} + \lambda(\pmb{q_1}) + \zeta + \mu(\pmb{q_1}, \pmb{OD}) - \alpha(\pmb{dp})
+\label{NonlinearPressureFunction}
+\end{equation}
+
+asdf
+
+\begin{equation}
+ \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
+\label{WTeq2}
+\end{equation}
+
+asdf
+
+\begin{equation}
+\pmb{\Delta p_0} =
+\begin{bmatrix}
+         \Delta p_{C32} \\
+	\Delta p_{WT}
+\end{bmatrix}
+\label{pvector}
+\end{equation}
+
+asdf
+
+\begin{equation}
+\pmb{q_0} =
+\begin{bmatrix}
+         q_{C32} \\
+	q_{WT}
+\end{bmatrix}
+\label{qvector}
+\end{equation}
+
+Recalling \eqref{InputOutputmodel_steadystate}:
+
+\begin{equation}
+ \pmb{B}\pmb{J} \pmb{\dot{q}} = \pmb{B} g(\pmb{q})+ \pmb{B_1} u(\pmb{\omega},\pmb{OD})
+ \label{InputOutputmodel_steadystate_linmodel}
+\end{equation}
+
+\begin{equation}
+\label{gfunction}
+ g_{i}(q) =
+		\left\{
+		\begin{array}{ll}
+		
+		\lambda_i(q_1) 			&      \text{for i = ...}	
+\\
+		\lambda_i(q_1) + \zeta_i                      &     \text{for i = ...}
+\\
+
+                \Delta p_{WT;i}                       &      \text{for i = ...}
+\\
+
+                \mu_{i;q1}(q_1, OD)                       &      \text{for i = ...}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+\begin{equation}
+\label{ufunction}
+ u_{i}(\omega, OD) =
+		\left\{
+		\begin{array}{ll}
+		
+		\alpha_i(\omega) 			&      \text{for i = ...}	
+\\
+		\mu_{i;OD}(q_1, OD)                      &     \text{for i = ...}
+
+		\end{array}
+		\right.
+\end{equation}	
 
 
 
