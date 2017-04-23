@@ -82,7 +82,7 @@ Where\\
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 \hspace*{4mm} is the pressure at all the nodes expect for WT,\\
-\hspace*{4mm} is the pressure in the WT and the corresponding connection.
+\hspace*{4mm} is the pressure in the WT and the corresponding connection to it.
 \end{minipage}
 
 In \eqref{KCL} KCL is applied to $\mathcal{G}$, which states that the sum of all the flows entering into a node must be equal to the sum of all the flows leaving the node.
@@ -233,10 +233,16 @@ Writing in a complex, short form:
   \label{PressureShort}
  \end{equation}
 
-a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following chapters this general model is used in a slightly different form according to different estimation methods. 
+a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following chapters this general model is used in a slightly different form according to the different estimation methods. 
 
-\subsection{The Estimation Method}
+\subsection{Parameter Identification}
 \label{SubSecEstimation}
+
+The modelling of the complete water distribution system is governed by the previously derived model, however certain parameters of the system are either unknown or can vary significantly from the assumed design values. Furthermore, the obtained model of the system gives non-linear relations between flows and pressures in each individual components. 
+\\
+In case of the valves, the conductivity function is defined in the function of OD, therefore the behavior of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the datasheet provided by the manufacturer, these values are only acceptable for new pipes, as over time and depending on the material, these elements can rust. On the other hand however, the inertia parameters of the pipes are defined accurately since they are dependant on the physical parameters of the pipes. 
+\\
+Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to set up a simulation that represents the real test setup. 
 
 Applying KVL to the hydraulic model, the following expression is obtained: Moreover, the parameter estimation is carried out for steady-state 
 situation where the inertia, $J$, will not act. Thus, the term containing the diagonal matrix $J$ can be disregarded from the equation. 
