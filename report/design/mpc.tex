@@ -1,0 +1,41 @@
+\section{Model predictive control}
+
+Model predictive control (MPC) is an advance control method that depends on a dynamic model of the plant. MPC allows to calculate a optimal control signal taking the future into account. The control problem is explained in \secref{control_problem}.
+
+\subsection{Constraints}
+
+When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \pmb{G}$. The constraints matrices are given by: 
+
+\begin{align}
+E \cdot (\Delta\hat u(k|k),...,\Delta\hat u(k+H_u-1|k),1) &\leq 0 \\
+%
+F \cdot (\hat u(k|k),...,\hat u(k+H_u-1|k),1) &\leq 0 \\
+%
+G \cdot (\hat z(k+H_w|k),...,\hat z(k+H_p|k),1) &\leq 0
+\end{align}
+
+
+ \begin{minipage}[t]{0.20\textwidth}
+ Where\\
+ \hspace*{8mm} $\hat u(k|k)$ \\
+ \hspace*{8mm} $\Delta\hat u(k|k)$ \\
+ \hspace*{8mm} $H_p$ \\
+ \hspace*{8mm} $H_u$ \\
+ \hspace*{8mm} $H_w$ \\
+ and \hspace*{0.7mm} $\hat z(k+H_w|k)$	
+ \end{minipage}
+ \begin{minipage}[t]{0.68\textwidth}
+ \vspace*{2mm}
+ is the input vector, \\
+ is the change of the input vector, \\
+ is the prediction horizon,\\
+ is the control horizon, \\
+ is the window horizon, \\
+ is the estimate of the controlled output to the time $k+H_w$ compared to current output.
+ \end{minipage}
+
+The actuator slew rate constrain, matrix $\pmb{E}$, determents how fast the actuator can change per time unit. From this the physical limit of the pumps can be described \todo{specify when we got a better idea of the limits of the pumps}. The actuator ranges describe how the control signal to the pumps should look. In the case of this project the pumps can be controlled with an input from 0 to 5. 
+
+The constraints on the control variables is the constraints setup in \secref{control_problem}. 
+
+To calculate the constraint matrices $H_p, H_u \text{and} H_w$ need to be determent. 
