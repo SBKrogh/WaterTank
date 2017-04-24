@@ -107,15 +107,17 @@ The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD})$,
 
 \begin{equation}
   \begin{split}
-  & B_1 g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
+  & B g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
   B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
   &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
   \end{split}
+  \label{StateLinear}
 \end{equation}
 
 \begin{equation}
-  B_1 \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
+  B \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
   \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
+  \label{inputlinear}
 \end{equation}
 
 
@@ -132,7 +134,7 @@ of the WT.
 Pipes contribution:
 
 \begin{equation}
-  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))*|\bar{z}|
+  {\lambda}_e = (2 * Cp * {B_1}^{T} \, \bar{z} /(10^5*3600^2))*\hat{z}
   \label{lambdafun}
 \end{equation}
 
@@ -152,7 +154,7 @@ as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This exte
 non-valve edges. 
 
 When augmenting the system with the WT, two new edges show up in the water distribution. This two new edges are the WT itself and a pump connected to the WT.
-The pump connected to the WT is running with $0$ rotational speed, thus the mathematical model results in:
+The pump connected to the WT is running with $0$ rotational speed, thus the mathematical formulation results in:
 
 \begin{equation}
     \Delta p = -a_{h2}{q_i}^2 
@@ -162,14 +164,13 @@ Along with the pump there are two pumps, gathering all the components expression
 
 \begin{equation}
       \Delta p = (\frac{2}{{k_v}^2-a_{h2}}){q_i}^2 
-\end{equation} \todo{Add the linearization explanation into the Appendix}
+\end{equation} 
 
-The above equation needs to be linearized and consequently separate into the state and the input part. The contribution to the $A$ matrix is as 
+The above equation needs to be linearized and consequently separate into the state and the input part, see \appref{chap:Lin}. The contribution to the $A$ matrix is as 
 following:
 
 \begin{equation}
-  \alpha = 2 * e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad - \\
-  4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} abs(\hat{z}) \, |\bar{z}| - 2 * {B_0}^{T} abs(\hat{z}) * c.Ah22
+  \alpha = 4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} \bar{z} \, \hat{z} - 2 a_{h22} {B_0}^{T} \hat{z}
 \end{equation}
 
 The cycle matrix, $B_0$ corresponding to the augmented system is used with dimensions $8x2$ but the state vector of the 8 flow chords.
@@ -177,14 +178,14 @@ The cycle matrix, $B_0$ corresponding to the augmented system is used with dimen
 
 In regards to the WT edge, the pressure across it is treated as a new state for the system, that is, the ninth state $\Delta p_{WT}$. 
 
-Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied as explained in \secref{} resulting in
+Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied, see \eqref{StateLinear} and \eqref{inputlinear}, resulting in
 the following $A$ matrix.
 
 \begin{equation}
   A = B_1 \, \lambda \, {B_1}^T + B_1 \, \mu \, {B_1}^T + B_0 \, \alpha \, {B_0}^T
 \end{equation}
 
-The remain $A$ matriz has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
+The remain $A$ matrix has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
 matrix. 
 
 The input matrix, $B$, is conformed by the input into the system. These are the opening degree of the valves and the pressure contribution of the main 
@@ -194,7 +195,7 @@ Previously, for the $A$ matrix the valve expression has been linearized, this ti
 
 \begin{equation}
   {\mu}_e = -2 \, \frac{e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2}
-   \, n_{gl} \, \hat{OD} \, \bar{q} \, |\bar{q}|}{\theta_{max}-\theta_{off}}
+   \, n_{gl} \,  \bar{q} \, \bar{q}}{\theta_{max}-\theta_{off}} \, \hat{OD}
 \end{equation}
 
 The pumps pressure contribution is also added into the input matrix. 
