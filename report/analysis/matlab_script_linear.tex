@@ -1,27 +1,141 @@
 \section{Linear Parameter Estimation} 
 \label{LinParamEst}
 
-\subsection{Linearization of Multistate Nonlinear Functions}
-\label{LinearizationIntro}
+As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ vectorfields contain non-linear functions of the flows. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is an n-order non-linear equation system in the function of time, where n is the number of all edges according to the relevant graph representation of the network. In this section the model describing the network is linearized with the help of Taylor-series. [source] 
 
-asdf
+\subsection{Taylor Expansion on a Simple Example}
+ \label{Taylorexamplesection}
 
-\begin{equation}
- \hat{\Delta p} = \Delta p -  \overset{*}{\Delta p}
-\label{p_operating}
-\end{equation}
-
-asdf
+The method of linearization is introduced on a simple one state, one input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
 
 \begin{equation}
- \hat{z} = z -  \overset{*}{z}
-\label{p_operating}
+\frac{d}{dt} x = f(x,u)
+ \label{example_system}
 \end{equation}
 
-\subsection{Linearization of System Model}
-\label{LinearizationIntro}
+Using a Taylor-series expansion for $f(x,u)$ the following yields: 
 
-asdf
+\begin{equation}
+\frac{d}{dt} x = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) + high \quad order \quad terms  
+ \label{TaylorExpansion}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bar{x} \quad and \quad \bar{u}$ \\
+\hspace*{8mm} $\hat{x} \quad and \quad \hat{u}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+are the operating points ,\\
+are the deviations from the operating point.
+\end{minipage}
+
+As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. The following expression in \eqref{InputOutputmodel_time} gives an accurate approximation of the function: 
+
+\begin{equation}
+\frac{d}{dt} x \approx f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) 
+ \label{TaylorExpansion_approx}
+\end{equation}
+
+%
+%asdf
+%
+%\begin{equation}
+% \hat{\Delta p} = \Delta p -  \overset{*}{\Delta p}
+%\label{p_operating}
+%\end{equation}
+%
+%asdf
+%
+%\begin{equation}
+% \hat{z} = z -  \overset{*}{z}
+%\label{p_operating}
+%\end{equation}
+
+\subsection{Linearization of the System Model}
+ \label{SystemLin}
+ 
+For the sake of clearance, the system equation is shown again, illustrating that the governing composite functions all depend on time: 
+
+\begin{equation}
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z(t)}} = \pmb{B} g(\pmb{B}^T \pmb{z(t)})+ \pmb{B} u(\pmb{\omega(t)},\pmb{OD(t)}, \pmb{B}^T \pmb{z(t)})
+ \label{InputOutputmodel_time}
+\end{equation}
+
+Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
+
+\begin{equation}
+\frac{d}{dt} \pmb{x(t)} = \mathcal{F}(\pmb{x(t)},\pmb{u(t)})
+ \label{sysfunc_simplified}
+\end{equation}
+
+Where the state and input expressions are considered as: 
+
+\begin{equation}
+\pmb{x(t)} = \pmb{\bar{x(t)}} + \pmb{\hat{x(t)}}
+ \label{gfunc}
+\end{equation}
+
+and 
+
+\begin{equation}
+\pmb{u(t)} = \pmb{\bar{u(t)}} + \pmb{\hat{u(t)}}
+ \label{ufunc}
+\end{equation}
+
+\eqref{sysfunc_simplified} is in the same form as the original system model, therefore for the sake of simplicity, it is used to show how the linearization of such a model is carried out. 
+\\
+By expanding the right-hand side into the Taylor series, using \eqref{gfunc} and \eqref{ufunc}, the following yields:
+
+\begin{equation}
+\frac{d}{dt} (\pmb{\bar{x}} + \pmb{\hat{x}})  \approx \mathcal{F}(\pmb{\bar{x}(t)} + \pmb{\hat{x}(t)}, \pmb{\bar{u}(t)} + \pmb{\hat{u}(t)} )
+ = \mathcal{F}(\pmb{\bar{x}},\pmb{\bar{u}}) + \frac{\partial {\mathcal{F}}}{\partial \pmb{x}}_{|\bar{x}, \bar{u}} \pmb{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \pmb{u}}_{|\bar{x}, \bar{u}} \pmb{\hat{u}} 
+ \label{multistate model_full}
+\end{equation}
+
+Thus the small signal model of such a multi-state model can be expressed as: 
+
+\begin{equation}
+\frac{d}{dt} \pmb{\hat{x}}  \approx
+ = \frac{\partial {\mathcal{F}}}{\partial \pmb{x}}_{|\bar{x}, \bar{u}} \pmb{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \pmb{u}}_{|\bar{x}, \bar{u}} \pmb{\hat{u}} 
+ \label{multistate model_smallsignal}
+\end{equation}
+
+%\begin{equation}
+%\frac{d}{dt} \pmb{\bar{x}} + \frac{d}{dt} \pmb{\hat{x}}  \approx \mathcal{F}(\pmb{\bar{x(t)}} + \pmb{\hat{x(t)}}, \pmb{\bar{u(t)}} + \pmb{\hat{u(t)}} )
+% = \mathcal{F}(\pmb{\bar{x}},\pmb{\bar{u}}) 
+%
+%\label{TaylorExpansion_approx}
+%\end{equation}
+
+As can be seen in \eqref{multistate model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices, one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points, at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp, from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them to the small signal values. 
+\\
+
+Note: 
+After this, the general structure of the matrices and the same formulation for the water distribution system will be written. 
+
+The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD}, \pmb{B^T z})$, is shown:
+
+\begin{equation}
+  \begin{split}
+  & B g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
+  B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
+  &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
+  \end{split}
+  \label{StateLinear}
+\end{equation}
+
+\begin{equation}
+  B \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
+  \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
+  \label{inputlinear}
+\end{equation}
+
+
+
+ These expressions below are for the following documentation:
+
 
 \begin{equation}
  \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
@@ -103,23 +217,6 @@ Recalling \eqref{InputOutputmodel_steadystate}:
 		\right.
 \end{equation}	
 
-The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD})$, is shown:
-
-\begin{equation}
-  \begin{split}
-  & B g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
-  B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
-  &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
-  \end{split}
-  \label{StateLinear}
-\end{equation}
-
-\begin{equation}
-  B \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
-  \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
-  \label{inputlinear}
-\end{equation}
-
 
 
 \subsection{Linear Model Implementation}
@@ -128,33 +225,34 @@ The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD})$,
 Unlike for the nonlinear model, in the linear model the WT is taken into consideration. Therefore, the state vector is augmented into a $9x1$ vector, 
 containing the 8 chord flows and the pressure across the WT. For the linear model a state-space system is designed.
 
-The state matrix, $A$, is conformed by the linearized expression of the pipes, the linearized part of the valve function corresponding to the state and pressure contribution
+The state matrix, $A$, is conformed by the linearized friction provided by the pipes, the linearized part of the valve function corresponding to the state and pressure contribution
 of the WT.
 
 Pipes contribution:
 
 \begin{equation}
-  {\lambda}_e = (2 * Cp * {B_1}^{T} \, \bar{z} /(10^5*3600^2))*\hat{z}
+  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))
   \label{lambdafun}
 \end{equation}
 
-\eqref{lambdafun} only affects to the 8 chords of the water distribution, $\lambda$ ends up being a $25x1$ matrix. However, we will have a $\lambda$ expression for all pipes
-edges, resulting in a $25x25$ setting $0$ for those non-pipe edges. 
+\eqref{lambdafun} only affects to the 8 chords of the water distribution, lambda ends up being a $25x1$ matrix. However, we will have a lambda expression for all pipes
+edges, resulting in a $25x25$ adding $0$ for those non-pipe edges. 
 
 Valve contribution:
 
 \vspace{4mm}
 \begin{equation}
-  {\mu}_e =  2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_1}^{T} \, \bar{z} \, \hat{z}
+  {\mu}_e = e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad \quad - \\
+  2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_1}^{T} abs(\hat{z}) \, |\bar{z}|
   \label{mufun}
 \end{equation}
 
 The above expression has been derived in \appref{chap:Lin}, for the state matrix only the part corresponding to the states is taken. In the same way 
-as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This extended to all the edges will end up being a $25x25$ matrix, with $0$ in the 
+as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This extended to all the edges will end up into a $25x25$ matrix, with $0$ in the 
 non-valve edges. 
 
 When augmenting the system with the WT, two new edges show up in the water distribution. This two new edges are the WT itself and a pump connected to the WT.
-The pump connected to the WT is running with $0$ rotational speed, thus the mathematical formulation results in:
+The pump connected to the WT is running with $0$ rotational speed, thus the mathematical model results in:
 
 \begin{equation}
     \Delta p = -a_{h2}{q_i}^2 
@@ -164,13 +262,14 @@ Along with the pump there are two pumps, gathering all the components expression
 
 \begin{equation}
       \Delta p = (\frac{2}{{k_v}^2-a_{h2}}){q_i}^2 
-\end{equation} 
+\end{equation} \todo{Add the linearization explanation into the Appendix}
 
-The above equation needs to be linearized and consequently separate into the state and the input part, see \appref{chap:Lin}. The contribution to the $A$ matrix is as 
+The above equation needs to be linearized and consequently separate into the state and the input part. The contribution to the $A$ matrix is as 
 following:
 
 \begin{equation}
-  \alpha = 4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} \bar{z} \, \hat{z} - 2 a_{h22} {B_0}^{T} \hat{z}
+  \alpha = 2 * e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad - \\
+  4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} abs(\hat{z}) \, |\bar{z}| - 2 * {B_0}^{T} abs(\hat{z}) * c.Ah22
 \end{equation}
 
 The cycle matrix, $B_0$ corresponding to the augmented system is used with dimensions $8x2$ but the state vector of the 8 flow chords.
@@ -178,14 +277,14 @@ The cycle matrix, $B_0$ corresponding to the augmented system is used with dimen
 
 In regards to the WT edge, the pressure across it is treated as a new state for the system, that is, the ninth state $\Delta p_{WT}$. 
 
-Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied, see \eqref{StateLinear} and \eqref{inputlinear}, resulting in
+Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied as explained in \secref{} resulting in
 the following $A$ matrix.
 
 \begin{equation}
   A = B_1 \, \lambda \, {B_1}^T + B_1 \, \mu \, {B_1}^T + B_0 \, \alpha \, {B_0}^T
 \end{equation}
 
-The remain $A$ matrix has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
+The remain $A$ matriz has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
 matrix. 
 
 The input matrix, $B$, is conformed by the input into the system. These are the opening degree of the valves and the pressure contribution of the main 
@@ -195,11 +294,9 @@ Previously, for the $A$ matrix the valve expression has been linearized, this ti
 
 \begin{equation}
   {\mu}_e = -2 \, \frac{e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2}
-   \, n_{gl} \,  \bar{q} \, \bar{q}}{\theta_{max}-\theta_{off}} \, \hat{OD}
+   \, n_{gl} \, \hat{OD} \, \bar{q} \, |\bar{q}|}{\theta_{max}-\theta_{off}}
 \end{equation}
 
 The pumps pressure contribution is also added into the input matrix. 
 
 
-
- 
