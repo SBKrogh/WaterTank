@@ -1,0 +1,70 @@
+\section{temporarysection} 
+\label{temporarysection}
+
+As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ vectorfields contain non-linear functions of the flows. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is an n-order non-linear equation system in the function of time, where n is the number of all edges according to the relevant graph representation of the network. In this section the model describing the network is linearized with the help of Taylor-series. [source] 
+
+\subsection{Taylor Expansion on a Simple Example}
+ \label{Taylorexamplesection}
+
+The method of linearization is introduced on a simple one state, one input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
+
+\begin{equation}
+\frac{d}{dt} x = f(x,u)
+ \label{example_system}
+\end{equation}
+
+Using a Taylor-series expansion for $f(x,u)$ the following yields: 
+
+\begin{equation}
+\frac{d}{dt} x = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) + high \quad order \quad terms  
+ \label{TaylorExpansion}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bar{x} \quad and \quad \bar{u}$ \\
+\hspace*{8mm} $\hat{x} \quad and \quad \hat{u}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+are the operating points ,\\
+are the deviations from the operating point.
+\end{minipage}
+
+As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. The following expression in \eqref{InputOutputmodel_time} gives an accurate approximation of the function: 
+
+\begin{equation}
+\frac{d}{dt} x \approx f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) 
+ \label{TaylorExpansion_approx}
+\end{equation}
+
+\subsection{Linearization of the System Model}
+ \label{SystemLin}
+ 
+For the sake of clearance, the system equation is shown again, illustrating that the governing composite functions all depend on time: 
+
+\begin{equation}
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z(t)}} = \pmb{B} g(\pmb{B}^T \pmb{z(t)})+ \pmb{B} u(\pmb{\omega(t)},\pmb{OD(t)}, \pmb{B}^T \pmb{z(t)})
+ \label{InputOutputmodel_time}
+\end{equation}
+
+Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields of the flows, for the sake of simplicity, the composite functions inside this expressions are treated as follows: 
+
+\begin{equation}
+\pmb{g(t)} = \pmb{\bar{g(t)}} + \pmb{\hat{g(t)}}
+ \label{gfunc}
+\end{equation}
+
+and
+
+\begin{equation}
+\pmb{u(t)} = \pmb{\bar{u(t)}} + \pmb{\hat{u(t)}}
+ \label{ufunc}
+\end{equation}
+
+Simplifying \eqref{InputOutputmodel_time} yields: 
+
+\begin{equation}
+\pmb{J} \frac{d}{dt} \pmb{z(t)} = \pmb{g(t)} + \pmb{u(t)} = \mathcal{F}(\pmb{g(t)},\pmb{u(t)} )
+ \label{sysfunc_simplified}
+\end{equation}

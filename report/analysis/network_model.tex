@@ -260,7 +260,7 @@ As it is shown in the figure, the measurements from the real life system are com
 In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. In general, the inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD})
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel}
 \end{equation}
 
@@ -302,7 +302,7 @@ It is important to point out that \eqref{ObjectiveFunction} is applied for stead
 Taking the steady-state into account, the system equation for the parameter estimation can be rewritten as: 
 
 \begin{equation}
- 0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD})
+ 0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel_steadystate}
 \end{equation}
 
