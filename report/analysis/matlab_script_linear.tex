@@ -103,6 +103,21 @@ Recalling \eqref{InputOutputmodel_steadystate}:
 		\right.
 \end{equation}	
 
+The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD})$, is shown:
+
+\begin{equation}
+  \begin{split}
+  & B_1 g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
+  B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
+  &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
+  \end{split}
+\end{equation}
+
+\begin{equation}
+  B_1 \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
+  \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
+\end{equation}
+
 
 
 \subsection{Linear Model Implementation}
@@ -111,30 +126,29 @@ Recalling \eqref{InputOutputmodel_steadystate}:
 Unlike for the nonlinear model, in the linear model the WT is taken into consideration. Therefore, the state vector is augmented into a $9x1$ vector, 
 containing the 8 chord flows and the pressure across the WT. For the linear model a state-space system is designed.
 
-The state matrix, $A$, is conformed by the linearized friction provided by the pipes, the linearized part of the valve function corresponding to the state and pressure contribution
+The state matrix, $A$, is conformed by the linearized expression of the pipes, the linearized part of the valve function corresponding to the state and pressure contribution
 of the WT.
 
 Pipes contribution:
 
 \begin{equation}
-  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))
+  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))*|\bar{z}|
   \label{lambdafun}
 \end{equation}
 
-\eqref{lambdafun} only affects to the 8 chords of the water distribution, lambda ends up being a $25x1$ matrix. However, we will have a lambda expression for all pipes
-edges, resulting in a $25x25$ adding $0$ for those non-pipe edges. 
+\eqref{lambdafun} only affects to the 8 chords of the water distribution, $\lambda$ ends up being a $25x1$ matrix. However, we will have a $\lambda$ expression for all pipes
+edges, resulting in a $25x25$ setting $0$ for those non-pipe edges. 
 
 Valve contribution:
 
 \vspace{4mm}
 \begin{equation}
-  {\mu}_e = e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad \quad - \\
-  2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_1}^{T} abs(\hat{z}) \, |\bar{z}|
+  {\mu}_e =  2 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_1}^{T} \, \bar{z} \, \hat{z}
   \label{mufun}
 \end{equation}
 
 The above expression has been derived in \appref{chap:Lin}, for the state matrix only the part corresponding to the states is taken. In the same way 
-as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This extended to all the edges will end up into a $25x25$ matrix, with $0$ in the 
+as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This extended to all the edges will end up being a $25x25$ matrix, with $0$ in the 
 non-valve edges. 
 
 When augmenting the system with the WT, two new edges show up in the water distribution. This two new edges are the WT itself and a pump connected to the WT.
@@ -186,3 +200,5 @@ Previously, for the $A$ matrix the valve expression has been linearized, this ti
 The pumps pressure contribution is also added into the input matrix. 
 
 
+
+ 
