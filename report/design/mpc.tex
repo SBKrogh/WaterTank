@@ -6,14 +6,18 @@ Model predictive control (MPC) is an advance control method that depends on a dy
 
 When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \pmb{G}$. The constraints matrices are given by: 
 
-\begin{align}
-E \cdot (\Delta\hat u(k|k),...,\Delta\hat u(k+H_u-1|k),1) &\leq 0 \\
+\begin{equation}
+E \cdot (\Delta\hat u(k|k),...,\Delta\hat u(k+H_u-1|k),1) \leq 0 
 \label{eq:slewrate}
-F \cdot (\hat u(k|k),...,\hat u(k+H_u-1|k),1) &\leq 0 \\
+\end{equation}
+\begin{equation}
+F \cdot (\hat u(k|k),...,\hat u(k+H_u-1|k),1) \leq 0 
 \label{eq:actranges}
-G \cdot (\hat z(k+H_w|k),...,\hat z(k+H_p|k),1) &\leq 0
+\end{equation}
+\begin{equation}
+G \cdot (\hat z(k+H_w|k),...,\hat z(k+H_p|k),1) \leq 0
 \label{eq:controlvar}
-\end{align}
+\end{equation}
 
 
  \begin{minipage}[t]{0.20\textwidth}

@@ -1,6 +1,9 @@
 \section{Cost function}
 
-To minimize the running cost of the system a cost function of the electrical price is needed. Predicting future prices is an extensive task that depends on many factors like user consumption and weather. Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices a simple model that mimics real electrical pricing is created. This model is based on electrical pricing in Denmark from the period 27-03-2017 to 02-04-2017.  
+To minimize the running cost of the system a cost function of the electrical price is needed. Predicting future prices is an extensive task that depends on many factors e.g user consumption and weather conditions. Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, data gathered from \cite{Electrical_price} is used instead. These data is used to represent the output of a high quality cost function, where 60 hours can be seen on \figref{fig:electrical_price}. 
+
+
+% Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, a simple model that mimics real electrical pricing is created. This model is based on electrical pricing in Denmark from the period 27-03-2017 to 02-04-2017.  
 
 
 % To predict future prices a simple moving average (SMA) is used.
@@ -18,10 +21,11 @@ To minimize the running cost of the system a cost function of the electrical pri
 \begin{figure}[H]
 \centering
 \input{report/pictures/SMA_prediction}
-\caption{Graph that shows the price of electricity.}
+\caption{Graph of electricity prices from Denmark from the 27-03-2017 to 29-03-2017.}
 \label{fig:electrical_price} 
 \end{figure}
 
-Even though the pricing seen in \figref{fig:electrical_price} is not a prediction of the future electrical pricing it is assumed to be a good representation of the pricing and therefor it will be used for this project. 
+%The graph seen on \figref{fig:electrical_price}  shows an interval of a 60 hours from the 27-03-2017 to 29-03-2017 in Denmark.
+% Even though the pricing seen in \figref{fig:electrical_price} is not a prediction of the future electrical pricing it is assumed to be a good representation of the pricing and therefor it will be used for this project. 
 
 % It can be seen that the SMA is not a precise predictor and have a delay of two hours. However it still keeps the dynamics of the price, which is deemed enough for this project.
