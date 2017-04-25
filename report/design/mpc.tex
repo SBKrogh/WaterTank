@@ -8,10 +8,11 @@ When designing a MPC the constraints have to be setup so they represent actuator
 
 \begin{align}
 E \cdot (\Delta\hat u(k|k),...,\Delta\hat u(k+H_u-1|k),1) &\leq 0 \\
-%
+\label{eq:slewrate}
 F \cdot (\hat u(k|k),...,\hat u(k+H_u-1|k),1) &\leq 0 \\
-%
+\label{eq:actranges}
 G \cdot (\hat z(k+H_w|k),...,\hat z(k+H_p|k),1) &\leq 0
+\label{eq:controlvar}
 \end{align}
 
 
@@ -38,4 +39,16 @@ The actuator slew rate constrain, matrix $\pmb{E}$, determents how fast the actu
 
 The constraints on the control variables is the constraints setup in \secref{control_problem}. 
 
+%To easy notation $U(k) = $
+
+%As it can be seen from \eqref{eq:slewrate,eq:actranges,eq:controlvar} depend on three different variables $\hat u(k|k), \Delta\hat u(k|k) \text{and} \hat z(k+H_w|k)$
+
 To calculate the constraint matrices $H_p, H_u \text{and} H_w$ need to be determent. 
+
+% The plan from here on is: 
+
+% 1: Describe the transformation of the constraints so they all depend on delta U(k) 
+
+% 2: Explain how the minimization problem can be set up in general and then s.t. the new constrains 
+
+% 3: Cover why we need an observer and what it means for how the minmization problem is set up - U(k) -> \hat U(k|k)
