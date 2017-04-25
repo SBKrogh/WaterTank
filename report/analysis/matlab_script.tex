@@ -59,7 +59,7 @@ Where, $L$ and $D$ are the pipes length and diameters respectively. The unit con
 A new matrix variable is defined containing the pressure across the edges.
 
 \begin{equation}
-  F = \lambda + \nu - \alpha
+  F = \lambda + \mu - \alpha
 \end{equation}
 
 The derivative of the chords can be obtained isolating $\dot{z}$ in \eqref{isolateZ}
@@ -81,7 +81,7 @@ Known the derivative of the chords, the derivative of the flow through the edges
 \eqref{ChordsModel} is now applied substituting $\dot{q}$ with the relations set in \eqref{flowder} and \eqref{chordder}, resulting in
 
 \begin{equation}
-  \Delta P = [(J*(B_1)^T * (B_1 J {B_1}^T)^{-1}B_1 (-F)]+mu+lambda-alpha
+  \Delta P = [(J*(B_1)^T * (B_1 J {B_1}^T)^{-1}B_1 (-\mu - \lambda + \alpha)]+\mu+\lambda-\alpha
   \label{DeltaP}
 \end{equation}
 
@@ -94,11 +94,15 @@ The pressure at each node can be found by applying
   \Delta P = (H_1)^T p
 \end{equation}
 
-$\Delta P$ is known from \eqref{DeltaP}, the vector of pressure in the nodes is split up as $p = [p_o p_r]$ where $p_o$ is the atmospheric pressure at 
+$\Delta P$ is known from \eqref{DeltaP}, the vector of pressure in the nodes is split up as $p = [p_o \quad p_r]$ where $p_o$ is the atmospheric pressure at 
 node 1 and $p_r$ the pressure in the remaining nodes. Splitting $H_1$ matrix also
 
 \begin{equation}
-  \Delta P = [H_o \quad H_r]^T [p_o \text{;} \quad p_r]
+  \Delta P = [{H_o}^{T} \quad {H_r}^{T}] 
+  \begin{bmatrix}
+    p_o \\
+    p_r
+  \end{bmatrix}
 \end{equation}
 
 Isolating $p_r$ from the equation the pressure at each node is obtained
@@ -110,7 +114,7 @@ Isolating $p_r$ from the equation the pressure at each node is obtained
 $H_r^{\dagger}$ being the pseude-inverse of matrix ${H_r}^{T}$.
 
 The outputs are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
-to the data from the lab. 
+to the data obtained from the setup. 
 
 \subsection{NonLinear Grey Box Model}
 The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraint to be 
