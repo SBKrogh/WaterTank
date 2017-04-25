@@ -29,7 +29,7 @@ This cascade structure is shown in \figref{fig:control_structure}.
 
 In the cascade control structure a local PI controller is used to control the differential pressure output of each main pump, a copy of the constructed PI controller will be used at each main pump as these are identical.
 
-For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q})$ has to be described. This will be done considering both the model of the water distribution network, the cost function for the pumps and the constrains of the system. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
+For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},P_E)$ has to be described. This will be done considering both the model of the water distribution network, the cost function for the pumps and the constrains of the system. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
 \todo{inset network model in minimization problem}
 \begin{align*}
 \underset{\pmb{u}, \:\pmb{q}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q}) &= \underset{u, \:q}{min} \: \sum_{i=1}^{N} Q_i(\Delta{p}_i,q_i) P_E  \\
