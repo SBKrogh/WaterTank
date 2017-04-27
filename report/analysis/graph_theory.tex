@@ -1,14 +1,14 @@
 \section{Graph Representation}  
 \label{GraphTheory}
-A graph is a formal mathematical way for representing a network which can be applicable, among others, in engineering or scientific research, in mechanical systems or in electrical circuits and hydraulic networks \cite{graph_intro}. 
+A graph is a formal mathematical way for representing a network which can be applicable, among others, in engineering or scientific context such as in mechanical systems, in electrical circuits and in hydraulic networks \cite{graph_intro}. 
 
-The modelling of the water distribution network is made with the help of Graph Theory. Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
+The modelling of the water distribution network is done with the help of Graph Theory(GT). Each terminal of the network is associated with a node, and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \subsection{Incidence Matrix} 
 \label{IncidenceSection}
 The incidence matrix, $\pmb{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
 defined by $\pmb{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
 Additionally, the particular node and edge is denoted with the indices $i$ and 
-$j$, respectively.
+$j$.
 
 In case of a hydraulic network, the edges are directed in order to keep track of the direction of the flows in the system. It results in a directed incidence matrix as described below:
 
@@ -46,7 +46,7 @@ In order to obtain the spanning tree it is necessary to remove an edge from each
 By adding any additional chord to $T$, a new cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as many chords it has \cite{GraphModel}.  
 The set of fundamental cycles correspond to the fundamental cycle matrix $\pmb{B}$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges respectively. 
+The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
 
 \begin{equation}
 \label{DiGraphCycle}
@@ -71,7 +71,7 @@ shown.
 \subsection{Kirchhoff's Law}
 \label{KirchhoffSection}
 
-The graph of a hydraulic network assigns two variables to every edge: 
+In the same way as it is described in \secref{HydraulicModel}, the graph of a hydraulic network assigns dual variables to every edge: 
 the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$ in the function of time. These two variables are vectors containing the individual flows through the edges and 
 the pressure drop across them:
 
@@ -120,7 +120,7 @@ the pressure drop across them:
 \end{equation}
 
 
-In order to derive a model for the hydraulic network a set of independent flow variables are identified \cite{TowerModel}. These flow variables have the property that their values can be set independently from other flows in the network, and they coincide with the flows through the chords. 
+In order to derive a model for the hydraulic network, a set of independent flow variables are identified \cite{TowerModel}. These flow variables have the property that their values can be set independently from other flows in the network, and they coincide with the flows through the chords. 
 Therefore it is convenient to choose the column indexing of the 
 $\pmb{H}$ and $\pmb{B}$ matrix, such as:
 
@@ -166,7 +166,7 @@ Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving 
   \pmb{H} \cdot \pmb{q(t)} = 0
 \end{equation}
 
-Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure around a cycle 
+Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure drops in a cycle 
 is zero. In terms of matrix form:
 
 \begin{equation}
