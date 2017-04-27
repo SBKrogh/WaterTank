@@ -97,17 +97,17 @@ The chord flows make it possible to deal with less variables, thus making the se
 
 As it is shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
 \\
-Before writing up an expression that describes all parts of the system, the component model in \eqref{CompleteModel} needs to be modified due to the simplifications explained in \secref{SystemModel}. As it is mentioned, there are four pumps in the system, two main pumps and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented individually. 
+Before writing up an expression that describes all parts of the system, the component model in \eqref{CompleteModel} needs to be modified due to the simplifications explained in \secref{SystemModel}. As it is mentioned, there are four pumps in the system, two main pumps and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. 
 
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_{v;k})}_\text{Valve} - \underbrace{\alpha_k(u_k)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank} + \underbrace{\gamma_k (q_k, k_{v;k)}}_\text{WT-connection}
+\Delta p_i = \underbrace{\lambda_i (q_i) + \zeta_i + J_i \dot{q_i}}_\text{Pipe} + \underbrace{\mu_i (q_i, k_{v;i})}_\text{Valve} - \underbrace{\tilde{\alpha}_i(u_i)}_\text{Pump+valves} + \underbrace{\Delta p_{WT;i}}_\text{Water tank} + \underbrace{\gamma_i (q_i, k_{v;i})}_\text{WT-connection}
 \end{equation}
 
-In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\pmb{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
+%In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\pmb{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
 
 \begin{equation}
-  \tilde{f}_i(\pmb{q_{1;i}}, \pmb{\omega_i}, \pmb{OD_i}) = \lambda_i(\pmb{q_{1;i}}) + \zeta_i + \mu_i(\pmb{q_{1;i}}, \pmb{OD_i}) - \alpha_i(\pmb{\omega_i})
+  \tilde{f}_i(\pmb{q_{i}}, \pmb{\omega_i}, \pmb{k_v}) = \lambda_i(\pmb{q_{i}}) + \zeta_i + \mu_i(\pmb{q_{i}}, \pmb{k_v}) - \tilde{\alpha}_i(\pmb{\omega_i}) + \gamma_i (\pmb{q_i}, \pmb{i_{v;k}})
   \label{ComponentFunction}
 \end{equation}
 
