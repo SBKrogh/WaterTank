@@ -1,7 +1,7 @@
 \section{Linear Parameter Estimation} 
 \label{LinParamEst}
 
-As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ vectorfields contain non-linear functions of the flows. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is an n-order non-linear equation system in the function of time, where n is the number of all edges according to the relevant graph representation of the network. In this section the model describing the network is linearized with the help of Taylor-series. [source] 
+As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is an n-order non-linear equation system in the function of time, where n is the number of all edges according to the relevant graph representation of the network. In this section the model describing the network is linearized with the help of Taylor-series. [source] 
 
 \subsection{Taylor Expansion on a Simple Example}
  \label{Taylorexamplesection}
@@ -134,7 +134,7 @@ The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD}, \
 
 
 
- These expressions below are for the following documentation:
+These expressions below are for the following documentation, there are not any explanation for them yet. We did not comment them out because some parts might be useful to look at
 
 
 \begin{equation}
@@ -231,8 +231,8 @@ of the WT.
 Pipes contribution:
 
 \begin{equation}
-{\lambda}_e = (2 * Cp * {B_1}^{T} \, \bar{z} /(10^5*3600^2))*\hat{z}
-\label{lambdafun}
+  {\lambda}_e = (2 * Cp * {B_1}^{T} \, abs(\hat{z}) /(10^5*3600^2))
+  \label{lambdafun}
 \end{equation}
 
 \eqref{lambdafun} only affects to the 8 chords of the water distribution, lambda ends up being a $25x1$ matrix. However, we will have a lambda expression for all pipes
@@ -252,7 +252,7 @@ as in the pipe, the $\mu$ expression for each edge is a $25x1$ matrix. This exte
 non-valve edges. 
 
 When augmenting the system with the WT, two new edges show up in the water distribution. This two new edges are the WT itself and a pump connected to the WT.
-The pump connected to the WT is running with $0$ rotational speed, thus the mathematical formulation results in:
+The pump connected to the WT is running with $0$ rotational speed, thus the mathematical model results in:
 
 \begin{equation}
     \Delta p = -a_{h2}{q_i}^2 
@@ -264,11 +264,12 @@ Along with the pump there are two pumps, gathering all the components expression
       \Delta p = (\frac{2}{{k_v}^2-a_{h2}}){q_i}^2 
 \end{equation} \todo{Add the linearization explanation into the Appendix}
 
-The above equation needs to be linearized and consequently separate into the state and the input part, see \appref{chap:Lin}. The contribution to the $A$ matrix is as 
+The above equation needs to be linearized and consequently separate into the state and the input part. The contribution to the $A$ matrix is as 
 following:
 
 \begin{equation}
-  \alpha = 4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} \bar{z} \, \hat{z} - 2 a_{h22} {B_0}^{T} \hat{z}
+  \alpha = 2 * e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, \bar{z} \, |\bar{z}| \quad - \\
+  4 \, e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2} \, {B_0}^{T} abs(\hat{z}) \, |\bar{z}| - 2 * {B_0}^{T} abs(\hat{z}) * c.Ah22
 \end{equation}
 
 The cycle matrix, $B_0$ corresponding to the augmented system is used with dimensions $8x2$ but the state vector of the 8 flow chords.
@@ -276,14 +277,14 @@ The cycle matrix, $B_0$ corresponding to the augmented system is used with dimen
 
 In regards to the WT edge, the pressure across it is treated as a new state for the system, that is, the ninth state $\Delta p_{WT}$. 
 
-Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied, see \eqref{StateLinear} and \eqref{inputlinear}, resulting in
+Once the terms conforming the $A$ matrix are identified, the correct structure due to the linearization has to be applied as explained in \secref{} resulting in
 the following $A$ matrix.
 
 \begin{equation}
   A = B_1 \, \lambda \, {B_1}^T + B_1 \, \mu \, {B_1}^T + B_0 \, \alpha \, {B_0}^T
 \end{equation}
 
-The remain $A$ matrix has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
+The remain $A$ matriz has the dimension $8x8$ and the new state $\Delta p_{WT}$ of the WT has to be included into the matrix in order to get an $9x9$ $A$ 
 matrix. 
 
 The input matrix, $B$, is conformed by the input into the system. These are the opening degree of the valves and the pressure contribution of the main 
@@ -293,7 +294,7 @@ Previously, for the $A$ matrix the valve expression has been linearized, this ti
 
 \begin{equation}
   {\mu}_e = -2 \, \frac{e^{\frac{2 \, (\theta_{off} - \bar{OD}) \, n_{gl}}{\theta_{max}-\theta_{off}}+2}
-   \, n_{gl} \,  \bar{q} \, \bar{q}}{\theta_{max}-\theta_{off}} \, \hat{OD}
+   \, n_{gl} \, \hat{OD} \, \bar{q} \, |\bar{q}|}{\theta_{max}-\theta_{off}}
 \end{equation}
 
 The pumps pressure contribution is also added into the input matrix. 
