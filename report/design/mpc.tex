@@ -4,36 +4,34 @@ Model predictive control (MPC) is an advance control method that depends on a dy
 
 \subsection{Constraints}
 
-When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \pmb{G}$. The constraints matrices are given by: 
+When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are given by: 
 
 \begin{equation}
-E \cdot (\Delta\hat u(k|k),...,\Delta\hat u(k+H_u-1|k),1) \leq 0 
+E \cdot [\Delta\tilde u(k|k),...,\Delta\tilde u(k+H_u-1|k),1]^T \leq 0 
 \label{eq:slewrate}
 \end{equation}
 \begin{equation}
-F \cdot (\hat u(k|k),...,\hat u(k+H_u-1|k),1) \leq 0 
+F \cdot [\tilde u(k|k),...,\tilde u(k+H_u-1|k),1]^T \leq 0 
 \label{eq:actranges}
 \end{equation}
 \begin{equation}
-G \cdot (\hat z(k+H_w|k),...,\hat z(k+H_p|k),1) \leq 0
+G \cdot [\tilde y(k+H_w|k),...,\tilde y(k+H_p|k),1]^T \leq 0
 \label{eq:controlvar}
 \end{equation}
 
 
  \begin{minipage}[t]{0.20\textwidth}
  Where\\
- \hspace*{8mm} $\hat u(k|k)$ \\
- \hspace*{8mm} $\Delta\hat u(k|k)$ \\
- \hspace*{8mm} $H_p$ \\
+ \hspace*{8mm} $\tilde u(k|k)$ \\
+ \hspace*{8mm} $\Delta\tilde u(k|k)$ \\
  \hspace*{8mm} $H_u$ \\
  \hspace*{8mm} $H_w$ \\
- and \hspace*{0.7mm} $\hat z(k+H_w|k)$	
+ and \hspace*{0.7mm} $\tilde y(k+H_w|k)$	
  \end{minipage}
  \begin{minipage}[t]{0.68\textwidth}
  \vspace*{2mm}
  is the input vector, \\
  is the change of the input vector, \\
- is the prediction horizon,\\
  is the control horizon, \\
  is the window horizon, \\
  is the estimate of the controlled output to the time $k+H_w$ compared to current output.
@@ -47,7 +45,7 @@ The constraints on the control variables is the constraints setup in \secref{con
 
 %As it can be seen from \eqref{eq:slewrate,eq:actranges,eq:controlvar} depend on three different variables $\hat u(k|k), \Delta\hat u(k|k) \text{and} \hat z(k+H_w|k)$
 
-To calculate the constraint matrices $H_p, H_u \text{and} H_w$ need to be determent. 
+To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determent. In \secref{sec:cost_fkt} the electrical price is descried. From this it can be seen that the price fluctuate a lot but some periodicity can be seen every 24 hours. Therefor both $H_p$ and $ H_u $ is set to 24. 
 
 % The plan from here on is: 
 
