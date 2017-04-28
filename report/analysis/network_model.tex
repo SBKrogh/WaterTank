@@ -97,17 +97,17 @@ The chord flows make it possible to deal with less variables, thus making the se
 
 As it is shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
 \\
-Before writing up an expression that describes all parts of the system, the component model in \eqref{CompleteModel} needs to be modified due to the simplifications explained in \secref{SystemModel}. As it is mentioned, there are four pumps in the system, two main pumps and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. 
+Before writing up an expression that describes all parts, the component model in \eqref{CompleteModel} needs to be modified because of the simplifications introduced in \secref{SystemModel}. As it is mentioned in that section, there are four pumps in the system, two main and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. 
 
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_i = \underbrace{\lambda_i (q_i) + \zeta_i + J_i \dot{q_i}}_\text{Pipe} + \underbrace{\mu_i (q_i, k_{v;i})}_\text{Valve} - \underbrace{\tilde{\alpha}_i(u_i)}_\text{Pump+valves} + \underbrace{\Delta p_{WT;i}}_\text{Water tank} + \underbrace{\gamma_i (q_i, k_{v;i})}_\text{WT-connection}
+\Delta p_i = \underbrace{\lambda_i (q_i) + \zeta_i + J_i \dot{q_i}}_\text{Pipe} + \underbrace{\mu_i (q_i, k_{v;i})}_\text{Valve} - \underbrace{\tilde{\alpha}_i(u_i)}_\text{Pump+valves} + \underbrace{\Delta p_{WT;i}}_\text{Water tank} + \underbrace{\gamma_i (q_i)}_\text{WT-connection}
 \end{equation}
 
 %In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\pmb{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
 
 \begin{equation}
-  \tilde{f}_i(\pmb{q_{i}}, \pmb{\omega_i}, \pmb{k_v}) = \lambda_i(\pmb{q_{i}}) + \zeta_i + \mu_i(\pmb{q_{i}}, \pmb{k_v}) - \tilde{\alpha}_i(\pmb{\omega_i}) + \gamma_i (\pmb{q_i}, \pmb{i_{v;k}})
+  \tilde{f}_i(\pmb{q_{i}}, \pmb{\omega_i}, \pmb{k_v}) = \lambda_i(\pmb{q_{i}}) + \zeta_i + \mu_i(\pmb{q_{i}}, \pmb{k_v}) - \tilde{\alpha}_i(\pmb{\omega_i}) + \gamma_i (\pmb{q_i})
   \label{ComponentFunction}
 \end{equation}
 
@@ -178,7 +178,7 @@ Where\\
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 \hspace*{4mm} is the inertia in the chord components\\
-\hspace*{4mm} is the inertia in the component of the spanning tree 
+\hspace*{4mm} is the inertia in the components of the spanning tree 
 \end{minipage}
 
 $\pmb{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
@@ -215,15 +215,15 @@ Therefore, the system can be described as follows
 \subsection{Pressure Drop Across the Nodes}
 \label{ModelRelationSection}
 
-For making the relations easy to read, the complete component model, \eqref{NoTowerModel} is repeated: 
+For ease of reading, the complete component model in \eqref{NoTowerModel} is restated: 
 
 \begin{equation}
   \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
   \label{RecallModel}
 \end{equation}
 
-This equation describes the system by the pressures across each elements except the part including the water tower. The dynamics are determined by the inertia of the pipes, while the pressure relations are described by f vectorfield. 
-The same equation can be however expressed with a reduced set of equation system with the help of chord flows as it was introduced before: 
+This equation describes the system by the pressure of across each elements except the part including the water tower. The dynamics are determined by the inertia of the pipes, while the pressure relations are described by f vectorfield. 
+The same equation can be however expressed with a reduced set of equation system with the help of chord flows: 
 
 \begin{equation}
   \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
@@ -236,7 +236,7 @@ The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the e
   \label{PressureLarge}
  \end{equation}
  
-Writing in a complex, short form:
+Writing in short form:
  
  \begin{equation}
   \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
@@ -248,11 +248,11 @@ a general form of the network without the part corresponding to the WT ($\pmb{p_
 \subsection{Parameter Identification}
 \label{SubSecEstimation}
 
-The modelling of the complete water distribution system is governed by the previously derived model, however certain parameters of the system are either unknown or can vary significantly from the assumed design values. Furthermore, the obtained model of the system gives non-linear relations between flows and pressures in each individual components. 
+The behavior of the complete water distribution system is governed by the previously derived model, however certain parameters of the system are either unknown or can vary significantly from the assumed design values. Furthermore, the obtained model of the system gives non-linear relations between flows and pressures in each individual components. 
 \\
-In case of the valves, the conductivity function is defined in the function of OD, therefore the behavior of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the datasheet provided by the manufacturer, these values are only acceptable for new pipes, as over time and depending on the material, these elements can rust. On the other hand however, the inertia parameters of the pipes are defined accurately since they are dependant on the physical parameters of the pipes. 
+In case of the valves, the conductivity function is dependant on the OD, therefore the parameter of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the data sheet provided by the manufacturer, these values are only acceptable for new pipes, as over time material can build up on the inside of the pipes, since the laboratory set up to a large extent is built from PEX/PEM (plastic) pipes. On the other hand however, the physical parameters of the pipe volumes are assumed to be known to an accuracy where there is not any benefits from estimating it. Therefore the inertia matrix is known.  
 \\
-Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to set up a simulation that represents the real test setup. 
+Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions and form losses(which cause the major uncertainty in this case) in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to set up a simulation that represents the real test set up. 
 
 The parameter estimation is introduced for two different cases with different approaches. One being an estimation method with the model being kept non-linear, the other being a method where the model is  linearized before the estimation. 
 
@@ -265,19 +265,30 @@ The block diagram of a general parameter identification method is described in \
 \label{fig:parame_block}
 \end{figure}
 
-As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation. In general, the inputs are the same for both systems, however some modifications has to be included in the case of the linearized model. This is explained in detail in the section covering the linear parameter identification method.
+As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation. In general, the inputs are the same for both systems, however some modifications have to be introduced in the case of the linearized model. (This is explained in detail in the section covering the linear parameter identification method.)
 \\
-In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. In general, the inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
+In order to obtain measurements from the real life test set up, the system has to be excited by various input signals. In general, the inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs and states are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD}, \pmb{B}^T \pmb{z})
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(.)$ contains all the models for the elements which are dependant on the inputs, while the vectorfield $g(.)$ contains the rest of the component models which are responsible for the pressure drops in any part of the network. Although $u(.)$ is the function of $\omega$ and the $OD$, in the simulation however the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. 
+where the vectorfield $u(.)$ contains all the functions for the elements which are dependant on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation however the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test set up. 
 \\
-In the system, output equations are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the estimation these measurements are compared to the data obtained from the simulation and the parameters are varied according to it. The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. (The number of parameters are equal to the number of pipe elements in the network.) The general parameter estimation problem is the problem of the minimization of a certain objective function over the variable $\pmb{z}$: 
+In the system, output are defined as differential pressures according to the available sensors on the test set up. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
+\\
+It is important to point out that the estimation is applied for steady-state which is reasonable, since the unknown parameters are the resistances and form losses and the inertia and the capacitance only affect the dynamics, therefore have no influence on the steady-state. The inertia of the pipes, and the capacitance of the WT is considered as known parameters. 
+
+Taking the steady-state into account, the system equation for the parameter estimation can be rewritten as: 
+
+\begin{equation}
+ 0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD}, \pmb{B}^T \pmb{z})
+ \label{InputOutputmodel_steadystate}
+\end{equation}
+
+The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. (The number of parameters are equal to the number of pipe elements in the network.) The general parameter estimation problem is the problem of the minimization of the following objective function over the variable $\pmb{z}$: 
 
 %\begin{equation}
 %
@@ -287,34 +298,35 @@ $n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the estimati
 %\end{equation}
 
  \begin{equation}
- min \sum_{i=1}^{n}\Big(g_{Cp}(z_i) + \pmb{B}^Tu\Big)^T \Big(g_{Cp}(z_i)     + \pmb{B}^Tu\Big) + \big(y_i - y_{Cp}(z_i)\big)^T  \big(y_i - y_{Cp}(z_i)\big)
+ \min_{z} \sum_{i=1}^{n}\Big(g(z_i) + B^Tu\Big)^T \Big(g(z_i)     + B^Tu\Big) + \big(y_{sys;i} - y(z_i)\big)^T  \big(y_{sys;i} - y(z_i)\big)
   \label{ObjectiveFunction}
  \end{equation}
  
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $y_i$ \\
-\hspace*{8mm} $y_{Cp}(z_i)$ 
+\hspace*{8mm} $n$ \\
+\hspace*{8mm} $g(z_i)$ \\
+\hspace*{8mm} $y_{sys;i}$ \\
+\hspace*{8mm} $y_{sys}(z_i)$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the output data from the measurement,\\
-is the output data from the model.
+is the number of edges in the graph-based network,\\
+is the vectorfield with all resistance terms(parameters),\\
+is the pressure measurement over the $i^{th}$ edge on the system,\\
+is the $i^{th}$ pressure in the output vector in the model .
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$
+\textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \end{minipage}
 
-It is important to point out that \eqref{ObjectiveFunction} is applied for steady-state which is reasonable, since the unknown parameters are affecting the steady-state values of the pressures. The inertia of the pipes, and the capacitance of the WT is considered as known parameters, therefore the dynamics of the system is well defined. 
+ 
 
-Taking the steady-state into account, the system equation for the parameter estimation can be rewritten as: 
 
-\begin{equation}
- 0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{OD}, \pmb{B}^T \pmb{z})
- \label{InputOutputmodel_steadystate}
-\end{equation}
 
 
 
