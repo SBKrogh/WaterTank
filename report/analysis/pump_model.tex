@@ -1,4 +1,4 @@
-\subsection{Pump Model} 
+\subsection{Pump model} 
 \label{PumpModel}
 In order to move water from the reservoirs to the costumers, pumping is required. To guarantee that the water reaches every end-user with the appropriate pressure, different pumps can be used in the water distribution system.\\
 Centrifugal pumps are ideal for this purpose. 
@@ -33,10 +33,22 @@ is the impeller speed.
 \textcolor{White}{te}$\unit{\frac{rad}{s}}$
 \end{minipage}	
 
-\subsubsection*{Pump Power Consumption}
-In \secref{introduction} it has been introduced the aim of the project, consisting on minimizing the power consumption of the pumps in order to reduce 
-the cost of running the hydraulic setup. Therefore, a model of the pump power consumption is needed so it can be used afterwards. In \cite{Phd_Carsten} 
-an expression for the torque produced in a centrifugal pump is derived. 
+\subsubsection*{Pump power consumption}
+\todo{We need to redo this part and somehow include the derivation of the first two equations!}
+\begin{equation}
+P_h = \Delta p \cdot q = \hat{u}\hat{z}
+\end{equation}
+\begin{equation}
+P_e = \frac{1}{\eta}P_h
+\end{equation}
+
+% In \secref{introduction} it has been introduced the aim of the project, consisting on minimizing the power consumption of the pumps in order to reduce 
+% the cost of running the hydraulic setup. Therefore, a model of the pump power consumption is needed so it can be used afterwards. In \cite{Phd_Carsten} 
+% an expression for the torque produced in a centrifugal pump is derived. 
+In \secref{introduction}, the aim of this project has been specified which consists of minimizing the electrical price of running the hydraulic setup, while maintaining a pressure within a limit. 
+A model of the pump power consumption is therefore needed.
+
+In \cite{Phd_Carsten}, an expression for the torque produced in a centrifugal pump is derived. 
 
 \begin{equation}
   \tau = -a_{t2}{q_i}^2 + a_{t1} {\omega}_r {q_i} + a_{t0} {{\omega}_r}^2

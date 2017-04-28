@@ -1,6 +1,9 @@
-\section{Cost function}
+\section{Cost function}\label{sec:cost_fkt}
+\todotom{I think it is a good idea to treat the data below as if it were a prediction of the future prices.
+W.r.t. the term 'cost function', I think it's a bit misplaced here. What you have in the graph is the cost-of-energy as a function of time. However, when you use the term 'cost function' it might be confused with the term 'objective function', which in your case will be the product between the cost-of-energy and the energy consumed.}
 
-To minimize the running cost of the system a cost function of the electrical price is needed. Predicting future prices is an extensive task that depends on many factors e.g user consumption and weather conditions. Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, data gathered from \cite{Electrical_price} is used instead. These data is used to represent the output of a high quality cost function, where 60 hours can be seen on \figref{fig:electrical_price}. 
+
+To minimize the running cost of the system a cost function of the electrical price is needed. Predicting future prices is an extensive task that depends on many factors e.g user consumption and weather conditions. Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, data gathered from \cite{Electrical_price} is used instead. This data is used to represent the output of a high quality cost function, where 60 hours can be seen on \figref{fig:electrical_price}. 
 
 
 % Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, a simple model that mimics real electrical pricing is created. This model is based on electrical pricing in Denmark from the period 27-03-2017 to 02-04-2017.  
