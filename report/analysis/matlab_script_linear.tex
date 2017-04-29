@@ -1,42 +1,61 @@
-\section{Linear Parameter Estimation} 
+\section{Linear parameter estimation} 
 \label{LinParamEst}
 
-As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is an n-order non-linear equation system in the function of time, where n is the number of all edges according to the relevant graph representation of the network. In this section the model describing the network is linearized with the help of Taylor-series. [source] 
+As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables or in other words, the number of states.
+\\
+In this section it is shown how the model describing the network is linearized with the help of Taylor-series. Furthermore, the parameter estimation is explained. [source] 
 
-\subsection{Taylor Expansion on a Simple Example}
+\subsection{Taylor expansion on a simple example}
  \label{Taylorexamplesection}
 
-The method of linearization is introduced on a simple one state, one input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
+The method of linearization is introduced on a simple one-state, one-input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
 
 \begin{equation}
 \frac{d}{dt} x = f(x,u)
  \label{example_system}
 \end{equation}
 
-Using a Taylor-series expansion for $f(x,u)$ the following yields: 
+Writing up $f(x,u)$ with Taylor-series the following yields: 
 
 \begin{equation}
-\frac{d}{dt} x = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) + high \quad order \quad terms  
+f(x,u) = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} \hat{x} + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} \hat{u} + higher \; order \; terms  
  \label{TaylorExpansion}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\bar{x} \quad and \quad \bar{u}$ \\
-\hspace*{8mm} $\hat{x} \quad and \quad \hat{u}$ 
+\hspace*{8mm} $\bar{x} \;$ and $\; \bar{u}$ \\
+\hspace*{8mm} $\hat{x} \;$ and $\; \hat{u}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-are the operating points ,\\
-are the deviations from the operating point.
+is the operating point ,\\
+is the deviation from the operating point.
 \end{minipage}
 
-As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. The following expression in \eqref{InputOutputmodel_time} gives an accurate approximation of the function: 
+The aim of the linearization is to describe the function $f(x,u)$ around an operating point as a linear function. However, it should be noted that the approximation around this point is only valid for cases when the deviation from this point is small. Therefore the linearized version of a dynamic model is often called the small-signal model of the system. 
+\\
+In \eqref{TaylorExpansion}, the linearized term of $f(x,u)$ can be expressed by neglecting the affine term in the operating point, $f(\bar{x},\bar{u})$, and cancelling the higher order terms. Since the model is described by small-signals, quadratic and higher order terms result in very small values, therefore they are negligible. 
+\\
+The following expression in \eqref{InputOutputmodel_time} gives the approximation of the function: 
+%As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. 
 
 \begin{equation}
-\frac{d}{dt} x \approx f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) 
+\frac{d}{dt} x = f(x,u) \approx \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} (x-\bar{x}) + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} (u-\bar{u}) 
  \label{TaylorExpansion_approx}
 \end{equation}
+
+In case of a pipe or a valve component, the pressure drop across the element is described by a quadratic function of the flow if steady-state is considered and the dynamics are neglected. For the sake of illustration, \figref{fig:linearization} describes a non-linear function, $f(q)$, and its linearized interpretation for the operating values of pressure and flow. 
+
+%tikz of the linearization
+\begin{figure}[H]
+\centering
+\input{report/tikz/linearization.tex} 
+\caption{Linearization of a non-linear function $f(q).$}
+\label{fig:linearization}
+\end{figure}
+
+As can be seen, the line inserted in the operating point, $O$, describes the model accurately only if the deviation is very small from this point, for example $O'$. Therefore the linearized model describes the system behavior in the new coordinate system $(\bar{q},\Delta \bar{p})$. It is important to mention that in \figref{fig:linearization} the function $f(q)$ is an illustration of a non-linear function and not the exact same as for a pipe element. 
 
 %
 %asdf
@@ -53,7 +72,7 @@ As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be 
 %\label{p_operating}
 %\end{equation}
 
-\subsection{Linearization of the System Model}
+\subsection{Linear model of the system}
  \label{SystemLin}
  
 For the sake of clearance, the system equation is shown again, illustrating that the governing composite functions all depend on time: 
@@ -112,110 +131,110 @@ Thus the small signal model of such a multi-state model can be expressed as:
 As can be seen in \eqref{multistate model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices, one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points, at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp, from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them to the small signal values. 
 \\
 
-Note: 
-After this, the general structure of the matrices and the same formulation for the water distribution system will be written. 
-
-The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD}, \pmb{B^T z})$, is shown:
-
-\begin{equation}
-  \begin{split}
-  & B g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
-  B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
-  &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
-  \end{split}
-  \label{StateLinear}
-\end{equation}
-
-\begin{equation}
-  B \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
-  \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
-  \label{inputlinear}
-\end{equation}
-
-
-
-These expressions below are for the following documentation, there are not any explanation for them yet. We did not comment them out because some parts might be useful to look at
-
-
-\begin{equation}
- \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
-\label{WTeq1}
-\end{equation}
-
-\begin{equation}
- \pmb{ \Delta p} = \pmb{J \dot{q_1}} + \lambda(\pmb{q_1}) + \zeta + \mu(\pmb{q_1}, \pmb{OD}) - \alpha(\pmb{dp})
-\label{NonlinearPressureFunction}
-\end{equation}
-
-asdf
-
-\begin{equation}
- \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
-\label{WTeq2}
-\end{equation}
-
-asdf
-
-\begin{equation}
-\pmb{\Delta p_0} =
-\begin{bmatrix}
-         \Delta p_{C32} \\
-	\Delta p_{WT}
-\end{bmatrix}
-\label{pvector}
-\end{equation}
-
-asdf
-
-\begin{equation}
-\pmb{q_0} =
-\begin{bmatrix}
-         q_{C32} \\
-	q_{WT}
-\end{bmatrix}
-\label{qvector}
-\end{equation}
-
-Recalling \eqref{InputOutputmodel_steadystate}:
-
-\begin{equation}
- \pmb{B}\pmb{J} \pmb{\dot{q}} = \pmb{B} g(\pmb{q})+ \pmb{B_1} u(\pmb{\omega},\pmb{OD})
- \label{InputOutputmodel_steadystate_linmodel}
-\end{equation}
-
-\begin{equation}
-\label{gfunction}
- g_{i}(q) =
-		\left\{
-		\begin{array}{ll}
-		
-		\lambda_i(q_1) 			&      \text{for i = ...}	
-\\
-		\lambda_i(q_1) + \zeta_i                      &     \text{for i = ...}
-\\
-
-                \Delta p_{WT;i}                       &      \text{for i = ...}
-\\
-
-                \mu_{i;q1}(q_1, OD)                       &      \text{for i = ...}
-
-		\end{array}
-		\right.
-\end{equation}	
-
-\begin{equation}
-\label{ufunction}
- u_{i}(\omega, OD) =
-		\left\{
-		\begin{array}{ll}
-		
-		\alpha_i(\omega) 			&      \text{for i = ...}	
-\\
-		\mu_{i;OD}(q_1, OD)                      &     \text{for i = ...}
-
-		\end{array}
-		\right.
-\end{equation}	
+%Note: 
+%After this, the general structure of the matrices and the same formulation for the water distribution system will be written. 
+%
+%The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD}, \pmb{B^T z})$, is shown:
+%
+%\begin{equation}
+%  \begin{split}
+%  & B g_{i}({B_{1}}^{T}z) = B_1 \frac{\partial{\lambda_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad + \quad
+%  B_0 {\hat{\Delta P}}_{WT} \quad + \quad B_1 \frac{\partial{\mu_{i}({{B_{1}}^{T}z})}}{\partial{B_{1}^{T}z}} {B_1}^{T} \quad - \\
+%  &  B_0 \alpha_{i}(B_{1}^{T}z) \quad + \quad B_0 \frac{\partial{\mu_{i}({{B_{0}}^{T}z})}}{\partial{B_{0}^{T}z}} {B_0}^{T}
+%  \end{split}
+%  \label{StateLinear}
+%\end{equation}
+%
+%\begin{equation}
+%  B \mu_{i}(\omega, OD, {B_1}^{T}z) = - B_1 \alpha_{i}(dP) \quad + \quad B_1 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_1}^{T}
+%  \quad + \quad B_0 \frac{\partial{\mu_{i}(OD)}}{\partial{OD}} {B_0}^{T}
+%  \label{inputlinear}
+%\end{equation}
+%
+%
+%
+%These expressions below are for the following documentation, there are not any explanation for them yet. We did not comment them out because some parts might be useful to look at
+%
+%
+%\begin{equation}
+% \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
+%\label{WTeq1}
+%\end{equation}
+%
+%\begin{equation}
+% \pmb{ \Delta p} = \pmb{J \dot{q_1}} + \lambda(\pmb{q_1}) + \zeta + \mu(\pmb{q_1}, \pmb{OD}) - \alpha(\pmb{dp})
+%\label{NonlinearPressureFunction}
+%\end{equation}
+%
+%asdf
+%
+%\begin{equation}
+% \dot{\Delta p_{WT}} = \frac{1}{C_H} q_{WT}
+%\label{WTeq2}
+%\end{equation}
+%
+%asdf
+%
+%\begin{equation}
+%\pmb{\Delta p_0} =
+%\begin{bmatrix}
+%         \Delta p_{C32} \\
+%	\Delta p_{WT}
+%\end{bmatrix}
+%\label{pvector}
+%\end{equation}
+%
+%asdf
+%
+%\begin{equation}
+%\pmb{q_0} =
+%\begin{bmatrix}
+%         q_{C32} \\
+%	q_{WT}
+%\end{bmatrix}
+%\label{qvector}
+%\end{equation}
+%
+%Recalling \eqref{InputOutputmodel_steadystate}:
+%
+%\begin{equation}
+% \pmb{B}\pmb{J} \pmb{\dot{q}} = \pmb{B} g(\pmb{q})+ \pmb{B_1} u(\pmb{\omega},\pmb{OD})
+% \label{InputOutputmodel_steadystate_linmodel}
+%\end{equation}
+%
+%\begin{equation}
+%\label{gfunction}
+% g_{i}(q) =
+%		\left\{
+%		\begin{array}{ll}
+%		
+%		\lambda_i(q_1) 			&      \text{for i = ...}	
+%\\
+%		\lambda_i(q_1) + \zeta_i                      &     \text{for i = ...}
+%\\
+%
+%                \Delta p_{WT;i}                       &      \text{for i = ...}
+%\\
+%
+%                \mu_{i;q1}(q_1, OD)                       &      \text{for i = ...}
+%
+%		\end{array}
+%		\right.
+%\end{equation}	
+%
+%\begin{equation}
+%\label{ufunction}
+% u_{i}(\omega, OD) =
+%		\left\{
+%		\begin{array}{ll}
+%		
+%		\alpha_i(\omega) 			&      \text{for i = ...}	
+%\\
+%		\mu_{i;OD}(q_1, OD)                      &     \text{for i = ...}
+%
+%		\end{array}
+%		\right.
+%\end{equation}	
 
 
 
