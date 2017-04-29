@@ -259,7 +259,13 @@ asd
 %%\end{equation}
 
 As can be seen in \eqref{multistate model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices, one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points, at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp, from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them to the small signal values. 
-\\
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/param_block_lin.tex} 
+\caption{Parameter identification block diagram for the linear system. }
+\label{fig:parame_block_lin}
+\end{figure}
 
 %Note: 
 %After this, the general structure of the matrices and the same formulation for the water distribution system will be written. 
@@ -365,6 +371,8 @@ As can be seen in \eqref{multistate model_smallsignal}, the small signal model o
 %		\end{array}
 %		\right.
 %\end{equation}	
+
+
 
 
 
