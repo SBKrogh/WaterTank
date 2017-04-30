@@ -38,6 +38,8 @@ This cascade structure is shown in \figref{fig:control_structure}.
 
 In the cascade control structure a local PI controller is used to control the differential pressure output of each main pump, a copy of the constructed PI controller will be used at each main pump as these are identical.
 
+\todo{Vinkel, correction needed here}
+
 %For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. 
 Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the cost function for the pumps, the electrical pricing and the constrains of the system have to be taken into account. Furthermore a constrain securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
 \todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
