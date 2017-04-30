@@ -1,7 +1,7 @@
 \section{Linear parameter estimation} 
 \label{LinParamEst}
 
-As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables or in other words, the number of states.
+As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
 In this section it is shown how the model describing the network is linearized with the help of Taylor-series. Furthermore, the parameter estimation is explained. [source] 
 
@@ -186,14 +186,14 @@ asd
 asd
 
 \begin{equation}
-q_0 = -\pmb{H^+_0}\pmb{H_1}\pmb{q_1}
+q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
  \label{currentlaw_2}
 \end{equation}
 
 asd
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} z
+\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} z
  \label{currentlaw_2}
 \end{equation}
 
