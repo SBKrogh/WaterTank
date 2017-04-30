@@ -1,9 +1,9 @@
-\section{Linear parameter estimation} 
+\section{Linearization of the model} 
 \label{LinParamEst}
 
 As it is shown in \eqref{InputOutputmodel}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
-In this section it is shown how the model describing the network is linearized with the help of Taylor-series. Furthermore, the parameter estimation is explained. [source] 
+In this section it is shown how the model describing the network is linearized with the help of Taylor-series. [source] 
 
 \subsection{Taylor expansion on a simple example}
  \label{Taylorexamplesection}
@@ -119,7 +119,7 @@ The pumps are operating according to the model described in \eqref{omega_notzero
 \label{fig:pump_model_block}
 \end{figure}
 
-As it is shown, there is a differential pressure sensor around the part of the network which is described by the pump model everywhere where a pump is present in the system. Therefore it is unnecessary to use angular velocity as input, the pumps can be operated by the differential pressure as input, since it is known everywhere in the network. 
+As it is shown, there is a differential pressure sensor around everywhere where a pump is present in the system. Therefore it is unnecessary to use angular velocity as input, the pumps can be operated by the differential pressures as input, since it is known everywhere in the network. 
 \\
 The input vector furthermore is defined by the differential pressures to the pumps and the ODs of the end-user valves as follows:
 
@@ -138,7 +138,7 @@ dP_{c16}
 \end{bmatrix} 
 \end{equation}
 
-Considering the input vector to the system, the model of the pumps can be written up similarly as the linearized models: 
+Considering the input vector, the model of the pumps can be written up in the same manner as the linearized model of pipes and valves: 
 
 \begin{equation}
 \pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G} \pmb{u}
@@ -147,31 +147,62 @@ Considering the input vector to the system, the model of the pumps can be writte
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G}$ 
+\hspace*{8mm} $\pmb{G} \in \pmb{\mathbb{R}}^{(exu)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping.
+is a matrix representing a linear mapping where $u$ is the number of inputs and $e$ is the number of edges without the WT.
 \end{minipage} 
 
 
+\subsection{State space model}
+ \label{SystemLin}
 
-
-For the sake of clearance, \eqref{InputOutputmodel} is shown again  
+For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel} is shown again:  
 
 \begin{equation}
  \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel}
 \end{equation}
 
-asd
+The dynamics of the WT is described by the equation below: 
 
 \begin{equation}
 \Delta \dot{p}_{WT} = \frac{1}{C_H} q_0
  \label{WT_eq}
 \end{equation}
 
-asd
+These two differential equation systems give a full description of the pressures in the whole network, and the effect of the WT on the system. However, due to the linearization the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
+\\
+Before setting up the state-space form of the system, the following should be considered: 
+
+\begin{equation}
+ \pmb{H_1}\pmb{q_1} + \pmb{H_0}q_0 = 0 
+ \label{currentlaw_1}
+\end{equation}
+
+In \eqref{currentlaw_1}, the current law is shown for the WT and for the rest of the system. The two current laws sum up to zero taking into account the whole system. Expressing the flow in the WT yields:
+
+\begin{equation}
+q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
+ \label{currentlaw_2}
+\end{equation}
+
+Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
+
+\begin{equation}
+\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} \pmb{z}
+ \label{currentlaw_3}
+\end{equation}
+
+Therefore the dynamics of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
+
+\begin{equation}
+\Delta \dot{p}_{WT} = - \pmb{H} \pmb{z}
+ \label{currentlaw_4}
+\end{equation}
+
+asd 
 
 \begin{equation}
  \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{A} \pmb{\hat{z}} + \pmb{B_u} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
@@ -206,19 +237,9 @@ asd
  \label{statespace_2}
 \end{equation}
 
-asd
 
-\begin{equation}
- \pmb{H_1}\pmb{q_1} = \pmb{H_0}q_0  
- \label{currentlaw_1}
-\end{equation}
 
-asd
 
-\begin{equation}
-q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
- \label{currentlaw_2}
-\end{equation}
 
 asd
 
