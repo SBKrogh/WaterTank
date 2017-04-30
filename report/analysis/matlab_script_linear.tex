@@ -75,9 +75,11 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
 \subsection{Linear system model}
  \label{SystemLin}
  
-As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega), q)$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
+As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega, q))$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
 \\
 Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion [source].
+\\
+The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. Since the elevation is not flow dependant and the dynamics are linear functions of the flow derivatives, only the model of the pipes should be linearized. 
 \\
 The expression describing the pipes can be approximated by its linear model as follows:
 
@@ -87,7 +89,8 @@ The expression describing the pipes can be approximated by its linear model as f
 \end{equation}
 
 where the partial derivative is a Jacobian matrix which is the matrix of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\pmb{{B_1^{T}}}\pmb{z}$, due to the chain rule the derivative is multiplied by $\pmb{{B_1^{T}}}$. 
-\\
+
+
 In case of the valves, $\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
 
 \begin{equation}
@@ -97,17 +100,19 @@ In case of the valves, $\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})$ is not only the f
 \label{mu_lin}
 \end{equation}
 
-asd
+The Taylor-expansion is carried out in the same manner as in \eqref{lambda_lin}, however the linearized valve model is in the function of two small-signal variables, the flows and the OD. Therefore the partial derivatives are calculated in the operating point defined by the operating value of $\pmb{z}$ and $\pmb{OD}$. 
+\\
+For the water tower connection, the same can be concluded as for the pipe model. 
 
 \begin{equation}
   \pmb{B_1} \gamma(\pmb{{B_1^{T}}}\pmb{z}) \approx \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
 \label{gamma_lin}
 \end{equation}
 
-asd
+In case of 
 
 \begin{equation}
-  \pmb{B_1} \alpha(\omega) = \pmb{B_1} \pmb{G} \pmb{u}
+  \pmb{B_1} \alpha(\ppmb{\omega},\pmb{z}) = \pmb{B_1} \pmb{G} \pmb{u}
 \label{gamma_lin}
 \end{equation}
 
