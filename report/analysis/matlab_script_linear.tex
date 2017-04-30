@@ -109,14 +109,19 @@ For the water tower connection, the same can be concluded as for the pipe model.
 \label{gamma_lin}
 \end{equation}
 
-The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around it are taken into account. 
+The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around each pump are taken into account. Although this model is both dependant on the OD of the valves and the flow through the pumps, it is unnecessary to linearize it for the following reason, explained in \figref{fig:pump_model_block} below: 
 
-\begin{equation}
-\pmb{B_1} \alpha(\pmb{\omega},\pmb{z}) = \pmb{B_1} \pmb{G} \pmb{u}
-\label{gamma_lin}
-\end{equation}
+%tikz of the pump with dp sensor
+\begin{figure}[H]
+\centering
+\input{report/tikz/pump_model_block.tex} 
+\caption{Block representing the extended pump model.}
+\label{fig:pump_model_block}
+\end{figure}
 
-where 
+As it is shown, there is a differential pressure sensor around the part of the network which is described by the pump model everywhere where a pump is present in the system. Therefore it is unnecessary to use angular velocity as input, the pumps can be operated by the differential pressure as input, since it is known everywhere in the network. 
+\\
+The input vector furthermore is defined by the differential pressures to the pumps and the ODs of the end-user valves as follows:
 
 \begin{equation}
 \pmb{u} =
@@ -132,6 +137,23 @@ dP_{c16}
 \label{inputvector}
 \end{bmatrix} 
 \end{equation}
+
+Considering the input vector to the system, the model of the pumps can be written up similarly as the linearized models: 
+
+\begin{equation}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G} \pmb{u}
+\label{gamma_lin}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{G}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is a matrix representing a linear mapping.
+\end{minipage} 
+
 
 
 

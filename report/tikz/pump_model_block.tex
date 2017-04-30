@@ -1,5 +1,5 @@
 \tikzset{connect/.style={draw,circle, inner sep=0pt, text width=2mm, align=center,fill=black}}
-
+\tikzset{difpres/.style={draw, circle, inner sep=0pt, text width=6mm, align=center}}
 \begin{tikzpicture}[scale=0.7,transform shape]
 %pump
 \node[draw,circle,minimum size=1cm] (p0) at (0,0) {};
@@ -7,7 +7,9 @@
 \node(p2) at ($(p1)+(0.5,0.5)$) {};
 \node(p3) at ($(p1)+(1,0)$) {};
 \draw(p1.center) -- (p2.center) -- (p3.center);
-\node at ($(p1)+(1.5,0)$) {\Large $C_{32}$};
+\node at ($(p1)+(1.5,0)$) {\Large $C_{2}$};
+
+%\node[draw,circle,minimum size=0.7cm] (p0) at (3,0) {DP};
 
 %man-valve
 \node(n1) at (0.25,2) {};
@@ -24,13 +26,19 @@
 ($(n1)-(0.75,0.5)$) --  ($(n1)-(0.25,0.5)$);
 
 \node[connect] (N) at (0,2.5) {};
-\node at ($(N)+(0.5,0)$) {\Large $n_{18}$};
+\node at ($(N)+(0.5,0.5)$) {\Large $n_{2}$};
 \node[connect] (N) at (0,-2.5) {};
-\node at ($(N)+(0.5,0)$) {\Large $n_{3}$};
+\node at ($(N)+(0.5,-0.5)$) {\Large $n_{1}$};
 
 \draw(0,2.5) -- (0,2);
 \draw(0,0.5) -- (0,1);
 \draw(0,-0.5) -- (0,-1);
 \draw(0,-2.5) -- (0,-2);
+
+%differential pressure sensor
+\node(CDP1) at (0,2.5) {};
+\node(CDP2) at (0,-2.5) {};
+\node[difpres] (DP1) at (2,0) {DP};
+\draw(CDP1.center) -| (DP1)  |- (CDP2.center);
 
 \end{tikzpicture}
