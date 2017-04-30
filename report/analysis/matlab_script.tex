@@ -1,11 +1,11 @@
-\section{Nonlinear Parameter Identification} 
+\section{Nonlinear parameter identification} 
 \label{MatlabScript}
 
 In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox is used \cite{MatlabGreyBox}. This toolbox 
 estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
 Thereby, a nonlinear model has to be designed to complete the simulation. 
 
-\subsection{NonLinear Differential Script}
+\subsection{NonLinear differential script}
 \label{NLDS}
 The nonlinear differential script contains all the information about the system and how it is constructed. The model needs 8 different inputs(u): 
 the opening degree of the 4 PMA valves and the differential pressure across the main and PMA pumps. This inputs are obtained from the lab and are 
@@ -116,7 +116,7 @@ $H_r^{\dagger}$ being the pseude-inverse of matrix ${H_r}^{T}$.
 The outputs are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
 to the data obtained from the setup. 
 
-\subsection{NonLinear Grey Box Model}
+\subsection{NonLinear grey box model}
 The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraint to be 
 positive is set. 
 
