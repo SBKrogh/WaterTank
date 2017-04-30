@@ -33,14 +33,42 @@ is the impeller speed.
 \textcolor{White}{te}$\unit{\frac{rad}{s}}$
 \end{minipage}	
 
+
+\subsubsection*{Hydraulic power and efficiency}
+To minimize the running cost of the plant, it is necessary to describe the relationship between the efficiency of the pump and the cost of running them.
+
+The hydraulic power created by the pumps can be described by ohms law, as the pressure difference over the pump and the flow through it, see \eqref{eq:Hyd_Pow}.
+
 \subsubsection*{Pump power consumption}
 \todo{We need to redo this part and somehow include the derivation of the first two equations!}
 \begin{equation}
-P_h = \Delta p \cdot q = \hat{u}\hat{z}
+P_h = \Delta p \cdot q 
+\label{eq:Hyd_Pow}
 \end{equation}
+
+The price of running the pump, can then be describe through the relation between the hydraulic pressure and the efficiency, $\eta$, see \eqref{eq:effic_pump}. $\eta$ is however in this expression assumed to be constant.  
+
 \begin{equation}
 P_e = \frac{1}{\eta}P_h
+\label{eq:effic_pump}
 \end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\eta$
+
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the efficiency of the pump.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{-}$\\
+\end{minipage}	
+
+
+
 
 % In \secref{introduction} it has been introduced the aim of the project, consisting on minimizing the power consumption of the pumps in order to reduce 
 % the cost of running the hydraulic setup. Therefore, a model of the pump power consumption is needed so it can be used afterwards. In \cite{Phd_Carsten} 
