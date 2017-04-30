@@ -16,8 +16,8 @@ Hence, the $\pmb{H}$ matrix can be written as
 
 \begin{minipage}[t]{0.18\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{H_1} \epsilon \: \mathbb{R}^{n \times (e-w)}$  \\
-and \hspace*{0.4mm} $\pmb{H_0} \epsilon \: \mathbb{R}^{n \times w} $ 
+\hspace*{8mm} $\pmb{H_1} \in \: \mathbb{R}^{n \times (e-w)}$  \\
+and \hspace*{0.4mm} $\pmb{H_0} \in \: \mathbb{R}^{n \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
@@ -33,8 +33,8 @@ Similarly, the fundamental cycle matrix, B, is structured such as the last colum
 
 \begin{minipage}[t]{0.18\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{B_1} \: \epsilon \mathbb{R}^{l \times (e-w)}$  \\
-and \hspace*{0.4mm} $\pmb{B_0} \: \epsilon \mathbb{R}^{l \times w} $ 
+\hspace*{8mm} $\pmb{B_1} \: \in \mathbb{R}^{l \times (e-w)}$  \\
+and \hspace*{0.4mm} $\pmb{B_0} \: \in \mathbb{R}^{l \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
@@ -55,8 +55,8 @@ As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, w
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{q_1} \epsilon \mathbb{R}^{(e-w) \times 1}$  \\
-\hspace*{8mm} $\pmb{q_0} \epsilon \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\pmb{q_1} \in \mathbb{R}^{(e-w) \times 1}$  \\
+\hspace*{8mm} $\pmb{q_0} \in \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -76,8 +76,8 @@ The vector containing the pressures at the nodes can be also structured as
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{p_1} \epsilon \mathbb{R}^{(n-w) \times 1}$  \\
-\hspace*{8mm} $\pmb{p_0} \epsilon \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\pmb{p_1} \in \mathbb{R}^{(n-w) \times 1}$  \\
+\hspace*{8mm} $\pmb{p_0} \in \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -94,6 +94,15 @@ The chord flows make it possible to deal with less variables, thus making the se
   \pmb{q_i} = \pmb{B_i} ^{T}  \pmb{z}
   \label{ChordRelation}
 \end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{z} \in \mathbb{R}^{(1 \times g)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the chord flow vector and g is the number of elements.
+\end{minipage}
 
 As it is shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
 \\

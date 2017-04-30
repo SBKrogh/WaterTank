@@ -147,7 +147,7 @@ Considering the input vector, the model of the pumps can be written up in the sa
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G} \in \pmb{\mathbb{R}}^{(exu)} $ 
+\hspace*{8mm} $\pmb{G} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -191,7 +191,7 @@ q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
 Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} \pmb{z}
+\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} \pmb{z}
  \label{currentlaw_3}
 \end{equation}
 
@@ -232,33 +232,50 @@ In order to find a good state space representation for the system extended with 
  \label{statespace_2}
 \end{equation}
 
+The small signal value of the state vector can be expressed on the left side of the equation only if $\pmb{A}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
 
+\begin{equation}
+  \pmb{A} = \pmb{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} +
+\bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} +  \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}}\bigg] \pmb{{B_1^{T}}}
+\label{Amatrix_mod}
+\end{equation}
+
+In \eqref{Amatrix_mod}, the $\pmb{A}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
+\\
+Expressing the the state vector the following yields:
 
 \begin{equation}
  \pmb{\hat{z}} = -(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-
-
-
-
-asd
+Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{H}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^+_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} z
- \label{currentlaw_2}
-\end{equation}
-
-\begin{equation}
-\Delta \dot{p}_{WT} = \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_o})}_\text{\pmb{M}}\Delta \hat{p}_{WT}  + \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_u})}_\text{\pmb{N}}\pmb{\hat{u}}  
+\Delta \dot{p}_{WT} = \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_o})}_\text{M}\Delta \hat{p}_{WT}  + \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_u})}_\text{\pmb{N}}\pmb{\hat{u}}  
  \label{statespace_3}
 \end{equation}
 
+\eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the state equation can be written as follows:  
+
 \begin{equation}
-\Delta \dot{p}_{WT} = \pmb{M} \Delta \hat{p}_{WT}  + \pmb{N}\pmb{\hat{u}}  
+\Delta \dot{p}_{WT} = M \Delta \hat{p}_{WT}  + \pmb{N}\pmb{\hat{u}}  
  \label{statespace_4}
 \end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $M \in \mathbb{R}^{(1 \times 1)} $ \\
+\hspace*{8mm} $\pmb{N} \in \pmb{\mathbb{R}}^{(1 \times g)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the system matrix, which in this case is a scalar, \\
+is the input matrix.
+\end{minipage} 
+
+Output equation: 
+\todo{Ignacio, you should extend this part from now about the output equations! }
 
 \begin{equation}
 \pmb{y} = \pmb{C} \Delta \hat{p}_{WT}  + \pmb{D}\pmb{\hat{u}}  
