@@ -77,15 +77,18 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
  
 As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega), q)$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
 \\
-Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions of the flow, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion [] in the following parts of the report. 
+Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion [source].
+\\
+The expression describing the pipes can be approximated by its linear model as follows:
 
 \begin{equation}
   \pmb{B_1} \lambda(\pmb{{B_1^{T}}}\pmb{z}) \approx \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
 \label{lambda_lin}
 \end{equation}
 
-%_{|\bar{z}, \bar{u}}
-asd
+where the partial derivative is a Jacobian matrix which is the matrix of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\pmb{{B_1^{T}}}\pmb{z}$, due to the chain rule the derivative is multiplied by $\pmb{{B_1^{T}}}$. 
+\\
+In case of the valves, $\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
 
 \begin{equation}
   \pmb{B_1} \mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD}) \approx 
@@ -158,7 +161,7 @@ asd
 asd
 
 \begin{equation}
-  \pmb{B_u}\pmb{\hat{u}} = \bigg[\pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} + \pmb{B_1}\pmb{G}\bigg] \pmb{\hat{u}} 
+  \pmb{B_u}\pmb{\hat{u}} = \bigg[\pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} + \pmb{B_1}\pmb{G}\bigg] \pmb{\hat{u}} 
 \label{Bumatrix}
 \end{equation}
 
