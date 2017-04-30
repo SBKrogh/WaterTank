@@ -1,8 +1,8 @@
 \section{Control Problem}
 \label{control_problem}
-
+\vspace{-1mm}
 The water distribution system explained in \secref{system_overview} needs to be controlled according to the requirements descibed in \secref{Requirements_and_constraints}. These can be summarized as: 
-
+\vspace{-1mm}
 \begin{itemize}
 	\item Pressure at CP, $0.08 < p_{cp} < 0.14 \:[\text{bar}]$
 %
@@ -10,7 +10,7 @@ The water distribution system explained in \secref{system_overview} needs to be 
 %
 	\item Minimizing the total cost of running the system
 \end{itemize}
-
+\vspace{-1mm}
 The WT is used in the system to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
 
 The system consists of four pumps, two local PMA pumps and two main pumps. Because the focus of this project is to balance between the use of the mains pumps and the WT a simple controller is implemented to keep a specific differential pressure over the PMA pumps. Thereby can the system be fully controlled by the main pumps as the PMA pumps only influence the operating point with a fixed pressure lift.
@@ -21,13 +21,14 @@ To ensure cost reducing control a more advanced controller, controlling the main
 The MPC could be used to control the main pumps directly, but to mimic a real world scenario it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of this structure a controller is required to ensures that the pumps deliver the, by the MPC, specified differential pressure. An advantage of this structure is that the pump controllers can be placed locally at each pump and in an event of failing communication between the main MPC and the pump controllers, the pumps will still be operational. 
 This cascade structure is shown in \figref{fig:control_structure}.  
 \todo{Carsten comment: Typically the flow out of the pumping station is controlled. Here you use the pressure with has some obvious advantages: - In the case of a system failure it is the pressure that is important. The flow will typically either lead to too high or too low pressure, or tank run over. This is an important change, which you should emphasize.}
+\vspace{-1mm}
 \begin{figure}[H]
 \centering
 \input{report/tikz/control_structure.tex} 
 \caption{Cascade control structure with MPC and pump controller.}
 \label{fig:control_structure}
 \end{figure}
-
+\vspace{-1mm}
 %% Comment Carsten 
 %Typically the flow out of the pumping station is controlled. Here you use the pressure with has some obvious advantages:
 %- In the case of a system failure it is the pressure that is important. The flow will typically either lead to too high or too low pressure, or tank run over. 
@@ -37,43 +38,47 @@ This cascade structure is shown in \figref{fig:control_structure}.
 
 In the cascade control structure a local PI controller is used to control the differential pressure output of each main pump, a copy of the constructed PI controller will be used at each main pump as these are identical.
 
-For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. This will be done considering both the model of the water distribution network, the cost function for the pumps and the constrains of the system. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
-\todo{inset network model in minimization problem}
-\begin{align*}
-\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} Q_i(\Delta{p}_i,q_i) \cdot \Gamma(k)  \\
+%For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. 
+Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the cost function for the pumps, the electrical pricing and the constrains of the system have to be taken into account. Furthermore a constrain securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$ this can be seen as a minimization problem:
+\todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
+\todoque{Which things depend on time, k ?}
+\begin{align}
+\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} P_{e_{i}}(\Delta{p}_i,q_i) \cdot \Gamma(k)  \\
 %
-s.t \:\:\:\:\: & Inset \:model \\
+s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = \pmb{M} \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat{u}} \\
+%
+&\pmb{y} = \pmb{C} \Delta \hat{p}_{wt}  + \pmb{D}\pmb{\hat{u}} \\
 %
 & \underline{p_{cp}} < \pmb{p_{cp}} < \overline{p_{cp}} \\
 %
 & \underline{p_{wt}} < \pmb{p_{wt}} < \overline{p_{wt}} \\
 %
 & \bar{q}_{wt} > \underline{\bar{q}_{wt}}
-\end{align*}
+\end{align}
 
- \begin{minipage}[t]{0.20\textwidth}
+ \begin{minipage}[t]{0.24\textwidth}
  Where\\
- \hspace*{8mm} $C_T(\Delta{p}_i,q_i)$ \\
- \hspace*{8mm} $Q_i(\Delta{p}_i,q_i)$ \\
+ \hspace*{8mm} $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ \\
+ \hspace*{8mm} $P_{e_{i}}(\Delta{p}_i,q_i)$ \\
  \hspace*{8mm} N \\
  \hspace*{8mm} $P_H$ \\
- \hspace*{8mm} $p_{cp}$ \\
- \hspace*{8mm}  \textcolor{White}{te}\\
- \hspace*{8mm} $p_{wt}$ \\
- \hspace*{8mm}  \textcolor{White}{te}\\
  \hspace*{8mm} $\Gamma(k)$ \\
+ \hspace*{8mm} $p_{cp}$ \\
+% \hspace*{8mm}  \textcolor{White}{te}\\
+ \hspace*{8mm} $p_{wt}$ \\
+% \hspace*{8mm}  \textcolor{White}{te}\\
   and \hspace*{0.7mm} $\bar{q}_{wt}$	
  \end{minipage}
- \begin{minipage}[t]{0.68\textwidth}
+ \begin{minipage}[t]{0.63\textwidth}
  \vspace*{2mm}
  is the cost of running the system, \\
  is the power consumption of the $i^{th}$ pump,\\
  is the number of pumps,\\
  is the prediction horizon,\\
- is the pressure at a given CP, $\overline{p_{cp}}$ and $\underline{p_{cp}}$ are the upper and lower bounds,\\
- is the pressure at the WT outlet, $\overline{p_{wt}}$ and $\underline{p_{wt}}$ are the upper and lower bounds,\\
  is the price of electricity at time k,\\ 
- is the average flow rate through the WT, $\underline{\bar{q}_{wt}}$ is the lower bound.
+ is the pressure at a given CP,\\ %, $\overline{p_{cp}}$ and $\underline{p_{cp}}$ are the upper and lower bounds
+ is the pressure at the WT outlet,\\ %, $\overline{p_{wt}}$ and $\underline{p_{wt}}$ are the upper and lower bounds,
+ is the average flow rate through the WT. %, $\underline{\bar{q}_{wt}}$ is the lower bound
  \end{minipage}
  \begin{minipage}[t]{0.10\textwidth}
  \vspace*{2mm}
@@ -81,15 +86,15 @@ s.t \:\:\:\:\: & Inset \:model \\
  \textcolor{White}{te}$\unit{W}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
+ \textcolor{White}{te}$\unit{{DKK}/{W}}$\\
  \textcolor{White}{te}$\unit{Bar}$\\
- \hspace*{8mm}  \textcolor{White}{te}\\
+% \hspace*{8mm}  \textcolor{White}{te}\\
  \textcolor{White}{te}$\unit{Bar}$\\
- \hspace*{8mm}  \textcolor{White}{te}\\
- \textcolor{White}{te}$\unit{\frac{DKK}{W}}$\\
-  \textcolor{White}{te}$\unit{\frac{m^3}{day}}$
+% \hspace*{8mm}  \textcolor{White}{te}\\
+  \textcolor{White}{te}$\unit{{m^3}/{day}}$
  \end{minipage}
 
-From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $\Gamma(k)$, is described in \secref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 
 
