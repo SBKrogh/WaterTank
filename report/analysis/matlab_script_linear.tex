@@ -172,7 +172,7 @@ The dynamics of the WT is described by the equation below:
  \label{WT_eq}
 \end{equation}
 
-These two differential equation systems give a full description of the pressures in the whole network, and the effect of the WT on the system. However, due to the linearization the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
+These two differential equation systems give a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
 \\
 Before setting up the state-space form of the system, the following should be considered: 
 
@@ -202,35 +202,37 @@ Therefore the dynamics of the WT can be expressed with the incidence matrix for 
  \label{currentlaw_4}
 \end{equation}
 
-asd 
+Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(.)$ and $u(.)$ should be separated according to the small signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1} below: 
 
 \begin{equation}
  \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{A} \pmb{\hat{z}} + \pmb{B_u} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_1}
 \end{equation}
 
-asd
+In \eqref{statespace_1}, the $\pmb{A}$ matrix consists of the following terms: 
 
 \begin{equation}
-  \pmb{A}\pmb{\hat{z}} = \bigg[\pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\bigg] \pmb{\hat{z}} 
+  \pmb{A} = \bigg[\pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\bigg]
 \label{Amatrix}
 \end{equation}
 
-asd
+And the $\pmb{B_u}$ matrix consists of the following terms:
 
 \begin{equation}
-  \pmb{B_u}\pmb{\hat{u}} = \bigg[\pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} + \pmb{B_1}\pmb{G}\bigg] \pmb{\hat{u}} 
+  \pmb{B_u} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} + \pmb{B_1}\pmb{G}  
 \label{Bumatrix}
 \end{equation}
 
-asd
+$\pmb{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flow(state) or input. 
+
+In order to find a good state space representation for the system extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to [source], in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
  0 = \pmb{A} \pmb{\hat{z}} + \pmb{B_u} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-asd
+
 
 \begin{equation}
  \pmb{\hat{z}} = -(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
