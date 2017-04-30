@@ -28,19 +28,20 @@ is the impeller speed.
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{Pa}$\\
-\textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{\frac{m^3}{s}}$\\
 \textcolor{White}{te}$\unit{\frac{rad}{s}}$
 \end{minipage}	
 
 
 \subsubsection*{Hydraulic power and efficiency}
-To minimize the running cost of the plant, it is necessary to describe the relationship between the efficiency of the pump and the cost of running them.
+To minimize the running cost of the plant, it is necessary to describe how much energy the pumps consume. This can be done by calculating the hydraulic power created by the pumps and then taking the efficient of the pumps into account. 
+%the relationship between the efficiency of the pump and the cost of running them.
 
-The hydraulic power created by the pumps can be described by ohms law, as the pressure difference over the pump multiplied with the flow through it, see \eqref{eq:Hyd_Pow}.
+The hydraulic power created by the pumps can be described by an equivalent to Joule's law, as the pressure difference over the pump multiplied with the flow through it, see \eqref{eq:Hyd_Pow}.
 
 %\subsubsection*{Pump power consumption}
-\todo{We need to redo this part and somehow include the derivation of the first two equations!}
+%\todo{We need to redo this part and somehow include the derivation of the first two equations!}
 \begin{equation}
 P_h = \Delta p \cdot q 
 \label{eq:Hyd_Pow}
@@ -56,15 +57,13 @@ is the hydraulic power
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{kW}$\\
+\textcolor{White}{te}$\unit{W}$\\
 \end{minipage}	
 
-
-
-The price of running the pump, can then be describe through the relation between the hydraulic pressure and the efficiency, $\eta$, see \eqref{eq:effic_pump}. $\eta$ is however in this expression assumed to be constant.  
+The electricity used for running the pump, can then be describe through the relation between the hydraulic power and the efficiency, $\eta$. For simplicity $\eta$ is assumed to be constant, however for this assumption to hold $\eta$ must to chosen with in the operating area of the pump. This can be seen in \eqref{eq:effic_pump}.
 
 \begin{equation}
-P_e = \frac{1}{\eta}P_h
+P_e = \frac{1}{\eta}\cdot\Delta p \cdot q 
 \label{eq:effic_pump}
 \end{equation}
 
@@ -72,8 +71,6 @@ P_e = \frac{1}{\eta}P_h
 Where\\
 \hspace*{8mm} $P_e$\\
 \hspace*{8mm} $\eta$
-
-
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -82,11 +79,11 @@ is the efficiency of the pump.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{-}$\\
-\textcolor{White}{te}$\unit{-}$\\
+\textcolor{White}{te}$\unit{W}$\\
+\textcolor{White}{te}$\unit{\cdot}$\\
 \end{minipage}	
 
-
+\eqref{eq:effic_pump} will be used in a later section to minimize this cost of running the system. 
 
 
 % In \secref{introduction} it has been introduced the aim of the project, consisting on minimizing the power consumption of the pumps in order to reduce 
