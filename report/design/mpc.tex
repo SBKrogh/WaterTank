@@ -59,13 +59,13 @@ When designing a MPC the constraints have to be setup so they represent actuator
  is the estimate of the controlled output to the time $k+H_w$ compared to current output.
  \end{minipage}
 
-The actuator slew rate constrain, matrix $\pmb{E}$, determents how fast the actuator can change per time unit. From this the physical limit of the pumps can be described. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. \todo{This part could properly be specified better.}
+The actuator slew rate constraint, matrix $\pmb{E}$, determents how fast the actuator can change per time unit. From this the physical limit of the pumps can be described. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. \todo{This part could properly be specified better.}
 
 %To easy notation $U(k) = $
 
 %As it can be seen from \eqref{eq:slewrate,eq:actranges,eq:controlvar} depend on three different variables $\hat u(k|k), \Delta\hat u(k|k) \text{and} \hat z(k+H_w|k)$
 
-To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determent. In \secref{sec:cost_fkt} the electrical price is descried. From this it can be seen that the price fluctuate a lot but some periodicity can be seen every 24 hours. Therefor both $H_p$ and $ H_u $ is set to 24. 
+To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determined. In \secref{sec:cost_fkt} the electrical price is described. From this it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Therefor both $H_p$ and $ H_u $ are set to 24. 
 
 \todoque{How sould we chose $H_w$}
 
