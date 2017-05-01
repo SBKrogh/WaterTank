@@ -4,7 +4,7 @@ Model predictive control (MPC) is an advance control method that depends on a dy
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{report/pictures/mpc}
+\input{report/tikz/MPC_diagram.tex} 
 \caption{The structure of the control with the MPC part specified \cite{Camacho2007}.}
 \end{figure}
 
@@ -13,9 +13,9 @@ A MPC is a iterative process that can be setup as follows:
 \begin{itemize}
 \item[1:] A model predict the future outputs, $\pmb{\tilde Y^*}$.
 \item[2:] The outputs are compared to references, $CP_{ref}$.
-\item[3:] The errors are feed back to the optimizer that calculate the future inputs $\pmb{\tilde U^*}$.
+\item[3:] The errors are feed back to the optimizer that calculate the future inputs $\tilde u$.
 \item[4:] $u(k|k)$ is sent as the control signal for time k.
-\item[5:] $\pmb{\tilde U^*}$ are applied to the model, together with the old outputs.
+\item[5:] $\tilde u$ are applied to the model, together with the old outputs.
 \item[6:] Go back to step 1 
 \end{itemize}
 
