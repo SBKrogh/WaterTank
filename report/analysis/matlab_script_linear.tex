@@ -242,11 +242,11 @@ The small signal value of the state vector can be expressed on the left side of 
 
 In \eqref{Amatrix_mod}, the $\pmb{A}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
 \\
-Expressing the the state vector the following yields:
+Expressing the state vector the following yields:
 
 \begin{equation}
  \pmb{\hat{z}} = -(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
- \label{statespace_2}
+ \label{statespac_2}
 \end{equation}
 
 Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{H}$ matrix in \eqref{currentlaw_4}. 
@@ -274,13 +274,34 @@ is the system matrix, which in this case is a scalar, \\
 is the input matrix.
 \end{minipage} 
 
-Output equation: 
 \todo{Ignacio, you should extend this part from now about the output equations! }
 
+An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
+to the data measured in the setup and proceed to estimate the unknown parameters. 
+
 \begin{equation}
-\pmb{y} = \pmb{C} \Delta \hat{p}_{WT}  + \pmb{D}\pmb{\hat{u}}  
+\pmb{\hat{y}} = \pmb{C_{1}} \hat{z}  + \pmb{C_{2}}\pmb{\hat{u}}  
  \label{statespace_5}
 \end{equation}
+
+As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespac_2}, the equation above results in 
+
+\begin{equation}
+\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
+ \label{statespace_6}
+\end{equation}
+
+Reorganizing the terms
+
+\begin{equation}
+\pmb{\hat{y}} = \underbrace{\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_o}))}_\text{\pmb{C}} \Delta \hat{p}_{WT} + \underbrace{(\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})) + \pmb{C_{2}})}_\text{\pmb{D}}\pmb{\hat{u}}  
+ \label{finaloutput}
+\end{equation}
+
+The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs.
+
+
+
 
 %Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
 %

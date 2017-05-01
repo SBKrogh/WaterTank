@@ -1,7 +1,11 @@
 \section{Linear parameter estimation} 
 \label{LinParamEst}
 
-As can be seen in \eqref{multistate model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices, one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points, at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp, from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them to the small signal values. 
+As can be seen in \eqref{multistate_model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices,
+one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points,
+at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp,
+from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them 
+to the small signal values. 
 
 \begin{figure}[H]
 \centering
@@ -12,6 +16,63 @@ As can be seen in \eqref{multistate model_smallsignal}, the small signal model o
 
 \subsection{Measurements on the test set up}
 \label{LinParamEst_measurements}
+
+From the system setup $8$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$.
+
+The measurements obtained from the pressure sensors placed in these nodes, are relative to the atmospheric pressure. Thus, in order to compare the measurements
+from the system setup and the data obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point.
+
+Therefore, the relationship between pressures, where DpCXX describes the pressure difference for the XX component, can be defined as:
+
+\text{\underline{Node 2}} 
+\vspace{4mm}
+\begin{equation}
+     y_1 = DpC2 
+\end{equation}
+
+\text{\underline{Node 7}}
+\vspace{4mm}
+\begin{equation}
+   y_2 = DpC16 
+\end{equation}
+
+\text{\underline{Node 4}}
+\vspace{4mm}
+\begin {equation}
+    y_3 = DpC18 + DpC19 + DpC23 + DpC24 
+\end{equation}
+
+\text{\underline{Node 5}}
+\vspace{4mm}
+\begin {equation}
+    y_4 = DpC25 + DpC26 + DpC30 + DpC31 
+\end{equation}
+
+\text{\underline{Node 10}}
+\vspace{4mm}
+\begin {equation}
+     y_5 = DpC20 + DpC21  
+\end{equation}
+
+\text{\underline{Node 11}}
+\vspace{4mm}
+\begin {equation}
+     y_6 = DpC24
+\end{equation}
+
+\text{\underline{Node 15}}
+\vspace{4mm}
+\begin {equation}
+     y_7 = DpC28 + DpC20 
+\end{equation}
+
+\text{\underline{Node 15}}
+\vspace{4mm}
+\begin {equation}
+     y_8 = DpC31 
+\end{equation}
+
 
 Here the plots from Matlab could be inserted with the input signals, output pressures. The process of the data could be explained, where are the measurements...
 
