@@ -1,6 +1,26 @@
 \section{Model predictive control}
 
-Model predictive control (MPC) is an advance control method that depends on a dynamic model of the plant. MPC allows to calculate an optimal control signal taking the future electrical pricing into account. In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
+Model predictive control (MPC) is an advance control method that depends on a dynamic model of the plant. MPC allows to calculate an optimal control signal taking the future electrical pricing into account. The control structure of MPC is in general 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{report/pictures/mpc}
+\caption{The structure of the control with the MPC part specified \cite{Camacho2007}.}
+\end{figure}
+
+A MPC is a iterative process that can be setup as follows: 
+
+\begin{itemize}
+\item[1:] A model predict the future outputs, $\pmb{\tilde Y^*}$.
+\item[2:] The outputs are compared to references, $CP_{ref}$.
+\item[3:] The errors are feed back to the optimizer that calculate the future inputs $\pmb{\tilde U^*}$.
+\item[4:] $u(k|k)$ is sent as the control signal for time k.
+\item[5:] $\pmb{\tilde U^*}$ are applied to the model, together with the old outputs.
+\item[6:] Go back to step 1 
+\end{itemize}
+
+
+%In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
 
 \input{report/design/cost_fkt}
 
