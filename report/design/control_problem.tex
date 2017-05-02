@@ -40,9 +40,9 @@ In the cascade control structure a local PI controller is used to control the di
 
 
 %For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. 
-Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constrains of the system have to be taken into account. Furthermore a constrain securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
+Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
 \todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
-\todoque{Which things depend on time, k ?}
+\todo{Furthermore the model have to be discreet and we need to correct $\Delta p$ compared to u.}
 \begin{align}
 \underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} P_{e_{i}}(\Delta{p}_i,q_i) \cdot \Gamma(k)  \\
 %
@@ -95,7 +95,7 @@ s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat
   \textcolor{White}{te}$\unit{{m^3}/{day}}$
  \end{minipage}
 
-The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $\Gamma(k)$, is described in \secref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $\Gamma(k)$, is described in \appref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 
 

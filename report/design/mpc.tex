@@ -6,27 +6,64 @@ Model predictive control (MPC) is an advance control method that depends on a dy
 \centering
 \input{report/tikz/MPC_diagram.tex} 
 \caption{The structure of the control with the MPC part specified \cite{Camacho2007}.}
+\label{mpc_structure}
 \end{figure}
 
-A MPC is a iterative process that can be setup as follows: 
+\figref{mpc_structure} is of the same structure as \figref{fig:control_structure} but here the MPC block is specified. A MPC is a iterative process that can be setup as follows: 
 
 \begin{itemize}
-\item[1:] A model predict the future outputs, $\pmb{\tilde Y^*}$.
-\item[2:] The outputs are compared to references, $CP_{ref}$.
-\item[3:] The errors are feed back to the optimizer that calculate the future inputs $\tilde u$.
-\item[4:] $u(k|k)$ is sent as the control signal for time k.
-\item[5:] $\tilde u$ are applied to the model, together with the old outputs.
-\item[6:] Go back to step 1 
+\item[1:] A model predict the future outputs, $\pmb{\tilde y}$.
+\item[2:] The future outputs are feed back to the optimizer that calculate the future inputs $\pmb{\tilde u}$.
+\item[3:] $\tilde u(k|k)$, the optimal control signal to the current time k, is sent as the control signal.
+\item[4:] $\pmb{\tilde u}$ are applied to the model, together with the old output.
+\item[5:] Go back to step 1 
 \end{itemize}
 
+The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are defined by:
+
+\begin{equation}
+\pmb{\tilde y} =  
+ \begin{bmatrix}
+  \tilde y(k+H_w|k)\\
+  \vdots  \\
+  \tilde y(k+H_p|k)   
+ \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\pmb{\tilde u} =  
+ \begin{bmatrix}
+  \tilde u(k|k)\\
+  \vdots  \\
+  \tilde u(k+H_u|k)   
+ \end{bmatrix}
+\end{equation}
+
+ \begin{minipage}[t]{0.20\textwidth}
+ Where\\
+ \hspace*{8mm} $\tilde y(k+H_w|k)$ \\
+ \textcolor{White}{te} \\
+ \hspace*{8mm} $H_w$ \\
+ \hspace*{8mm} $H_p$ \\
+ \hspace*{8mm} $\tilde u(k|k)$\\
+ and \hspace*{0.7mm} $H_u$	
+ \end{minipage}
+ \begin{minipage}[t]{0.68\textwidth}
+ \vspace*{2mm}
+ is the predicted output to time $k+H_w$ based on the current output, \\
+ is the window horizon,\\
+ is the prediction horizon,\\
+ is the predicted optimal control signal to the current time k, \\
+ is the control horizon.
+ \end{minipage}
+
+To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determined. In \secref{sec:cost_fkt} it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Furthermore electrical consumption can be seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefor both $H_p$ and $ H_u $ are chosen to 24. $H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
 
 %In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
 
-\input{report/design/cost_fkt}
-
 \subsection{Constraints}
 
-When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are given by: 
+When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are defined by: 
 
 \begin{equation}
 \pmb{E} \cdot [\Delta\tilde u(k|k),...,\Delta\tilde u(k+H_u-1|k),1]^T \leq 0 
@@ -41,33 +78,13 @@ When designing a MPC the constraints have to be setup so they represent actuator
 \label{eq:controlvar}
 \end{equation}
 
+The actuator slew rate constraint, matrix $\pmb{E}$, determines how fast the actuator can change per time unit. This is a way of describing the physical limit of the pumps. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. 
 
- \begin{minipage}[t]{0.20\textwidth}
- Where\\
- \hspace*{8mm} $\tilde u(k|k)$ \\
- \hspace*{8mm} $\Delta\tilde u(k|k)$ \\
- \hspace*{8mm} $H_u$ \\
- \hspace*{8mm} $H_w$ \\
- and \hspace*{0.7mm} $\tilde y(k+H_w|k)$	
- \end{minipage}
- \begin{minipage}[t]{0.68\textwidth}
- \vspace*{2mm}
- is the input vector, \\
- is the change of the input vector, \\
- is the control horizon, \\
- is the window horizon, \\
- is the estimate of the controlled output to the time $k+H_w$ compared to current output.
- \end{minipage}
-
-The actuator slew rate constraint, matrix $\pmb{E}$, determents how fast the actuator can change per time unit. From this the physical limit of the pumps can be described. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. \todo{This part could properly be specified better.}
+\todo{This part could properly be specified better.}
 
 %To easy notation $U(k) = $
 
 %As it can be seen from \eqref{eq:slewrate,eq:actranges,eq:controlvar} depend on three different variables $\hat u(k|k), \Delta\hat u(k|k) \text{and} \hat z(k+H_w|k)$
-
-To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determined. In \secref{sec:cost_fkt} the electrical price is described. From this it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Therefor both $H_p$ and $ H_u $ are set to 24. 
-
-\todoque{How sould we chose $H_w$}
 
 % The plan from here on is: 
 
