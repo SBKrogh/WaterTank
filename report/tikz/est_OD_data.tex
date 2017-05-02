@@ -1,0 +1,87 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.8\textwidth,
+height=3.39in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=500,
+xlabel style={font=\color{white!15!black}},
+xlabel={Seconds},
+ymin=-2.5,
+ymax=2.5,
+ylabel style={font=\color{white!15!black}},
+ylabel={Degrees},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Valve opening degree},
+xmajorgrids,
+ymajorgrids,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+0	-1.13686837721616e-13\\
+13.05	-1.13686837721616e-13\\
+13.1	1.99999999999989\\
+38.05	1.99999999999989\\
+38.1	-2.00000000000006\\
+63.05	-2.00000000000006\\
+63.1	-1.13686837721616e-13\\
+459.95	-1.13686837721616e-13\\
+};
+\addlegendentry{C20}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+0	-1.13686837721616e-13\\
+88.05	-1.13686837721616e-13\\
+88.1	1.99999999999989\\
+113.05	1.99999999999989\\
+113.1	-2.00000000000006\\
+138.05	-2.00000000000006\\
+138.1	-1.13686837721616e-13\\
+459.95	-1.13686837721616e-13\\
+};
+\addlegendentry{C24}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+0	-1.13686837721616e-13\\
+163.05	-1.13686837721616e-13\\
+163.1	1.99999999999989\\
+188.05	1.99999999999989\\
+188.1	-2.00000000000006\\
+213.05	-2.00000000000006\\
+213.1	-1.13686837721616e-13\\
+459.95	-1.13686837721616e-13\\
+};
+\addlegendentry{C27}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+0	-1.13686837721616e-13\\
+238.05	-1.13686837721616e-13\\
+238.1	1.99999999999989\\
+263.05	1.99999999999989\\
+263.1	-2.00000000000006\\
+288.05	-2.00000000000006\\
+288.1	-1.13686837721616e-13\\
+459.95	-1.13686837721616e-13\\
+};
+\addlegendentry{C31}
+
+\end{axis}
+\end{tikzpicture}%
