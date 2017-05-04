@@ -19,6 +19,7 @@ The test setup represents a real system, thus the same structure concerning pipi
 %tikz of our system
 \begin{figure}[H]
 \centering
+%\tikzsetnextfilename{sys_model_overview}
 \input{report/tikz/sys_model_overview.tex} 
 \caption{Overview of the reduced system that fulfills the scenario of this project.}
 \label{fig:sys_model_overview}
@@ -30,30 +31,31 @@ From the water ring, two PMA's are connected, each via their own pump. In each P
 
 As the test setup consist of different components as valves, pumps and pipes, a basic water distribution network is shown in \figref{fig:Basic_example_sys} which will be used to illustrate and explain the individual components in the system and their functionality.   
 	
-\begin{figure}[H]
-	\centering
-	\begin{minipage}[b]{0.45\textwidth}
-		\centering
-		\input{report/tikz/basic_example_sys.tex} 
-		\caption{Basic water distribution network.}
-		\label{fig:Basic_example_sys}
-	\end{minipage}
-	\hspace{15pt}
-	\begin{minipage}[b]{0.45\textwidth}
-		\begin{tabular}{|c|c|} \hline
-  			\bfseries Symbol 	 					&   \bfseries Name 					\\ \hline
-			\input{report/tikz/pump.tex} 		  	&	Pump							\\ \hline
-			\input{report/tikz/manual_valve.tex} 	&	Manual valve					\\ \hline
-			\input{report/tikz/elec_valve.tex} 		&	Electronic valve				\\ \hline
-			\input{report/tikz/pipe.tex} 		  	&	Pipe segment					\\ \hline
-			\input{report/tikz/pressure_sensor.tex} &	Pressure sensor					\\ \hline
-			\input{report/tikz/dif_pres_sens.tex} 	&	Differential pressure sensor	\\ \hline
-			\input{report/tikz/gnd.tex} 		  	&	Gnd								\\ \hline
-		\end{tabular}
-		\captionof{table}{Symbol and name for component in the water network.}	
-		\label{tab:sys_comp_overview}
-	\end{minipage}
-\end{figure}
+% \begin{figure}[H]
+% 	\centering
+% 	\begin{minipage}[b]{0.45\textwidth}
+% 		\centering
+% 		\tikzsetnextfilename{basic_example_sys}
+% 		\input{report/tikz/basic_example_sys.tex} 
+% 		\caption{Basic water distribution network.}
+% 		\label{fig:Basic_example_sys}
+% 	\end{minipage}
+% 	\hspace{15pt}
+% 	\begin{minipage}[b]{0.45\textwidth}
+% 		\begin{tabular}{|c|c|} \hline
+%   			\bfseries Symbol 	 					&   \bfseries Name 					\\ \hline
+% 			\tikzsetnextfilename{pump}\input{report/tikz/pump.tex} 		  	&	Pump							\\ \hline
+% 			\tikzsetnextfilename{manual_valve}\input{report/tikz/manual_valve.tex} 	&	Manual valve					\\ \hline
+% 			\tikzsetnextfilename{elec_valve}\input{report/tikz/elec_valve.tex} 		&	Electronic valve				\\ \hline
+% 			\tikzsetnextfilename{pipe}\input{report/tikz/pipe.tex} 		  	&	Pipe segment					\\ \hline
+% 			\tikzsetnextfilename{pressure_sensor}\input{report/tikz/pressure_sensor.tex} &	Pressure sensor					\\ \hline
+% 			\tikzsetnextfilename{dif_pres_sens}\input{report/tikz/dif_pres_sens.tex} 	&	Differential pressure sensor	\\ \hline
+% 			\tikzsetnextfilename{gnd}\input{report/tikz/gnd.tex} 		  	&	Gnd								\\ \hline
+% 		\end{tabular}
+% 		\captionof{table}{Symbol and name for component in the water network.}	
+% 		\label{tab:sys_comp_overview}
+% 	\end{minipage}
+% \end{figure}
 
 In the system two different types of Grundfos pumps are used. For supplying the water ring, two pumps, of the type UPMXL GEO 25-125\cite{waterpump1}, are used. Whereas the pumps used in each PMA are of the type UPM2 25-60\cite{waterpump2}, which is a smaller pump and typically used at the end-user. 
 
