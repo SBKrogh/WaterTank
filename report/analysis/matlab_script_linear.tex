@@ -112,7 +112,7 @@ For the water tower connection, the same can be concluded as for the pipe model.
 \label{gamma_lin}
 \end{equation}
 
-The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around each pump are taken into account. Although this model is both dependant on the OD of the valves and the flow through the pumps, it is unnecessary to linearize it for the following reason, explained in \figref{fig:pump_model_block} below: 
+The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around each pump are taken into account. Although this model is both dependant on the OD of the valves and the flow through the pumps, it is unnecessary to linearize it for the following reason, explained with the help of \figref{fig:pump_model_block} below: 
 
 %tikz of the pump with dp sensor
 \begin{figure}[H]
@@ -122,9 +122,9 @@ The pumps are operating according to the model described in \eqref{omega_notzero
 \label{fig:pump_model_block}
 \end{figure}
 
-As it is shown, there is a differential pressure sensor around everywhere where a pump is present in the system. Therefore it is unnecessary to use angular velocity as input, the pumps can be operated by the differential pressures as input, since it is known everywhere in the network. 
+As it is shown, there is a differential pressure sensor around every pump in the system. Angular velocity is therefore not used directly as input to the system, rather the differential pressure is set. It is shown in a later chapter, \chapref{control_design}, that around the pumps cascade control is designed. The pumps are controlled by PI controllers in an inner loop with control variable chosen as the differential pressure. This inner control loop linearizes the pumps and therefore the differential pressure becomes the control input. 
 \\
-The input vector furthermore is defined by the differential pressures to the pumps and the ODs of the end-user valves as follows:
+The input, in case of the parameter estimation, is defined by the four pumps and four valves. Therefore it is convenient to define an input vector which consists of the four opening degrees controlling the valves and the four differential pressures controlling the pumps: 
 
 \begin{equation}
 \pmb{u} =
@@ -141,6 +141,8 @@ dP_{c16}
 \end{bmatrix} 
 \end{equation}
 
+It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. 
+\\
 Considering the input vector, the model of the pumps can be written up in the same manner as the linearized model of pipes and valves: 
 
 \begin{equation}
@@ -154,7 +156,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping where $u$ is the number of inputs and $e$ is the number of edges without the WT. 
+is a matrix representing a linear mapping where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
 $\pmb{G}$ can be found in \appref{MappingAppendix}.
