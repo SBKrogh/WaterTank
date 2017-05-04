@@ -197,35 +197,35 @@ q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
 Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{H}} \pmb{z}
+\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{S}} \pmb{z}
  \label{currentlaw_3}
 \end{equation}
 
 Therefore the dynamics of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \pmb{H} \pmb{z}
+\Delta \dot{p}_{WT} = - \pmb{S} \pmb{z}
  \label{currentlaw_4}
 \end{equation}
 
 Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(.)$ and $u(.)$ should be separated according to the small signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1} below: 
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{A} \pmb{\hat{z}} + \pmb{B_u} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_1}
 \end{equation}
 
-In \eqref{statespace_1}, the $\pmb{A}$ matrix consists of the following terms: 
+In \eqref{statespace_1}, the $\pmb{M}$ matrix consists of the following terms: 
 
 \begin{equation}
-  \pmb{A} = \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}
+  \pmb{M} = \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}
 \label{Amatrix}
 \end{equation}
 
-And the $\pmb{B_u}$ matrix consists of the following terms:
+And the $\pmb{N}$ matrix consists of the following terms:
 
 \begin{equation}
-  \pmb{B_u} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} + \pmb{B_1}\pmb{G}  
+  \pmb{N} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G}  
 \label{Bumatrix}
 \end{equation}
 
@@ -234,59 +234,79 @@ $\pmb{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the lineari
 In order to find a good state space representation for the system extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to [source], in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
- 0 = \pmb{A} \pmb{\hat{z}} + \pmb{B_u} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ 0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-The small signal value of the state vector can be expressed on the left side of the equation only if $\pmb{A}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
+The small signal value of the state vector can be expressed on the left side of the equation only if $\pmb{M}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
 
 \begin{equation}
-  \pmb{A} = \pmb{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} +
+  \pmb{M} = \pmb{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} +
 \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} +  \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}}\Bigg] \pmb{{B_1^{T}}}
 \label{Amatrix_mod}
 \end{equation}
 
-In \eqref{Amatrix_mod}, the $\pmb{A}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
+In \eqref{Amatrix_mod}, the $\pmb{M}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
 \\
 Expressing the the state vector the following yields:
 
 \begin{equation}
- \pmb{\hat{z}} = -(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
+ \pmb{\hat{z}} = -(\pmb{M^{-1}}\pmb{N})\pmb{\hat{u}} - (\pmb{M^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{H}$ matrix in \eqref{currentlaw_4}. 
+Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_o})}_\text{M}\Delta \hat{p}_{WT}  + \underbrace{(\pmb{H}\pmb{A^{-1}}\pmb{B_u})}_\text{\pmb{N}}\pmb{\hat{u}}  
- \label{statespace_3}
+\Delta \dot{p}_{WT} = (\pmb{S}\pmb{A^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M^{-1}}\pmb{N}) \pmb{\hat{u}} 
+\label{statespace_3}
 \end{equation}
 
 \eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the state equation can be written as follows:  
 
 \begin{equation}
-\Delta \dot{p}_{WT} = M \Delta \hat{p}_{WT}  + \pmb{N}\pmb{\hat{u}}  
+\Delta \dot{p}_{WT} = A_p \Delta \hat{p}_{WT}  + \pmb{B_p}\pmb{\hat{u}}  
  \label{statespace_4}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $M \in \mathbb{R}^{(1 \times 1)} $ \\
-\hspace*{8mm} $\pmb{N} \in \pmb{\mathbb{R}}^{(1 \times g)} $ 
+\hspace*{8mm} $A_p \in \mathbb{R}^{(1 \times 1)} $ \\
+\hspace*{8mm} $\pmb{B_p} \in \pmb{\mathbb{R}}^{(1 \times g)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the system matrix, which in this case is a scalar, \\
-is the input matrix.
+is the system matrix for the parameter estimation, which in this case is a scalar, \\
+is the input matrix for the parameter estimation.
 \end{minipage} 
 
-Output equation: 
-\todo{Ignacio, you should extend this part from now about the output equations! }
+An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
+to the data measured in the setup and proceed to estimate the unknown parameters. 
 
 \begin{equation}
-\pmb{y} = \pmb{C} \Delta \hat{p}_{WT}  + \pmb{D}\pmb{\hat{u}}  
+\pmb{\hat{y}} = \pmb{C_{1}} \hat{z}  + \pmb{C_{2}}\pmb{\hat{u}}  
  \label{statespace_5}
 \end{equation}
+
+As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespac_2}, the equation above results in 
+
+\begin{equation}
+\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
+ \label{statespace_6}
+\end{equation}
+
+Reorganizing the terms
+
+\begin{equation}
+\pmb{\hat{y}} = \underbrace{\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_o}))}_\text{\pmb{C}} \Delta \hat{p}_{WT} + \underbrace{(\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})) + \pmb{C_{2}})}_\text{\pmb{D}}\pmb{\hat{u}}  
+ \label{finaloutput}
+\end{equation}
+
+\begin{equation}
+  \pmb{\hat{y}} = \pmb{C} \Delta \hat{p}_{WT} + \pmb{D} \pmb{\hat{u}} 
+\end{equation}
+
+The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs.
 
 %Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
 %
