@@ -130,8 +130,7 @@ area, $A$, resulting in:
 	\label{EquationOfContinuity}
 \end{equation}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included, the difference between $F_{in}$ and $F_{out}$ which indicates the pressure drop 
- between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
+ In \eqref{LinearMomentum} the forces acting on the pipe are included. The difference between $F_{in}$ and $F_{out}$ is the pressure drop between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
 
 \begin{equation}
   m_w \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev} \\
@@ -142,7 +141,7 @@ In order to obtain an equation consisting of only pressure variables, the relati
 
 
  \begin{equation}
-    A L \rho \frac{dv}{dt} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev} \\
+    A L \rho \frac{dv}{dt} = A (\textit{p}_{in} - \textit{p}_{out}) - F_{res} - F_{elev} \\
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -171,32 +170,31 @@ Rewriting the velocity in terms of volumetric water flow and cross sectional
 area. 
 
 \begin{equation}
-    A L \rho \frac{d}{dt} \frac{q}{A} = A \textit{p}_{in} - A \textit{p}_{out} - F_{res} - F_{elev}\\
+    A L \rho \frac{d}{dt} \frac{q}{A} = A (\textit{p}_{in} -  \textit{p}_{out}) - F_{res} - F_{elev}\\
 \end{equation}
 
-By dividing the equation with the cross sectional area, A, it can be seen that the equation is dependant on the pressure difference between two endpoints.
+By dividing the equation with the cross sectional area it can be seen that the equation is dependant on the pressure difference between two endpoints.
 %Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =p_{in} - p_{out} - \frac{ F_{res} - F_{elev}}{A} \\
 \end{equation}
 
-Thus the desired pressure drop between two endpoint is obtained. \eqref{PressureDrop} differential equation describes the change in flow as a function of the pressure drops in the system.
+Thus the desired pressure drop between two endpoint is obtained. The differential equation in \eqref{PressureDrop}, describes the change in flow as a function of the pressure drops in the system.
 
 \begin{equation}
-    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res}}{A} - \frac{ F_{elev}}{A} \\
+    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{ F_{res} - F_{elev}}{A} \\
     \label{PressureDrop}
 \end{equation}
 
-In \eqref{PressureDrop} the term $F_{res}$ is the resistance force acting on the 
-pipe, which consists of two parts: surface resistance($h_{f}$), the friction 
-loss, and the form resistance($h_{m}$) due to the fittings. $F_{elev}$ is the force of gravity due to change in elevation, $\Delta z$.
+In \eqref{PressureDrop}, the term $F_{res}$ is the resistance force acting on the 
+pipe, which consists of two parts: surface resistance($h_{f}$) and the form resistance($h_{m}$) due to the fittings. % $F_{elev}$ is the force of gravity due to change in elevation, $\Delta z$.
 
 \subsubsection{Surface resistance (\texorpdfstring{$h_f$}{})} 
 The flow of a liquid through a pipe suffers resistance from 
 the turbulence occurring along the internal walls of the pipe, caused by the roughness of the surface. This surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
 
-\todo{Should we find another formulation then "pressure given in head"}
+\todo{Should we find another formulation then "pressure given in head" - Kind of wierd to to have pressure given as 'm'}
 \begin{equation}
   h_f = \frac{fLv^2}{2gD}
   \label{Darcy}
@@ -233,7 +231,7 @@ is the diameter of the pipe.
 \end{equation} 
  
  The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
- which is non-dimensional and is a function of the Reynold´s number. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
+ which is non-dimensional and is a function of the Reynold´s number, \textbf{Re}. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
  
  
 The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $\pmb{Re}<2300$ as laminar, if $2300<\pmb{Re}<4000$ as transient and if
@@ -277,7 +275,7 @@ is the water temperature.
 \textcolor{White}{te}$\unit{^{\circ} C}$
 \end{minipage}
 
-In order to estimate the range of the Reynolds number in a common water 
+In order to estimate the range of Reynolds numbers in a common water 
 distribution, typical values for the temperature, velocity and the radius of 
 the pipes are considered \cite{Urban_Design}. 
 
@@ -319,9 +317,9 @@ is the average roughness of the wall inside the pipe.
 \subsubsection{Form resistance (\texorpdfstring{$h_m$}{})} 
 \label{FormResistance}
 
-Form resistance losses appear at any time the flow changes direction, due to elbows, bends,
+Form resistance losses, appears at any time the flow changes direction, due to elbows, bends,
 or due to enlargers and reducers. It is a particular frictional resistance due to the 
-fittings of a pipe. Form loss can be expressed as:
+fittings of a pipe. Form loss can be expressed as: 
 
 \begin{equation}
   h_m = k_f \frac{v^2}{2g}
@@ -370,7 +368,7 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
 \subsubsection{Complete pipe model}
 \label{CompletePipe}    % If we remove this subsection we have to change the 
 % reference to it in the Parameter Estimation subsection
-In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. Thus, the friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
+In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. The friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho 
@@ -404,9 +402,9 @@ is the friction as a function of flow,\\
 is the pressure drop due to the elevation.
 \end{minipage}
 
-As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$ which is an analogous parameter as inertia in mechanical systems. Where $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $\pmb{J} = diag(J_i)$.
+As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$, which is an analogous parameter as inertia in mechanical systems. $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $\pmb{J} = diag(J_i)$.
 
-However, it is assumed, prior to the tests carried out on the system, that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. In other words it means that the water tower might have a relatively big time constant compared to the time constant of the pipe. Due to this consideration it would be a fair assumption that the parameter $J_k$ does not influence the flow significantly in the system, therefore it could be neglected. However, the parameter is kept until this assumption is not verified by tests. The complete model of a pipe yields: 
+It is assumed, prior to the tests carried out on the system, that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. This means that the water tower might have a relatively big time constant compared to the time constant of the pipes. Due to this consideration, a fair assumption that the parameter $J_k$ does not influence the flow in the system significantly, it could be neglected. However, the parameter is kept until this assumption is verified by tests. The complete model of a pipe yields: 
   
 \begin{equation}
 \label{FinalPipeModelSimplified}
