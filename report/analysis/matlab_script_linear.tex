@@ -15,7 +15,7 @@ The method of linearization is introduced on a simple one-state, one-input varia
  \label{example_system}
 \end{equation}
 
-Writing up $f(x,u)$ with Taylor-series the following yields: 
+$f(x,u)$ can be written up with Taylor-series with the assumption that it is continuously differentiable, therefore the partial derivatives exist in the operating point: 
 
 \begin{equation}
 f(x,u) = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} \hat{x} + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} \hat{u} + higher \; order \; terms  
@@ -35,7 +35,7 @@ is the deviation from the operating point.
 
 The aim of the linearization is to describe the function $f(x,u)$ around an operating point as a linear function. However, it should be noted that the approximation around this point is only valid for cases when the deviation from this point is small. Therefore the linearized version of a dynamic model is often called the small-signal model of the system. 
 \\
-In \eqref{TaylorExpansion}, the linearized term of $f(x,u)$ can be expressed by neglecting the affine term in the operating point, $f(\bar{x},\bar{u})$, and cancelling the higher order terms. Since the model is described by small-signals, quadratic and higher order terms result in very small values, therefore they are negligible. 
+In \eqref{TaylorExpansion}, the linearized term of $f(x,u)$ can be expressed. The operating point is chosen such that $f(\bar{x},\bar{u}) = 0$,  hence an equilibrium for the system is given with input $\bar{u}$. The higher order terms are not taken into account in the approximation. Since the model is described by small-signals, quadratic and higher order terms result in very small values, therefore they are negligible. 
 \\
 The following expression in \eqref{TaylorExpansion_approx} gives the approximation of the function: 
 %As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. 
@@ -79,16 +79,16 @@ As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the
 \\
 Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion [source].
 \\
-The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. Since the elevation is not flow dependant and the dynamics are linear functions of the flow derivatives, only the model of the pipes should be linearized. 
+The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. 
 \\
 The expression describing the pipes can be approximated by its linear model as follows:
 
 \begin{equation}
-  \pmb{B_1} \lambda(\pmb{{B_1^{T}}}\pmb{z}) \approx \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
+  \pmb{B_1} \lambda(\pmb{{B_1^{T}}}\pmb{z}) \approx  \pmb{B_1} \lambda(\pmb{B_1^T \bar{ z}}) + \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
 \label{lambda_lin}
 \end{equation}
 
-where the partial derivative is a Jacobian matrix which is the matrix of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\pmb{{B_1^{T}}}\pmb{z}$, due to the chain rule the derivative is multiplied by $\pmb{{B_1^{T}}}$. 
+where the partial derivative is a of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\pmb{{B_1^{T}}}\pmb{z}$, due to the chain rule the derivative is multiplied by $\pmb{{B_1^{T}}}$. The reason for only $\lambda(\pmb{{B_1^{T}}}\pmb{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
 
 
 In case of the valves, $\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
@@ -243,11 +243,11 @@ The small signal value of the state vector can be expressed on the left side of 
 
 In \eqref{Amatrix_mod}, the $\pmb{A}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
 \\
-Expressing the state vector the following yields:
+Expressing the the state vector the following yields:
 
 \begin{equation}
  \pmb{\hat{z}} = -(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
- \label{statespac_2}
+ \label{statespace_2}
 \end{equation}
 
 Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{H}$ matrix in \eqref{currentlaw_4}. 
@@ -275,36 +275,13 @@ is the system matrix, which in this case is a scalar, \\
 is the input matrix.
 \end{minipage} 
 
-An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
-to the data measured in the setup and proceed to estimate the unknown parameters. 
+Output equation: 
+\todo{Ignacio, you should extend this part from now about the output equations! }
 
 \begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} \hat{z}  + \pmb{C_{2}}\pmb{\hat{u}}  
+\pmb{y} = \pmb{C} \Delta \hat{p}_{WT}  + \pmb{D}\pmb{\hat{u}}  
  \label{statespace_5}
 \end{equation}
-
-As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespac_2}, the equation above results in 
-
-\begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
- \label{statespace_6}
-\end{equation}
-
-Reorganizing the terms
-
-\begin{equation}
-\pmb{\hat{y}} = \underbrace{\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_o}))}_\text{\pmb{C}} \Delta \hat{p}_{WT} + \underbrace{(\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})) + \pmb{C_{2}})}_\text{\pmb{D}}\pmb{\hat{u}}  
- \label{finaloutput}
-\end{equation}
-
-\begin{equation}
-  \pmb{\hat{y}} = \pmb{C} \Delta \hat{p}_{WT} + \pmb{D} \pmb{\hat{u}} 
-\end{equation}
-
-The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs.
-
-
-
 
 %Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
 %
