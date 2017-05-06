@@ -1,11 +1,10 @@
-\chapter{Pump linearizion}
+\chapter{Pump linearizion and PI controller}
 \label{cha:linear_pump}
 
 The control structure chosen in \chapref{control_problem} and shown in \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
 
 The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}.
 
-\todo{change picture to pi controller when it is done!}
 \begin{figure}[H]
 \centering
 \input{report/tikz/pump_lin.tex}  
@@ -32,7 +31,6 @@ f_2(\bar{\omega}) &= a_{h0}\bar{\omega}^2
 \label{eq:tay_1}
 \end{equation}
 
-\eqref{eq:tay_1} can then through Taylor approximation be expressed as \eqref{eq:tay_2}
 
 \begin{equation}
 \begin{split}
@@ -74,4 +72,7 @@ G(s) = \frac{\Delta P}{\omega} = f'_1(\bar{\omega}) + f'_2(\bar{\omega}) = a_{h1
 % \hat{\Delta P} = a_{n1}\cdot\bar{q}\cdot\hat{\omega} + 2a_{n0}\cdot \bar{\omega}
 % \label{eq:lin_pump}
 % \end{equation}
+
+
+\subsection*{Controller}
 
