@@ -3,12 +3,41 @@
 
 %As can be seen in \eqref{multistate model_smallsignal}, the small signal model of such a multi-state/ multi-input system consists of two Jacobian matrices, one for the states and one for the inputs to the system. It should be emphasized however that these matrices have to be evaluated at the operating points, at $(\bar{x}, \bar{u})$. It is a reasonable statement since the inputs to the model are the small signal values of OD and differential pressures, dp, from the pumps. Therefore the same excitation to the real test setup can be carried out by taking the operating values into account and by adding them to the small signal values. 
 
+The method that describes the linear parameter estimation is shown in \figref{fig:parame_block_lin} below:
+
 \begin{figure}[H]
 \centering
 \input{report/tikz/param_block_lin.tex} 
 \caption{Parameter identification block diagram for the linear system. }
 \label{fig:parame_block_lin}
 \end{figure}
+
+In this case small-signal inputs are applied to both the test set up and the system.  Now the linearized model is compared to the real system, therefore the operating point has to be taken into account. Since the linear model is only valid for small deviations in the input around the operating point, the real system has to be excited around the same operating point to obtain the same behavior. In order to achieve this, the operating values are added to bot the input and the output such as: 
+
+\begin{equation}
+u_{sys} = \bar{u} + \hat{u}
+ \label{u_smallsignal}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\hat{u}$ \\
+\hspace*{8mm} $\bar{u}$ \\
+\hspace*{8mm} $u_{sys}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the small-signal input, \\
+is the operating value of the input,\\
+is the input to the real life system. 
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{bar}$
+\textcolor{White}{te}$\unit{bar}$
+\textcolor{White}{te}$\unit{bar}$
+
+\end{minipage} 
 
 \subsection{Measurements on the test set up}
 \label{LinParamEst_measurements}
