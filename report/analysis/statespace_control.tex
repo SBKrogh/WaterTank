@@ -1,7 +1,7 @@
 \subsection{State space model for control}
  \label{SystemLin_control}
  
- For a better clearance the steady-state state space equations for the parameter estimation are repeated here:
+ For a better clearance the steady-state, state space representation for the parameter estimation for small-signal values is repeated here:
  
  \begin{equation}
  0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
@@ -11,14 +11,14 @@
 and the equation for the outputs:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
+  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{u} 
    \label{statespace_param_out}
 \end{equation}
 
 Although \eqref{statespace_param_sys} and \eqref{statespace_param_out} include all the liniarized terms that are necessary to describe the system, for the control it is more convenient to restructure it. While the input vector for the parameter estimation consists of all the four differential pressures for the pumps along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
-\pmb{\bar{u}} =
+\pmb{u} =
 \begin{bmatrix} 
 dP_{e01} \\
 dP_{e08} 
@@ -26,21 +26,80 @@ dP_{e08}
 \end{bmatrix} 
 \end{equation}
 
-The input matrix yields:
+The mapping yields:
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_c} \pmb{\hat{u}}
-\label{gamma_lin}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;1}} \pmb{u}
+\label{mapping_main}
 \end{equation}
+
+\todo{minipage fix}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G_c} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\hspace*{8mm} $\pmb{G_{c;1}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping between the vectorfield $\alpha(DP)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
+is a matrix representing a linear mapping between the vectorfield $\alpha(dP)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\pmb{G_c}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_c}$ can be found in [appendix reference].
+$\pmb{G_{c;1}}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_{c;1}}$ can be found in [appendix reference].
 
+The input matrix for the control system can be written in the form: 
+
+\begin{equation}
+  \pmb{N_c} =  \pmb{B_1}\pmb{G_{c;1}}  
+\label{inputmatrix_control}	
+\end{equation}
+
+Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
+\\
+However, the end-user valves and the two pumps in the PMAs are considered as measurable disturbances in the control system. Therefore the disturbance enters the model in such a way that it is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(6 \times 1)}$ as follows: 
+
+\begin{equation}
+\pmb{d} =
+\begin{bmatrix} 
+OD_{e13} \\
+OD_{e15} \\
+OD_{e20} \\
+OD_{e22} \\
+dP_{e09} \\
+dP_{e16} 
+\label{disturbancevector_control}
+\end{bmatrix} 
+\end{equation}
+
+Therefore between $\alpha(dP)$, the vectorfield describing the pump pressure, and the disturbance vector the mapping results in the following:
+
+\begin{equation}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;2}} \pmb{d}
+\label{mapping_PMA}
+\end{equation}
+
+\todo{minipage fix}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+the dimension $d$ is the number of disturbances and $e$ is the number of edges without the WT. 
+\end{minipage} 
+
+The disturbance matrix for the state space model consists of the pressure inputs of the two PMA pumps and the linearized terms of the end-user valves. The matrix can be formulated as follows: 
+
+\begin{equation}
+  \pmb{Q} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_{c;2}}  
+\label{disturbance_matrix}
+\end{equation}
+
+Taking the same considerations into account as for the parameter estimation, the steady-state, state equation for small signals can be formulated as: 
+
+ \begin{equation}
+ 0 = \pmb{M_c} \pmb{\hat{z}} + \pmb{N_c} \pmb{\hat{u}} + \pmb{Q} \pmb{\hat{d}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ \label{statespace_control_sys}
+\end{equation}
+
+where the system matrix, $\pmb{M_c}$ is the same as the system matrix, $\pmb{M_p}$, in case the parameter estimation. 
