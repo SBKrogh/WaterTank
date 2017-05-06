@@ -1,0 +1,46 @@
+\subsection{State space model for control}
+ \label{SystemLin_control}
+ 
+ For a better clearance the steady-state state space equations for the parameter estimation are repeated here:
+ 
+ \begin{equation}
+ 0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ \label{statespace_param_sys}
+\end{equation}
+
+and the equation for the outputs:
+
+\begin{equation}
+  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
+   \label{statespace_param_out}
+\end{equation}
+
+Although \eqref{statespace_param_sys} and \eqref{statespace_param_out} include all the liniarized terms that are necessary to describe the system, for the control it is more convenient to restructure it. While the input vector for the parameter estimation consists of all the four differential pressures for the pumps along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+
+\begin{equation}
+\pmb{\bar{u}} =
+\begin{bmatrix} 
+dP_{e01} \\
+dP_{e08} 
+\label{inputvector_control}
+\end{bmatrix} 
+\end{equation}
+
+The input matrix yields:
+
+\begin{equation}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_c} \pmb{\hat{u}}
+\label{gamma_lin}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{G_c} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is a matrix representing a linear mapping between the vectorfield $\alpha(DP)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
+\end{minipage} 
+
+$\pmb{G_c}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_c}$ can be found in [appendix reference].
+

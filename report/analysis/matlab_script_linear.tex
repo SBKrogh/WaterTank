@@ -129,14 +129,14 @@ The input, in case of the parameter estimation, is defined by the four pumps and
 \begin{equation}
 \pmb{u} =
 \begin{bmatrix} 
-OD_{c13} \\
-OD_{c15} \\
-OD_{c20} \\
-OD_{c22} \\
-dP_{c01} \\
-dP_{c08} \\
-dP_{c09} \\
-dP_{c16} 
+OD_{e13} \\
+OD_{e15} \\
+OD_{e20} \\
+OD_{e22} \\
+dP_{e01} \\
+dP_{e08} \\
+dP_{e09} \\
+dP_{e16} 
 \label{inputvector}
 \end{bmatrix} 
 \end{equation}
@@ -146,22 +146,24 @@ It should be noted here, however, that this control input representation is vali
 Considering the input vector, the model of the pumps can be written up in the same manner as the linearized model of pipes and valves: 
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G} \pmb{u}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_p} \pmb{u}
 \label{gamma_lin}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\hspace*{8mm} $\pmb{G_p} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is a matrix representing a linear mapping where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\pmb{G}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve opening degrees. $\pmb{G}$ can be found in \appref{MappingAppendix}.
+$\pmb{G_p}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve opening degrees. $\pmb{G_p}$ can be found in \appref{MappingAppendix}.
 
-\subsection{State space model}
+\todo{$G_p$ in the appendix should be corrected}
+
+\subsection{State space model for parameter estimation}
  \label{SystemLin}
 
 For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel} is shown again:  
@@ -227,7 +229,7 @@ In \eqref{statespace_1}, the $\pmb{M}$ matrix consists of the following terms:
 And the $\pmb{N}$ matrix consists of the following terms:
 
 \begin{equation}
-  \pmb{N} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G}  
+  \pmb{N} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_p}  
 \label{Bumatrix}
 \end{equation}
 
@@ -260,7 +262,7 @@ Expressing the the state vector the following yields:
 Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = (\pmb{S}\pmb{A^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M^{-1}}\pmb{N}) \pmb{\hat{u}} 
+\Delta \dot{p}_{WT} = (\pmb{S}\pmb{M^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M^{-1}}\pmb{N}) \pmb{\hat{u}} 
 \label{statespace_3}
 \end{equation}
 
