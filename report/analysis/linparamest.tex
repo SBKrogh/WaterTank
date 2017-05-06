@@ -12,7 +12,7 @@ The method that describes the linear parameter estimation is shown in \figref{fi
 \label{fig:parame_block_lin}
 \end{figure}
 
-In this case small-signal inputs are applied to both the test set up and the system.  Now the linearized model is compared to the real system, therefore the operating point has to be taken into account. Since the linear model is only valid for small deviations in the input around the operating point, the real system has to be excited around the same operating point to obtain the same behavior. In order to achieve this, the operating values are added to bot the input and the output such as: 
+In this case small-signal inputs are applied to both the test set up and the model.  Now the linearized model is compared to the real system, therefore the operating point is taken into account. Since the linear model is only valid for small deviations around the operating point, the real system has to be excited around the same operating point to obtain identical behavior. In order to achieve it, the operating values are added to both the input and the output such as: 
 
 \begin{equation}
 u_{sys} = \bar{u} + \hat{u}
@@ -29,15 +29,40 @@ Where\\
 \vspace*{2mm}
 is the small-signal input, \\
 is the operating value of the input,\\
-is the input to the real life system. 
+is the input to the real-life system. 
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
-
 \end{minipage} 
+
+\begin{equation}
+  y_{sys} = \bar{y} - \hat{y}_{sys} 
+ \label{u_smallsignal}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\hat{y}_{sys}$ \\
+\hspace*{8mm} $\bar{u}_{sys}$ \\
+\hspace*{8mm} $y_{sys}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the small-signal output from the real-life system, \\
+is the operating value of the output,\\
+is the output from the real-life system. 
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{bar}$
+\textcolor{White}{te}$\unit{bar}$
+\textcolor{White}{te}$\unit{bar}$
+\end{minipage} 
+
+During the linear parameter estimation, the same problem is solved as it is shown in \eqref{ObjectiveFunction}. In this case, however, the parameters are varied according to the comparison of the small-signal outputs.  
 
 \subsection{Measurements on the test set up}
 \label{LinParamEst_measurements}
