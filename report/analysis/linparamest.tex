@@ -67,37 +67,18 @@ During the linear parameter estimation, the same problem is solved as it is show
 \subsection{Measurements on the test set up}
 \label{LinParamEst_measurements}
 
-From the system setup $8$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$.
+In order to verify the state-space model derived in \chapref{LinParamEst} with the physical setup, the estimation of the parameters defined in \secref{estimateParameters}
+is carried out.
+
+From the system setup $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, in the control problem of this project only the four PMA relative pressure 
+sensor across the end-users and the pressure in the WT five of them will take part. In this way, the estimation will be only focus on obtaining the best fit for those 
+sensor outputs relevant in the control part. 
 
 The measurements obtained from the pressure sensors placed in these nodes, are relative to the atmospheric pressure. Thus, in order to compare the measurements
 from the system setup and the data obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point.
 
 Therefore, the relationship between pressures, where DpCXX describes the pressure difference for the XX component, can be defined as:
-
-\text{\underline{Node 2}} 
-\vspace{4mm}
-\begin{equation}
-     y_1 = DpC2 
-\end{equation}
-
-\text{\underline{Node 7}}
-\vspace{4mm}
-\begin{equation}
-   y_2 = DpC16 
-\end{equation}
-
-\text{\underline{Node 4}}
-\vspace{4mm}
-\begin {equation}
-    y_3 = DpC18 + DpC19 + DpC23 + DpC24 
-\end{equation}
-
-\text{\underline{Node 5}}
-\vspace{4mm}
-\begin {equation}
-    y_4 = DpC25 + DpC26 + DpC30 + DpC31 
-\end{equation}
 
 \text{\underline{Node 10}}
 \vspace{4mm}
@@ -124,9 +105,13 @@ Therefore, the relationship between pressures, where DpCXX describes the pressur
      y_8 = DpC31 
 \end{equation}
 
-As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the tank level being approximately half way full which allows for an equal amount of deviation in both directions. Based on the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the pma valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
+Hence, a relation has been defined for the pressure sensors available at the end-users valves. Furthermore, there is no need to define a relation with a referent point 
+for the WT node, since the pressure across the WT is the state of the state-space model. 
 
-The operating point of the pma valves is chosen to $70^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
+
+As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the tank level being approximately half way full which allows for an equal amount of deviation in both directions. Based on the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the PMA valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
+
+The operating point of the PMA valves is chosen to $70^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
 
 \begin{figure}[H]
 \centering
