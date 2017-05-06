@@ -196,6 +196,8 @@ q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
 
 Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
 
+\todo{two letters are not the same}
+
 \begin{equation}
 \Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{S}} \pmb{z}
  \label{currentlaw_3}
@@ -272,6 +274,7 @@ Having the independent states expressed, \eqref{statespace_2} can be inserted in
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $A_p \in \mathbb{R}^{(1 \times 1)} $ \\
+\newline
 \hspace*{8mm} $\pmb{B_p} \in \pmb{\mathbb{R}}^{(1 \times g)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
@@ -288,22 +291,22 @@ to the data measured in the setup and proceed to estimate the unknown parameters
  \label{statespace_5}
 \end{equation}
 
-As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespac_2}, the equation above results in 
+As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespace_2}, the equation above results in 
 
 \begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})\pmb{\hat{u}} - (\pmb{A^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
+\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{N})\pmb{\hat{u}} - (\pmb{M^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
  \label{statespace_6}
 \end{equation}
 
 Reorganizing the terms
 
 \begin{equation}
-\pmb{\hat{y}} = \underbrace{\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_o}))}_\text{\pmb{C}} \Delta \hat{p}_{WT} + \underbrace{(\pmb{C_{1}} (-(\pmb{A^{-1}}\pmb{B_u})) + \pmb{C_{2}})}_\text{\pmb{D}}\pmb{\hat{u}}  
+\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{B_o})) \Delta \hat{p}_{WT} + (\pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{N})) + \pmb{C_{2}}) \pmb{\hat{u}}  
  \label{finaloutput}
 \end{equation}
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C} \Delta \hat{p}_{WT} + \pmb{D} \pmb{\hat{u}} 
+  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
 \end{equation}
 
 The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs.
