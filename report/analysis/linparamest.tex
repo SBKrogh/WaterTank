@@ -12,7 +12,7 @@ The method that describes the linear parameter estimation is shown in \figref{fi
 \label{fig:parame_block_lin}
 \end{figure}
 
-In this case small-signal inputs are applied to both the test set up and the model.  Now the linearized model is compared to the real system, therefore the operating point is taken into account. Since the linear model is only valid for small deviations around the operating point, the real system has to be excited around the same operating point to obtain identical behavior. In order to achieve it, the operating values are added to both the input and the output such as: 
+In this case small-signal inputs are applied to both the test setup and the model.  Now the linearized model is compared to the real system, therefore the operating point is taken into account. Since the linear model is only valid for small deviations around the operating point, the real system has to be excited around the same operating point to obtain identical behavior. In order to achieve it, the operating values are added to both the input and the output such as: 
 
 \begin{equation}
 u_{sys} = \bar{u} + \hat{u}
@@ -64,21 +64,21 @@ is the output from the real-life system.
 
 During the linear parameter estimation, the same problem is solved as it is shown in \eqref{ObjectiveFunction}. In this case, however, the parameters are varied according to the comparison of the small-signal outputs.  
 
-\subsection{Measurements on the test set up}
+\subsection{Measurements on the test setup}
 \label{LinParamEst_measurements}
 
-In order to verify the state-space model derived in \chapref{LinParamEst} with the physical setup, the estimation of the parameters defined in \secref{estimateParameters}
+In order to verify the state-space model derived in \chapref{LinParamEst} with the physical setup, an estimation for the parameters defined in \secref{estimateParameters}
 is carried out.
 
 From the system setup $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
 $n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, in the control problem of this project only the four PMA relative pressure 
-sensor across the end-users and the pressure in the WT five of them will take part. In this way, the estimation will be only focus on obtaining the best fit for those 
+sensor across the end-users and the pressure in the WT will take part. Thus, the estimation will be only focus on obtaining the best fit for those 
 sensor outputs relevant in the control part. 
 
-The measurements obtained from the pressure sensors placed in these nodes, are relative to the atmospheric pressure. Thus, in order to compare the measurements
+The measurements obtained from the pressure sensors placed in these nodes, are relative to the atmospheric pressure. In order to compare the measurements
 from the system setup and the data obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point.
 
-Therefore, the relationship between pressures, where DpCXX describes the pressure difference for the XX component, can be defined as:
+The relationship between pressures, where DpCXX describes the pressure difference for the XX component, can be defined as:
 
 \text{\underline{Node 10}}
 \vspace{4mm}
@@ -105,13 +105,13 @@ Therefore, the relationship between pressures, where DpCXX describes the pressur
      y_8 = DpC31 
 \end{equation}
 
-Hence, a relation has been defined for the pressure sensors available at the end-users valves. Furthermore, there is no need to define a relation with a referent point 
-for the WT node, since the pressure across the WT is the state of the state-space model. 
+There is no need to define a relation with a referent point for the WT node, since the pressure across the WT is the state of the state-space model. 
 
+\subsection{Estimation Data}
 
-As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the tank level being approximately half way full which allows for an equal amount of deviation in both directions. Based on the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the PMA valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
+As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the tank level being approximately half way full which allows for an equal amount of deviation in both directions. For the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the PMA valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
 
-The operating point of the PMA valves is chosen to $70^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
+The operating point of the PMA valves is chosen to $63^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
 
 \begin{figure}[H]
 \centering
