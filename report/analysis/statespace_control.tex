@@ -103,3 +103,10 @@ Taking the same considerations into account as for the parameter estimation, the
 \end{equation}
 
 where the system matrix, $\pmb{M_c}$ is the same as the system matrix, $\pmb{M_p}$, in case the parameter estimation. 
+\\
+$\pmb{M_c}$ is invertible for the same reason as described in \eqref{ParameterEstimation}, thus:
+
+ \begin{equation}
+ \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
+ \label{statespace_control_sys_state}
+\end{equation}
