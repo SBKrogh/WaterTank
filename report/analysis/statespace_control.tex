@@ -79,7 +79,7 @@ Therefore between $\alpha(dP)$, the vectorfield describing the pump pressure, an
 
 \todo{minipage fix}
 
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.30\textwidth}
 Where\\
 \hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
@@ -124,6 +124,19 @@ Which in standard state-space form can be written as:
 \Delta \dot{p}_{WT} = A_c \Delta \hat{p}_{WT}  + \pmb{B_c} \pmb{\hat{u}} + \pmb{E_c} \pmb{\hat{d}} 
  \label{statespace_control_sys_state_2}
 \end{equation}
+
+\begin{minipage}[t]{0.40\textwidth}
+Where\\
+\hspace*{8mm} $A_c = \pmb{S}\pmb{M_c^{-1}}\pmb{B_o} $ \\
+\hspace*{8mm} $\pmb{B_c} = \pmb{S}\pmb{M_c^{-1}}\pmb{N_c} $ \\
+\hspace*{8mm} $\pmb{E_c} = \pmb{S}\pmb{M_c^{-1}}\pmb{Q_c} $
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+\vspace*{1mm}
+is the system matrix for the control, \\
+is the input matrix for the control, \\
+is the disturbance matrix for the control.
+\end{minipage} 
 
 \subsection{Discretization of state space model}
  \label{discrete_SS}
