@@ -91,14 +91,14 @@ the dimension $d$ is the number of disturbances and $e$ is the number of edges w
 The disturbance matrix for the state space model consists of the pressure inputs of the two PMA pumps and the linearized terms of the end-user valves. The matrix can be formulated as follows: 
 
 \begin{equation}
-  \pmb{Q} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_{c;2}}  
+  \pmb{Q_c} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_{c;2}}  
 \label{disturbance_matrix}
 \end{equation}
 
 Taking the same considerations into account as for the parameter estimation, the steady-state, state equation for small signals can be formulated as: 
 
  \begin{equation}
- 0 = \pmb{M_c} \pmb{\hat{z}} + \pmb{N_c} \pmb{\hat{u}} + \pmb{Q} \pmb{\hat{d}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ 0 = \pmb{M_c} \pmb{\hat{z}} + \pmb{N_c} \pmb{\hat{u}} + \pmb{Q_c} \pmb{\hat{d}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_control_sys}
 \end{equation}
 
@@ -107,6 +107,25 @@ where the system matrix, $\pmb{M_c}$ is the same as the system matrix, $\pmb{M_p
 $\pmb{M_c}$ is invertible for the same reason as described in \eqref{ParameterEstimation}, thus:
 
  \begin{equation}
- \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
+ \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
  \label{statespace_control_sys_state}
 \end{equation}
+
+Inserting the states into \eqref{currentlaw_3}:
+
+ \begin{equation}
+\Delta \dot{p}_{WT} = (\pmb{S}\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} + (\pmb{S}\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} 
+ \label{statespace_control_sys_state_1}
+\end{equation}
+
+Which in standard state-space form can be written as: 
+
+ \begin{equation}
+\Delta \dot{p}_{WT} = A_c \Delta \hat{p}_{WT}  + \pmb{B_c} \pmb{\hat{u}} + \pmb{E_c} \pmb{\hat{d}} 
+ \label{statespace_control_sys_state_2}
+\end{equation}
+
+\subsection{Discretization of state space model}
+ \label{discrete_SS}
+ 
+ asdf
