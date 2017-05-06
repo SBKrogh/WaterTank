@@ -1,10 +1,10 @@
 \subsection{Pump model} 
 \label{PumpModel}
-In order to move water from the reservoirs to the costumers, pumping is required. To guarantee that the water reaches every end-user with the appropriate pressure, different pumps can be used in the water distribution system.\\
-Centrifugal pumps are ideal for this purpose. 
+In order to move water from the reservoirs to the consumers, pumping is required. To guarantee that the water reaches every end-user with the appropriate pressure, different pumps can be used in the water distribution system.\\
+Centrifugal pumps are ideal for this purpose, as the output is steady and consistent. 
 %They generate pressure within they guarantee a constant flow of water at a constant pressure for any given set of conditions. 
 A model describing the pressure drop is derived which is presented in detail in \cite{Phd_Carsten}. The pressure provided by the pump is given by:
-\todo{The list bellow should be with units.}
+%\todo{The list bellow should be with units.}
 \begin{equation}
   \Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
   \label{eq:PumpModel}
@@ -35,7 +35,7 @@ is the impeller speed.
 
 
 \subsubsection*{Hydraulic power and efficiency}
-To minimize the running cost of the plant, it is necessary to know the power consumption of the pumps and thus describe how much energy these consume. The electricity consumption of the pump, as a function of flow $q$, is described in \cite{master_aau}. This expression can be used to calculate the efficiency $\eta$, as a function of flow $q$ of the pump. By assuming $\eta$ to be constant the expression becomes simpler, however $\eta$ must be chosen within the operating area of the pump. The electrical power can then be calculated by taking the hydraulic power created by the pumps and the efficient of the pumps into account. 
+To minimize the running cost of the plant, it is necessary to know the power consumption of the pumps to describe how much energy these consume. The electricity consumption of the pump, as a function of flow $q$, is described in \cite{master_aau}. This expression can be used to calculate the efficiency $\eta$, as a function of flow $q$ of the pump. By assuming $\eta$ to be constant the expression becomes simpler, however $\eta$ must be chosen within the operating area of the pump. The electrical power can then be calculated by taking the hydraulic power created by the pumps and the efficient of the pumps into account. 
 
 The hydraulic power created by a pump can be described by an equivalent to Joule's law, that is in terms of the pressure difference across the pump, multiplied with the flow through it, see \eqref{eq:Hyd_Pow}.
 
