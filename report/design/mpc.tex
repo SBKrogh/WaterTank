@@ -55,33 +55,33 @@ The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are d
  is the window horizon,\\
  is the prediction horizon,\\
  is the predicted optimal control signal to the current time k, \\
- is the control horizon.
+ is the control horizon.s
  \end{minipage}
 
 To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determined. In \secref{sec:cost_fkt} it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Furthermore water consumption can be seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefor both $H_p$ and $ H_u $ are chosen to 24. $H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
 
 %In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
 
-\subsection{Constraints}
+% \subsection{Constraints}
 
-When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are defined by: 
+% When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are defined by: 
 
-\begin{equation}
-\pmb{E} \cdot [\Delta\tilde u(k|k),...,\Delta\tilde u(k+H_u-1|k),1]^T \leq 0 
-\label{eq:slewrate}
-\end{equation}
-\begin{equation}
-\pmb{F} \cdot [\tilde u(k|k),...,\tilde u(k+H_u-1|k),1]^T \leq 0 
-\label{eq:actranges}
-\end{equation}
-\begin{equation}
-\pmb{G} \cdot [\tilde y(k+H_w|k),...,\tilde y(k+H_p|k),1]^T \leq 0
-\label{eq:controlvar}
-\end{equation}
+% \begin{equation}
+% \pmb{E} \cdot [\Delta\tilde u(k|k),...,\Delta\tilde u(k+H_u-1|k),1]^T \leq 0 
+% \label{eq:slewrate}
+% \end{equation}
+% \begin{equation}
+% \pmb{F} \cdot [\tilde u(k|k),...,\tilde u(k+H_u-1|k),1]^T \leq 0 
+% \label{eq:actranges}
+% \end{equation}
+% \begin{equation}
+% \pmb{G} \cdot [\tilde y(k+H_w|k),...,\tilde y(k+H_p|k),1]^T \leq 0
+% \label{eq:controlvar}
+% \end{equation}
 
-The actuator slew rate constraint, matrix $\pmb{E}$, determines how fast the actuator can change per time unit. This is a way of describing the physical limit of the pumps. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. 
+% The actuator slew rate constraint, matrix $\pmb{E}$, determines how fast the actuator can change per time unit. This is a way of describing the physical limit of the pumps. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. 
 
-\todo{This part could properly be specified better.}
+% \todo{This part could properly be specified better.}
 
 %To easy notation $U(k) = $
 

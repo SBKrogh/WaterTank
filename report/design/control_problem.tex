@@ -44,7 +44,7 @@ Then considering the total cost of running the system multiple things have to be
 \todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
 \todo{Furthermore the model have to be discreet and we need to correct $\Delta p$ compared to u.}
 \begin{align}
-\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} P_{e_{i}}(\Delta{p}_i,q_i) \cdot \Gamma(k)  \\
+\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} P_{e_{i}}(\Delta{p}_i,q_i) \cdot \Gamma(k) \label{eqcost} \\
 %
 s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat{u}} \\
 %
@@ -54,7 +54,7 @@ s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat
 %
 & \underline{p_{wt}} < p_{wt} < \overline{p_{wt}} \\
 %
-& \bar{q}_{wt} > \underline{\bar{q}_{wt}}
+& \bar{q}_{wt} > \underline{\bar{q}_{wt}} \label{eqconst} 
 \end{align}
 
  \begin{minipage}[t]{0.24\textwidth}
