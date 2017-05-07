@@ -129,6 +129,51 @@ Furthermore the operating point for the pumps is chosen at a speed of $\omega = 
 \label{fig:est_deltap_data}
 \end{figure}
 
+\subsection{Estimation Method}
+
+The estimation of the unknown parameters is carried through Matlab Linear Grey-Box model estimation toolbox. This toolbox allows to estimate continuos-time 
+grey-box models for differential equations using multiple input/output time-domain data \cite{LinearEstimation}.
+The numerical search method used for the estimation of the unknown parameters is the \textit{Subspace Gauss-Newton least squares} search. 
+
+This method is automatically set by the parameter estimation process, thus any further understanding regarding the estimation method is considered out of 
+scope of this project. 
+
+
+\subsection{Estimation Result}
+
+\begin{figure}[!tbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{report/pictures/Node10_estimation.pdf}
+    \caption{Estimation comparison for node 10.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{report/pictures/Node11_estimation.pdf}
+    \caption{Estimation comparison for node 11.}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{report/pictures/Node15_estimation.pdf}
+    \caption{Estimation comparison for node 15.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{report/pictures/Node16_estimation.pdf}
+    \caption{Estimation comparison for node 16.}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}
+ \centering
+\includegraphics[scale=0.45]{report/pictures/WT_estimation.pdf}
+    \caption{Estimation comparison for WT.}
+\end{figure}
+
+
 Here the plots from Matlab could be inserted with the input signals, output pressures. The process of the data could be explained, where are the measurements...
 
 \todo{Daniel, you have the things for this!}
