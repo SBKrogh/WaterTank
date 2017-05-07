@@ -190,7 +190,7 @@ Thus the desired pressure drop between two endpoint is obtained. The differentia
 In \eqref{PressureDrop}, the term $F_{res}$ is the resistance force acting on the 
 pipe, which consists of two parts: surface resistance($h_{f}$) and the form resistance($h_{m}$) due to the fittings. % $F_{elev}$ is the force of gravity due to change in elevation, $\Delta z$.
 
-\subsubsection{Surface resistance (\texorpdfstring{$h_f$}{})} 
+\textbf{Surface resistance (\texorpdfstring{$h_f$}{})} \\
 The flow of a liquid through a pipe suffers resistance from 
 the turbulence occurring along the internal walls of the pipe, caused by the roughness of the surface. This surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
 
@@ -234,11 +234,11 @@ is the diameter of the pipe.
  which is non-dimensional and is a function of the Reynold´s number, \textbf{Re}. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
  
  
-The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $\pmb{Re}<2300$ as laminar, if $2300<\pmb{Re}<4000$ as transient and if
-$\pmb{Re}>4000$ as turbulent. 
+The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $\bm{Re}<2300$ as laminar, if $2300<\bm{Re}<4000$ as transient and if
+$\bm{Re}>4000$ as turbulent. 
 
 \begin{equation}
-   \pmb{Re} = \frac{vD}{\nu}
+   \bm{Re} = \frac{vD}{\nu}
    \label{Reynolds}
  \end{equation}
  
@@ -314,7 +314,7 @@ is the average roughness of the wall inside the pipe.
 \end{minipage}
 
 %
-\subsubsection{Form resistance (\texorpdfstring{$h_m$}{})} 
+\textbf{Form resistance (\texorpdfstring{$h_m$}{})} 
 \label{FormResistance}
 
 Form resistance losses, appears at any time the flow changes direction, due to elbows, bends,
@@ -365,9 +365,10 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
   k_f = 0.442\alpha^{2.17}
 \end{equation}
 
-\subsubsection{Complete pipe model}
+\textbf{Complete pipe model}
 \label{CompletePipe}    % If we remove this subsection we have to change the 
 % reference to it in the Parameter Estimation subsection
+
 In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. The friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}

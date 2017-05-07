@@ -5,7 +5,7 @@
 % ¤¤ Oversaettelse og tegnsaetning ¤¤ %
 \usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet (UTF8)
 \usepackage[english]{babel}					% Dokumentets sprog
-\usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
+\usepackage[OT1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
 \usepackage{mfirstuc}
 
@@ -55,6 +55,13 @@
 \usepackage{amsthm}							% Avancerede matematik-udvidelser
 \usepackage{textcomp}                 		% Symbol-udvidelser (f.eks. promille-tegn med \textperthousand )
 \usepackage{mathtools}
+\usepackage{lmodern,bm}                
+\usepackage[T1]{sansmath} 
+\SetMathAlphabet{\mathsfbf}{sans}{\sansmathencoding}{\sfdefault}{bx}{sl}
+\usepackage{etoolbox}
+\AtBeginEnvironment{sansmath}{\let\bm\mathsfbf}{}{}
+\DeclareRobustCommand{\ttfamily}{\fontencoding{T1}\fontfamily{lmtt}\selectfont}
+
 
 \usepackage{gensymb}
 
@@ -107,6 +114,7 @@
 
 % ¤¤ Opsætning af enheder ¤¤ % 
 	\newcommand{\unit}[1]{\hfill\left[\mathrm{ #1}\right]} 	% Skriv \enhed{"din enhed"} og dem bliver rykket til højre
+
 
 % ¤¤ Referencer og kilder ¤¤ %
 			
@@ -331,3 +339,4 @@
 \WarningFilter{latex}{Marginpar on page}
 \WarningFilter{memoir}{You are using the caption package with the memoir class}
 \WarningsOff[latex]
+\WarningFilter{LaTeX Font Warning:}{Font shape `U/stmry/b/n' undefined(Font)              using `U/stmry/m/n' instead on input line 5.}
