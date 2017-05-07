@@ -44,7 +44,7 @@ Then considering the total cost of running the system multiple things have to be
 \todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
 \todo{Furthermore the model have to be discreet and we need to correct $\Delta p$ compared to u.}
 \begin{align}
-\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k)) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} P_{e_{i}}(\Delta{p}_i,q_i) \cdot \Gamma(k) \label{eqcost} \\
+\underset{\pmb{u}}{min} \: C_T(\pmb{\Delta{p}},\pmb{q},c[k]) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{P_H} \sum_{i=1}^{N} \Big(\frac{1}{\eta_i}\cdot\Delta{p}_i\cdot q_i\Big) \cdot c[k] \label{eqcost} \\
 %
 s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat{u}} \\
 %
@@ -63,7 +63,7 @@ s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat
  \hspace*{8mm} $P_{e_{i}}(\Delta{p}_i,q_i)$ \\
  \hspace*{8mm} N \\
  \hspace*{8mm} $P_H$ \\
- \hspace*{8mm} $\Gamma(k)$ \\
+ \hspace*{8mm} $c[k]$ \\
  \hspace*{8mm} $\pmb{p_{cp}}$ \\
 % \hspace*{8mm}  \textcolor{White}{te}\\
  \hspace*{8mm} $p_{wt}$ \\
@@ -95,7 +95,7 @@ s.t \:\:\:\:\: & \Delta \dot{p}_{wt} = M \Delta \hat{p}_{wt}  + \pmb{N}\pmb{\hat
   \textcolor{White}{te}$\unit{{m^3}/{day}}$
  \end{minipage}
 
-The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $\Gamma(k)$, is described in \appref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c[k]$, is described in \appref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 
 

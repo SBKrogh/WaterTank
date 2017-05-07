@@ -45,3 +45,15 @@ Now \eqref{flow_2_pressure} can be substituted into \eqref{flow_pumps_first}.
 \end{equation}
 
 \eqref{flow_main_pumps} can then be substituted into \eqref{eqcost}. 
+
+\begin{equation}
+J = \sum_{i=1}^{N} \Big(\frac{1}{\eta_i}\cdot u[k]\cdot -C_H \pmb{G H_1^{\dagger} H_0} \Delta P_{wt}[k]\Big)\cdot c[k] \label{costfunc1}
+\end{equation}
+
+From this the dynamic of the system, described in \todo{add secref} can be included. This will make it possible to describe the cost of running the system by only looking at the input signal. This is done by substituting the extended system description from \todo{add eqref} to \eqref{costfunc1}. 
+
+\begin{equation}
+ 	J = \sum_{i=1}^{N} \frac{-C_H}{\eta_i}\cdot\pmb{G H_1^{\dagger} H_0} \cdot u[k]\cdot (\Phi\Delta P_{wt}[0] +\Gamma u[k]+ \Psi d[k])\cdot c[k]
+ \end{equation} 
+
+ 
