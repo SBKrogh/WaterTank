@@ -1,20 +1,27 @@
 \section{Control Problem}
 \label{control_problem}
 %\vspace{-1mm}
-The water distribution system explained in \secref{system_overview} is to be controlled according to the requirements descibed in \secref{Requirements_and_constraints}. These can be summarized as: 
+The water distribution system described in \secref{system_overview} is to be controlled with respect to the requirements and constraints stated in \secref{Requirements_and_constraints} and the dynamics of the system described in \secref{SystemLin_control}. For a better clearance, the requirements and constraints are listed again below: 
 %\vspace{-1mm}
 \begin{itemize}
-	\item Pressure at CP, $0.08 < \pmb{p_{cp}} < 0.14 \:[\text{bar}]$
+	\item Consumer pressure requirements, $0.08 < \pmb{y} < 0.14 \:[\text{bar}]$
 %
-	\item Minimum water exchange through the WT, $\bar{q}_{wt} > 0.06 \: \big[\frac{m^3}{day}\big]$
+	\item Minimum water exchange through the WT, $\overline{q}_{wt} > 0.06 \: \big[\frac{m^3}{day}\big]$
 %
-	\item Minimizing the total cost of running the system
+	\item Energy costs 
+%
+	\item Pressure losses in the water distribution network
+%
+	\item Performance constraints on the pumps
 \end{itemize}
 %\vspace{-1mm}
 %The WT is used in the system to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
+The system consists of four pumps and is fully controlled by the two main pumps. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. The project deals with a control that optimizes the WT such that the pressure at the end-users is maintained and the cost of pumping effort in the main pumps is minimised. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
 
-The system consists of four pumps, two local PMA pumps and two main pumps. The aim of his project is to balance between the use of the mains pumps and the WT, a simple controller is designed to keep a specific differential pressure over the PMA pumps. Thereby the system can be fully controlled by the main pumps as the PMA pumps only influence the operating point with a fixed pressure lift.
-% to minimize the cost of running the system
+%The system consists of four pumps. Two local PMA pumps and two main pumps.  The aim of this project is to balance between the use of the mains pumps and the WT, a simple controller is designed to keep a specific differential pressure over the PMA pumps. Thereby the system can be fully controlled by the main pumps as the PMA pumps only influence the operating point with a fixed pressure lift.
+%% to minimize the cost of running the system
+
+In order 
 
 To ensure cost reducing control a more advanced controller, controlling the main pumps, is designed. This is done by using Model Predictive Control, MPC. The advantage of MPC, compared to eg. LQR is that the MPC can optimize a state by taking the expectation of the future electrical pricing into account. 
 
