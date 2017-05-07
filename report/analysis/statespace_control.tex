@@ -202,16 +202,38 @@ The continuous state space representation thus given by \eqref{statespace_contro
 \subsection{Discretization of state space model}
  \label{discrete_SS}
  
-The dynamics of the water distribution system are now described and to use this linear continuous model of the system to be subjected to MPC, the model needs to be discretized by assuming zero-order-hold(ZOH) of the variables at specified sampling points. This means that the variables are constant between these points. The aim is to have a linear discrete-time state space model with piecewise constant $\Delta \hat{p}_{WT}[k]$, $\pmb{\hat{u}}[k]$ and $\pmb{\hat{d}}[k]$. The detailed method is presented in \appref{cha:discret_SS}, however the final discretized state-space model is stated here: 
+The dynamics of the water distribution system are now described. To use this linear continuous model to be subjected to MPC, the model needs to be discretized by assuming zero-order-hold(ZOH) of the variables at specified sampling points. This means that the variables are constant between these points. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{WT}[k]$, $\pmb{\hat{u}}[k]$ and $\pmb{\hat{d}}[k]$. The detailed method is presented in \appref{cha:discret_SS}, however the final discretized state-space model is stated here with respect to the sampling time $T_s$: 
 
  \begin{equation}
 \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{B_d} \pmb{\hat{u}}[k] + \pmb{E_d} \pmb{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
 
-and
+and the output equation:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_c} \Delta \hat{p}_{WT} + \pmb{D_c} \pmb{\hat{u}} + \pmb{K_c} \pmb{\hat{d}}
-\label{statespace_control_output_standard}
+  \pmb{\hat{y}}[k] = \pmb{C_d} \Delta \hat{p}_{WT}[k] + \pmb{D_d} \pmb{\hat{u}}[k] + \pmb{K_d} \pmb{\hat{d}}[k]
+\label{statespace_control_output_discrete}
 \end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
+\hspace*{8mm} $\pmb{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
+\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 6)}$ \\
+\hspace*{8mm} $\pmb{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
+\newline
+\hspace*{8mm} $\pmb{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\newline
+\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(4 \times 6)}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the discrete state matrix, \\
+is the discrete input matrix, \\
+is the discrete disturbance matrix, \\ 
+is the discrete output matrix, which is the same as in continuous case \\
+is the discrete feed-forward matrix, which is the same as in continuous case \\
+is the discrete disturbance matrix affecting the output, which is the same as in continuous case \\
+\end{minipage}
+
