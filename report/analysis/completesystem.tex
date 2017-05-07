@@ -1,6 +1,5 @@
 \section{Component model} 
 \label{CompleteSystemModel}
-\todo{Simon You are here!}
 Gathering the pressure drops, caused by each type of component in the system, a complete system model can be obtained. This model includes the pipe, valve, pump elements and the WT. 
 
 The model of the WT is described by a first order differential equation, consisting of the first time derivative of the pressure drop. The final expression is shown in \eqref{CompleteWTModel}:
@@ -12,7 +11,7 @@ The model of the WT is described by a first order differential equation, consist
 
 Although \eqref{CompleteWTModel} includes indexing for the pressure drops across the WTs, it is worth mentioning that the water distribution system consists of only one WT.
 \\
-The complete model consists of the pipe model, \eqref{CompactValveModel} the valve model, \eqref{eq:PumpModel} the pump model and \eqref{CompleteWTModel} the WT. For the pressure drop across the $k^{th}$ component the following expression can be written: 
+The complete model consists of the pipe model, \eqref{CompactValveModel}, the valve model, \eqref{eq:PumpModel}, the pump model and the WT, \eqref{CompleteWTModel}. For the pressure drop across the $k^{th}$ component the following expression can be written: 
 
 %\begin{equation}
 %\label{CompletePressure}
@@ -26,7 +25,7 @@ The complete model consists of the pipe model, \eqref{CompactValveModel} the val
 \Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(u_k)}_\text{Pump} + \underbrace{\Delta p_{WT;k}}_\text{Water tank}
 \end{equation}
 
-The complete component model, \eqref{CompleteModel} is used to represent the pressure contribution(or loss) across each component. In order to describe every part of the system by \eqref{CompleteModel}, the parameters and functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network. In other words, if the $k^th$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
+The complete component model, \eqref{CompleteModel}, is used to represent the pressure loss or contribution across each component. In order to describe every part of the system by \eqref{CompleteModel}, the parameters and functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network. In other words, if the $k^th$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
 %At the time of modelling the components, the proper components will be annulled to zero. 
 \tabref{tab:parametrization_model} shows the parametrization of the system: 
 
