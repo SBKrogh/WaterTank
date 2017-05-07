@@ -141,6 +141,17 @@ scope of this project.
 
 \subsection{Estimation Result}
 
+The comparison between the test setup measurements and the estimated data is done with Matlab function \textit{compare}. Together with the comparison 
+plot, the normalized root mean square (NRMSE) measure is also added which measures the goodness of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
+
+
+\begin{equation}
+  fit = 100 \bigg(1 - \frac{||y - \hat{y}||}{||y - mean(y)||}\bigg)
+  \label{fitequation}
+\end{equation} 
+
+The following figures show the comparison between the data obtained from the lab and the estimated outputs of the model.  
+
 \begin{figure}[!tbp]
   \centering
   \begin{minipage}[b]{0.45\textwidth}
@@ -172,8 +183,3 @@ scope of this project.
 \includegraphics[scale=0.45]{report/pictures/WT_estimation.pdf}
     \caption{Estimation comparison for WT.}
 \end{figure}
-
-
-Here the plots from Matlab could be inserted with the input signals, output pressures. The process of the data could be explained, where are the measurements...
-
-\todo{Daniel, you have the things for this!}
