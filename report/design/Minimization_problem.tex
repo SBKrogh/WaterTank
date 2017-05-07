@@ -1,6 +1,47 @@
 \subsection{Minimization problem}
 \label{mini_problem}
 
-The minimazation problem set up in \eqref{eqcost} to \textit{(\ref{eqconst})}
+The minimization problem set up in \eqref{eqcost} to \textit{(\ref{eqconst})}
 
+We want to do this because we need to learn it. 
 
+The overall idea is to make everything depend on our state, that we can measure. 
+
+From \eqref{eqcost} it can be seen that the energy consumption depend on the flow through the pumps, $\pmb{q_{pump}}$, and the differential pressure created by the pumps, $\Delta{p}_i$. $\Delta{p}_i$ is a part of the input, which is know, but $\pmb{q_{pump}}$ is an unknown term that have be expressed as a function of the sate, $\Delta \hat{p}_{wt}$. 
+
+The flow in any edges can be found using KCL. 
+
+\begin{equation}
+\pmb{q_1} = -\pmb{H_1^{\dagger} H_0} q_0
+\end{equation}
+
+$\pmb{q_{pump}}$ only consists of the flow in the edges representing the main pumps, edge 1 and 8, therefore a mapping matrix, $\pmb{G}$, is introduced. 
+
+\begin{equation}
+\pmb{q_{pump}} = - \pmb{G} \cdot \pmb{H_1^{\dagger} H_0} q_0 \label{flow_pumps_first}
+\end{equation}
+
+\begin{minipage}[t]{0.24\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{q_{pump}} \in \: \mathbb{R}^{2 \times 1}$  \\
+and \hspace*{0.4mm} $\pmb{G} \in \: \mathbb{R}^{2 \times 24} $ 
+\end{minipage}
+\begin{minipage}[t]{0.70\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the flow through the pumps,\\
+\hspace*{4mm} is a mapping matrix.
+\end{minipage}
+
+\eqref{flow_pumps_first} depends in the flow through the WT, $q_0$. This can be transformed to the differential pressure at the bottom of the WT.
+
+\begin{equation}
+\Delta P_{wt}[k+1] = \frac{1}{C_H} \cdot q_0 \label{flow_2_pressure}
+\end{equation}
+
+Now \eqref{flow_2_pressure} can be substituted into \eqref{flow_pumps_first}.  
+
+\begin{equation}
+\pmb{q_{pump}} = -C_H \pmb{G H_1^{\dagger} H_0} \Delta P_{wt}[k+1] \label{flow_main_pumps}
+\end{equation}
+
+\eqref{flow_main_pumps} can then be substituted into \eqref{eqcost}. 
