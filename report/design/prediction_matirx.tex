@@ -1,0 +1,66 @@
+\subsection{Extended system matrices}
+\label{extended_system_matrices}
+
+We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
+The discrete system dynamics is stated in \eqref{extended_system_matrices}.
+
+\begin{equation}
+	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]
+\end{equation}
+
+Now $\Delta \hat p_{wt}[2]$ is calculated in the same say, but $\hat p_{wt}[1]$ is substituted in. 
+
+\begin{equation}
+	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]\big] + B_d \hat u[1] + E_d \hat d[1]\\ 
+\end{equation}
+
+This is done for all $\Delta \hat p_{wt}[k]$ until $\Delta \hat p_{wt}[H_p]$. 
+
+
+\begin{align}
+	\begin{vmatrix}
+\Delta \hat p_{wt}[1] \\ 
+\Delta \hat p_{wt}[2]\\ 
+\vdots \\ 
+\Delta \hat p_{wt}[H_p]\\ 
+\end{vmatrix}
+=
+\begin{vmatrix}
+A_d \\ 
+A_d^2\\ 
+\vdots \\ 
+A_d^{H_p}\\ 
+\end{vmatrix}
+\Delta p_{wt}[0]+\nonumber
+&\begin{vmatrix}
+ B_d& 0 & \hdots  & 0\\ 
+ A_dB_d&  B_d& \hdots & 0\\ 
+\vdots &\vdots  & \ddots  & 0\\ 
+ A_d^{H_p}B_d& A_d^{H_p-1}B_d  &  & B_d
+\end{vmatrix}
+\begin{vmatrix}
+\hat u[0] \\ 
+\hat u[1]\\ 
+\vdots \\ 
+\hat u[H_p-1]\\ 
+\end{vmatrix}
++ \\
+&\begin{vmatrix}
+ E_d& 0 & \hdots  & 0\\ 
+ A_dE_d&  E_d& \hdots & 0\\ 
+\vdots &\vdots  & \ddots  & 0\\ 
+ A_d^{H_p}E_d& A_d^{H_p-1}E_d  &  & E_d
+\end{vmatrix}
+\begin{vmatrix}
+\hat d[0] \\ 
+\hat d[1]\\ 
+\vdots \\ 
+\hat d[H_p-1]\\ 
+\end{vmatrix} 
+\end{align}
+
+This is written in short as: 
+
+\begin{equation}
+	\bm{\Delta \hat p_{wt}} = \bm{\Phi} \Delta \hat p_{wt}[0] + \bm{\Gamma U} + \bm{\Psi d}
+\end{equation}
