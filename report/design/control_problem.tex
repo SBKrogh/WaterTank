@@ -16,7 +16,9 @@ The system consists of four pumps and is fully controlled by the two main pumps.
 
 In order to achieve such an optimal behavior, Model Predictive Control, MPC, is applied. With MPC, the dynamics of the model is used to predict the system behavior, therefore taking the future electrical prices into account. 
 
-Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. However, as it is explained above, the two main pumps are also controlled by MPC. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
+Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
+
+%However, as it is explained above, the two main pumps are also controlled by MPC. 
 
 \begin{figure}[H]
 \centering
