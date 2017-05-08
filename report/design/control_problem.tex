@@ -6,7 +6,7 @@ The water distribution system described in \secref{system_overview} is to be con
 \begin{itemize}
 	\item Consumer pressure requirements, $0.08 < \pmb{y} < 0.14 \:[\text{bar}]$
 %
-	\item Energy costs 
+	\item Minimizing running costs 
 %
 	\item Performance constraints on the pumps
 \end{itemize}
@@ -73,6 +73,7 @@ And the control problem can be formulated as a minimization problem on the form:
 \begin{align}
 \underset{\pmb{u}}{min} \:  \Upsilon(\cdot) &= \underset{\pmb{u}}{min} \: \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
+\newline
 s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \pmb{B_d} \pmb{\hat{u}}[k+i|k] \\ &+ \pmb{E_d} \pmb{\hat{d}}[k+i|k]  \\
 %
 &\pmb{\hat{y}}[k+i|k] = \pmb{C_d} \Delta \hat{p}_{WT}[k+i|k] + \pmb{D_d} \pmb{\hat{u}}[k+i|k] \\ &+ \pmb{K_d} \pmb{\hat{d}}[k+i|k] \\
