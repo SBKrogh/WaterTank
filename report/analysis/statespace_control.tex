@@ -152,7 +152,7 @@ dP_{e22}
 Since the outputs are pressures around two end-user valves, the output expression should be written in the form:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_1} \pmb{\hat{z}} + \pmb{C_2} \pmb{\hat{u}}  
+  \pmb{\hat{y}} = \pmb{C_1} \pmb{\hat{z}} + \pmb{C_2} \pmb{\hat{d}}  
    \label{statespace_control_output}
 \end{equation}
 
@@ -170,6 +170,8 @@ is the matrix consisting of the mapping between the vectorfield,$\mu$, and the o
 is the matrix consisting of the mapping between the vectorfield, $\mu$, and the output vector. Furthermore it includes the partial derivative matrix of the vectorfield according to the ODs.
 \end{minipage}
 
+As it is shown, the output equation includes feedforward from the measured disturbances. 
+\\
 Expressing the independent flow variables with \eqref{statespace_control_sys_state}, the following yields: 
 
 \begin{equation}
