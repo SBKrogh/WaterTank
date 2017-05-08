@@ -1,5 +1,7 @@
-\subsection{Extended system matrices}
-\label{extended_system_matrices}
+\section{Reformulation of the objective function}
+\label{ObjFunc_reform}
+
+The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make it solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. In 
 
 We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
 The discrete system dynamics is stated in \eqref{extended_system_matrices}.
