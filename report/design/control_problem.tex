@@ -41,7 +41,7 @@ As it is shown, the PI controllers are responsible for setting the control input
 In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
 
 \begin{align}
- \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &=  \sum_{k=1}^{H_p} \sum_{i=1}^{N} \Big(\frac{1}{\eta_i} u_i[k]  q_{p;i}[k]\Big) c[k] \label{eqcost} 
+ \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &=  \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot  q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost} 
 \end{align}
 
 %Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
@@ -71,13 +71,13 @@ is the electricity price cost sequence.
 \end{minipage}
 
 And the control problem can be formulated as a minimization problem on the form:
-
+%\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
-\underset{\pmb{u}}{min} \:  \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &= \underset{\pmb{u}}{min} \: \sum_{k=1}^{H_p} \sum_{i=1}^{N} \Big(\frac{1}{\eta_i} u_i[k]  q_{p;i}[k]\Big) c[k] \label{eqcost1} \\
+\underset{\pmb{u}}{min} \:  \Upsilon(\cdot) &= \underset{\pmb{u}}{min} \: \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
-s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{B_d} \pmb{\hat{u}}[k] + \pmb{E_d} \pmb{\hat{d}}[k]  \\
+s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \pmb{B_d} \pmb{\hat{u}}[k+i|k] \\ &+ \pmb{E_d} \pmb{\hat{d}}[k+i|k]  \\
 %
-&\pmb{\hat{y}}[k] = \pmb{C_d} \Delta \hat{p}_{WT}[k] + \pmb{D_d} \pmb{\hat{u}}[k] + \pmb{K_d} \pmb{\hat{d}}[k] \\
+&\pmb{\hat{y}}[k+i|k] = \pmb{C_d} \Delta \hat{p}_{WT}[k+i|k] + \pmb{D_d} \pmb{\hat{u}}[k+i|k] \\ &+ \pmb{K_d} \pmb{\hat{d}}[k+i|k] \\
 %
 & \underline{y} < \pmb{y} < \overline{y} \\
 %
