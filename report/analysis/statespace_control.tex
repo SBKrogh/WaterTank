@@ -1,7 +1,7 @@
-\section{State-space model for control}
+\section{State space model for control}
  \label{SystemLin_control}
  
- For a better clearance the steady-state, state-space representation for the parameter estimation for small-signal values is repeated here:
+ For a better clearance the steady-state, state space representation for the parameter estimation for small-signal values is repeated here:
  
  \begin{equation}
  0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
@@ -88,7 +88,7 @@ Where\\
 the dimension $d$ is the number of disturbances and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-The disturbance matrix for the state-space model consists of the pressure inputs of the two PMA pumps and the linearized terms of the end-user valves. The matrix can be formulated as follows: 
+The disturbance matrix for the state space model consists of the pressure inputs of the two PMA pumps and the linearized terms of the end-user valves. The matrix can be formulated as follows: 
 
 \begin{equation}
   \pmb{Q_c} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_{c;2}}  
@@ -173,7 +173,7 @@ is the matrix consisting of the mapping between the vectorfield, $\mu$, and the 
 Expressing the independent flow variables with \eqref{statespace_control_sys_state}, the following yields: 
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_1} \big[- (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}\big] + \pmb{C_2} \pmb{\hat{u}}  
+  \pmb{\hat{y}} = \pmb{C_1} \big[- (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}\big] + \pmb{C_2} \pmb{\hat{d}}  
    \label{statespace_control_output}
 \end{equation}
 
@@ -187,8 +187,8 @@ And the output equation in standard state-space form:
 \begin{minipage}[t]{0.40\textwidth}
 Where\\
 \hspace*{8mm} $C_c = -\pmb{C_1}\pmb{M_c^{-1}}\pmb{B_o} $ \\
-\hspace*{8mm} $\pmb{D_c} = \pmb{C_2} - \pmb{C_1}\pmb{M_c^{-1}}\pmb{N_c} $ \\
-\hspace*{8mm} $\pmb{K_c} = -\pmb{C_1}\pmb{M_c^{-1}}\pmb{Q_c} $
+\hspace*{8mm} $\pmb{D_c} = - \pmb{C_1}\pmb{M_c^{-1}}\pmb{N_c} $ \\
+\hspace*{8mm} $\pmb{K_c} = \pmb{C_2} -\pmb{C_1}\pmb{M_c^{-1}}\pmb{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
 \vspace*{1mm}
