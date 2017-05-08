@@ -6,7 +6,7 @@ The water distribution system described in \secref{system_overview} is to be con
 \begin{itemize}
 	\item Consumer pressure requirements, $0.08 < \pmb{y} < 0.14 \:[\text{bar}]$
 %
-	\item Minimizing running costs 
+	\item Minimizing the total running costs
 %
 	\item Performance constraints on the pumps
 \end{itemize}
@@ -14,7 +14,9 @@ The water distribution system described in \secref{system_overview} is to be con
 %The WT is used in the system to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
 The system consists of four pumps and is fully controlled by the two main pumps. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. The project deals with a control that optimizes the WT such that the pressure at the end-users is maintained and the cost of pumping effort in the main pumps is minimised. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
 
-In order to achieve such an optimal behavior, Model Predictive Control, MPC, is applied. With MPC, the dynamics of the model is used to predict the system behavior, therefore taking the future electrical prices into account. Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. However, as it is explained above, the two main pumps are also controlled by MPC. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in\figref{fig:control_structure}: 
+In order to achieve such an optimal behavior, Model Predictive Control, MPC, is applied. With MPC, the dynamics of the model is used to predict the system behavior, therefore taking the future electrical prices into account. 
+
+Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. However, as it is explained above, the two main pumps are also controlled by MPC. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
 
 \begin{figure}[H]
 \centering
