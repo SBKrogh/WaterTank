@@ -1,9 +1,9 @@
 \section{Network model}  
 \label{ParameterEstimation}
-\todo{Simon You are here!}
-Once the corresponding incidence and cycle matrices are identified and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact, generalized form as a set of differential equations describing the system. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
+
+Once the corresponding incidence and cycle matrices are identified, and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact, generalized form as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
 \\
-In \secref{IncidenceSection}, the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edge that belongs to the WT. (In case of the network, the number of edges representing the WT is one and in the further model description is denoted with $w$.) 
+In \appref{IncidenceSection}, the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edge that belongs to the WT. The number of edges representing the WT is one and in the further model description is denoted with $w$. 
 \\
 Hence, the $\pmb{H}$ matrix can be written as 
 % It is worth mentioning that it is been also followed the structure such as the last 
@@ -43,7 +43,7 @@ and \hspace*{0.4mm} $\pmb{B_0} \: \in \mathbb{R}^{l \times w} $
 \hspace*{4mm} is the $\pmb{B}$ matrix with the column corresponding to the WT.
 \end{minipage}
 
-As mentioned above, $\pmb{q}$ is a vector containing all the individual flows, which can be structured as follows:
+As mentioned \secref{KirchhoffSection}, $\pmb{q}$ is a vector containing all the individual flows, which can be structured as follows:
 
 \begin{equation}
 \pmb{q} =
@@ -86,10 +86,10 @@ Where\\
 \hspace*{4mm} is the pressure in the WT.
 \end{minipage}
 
-In \eqref{KCL} KCL is applied to $\mathcal{G}$, which states that the sum of all the flows entering into a node must be equal to the sum of all the flows leaving the node.
+In \eqref{KCL} KCL is applied to $\mathcal{G}$, which states that the sum of all flows entering into a node must be equal to the sum of the flows leaving the node.
 
 By choosing independent set of flows corresponding to the chords of a spanning tree, the flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
-The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\pmb{z}$ are called the free flows of the system and are independent from each other, as mentioned previously \cite{GraphTheoryCarsten}.
+The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\pmb{z}$ are called the free flows of the system and are independent from each other\cite{GraphTheoryCarsten}.
 
 \begin{equation}
   \pmb{q_i} = \pmb{B_i} ^{T}  \pmb{z}
@@ -105,9 +105,11 @@ Where\\
 \hspace*{4mm} is the chord flow vector and g is the number of elements.
 \end{minipage}
 
-As it is shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
+As shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
 \\
-Before writing up an expression that describes all parts, the component model in \eqref{CompleteModel} needs to be modified because of the simplifications introduced in \secref{SystemModel}. As it is mentioned in that section, there are four pumps in the system, two main and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
+
+\todo{Simon you are here!}
+Before writing up an expression that describes all parts, the component model in \eqref{CompleteModel} needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
 
 \begin{equation}
 \label{CompleteModel_extended}
