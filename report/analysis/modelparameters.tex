@@ -1,24 +1,9 @@
 \section{Model Parameters}
 \label{estimateParameters}
-In order to obtain a complete model of the physical setup, all the parameters describing the components have to be defined. Usually, these parameters can be 
-obtained from the data sheets provided by the manufactures. Nevertheless, some components can change their characteristics over time, which introduces uncertainties 
-into the model. Hence, in the current chapter a detailed compilation of the known/unknown parameters of the physical water distribution setup is carried out.
+In order to obtain a complete model of the physical setup, all the parameters describing the components have to be defined. In \secref{SubSecEstimation} a detailed
+description of the known parameters of the system has been done. Nevertheless, in the linearized state-space model more parameters have to be indentified
+due to the introduction of the operating points values. Hence, in the current chapter a detailed compilation of the unknown parameters of the physical water distribution setup is carried out.
 
-\subsection{Known Parameters}
-
-The model parameters that are taken to be known are introduced below and can be found in \appref{system_description}.
-
-
-\begin{itemize}
-  \item The parameters corresponding to the pumps such that: $a_{h0}$, $a_{h1}$, $a_{h2}$. %The values of this parameters are provided by the manufacturer of the pumps, Grundfos, and can be found in the.
-  
-  \item In regards to the valves, the variable taking part on the modelling of a valve is the conductivity function $\pmb{k_v(OD)}$. However, in 
-  order to describe the valve characteristic function, other parameters have to be introduced i.e. the curve factor $n_{gl}$, and the 
-  valve maximum, $\theta_{max}$, and minimum, $\theta_{off}$ opening degree.
-  
-  \item In the modelling of the pipes three parameters are considered as known. The length of the pipes $L$, their diameter $D$, and the change of 
-  elevation across each pipe $\Delta Z$.  
-\end{itemize} 
 
 \subsection{Unknown Parameters}
 The unknown parameters are the ones related with the form losses, $k_f$, and form friction ,$f$, of the pipes. Despite they are 

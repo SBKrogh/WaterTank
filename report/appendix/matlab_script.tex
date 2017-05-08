@@ -1,11 +1,4 @@
-\section{Nonlinear parameter identification} 
-\label{MatlabScript}
-
-In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox is used \cite{MatlabGreyBox}. This toolbox 
-estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
-Thereby, a nonlinear model has to be designed to complete the simulation. 
-
-\subsection{NonLinear differential script}
+\chapter{Nonlinear differential script}
 \label{NLDS}
 The nonlinear differential script contains all the information about the system and how it is constructed. The model needs 8 different inputs(u): 
 the opening degree of the 4 PMA valves and the differential pressure across the main and PMA pumps. This inputs are obtained from the lab and are 
@@ -116,32 +109,6 @@ $H_r^{\dagger}$ being the pseude-inverse of matrix ${H_r}^{T}$.
 The outputs are set as node 2, node 4, node 5, node 7, node 10, node 11, node 15 and node 16 (see \appref{systemdiagram} for the notation). Which will be the ones that Matlab will try to fit 
 to the data obtained from the setup. 
 
-\subsection{NonLinear grey box model}
-The objective of using this toolbox is to obtain an estimation of the value of $C_p$ given an initial guess. For this parameters a constraint to be 
-positive is set. 
-
-The estimator compares the output. 
-
-Several test have been done, with different inputs and outputs from the lab.
-
-
-\begin{figure}[H]
-\centering
-\resizebox{0.75\linewidth}{!}{\input{report/tikz/InputPlot.tex}}
-%\input{report/tikz/full_sys_diagram.tex} 
-\caption{Inputs to the parameter identification}
-\label{systemdiagram}
-\end{figure} 
-
-\begin{figure}[H]
-\centering
-\resizebox{0.75\linewidth}{!}{\input{report/tikz/OutputPlot.tex}}
-%\input{report/tikz/full_sys_diagram.tex} 
-\caption{Output pressure measurements}
-\label{systemdiagram}
-\end{figure} 
-
-Together with the inputs from the lab and the nonlinear differential model the parameter estimation is done. 
 
 %DO a NICE PLOT OF THIS!
 %\includepdf[pages=-]{report/pictures/ComparePlot.pdf} 

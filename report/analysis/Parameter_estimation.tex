@@ -3,11 +3,11 @@
 
 The behavior of the complete water distribution system is governed by the previously derived model, however certain parameters of the system are either unknown or can vary significantly from the assumed design values. Furthermore, the obtained model of the system gives non-linear relations between flows and pressures in each individual components. 
 \\
-In case of the valves, the conductivity function is dependant on the OD, therefore the parameter of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the data sheet provided by the manufacturer, these values are only acceptable for new pipes, as over time material can build up on the inside of the pipes, since the laboratory set up to a large extent is built from PEX/PEM (plastic) pipes. On the other hand however, the physical parameters of the pipe volumes are assumed to be known to an accuracy where there is not any benefits from estimating it. Therefore the inertia matrix is known.  
+In case of the valves, the conductivity function is dependent on the OD, therefore the parameter of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of pipes are uncertain. Even though the necessary friction parameters can be found in the data sheet provided by the manufacturer, these values are only acceptable for new pipes, as over time material can build up on the inside of the pipes, since the laboratory setup to a large extent is built from PEX/PEM (plastic) pipes. On the other hand, the physical parameters of the pipe volumes are assumed to be known to an accuracy where there is not any benefits from estimating it. Therefore the inertia matrix is known.  
 \\
-Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions and form losses(which cause the major uncertainty in this case) in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to set up a simulation that represents the real test set up. 
+Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions and form losses in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to setup a simulation that represents the real test setup. 
 
-The parameter estimation is introduced for two different cases with different approaches. One being an estimation method with the model being kept non-linear, the other being a method where the model is  linearized before the estimation. 
+%The parameter estimation is introduced for two different cases with different approaches. One being an estimation method with the model being kept non-linear, the other being a method where the model is  linearized before the estimation. 
 
 The block diagram of a general parameter identification method is described in \figref{fig:parame_block} below: 
 
@@ -18,30 +18,30 @@ The block diagram of a general parameter identification method is described in \
 \label{fig:parame_block}
 \end{figure}
 
-As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation. In general, the inputs are the same for both systems, however some modifications have to be introduced in the case of the linearized model. (This is explained in detail in the section covering the linear parameter identification method.)
-\\
-In order to obtain measurements from the real life test set up, the system has to be excited by various input signals. In general, the inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs and states are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
+As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation introducing the same input for both systems. 
+
+In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. The inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs and states are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
 
 \begin{equation}
  \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(.)$ contains all the functions for the elements which are dependant on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation however the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test set up. 
-\\
-In the system, output are defined as differential pressures according to the available sensors on the test set up. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
-\\
-It is important to point out that the estimation is applied for steady-state which is reasonable, since the unknown parameters are the resistances and form losses and the inertia and the capacitance only affect the dynamics, therefore have no influence on the steady-state. The inertia of the pipes, and the capacitance of the WT is considered as known parameters. 
+where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. 
 
-Taking the steady-state into account, the system equation for the parameter estimation can be rewritten as: 
+In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
+
+It is important to point out that the estimation is applied for steady-state which is reasonable, since the unknown parameters are the resistances and form losses and the inertia and the capacitance only affect the dynamics, therefore have no influence on the steady-state. The inertia of the pipes, and the capacitance of the WT are considered as known parameters. 
+
+Taking the steady-state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
 \begin{equation}
  0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel_steadystate}
 \end{equation}
 
-The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. (The number of parameters are equal to the number of pipe elements in the network.) The general parameter estimation problem is the problem of the minimization of the following objective function over the variable $\pmb{z}$: 
+The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. The general parameter estimation problem is the problem of the minimization of the following objective function over the variable $\pmb{z}$: 
 
 %\begin{equation}
 %
@@ -79,8 +79,124 @@ is the $i^{th}$ pressure in the output vector in the model .
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \end{minipage}
+\subsection{Measurements on the test setup}
+
+From the system setup $8$ different relative pressures can be measured as explained in the previous section. The measurements obtained from the pressure sensors 
+placed in these nodes are relative to the atmospheric pressure. In order to compare the measurements from the system setup and the data 
+obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point. Thus, the relation between the measured 
+outputs and the reference point can be set, resulting in:
+
+
+\text{\underline{Node 2}} 
+\vspace{4mm}
+\begin{equation}
+    y_1 = DpC2 
+\end{equation}
+
+\text{\underline{Node 7}}
+\vspace{4mm}
+\begin{equation}
+   y_2 = DpC16 
+ \end{equation}
+
+\text{\underline{Node 4}}
+\vspace{4mm}
+\begin {equation}
+    y_3 = DpC18 + DpC19 + DpC23 + DpC24 
+\end{equation}
+
+\text{\underline{Node 5}}
+\vspace{4mm}
+\begin {equation}
+    y_4 = DpC25 + DpC26 + DpC30 + DpC31 
+\end{equation}
+
+\text{\underline{Node 10}}
+\vspace{4mm}
+\begin {equation}
+    y_5 = DpC20 + DpC21
+\end{equation}
+
+\text{\underline{Node 11}}
+\vspace{4mm}
+\begin {equation}
+    y_6 = DpC24 
+\end{equation}
+
+\text{\underline{Node 15}}
+\vspace{4mm}
+\begin {equation}
+   y_7 = DpC28 + DpC27
+\end{equation}
+
+\text{\underline{Node 16}}
+\vspace{4mm}
+\begin {equation}
+   y_8 = DpC31 
+\end{equation}
 
  
+\subsection{Estimation method} 
+\label{MatlabScript}
+
+In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox is used \cite{MatlabGreyBox}. This toolbox 
+estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
+Thereby, a nonlinear model has to be designed to complete the simulation. 
+
+The comparison between the test setup measurements and the estimated data is done with Matlab function \textit{compare}. Together with the comparison 
+plot, the normalized root mean square (NRMSE) measure is also added which measures the goodness of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
+
+
+\begin{equation}
+  fit = 100 \bigg(1 - \frac{||y - \hat{y}||}{||y - mean(y)||}\bigg)
+  \label{fitequation}
+\end{equation} 
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $y$ \\
+\hspace*{8mm} $\hat{y}$ \\
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the validation data, \\
+is the output of the model\\
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{Bar}$
+\textcolor{White}{te}$\unit{Bar}$
+\end{minipage}
+
+\subsection{Estimation data}
+In order to estimate accurately the unknown parameters of the system, adequate inputs signals have to be applied to the model. In this way, the system 
+will to work on different scenarios regarding the different combination of inputs signals. 
+
+\figref{systemdiagram} shows the different combination between the OD of the PMA valves, and the steps applied to the main and PMA pumps. 
+
+\begin{figure}[H]
+\centering
+\resizebox{0.75\linewidth}{!}{\input{report/tikz/InputPlot.tex}}
+%\input{report/tikz/full_sys_diagram.tex} 
+\caption{Inputs to the parameter identification}
+\label{systemdiagram}
+\end{figure} 
+
+The estimation process, based on the applied input data, tries to fit the established output signal data to the simulation output. In the physical setup $8$ 
+different pressure relative sensors are available which are used as output signals. \figref{systemdiagram1} shows the pressure measurements in the different 
+nodes.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.75\linewidth}{!}{\input{report/tikz/OutputPlot.tex}}
+%\input{report/tikz/full_sys_diagram.tex} 
+\caption{Output pressure measurements}
+\label{systemdiagram1}
+\end{figure} 
+
+\subsection{Estimation Results}
+
+Together with the inputs from the lab and the nonlinear differential model the nonlinear parameter estimation is carried out. 
 
 
 

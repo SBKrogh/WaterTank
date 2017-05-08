@@ -64,6 +64,45 @@ is the output from the real-life system.
 
 During the linear parameter estimation, the same problem is solved as it is shown in \eqref{ObjectiveFunction}. In this case, however, the parameters are varied according to the comparison of the small-signal outputs.  
 
+\subsection{Model Parameters}
+\label{estimateParameters}
+In order to obtain a complete model of the physical setup, all the parameters describing the components have to be defined. In \secref{SubSecEstimation} a detailed
+description of the known parameters of the system has been done. Nevertheless, in the linearized state-space model more parameters have to be indentified
+due to the introduction of the operating points values. Hence, in the current chapter a detailed compilation of the unknown parameters of the physical water distribution setup is carried out.
+
+
+\subsection*{Unknown Parameters}
+The unknown parameters are the ones related with the form losses, $k_f$, and form friction ,$f$, of the pipes. Despite they are 
+provided by the manufactures they need to be estimated. On the one hand, the form losses depend on the fittings and bends of the pipes which they are not always known. 
+On the other hand, the friction losses dependent on the inside average roughness of pipes, $\epsilon$, which can change its value due to passage of time 
+and the rust generated inside pipes. 
+
+%The friction and form losses are part of the model of a pipe, and are given by the following equation
+%
+%\begin{equation}
+%  \lambda (q) =  \frac{8fL}{\pi^{2}gD^5} \rho g  |q| q + k_f \frac{8}{\pi^2gD^4} \rho g |q| q
+%  \label{frictionestimation}
+%\end{equation}
+
+%From the above equation it can be seen that either estimating only for $k_f$ or $f$ will have the same result in the value of $\lambda (q)$.
+%Therefore, it has been decided to carry out the estimation of the total value of $\lambda (q)$, hence discarding the respective values of $k_f$ and $f$.
+
+Furthermore, the operating points of the flow through the chords, $\pmb{\bar{z}}$, is also unknown. These values, which correspond to the $8$ flow chords, are introduced in the linearized expression of both pipes 
+and valves, see \eqref{lambda_lin} and \eqref{mu_lin}. Thus, not only pipe parameters introduce uncertainties into the system model but also the lack of knowledge of the chord operating points.
+
+Consequently, it has been decided to estimate the total expression for the pressure across the pipes and valves in order to reduce the amount of unknowns in the system.
+
+The system has $15$ pipes in total,  from \eqref{lambda_lin} it can be seen that either tunning for $k_f$, $f$ or $\pmb{\bar{z}}$ it will have the same result for the total
+value of the pressure across the pipes, $\lambda(\pmb{{B_1^{T}}}\pmb{z})$. For this reason the pressure across the 15 pipes is estimated.
+
+Valve linearized expression, see \eqref{mu_lin}, consists on the term depending on the chord flows and the one depending on the $OD$. Both terms include the operating 
+point of the chord flows inside them, thus, the pressure difference given by both terms has to be estimated. In the system 4 valves take part, 
+resulting in 8 unknowns in total. 
+
+The WT connection edge, see \eqref{gamma_lin}, is conformed by two valves and one pump. Although the parameters corresponding to the pump are considered as known, the ones 
+corresponding to the valves have to be estimated. Resulting in two more unknowns for the system. 
+
+All in all, the system has $24$ unknown terms which will be calculated following the estimation process described in the next section.
 \subsection{Measurements on the test setup}
 \label{LinParamEst_measurements}
 
@@ -71,38 +110,35 @@ In order to verify the state-space model derived in \chapref{LinParamEst} with t
 is carried out.
 
 From the system setup $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, in the control problem of this project only the four PMA relative pressure 
-sensor across the end-users and the pressure in the WT will take part. Thus, the estimation will be only focus on obtaining the best fit for those 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, the estimation will be done only the four PMA relative pressure 
+sensor across the end-users and the pressure in the WT, since those are the outputs that will be controlled in \secref{SystemLin_control}. Thus, the estimation will be only focus on obtaining the best fit for those 
 sensor outputs relevant in the control part. 
 
-The measurements obtained from the pressure sensors placed in these nodes, are relative to the atmospheric pressure. In order to compare the measurements
-from the system setup and the data obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point.
-
-The relationship between pressures, where DpCXX describes the pressure difference for the XX component, can be defined as:
+The relationship between pressures, where DpCXX describes the pressure difference for the XX component, is obtained in the same way as \secref{SubSecEstimation} and can be defined as:
 
 \text{\underline{Node 10}}
 \vspace{4mm}
 \begin {equation}
-     y_5 = DpC20 + DpC21  
+     y_1 = DpC20 + DpC21  
 \end{equation}
 
 \text{\underline{Node 11}}
 \vspace{4mm}
 \begin {equation}
-     y_6 = DpC24
+     y_2 = DpC24
 \end{equation}
 
 
 \text{\underline{Node 15}}
 \vspace{4mm}
 \begin {equation}
-     y_7 = DpC28 + DpC20 
+     y_3 = DpC28 + DpC20 
 \end{equation}
 
 \text{\underline{Node 15}}
 \vspace{4mm}
 \begin {equation}
-     y_8 = DpC31 
+     y_4 = DpC31 
 \end{equation}
 
 There is no need to define a relation with a referent point for the WT node, since the pressure across the WT is the state of the state-space model. 
@@ -141,30 +177,7 @@ scope of this project.
 
 \subsection{Estimation Result}
 
-The comparison between the test setup measurements and the estimated data is done with Matlab function \textit{compare}. Together with the comparison 
-plot, the normalized root mean square (NRMSE) measure is also added which measures the goodness of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
-
-
-\begin{equation}
-  fit = 100 \bigg(1 - \frac{||y - \hat{y}||}{||y - mean(y)||}\bigg)
-  \label{fitequation}
-\end{equation} 
-
-\begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{8mm} $y$ \\
-\hspace*{8mm} $\hat{y}$ \\
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-is the validation data, \\
-is the output of the model\\
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-\vspace*{2mm}
-\textcolor{White}{te}$\unit{Bar}$
-\textcolor{White}{te}$\unit{Bar}$
-\end{minipage} 
+ 
 
 The following figures show the comparison between the data obtained from the lab and the estimated outputs of the model.  
 
