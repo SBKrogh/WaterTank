@@ -10,8 +10,6 @@ The water distribution system described in \secref{system_overview} is to be con
 %
 	\item Energy costs 
 %
-	\item Pressure losses in the water distribution network
-%
 	\item Performance constraints on the pumps
 \end{itemize}
 %\vspace{-1mm}
@@ -54,18 +52,21 @@ In order to define an objective function for the MPC problem, the cost of runnin
 Where\\
 \hspace*{8mm} $\pmb{u}$ \\
 \hspace*{8mm} $\pmb{q_p}$ \\
+ \hspace*{8mm} $\eta_i$ \\
 \hspace*{8mm} $c[k]$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the differential pressure input to the main pumps,\\
 is the flow through the main pumps,\\
+is the efficiency of the $i^{th}$ main pump,\\
 is the electricity price cost sequence.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{m^3/h}$
+ \textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{DKK/MW}$
 \end{minipage}
 
@@ -89,7 +90,6 @@ s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{
  Where\\
  \hspace*{8mm} $Hp$ \\
  \hspace*{8mm} $N$ \\
- \hspace*{8mm} $\eta_i$ \\
  \hspace*{8mm} $\pmb{y}$ \\
  \hspace*{8mm} $\Delta p_{WT}$ 
  \end{minipage}
@@ -97,7 +97,6 @@ s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{
  \vspace*{2mm}
  is the control horizon, \\
  is the number of main pumps,\\
- is the efficiency of the $i^{th}$ main pump,\\
  is the output vector with the PMA pressures,\\
  is the state which is the pressure in the WT.
  \end{minipage}
@@ -105,14 +104,13 @@ s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{
  \vspace*{2mm}
  \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
- \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{bar}$\\
  \textcolor{White}{te}$\unit{bar}$
  \end{minipage}
-
-The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c[k]$, is described in \appref{sec:cost_fkt}. From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
-
-
+ 
+As it is shown in \eqref{eqcost1} the optimization is about to obtain an input signal such as the cost of running the pumps is minimized. Therefore the objective function gives a price of all the consumed power over the control horizon, which is a specific future time interval. The minimization is subject to the dynamics of the water distribution network, and the constraints. As can be seen, there is a constraint on the output of the system, which is considered as the pressure demand for the end-users. There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps. 
+\\
+The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 In the following sections the design of the described control system is explained. 
 
