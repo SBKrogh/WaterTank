@@ -1,24 +1,31 @@
 \section{State space model for control}
  \label{SystemLin_control}
  
- For a better clearance the steady-state, state space representation for the parameter estimation for small-signal values is repeated here:
+For the sake of clarity the steady-state, state-space representation for the parameter estimation for small-signal values is restated here:
  
  \begin{equation}
  0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_param_sys}
 \end{equation}
 
-and the equation for the outputs:
+The equation for the outputs:
 
 \begin{equation}
   \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
    \label{statespace_param_out}
 \end{equation}
 
-Although \eqref{statespace_param_sys} and \eqref{statespace_param_out} include all the liniarized terms that are necessary to describe the system, for the control it is more convenient to restructure it. While the input vector for the parameter estimation consists of all the four differential pressures for the pumps along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+And the dynamic model of the WT pressure:
 
 \begin{equation}
-\pmb{u} =
+\Delta \dot{p}_{WT} = \frac{1}{C_H} q_0
+ \label{WT_eq_repeat}
+\end{equation}
+
+Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it is being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+
+\begin{equation}
+\pmb{\hat{u}} =
 \begin{bmatrix} 
 dP_{e01} \\
 dP_{e08} 
@@ -26,10 +33,12 @@ dP_{e08}
 \end{bmatrix} 
 \end{equation}
 
-The mapping yields:
+This distinction between the parameter estimation and the control is being made because of the different purposes. In case of the parameter estimation the inputs are set to excite the system in order to make different pressure scenarios in the network. Therefore the valve opening degrees and all pumps are controlled manually to create appropriate output measurements. These measurements are then used to achieve a fit with the output of the simulation by changing its parameters. However in the control this is not desired. Here the inputs are chosen for the control and therefore neither the valve opening degrees, nor the pump signals are varied manually. 
+
+The mapping for the two main pump pressures yields:
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;1}} \pmb{u}
+\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;1}} \pmb{\hat{u}}
 \label{mapping_main}
 \end{equation}
 
@@ -55,7 +64,7 @@ The input matrix for the control system can be written in the form:
 
 Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
 \\
-However, the end-user valves and the two pumps in the PMAs are considered as measurable disturbances in the control system. Therefore the disturbance enters the model in such a way that it is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(6 \times 1)}$ as follows: 
+However, the end-user valves are considered as measurable disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(4 \times 1)}$ as follows: 
 
 \begin{equation}
 \pmb{d} =
@@ -63,35 +72,33 @@ However, the end-user valves and the two pumps in the PMAs are considered as mea
 OD_{e13} \\
 OD_{e15} \\
 OD_{e20} \\
-OD_{e22} \\
-dP_{e09} \\
-dP_{e16} 
+OD_{e22} 
 \label{disturbancevector_control}
 \end{bmatrix} 
 \end{equation}
 
-Therefore between $\alpha(dP)$, the vectorfield describing the pump pressure, and the disturbance vector the mapping results in the following:
+%Therefore between $\alpha(dP)$, the vectorfield describing the pump pressure, and the disturbance vector the mapping results in the following:
+%
+%\begin{equation}
+%\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;2}} \pmb{d}
+%\label{mapping_PMA}
+%\end{equation}
+%
+%\todo{minipage fix}
+%
+%\begin{minipage}[t]{0.30\textwidth}
+%Where\\
+%\hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+%\end{minipage}
+%\begin{minipage}[t]{0.68\textwidth}
+%\vspace*{2mm}
+%the dimension $d$ is the number of disturbances and $e$ is the number of edges without the WT. 
+%\end{minipage} 
+
+The disturbance matrix for the state space model consists of the linearized terms of the end-user valves. The matrix can be formulated as follows: 
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;2}} \pmb{d}
-\label{mapping_PMA}
-\end{equation}
-
-\todo{minipage fix}
-
-\begin{minipage}[t]{0.30\textwidth}
-Where\\
-\hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-the dimension $d$ is the number of disturbances and $e$ is the number of edges without the WT. 
-\end{minipage} 
-
-The disturbance matrix for the state space model consists of the pressure inputs of the two PMA pumps and the linearized terms of the end-user valves. The matrix can be formulated as follows: 
-
-\begin{equation}
-  \pmb{Q_c} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_{c;2}}  
+  \pmb{Q_c} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})}  
 \label{disturbance_matrix}
 \end{equation}
 
@@ -222,12 +229,12 @@ and the output equation:
 Where\\
 \hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
 \hspace*{8mm} $\pmb{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 6)}$ \\
+\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 4)}$ \\
 \hspace*{8mm} $\pmb{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
 \newline
 \hspace*{8mm} $\pmb{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
 \newline
-\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(4 \times 6)}$ 
+\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(4 \times 4)}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
