@@ -4,10 +4,10 @@
 \todo{All matrices should be bold font}
 \todo{We have to be consequent with the indexes - i or k?}
 
-Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consisting of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop across the two endpoints and the flow through the element \cite{Kallesoe2009}.  \eqref{ComponentState} shows the dual variables which describes one component. 
+Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consisting of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop across the two endpoints and the flow through the element \cite{Kallesoe2009}.  \eqref{onecomponent} shows the dual variables which describes one component. 
 
 \begin{equation}
-\label{ComponentState}
+\label{onecomponent}
  \begin{bmatrix}
     \Delta P \\
     q
@@ -60,7 +60,7 @@ is the set of forces acting on the water.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{\frac{kgm}{s}}$\\
+\textcolor{White}{te}$\unit{\frac{kgm}{s^2}}$\\
 \textcolor{White}{te}$\unit{N}$
 \end{minipage}
 
@@ -122,9 +122,8 @@ is the diameter of the pipe.
 \end{minipage}
 
 Water flow, $q$, can be expressed in terms of velocity, $v$, and cross sectional 
-area, $A$, resulting in:
+area, $A$, resulting in:\\
 %Continuity law in fluid mechanics is applied to analyze the flow in the pipe\cite{Hunt_Fluidmechanics}. A steady and uniform mass flow is assumed in the pipe. Hence, the water flow can be described as: 
-
 \begin{equation}
   q=A \cdot v
 	\label{EquationOfContinuity}
@@ -146,6 +145,7 @@ In order to obtain an equation consisting of only pressure variables, the relati
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
+\hspace*{8mm} $m_w$ \\
 \hspace*{8mm} $A$ \\
 \hspace*{8mm} $L$ \\
 \hspace*{8mm} $\rho$\\
@@ -153,6 +153,7 @@ and \hspace*{0.7mm} $p$
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
+is the mass of the water,\\
 is the cross sectional area of a pipe,\\
 is the length of a pipe,\\
 is the density of water,\\
@@ -160,6 +161,7 @@ is the pressure at a point.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
+\textcolor{White}{te}$\unit{kg}$\\
 \textcolor{White}{te}$\unit{m^2}$\\
 \textcolor{White}{te}$\unit{m}$\\
 \textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
@@ -286,11 +288,10 @@ the pipes are considered \cite{Urban_Design}.
 % \end{itemize}
 
 \begin{itemize}
-  \item $0.5 \leq v \leq 1.5  \quad \frac{m}{s}$
-  \item $50 \leq D \leq 1500\quad mm$
-  \item $10 \leq T \leq 20 \quad ^{\circ} C$
+  \item $ v \in [0.5,1.5] \quad \frac{m}{s}$
+  \item $ D \in [50,1500]\quad mm$
+  \item $T \in [10,20] \quad ^{\circ} C$
 \end{itemize}
-\todo{this is not how we have writen intervals other places ex. v < [0.5,1.5]}
 
 These values result in a Reynold's number between 19000 and 225000, which yields to consider a turbulent fluid flow through the pipes. For turbulent flow the 
 Moody friction factor is given by \cite{Design_Water}: 
