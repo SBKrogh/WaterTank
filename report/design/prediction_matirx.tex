@@ -1,23 +1,44 @@
 \section{Reformulation of the objective function}
 \label{ObjFunc_reform}
 
-The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make it solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. In 
+The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make it solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. In \eqref{statespace_control_sys_state}, the independent states of the system are expressed. Using this equation and plugging this in the objective function appropriately, the flows only through the pumps can be obtained. Recalling that all the flows can be obtained from the independent flow variables, the flow through the pumps can be given with a linear mapping such as: 
 
-We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
-The discrete system dynamics is stated in \eqref{extended_system_matrices}.
+\begin{equation}
+\pmb{q_p}  = \pmb{G_{c;2}} \pmb{B_1^T}  \pmb{\hat{z}}
+\label{mapping_mainP}
+\end{equation}
+
+\todo{Minipage fix}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(2 \times e)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is a matrix representing a linear mapping between the flow through the two main pumps and the independent flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is two because of the two main pump flows. 
+\end{minipage} 
+
+-plugging back the flows mapped into the pump flows into the objective function
+-explain that it depends on the present values of d, WT pressure which is indirectly the level in the WT and the input. 
+-plug in the dynamics of the model in the objective function but first calculate 
+
+Before plugging in however the dynamics of the system, the iteration of the state equation gives for $k=0$:
+
+%We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
+%The discrete system dynamics is stated in \eqref{extended_system_matrices}.
 
 \begin{equation}
 	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]
 \end{equation}
 
-Now $\Delta \hat p_{wt}[2]$ is calculated in the same say, but $\hat p_{wt}[1]$ is substituted in. 
+Now $\Delta \hat p_{wt}[2]$ is calculated in the same say, but with $\hat p_{wt}[1]$ substituted: 
 
 \begin{equation}
 	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]\big] + B_d \hat u[1] + E_d \hat d[1]\\ 
 \end{equation}
 
-This is done for all $\Delta \hat p_{wt}[k]$ until $\Delta \hat p_{wt}[H_p]$. 
-
+As can be seen, moving further in time steps, the future values only depend on the past values of the input and the disturbance. It should be also noted that only the initial state measurements are necessary to define the next value of the state. Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic equation system yields:
 
 \begin{align}
 	\begin{vmatrix}
@@ -61,8 +82,11 @@ A_d^{H_p}\\
 \end{vmatrix} 
 \end{align}
 
-This is written in short as: 
+Which in a matrix equation can be written as: 
 
 \begin{equation}
-	\bm{\Delta \hat p_{wt}} = \bm{\Phi} \Delta \hat p_{wt}[0] + \bm{\Gamma U} + \bm{\Psi d}
+	\bm{\Delta \hat p_{wt}} [k+1] = \bm{\Phi} \Delta \hat p_{wt}[0] + \bm{\Gamma \hat{u}}[k] + \bm{\Psi} \bm{\hat{d}}[k]
 \end{equation}
+
+-Now the dynamics can be plugged in
+-State the final objective function, what are the values, how they are defined. 
