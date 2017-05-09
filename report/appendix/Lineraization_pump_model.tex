@@ -1,7 +1,7 @@
 \chapter{Pump linearization and PI controller}
 \label{cha:linear_pump}
 
-The control structure chosen in \chapref{control_problem} and shown in \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
+The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
 
 The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}.
 
@@ -12,7 +12,7 @@ The control focus of this project has been on the model predictive control, see 
 \label{fig:simple_PI}
 \end{figure}
 
-The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. The general model for the pumps is given from \eqref{eq:PumpModel} as 
+The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. The model for the pumps is explained in \secref{PumpModel} and defined as
 
 \begin{equation*}
 \Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
@@ -97,8 +97,8 @@ By inserting the values for the linearized model in \eqref{eq:lin_pump_simon}, t
 	\end{split}
 \end{equation}
 
-
-By using the Matlab design tool box for dynamical systems and having the settling time of 4 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
+As it can be seen in \todo{add secref} is the dynamic of the system slow. Therefore will a controller that can react within 3-5 seconds be fast enough.
+By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
 Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
 
 \begin{equation}
@@ -106,7 +106,7 @@ Due to high similarities between these controllers only one step response in sho
 	\begin{split}
 	K_{C18} &= 8 \hspace{20pt} K_{C25} &= 3 \hspace{20pt} K_{C2} &= 2 \hspace{20pt} K_{C16} &= 2
 	\end{split}
-	\label{eq:NEW_PI_GAINS}
+	\label{eq:PI_GAINS}
 \end{equation}
 
 \begin{figure}[H]
