@@ -108,8 +108,11 @@ Where\\
 As shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by the $i^{th}$ column of the cycle matrix and the vector of chord flows, $z$. 
 \\
 
-\todo{Simon you are here!}
-Before writing up an expression that describes all parts, the component model in \eqref{CompleteModel} needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main and two PMA pumps, which provide pressure according to the input signals given to them. However there is one case between ($n_3$-$n_{18}$), where the model of the pump is plugged into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
+
+Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is on case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for that series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
+\todo{Half of this part has been rewritten due to confusion but can be found as outcommend - please read both and decide which is better}
+
+% However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
 
 \begin{equation}
 \label{CompleteModel_extended}
@@ -132,8 +135,7 @@ Where\\
 \tilde{f}_i &= \Delta p_{WT}  \hskip 2cm  \text{for}\:i = 25
 \end{align}
 
-The following hydraulic network model shows an overall model along with the above-mentioned considerations. 
-Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
+The following hydraulic network model shows an overall model along with the above-mentioned considerations.%The inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
   \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
@@ -141,7 +143,7 @@ Now recall that the inertia matrix, J, was defined in \secref{CompletePipe}.
 \end{equation}
 
 In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
-flow through all the nodes. In order to reduce the order of the model and hence, 
+flow through all the nodes and derived from the inertia model in \secref{CompletePipe}. In order to reduce the order of the model and hence, 
 the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
 
 \begin{equation}
@@ -165,7 +167,7 @@ Isolating the inertia matrix to the left side
 It is desired to know the value of the flow through the chords, hence the equation above is solved 
 for $\pmb{\dot{z}}$. In order to invert $(\pmb{B_1 J} \pmb{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
 
-Setting $\pmb{\mathcal{J}} = \pmb{B_1 J} \pmb{{B_1}}^T $, for $\pmb{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
+Setting $\pmb{\mathcal{J}} = \pmb{B_1 J} \pmb{{B_1}}^T $, then for the term $\pmb{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
 determinant has to be non-zero. Note that $\pmb{\mathcal{J}}$ is
 
 \begin{equation}
@@ -189,15 +191,15 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the inertia in the chord components\\
-\hspace*{4mm} is the inertia in the components of the spanning tree 
+\hspace*{4mm} is the inertia in the chord components,\\
+\hspace*{4mm} is the inertia in the components of the spanning tree.
 \end{minipage}
 
 $\pmb{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
 diagonal terms are positive. Thus, $\pmb{J_c} > 0$. 
 
-Nevertheless, if there is at least a chord corresponding to a non-pipe element, \eqref{Jequation} 
-would be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
+Nevertheless, if there is a chord corresponding to a non-pipe element, \eqref{Jequation} 
+would still be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
 
 For the remaining term $\pmb{B_f J_f {B_f}}^T$, $\pmb{J_f}$ is a non-negative matrix as all its elements are zero or describe the inertia of a pipe. 
 Multiplying $\pmb{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
@@ -227,15 +229,15 @@ Therefore, the system can be described as follows
 \subsection{Pressure drop across the nodes}
 \label{ModelRelationSection}
 
-For ease of reading, the complete component model in \eqref{NoTowerModel} is restated: 
+% For ease of reading, the complete component model in \eqref{NoTowerModel} is restated: 
 
-\begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
-  \label{RecallModel}
-\end{equation}
+% \begin{equation*}
+%   \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
+%   \label{RecallModel}
+% \end{equation*}
 
-This equation describes the system by the pressure of across each elements except the part including the water tower. The dynamics are determined by the inertia of the pipes, while the pressure relations are described by f vectorfield. 
-The same equation can be however expressed with a reduced set of equation system with the help of chord flows: 
+\eqref{NoTowerModel} describes the system by the pressure across each elements except the part including the water tower. The dynamics are determined by the inertia of the pipes while the pressure relations are described by f vectorfield. 
+The same equation can be expressed with a reduced set of equation system with the help of the chord flows: 
 
 \begin{equation}
   \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
@@ -255,6 +257,6 @@ Writing in short form:
   \label{PressureShort}
  \end{equation}
 
-a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted however, that the same structure applies for the complete network which is extended with the WT. In the following sections this general model is used in a slightly different form that is suitable for the different estimation methods. 
+a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted that the same structure applies for the complete network, which is extended with the WT. In the following sections this general model is used in a slightly different form, which is suitable for the different estimation methods. 
 
 
