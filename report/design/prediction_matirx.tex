@@ -23,63 +23,63 @@ is a matrix representing a linear mapping between the flow through the two main 
 -explain that it depends on the present values of d, WT pressure which is indirectly the level in the WT and the input. 
 -plug in the dynamics of the model in the objective function but first calculate 
 
-Before plugging in however the dynamics of the system, the iteration of the state equation gives for $k=0$:
+Before plugging in however the dynamics of the system, it has to be stated that an initial measurement of the states is carried out. In other words it means that the initial value at $k = 0$ is know, therefore $\hat p_{wt}[0]$is known. For $k=1$, the iteration of the state gives:
 
 %We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
 %The discrete system dynamics is stated in \eqref{extended_system_matrices}.
 
 \begin{equation}
-	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]
+	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + \bm{B_d} \bm{\hat{u}}[0] + \bm{E_d} \bm{\hat{d}}[0]
 \end{equation}
 
 Now $\Delta \hat p_{wt}[2]$ is calculated in the same say, but with $\hat p_{wt}[1]$ substituted: 
 
 \begin{equation}
-	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + B_d \hat u[0] + E_d \hat d[0]\big] + B_d \hat u[1] + E_d \hat d[1]\\ 
+	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + \bm{B_d}  \bm{\hat{u}}[0] + \bm{E_d}  \bm{\hat{d}}[0]\big] + \bm{B_d} u\bm{\hat{u}}[1] + \bm{E_d} \bm{\hat{d}}[1]\\ 
 \end{equation}
 
-As can be seen, moving further in time steps, the future values only depend on the past values of the input and the disturbance. It should be also noted that only the initial state measurements are necessary to define the next value of the state. Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic equation system yields:
+As can be seen, moving further in time steps, the predicted states only depend on the past values of the input and the disturbance, furthermore on the initial state measurement.  Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic equation system yields:
 
 \begin{align}
-	\begin{vmatrix}
+	\begin{bmatrix}
 \Delta \hat p_{wt}[1] \\ 
 \Delta \hat p_{wt}[2]\\ 
 \vdots \\ 
 \Delta \hat p_{wt}[H_p]\\ 
-\end{vmatrix}
+\end{bmatrix}
 =
-\begin{vmatrix}
+\begin{bmatrix}
 A_d \\ 
 A_d^2\\ 
 \vdots \\ 
 A_d^{H_p}\\ 
-\end{vmatrix}
-\Delta p_{wt}[0]+\nonumber
-&\begin{vmatrix}
- B_d& 0 & \hdots  & 0\\ 
- A_dB_d&  B_d& \hdots & 0\\ 
+\end{bmatrix}
+\Delta \hat{p}_{wt}[0]+\nonumber
+&\begin{bmatrix}
+ \bm{B_d}& 0 & \hdots  & 0\\ 
+ A_d\bm{B_d}&  \bm{B_d}& \hdots & 0\\ 
 \vdots &\vdots  & \ddots  & 0\\ 
- A_d^{H_p}B_d& A_d^{H_p-1}B_d  &  & B_d
-\end{vmatrix}
-\begin{vmatrix}
-\hat u[0] \\ 
-\hat u[1]\\ 
+ A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}  &  & \bm{B_d}
+\end{bmatrix}
+\begin{bmatrix}
+ \bm{\hat{u}}[0] \\ 
+ \bm{\hat{u}}[1]\\ 
 \vdots \\ 
-\hat u[H_p-1]\\ 
-\end{vmatrix}
+ \bm{\hat{u}}[H_p-1]\\ 
+\end{bmatrix}
 + \\
-&\begin{vmatrix}
- E_d& 0 & \hdots  & 0\\ 
- A_dE_d&  E_d& \hdots & 0\\ 
+&\begin{bmatrix}
+ \bm{E_d}& 0 & \hdots  & 0\\ 
+ A_d\bm{E_d}&  \bm{E_d}& \hdots & 0\\ 
 \vdots &\vdots  & \ddots  & 0\\ 
- A_d^{H_p}E_d& A_d^{H_p-1}E_d  &  & E_d
-\end{vmatrix}
-\begin{vmatrix}
-\hat d[0] \\ 
-\hat d[1]\\ 
+ A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  &  & \bm{E_d}
+\end{bmatrix}
+\begin{bmatrix}
+ \bm{\hat{d}}[0] \\ 
+ \bm{\hat{d}}[1]\\ 
 \vdots \\ 
-\hat d[H_p-1]\\ 
-\end{vmatrix} 
+ \bm{\hat{d}}[H_p-1]\\ 
+\end{bmatrix} 
 \end{align}
 
 Which in a matrix equation can be written as: 
@@ -87,6 +87,23 @@ Which in a matrix equation can be written as:
 \begin{equation}
 	\bm{\Delta \hat p_{wt}} [k+1] = \bm{\Phi} \Delta \hat p_{wt}[0] + \bm{\Gamma \hat{u}}[k] + \bm{\Psi} \bm{\hat{d}}[k]
 \end{equation}
+
+\todo{minipage fix}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bm{\Phi} \in \mathbb{R}^{(H_p \times 1)}$ \\
+\hspace*{8mm} $\bm{\Gamma} \in \pmb{\mathbb{R}}^{(H_p \times H_p)}$ \\
+\hspace*{8mm} $\bm{\Psi} \in \pmb{\mathbb{R}}^{(H_p \times H_p)}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the state matrix, taking $A_d$ into account at each time step \\
+is the input matrix, taking $A_d$ and $\bm{B_d}$ matrix into account at each time step, \\
+is the disturbance matrix taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
+\end{minipage}
+
+It is shown therefore that these matrices, described above, may be calculated prior to solving the MPC optimization. 
 
 -Now the dynamics can be plugged in
 -State the final objective function, what are the values, how they are defined. 
