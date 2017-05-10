@@ -43,7 +43,7 @@ As it is shown, the PI controllers are responsible for setting the control input
 In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
 
 \begin{align}
- \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &= \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
+ \Upsilon(\bm{u}[k],\bm{q_p}[k],c[k]) &= \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
 \end{align}
 
 %Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
@@ -53,8 +53,8 @@ In order to define an objective function for the MPC problem, the cost of runnin
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
  \hspace*{8mm} $Hp$ \\
-\hspace*{8mm} $\pmb{u}$ \\
-\hspace*{8mm} $\pmb{q_p}$ \\
+\hspace*{8mm} $\bm{u}$ \\
+\hspace*{8mm} $\bm{q_p}$ \\
  \hspace*{8mm} $\eta_i$ \\
 \hspace*{8mm} $c_p[k]$ 
 \end{minipage}
@@ -82,7 +82,7 @@ The efficiency of the two main pumps is assumed to be the same for the reason th
 The control problem can be formulated as a minimization problem of the form:
 %\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
-\underset{\pmb{u}}{min} \:  \Upsilon(\cdot) &= \underset{\pmb{u}}{min} \: \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
+\underset{\bm{u}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
 \newline
 s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \pmb{B_d} \pmb{\hat{u}}[k+i|k] + \pmb{E_d} \pmb{\hat{d}}[k+i|k]  \\
@@ -116,7 +116,7 @@ As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that
 \\
 The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
-In the following sections the design of the described control system is explained. 
+In the following sections the design of the control system is explained. 
 
 
 %The purpose is to let the WT do the work when the price of running the pumps are high.
