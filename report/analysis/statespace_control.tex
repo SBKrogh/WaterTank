@@ -213,7 +213,7 @@ The continuous state space representation thus given by \eqref{statespace_contro
 \subsection{Discretization of state space model}
  \label{discrete_SS}
  
-The dynamics of the water distribution system are now described. To use this linear continuous model to be subjected to MPC, the model needs to be discretized by assuming zero-order-hold(ZOH) of the variables at specified sampling points. This means that the variables are constant between these points. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{WT}[k]$, $\pmb{\hat{u}}[k]$ and $\pmb{\hat{d}}[k]$. The detailed method is presented in \appref{cha:discret_SS}, however the final discretized state-space model is stated here with respect to the sampling time $T_s$: 
+The dynamics of the water distribution system are now described. To use this linear continuous model to be subjected to MPC, the model needs to be discretized by assuming zero-order-hold(ZOH) of the variables at specified sampling points. This means that the variables are constant between these points. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{WT}[k]$, $\pmb{\hat{u}}[k]$ and $\pmb{\hat{d}}[k]$. The method is chosen as forward Euler-method and the detailed presentation can be found in \appref{cha:discret_SS}. The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
 
  \begin{equation}
 \Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{B_d} \pmb{\hat{u}}[k] + \pmb{E_d} \pmb{\hat{d}}[k] 

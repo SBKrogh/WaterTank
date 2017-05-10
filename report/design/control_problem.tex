@@ -43,7 +43,7 @@ As it is shown, the PI controllers are responsible for setting the control input
 In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
 
 \begin{align}
- \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &=  \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot  q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost} 
+ \Upsilon(\pmb{u}[k],\pmb{q_p}[k],c[k]) &= \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
 \end{align}
 
 %Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
@@ -53,24 +53,21 @@ In order to define an objective function for the MPC problem, the cost of runnin
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
  \hspace*{8mm} $Hp$ \\
- \hspace*{8mm} $N$ \\
 \hspace*{8mm} $\pmb{u}$ \\
 \hspace*{8mm} $\pmb{q_p}$ \\
  \hspace*{8mm} $\eta_i$ \\
-\hspace*{8mm} $c[k]$ 
+\hspace*{8mm} $c_p[k]$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
  is the control horizon, \\
- is the number of main pumps,\\
 is the differential pressure input to the main pumps,\\
 is the flow through the main pumps,\\
-is the efficiency of the $i^{th}$ main pump,\\
+is the efficiency of the main pumps,\\
 is the electricity price cost sequence.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
- \textcolor{White}{te}$\unit{\cdot}$\\
  \textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{m^3/h}$
@@ -78,7 +75,11 @@ is the electricity price cost sequence.
 \textcolor{White}{te}$\unit{DKK/MWh}$
 \end{minipage}
 
-And the control problem can be formulated as a minimization problem on the form:
+It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore only the deviation from the operating point would not result in the total amount of energy consumed up by the pumps. 
+\\
+The efficiency of the two main pumps is assumed to be the same for the reason that the pumps are of the same type. Furthermore it is considered as constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not change significantly. 
+\\
+The control problem can be formulated as a minimization problem of the form:
 %\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
 \underset{\pmb{u}}{min} \:  \Upsilon(\cdot) &= \underset{\pmb{u}}{min} \: \sum_{i=0}^{H_p-1} \sum_{j=1}^{N} \Big(\frac{1}{\eta_j} \cdot u_j[k+i|k] \cdot q_{p;j}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
