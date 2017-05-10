@@ -1,0 +1,87 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmin=0,
+xmax=60,
+xlabel style={font=\color{white!15!black}},
+xlabel={Minutes},
+ymin=-6,
+ymax=6,
+ylabel style={font=\color{white!15!black}},
+ylabel={Degrees},
+axis background/.style={fill=white},
+title style={font=\bfseries},
+title={Valve opening degree},
+xmajorgrids,
+ymajorgrids,
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=mycolor1]
+  table[row sep=crcr]{%
+0	-4.00248723053664e-11\\
+1.83416666666667	-4.00248723053664e-11\\
+1.83916666666666	-5.00000000004003\\
+3.83416666666667	-5.00000000004003\\
+3.83916666666666	4.99999999995997\\
+5.83416666666667	4.99999999995997\\
+5.83916666666667	-4.00248723053664e-11\\
+53.3325	-4.00248723053664e-11\\
+};
+\addlegendentry{C20}
+
+\addplot [color=mycolor2]
+  table[row sep=crcr]{%
+0	-4.4146020172775e-11\\
+7.83416666666667	-4.4146020172775e-11\\
+7.83916666666667	-5.00000000004415\\
+9.83416666666667	-5.00000000004415\\
+9.83916666666667	4.99999999995585\\
+11.8341666666667	4.99999999995585\\
+11.8391666666667	-4.4146020172775e-11\\
+53.3325	-4.4146020172775e-11\\
+};
+\addlegendentry{C24}
+
+\addplot [color=mycolor3]
+  table[row sep=crcr]{%
+0	-4.74145167572715e-11\\
+13.8341666666667	-4.74145167572715e-11\\
+13.8391666666667	-5.00000000004742\\
+15.8341666666667	-5.00000000004742\\
+15.8391666666667	4.99999999995258\\
+17.8341666666667	4.99999999995258\\
+17.8391666666667	-4.74145167572715e-11\\
+53.3325	-4.74145167572715e-11\\
+};
+\addlegendentry{C27}
+
+\addplot [color=mycolor4]
+  table[row sep=crcr]{%
+0	-4.05933064939745e-11\\
+19.8341666666667	-4.05933064939745e-11\\
+19.8391666666667	-5.00000000004059\\
+21.8341666666667	-5.00000000004059\\
+21.8391666666667	4.99999999995941\\
+23.8341666666667	4.99999999995941\\
+23.8391666666667	-4.05933064939745e-11\\
+53.3325	-4.05933064939745e-11\\
+};
+\addlegendentry{C31}
+
+\end{axis}
+\end{tikzpicture}%
