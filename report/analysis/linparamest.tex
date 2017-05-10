@@ -156,6 +156,28 @@ the same as in \secref{LinParamEst_measurements}, as well as the toolbox used fo
 
 \textbf{Estimation Data}
 
+As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the WT being approximately half way full which allows for an equal amount of deviation in both directions. For the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the PMA valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
+
+The operating point of the PMA valves is placed at $70\%$ opening corresponding to $63^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/est_OD_data.tex} 
+\caption{Small signal values of the opening degrees of the pma valves.}
+\label{fig:est_OD_data}
+\end{figure}
+
+To acheive a 50\% fill level of the WT in stady state combined with the chosen operating point of the valves, the operating point of the pumps has to be set at a differential pressure of $\Delta _p = 0.2$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data}. 
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/est_deltap_data.tex} 
+\caption{Small signal values of the differential pressure of the two main pumps.}
+\label{fig:est_deltap_data}
+\end{figure}
+
+
+
 \textbf{Estimation Result}
 
 The following figures show the comparison between the data obtained from the lab and the estimated outputs of the model.  
