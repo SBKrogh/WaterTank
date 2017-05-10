@@ -72,6 +72,7 @@ due to the introduction of the operating points values. Hence, in the current ch
 
 
 \subsection*{Unknown Parameters}
+\label{unparam}
 The unknown parameters are the ones related with the form losses, $k_f$, and form friction ,$f$, of the pipes. Despite they are 
 provided by the manufactures they need to be estimated. On the one hand, the form losses depend on the fittings and bends of the pipes which they are not always known. 
 On the other hand, the friction losses dependent on the inside average roughness of pipes, $\epsilon$, which can change its value due to passage of time 
@@ -144,6 +145,11 @@ The relationship between pressures, where DpCXX describes the pressure differenc
 There is no need to define a relation with a referent point for the WT node, since the pressure across the WT is the state of the state-space model. 
 
 \subsection{Linear Estimation Outcomes}
-In \appref{LinResults} the results of the estimation process are shown. These results are compared with the real data obtained from the setup.
-From the tests it can be seen that the model shows in the four outputs a slightly different behviour, especially at time $t = 350s$. Although in the 
-rest of the simulation the model fits 
+In \appref{LinResults} the results of the estimation process are shown, where the $24$ terms defining the pressure across the unknowns edges are estimated.
+From the tests it can be seen a slightly different behavior between the model and the data from the setup, especially at time $t = 350s$. This disimilar 
+behavior showing up at some time samples could make the model unsuitable for the real setup, thus making it not correct enough to be used in a model based control scheme. 
+
+In light of the above considerations, a different approach in the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the 
+unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not 
+succeed it has been decided to estimated the final values of the state-space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}. 
+Altogether this matrices sum up to 44 unknown parameters, which are the ones to be estimated.
