@@ -143,72 +143,7 @@ The relationship between pressures, where DpCXX describes the pressure differenc
 
 There is no need to define a relation with a referent point for the WT node, since the pressure across the WT is the state of the state-space model. 
 
-\subsection{Estimation Data}
-
-As the parameter estimation is based on a linearized model an operating point for the system is chosen. This point is based on the tank level being approximately half way full which allows for an equal amount of deviation in both directions. For the chosen operating point, data is gather from the system while small steps are individually applied to the two main pumps and the opening degree of the PMA valves. In order to use the data for parameter estimation the operating point is subtracted, leaving only small signal values.  
-
-The operating point of the PMA valves is chosen to $63^{\circ}$ and the small signal values for the estimation can be seen in \figref{fig:est_OD_data}.
-
-\begin{figure}[H]
-\centering
-\input{report/tikz/est_OD_data.tex} 
-\caption{Small signal values of the opening degrees of the pma valves. }
-\label{fig:est_OD_data}
-\end{figure}
-
-Furthermore the operating point for the pumps is chosen at a speed of $\omega = 0.4$, where the small signal values for the estimation are shown in \figref{fig:est_deltap_data}. 
-
-\begin{figure}[H]
-\centering
-\input{report/tikz/est_deltap_data.tex} 
-\caption{Small signal values of the angular velocity of the two main pumps.}
-\label{fig:est_deltap_data}
-\end{figure}
-
-\subsection{Estimation Method}
-
-The estimation of the unknown parameters is carried through Matlab Linear Grey-Box model estimation toolbox. This toolbox allows to estimate continuos-time 
-grey-box models for differential equations using multiple input/output time-domain data \cite{LinearEstimation}.
-The numerical search method used for the estimation of the unknown parameters is the \textit{Subspace Gauss-Newton least squares} search. 
-
-This method is automatically set by the parameter estimation process, thus any further understanding regarding the estimation method is considered out of 
-scope of this project. 
-
-
-\subsection{Estimation Result}
-
- 
-
-The following figures show the comparison between the data obtained from the lab and the estimated outputs of the model.  
-
-\begin{figure}[H]
-  \centering
-  \begin{minipage}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{report/pictures/Node10_estimation.pdf}
-    \caption{Estimation comparison for node 10.}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{report/pictures/Node11_estimation.pdf}
-    \caption{Estimation comparison for node 11.}
-  \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \begin{minipage}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{report/pictures/Node15_estimation.pdf}
-    \caption{Estimation comparison for node 15.}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{report/pictures/Node16_estimation.pdf}
-    \caption{Estimation comparison for node 16.}
-  \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
- \centering
-\includegraphics[scale=0.45]{report/pictures/WT_estimation.pdf}
-    \caption{Estimation comparison for WT.}
-\end{figure}
+\subsection{Linear Estimation Outcomes}
+In \appref{LinResults} the results of the estimation process are shown. These results are compared with the real data obtained from the setup.
+From the tests it can be seen that the model shows in the four outputs a slightly different behviour, especially at time $t = 350s$. Although in the 
+rest of the simulation the model fits 
