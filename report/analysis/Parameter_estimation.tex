@@ -171,13 +171,10 @@ is the output of the model\\
 \subsection{Nonlinear Estimation Outcomes} 
 \label{NonLiOutcome}
 The results of the nonlinear parameter estimation are shown in \appref{NonLinResults}. It is obvious that the estimation has been unsuccessful, seeing 
-that both models follow different behavior. This might be due to the incapability to excited the system enough so the pipe parameters can be estimated. Moreover, the dynamics of 
-the valves are slower in comparison with the pipe's ones, so in the output data the information of the pipes is hidden into the dynamics of the
-valves, preventing the estimation process from obtaining the correct values for the valves.
-
+that the model and the measured data follow different behaviors. This might be due to the incapability to excite the system sufficiently in order to estimated the pipe parameters correctly due to limited information in the measured data. Moreover, the dynamics of the valves are slower in comparison with dynamics of the pipes, resulting in the information of the pipes being hidden into the dynamics of the valves. Thus preventing the estimation process from obtaining the correct values for the resistance as only the valve dynamic are present in the output data.
 
 An alternative could be to only use the pumps as inputs without affecting
-the valves dynamics, however in order to obtain accurate values for the parameters different escenarios have to be simulated which include varying the water consumption 
-of the end-users. 
+the valves dynamics. However in order to obtain accurate values for the parameters, different scenarios have to be simulated which include varying the water consumption 
+of the end-users as the pumps cannot excite the system sufficiently on there own. 
 
-Therefore, after seeing that the nonlinear approach is not suitable to estimate the unknown parameters, the system will be linearized.
+Therefore, after seeing that the nonlinear approach is not suitable to estimate the unknown parameters for this test setup, the model will be linearized in order to preform a linear parameter estimation.
