@@ -25,7 +25,7 @@ The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are d
 \begin{equation}
 \pmb{\tilde y} =  
  \begin{bmatrix}
-  \tilde y(k+H_w|k)\\
+  \tilde y(k|k)\\
   \vdots  \\
   \tilde y(k+H_p|k)   
  \end{bmatrix}
@@ -36,29 +36,31 @@ The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are d
  \begin{bmatrix}
   \tilde u(k|k)\\
   \vdots  \\
-  \tilde u(k+H_u|k)   
+  \tilde u(k+H_p|k)   
  \end{bmatrix}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
  Where\\
- \hspace*{8mm} $\tilde y(k+H_w|k)$ \\
- \textcolor{White}{te} \\
- \hspace*{8mm} $H_w$ \\
+ \hspace*{8mm} $\tilde y(k|k)$ \\
+% \textcolor{White}{te} \\
+ %\hspace*{8mm} $H_w$ \\
  \hspace*{8mm} $H_p$ \\
- \hspace*{8mm} $\tilde u(k|k)$\\
- and \hspace*{0.7mm} $H_u$	
+ %\hspace*{8mm} $\tilde u(k|k)$\\
+ and \hspace*{0.7mm} $\tilde u(k|k)$	
  \end{minipage}
  \begin{minipage}[t]{0.68\textwidth}
  \vspace*{2mm}
- is the predicted output to time $k+H_w$ based on the current output, \\
- is the window horizon,\\
+ is the predicted output to time $k$ based on the current output, \\
+ %is the window horizon,\\
  is the prediction horizon,\\
- is the predicted optimal control signal to the current time k, \\
- is the control horizon.s
+ is the predicted optimal control signal to the current time k.
+ %is the control horizon.s
  \end{minipage}
 
-To calculate the constraint matrices $H_p, H_u \text{and} \: H_w$ need to be determined. In \secref{sec:cost_fkt} it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Furthermore water consumption can be seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefor both $H_p$ and $ H_u $ are chosen to 24. $H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
+To calculate the constraint matrices $H_p$ need to be determined. In \secref{sec:cost_fkt} it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Furthermore water consumption can be seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefor $H_p$ are chosen to 24. 
+
+%$H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
 
 %In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
 
