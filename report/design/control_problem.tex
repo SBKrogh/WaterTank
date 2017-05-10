@@ -4,7 +4,7 @@
 The water distribution system described in \secref{system_overview} is to be controlled with respect to the requirements and constraints stated in \secref{Requirements_and_constraints} and the dynamics of the system described in \secref{SystemLin_control}. For a better clearance, the requirements and constraints are listed again below: 
 %\vspace{-1mm}
 \begin{itemize}
-	\item Consumer pressure requirements, $0.08 < \pmb{y} < 0.14 \:[\text{bar}]$
+	\item Consumer pressure requirements, $0.08 < \bm{y} < 0.14 \:[\text{bar}]$
 %
 	\item Minimizing the total running costs
 %
@@ -85,20 +85,20 @@ The control problem can be formulated as a minimization problem of the form:
 \underset{\bm{u}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
 \newline
-s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \pmb{B_d} \pmb{\hat{u}}[k+i|k] + \pmb{E_d} \pmb{\hat{d}}[k+i|k]  \\
+s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
 %
-&\pmb{\hat{y}}[k+i|k] = \pmb{C_d} \Delta \hat{p}_{WT}[k+i|k] + \pmb{D_d} \pmb{\hat{u}}[k+i|k] + \pmb{K_d} \pmb{\hat{d}}[k+i|k] \\
+&\bm{\hat{y}}[k+i|k] = \bm{C_d} \Delta \hat{p}_{WT}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
 %
-& \underline{y} < \pmb{y} < \overline{y} \\
+& \underline{y} < \bm{y} < \overline{y} \\
 %
 & \underline{\Delta p_{WT}} < \Delta p_{WT} < \overline{\Delta p_{WT}} \\
 %
-& \pmb{u} < \overline{u} \label{eqconst2} 
+& \bm{u} < \overline{u} \label{eqconst2} 
 \end{align}
 
  \begin{minipage}[t]{0.24\textwidth}
  Where\\
- \hspace*{8mm} $\pmb{y}$ \\
+ \hspace*{8mm} $\bm{y}$ \\
  \hspace*{8mm} $\Delta p_{WT}$ 
  \end{minipage}
  \begin{minipage}[t]{0.63\textwidth}

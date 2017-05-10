@@ -1,10 +1,10 @@
 \section{Reformulation of the objective function}
 \label{ObjFunc_reform}
 
-The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make it solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. In \eqref{statespace_control_sys_state}, the independent states of the system are expressed. Using this equation and plugging this in the objective function appropriately, the flows only through the pumps can be obtained. Recalling that all the flows can be obtained from the independent flow variables, the flow through the pumps can be given with a linear mapping such as: 
+The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make it solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. In \eqref{statespace_control_sys_state}, the independent states of the system are expressed. Using this equation and plugging this in the objective function, the flows only through the pumps can be obtained. Recalling that all the flows can be obtained from the independent flow variables, the flow through the pumps can be given with a linear mapping such as: 
 
 \begin{equation}
-\pmb{q_p}  = \pmb{G_{c;2}} \pmb{B_1^T}  \pmb{\hat{z}}
+\bm{q_p}[k]  = \bm{G_{2}} \bm{B_{1}^T}  \bm{z}[k]
 \label{mapping_mainP}
 \end{equation}
 
@@ -12,18 +12,48 @@ The minimization problem formulated in \secref{control_problem} describes the op
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G_{c;2}} \in \pmb{\mathbb{R}}^{(2 \times e)} $ 
+\hspace*{8mm} $\bm{G_{2}} \in \bm{\mathbb{R}}^{(2 \times e)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping between the flow through the two main pumps and the independent flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is two because of the two main pump flows. 
+is a matrix representing a linear mapping between the flow through the two main pumps and the independent flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is the number of main pumps. 
 \end{minipage} 
 
--plugging back the flows mapped into the pump flows into the objective function
--explain that it depends on the present values of d, WT pressure which is indirectly the level in the WT and the input. 
--plug in the dynamics of the model in the objective function but first calculate 
+Plugging the expression for the chord flows given in \eqref{statespace_control_sys_state} into \eqref{mapping_mainP} and then into the objective function the following yields:
 
-Before plugging in however the dynamics of the system, it has to be stated that an initial measurement of the states is carried out. In other words it means that the initial value at $k = 0$ is know, therefore $\hat p_{wt}[0]$is known. For $k=1$, the iteration of the state gives:
+%\begin{align}
+% \Upsilon(\cdot) &= \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
+%\end{align}
+
+ \begin{equation}
+ \bm{q_{p}}[k] =   \bm{G_{2}} \bm{B_{1}^T}(-\bm{M_c^{-1}}\bm{N_c} \cdot \bm{u}[k] -\bm{M_c^{-1}}\bm{Q_c} \cdot \bm{d}[k] -\bm{M_c^{-1}}\bm{B_{o}} \cdot \Delta p_{WT}[k])   
+ \label{mappingandstates}
+\end{equation}
+
+\begin{minipage}[t]{0.80\textwidth}
+Where\\
+\hspace*{8mm} $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
+\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
+\end{minipage}
+
+Therefore the flow through the main pumps can be written as: 
+
+ \begin{equation}
+ \bm{q_{p}}[k] =   \bm{\Lambda_1} \bm{u}[k] + \bm{\Lambda_2} \bm{d}[k] + \bm{\Lambda_3} \Delta p_{WT}[k])   
+ \label{pumpflows_simplified}
+\end{equation}
+
+Thus, rewriting the objective function:
+
+\begin{equation}
+ \Upsilon(\cdot) = \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big[ \bm{u^T}[k+i|k] \cdot \Big(\bm{\Lambda_1} \bm{u}[k+i|k] + \bm{\Lambda_2} \bm{d}[k+i|k] + \bm{\Lambda_3} \Delta p_{WT}[k+i|k]\Big)\Big]  \cdot c_p[k+i|k]
+\label{eqcost_3} 
+\end{equation}
+
+As can be seen in \eqref{eqcost_3}, the objective function now includes the inputs, disturbances and the pressure in the WT, which is the state according the dynamics. Therefore it can be expressed by the dynamics described in \eqref{dyn}. The optimization is subject to this dynamic equation
+\\
+Before putting in however the dynamics of the system, it has to be mentioned that an initial measurement of the states is available. In other words it means that the initial WT pressure at $k = 0$ is known. For $k=1$, the iteration of the state gives:
 
 %We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
 %The discrete system dynamics is stated in \eqref{extended_system_matrices}.
@@ -32,13 +62,13 @@ Before plugging in however the dynamics of the system, it has to be stated that 
 	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + \bm{B_d} \bm{\hat{u}}[0] + \bm{E_d} \bm{\hat{d}}[0]
 \end{equation}
 
-Now $\Delta \hat p_{wt}[2]$ is calculated in the same say, but with $\hat p_{wt}[1]$ substituted: 
+Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\hat p_{wt}[1]$ substituted: 
 
 \begin{equation}
 	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + \bm{B_d}  \bm{\hat{u}}[0] + \bm{E_d}  \bm{\hat{d}}[0]\big] + \bm{B_d} u\bm{\hat{u}}[1] + \bm{E_d} \bm{\hat{d}}[1]\\ 
 \end{equation}
 
-As can be seen, moving further in time steps, the predicted states only depend on the past values of the input and the disturbance, furthermore on the initial state measurement.  Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic equation system yields:
+As can be seen, moving further in time steps, the predicted states only depend on the past values of the input, on the disturbance and on the initial state measurement. Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic matrix equation yields:
 
 \begin{align}
 	\begin{bmatrix}
@@ -82,10 +112,11 @@ A_d^{H_p}\\
 \end{bmatrix} 
 \end{align}
 
-Which in a matrix equation can be written as: 
+Which in short form can be written as: 
 
 \begin{equation}
 	\bm{\Delta \hat p_{wt}} [k+1] = \bm{\Phi} \Delta \hat p_{wt}[0] + \bm{\Gamma \hat{u}}[k] + \bm{\Psi} \bm{\hat{d}}[k]
+	\label{extendedmatrix}
 \end{equation}
 
 \todo{minipage fix}
@@ -103,7 +134,9 @@ is the input matrix, taking $A_d$ and $\bm{B_d}$ matrix into account at each tim
 is the disturbance matrix taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
 \end{minipage}
 
-It is shown therefore that these matrices, described above, may be calculated prior to solving the MPC optimization. 
+It is shown therefore that these matrices, described above, may be calculated prior to solving the MPC optimization. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon.
+
+
 
 -Now the dynamics can be plugged in
 -State the final objective function, what are the values, how they are defined. 
