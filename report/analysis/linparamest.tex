@@ -73,9 +73,9 @@ due to the introduction of the operating points values. Hence, in the current ch
 
 \textbf{Unknown Parameters}
 The unknown parameters are the ones related with the form losses, $k_f$, and form friction ,$f$, of the pipes. Despite they are 
-provided by the manufactures they need to be estimated. On the one hand, the form losses depend on the fittings and bends of the pipes which they are not always known. 
-On the other hand, the friction losses dependent on the inside average roughness of pipes, $\epsilon$, which can change its value due to passage of time 
-and the rust generated inside pipes. 
+provided by the manufactures they need to be estimated. On one hand, the form losses depend on the fittings and bends of the pipes which are not always known. 
+On the other hand, the friction losses depend on the inside average roughness of the pipes, $\epsilon$, which can change its value due to passage of time 
+and rust generated inside pipes or fittings. 
 
 %The friction and form losses are part of the model of a pipe, and are given by the following equation
 %
@@ -95,7 +95,7 @@ Consequently, it has been decided to estimate the total expression for the press
 The system has $15$ pipes in total,  from \eqref{lambda_lin} it can be seen that either tunning for $k_f$, $f$ or $\pmb{\bar{z}}$ it will have the same result for the total
 value of the pressure across the pipes, $\lambda(\pmb{{B_1^{T}}}\pmb{z})$. For this reason the pressure across the 15 pipes is estimated.
 
-Valve linearized expression, see \eqref{mu_lin}, consists on the term depending on the chord flows and the one depending on the $OD$. Both terms include the operating 
+The linearized valve expression, see \eqref{mu_lin}, consists of the term depending on the chord flows and the one depending on the $OD$. Both terms include the operating 
 point of the chord flows inside them, thus, the pressure difference given by both terms has to be estimated. In the system 4 valves take part, 
 resulting in 8 unknowns in total. 
 
@@ -109,10 +109,9 @@ All in all, the system has $24$ unknown terms which will be calculated following
 In order to verify the state-space model derived in \chapref{LinParamEst} with the physical setup, an estimation for the parameters defined in \secref{estimateParameters}
 is carried out.
 
-From the system setup $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, the estimation will be done only the four PMA relative pressure 
-sensor across the end-users and the pressure in the WT, since those are the outputs that will be controlled in \secref{SystemLin_control}. Thus, the estimation will be only focus on obtaining the best fit for those 
-sensor outputs relevant in the control part. 
+From the system setup, $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
+$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$ $n_{18}$. However, the estimation will be done only regarding the four PMA relative pressure 
+sensors across the end-users and the pressure in the WT, since those are the outputs that will be controlled in \secref{SystemLin_control}. Thus, the estimation will only focus on obtaining the best fit for those sensor outputs relevant in the control part. 
 
 The relationship between pressures, where DpCXX describes the pressure difference for the XX component, is obtained in the same way as \secref{SubSecEstimation} and can be defined as:
 
@@ -145,13 +144,13 @@ There is no need to define a relation with a referent point for the WT node, sin
 
 \subsection{Linear Estimation Outcomes}
 In \appref{LinResults} the results of the estimation process are shown, where the $24$ terms defining the pressure across the unknowns edges are estimated.
-From the tests it can be seen a slightly different behavior between the model and the data from the setup, especially at time $t = 350s$. This disimilar 
-behavior showing up at some time samples could make the model unsuitable for the real setup, thus making it not correct enough to be used in a model based control scheme. 
+From the tests it can be seen a slightly different behavior between the model and the data from the setup, especially at time $t = 350s$. This dissimilar 
+behavior showing up at some time samples could make the model unsuitable for the real setup, thus making it incorrect to be used in a model based control scheme. 
 
-In light of the above considerations, a different approach in the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the 
+In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the 
 unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not 
-succeed it has been decided to estimated the final values of the state-space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}. 
-Altogether this matrices sum up to 44 unknown parameters, which are the ones to be estimated. The outputs to be compared with the test setup remain 
+succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}. 
+Altogether these matrices sum up to 44 unknown parameters, which are the ones to be estimated. The outputs to be compared with the test setup remain 
 the same as in \secref{LinParamEst_measurements}, as well as the toolbox used for estimating.
 
 \textbf{Estimation Data}
@@ -167,7 +166,7 @@ The operating point of the PMA valves is placed at $70\%$ opening corresponding 
 \label{fig:est_OD_data_final}
 \end{figure}
 
-To acheive a 50\% fill level of the WT in stady state combined with the chosen operating point of the valves, the operating point of the pumps has to be set at a differential pressure of $\Delta _p = 0.2$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
+To acheive a 50\% fill level of the WT in stady state combined with the chosen operating point of the valves, the operating point of the pumps has to be set at a differential pressure of $\Delta _p = 0.2 Bar$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
 
 \begin{figure}[H]
 \centering
@@ -214,5 +213,5 @@ The following figures show the comparison between the data obtained from the lab
     \caption{Estimation comparison for WT.}
 \end{figure}
 
-With the estimated parameters it is seen that the model follows the behavior of the measured data and that the fit percentage is within a decent margin. Based on these results can the system model and the parameters contained inside now be used for control purposes as an description approximating the system is now obtained.   
+With the estimated parameters it is seen that the model follows the behavior of the measured data and that the fit percentage is within a decent margin. Based on these results can the system model and the parameters contained inside now be used for control purposes as a description approximating the system is now obtained.   
 
