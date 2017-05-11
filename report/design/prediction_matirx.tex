@@ -140,3 +140,68 @@ It is shown therefore that these matrices, described above, may be calculated pr
 
 -Now the dynamics can be plugged in
 -State the final objective function, what are the values, how they are defined. 
+
+
+\begin{equation}
+\pmb{u_{Hp}} =  
+ \begin{bmatrix}
+  u[k+i]\\
+  \vdots  \\
+  u[k+H_p-1)   
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times 1)}
+\end{equation}
+
+
+\begin{equation}
+\pmb{d_{Hp}} =  
+ \begin{bmatrix}
+  d[k+i]\\
+  \vdots  \\
+  d[k+H_p-1]   
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times 2)}
+\end{equation}
+
+
+\begin{equation}
+\pmb{\Lambda_{1,Hp}} =
+ \begin{bmatrix}
+ \Lambda_1 C_p[k+i] & & 0 \\
+ & \ddots & \\
+ 0 & & \lambda_1 C_p[k+H_p-1] 
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
+\end{equation} 
+
+
+\begin{equation}
+\pmb{\Lambda_{2,Hp}} =
+ \begin{bmatrix}
+ \Lambda_2 C_p[k+i] & & 0 \\
+ & \ddots & \\
+ 0 & & \lambda_2 C_p[k+H_p-1] 
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
+\end{equation}
+
+
+\begin{equation}
+\pmb{\Lambda_{3,Hp}} =
+ \begin{bmatrix}
+ \Lambda_3 C_p[k+i] & & 0 \\
+ & \ddots & \\
+ 0 & & \lambda_3 C_p[k+H_p-1] 
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
+\end{equation}
+
+
+\begin{equation}
+u_{Hp} = \bar{u}_{Hp} + \hat{u}_{Hp}
+\end{equation}
+
+
+\begin{equation}
+d_{Hp} = \bar{d}_{Hp} + \hat{d}_{Hp}
+\end{equation}
