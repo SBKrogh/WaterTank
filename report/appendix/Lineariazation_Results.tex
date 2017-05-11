@@ -5,18 +5,20 @@
 The input signals used for the linear parameter estimation are presented in this chapter.  
 The inputs to the end user vales are shown in \figref{fig:est_OD_data} and the inputs to the pumps are shown in \figref{fig:est_deltap_data}. 
 
-\begin{figure}[H]
-\centering
-\input{report/tikz/est_OD_data.tex} 
-\caption{Small signal values of the opening degrees of the pma valves. }
-\label{fig:est_OD_data}
-\end{figure}
 
 \begin{figure}[H]
-\centering
-\input{report/tikz/est_deltap_data.tex} 
-\caption{Small signal values of the angular velocity of the two main pumps.}
-\label{fig:est_deltap_data}
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/est_OD_data.tex} 
+    \caption{Small signal values of the opening degrees of the pma valves. }
+    \label{fig:est_OD_data}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/est_deltap_data.tex} 
+    \caption{Small signal values of the angular velocity of the two main pumps.}
+    \label{fig:est_deltap_data}
+  \end{minipage}
 \end{figure}
 
 \textbf{Estimation Method}

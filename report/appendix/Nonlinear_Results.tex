@@ -5,29 +5,27 @@
 In order to estimate accurately the unknown parameters of the system, adequate inputs signals have to be applied to the model. In this way, the system 
 will work on different scenarios regarding the different combination of inputs signals. 
 
-\figref{systemdiagram} shows the different combination between the OD of the PMA valves, and the steps applied to the main and PMA pumps. 
+\figref{nonlinearpumps} shows the different combination between the OD of the PMA valves, and the steps applied to the main pumps. 
+
 
 \begin{figure}[H]
-\centering
-\resizebox{0.75\linewidth}{!}{\input{report/tikz/Valve_NL.tex}}
-%\input{report/tikz/full_sys_diagram.tex} 
-\caption{Inputs to the parameter identification}
-\label{systemdiagram}
-\end{figure} 
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/Valve_NL.tex} 
+    \caption{Inputs to the parameter identification}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/Pump_NL.tex} 
+    \caption{Output pressure measurements}
+  \end{minipage}
+  \label{nonlinearpumps}
+\end{figure}
 
-The estimation process, based on the applied input data, tries to fit the established output signal data to the simulation output. In the physical setup $8$ 
-different pressure relative sensors are available which are used as output signals. \figref{systemdiagram1} shows the pressure measurements in the different 
-nodes.
+%The estimation process, based on the applied input data, tries to fit the established output signal data to the simulation output. In the physical setup $8$ 
+%different pressure relative sensors are available which are used as output signals. \figref{systemdiagram1} shows the pressure measurements in the different 
+%nodes.
 
-\begin{figure}[H]
-\centering
-\resizebox{0.75\linewidth}{!}{\input{report/tikz/Pump_NL.tex}}
-%\input{report/tikz/full_sys_diagram.tex} 
-\caption{Output pressure measurements}
-\label{systemdiagram1}
-\end{figure} 
-
-\textbf{Estimation Results}
 
 Together with the inputs from the lab and the nonlinear differential model the nonlinear parameter estimation is carried out. 
 
