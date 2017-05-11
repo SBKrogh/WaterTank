@@ -65,7 +65,7 @@ Before putting in however the dynamics of the system, it has to be mentioned tha
 Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\hat p_{wt}[1]$ substituted: 
 
 \begin{equation}
-	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + \bm{B_d}  \bm{\hat{u}}[0] + \bm{E_d}  \bm{\hat{d}}[0]\big] + \bm{B_d} \bm{\hat{u}}[1] + \bm{E_d} \bm{\hat{d}}[1]\\ 
+	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + \bm{B_d}  \bm{\hat{u}}[0] + \bm{E_d}  \bm{\hat{d}}[0]\big] + \bm{B_d} u\bm{\hat{u}}[1] + \bm{E_d} \bm{\hat{d}}[1]\\ 
 \end{equation}
 
 As can be seen, moving further in time steps, the predicted states only depend on the past values of the input, on the disturbance and on the initial state measurement. Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic matrix equation yields:
@@ -76,21 +76,22 @@ As can be seen, moving further in time steps, the predicted states only depend o
 \Delta \hat p_{wt}[2]\\ 
 \vdots \\ 
 \Delta \hat p_{wt}[H_p]\\ 
-\end{bmatrix}}_{\bm{{\Delta \hat{p}_wt}_{H_p}}}
+\end{bmatrix}}_{\bm{\Delta \hat{p}}_{wt,H_p}}
 =
-\begin{bmatrix}
+\underbrace{\begin{bmatrix}
 A_d \\ 
 A_d^2\\ 
 \vdots \\ 
 A_d^{H_p}\\ 
-\end{bmatrix}
-\Delta \hat{p}_{wt}[0]+\nonumber
-&\begin{bmatrix}
- \bm{B_d}& 0 & \hdots  & 0\\ 
- A_d\bm{B_d}&  \bm{B_d}& \hdots & 0\\ 
-\vdots &\vdots  & \ddots  & 0\\ 
- A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}  &  & \bm{B_d}
-\end{bmatrix}
+\end{bmatrix}}_{\bm{\Phi}}
+\bm{\Delta \hat{p}}_{wt}[0]+\nonumber
+&
+\underbrace{\begin{bmatrix}
+ \bm{B_d}& \bm{0} & \hdots  & \bm{0}\\ 
+ A_d\bm{B_d}&  \bm{B_d}& \hdots & \bm{0}\\ 
+\vdots &\vdots  & \ddots  & \bm{0}\\ 
+ A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}  & \hdots  & \bm{B_d}
+\end{bmatrix}}_{\bm{\Gamma}}
 \underbrace{\begin{bmatrix}
  \bm{\hat{u}}[0] \\ 
  \bm{\hat{u}}[1]\\ 
@@ -98,12 +99,13 @@ A_d^{H_p}\\
  \bm{\hat{u}}[H_p-1]\\ 
 \end{bmatrix}}_{\bm{\hat{u}_{H_p}}}
 + \\
-&\begin{bmatrix}
+&
+\underbrace{\begin{bmatrix}
  \bm{E_d}& 0 & \hdots  & 0\\ 
  A_d\bm{E_d}&  \bm{E_d}& \hdots & 0\\ 
 \vdots &\vdots  & \ddots  & 0\\ 
- A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  &  & \bm{E_d}
-\end{bmatrix}
+ A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  & \hdots  & \bm{E_d}
+\end{bmatrix}}_{\bm{\Psi}}
 \underbrace{\begin{bmatrix}
  \bm{\hat{d}}[0] \\ 
  \bm{\hat{d}}[1]\\ 
@@ -140,68 +142,3 @@ It is shown therefore that these matrices, described above, may be calculated pr
 
 -Now the dynamics can be plugged in
 -State the final objective function, what are the values, how they are defined. 
-
-
-\begin{equation}
-\pmb{u_{Hp}} =  
- \begin{bmatrix}
-  u[k+i]\\
-  \vdots  \\
-  u[k+H_p-1)   
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times 1)}
-\end{equation}
-
-
-\begin{equation}
-\pmb{d_{Hp}} =  
- \begin{bmatrix}
-  d[k+i]\\
-  \vdots  \\
-  d[k+H_p-1]   
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times 2)}
-\end{equation}
-
-
-\begin{equation}
-\pmb{\Lambda_{1,Hp}} =
- \begin{bmatrix}
- \Lambda_1 C_p[k+i] & & 0 \\
- & \ddots & \\
- 0 & & \lambda_1 C_p[k+H_p-1] 
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
-\end{equation} 
-
-
-\begin{equation}
-\pmb{\Lambda_{2,Hp}} =
- \begin{bmatrix}
- \Lambda_2 C_p[k+i] & & 0 \\
- & \ddots & \\
- 0 & & \lambda_2 C_p[k+H_p-1] 
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
-\end{equation}
-
-
-\begin{equation}
-\pmb{\Lambda_{3,Hp}} =
- \begin{bmatrix}
- \Lambda_3 C_p[k+i] & & 0 \\
- & \ddots & \\
- 0 & & \lambda_3 C_p[k+H_p-1] 
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
-\end{equation}
-
-
-\begin{equation}
-u_{Hp} = \bar{u}_{Hp} + \hat{u}_{Hp}
-\end{equation}
-
-
-\begin{equation}
-d_{Hp} = \bar{d}_{Hp} + \hat{d}_{Hp}
-\end{equation}
