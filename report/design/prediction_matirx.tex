@@ -71,12 +71,12 @@ Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\hat p_{wt}
 As can be seen, moving further in time steps, the predicted states only depend on the past values of the input, on the disturbance and on the initial state measurement. Writing up the matrix equation until the $k = H_p - 1$ time steps, the following state dynamic matrix equation yields:
 
 \begin{align}
-	\begin{bmatrix}
+\underbrace{\begin{bmatrix}
 \Delta \hat p_{wt}[1] \\ 
 \Delta \hat p_{wt}[2]\\ 
 \vdots \\ 
 \Delta \hat p_{wt}[H_p]\\ 
-\end{bmatrix}
+\end{bmatrix}}_{\bm{{\Delta \hat{p}_wt}_{H_p}}}
 =
 \begin{bmatrix}
 A_d \\ 
@@ -91,12 +91,12 @@ A_d^{H_p}\\
 \vdots &\vdots  & \ddots  & 0\\ 
  A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}  &  & \bm{B_d}
 \end{bmatrix}
-\begin{bmatrix}
+\underbrace{\begin{bmatrix}
  \bm{\hat{u}}[0] \\ 
  \bm{\hat{u}}[1]\\ 
 \vdots \\ 
  \bm{\hat{u}}[H_p-1]\\ 
-\end{bmatrix}
+\end{bmatrix}}_{\bm{\hat{u}_{H_p}}}
 + \\
 &\begin{bmatrix}
  \bm{E_d}& 0 & \hdots  & 0\\ 
@@ -104,12 +104,12 @@ A_d^{H_p}\\
 \vdots &\vdots  & \ddots  & 0\\ 
  A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  &  & \bm{E_d}
 \end{bmatrix}
-\begin{bmatrix}
+\underbrace{\begin{bmatrix}
  \bm{\hat{d}}[0] \\ 
  \bm{\hat{d}}[1]\\ 
 \vdots \\ 
  \bm{\hat{d}}[H_p-1]\\ 
-\end{bmatrix} 
+\end{bmatrix}}_{\bm{\hat{d}_{H_p}}} 
 \end{align}
 
 Which in short form can be written as: 
@@ -129,9 +129,9 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the state matrix, taking $A_d$ into account at each time step \\
-is the input matrix, taking $A_d$ and $\bm{B_d}$ matrix into account at each time step, \\
-is the disturbance matrix taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
+is the state matrix along the prediction horizon, taking $A_d$ into account at each time step \\
+is the input matrix along the prediction horizon, taking $A_d$ and $\bm{B_d}$ matrix into account at each time step, \\
+is the disturbance matrix along the prediction horizon, taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
 \end{minipage}
 
 It is shown therefore that these matrices, described above, may be calculated prior to solving the MPC optimization. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon.
