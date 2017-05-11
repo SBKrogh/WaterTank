@@ -2,54 +2,37 @@
 \label{sec:WT_TimeConstant}
 
 In this section the time constant of the water tank is found.
-\input{report/tikz/Time_constant_Water_Tank}
+\todo{Found or tested i compare with theory?}
 
-984 seconds
-
-\subsection{One clamp push} % \label{app:...}
-This test uses the test setup seen on \figref{fig:one_clamp}.
-
+%\subsection{One clamp push} % \label{app:...}
 \subsection*{Test equipment:}
 \begin{itemize}
-\item Endowrist model 420093 (AAU number: \#4).
-\item Maxon 110160 motor with attached Maxon gearhead 110356 and Maxon encoder 201937.
-
+\item The water distribution system at AAU.
 \end{itemize}
 
 \subsection*{Procedure:}
-The following procedure was made for the force estimation:
+The following procedure was made for finding the time constant:
 \begin{enumerate}
-\item One clamp of the end-effector is attached perpendicular to the load cell. 
-\item The scale is set to zero.
-\item Current is applied to the motor which control the clamp attached to the load-cell and the force is measured (upwards direction).
-\item Current is increased in steps until 1200 mA is applied.
+\item Wait for the system to get into a steady state position with the following system setup: valve opening at 0.7 for all consumer valves and differential pressure over pumps at C2 = C16 = 0.2, C18 = 0.1, C25 = 0.25.
+\item Increase the differential pressure over C2 with 0.1.
+\item Wait 1.5 hour.
 \end{enumerate}
-Step two to four is repeated ten times, where the current and force is measured in respect to each other. 
 
 
 \subsection*{Measuring data:}
-The data from the measurements can be seen on \todo{Picture}%\figref{endo_force_mes}. 
-%\eqref{eq:linear_force_endo}.
+The data from the measurements can be seen on 
 
-% \begin{equation}
-% \text{y} = 0.0028 \cdot \text{x} -0.8259 
-% \label{eq:linear_force_endo}
-% \end{equation} 
-
-
-
-\subsection*{Results:}
-\todo{result}
-%It can be seen from the graph on \figref{endo_force_mes} that the force on the end-effector is highly nonlinear. The friction from the gearing and the Endowrist does that the force first has an exponential growth at the start. Around the 800 mA and 1200 mA step it can be seen that a drop in force is happening. What causes this drop is not identified but it can be seen that it appears for all the data sequences. \todor{better explanation?}
-
-
-%\input{Data/Measurement/Endo_force_measure.tex}
+\begin{figure}
+\input{report/tikz/Time_constant_Water_Tank}
+\caption{The data measurement for the finding the time constant of the WT. A small red dot shows the time constant for the tank which is 984 seconds.}
+\label{fig:Test_WT_Timeconstant}
+\end{figure}
 
 \subsection*{Uncertainties of measurement:}
 \begin{itemize}
-\item Not 100 \% orthogonal force to the load cell.
-\item Input/Output impedance of sensors have a $\pm 10 \%$ tolerance.
-\item Movement of test setup when force is generated.
+\item The settling time for the initial state was not reached after 1.5 hours.
 \end{itemize}
 
 \subsection*{Conclusion:}
+As it can be seen on \figref{fig:Test_WT_Timeconstant}, the time constant of the water tower is 984 seconds. From this the settling time for the WT can be found as $984\cdot 5 = 4920$ seconds.
+
