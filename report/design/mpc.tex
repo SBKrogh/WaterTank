@@ -1,29 +1,29 @@
 \section{Model predictive control}
 \label{sec:MPC}
 
-Model predictive control (MPC) is an advance control method that depends on a dynamic model of the plant. MPC allows to calculate an optimal control signal taking the future electrical pricing into account. The control structure of MPC is in general 
+Model predictive control (MPC) is an advanced control method that depends on the dynamic model of the plant. MPC allows to calculate an optimal control signal taking the future electrical prices into account. The control structure of MPC is in general:
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/MPC_diagram.tex} 
-\caption{The structure of the control with the MPC part specified \cite{Camacho2007}.}
+\caption{The block of MPC algorithm \cite{Camacho2007}.}
 \label{mpc_structure}
 \end{figure}
 
-\figref{mpc_structure} is of the same structure as \figref{fig:control_structure} but here the MPC block is specified. A MPC is a iterative process that can be setup as follows: 
+\figref{mpc_structure} is of the same structure as \figref{fig:control_structure}, however here the MPC block is specified. A MPC is an iterative process that can be summarized as follows: 
 
 \begin{itemize}
-\item[1:] A model predict the future outputs, $\pmb{\tilde y}$.
-\item[2:] The future outputs are feed back to the optimizer that calculate the future inputs $\pmb{\tilde u}$.
+\item[1:] A model predict the future outputs, $\bm{\tilde y}$.
+\item[2:] The future outputs are feed back to the optimizer that calculate the future inputs $\bm{\tilde u}$.
 \item[3:] $\tilde u(k|k)$, the optimal control signal to the current time k, is sent as the control signal.
-\item[4:] $\pmb{\tilde u}$ are applied to the model, together with the old output.
+\item[4:] $\bm{\tilde u}$ are applied to the model, together with the old output.
 \item[5:] Go back to step 1 
 \end{itemize}
 
-The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are defined by:
+The future outputs $\bm{\tilde y}$ and the future inputs $\bm{\tilde u}$ are defined by:
 
 \begin{equation}
-\pmb{\tilde y} =  
+\bm{\tilde y} =  
  \begin{bmatrix}
   \tilde y(k|k)\\
   \vdots  \\
@@ -32,7 +32,7 @@ The future outputs $\pmb{\tilde y}$ and the future inputs $\pmb{\tilde u}$ are d
 \end{equation}
 
 \begin{equation}
-\pmb{\tilde u} =  
+\bm{\tilde u} =  
  \begin{bmatrix}
   \tilde u(k|k)\\
   \vdots  \\
