@@ -20,24 +20,13 @@ Although nodes can be placed across all the component endpoints, some simplifica
 %\end{figure}
 
 \begin{figure}[H]
-\centering
-%\begin{minipage}{0.4\textwidth}
-%  \centering
-  \input{report/tikz/valve_pump_wt_simple.tex} 
-  %\captionof{figure}{$\omega = 0$}
-  \label{fig:subsys_1}
-%\end{minipage}%
-%\begin{minipage}{0.4\textwidth}
-%  \centering
-%  \input{report/tikz/valve_pump_n1_n2.tex} 
-  %\captionof{figure}{$\omega \neq 0$}
-%  \label{fig:subsys_2}
-%\end{minipage}
-\caption{Simplifications: The rotational speed of the pump, $\omega = 0$ and therefore this part is modelled differently.}
+	\centering
+	\input{report/tikz/valve_pump_wt_simple.tex} 
+	\caption{Simplifications: The rotational speed of the pump, $\omega = 0$ and therefore this part is modelled differently.}
+	  \label{fig:subsys_1}
 \end{figure}
 
-The WT is connected to the rest of the system with three components, a pump, $C_{32}$, and two valves. This is shown in \figref{fig:subsys_1}, where the components are shown between $n_3$ and $n_{18}$. 
-The latter is the node where the WT connects to the system. In this particular case the pump is turned off, however contributes to the pressure drop due to its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead the series connection is seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pump, \eqref{eq:PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega = 0$:
+The WT is connected to the rest of the system with three components, a pump, $C_{32}$, and two valves. This is shown in \figref{fig:subsys_1}, where the components are shown between $n_3$ and $n_{18}$ which also connects the WT to the system. In this particular case the pump is turned off, however contributes to the pressure drop due to its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead the series connection is seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pump, \eqref{eq:PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega = 0$:
 
 \begin{equation}
   \Delta p = \Big(\frac{2}{k_{v100}^2} - a_{h2}\Big)|q| q 
