@@ -43,7 +43,7 @@ As it is shown, the PI controllers are responsible for setting the control input
 In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
 
 \begin{align}
- \Upsilon(\bm{u}[k],\bm{q_p}[k],c[k]) &= \frac{1}{\eta} \sum_{i=1}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
+ \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \frac{1}{\eta} \sum_{i=1}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
 \end{align}
 
 %Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
@@ -85,13 +85,13 @@ The control problem can be formulated as a minimization problem of the form:
 \underset{\bm{u}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
 \newline
-s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
+s.t \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
 %
-&\bm{\hat{y}}[k+i|k] = \bm{C_d} \Delta \hat{p}_{WT}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
+&\bm{\hat{y}}[k+i|k] = \bm{C_d} \Delta \hat{p}_{wt}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
 %
-& \underline{y} < \bm{y} < \overline{y}\label{eqcon_output} \\
+& \underline{y} < \bm{y} < \overline{y} \\
 %
-& \underline{\Delta p_{WT}} < \Delta p_{WT} < \overline{\Delta p_{WT}} \label{eqcon_state} \\
+& \underline{\Delta p_{wt}} < \Delta p_{wt} < \overline{\Delta p_{wt}} \\
 %
 & \bm{u} < \overline{u} \label{eqconst2} 
 \end{align}
@@ -99,7 +99,7 @@ s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k] 
  \begin{minipage}[t]{0.24\textwidth}
  Where\\
  \hspace*{8mm} $\bm{y}$ \\
- \hspace*{8mm} $\Delta p_{WT}$ 
+ \hspace*{8mm} $\Delta p_{wt}$ 
  \end{minipage}
  \begin{minipage}[t]{0.63\textwidth}
  \vspace*{2mm}
@@ -114,7 +114,7 @@ s.t \:\:\:\:\: & \Delta \hat{p}_{WT} [k+i+1|k] = A_d \Delta \hat{p}_{WT}[k+i|k] 
 
 As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that the cost of running the pumps is minimized. Therefore the objective function gives a price for all the consumed power over the control horizon, which is a specific future time interval. Furthermore, it should be noted that both the objective function and the constraints are linear, therefore the problem is a linear programming formulation. The minimization is subject to the dynamics of the water distribution network, and the constraints. As can be seen, there is a constraint on the output of the system, which is considered as the pressure demand for the end-users. There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps. 
 \\
-The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c_p[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 In the following sections the design of the control system is explained. 
 
