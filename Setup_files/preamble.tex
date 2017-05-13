@@ -9,7 +9,6 @@
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
 \usepackage{mfirstuc}
 
-
 % ¤¤ Packages for the solar panel figure ¤¤ %
 \usepackage{xcolor}
 \usepackage[american,cuteinductors,smartlabels]{circuitikz}
@@ -30,6 +29,15 @@
 \definecolor{AleeRed}{rgb}{0.5,0,0}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+
+%Roman letters
+\ExplSyntaxOn
+\NewDocumentCommand{\RN}{m}
+ {
+  \textup{ \int_to_Roman:n { #1 } }
+ }
+\ExplSyntaxOff
+
 																			
 % ¤¤ Figurer og tabeller (floats) ¤¤ %
 \usepackage{graphicx} 						% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)

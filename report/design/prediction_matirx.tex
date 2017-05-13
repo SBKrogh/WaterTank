@@ -204,9 +204,9 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 \begin{equation}
 \bm{\Lambda_{1,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_1} \bm{c_p}[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_1} c_p[k+i|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
- \bm{0} & \hdots & \bm{\lambda_1 c_p}[k+H_p-1|k] 
+ \bm{0} & \hdots & \bm{\lambda_1} c_p[k+H_p-1|k] 
  \end{bmatrix}
  \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
 \end{equation} 
@@ -215,9 +215,9 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 \begin{equation}
 \bm{\Lambda_{2,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_2} \bm{c_p}[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_2} c_p[k+i|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
- \bm{0} & \hdots & \bm{\lambda_2 c_p}[k+H_p-1|k] 
+ \bm{0} & \hdots & \bm{\lambda_2} c_p[k+H_p-1|k] 
  \end{bmatrix}
  \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
 \end{equation} 
@@ -226,9 +226,9 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 \begin{equation}
 \bm{\Lambda_{3,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_3} \bm{c_p}[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_3} c_p[k+i|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
- \bm{0} & \hdots & \bm{\lambda_3 c_p}[k+H_p-1|k] 
+ \bm{0} & \hdots & \bm{\lambda_3} c_p[k+H_p-1|k] 
  \end{bmatrix}
  \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
 \end{equation} 
@@ -236,23 +236,24 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 It is important to point out that the system dynamics are described by small-signals, however as it is mentioned in the problem formulation, the optimization for the energy has to be according to full-signals. Since the dynamics are plugged into the objective function, the following has to be considered: 
 
 \begin{equation}
-\bm{u_{H_{p}}} = \bm{\bar{u}_{H_{p}}} + \bm{\hat{u}_{H_{p}}}
+\bm{u_{H{p}}} = \bm{\bar{u}_{H{p}}} + \bm{\hat{u}_{H{p}}}
 \label{u_pred}
 \end{equation}
 
 and
 
 \begin{equation}
-\bm{d_{H_{p}}} = \bm{\bar{d}_{H_{p}}} + \bm{\hat{d}_{H_{p}}}
+\bm{d_{H{p}}} = \bm{\bar{d}_{H{p}}} + \bm{\hat{d}_{H{p}}}
 \end{equation}
 
-which shows that the signals and their future values has to be decomposed to their values in the operating point and the small- signal deviations. 
+which shows that the signals and has to be decomposed to their constant values in the operating point and the small- signal deviations. 
 \\
-Now that all the matrices and signals are represented in vectorial form along with their predicted values, the objective function can be written up such that:
+\newline
+Now, that all the matrices and signals are represented in vectorial form along with their predicted values, the objective function can be written up such that:
 
 \begin{equation}
-  \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{\bm{{Hp}}}^{T}\bigg[ {\bm{\bar{q}}}_{p,Hp} + {\bm{\Lambda}}_{1,Hp} {\bm{\hat{u}}}_{Hp} + {\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}}_{Hp} 
-  + {\bm{\Lambda}}_{3,Hp} \Delta P_{wt,Hp} \bigg]
+  \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{\bm{{Hp}}}^{T}\bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+  + {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Delta \hat{P}_{wt,Hp}} \bigg]
  \label{obj_hp}
 \end{equation}
 
@@ -260,8 +261,8 @@ And then the dynamics of the system can be plugged into \eqref{obj_hp}:
 
 \begin{equation}
 \begin{aligned}
- \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{Hp}^{T}\bigg[ {\bm{\bar{q}}}_{p,Hp} + {\bm{\Lambda}}_{1,Hp} {\bm{\hat{u}}}_{Hp} + {\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}}_{Hp} 
-   \\ + {\bm{\Lambda}}_{3,Hp} \bigg( \bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0] + \bm{\Gamma} \bm{\hat{u}}_{Hp} + \bm{\Psi}\bm{\hat{d}}_{Hp} \bigg) \bigg]
+ \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{\bm{Hp}}^{T}\bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+   \\ + {\bm{\Lambda}}_{\bm{3,Hp}} \bigg( \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} + \bm{\Psi}\bm{\hat{d}}_{\bm{Hp}} \bigg) \bigg]
 \end{aligned}
 \label{obj_hp_dyn}
 \end{equation}
@@ -270,61 +271,62 @@ By expressing the terms in \eqref{obj_hp_dyn}, the following yields:
 
 \begin{equation}
 \begin{aligned} 
- \Upsilon(\cdot) = & \frac{1}{\eta} \bigg[ \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\bar{q}}}_{p,Hp}}_{1} + \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\Lambda}}_{1,Hp} {\bm{\hat{u}}}_{Hp}}_{2} + \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}}_{Hp} 
- }_{3} + \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\Lambda}}_{3,Hp}\bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0]}_{4}
+ \Upsilon(\cdot) = & \frac{1}{\eta} \bigg[ \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\bar{q}}}_{\bm{p,Hp}}}_{\RN{1}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}}}_{\RN{2}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+ }_{\RN{3}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]}_{\RN{4}}
  \\
- & + \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\Lambda}}_{3,Hp}\bm{\Gamma} \bm{\hat{u}}_{Hp}}_{5} + \underbrace{{\bm{{u}}}_{Hp}^{T}{\bm{\Lambda}}_{3,Hp}\bm{\Psi}\bm{\hat{d}}_{Hp}}_{6} \bigg]
+ & + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}}_{\RN{5}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}}_{\RN{6}} \bigg]
  \end{aligned}
 \end{equation}
 
-Now, replacing all the full-signal input vectors according to \eqref{u_pred}, the products of the different terms result in the following: 
-
-\textbf{1}
+Now, replacing all the full-signal input vectors according to \eqref{u_pred} with their operating and deviation values, the products of the different terms result in the following: 
+\\
+\newline
+\RN{1}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} \bm{\bar{q}}_{p,Hp}  = {\bm{\bar{u}}}_{Hp}^{T} \bm{\bar{q}}_{p,Hp} + {\bm{\hat{u}}}_{Hp}^{T} \bm{\bar{q}}_{p,Hp}
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} \bm{\bar{q}}_{\bm{p,Hp}}  = {\bm{\bar{u}}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}} + {\bm{\hat{u}}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}}
 \end{equation}
 
-\textbf{2}
+\RN{2}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} {\bm{\Lambda}}_{1,Hp}{\bm{\hat{u}}_{Hp}}  = {\bm{\bar{u}}}_{Hp}^{T} {\bm{\Lambda}}_{1,Hp} {\bm{\hat{u}}_{Hp}} + {\bm{\hat{u}}}_{Hp}^{T} {\bm{\Lambda}}_{1,Hp} {\bm{\hat{u}}_{Hp}} 
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{1,Hp}}{\bm{\hat{u}}_{\bm{Hp}}}  = {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}_{\bm{Hp}}} + {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}_{\bm{Hp}}} 
 \end{equation}
 
-\textbf{3}
+\RN{3}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} {\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}}_{Hp}  = {\bm{\bar{u}}}_{Hp}^{T} {\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}_{Hp}} 
- + {\bm{\hat{u}}}_{Hp}^{T} {\bm{\Lambda}}_{2,Hp} {\bm{\hat{d}}_{Hp}}  
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}}  = {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}_{\bm{Hp}}} 
+ + {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}_{\bm{Hp}}}  
 \end{equation}
 
-\textbf{4}
+\RN{4}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0]   =  {\bm{\bar{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0] + 
- {\bm{\hat{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0]  
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]   =  {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + 
+ {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]  
 \end{equation}
 
-\textbf{5}
+\RN{5}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Gamma} \bm{\hat{u}}_{Hp}   =  {\bm{\bar{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} {\bm{\Gamma}} \bm{\hat{u}}_{Hp} + 
- {\bm{\hat{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Gamma} \bm{\hat{u}}_{Hp} 
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}   =  {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} {\bm{\Gamma}} \bm{\hat{u}}_{\bm{Hp}} + 
+ {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} 
 \end{equation}
 
-\textbf{6}
+\RN{6}
 
 \begin{equation}
- ({\bm{\bar{u}}}_{Hp} + {\bm{\hat{u}}}_{Hp})^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Psi} \bm{\hat{d}}_{Hp}   =  {\bm{\bar{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} {\bm{\Psi}} \bm{\hat{d}}_{Hp} + 
- {\bm{\hat{u}}}_{Hp}^{T} {\bm{\Lambda}}_{3,Hp} \bm{\Psi} \bm{\hat{d}}_{Hp} 
+ ({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Psi} \bm{\hat{d}}_{\bm{Hp}}   =  {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} {\bm{\Psi}} \bm{\hat{d}}_{\bm{Hp}} + 
+ {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Psi} \bm{\hat{d}}_{\bm{Hp}} 
  \label{obj_12}
 \end{equation}
 
-As can be seen, now there is only one variable in the objective function, which is the small-signal value of the input vector. The operating values of the input are the operating pressures of the two main pumps. The disturbances are present with both the operating values and the small-signals. However, these disturbances are the ODs of the end-user valves, therefore they describe some kind of characteristics of water usage. The operating point values are known and are constant in the whole sequence. The small signal values are the deviations from this constant OD and also known, since the fill-signal value of the whole disturbance sequence is known.
+As can be seen, there is only one variable in the objective function, which is the small-signal value of the input vector. The operating values of the inputs are the operating pressures of the two main pumps. Both the small-signal and operating point values of the disturbances are present. However, these disturbances are the ODs of the end-user valves, therefore they describe some kind of characteristics of water usage. The operating point values are known and are constant in the whole sequence. The small signal values are the deviations from this constant OD and also known, since the full-signal value of the whole disturbance sequence is known.
 \\
 As it was shown, all matrices are constants and can be calculated beforehand the optimization. 
 \\
-After rearranging the terms in \eqref{obj_12}, it is shown that the objective function consists of quadratic and linear terms of the variable $\bm{\hat{u}_Hp}$. Furthermore there are constants due to the operating values of the disturbances and inputs. The quadratic term yields in:
+After rearranging the terms in \eqref{obj_12}, it is shown that the objective function consists of quadratic and linear terms of the variable $\bm{\hat{u}_Hp}$. Furthermore there are constants due to the operating values of the disturbances and inputs. Hence the quadratic term results in:
 
 \begin{equation}
   \begin{split}
@@ -336,29 +338,29 @@ The linear term is given by:
 
 \begin{equation}
   \begin{split}
-    a  : \quad & \bm{\bar{u}}_{Hp}^{T}(\bm{\Lambda}_{1,Hp} + \bm{\Lambda}_{3,Hp} \bm{\Gamma} ) \bm{\hat{u}}_{Hp} + \bm{\hat{u}}_{Hp}^{T}(\bm{\Lambda}_{2,Hp} + \bm{\Lambda}_{3,Hp} \bm{\Psi} ) \bm{\hat{d}}_{Hp}
+    a  : \quad & \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} ) \bm{\hat{u}}_{\bm{Hp}} + \bm{\hat{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} ) \bm{\hat{d}}_{\bm{Hp}}
     \\
-    & + \bm{\hat{u}}_{Hp}^{T}\bm{\Lambda}_{3,Hp} \bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0] + \bm{\hat{u}}_{Hp}^{T} \bm{\bar{q}}_{p,Hp}
+    & + \bm{\hat{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}}
   \end{split}
 \end{equation}
 
 And the constants are given by:
 
 \begin{equation}
-    c  : \quad \bm{\bar{u}}_{Hp}^{T}\bm{\bar{q}}_{p,Hp}  + \bm{\bar{u}}_{Hp}^{T}\bm{\Lambda}_{2,Hp}\bm{\hat{d}}_{Hp} + \bm{\bar{u}}_{Hp}^{T}\bm{\Lambda}_{3,Hp}\bm{\Phi} \bm{\Delta \hat{P}_{wt,Hp}}[0] + \bm{\bar{u}}_{Hp}^{T}\bm{\Lambda}_{3,Hp}\bm{\Psi}\bm{\hat{d}}_{Hp}
+    c  : \quad \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\bar{q}}_{\bm{p,Hp}}  + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{2,Hp}}\bm{\hat{d}}_{\bm{Hp}} + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}
 \end{equation}
 
 Therefore it is shown that this optimization simplifies to a quadratic problem that can be written up in such a form as follows:
 
 \begin{equation}
-  \Upsilon(\cdot) =  \frac{1}{2} \bm{\hat{u}}_{Hp}^{T} \bm{R} \bm{\hat{u}}_{Hp} + \bm{b} \bm{\hat{u}}_{Hp} + \bm{c}
+  \Upsilon(\cdot) = \frac{1}{\eta}\Big( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + \bm{c} \Big)
 \end{equation}
 
 \begin{minipage}[t]{0.28\textwidth}
 Where\\
 \hspace*{8mm} $\bm{R} \in \pmb{\mathbb{R}}^{(H_p \times H_p)} $ \\
 \hspace*{8mm} $\bm{b} \in \pmb{\mathbb{R}}^{(H_p \times 1)} $ \\
-\hspace*{8mm} $c \in \pmb{\mathbb{R}}^{(H_p \times 1)} $
+\hspace*{8mm} $\bm{c} \in \pmb{\mathbb{R}}^{(H_p \times 1)} $
 \end{minipage}
 
 Therefore the $\bm{R}$ matrix in the quadratic problem can be given as:
@@ -370,6 +372,6 @@ Therefore the $\bm{R}$ matrix in the quadratic problem can be given as:
 and the vector $\bm{b}$ can be given as:
 
 \begin{equation}
-  b = \bm{\bar{u}}_{Hp}^{T}(\bm{\Lambda}_{1,Hp} + \bm{\Lambda}_{3,Hp} \bm{\Gamma} ) + \bm{\hat{d}}_{Hp}^{T}(\bm{\Lambda}_{2,Hp} + \bm{\Lambda}_{3,Hp} \bm{\Psi} )^{T}
-  + \bm{\Delta \hat{P}_{wt,Hp}}^{T}[0] (\bm{\Lambda}_{3,Hp} \bm{\Phi})^{T} + {\bm{\bar{q}}^{T}}_{p,Hp}
+  b = \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} ) + \bm{\hat{d}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} )^{T}
+  + \bm{\Delta \hat{P}_{\bm{wt,Hp}}}^{T}[0] (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi})^{T} + {\bm{\bar{q}}^{T}}_{\bm{p,Hp}}
 \end{equation}
