@@ -1,7 +1,7 @@
 \section{Small signal pump measurements}
 \label{sec:small_sig_pump}
 
-In this section the small signal deviation of the linearized pump model is measured.
+In this section the linear small signal deviation of the linearized pump model is measured and calculated.
 
 
 %\subsection{One clamp push} % \label{app:...}
@@ -13,9 +13,9 @@ In this section the small signal deviation of the linearized pump model is measu
 \subsection*{Procedure:}
 The following procedure was made for finding the small signal deviations of the pumps
 \begin{enumerate}
-\item Wait for the system to reach the operating point.
-\item Add $0.1\omega$ to the rotational speed for one of the pumps and wait for steady state.
-\item Note differential pressure over the pump, subtract the added speed for the pump and wait for operating steady state. 
+\item Wait for the system to reach the steady state operating point.
+\item Add $\pm 0.05\omega$ to the rotational speed for one of the pumps and wait 30 minutes for steady state.
+\item Note differential pressure over the pump, set the rotational speed to the operating point and 30 minutes to reach operating steady state. 
 \end{enumerate}
 Point 2-3 is done for each pump where the pressure over the pump is noted 
 
@@ -30,11 +30,49 @@ The data from the measurements can be seen on
 % \label{fig:Test_WT_Timeconstant}
 % \end{figure}
 
+\subsection*{Results:}
+The steady state differential pressure for time $[1800, 3600, 7200, 9000, 10800 12600, 16200, 18000]$ is noted and used for the small signal deviation. These values has been picked as this is the time when the signal to one of the pumps are change and where the differential pressure over the pump should have reached a reasonable steady state. The differential pressure shown in \eqref{eq:smallsig_differential_pressure}, is show with respect to $\omega + \hat{\omega}$ and $\omega + \bar{\omega}$
+
+\begin{equation}
+	\begin{split}
+	\Delta P_{C_2} &= \wedge \\
+	\Delta P_{C_{16}} &= \wedge \\
+	\Delta P_{C_{18}} &= \wedge \\
+	\Delta P_{C_{25}} &= \wedge
+	\end{split}
+	\label{eq:smallsig_differential_pressure}
+\end{equation}
+
+From these results, the small signal pressure can be derived as see in \eqref{eq:smallsig_diff_pres1} to \eqref{eq:smallsig_diff_pres4}.
+
+\begin{equation}
+\frac{\hat{\Delta P_{C_2}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\label{eq:smallsig_diff_pres1}
+\end{equation}
+
+\begin{equation}
+\frac{\hat{\Delta P_{C_16}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\label{eq:smallsig_diff_pres2}
+\end{equation}
+
+\begin{equation}
+\frac{\hat{\Delta P_{C_18}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{1.21 - 0.16} = Nan 
+\label{eq:smallsig_diff_pres3}
+\end{equation}
+
+\begin{equation}
+\frac{\hat{\Delta P_{C_25}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\label{eq:smallsig_diff_pres4}
+\end{equation}
+
+
 \subsection*{Uncertainties of measurement:}
-% \begin{itemize}
-% \item The settling time for the initial state was not reached after 1.5 hours.
-% \end{itemize}
+\begin{itemize}
+\item The settling time for the initial state was not reached after 0.5 hours.
+\item Corrupt pressure measurements or noise. 
+\end{itemize}
 
 \subsection*{Conclusion:}
+From these measurements the small signal deviations have been found and will be used in the linearized small signal model for the pumps. 
 
 
