@@ -1,9 +1,9 @@
 \chapter{Pump linearization and PI controller}
 \label{cha:linear_pump}
 
-The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
+The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller at each pump, which is to be designed. The PI controllers purpose is to ensure that the associated pump is providing a specified differential pressure. For the two main pumps, this differential pressure reference is specified by the MPC. For the two pma pumps the reference is constant and the PI controller thereby ensures that these pumps retain a constant lift. 
 
-The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}.
+The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been designed, where the control structure can be seen on \figref{fig:simple_PI}.
 
 \begin{figure}[H]
 \centering
@@ -12,7 +12,7 @@ The control focus of this project has been on the model predictive control, see 
 \label{fig:simple_PI}
 \end{figure}
 
-The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. The model for the pumps is explained in \secref{PumpModel} and defined as
+The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. The model for the pumps is explained in \secref{PumpModel} and defined as,
 
 \begin{equation*}
 \Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
@@ -34,8 +34,8 @@ f_2(\bar{\omega}) &= a_{h0}\bar{\omega}^2
 
 \begin{equation}
 \begin{split}
-f_{t1}(\omega) &= f_1(\bar{\omega}) + f_1'(\bar{\omega})\cdot(\omega - \hat{\omega}) \\
-f_{t2}(\omega) &= f_2(\bar{\omega}) + f_2'(\bar{\omega})\cdot(\omega - \hat{\omega})
+f_{t1}(\omega) &= f_1(\bar{\omega}) + f_1'(\bar{\omega})\cdot(\omega - \bar{\omega}) \\
+f_{t2}(\omega) &= f_2(\bar{\omega}) + f_2'(\bar{\omega})\cdot(\omega - \bar{\omega})
 \end{split}
 \label{eq:tay_2}
 \end{equation}
@@ -79,7 +79,7 @@ With the following operating points set for the pumps, the differential pressure
 	\end{split}
 \end{equation}
 
-To estimate the flow, q, through the pumps, the small signal pressure has to be found. With the relation $\Delta P = \bar{\Delta} P + \hat{\Delta} P$, the linear small signal deviation, $\hat{\Delta} P$ can be found through measurements, where the $\hat{\omega}$ have been chosen to $\pm 0.05 \omega$.  
+To estimate the flow, q, through the pumps, the small signal pressure has to be found. With the relation $\Delta P = \bar{\Delta} P + \hat{\Delta} P$, the linear small signal deviation, $\hat{\Delta} P$ can be found through measurements, where the $\hat{\omega}$ has been chosen to $\pm 0.05$.  
 
 From \secref{sec:small_sig_pump} the small signal deviation measurement and test procedure can be found. The result of these measurement is stated below.
 \todo{Include test procedure and continue form here}
