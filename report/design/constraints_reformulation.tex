@@ -4,7 +4,7 @@
 
 Because the optimization problem is to be solved as a quadratic problem with the Quadratic programming solver, the constraints must be reformulated so they all set a constraint for the controller input, $u$. Therefore \eqref{eqcon_output} the output constraint and \eqref{eqcon_state} the state constraint need to be rewritten. 
 
-The output constraint, $\underline{y} < \bm{y} < \overline{y}$ must be setup as a constraint to $u$. With the standard state space output equation $y =c x$ and the system dynamic over the control horizon \eqref{extendedmatrix}, a new formulation this can be done.
+The output constraint, $\underline{y} < \bm{y} < \overline{y}$ must be setup as a constraint to $u$. With the standard state space output equation $y =c x$ and the system dynamic over the control horizon \eqref{extendedmatrix}, a new formulation can be done.
 %
 \begin{align}
 	\bm{\hat y}_{H_p} &= \hat C_{H_p} (\bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}}_{H_p} + \bm{\Psi} \bm{\hat{d}}_{H_p}) \nonumber \\
@@ -13,7 +13,7 @@ The output constraint, $\underline{y} < \bm{y} < \overline{y}$ must be setup as 
 %
 	\hat C_{H_p}\bm{\Gamma} \bm{\hat{u}}_{H_p} &= \bm{\hat y}_{H_p} - \hat C_{H_p}\bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \hat C_{H_p}\bm{\Psi} \bm{\hat{d}}_{H_p} \nonumber \\
 %
-	\bm{\hat{u}}_{H_p} &= (\hat C_{H_p}\bm{\Gamma})^{-1}\bm{\hat y}_{H_p} - \hat C_{H_p}\bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \hat C_{H_p}\bm{\Psi} \bm{\hat{d}}_{H_p} \label{eqnewcon_out}
+	\bm{\hat{u}}_{H_p} &= (\hat C_{H_p}\bm{\Gamma})^{-1} (\bm{\hat y}_{H_p} - \hat C_{H_p}\bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \hat C_{H_p}\bm{\Psi} \bm{\hat{d}}_{H_p}) \label{eqnewcon_out}
 \end{align}
 
 From this the upper and lower bounds to the input can be set by substituting $\bm{\hat y}_{H_p}$ with respectively the upper or lower bound.
@@ -25,7 +25,7 @@ For the state constraint the same can be done. \eqref{extendedmatrix}, describin
 %
 	\bm{\Gamma} \bm{\hat{u}}_{H_p} &= \bm{\Delta \hat{p}}_{wt,H_p} - \bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \bm{\Psi} \bm{\hat{d}}_{H_p} \nonumber \\
 %
-	\bm{\hat{u}}_{H_p} &= \bm{\Gamma}^{-1} \bm{\Delta \hat{p}}_{wt,H_p} - \bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \bm{\Psi} \bm{\hat{d}}_{H_p} \label{eqnewcon_state}
+	\bm{\hat{u}}_{H_p} &= \bm{\Gamma}^{-1} (\bm{\Delta \hat{p}}_{wt,H_p} - \bm{\Phi} \bm{\Delta \hat{p}}_{wt}[0] - \bm{\Psi} \bm{\hat{d}}_{H_p}) \label{eqnewcon_state}
 \end{align}
 
 \eqref{eqnewcon_state} and \eqref{eqnewcon_out} will be used in the implementation and recalculated for every optimization iteration. 
