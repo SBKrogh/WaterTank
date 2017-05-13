@@ -359,3 +359,9 @@ and the vector $\bm{b}$ can be given as:
 \!\! b = \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} \!+ \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} )\! + \!\bm{\hat{d}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}}\! + \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} )^{T}
   + \bm{\Delta \hat{P}_{\bm{wt,Hp}}}^{T}[0] (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi})^{T} + {\bm{\bar{q}}^{T}}_{\bm{p,Hp}}
 \end{equation}
+
+Hence the optimization is given by:
+
+\begin{equation}
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) = \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + \bm{c} \bigg)
+\end{equation}
