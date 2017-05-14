@@ -1,0 +1,150 @@
+\chapter{Pump linearization and PI controller - V2}
+\label{cha:linear_pump2}
+
+The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
+
+The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}.
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/pump_lin.tex}  
+\caption{The structure of the PI controller.}
+\label{fig:simple_PI}
+\end{figure}
+
+The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. The model for the pumps is explained in \secref{PumpModel} and defined as
+
+\begin{equation*}
+\Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
+\end{equation*}
+
+which is a nonlinear model. By the assumption that the flow is constant, the expression can through a Taylor expansion be linearized, with respect to $\omega$, to a small signal model.
+
+
+For simplification the pump model is separated into smaller chunks, see \eqref{eq:tay_1}, then Taylor approximated, see \eqref{eq:tay_2}, where $\omega = \hat{\omega}+\bar{\omega}$.
+
+\begin{equation}
+\begin{split}
+f_1(\bar{\omega}) &= a_{h1}\bar{q}\bar{\omega} \\
+f_2(\bar{\omega}) &= a_{h0}\bar{\omega}^2
+\end{split}
+\label{eq:tay_1}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+f_{t1}(\omega) &= f_1(\bar{\omega}) + f_1'(\bar{\omega})\cdot(\omega - \hat{\omega}) \\
+f_{t2}(\omega) &= f_2(\bar{\omega}) + f_2'(\bar{\omega})\cdot(\omega - \hat{\omega})
+\end{split}
+\label{eq:tay_2}
+\end{equation}
+
+From \eqref{eq:tay_1} an expression for the workspace of, $\bar{\Delta P}$, can be made.
+
+\begin{equation}
+\begin{split}
+\bar{\Delta P} = f_{1}(\bar{\omega}) + f_{2}(\bar{\omega}) + c
+\end{split}
+\label{eq:tay_3}
+\end{equation}
+
+The linear pump model can then be expressed as seen in \eqref{eq:tay_4}
+
+\begin{equation}
+\begin{split}
+0 &= -(\bar{\Delta P} + \hat{\Delta P}) + f_{t1}(\bar{\omega}) + f_{t2}(\bar{\omega}) + c\\
+  &= -(f_{1}(\bar{\omega}) + f_{2}(\bar{\omega}) + c + \hat{\Delta P}) + f_{t1}(\bar{\omega}) + f_{t2}(\bar{\omega}) + c \\ 
+  &= -\hat{\Delta P} + f_1'(\bar{\omega})\cdot\hat{\omega} + f_2'(\bar{\omega})\cdot\hat{\omega}
+\end{split}
+\label{eq:tay_4}
+\end{equation}
+
+\eqref{eq:tay_4} is then Laplace transformed and solved for the input output relationship as seen on \figref{fig:simple_PI}
+
+\begin{equation}
+G(s) = \frac{\hat{\Delta P}}{\hat{\omega}} = f'_1(\bar{\omega}) + f'_2(\bar{\omega}) = a_{h1}\bar{q} + 2a_{h0}\bar{\omega}
+\label{eq:lin_pump_simon}
+\end{equation}
+
+With the following operating points set for the pumps, the differential pressure over the pumps and their respective valves are measured. 
+
+\begin{equation}
+\centering
+	\begin{split}
+	\bar{\omega}_{C18} &= 0.16,\hspace{20pt} \Delta P_{C18} = 0.0807 \\
+	\bar{\omega}_{C25} &= 0.4,\hspace{20pt} \Delta P_{C25} = 0.255  \\
+	\bar{\omega}_{C2}  &= 0.4,\hspace{20pt} \Delta P_{C2} = 0.2 \\
+	\bar{\omega}_{C16} &= 0.4,\hspace{20pt} \Delta P_{C16} =0.25 
+	\end{split}
+\end{equation}
+
+
+From this the flow through the pumps can be estimated through \eqref{omega_notzero}, with their respective pump parameters found in \appref{system_description}.
+
+\begin{equation}
+\centering
+\begin{split}
+q_{C18} &= 0.179 \hspace{20pt} q_{C25} &= 0.272 \hspace{20pt} q_{C2} &= 0.061 \hspace{20pt} q_{C16} &= 0.169
+\end{split}
+\end{equation}
+
+By inserting the values for the linearized model in \eqref{eq:lin_pump_simon}, the final models ends up as gains. 
+
+\begin{equation}
+\centering
+	\begin{split}
+	G_{C18}(s) &= 0.218 \hspace{20pt} G_{C25}(s) &= 0.548 \hspace{20pt} G_{C2}(s) &= 0.962 \hspace{20pt} G_{C16}(s) &= 0.963
+	\end{split}
+\end{equation}
+
+As it can be seen in \todo{add secref} is the dynamic of the system slow. Therefore will a controller that can react within 3-5 seconds be fast enough.
+By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
+Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
+
+\begin{equation}
+\centering
+	\begin{split}
+	K_{C18} &= 8 \hspace{20pt} K_{C25} &= 3 \hspace{20pt} K_{C2} &= 2 \hspace{20pt} K_{C16} &= 2
+	\end{split}
+	\label{eq:PI_GAINS}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/TIKZ_PI_CONT_GAIN.tex}
+\caption{Step response of one pump PI system.}
+\label{fig:Tikz_PI_PUMP_GAIN}
+\end{figure}
+
+\subsection*{PI test}
+
+The PI controller was implemented on the water system described in \chapref{system_overview}. From the test it where concluded that some tuning of the gains had to be done, due to large overshoots and marginal stabilities on some of the pumps. The final values where found by trail and errors and can be seen in \eqref{eq:NEW_PI_GAINS}. 
+
+\begin{equation}
+\centering
+	\begin{split}
+	K_{C18} &= 6 \hspace{20pt} K_{C25} &= 4 \hspace{20pt} K_{C2} &= 1.4 \hspace{20pt} K_{C16} &= 1.4
+	\end{split}
+	\label{eq:NEW_PI_GAINS}
+\end{equation}
+
+Whit these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed fit to this project, since dynamics of the WT is much slower.
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/PI_First_Gain.tex}
+\caption{Step response of one pump PI system.}
+\label{fig:Tikz_PI_PUMP_GAIN}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/PI_New_Gain.tex}
+\caption{Step response of one pump PI system.}
+\label{fig:Tikz_PI_PUMP_GAIN}
+\end{figure}
+
+
+

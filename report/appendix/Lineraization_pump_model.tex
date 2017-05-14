@@ -85,73 +85,73 @@ From \secref{sec:small_sig_pump} the small signal deviation measurement and test
 \todo{Include test procedure and continue form here}
 
 
-From this the flow through the pumps can be estimated from the linearized pump model, by solving for q. 
+% From this the flow through the pumps can be estimated from the linearized pump model, by solving for q. 
 
 
 
-\begin{equation}
-\centering
-\begin{split}
-q_{C18} &= 0.179 \hspace{20pt} q_{C25} &= 0.272 \hspace{20pt} q_{C2} &= 0.061 \hspace{20pt} q_{C16} &= 0.169
-\end{split}
-\end{equation}
+% \begin{equation}
+% \centering
+% \begin{split}
+% q_{C18} &= 0.179 \hspace{20pt} q_{C25} &= 0.272 \hspace{20pt} q_{C2} &= 0.061 \hspace{20pt} q_{C16} &= 0.169
+% \end{split}
+% \end{equation}
 
-By inserting the values for the linearized model in \eqref{eq:lin_pump_simon}, the final models ends up as gains. 
+% By inserting the values for the linearized model in \eqref{eq:lin_pump_simon}, the final models ends up as gains. 
 
-\begin{equation}
-\centering
-	\begin{split}
-	G_{C18}(s) &= 0.218 \hspace{20pt} G_{C25}(s) &= 0.548 \hspace{20pt} G_{C2}(s) &= 0.962 \hspace{20pt} G_{C16}(s) &= 0.963
-	\end{split}
-\end{equation}
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	G_{C18}(s) &= 0.218 \hspace{20pt} G_{C25}(s) &= 0.548 \hspace{20pt} G_{C2}(s) &= 0.962 \hspace{20pt} G_{C16}(s) &= 0.963
+% 	\end{split}
+% \end{equation}
 
-As it can be seen in \todo{add secref} is the dynamic of the system slow. Therefore will a controller that can react within 3-5 seconds be fast enough.
-By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
-Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
+% As it can be seen in \todo{add secref} is the dynamic of the system slow. Therefore will a controller that can react within 3-5 seconds be fast enough.
+% By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
+% Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
 
-\begin{equation}
-\centering
-	\begin{split}
-	K_{C18} &= 8 \hspace{20pt} K_{C25} &= 3 \hspace{20pt} K_{C2} &= 2 \hspace{20pt} K_{C16} &= 2
-	\end{split}
-	\label{eq:PI_GAINS}
-\end{equation}
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	K_{C18} &= 8 \hspace{20pt} K_{C25} &= 3 \hspace{20pt} K_{C2} &= 2 \hspace{20pt} K_{C16} &= 2
+% 	\end{split}
+% 	\label{eq:PI_GAINS}
+% \end{equation}
 
-\begin{figure}[H]
-\centering
-\input{report/tikz/TIKZ_PI_CONT_GAIN.tex}
-\caption{Step response of one pump PI system.}
-\label{fig:Tikz_PI_PUMP_GAIN}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \input{report/tikz/TIKZ_PI_CONT_GAIN.tex}
+% \caption{Step response of one pump PI system.}
+% \label{fig:Tikz_PI_PUMP_GAIN}
+% \end{figure}
 
-\subsection*{PI test}
+% \subsection*{PI test}
 
-The PI controller was implemented on the water system described in \chapref{system_overview}. From the test it where concluded that some tuning of the gains had to be done, due to large overshoots and marginal stabilities on some of the pumps. The final values where found by trail and errors and can be seen in \eqref{eq:NEW_PI_GAINS}. 
+% The PI controller was implemented on the water system described in \chapref{system_overview}. From the test it where concluded that some tuning of the gains had to be done, due to large overshoots and marginal stabilities on some of the pumps. The final values where found by trail and errors and can be seen in \eqref{eq:NEW_PI_GAINS}. 
 
-\begin{equation}
-\centering
-	\begin{split}
-	K_{C18} &= 6 \hspace{20pt} K_{C25} &= 4 \hspace{20pt} K_{C2} &= 1.4 \hspace{20pt} K_{C16} &= 1.4
-	\end{split}
-	\label{eq:NEW_PI_GAINS}
-\end{equation}
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	K_{C18} &= 6 \hspace{20pt} K_{C25} &= 4 \hspace{20pt} K_{C2} &= 1.4 \hspace{20pt} K_{C16} &= 1.4
+% 	\end{split}
+% 	\label{eq:NEW_PI_GAINS}
+% \end{equation}
 
-Whit these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed fit to this project, since dynamics of the WT is much slower.
+% Whit these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed fit to this project, since dynamics of the WT is much slower.
 
-\begin{figure}[H]
-\centering
-\input{report/tikz/PI_First_Gain.tex}
-\caption{Step response of one pump PI system.}
-\label{fig:Tikz_PI_PUMP_GAIN}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \input{report/tikz/PI_First_Gain.tex}
+% \caption{Step response of one pump PI system.}
+% \label{fig:Tikz_PI_PUMP_GAIN}
+% \end{figure}
 
 
-\begin{figure}[H]
-\centering
-\input{report/tikz/PI_New_Gain.tex}
-\caption{Step response of one pump PI system.}
-\label{fig:Tikz_PI_PUMP_GAIN}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \input{report/tikz/PI_New_Gain.tex}
+% \caption{Step response of one pump PI system.}
+% \label{fig:Tikz_PI_PUMP_GAIN}
+% \end{figure}
 
 
 
