@@ -79,10 +79,32 @@ With the following operating points set for the pumps, the differential pressure
 	\end{split}
 \end{equation}
 
-To estimate the flow, q, through the pumps, the small signal pressure has to be found. With the relation $\Delta P = \bar{\Delta} P + \hat{\Delta} P$, the linear small signal deviation, $\hat{\Delta} P$ can be found through measurements, where the $\hat{\omega}$ has been chosen to $\pm 0.05$.  
+To estimate the flow, q, through the pumps, the small signal pressure has to be found. With the relation $\Delta P = \bar{\Delta} P + \hat{\Delta} P$, the linear small signal deviation, $\hat{\Delta} P$ can be found through measurements, where the $\hat{\omega}$ has been chosen to $0.05$.  
 
 From \secref{sec:small_sig_pump} the small signal deviation measurement and test procedure can be found. The result of these measurement is stated below.
-\todo{Include test procedure and continue form here}
+
+\begin{equation*}
+	\begin{split}
+	\frac{\hat{\Delta P_{C_2}}}{\hat{\omega_{C_2}}} = 1.376   \\
+	\frac{\hat{\Delta P_{C_16}}}{\hat{\omega_{C_2}}} =  0.704 \\
+	\frac{\hat{\Delta P_{C_18}}}{\hat{\omega_{C_2}}} =  1.473 \\
+	\frac{\hat{\Delta P_{C_25}}}{\hat{\omega_{C_2}}} = 1.338
+	\end{split}	
+\end{equation*}
+
+The flow can then be estimated through the linearized model in \eqref{eq:lin_pump_simon}, as a normal equation with one unknown variable, see \eqref{eq:operating_point_flow_pump}.
+
+\begin{equation}
+	\begin{split}
+	\bar{q_{C_{n}}}  &= \frac{\frac{\hat{\Delta P}}{\hat{\omega} }-2a_{h0}\bar{\omega}}{a_{h1}}\\
+	\bar{q_{C_{2}}} &= 42.25\\
+	\bar{q_{C_{16}}} &= -26.31\\
+	\bar{q_{C_{18}}} &= -70.70\\
+	\bar{q_{C_{25}}} &= -32.77
+	\end{split}
+	\label{eq:operating_point_flow_pump}
+\end{equation}
+
 
 
 % From this the flow through the pumps can be estimated from the linearized pump model, by solving for q. 

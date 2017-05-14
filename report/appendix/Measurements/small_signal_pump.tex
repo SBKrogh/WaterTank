@@ -22,23 +22,41 @@ Point 2-3 is done for each pump where the pressure over the pump is noted
 \subsection*{Measuring data:}
 The data from the measurements can be seen on 
 
-\todo{edit the rest - Simon}
+\begin{figure}[H]
+\input{report/tikz/Measurement/c2_diff_pressure}
+\caption{Small signal measurements for pump C2.}
+\label{fig:small_sig_diff_press_C2}
+\end{figure}
 
-% \begin{figure}[H]
-% \input{report/tikz/Time_constant_Water_Tank}
-% \caption{The data measurement for the finding the time constant of the WT. A small red dot shows the time constant for the tank which is 1155 seconds.}
-% \label{fig:Test_WT_Timeconstant}
-% \end{figure}
+\begin{figure}[H]
+\input{report/tikz/Measurement/c16_diff_pressure}
+\caption{Small signal measurements for pump C16.}
+\label{fig:small_sig_diff_press_C16}
+\end{figure}
+
+\begin{figure}[H]
+\input{report/tikz/Measurement/c18_diff_pressure}
+\caption{Small signal measurements for pump C18.}
+\label{fig:small_sig_diff_press_C18}
+\end{figure}
+
+\begin{figure}[H]
+\input{report/tikz/Measurement/c25_diff_pressure}
+\caption{Small signal measurements for pump C25.}
+\label{fig:small_sig_diff_press_C25}
+\end{figure}
+
+
 
 \subsection*{Results:}
-The steady state differential pressure for time $[1800, 3600, 7200, 9000, 10800 12600, 16200, 18000]$ is noted and used for the small signal deviation. These values has been picked as this is the time when the signal to one of the pumps are change and where the differential pressure over the pump should have reached a reasonable steady state. The differential pressure shown in \eqref{eq:smallsig_differential_pressure}, is show with respect to $\omega + \hat{\omega}$ and $\omega + \bar{\omega}$
+The steady state differential pressure for time 1800 is noted and used for the small signal deviation. These values has been picked as this is the time when the signal to one of the pumps are change and where the differential pressure over the pump should have reached a reasonable steady state. The differential pressure shown in \eqref{eq:smallsig_differential_pressure}, is show with respect to $\bar{\omega} + \hat{\omega}$ and $\Delta P = \bar{\Delta P} + \hat{\Delta p}$.
 
 \begin{equation}
 	\begin{split}
-	\Delta P_{C_2} &= \wedge \\
-	\Delta P_{C_{16}} &= \wedge \\
-	\Delta P_{C_{18}} &= \wedge \\
-	\Delta P_{C_{25}} &= \wedge
+	\Delta P_{C_2} &= 0.2688 \\
+	\Delta P_{C_{16}} &= 0.2852 \\
+	\Delta P_{C_{18}} &= 0.1228 \\
+	\Delta P_{C_{25}} &= 0.3169
 	\end{split}
 	\label{eq:smallsig_differential_pressure}
 \end{equation}
@@ -46,22 +64,22 @@ The steady state differential pressure for time $[1800, 3600, 7200, 9000, 10800 
 From these results, the small signal pressure can be derived as see in \eqref{eq:smallsig_diff_pres1} to \eqref{eq:smallsig_diff_pres4}.
 
 \begin{equation}
-\frac{\hat{\Delta P_{C_2}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\frac{\hat{\Delta P_{C_2}}}{\hat{\omega_{C_2}}} = \frac{0.2 - 0.2688}{0.4 - 0.45} =  1.376
 \label{eq:smallsig_diff_pres1}
 \end{equation}
 
 \begin{equation}
-\frac{\hat{\Delta P_{C_16}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\frac{\hat{\Delta P_{C_16}}}{\hat{\omega_{C_2}}} = \frac{0.25-0.2852}{0.4-0.45} =  0.704
 \label{eq:smallsig_diff_pres2}
 \end{equation}
 
 \begin{equation}
-\frac{\hat{\Delta P_{C_18}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{1.21 - 0.16} = Nan 
+\frac{\hat{\Delta P_{C_18}}}{\hat{\omega_{C_2}}} = \frac{0.0807 - 0.1228}{0.16 - 1.21} = 1.473 
 \label{eq:smallsig_diff_pres3}
 \end{equation}
 
 \begin{equation}
-\frac{\hat{\Delta P_{C_25}}}{\hat{\omega_{C_2}}} = \frac{Nan-Nan}{0.45-0.35} = Nan 
+\frac{\hat{\Delta P_{C_25}}}{\hat{\omega_{C_2}}} = \frac{0.25 - 0.3169}{0.4-0.45} = 1.338
 \label{eq:smallsig_diff_pres4}
 \end{equation}
 
