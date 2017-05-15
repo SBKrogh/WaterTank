@@ -83,11 +83,55 @@ Hence the objective function:
 \label{eqcost_3} 
 \end{equation}
 
-As can be seen in \eqref{eqcost_3}, the objective function now includes both the full- and small-signal inputs, the small-signal disturbances and the small-signal pressure in the WT.
+As can be seen in \eqref{eqcost_3}, the objective function now includes both the full- and small-signal inputs, the small-signal disturbances and the small-signal pressure in the WT. It is important to point out that the system dynamics are described by small-signals, however as it is mentioned in the problem formulation, the optimization for the cost has to be according to full-signals. Since the dynamics are meant to plugged into the objective function, the following has to be considered: 
+
+\begin{equation}
+\bm{u} = \bm{\bar{u}} + \bm{\hat{u}}
+\label{u_pred}
+\end{equation}\\
+and\\
+\begin{equation}
+\bm{d} = \bm{\bar{d}} + \bm{\hat{d}}
+\end{equation}
+
+which shows that the signals has to be decomposed to their constant values in the operating point and the small- signal deviations. 
 
 As it was shown before, the WT pressure is described as a state in the dynamics governing the water distribution system. Therefore the state-space model in \eqref{dyn} can be used to substitute this pressure in \eqref{eqcost_3}.
 
-However, before substituting the dynamics into the objective function, it is important to point out that an initial measurement of the states has to be available. Also important that here only the deviation from the operating point is taken into account, therefore the operating value of the WT pressure measurements has to be subtracted. Due to the available measurements it is possible to obtain the initial WT pressure at $i = 0$. For $i = 1$, the iteration of the state equation gives:
+However, before substituting the dynamics into the objective function, it is important to point out that an initial measurement of the states has to be available. In other words, an initial small-signal pressure value is required in the WT. The deviation from the operating point can be determined by subtracting the operating point value from the measurement. 
+Due to the available sensors it is possible to obtain the initial WT pressure at $i = 0$. 
+\\
+\newline
+It is important to emphasize furthermore that the cost function is formulated in such a way that from the current time step,$k$ , the future values are iterated from $i = 0$ to $i = H_p - 1$ when calculating the price of energy usage for the whole interval. In order to replace this iterative summation with vector and matrix products, all signals and matrices are written up for the complete prediction horizon. Therefore the elements of the input vector now represent input configurations at different time steps moving towards the end of the interval, such that:
+
+\begin{equation}
+\bm{u_{Hp}} =  
+ \begin{bmatrix}
+  \bm{u}[k|k]\\
+  \vdots  \\
+  \bm{u}[k+H_p-1|k)   
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times 1)}
+ \label{eq:uhp}
+\end{equation}
+
+and the disturbance vector therefore formulated as:
+
+\begin{equation}
+\bm{d_{Hp}} =  
+ \begin{bmatrix}
+  \bm{d}[k|k]\\
+  \vdots  \\
+  \bm{d}[k+H_p-1|k]   
+ \end{bmatrix}
+ \in \pmb{\mathbb{R}}^{(H_p \times 1)}
+ \label{eq:dhp}
+\end{equation}
+
+Thus at time step $k$, these signals consist of the present and future input and disturbance vectors until the end of the horizon, which is $H_p - 1$ since $i$ is iterated from zero. In the further discussion the same notation is used for signals referring to the whole prediction horizon as introduced in \eqref{eq:uhp} and \eqref{eq:dhp}.
+
+In order to substitute the WT dynamics into the objective function, it has to be written up for the whole prediction horizon, with extended matrices and signal vectors that represent the above-mentioned predicted values of the inputs, states and disturbances.
+For $i = 1$, the iteration of the state equation gives:
 
 %We want a way to describe the dynamics of the system during the prediction horizon. $\Delta \hat p_{wt}[0]$ is know from a measurement. 
 %The discrete system dynamics is stated in \eqref{extended_system_matrices}.
@@ -106,8 +150,8 @@ As can be seen, moving further in time steps, the predicted states only depend o
 
 \begin{align}\hspace{-0.8cm}
 \underbrace{\begin{bmatrix}
-\Delta \hat p_{wt}[k\!+\!i\!+\!1|k] \\ 
-\Delta \hat p_{wt}[k\!+\!i\!+\!1|k]\\ 
+\Delta \hat p_{wt}[k\!+\!1|k] \\ 
+\Delta \hat p_{wt}[k\!+\!2|k]\\ 
 \vdots \\ 
 \Delta \hat p_{wt}[k+H_p]\\ 
 \end{bmatrix}}_{\bm{\Delta \hat{p}}_{wt,Hp}}
@@ -126,8 +170,8 @@ A_d^{H_p}\\
  A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}   &\hdots & \bm{B_d}
 \end{bmatrix}}_{\bm{\Gamma}}
 \underbrace{\begin{bmatrix}
- \bm{\hat{u}}[k+i|k] \\ 
- \bm{\hat{u}}[k+i|k]\\ 
+ \bm{\hat{u}}[k|k] \\ 
+ \bm{\hat{u}}[k+1|k]\\ 
 \vdots \\ 
  \bm{\hat{u}}[k\!+\!H_p\!-\!1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{u}}_{Hp}} \\
@@ -139,8 +183,8 @@ A_d^{H_p}\\
  A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  & \hdots  & \bm{E_d}
 \end{bmatrix}}_{\bm{\Psi}}
 \underbrace{\begin{bmatrix}
- \bm{\hat{d}}[k+i|k] \\ 
- \bm{\hat{d}}[k+i|k]\\ 
+ \bm{\hat{d}}[k|k] \\ 
+ \bm{\hat{d}}[k+1|k]\\ 
 \vdots \\ 
  \bm{\hat{d}}[k+H_p-1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{d}}_{Hp}} 
@@ -184,42 +228,15 @@ $\in \pmb{\mathbb{R}}^{(H_p \times H_p)}$
  is the disturbance matrix along the prediction horizon, taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
  \end{minipage}
 
-It is shown therefore that the state, input and disturbance matrices, described above, may be calculated prior to solving the MPC optimization. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon. Furthermore, it is noted here that these matrices now describe the variables for the whole prediction horizon, and therefore the signals are subscripted with $H_p$. 
+It is shown therefore that the state, input and disturbance matrices, described above, may be calculated prior to solving the MPC optimization. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon. Furthermore, it is noted here that these matrices now describe the variables for the whole prediction horizon, and therefore the signals are subscripted with $H_p$, as mentioned above. 
 \\
 \newline
-Until this point, it was shown how the system dynamics can be written up for the whole prediction horizon, with the extended matrices and signal vectors that represent the predicted values of inputs, states and disturbances. However, the cost function is formulated in such a way that from the current time step,$k$ , the future values are iterated from $i = 0$ to $i = H_p - 1$ when calculating the price of energy usage for the whole interval. In order to replace this iterative summation with vector and matrix products, all signals and matrices are written up for the complete prediction horizon. Therefore the elements of the input vector now represent input configurations at different time steps moving towards the end of the interval, such that:
-
-\begin{equation}
-\bm{u_{Hp}} =  
- \begin{bmatrix}
-  \bm{u}[k+i|k]\\
-  \vdots  \\
-  \bm{u}[k+H_p-1|k)   
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times 1)}
-\end{equation}
-
-and the disturbance vector therefore formulated as:
-
-\begin{equation}
-\bm{d_{Hp}} =  
- \begin{bmatrix}
-  \bm{d}[k+i|k]\\
-  \vdots  \\
-  \bm{d}[k+H_p-1|k]   
- \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(H_p \times 1)}
-\end{equation}
-
-Thus at time step $k$, these signals consist of the future input and disturbance vectors until the end of the horizon, which is $H_p - 1$ since $i$ is iterated from zero. 
-\\
-\newline
-The objective function formulated in \eqref{eqcost_3} consists of the product of the $\bm{\Lambda_{1,2,3}}$ matrices and the signals. In order to express it in vectorial form, the cost function is plugged into these $\bm{\Lambda_{1,2,3}}$ matrices such that:
+The objective function formulated in \eqref{eqcost_3} consists of the product of the $\bm{\Lambda_{1,2,3}}$ matrices and the signals. In order to express the objective function in vectorial form, the cost function is multiplied with these $\bm{\Lambda_{1,2,3}}$ matrices such that:
 
 \begin{equation}
 \bm{\Lambda_{1,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_1} c_p[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_1} c_p[k|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{\Lambda_1} c_p[k+H_p-1|k] 
  \end{bmatrix}
@@ -230,7 +247,7 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 \begin{equation}
 \bm{\Lambda_{2,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_2} c_p[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_2} c_p[k|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{\Lambda_2} c_p[k+H_p-1|k] 
  \end{bmatrix}
@@ -241,32 +258,18 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
 \begin{equation}
 \bm{\Lambda_{3,Hp}} =
  \begin{bmatrix}
- \bm{\Lambda_3} c_p[k+i|k] & \hdots & \bm{0} \\
+ \bm{\Lambda_3} c_p[k|k] & \hdots & \bm{0} \\
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{\Lambda_3} c_p[k+H_p-1|k] 
  \end{bmatrix}
  \in \pmb{\mathbb{R}}^{(H_p \times H_p)}
 \end{equation} 
 
-It is important to point out that the system dynamics are described by small-signals, however as it is mentioned in the problem formulation, the optimization for the cost has to be according to full-signals. Since the dynamics are plugged into the objective function, the following has to be considered: 
-
-\begin{equation}
-\bm{u_{H{p}}} = \bm{\bar{u}_{H{p}}} + \bm{\hat{u}_{H{p}}}
-\label{u_pred}
-\end{equation}\\
-and\\
-\begin{equation}
-\bm{d_{H{p}}} = \bm{\bar{d}_{H{p}}} + \bm{\hat{d}_{H{p}}}
-\end{equation}
-
-which shows that the signals and has to be decomposed to their constant values in the operating point and the small- signal deviations. 
-\\
-\newline
 Now, that all the matrices and signals are represented in vectorial form along with their predicted values, the objective function can be written up such that:
 
 \begin{equation}
-  \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{\bm{{Hp}}}^{T}\bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
-  + {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Delta \hat{P}_{wt,Hp}} \bigg]
+  \Upsilon(\cdot) = \frac{1}{\eta} ({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T} \bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+  + {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Delta \hat{p}_{wt,Hp}} \bigg]
  \label{obj_hp}
 \end{equation}
 
@@ -274,8 +277,8 @@ And then the dynamics of the system can be plugged into \eqref{obj_hp}:
 
 \begin{equation}
 \begin{aligned}
- \Upsilon(\cdot) = \frac{1}{\eta} {\bm{{u}}}_{\bm{Hp}}^{T}\bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
-   \\ + {\bm{\Lambda}}_{\bm{3,Hp}} \bigg( \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} + \bm{\Psi}\bm{\hat{d}}_{\bm{Hp}} \bigg) \bigg]
+ \Upsilon(\cdot) = \frac{1}{\eta} ({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}  \bigg[ {\bm{\bar{q}}}_{\bm{p,Hp}} + {\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}} + {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+   \\ + {\bm{\Lambda}}_{\bm{3,Hp}} \bigg( \bm{\Phi} \bm{\Delta \hat{p}_{\bm{wt,Hp}}}[0] + \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} + \bm{\Psi}\bm{\hat{d}}_{\bm{Hp}} \bigg) \bigg]
 \end{aligned}
 \label{obj_hp_dyn}
 \end{equation}
@@ -284,14 +287,13 @@ By expressing the terms in \eqref{obj_hp_dyn}, the following yields:
 
 \begin{equation}
 \begin{aligned} 
- \Upsilon(\cdot) = & \frac{1}{\eta} \bigg[ \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\bar{q}}}_{\bm{p,Hp}}}_{\RN{1}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}}}_{\RN{2}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
- }_{\RN{3}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]}_{\RN{4}}
- \\
- & + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}}_{\RN{5}} + \underbrace{{\bm{{u}}}_{\bm{Hp}}^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}}_{\RN{6}} \bigg]
+ \Upsilon(\cdot) = & \frac{1}{\eta} \bigg[ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\bar{q}}}_{\bm{p,Hp}}}_{\RN{1}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}}}_{\RN{2}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+ }_{\RN{3}}  \\
+ & + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Phi} \bm{\Delta \hat{p}_{\bm{wt,Hp}}}[0]}_{\RN{4}}+ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}}_{\RN{5}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}}_{\RN{6}} \bigg]
  \end{aligned}
 \end{equation}
 
-Now, replacing all the full-signal input vectors according to \eqref{u_pred} with their operating and deviation values, the products of the different terms result in the following: 
+The product of the different terms with the operating and deviation values results in the following: 
 \begin{align}
 \text{\RN{1})} \:\:\: &({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} \bm{\bar{q}}_{\bm{p,Hp}}  = {\bm{\bar{u}}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}} + {\bm{\hat{u}}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}}\\
 %
@@ -300,7 +302,7 @@ Now, replacing all the full-signal input vectors according to \eqref{u_pred} wit
 \text{\RN{3})} \:\:\: &({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}}  = {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}_{\bm{Hp}}} 
  + {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}_{\bm{Hp}}}  \\
 %
-\text{\RN{4})}  \:\:\:&({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]   =  {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] \nonumber\\
+\text{\RN{4})}  \:\:\:&({\bm{\bar{u}}}_{\bm{Hp}} + {\bm{\hat{u}}}_{\bm{Hp}})^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{p}_{\bm{wt,Hp}}}[0]   =  {\bm{\bar{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{p}_{\bm{wt,Hp}}}[0] \nonumber\\
 %
 &+ {\bm{\hat{u}}}_{\bm{Hp}}^{T} {\bm{\Lambda}}_{\bm{3,Hp}} \bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0]  \\
 %
@@ -312,11 +314,13 @@ Now, replacing all the full-signal input vectors according to \eqref{u_pred} wit
  \label{obj_12}
 \end{align}
 
-As can be seen, there is only one variable in the objective function, which is the small-signal value of the input vector. The operating values of the inputs are the operating pressures of the two main pumps. Both the small-signal and operating point values of the disturbances are present. However, these disturbances are the ODs of the end-user valves, therefore they describe some kind of characteristics of water usage. The operating point values are known and are constant in the whole sequence. The small signal values are the deviations from this constant OD and also known, since the full-signal value of the whole disturbance sequence is known.
+As can be seen, now the objective functions is expressed with the vector of small-signal inputs. The operating values of the inputs are the operating pressures of the two main pumps. Both the small-signal and operating point values of the disturbances are present. However, these disturbances are the ODs of the end-user valves, therefore they describe some kind of characteristics of water usage. From the expressions derived above it can be clearly seen that predictions are necessary for this water usage. The operating point values are known and are constant in the whole sequence. The small signal values are the deviations from this constant OD and also known, since the full-signal value of the whole disturbance sequence is known. 
 \\
-As it was shown, all matrices are constants and can be calculated beforehand the optimization. 
+As it is shown, all matrices in the objective function are expressed using the predicted value of the energy cost which is changing in time. Therefore the matrices need to be updated at every time step. 
 \\
-After rearranging the terms, it is shown in \eqref{obj_12} that the objective function consists of quadratic and linear terms of the variable $\bm{\hat{u}_Hp}$. Furthermore there are constants due to the operating values of the disturbances and inputs. Hence the quadratic term results in:
+After rearranging the terms, it is shown in \eqref{obj_12} that the objective function consists of quadratic and linear terms of the vector $\bm{\hat{u}_{Hp}}$. Furthermore, there are constants due to the operating values of the disturbances and inputs. 
+
+Hence the quadratic term results in:
 
 \begin{equation}
   \begin{split}
@@ -334,7 +338,7 @@ The linear term is given by:
   \end{split}
 \end{equation}
 
-And the constants are given by:
+And the constants are:
 
 \begin{equation}
     \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\bar{q}}_{\bm{p,Hp}}  + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{2,Hp}}\bm{\hat{d}}_{\bm{Hp}} + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Phi} \bm{\Delta \hat{P}_{\bm{wt,Hp}}}[0] + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}
