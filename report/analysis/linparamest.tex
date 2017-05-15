@@ -147,10 +147,9 @@ In \appref{LinResults} the results of the estimation process are shown, where th
 From the tests it can be seen a slightly different behavior between the model and the data from the setup, especially at time $t = 350s$. This dissimilar 
 behavior showing up at some time samples could make the model unsuitable for the real setup, thus making it incorrect to be used in a model based control scheme. 
 
-In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the 
-unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not 
-succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}. 
-Altogether these matrices sum up to 44 unknown parameters, which are the ones to be estimated. The outputs to be compared with the test setup remain 
+In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_1}, where $M$ is a symmetric matrix, and \eqref{statespace_5}. 
+
+Altogether these matrices sum up to 28 unknown parameters, which are the ones to be estimated. The outputs to be compared with the test setup remain 
 the same as in \secref{LinParamEst_measurements}, as well as the toolbox used for estimating.
 
 \textbf{Estimation Data}
@@ -183,32 +182,31 @@ The following figures show the comparison between the data obtained from the lab
 
 \begin{figure}[H]
   \centering
-    \input{report/tikz/Node10_estimation_1.tex}
+    \input{report/tikz/Node10_estimation_2.tex}
     \caption{Estimation comparison for node 10.}
 \end{figure}
 
 \begin{figure}[H]
    \centering
-    \input{report/tikz/Node11_estimation_1.tex}
+    \input{report/tikz/Node11_estimation_2.tex}
     \caption{Estimation comparison for node 11.}
 \end{figure}
 
 \begin{figure}[H]
    \centering
-    \input{report/tikz/Node15_estimation_1.tex}
+    \input{report/tikz/Node15_estimation_2.tex}
     \caption{Estimation comparison for node 15.}
 \end{figure}
 
 \begin{figure}[H]
    \centering
-    \input{report/tikz/Node16_estimation_1.tex}
+    \input{report/tikz/Node16_estimation_2.tex}
     \caption{Estimation comparison for node 16.}
 \end{figure}
 
-
 \begin{figure}[H]
    \centering
-    \input{report/tikz/WT_estimation_1.tex}
+    \input{report/tikz/WT_estimation_2.tex}
     \caption{Estimation comparison for WT.}
 \end{figure}
 
