@@ -3,61 +3,61 @@
 
 Once the corresponding incidence and cycle matrices are identified, and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described in a compact, generalized form as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
 \\
-In \appref{IncidenceSection}, the form of the incidence matrix is shown. The last column of $\pmb{H}$ represents the edge that belongs to the WT. The number of edges representing the WT is one and in the further model description is denoted with $w$. 
+In \appref{IncidenceSection}, the form of the incidence matrix is shown. The last column of $\bm{H}$ represents the edge that belongs to the WT. The number of edges representing the WT is one and in the further model description is denoted with $w$. 
 \\
-Hence, the $\pmb{H}$ matrix can be written as 
+Hence, the $\bm{H}$ matrix can be written as 
 % It is worth mentioning that it is been also followed the structure such as the last 
 % column of the H matrix agrees with the WT edge. Hence, the H matrix can 
 % be written as
 
 \begin {equation}
-\pmb{H} = [\pmb{H_1} \quad \pmb{H_0}]
+\bm{H} = [\bm{H_1} \quad \bm{H_0}]
 \label{Hmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{H_1} \in \: \mathbb{R}^{n \times (e-w)}$  \\
-and \hspace*{0.4mm} $\pmb{H_0} \in \: \mathbb{R}^{n \times w} $ 
+\hspace*{8mm} $\bm{H_1} \in \: \mathbb{R}^{n \times (e-w)}$  \\
+and \hspace*{0.4mm} $\bm{H_0} \in \: \mathbb{R}^{n \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the $\pmb{H}$ matrix without the edge corresponding to the WT,\\
-\hspace*{4mm} is the $\pmb{H}$ matrix with the column corresponding to the WT. 
+\hspace*{4mm} is the $\bm{H}$ matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the $\bm{H}$ matrix with the column corresponding to the WT. 
 \end{minipage}
 
 Similarly, the fundamental cycle matrix, B, is structured such as the last column agrees with the edge representing the WT.
 
 \begin{equation}
-  \pmb{B} = [\pmb{B_1} \quad \pmb{B_0}]
+  \bm{B} = [\bm{B_1} \quad \bm{B_0}]
 \end{equation} 
 
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{B_1} \: \in \mathbb{R}^{l \times (e-w)}$  \\
-and \hspace*{0.4mm} $\pmb{B_0} \: \in \mathbb{R}^{l \times w} $ 
+\hspace*{8mm} $\bm{B_1} \: \in \mathbb{R}^{l \times (e-w)}$  \\
+and \hspace*{0.4mm} $\bm{B_0} \: \in \mathbb{R}^{l \times w} $ 
 \end{minipage}
 \begin{minipage}[t]{0.70\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the $\pmb{B}$ matrix without the edge corresponding to the WT,\\
-\hspace*{4mm} is the $\pmb{B}$ matrix with the column corresponding to the WT.
+\hspace*{4mm} is the $\bm{B}$ matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the $\bm{B}$ matrix with the column corresponding to the WT.
 \end{minipage}
 
-As mentioned in \secref{KirchhoffSection}, $\pmb{q}$ is a vector containing all the individual flows, which can be structured as follows:
+As mentioned in \secref{KirchhoffSection}, $\bm{q}$ is a vector containing all the individual flows, which can be structured as follows:
 
 \begin{equation}
-\pmb{q} =
+\bm{q} =
 \begin{bmatrix}
-         \pmb{q_1} \\
-	\pmb{q_0} 
+         \bm{q_1} \\
+	\bm{q_0} 
 \end{bmatrix}
 \label{qmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{q_1} \in \mathbb{R}^{(e-w) \times 1}$  \\
-\hspace*{8mm} $\pmb{q_0} \in \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\bm{q_1} \in \mathbb{R}^{(e-w) \times 1}$  \\
+\hspace*{8mm} $\bm{q_0} \in \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -68,17 +68,17 @@ Where\\
 The vector containing the pressures at the nodes can be also structured as
 
 \begin{equation}
-\pmb{p} =
+\bm{p} =
 \begin{bmatrix}
-         \pmb{p_1} \\
-	\pmb{p_0} 
+         \bm{p_1} \\
+	\bm{p_0} 
 \end{bmatrix}
 \end{equation}
 
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{p_1} \in \mathbb{R}^{(n-w) \times 1}$  \\
-\hspace*{8mm} $\pmb{p_0} \in \mathbb{R}^{w \times 1} $ 
+\hspace*{8mm} $\bm{p_1} \in \mathbb{R}^{(n-w) \times 1}$  \\
+\hspace*{8mm} $\bm{p_0} \in \mathbb{R}^{w \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -89,16 +89,16 @@ Where\\
 In \eqref{KCL} KCL is applied to $\mathcal{G}$, which states that the sum of all flows entering into a node must be equal to the sum of the flows leaving the node.
 
 By choosing independent set of flows corresponding to the chords of a spanning tree, the flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
-The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\pmb{z}$ are called the free flows of the system and are independent from each other\cite{GraphTheoryCarsten}.
+The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\bm{z}$ are called the free flows of the system and are independent from each other\cite{GraphTheoryCarsten}.
 
 \begin{equation}
-  \pmb{q_i} = \pmb{B_i} ^{T}  \pmb{z}
+  \bm{q_i} = \bm{B_i} ^{T}  \bm{z}
   \label{ChordRelation}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{z} \in \mathbb{R}^{(1 \times g)} $ 
+\hspace*{8mm} $\bm{z} \in \mathbb{R}^{(1 \times g)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -110,7 +110,7 @@ As shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by
 
 
 Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is on case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not acts as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
-\todo{Half of this part has been rewritten due to confusion but can be found as outcommend - please read both and decide which is better}
+\todo{Kris or Ignacio: Half of this part has been rewritten due to confusion but can be found as outcommend - please read both and decide which is better. I(Vinkel) dont feel this is a problem}
 
 % However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
 
@@ -119,26 +119,26 @@ Before writing up an expression that describes all parts, the component model, \
 \Delta p_i = \underbrace{\lambda_i (q_i) + \zeta_i + J_i \dot{q_i}}_\text{Pipe} + \underbrace{\mu_i (q_i, k_{v;i})}_\text{Valve} - \underbrace{\tilde{\alpha}_i(u_i)}_\text{Pump+valves} + \underbrace{\Delta p_{WT;i}}_\text{Water tank} + \underbrace{\gamma_i (q_i)}_\text{WT-connection}
 \end{equation}
 
-%In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\pmb{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
+%In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\bm{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
 
 \begin{equation}
-  \tilde{f}_i(\pmb{q_{i}}, \pmb{\omega_i}, \pmb{k_v}) = \lambda_i(\pmb{q_{i}}) + \zeta_i + \mu_i(\pmb{q_{i}}, \pmb{k_v}) - \tilde{\alpha}_i(\pmb{\omega_i}) + \gamma_i (\pmb{q_i})
+  \tilde{f}_i(\bm{q_{i}}, \bm{\omega_i}, \bm{k_v}) = \lambda_i(\bm{q_{i}}) + \zeta_i + \mu_i(\bm{q_{i}}, \bm{k_v}) - \tilde{\alpha}_i(\bm{\omega_i}) + \gamma_i (\bm{q_i})
   \label{ComponentFunction}
 \end{equation}
 
 Where\\
 \begin{align}
-\tilde{f}_i &= -\pmb{C_{pi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
-\tilde{f}_i &= -\pmb{C_{vi} q_i} |\pmb{q_i}|  \hskip 2cm  \text{for}\:i = 13,15,20,22\\
-\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\pmb{q_i}| \pmb{q_i}  + a_{h1i} \pmb{\omega_{i}} \pmb{q_i} + a_{h0i}\pmb{{\omega_i}}^2 \hskip 2cm  \text{for}\: i = 1,8,9,16 \\
-\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\pmb{q_i}| \pmb{q_i}  \hskip 2cm  \text{for}\: i = 24 \\
-\tilde{f}_i &= \Delta p_{WT}  \hskip 2cm  \text{for}\:i = 25
+\tilde{f}_i &= -\bm{C_{pi} q_i} |\bm{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
+\tilde{f}_i &= -\bm{C_{vi} q_i} |\bm{q_i}|  \hspace{6.95cm} \text{for}\:i = 13,15,20,22\\
+\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\bm{q_i}| \bm{q_i}  + a_{h1i} \bm{\omega_{i}} \bm{q_i} + a_{h0i}\bm{{\omega_i}}^2 \hspace{1.875cm} \text{for}\: i = 1,8,9,16 \\
+\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\bm{q_i}| \bm{q_i}  \hspace{5.43cm} \text{for}\: i = 24 \\
+\tilde{f}_i &= \Delta p_{WT}  \hspace{7.69cm} \text{for}\:i = 25
 \end{align}
 
 The following hydraulic network model shows an overall model along with the above-mentioned considerations.%The inertia matrix, J, was defined in \secref{CompletePipe}.
 
 \begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
+  \bm{\Delta p_1} =  \bm{J} \bm{\dot{q}_1} + \tilde{f}(\bm{q_1}, \bm{w}, \bm{k_v})
   \label{NoTowerModel}
 \end{equation}
 
@@ -147,47 +147,47 @@ flow through all the nodes and derived from the inertia model in \secref{Complet
 the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
 
 \begin{equation}
-  \Delta \pmb{p_1} =  \pmb{J} {\pmb{B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
+  \Delta \bm{p_1} =  \bm{J} {\bm{B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
   \label{ChordsModel}
 \end{equation}
 
 Making use of the identity shown in \eqref{KVL}, the following is obtained
 
 \begin{equation}
-  0 = \pmb{B_1} \pmb{\Delta p_1} = \pmb{B_1} [ \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})] 
+  0 = \bm{B_1} \bm{\Delta p_1} = \bm{B_1} [ \bm{J {B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})] 
  \end{equation}
 
 Isolating the inertia matrix to the left side
 
 \begin{equation}
- - \pmb{B_1} \pmb{J} \pmb{{B_1}}^T \pmb{\dot{z}}  = \pmb{B_1} f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
+ - \bm{B_1} \bm{J} \bm{{B_1}}^T \bm{\dot{z}}  = \bm{B_1} f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
  \label{isolateZ}
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the equation above is solved 
-for $\pmb{\dot{z}}$. In order to invert $(\pmb{B_1 J} \pmb{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
+for $\bm{\dot{z}}$. In order to invert $(\bm{B_1 J} \bm{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
 
-Setting $\pmb{\mathcal{J}} = \pmb{B_1 J} \pmb{{B_1}}^T $, then for the term $\pmb{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
-determinant has to be non-zero. Note that $\pmb{\mathcal{J}}$ is
+Setting $\bm{\mathcal{J}} = \bm{B_1 J} \bm{{B_1}}^T $, then for the term $\bm{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
+determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
 
 \begin{equation}
   \label{Jequation}
-  \pmb{\mathcal{J}} = (\pmb{I \quad B_f}) 
+  \bm{\mathcal{J}} = (\bm{I \quad B_f}) 
   \begin{pmatrix}
-    \pmb{J_c}    &    \pmb{0 }   \\
-    \pmb{0}       &   \pmb{ J_f}
+    \bm{J_c}    &    \bm{0 }   \\
+    \bm{0}       &   \bm{ J_f}
   \end{pmatrix}
   \begin{pmatrix}
-    \pmb{I}    \\
-    \pmb{{B_f}}^T
+    \bm{I}    \\
+    \bm{{B_f}}^T
   \end{pmatrix}
-  = \pmb{J_c} + \pmb{B_f J_f} \pmb{{B_f}}^T
+  = \bm{J_c} + \bm{B_f J_f} \bm{{B_f}}^T
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{J_c} \in \mathbb{R}^{l \times l}$  \\
-\hspace*{8mm} $\pmb{J_f} \in \mathbb{R}^{f \times f} $ 
+\hspace*{8mm} $\bm{J_c} \in \mathbb{R}^{l \times l}$  \\
+\hspace*{8mm} $\bm{J_f} \in \mathbb{R}^{f \times f} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -195,34 +195,34 @@ Where\\
 \hspace*{4mm} is the inertia in the components of the spanning tree.
 \end{minipage}
 
-$\pmb{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\pmb{\mathcal{G}}$ are pipes, all the 
-diagonal terms are positive. Thus, $\pmb{J_c} > 0$. 
+$\bm{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\bm{\mathcal{G}}$ are pipes, all the 
+diagonal terms are positive. Thus, $\bm{J_c} > 0$. 
 
 Nevertheless, if there is a chord corresponding to a non-pipe element, \eqref{Jequation} 
-would still be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\pmb{\mathcal{G}}$ \cite{TowerModel}.
+would still be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\bm{\mathcal{G}}$ \cite{TowerModel}.
 
-For the remaining term $\pmb{B_f J_f {B_f}}^T$, $\pmb{J_f}$ is a non-negative matrix as all its elements are zero or describe the inertia of a pipe. 
-Multiplying $\pmb{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
+For the remaining term $\bm{B_f J_f {B_f}}^T$, $\bm{J_f}$ is a non-negative matrix as all its elements are zero or describe the inertia of a pipe. 
+Multiplying $\bm{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
 
 \begin{equation}
-  \pmb{x}^{T} \pmb{B_f J_f {B_f}}^T \pmb{x}
+  \bm{x}^{T} \bm{B_f J_f {B_f}}^T \bm{x}
   \label{PosDefi}
 \end{equation}
 
-Creating a new variable $\pmb{y} = \pmb{B_f}^T \mathbf{x}$ and applying the definition of positive semi-definiteness 
+Creating a new variable $\bm{y} = \bm{B_f}^T \mathbf{x}$ and applying the definition of positive semi-definiteness 
 \cite{MatrixBook}
 
 \begin{equation}
-  \pmb{y}^{T} \pmb{J_f y} \geqslant 0
+  \bm{y}^{T} \bm{J_f y} \geqslant 0
   \label{PosDefEq}
 \end{equation}
 
-Thus, \eqref{Jequation} is positive definite and it provides a sufficient condition for $\pmb{\mathcal{J}}$ being invertible. 
+Thus, \eqref{Jequation} is positive definite and it provides a sufficient condition for $\bm{\mathcal{J}}$ being invertible. 
 
 Therefore, the system can be described as follows
 
 \begin{equation}
-   \pmb{\dot{z}}  = - (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})
+   \bm{\dot{z}}  = - (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})
    \label{ParatModelFinal}
  \end{equation}
 
@@ -232,7 +232,7 @@ Therefore, the system can be described as follows
 % For ease of reading, the complete component model in \eqref{NoTowerModel} is restated: 
 
 % \begin{equation*}
-%   \pmb{\Delta p_1} =  \pmb{J} \pmb{\dot{q}_1} + \tilde{f}(\pmb{q_1}, \pmb{w}, \pmb{k_v})
+%   \bm{\Delta p_1} =  \bm{J} \bm{\dot{q}_1} + \tilde{f}(\bm{q_1}, \bm{w}, \bm{k_v})
 %   \label{RecallModel}
 % \end{equation*}
 
@@ -240,23 +240,23 @@ Therefore, the system can be described as follows
 The same equation can be expressed with a reduced set of equation system with the help of the chord flows: 
 
 \begin{equation}
-  \pmb{\Delta p_1} =  \pmb{J {B_1}}^T \pmb{\dot{z}} + f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
+  \bm{\Delta p_1} =  \bm{J {B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
  \end{equation}
 
-The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \pmb{\Delta p_1} $ can be rewritten as
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \bm{\Delta p_1} $ can be rewritten as
 
 \begin{equation}
- \pmb{ \Delta p_1} = \pmb{ J {B_1}}^T [- (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})] + f({\pmb{B_1}}^T \pmb{z},\pmb{ w}, \pmb{k_v})
+ \bm{ \Delta p_1} = \bm{ J {B_1}}^T [- (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})] + f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})
   \label{PressureLarge}
  \end{equation}
  
 Writing in short form:
  
  \begin{equation}
-  \pmb{\Delta p_1} =  (-\pmb{J {B_1}}^T (\pmb{B_1 J {B_1}}^T)^{-1}\pmb{B_1} + \pmb{\mathcal{I}}) f({\pmb{B_1}}^T \pmb{z}, \pmb{w}, \pmb{k_v})
+  \bm{\Delta p_1} =  (-\bm{J {B_1}}^T (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} + \bm{\mathcal{I}}) f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
   \label{PressureShort}
  \end{equation}
 
-a general form of the network without the part corresponding to the WT ($\pmb{p_0}$ and $\pmb{q_0}$) is obtained. It should be noted that the same structure applies for the complete network, which is extended with the WT. In the following sections this general model is used in a slightly different form, which is suitable for the different estimation methods. 
+a general form of the network without the part corresponding to the WT ($\bm{p_0}$ and $\bm{q_0}$) is obtained. It should be noted that the same structure applies for the complete network, which is extended with the WT. In the following sections this general model is used in a slightly different form, which is suitable for the different estimation methods. 
 
 
