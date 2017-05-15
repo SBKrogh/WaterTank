@@ -29,3 +29,108 @@ For the state constraint the same can be done. \eqref{extendedmatrix}, describin
 \end{align}
 
 \eqref{eqnewcon_state} and \eqref{eqnewcon_out} will be used in the implementation and recalculated for every optimization iteration. 
+
+\begin{equation}
+	\bm{\hat{y}_{HP}} = \Theta \bm{\Delta \hat{p}_{wt}}[0] + \Omega \bm{\hat{u}_{HP}} + \Pi \bm{\hat{d}_{HP}}
+\end{equation}
+
+Now defining $\Omega$, $\Theta$ and $\Pi$:
+
+
+
+\begin{equation}
+    \bm{\Theta} =
+ \begin{bmatrix}
+ \bm{D_d} & \hdots & \bm{0} \\
+ \vdots & \ddots & \vdots\\
+ \bm{0} & \hdots & \bm{D_d} 
+ \end{bmatrix}
+ \end{equation}
+  
+ \begin{equation}
+ \bm{\Pi} =
+ \begin{bmatrix}
+ \bm{K_d} & \hdots & \bm{0} \\
+ \vdots & \ddots & \vdots\\
+ \bm{0} & \hdots & \bm{K_d} 
+ \end{bmatrix}
+ \end{equation}
+
+
+\begin{equation}
+  \bm{\Omega} =
+ \begin{bmatrix}
+ \bm{C_d} & \hdots & \bm{0} \\
+ \vdots & \ddots & \vdots\\
+ \bm{0} & \hdots & \bm{C_d} 
+ \end{bmatrix}
+\end{equation}
+
+
+\begin{equation}
+	\bm{\hat{y}_{HP}} = \Theta [\bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] + \bm{\Gamma} \bm{\hat{u}_{H_p}} + \bm{\Psi} \bm{\hat{d}_{H_p}}] \bm{\Delta \hat{p}_{wt}}[0] + \Omega \bm{\hat{u}_{HP}} + \Pi \bm{\hat{d}_{HP}}
+\end{equation}
+
+\begin{equation}
+	\bm{\hat{y}_{HP}} = \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+ + \Omega) \bm{\hat{u}_{H_p}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{H_p}}
+\end{equation}
+
+Applying the constraint for the output:
+
+\begin{equation}
+	\underline{\bm{\hat{y}_{HP}}} - \bm{\bar{y}_{HP}} \leq \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+ + \Omega) \bm{\hat{u}_{H_p}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{H_p}} \leq \overline{\bm{\hat{y}_{HP}}} - \bm{\bar{y}_{HP}}
+\end{equation}
+
+Setting the constraint for the input:
+
+\begin{equation}
+\underline{\bm{\hat{u}}} - \bm{\bar{u}} \leq \bm{\hat{u}_{HP}} \leq \overline{\bm{{u}}} - \bm{\bar{u}}
+\end{equation}
+
+The constraints for the states are given as:
+
+\begin{equation}
+	\underline{\bm{\Delta \hat{p}_{wt,HP}}} - \bm{\Delta \bar{p}_{wt,HP}} \leq \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+ + \Omega) \bm{\hat{u}_{H_p}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{H_p}} \leq \overline{\bm{\Delta \hat{p}_{wt,HP}}} - \bm{\Delta \bar{p}_{wt,HP}} 
+\end{equation}
+
+\begin{equation}
+\underbrace{\underline{\bm{u}} - \bm{\bar{u}_{HP}}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
+\end{equation}
+
+\begin{equation}
+	\underbrace{\overline{\bm{{u}}} - \bm{\bar{u}_{HP}}}_{\bm{\hat{u}_{2}}} \leq \bm{\hat{u}_{H_p}}
+\end{equation}
+
+
+\begin{equation}
+	\begin{bmatrix}
+		I 	\\
+		-I 	\\
+		L_{y}	\\
+		-L_{y}	\\
+		\Gamma	\\
+		\Gamma
+	\end{bmatrix}
+	\begin{bmatrix}
+			\bm{\hat{u}_{H_p}}	\\
+			\cdot 		\\
+			\cdot 		\\
+			\cdot 		\\
+			\cdot 		\\
+			\bm{\hat{u}_{H_p}}
+	\end{bmatrix}
+	\leq 
+	\begin{bmatrix}
+			\bm{\hat{u}_{1}}	\\
+			\bm{\hat{u}_{2}}	\\
+			\bm{\hat{y}_{2}}	\\
+			\bm{\hat{y}_{2}}	\\
+			\bm{\Delta \bar{p}_{wt,1}}	\\
+			\bm{\Delta \bar{p}_{wt,2}}	
+	\end{bmatrix}
+\end{equation}
+
+
+
+
+
