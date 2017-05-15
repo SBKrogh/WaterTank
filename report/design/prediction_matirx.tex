@@ -3,7 +3,14 @@
 
 The minimization problem formulated in \secref{control_problem} describes the optimization subject to the WT dynamics and constraints. In order to make this problem solvable, the objective function has to match the state-space dynamics, therefore it has to be reformulated. As it is shown in \eqref{eqcost}, the hydraulic power is expressed with the flow through the pumps, however the dynamics include the WT pressure as a state. 
 \\
-In \secref{SystemLin_control} it is explained in detail by \eqref{statespace_control_sys_state}, how the independent flows of the network can be  calculated with the system matrices. Using this equation and plugging this into the objective function, the flows through the pumps can be obtained. Recalling that all the flows can be obtained from the independent flow variables, the flow through the pumps can be given with a linear mapping such that: 
+In order to help the reader, the equation used for reformulating the pump flows is recalled:
+
+ \begin{equation}
+ \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
+ \label{statespace_control_sys_state_recall}
+\end{equation}
+
+\eqref{statespace_control_sys_state_recall} explains how the independent flows of the network can be  calculated with the system matrices. Using this equation and plugging this into the objective function, the flows through the pumps can be obtained. Recalling that all the flows can be obtained from the independent flow variables, the flow through the pumps can be given with a linear mapping such that: 
 
 \begin{equation}
 \bm{q_p}[k]  = \bm{G_{2}} \bm{B_{1}^T}  \bm{z}[k]
@@ -22,14 +29,14 @@ is a matrix representing a linear mapping between the flow through the two main 
 The system dynamics are only valid for small-signal values of the chord flows, and therefore for the small-signal values of the pump flows. As a consequence of this, $\bm{q_p}[k]$ can be written up as a sum of the operating point and the deviation from it:  
 
 \begin{equation}
-\bm{q_p}[k]  = \bm{\bar{q_p}} + \bm{\hat{q_p}}[k] = \bm{\bar{q_p}} + \bm{G_{2}} \bm{B_{1}^T}  \bm{\hat{z}}[k]
+\bm{q_p}[k]  = \bm{\bar{q}_p} + \bm{\hat{q}_p}[k] = \bm{\bar{q}_p} + \bm{G_{2}} \bm{B_{1}^T}  \bm{\hat{z}}[k]
 \label{mapping_mainP_1}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $ \bm{\bar{q_p}} $ \\
-\hspace*{8mm} $ \bm{\hat{q_p}}[k] $ 
+\hspace*{8mm} $ \bm{\bar{q}_p} $ \\
+\hspace*{8mm} $ \bm{\hat{q}_p}[k] $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -42,8 +49,7 @@ is the small-signal value of the flows through the main pumps.
 \textcolor{White}{te}$\unit{m^3/h}$
 \end{minipage}
 
-
-The operating value for the pump flows can be determined by the linearized model of the pumps with the available pressure measurements. This is described in detail in \appref{cha:linear_pump}. This means that $\bm{\bar{q_p}}$ is given, and considered as a constant. 
+The operating value for the pump flows can be determined by the non-linear model of the pumps with the available pressure measurements. This is described in detail in \appref{cha:linear_pump}. This means that $\bm{\bar{q}_p}$ yields directly from the pump model. 
 \\
 Plugging the expression for the small-signal chord flows given in \eqref{statespace_control_sys_state} into \eqref{mapping_mainP_1} and then into the objective function, the following yields:
 
@@ -56,19 +62,19 @@ Plugging the expression for the small-signal chord flows given in \eqref{statesp
  \label{mappingandstates}
 \end{equation}
 
-\begin{minipage}[t]{0.80\textwidth}
-Where\\
-\hspace*{8mm} $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
-\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
-\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
-\end{minipage}
-
 Therefore the small-signal flow through the main pumps can be written as: 
 
  \begin{equation}
  \bm{\hat{q}_{p}}[k] =   \bm{\Lambda_1} \bm{\hat{u}}[k] + \bm{\Lambda_2} \bm{\hat{d}}[k] + \bm{\Lambda_3} \Delta \hat{p}_{wt}[k]
  \label{pumpflows_simplified}
 \end{equation}
+
+\begin{minipage}[t]{0.80\textwidth}
+Now define\\
+\hspace*{8mm} $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
+\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
+\end{minipage}
 
 Hence the objective function:
 
