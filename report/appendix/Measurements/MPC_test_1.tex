@@ -1,0 +1,35 @@
+\section{Test of model predictive control}
+\label{sec:MPT_test}
+
+In this section, the model predictive controller obtained in \chapref{control_design} is implemented and tested on the water system available at Aalborg university. 
+
+\subsection*{Purpose:}
+
+To conclude if the controller obtained meets the requirements stated in \chapref{Requirements_and_constraints} and furthermore check if it lower the running cost of the system.
+
+%\subsection{One clamp push} % \label{app:...}
+\subsection*{Test equipment:}
+\begin{itemize}
+\item The water system at Aalborg university [AAU: 100911]
+\end{itemize}
+
+\subsection*{Procedure:}
+Due to time limitations the tests has been scaled to minimize the time spend on the measurements. The scaling factor have been chosen with the dynamics of the WT in mind. The time constant of the WT has been found as 1155 seconds, where the scaling have been chosen in such a way that a one hour optimization period should take half a time constant of the WT. This value have been rounded up to 10 minutes. 
+Since the MPC optimize over a horizon of 24 hour, the test will in total take four hours.
+
+\begin{enumerate}
+\item ...
+\end{enumerate}
+
+
+\subsection*{Measuring data:}
+
+\subsection*{Results:}
+
+
+\subsection*{Uncertainties of measurement:}
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\subsection*{Conclusion:}
