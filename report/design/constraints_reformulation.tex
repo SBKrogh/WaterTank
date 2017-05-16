@@ -30,7 +30,7 @@ Where the output, feedforward and disturbance matrices are respectively:
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{D_d} 
  \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(2 h_p \times 2 H_p)}
+ \in \pmb{\mathbb{R}}^{(2 H_p \times 2 H_p)}
  \end{equation}
   
  \begin{equation}
@@ -40,7 +40,7 @@ Where the output, feedforward and disturbance matrices are respectively:
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{K_d} 
  \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(2 h_p \times 4 H_p)}
+ \in \pmb{\mathbb{R}}^{(2 H_p \times 4 H_p)}
  \end{equation}
 
 
@@ -157,7 +157,7 @@ As it is shown, the constraints are all set up as constraints on the input signa
 
 
 \begin{equation}
-\underbrace{0}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
+\underbrace{\bm{0}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
 \end{equation}
 
 %\underline{\bm{u}} - \bm{\bar{u}_{Hp}}
@@ -201,19 +201,19 @@ Collecting all the constraints, the following linear constraint inequality is ob
 		\bm{L_{y}}	\\
 		-\bm{L_{y}}	\\
 		\bm{\Gamma}	\\
-		\bm{\Gamma}
+		-\bm{\Gamma}
 	\end{bmatrix}
 	\begin{matrix}
 			\bm{\hat{u}_{Hp}}
 	\end{matrix}
 	\geq 
 	\begin{bmatrix}
-			\bm{\hat{u}_{1}}	\\
+			\bm{0}	\\
 			\bm{\hat{u}_{2}}	\\
+			\bm{\hat{y}_{1}}	\\
 			\bm{\hat{y}_{2}}	\\
-			\bm{\hat{y}_{2}}	\\
-			\bm{\Delta \bar{p}_{wt,1}}	\\
-			\bm{\Delta \bar{p}_{wt,2}}	
+			\bm{\Delta \hat{p}_{wt,1}}	\\
+			\bm{\Delta \hat{p}_{wt,2}}	
 	\end{bmatrix}
 \end{equation}
 
