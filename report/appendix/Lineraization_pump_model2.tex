@@ -101,7 +101,7 @@ By inserting the values for the linearized model in \eqref{eq:lin_pump_simon}, t
 	\end{split}
 \end{equation}
 
-As it can be seen in \todo{add secref} is the dynamic of the system slow. Therefore will a controller that can react within 3-5 seconds be fast enough.
+As it can be seen in \appref{sec:WT_TimeConstant} the dynamic of the system are slow. Therefore will a controller that can settle within 3-5 seconds be sufficiently fast for the system.
 By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
 Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
 
@@ -132,7 +132,7 @@ The PI controller was implemented on the water system described in \chapref{syst
 	\label{eq:NEW_PI_GAINS}
 \end{equation}
 
-Whit these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed fit to this project, since dynamics of the WT is much slower.
+With these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed sufficient to this project, since the dynamics of the WT are much slower.
 
 \begin{figure}[H]
 \centering
@@ -146,8 +146,8 @@ Whit these gains the systems gets a slower response than the settling time of 4 
 \centering
 \input{report/tikz/PI_New_Gain.tex}
 \caption{Step response of one pump PI system.}
-\label{fig:Tikz_PI_PUMP_GAIN}
+\label{fig:Tikz_NEW_PI_PUMP_GAIN}
 \end{figure}
 
-
+Based on the step response shown in \figref{fig:Tikz_NEW_PI_PUMP_GAIN}, it can be concluded that a pressure controller that satisfies the requirements has been found for each pump. 
 
