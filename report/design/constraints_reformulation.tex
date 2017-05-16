@@ -8,7 +8,7 @@ The reformulation of the objective function, as it was seen, results in a constr
 First, let's consider the constraints on the output signal which are the upper and lower bound constraints for the end-user pressures in the two PMAs. Recalling the output equation constructed for the control and now extending it for the prediction horizon, similarly as it wos done for the state equation, yields: 
 
 \begin{equation}
-	\bm{\hat{y}_{HP}} = \Theta \bm{\Delta \hat{p}_{wt}}[0] + \Omega \bm{\hat{u}_{HP}} + \Pi \bm{\hat{d}_{HP}}
+	\bm{\hat{y}_{Hp}} = \Theta \Delta \hat{p}_{wt}[0] + \Omega \bm{\hat{u}_{Hp}} + \Pi \bm{\hat{d}_{Hp}}
 \end{equation}
 
 Where the output, feedforward and disturbance matrices are respectively: 
@@ -46,27 +46,27 @@ Where the output, feedforward and disturbance matrices are respectively:
 
 Now inserting the extended state equation back in the output equation the following yields: 
 \begin{equation}
-	\bm{\hat{y}_{HP}} = \Theta [\bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] + \bm{\Gamma} \bm{\hat{u}_{Hp}} + \bm{\Psi} \bm{\hat{d}_{Hp}}] \bm{\Delta \hat{p}_{wt}}[0] + \Omega \bm{\hat{u}_{HP}} + \Pi \bm{\hat{d}_{HP}}
+	\bm{\hat{y}_{Hp}} = \Theta [\bm{\Phi} \Delta \hat{p}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}_{Hp}} + \bm{\Psi} \bm{\hat{d}_{Hp}}] + \Omega \bm{\hat{u}_{Hp}} + \Pi \bm{\hat{d}_{Hp}}
 \end{equation}
 
 And summing up the matrices multiplied with the same signals: 
 
 \begin{equation}
-	\bm{\hat{y}_{HP}} = \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+ \Omega) \bm{\hat{u}_{Hp}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{Hp}}
+	\bm{\hat{y}_{Hp}} = \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+ \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}}
 	\label{eq:output_constraint1}
 \end{equation}
 \\
 \eqref{eq:output_constraint1} defines the equality between the small-signal output and small-signal inputs. Inserting the upper and lower bound values of the small-signal outputs in this equation, the inequality constraint is obtained for the outputs as an affine function of the small-signal input signals. It has to be considered however, that the constraints are originally set for full-signal values, therefore in this case the upper and lower values are the maximum allowed and minimum pressure values delivered to the end-users. As a consequence of this, when inserting the bounds back into \eqref{eq:output_constraint1}, the operating point has to be subtracted at both sides to transform each term to small-signals. The constraint yields: 
 
 \begin{equation}
-	\underline{\bm{\hat{y}_{HP}}} - \bm{\bar{y}_{HP}} \leq \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+ \Omega) \bm{\hat{u}_{Hp}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\hat{y}_{HP}}} - \bm{\bar{y}_{HP}}
+	\underline{\bm{\hat{y}_{Hp}}} - \bm{\bar{y}_{Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+ \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\hat{y}_{Hp}}} - \bm{\bar{y}_{Hp}}
 	\label{eq:output_constraint2}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $ \overline{\bm{\hat{y}_{HP}}} $ \\
-\hspace*{8mm} $ \underline{\bm{\hat{y}_{HP}}} $ 
+\hspace*{8mm} $ \overline{\bm{\hat{y}_{Hp}}} $ \\
+\hspace*{8mm} $ \underline{\bm{\hat{y}_{Hp}}} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -108,14 +108,14 @@ is the lower-bound of the end-user pressure.
 The constraint on the states can be reformulated using the same idea as for the output, except that it is sufficient to use the extended state dynamic equation such that: 
 
 \begin{equation}
-	\underline{\bm{\Delta \hat{p}_{wt,HP}}} - \bm{\Delta \bar{p}_{wt,HP}} \leq \Theta \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] +  (\Theta \bm{\Gamma}+  \Omega) \bm{\hat{u}_{H_p}} + (\Theta \bm{\Psi} + \Pi)  \bm{\hat{d}_{H_p}} \leq \overline{\bm{\Delta \hat{p}_{wt,HP}}} - \bm{\Delta \bar{p}_{wt,HP}} 
+	\underline{\bm{\Delta \hat{p}_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+  \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\Delta \hat{p}_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} 
 	\label{eq:stateconstraint}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $ \overline{\bm{\Delta \hat{p}_{wt,HP}}} $ \\
-\hspace*{8mm} $ \underline{\bm{\Delta \hat{p}_{wt,HP}}} $ 
+\hspace*{8mm} $ \overline{\bm{\Delta \hat{p}_{wt,Hp}}} $ \\
+\hspace*{8mm} $ \underline{\bm{\Delta \hat{p}_{wt,Hp}}} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -131,66 +131,61 @@ is the lower-bound of the WT pressure.
 And the constraint for the input signals are given by: 
 
 \begin{equation}
-\underline{\bm{\hat{u}}} - \bm{\bar{u}} \leq \bm{\hat{u}_{HP}} \leq \overline{\bm{{u}}} - \bm{\bar{u}}
+\underline{\bm{\hat{u}}} - \bm{\bar{u}} \leq \bm{\hat{u}_{Hp}} \leq \overline{\bm{{u}}} - \bm{\bar{u}}
 \label{eq:inputconstraint}
 \end{equation}
 
-As it is shown, the constraints are all set up as constraints on the input signal in \eqref{eq:output_constraint2}, \eqref{eq:inputconstraint} and in \eqref{eq:stateconstraint}. In order to formulate all the constraints as one linear inequality matrix equation, the three constrain inequality is divided into six inequalities such that the lower-bound for the input is given by:
+As it is shown, the constraints are all set up as constraints on the input signal in \eqref{eq:output_constraint2}, \eqref{eq:inputconstraint} and in \eqref{eq:stateconstraint}. In order to formulate all the constraints as one linear inequality system, the three constrain inequality is divided into six inequalities such that the lower-bound for the input is given by:
 
 
 \begin{equation}
-\underbrace{\underline{\bm{u}} - \bm{\bar{u}_{HP}}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
+\underbrace{\underline{\bm{u}} - \bm{\bar{u}_{Hp}}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
 \end{equation}
 
 The upper bound of the input is given by:
 
 \begin{equation}
-	\underbrace{\overline{\bm{{u}}} - \bm{\bar{u}_{HP}}}_{\bm{\hat{u}_{2}}} \leq \bm{\hat{u}_{H_p}}
+	\underbrace{\overline{\bm{{u}}} - \bm{\bar{u}_{Hp}}}_{\bm{\hat{u}_{2}}} \leq \bm{\hat{u}_{Hp}}
 \end{equation}
 
 The lower-bound of the output is given by:
 
 \begin{equation}
-\underbrace{\underline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}} - \bm{\Theta} \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] - (\bm{\Phi \Psi + \Pi}) \bm{\hat{d}_{Hp}}}_{\bm{\hat{y}_1}} \leq \underbrace{(\bm{\Phi \Gamma + \Omega})}_{\bm{L_y}} \bm{\hat{u}_{Hp}}
+\underbrace{\underline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}} - \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] - (\bm{\Theta \Psi + \Pi}) \bm{\hat{d}_{Hp}}}_{\bm{\hat{y}_1}} \leq \underbrace{(\bm{\Theta \Gamma + \Omega})}_{\bm{L_y}} \bm{\hat{u}_{Hp}}
 \end{equation}
 
 The upper-bound of the output is given by:
 
 \begin{equation}
-\underbrace{\overline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}} - \bm{\Theta} \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] - (\bm{\Phi \Psi + \Pi}) \bm{\hat{d}_{Hp}}}_{\bm{\hat{y}_2}} \geq \underbrace{(\bm{\Phi \Gamma + \Omega})}_{\bm{L_y}} \bm{\hat{u}_{Hp}}
+\underbrace{\overline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}} - \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] - (\bm{\Theta \Psi + \Pi}) \bm{\hat{d}_{Hp}}}_{\bm{\hat{y}_2}} \geq \underbrace{(\bm{\Theta \Gamma + \Omega})}_{\bm{L_y}} \bm{\hat{u}_{Hp}}
 \end{equation}
 
 The lower-bound of the state is given by:
 
 \begin{equation}
-\underbrace{\underline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} -  \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] - \bm{\Psi} \bm{\hat{d}_{Hp}}}_{\bm{\Delta \hat{p}_{wt,1}}} \leq \bm{\Gamma} \bm{\hat{u}_{Hp}}
+\underbrace{\underline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} -  \bm{\Phi} \Delta \hat{p}_{wt}[0] - \bm{\Psi} \bm{\hat{d}_{Hp}}}_{\bm{\Delta \hat{p}_{wt,1}}} \leq \bm{\Gamma} \bm{\hat{u}_{Hp}}
 \end{equation}
 
 The upper-bound of the state is given by:
 
 \begin{equation}
-\underbrace{\overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} -  \bm{\Phi} \bm{\Delta \hat{p}_{wt}}[0] - \bm{\Psi} \bm{\hat{d}_{Hp}}}_{\bm{\Delta \hat{p}_{wt,2}}} \geq \bm{\Gamma} \bm{\hat{u}_{Hp}}
+\underbrace{\overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} -  \bm{\Phi} \Delta \hat{p}_{wt}[0] - \bm{\Psi} \bm{\hat{d}_{Hp}}}_{\bm{\Delta \hat{p}_{wt,2}}} \geq \bm{\Gamma} \bm{\hat{u}_{Hp}}
 \end{equation}
 
-Therefore collecting all the constraints, the following linear constraint inequality is obtained:
+Collecting all the constraints, the following linear constraint inequality is obtained:
 
 \begin{equation}
 	\begin{bmatrix}
-		I 	\\
-		-I 	\\
-		L_{y}	\\
-		-L_{y}	\\
-		\Gamma	\\
-		\Gamma
+		\bm{I} 	\\
+		-\bm{I} 	\\
+		\bm{L_{y}}	\\
+		-\bm{L_{y}}	\\
+		\bm{\Gamma}	\\
+		\bm{\Gamma}
 	\end{bmatrix}
-	\begin{bmatrix}
-			\bm{\hat{u}_{H_p}}	\\
-			\bm{\hat{u}_{H_p}} 		\\
-			\bm{\hat{u}_{H_p}} 		\\
-			\bm{\hat{u}_{H_p}} 		\\
-			\bm{\hat{u}_{H_p}} 		\\
-			\bm{\hat{u}_{H_p}}
-	\end{bmatrix}
+	\begin{matrix}
+			\bm{\hat{u}_{Hp}}
+	\end{matrix}
 	\leq 
 	\begin{bmatrix}
 			\bm{\hat{u}_{1}}	\\
