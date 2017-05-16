@@ -1,5 +1,5 @@
 
-\section{Constraints reformulation}
+\section{Constraints}
 \label{constraints_reformulation}
 
 The reformulation of the objective function, as it was seen, results in a constrained quadratic problem. This problem is the process of optimizing the objective function described in \eqref{eq:obj_final} with respect to the input signal in the presence of constraints on the input. As it was shown in the control problem, constraints are defined as inequalities on the output, state and input signals respectively. Since all the constraints must be set up as a constraint on the controller input, $\bm{u_{Hp}}$, these inequalities must be reformulated. 
@@ -8,7 +8,7 @@ The reformulation of the objective function, as it was seen, results in a constr
 First, let's consider the constraints on the output signal which are the upper and lower bound constraints for the end-user pressures in the two PMAs. Recalling the output equation constructed for the control and now extending it for the prediction horizon, similarly as it wos done for the state equation, yields: 
 
 \begin{equation}
-	\bm{\hat{y}_{Hp}} = \Theta \Delta \hat{p}_{wt}[0] + \Omega \bm{\hat{u}_{Hp}} + \Pi \bm{\hat{d}_{Hp}}
+	\bm{\hat{y}_{Hp}} = \bm{\Theta} \bm{\Delta} \hat{p}_{wt}[0] + \bm{\Omega} \bm{\hat{u}_{Hp}} + \Pi \bm{\hat{d}_{Hp}}
 \end{equation}
 
 Where the output, feedforward and disturbance matrices are respectively: 
@@ -46,7 +46,7 @@ Where the output, feedforward and disturbance matrices are respectively:
 
 Now inserting the extended state equation back in the output equation the following yields: 
 \begin{equation}
-	\bm{\hat{y}_{Hp}} = \Theta [\bm{\Phi} \Delta \hat{p}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}_{Hp}} + \bm{\Psi} \bm{\hat{d}_{Hp}}] + \Omega \bm{\hat{u}_{Hp}} + \Pi \bm{\hat{d}_{Hp}}
+	\bm{\hat{y}_{Hp}} = \bm{\Theta} [\bm{\Phi} \Delta \hat{p}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}_{Hp}} + \bm{\Psi} \bm{\hat{d}_{Hp}}] + \bm{\Omega} \bm{\hat{u}_{Hp}} + \bm{\Pi} \bm{\hat{d}_{Hp}}
 \end{equation}
 
 And summing up the matrices multiplied with the same signals: 

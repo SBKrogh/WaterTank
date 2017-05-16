@@ -335,27 +335,27 @@ The linear term is given by:
   \begin{split}
     & \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} ) \bm{\hat{u}}_{\bm{Hp}} + \bm{\hat{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} ) \bm{\hat{d}}_{\bm{Hp}}
     \\
-    & + \bm{\hat{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi} \Delta \hat{P}_{wt,Hp}[0] + \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}}
+    & + \bm{\hat{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi} \Delta \hat{p}_{wt,Hp}[0] + \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{\bar{q}}_{\bm{p,Hp}}
   \end{split}
 \end{equation}
 
 And the constants are:
 
 \begin{equation}
-    \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\bar{q}}_{\bm{p,Hp}}  + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{2,Hp}}\bm{\hat{d}}_{\bm{Hp}} + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Phi} \Delta \hat{P}_{wt,Hp}[0] + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}
+    \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\bar{q}}_{\bm{p,Hp}}  + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{2,Hp}}\bm{\hat{d}}_{\bm{Hp}} + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Phi} \Delta \hat{p}_{wt,Hp}[0] + \bm{\bar{u}}_{\bm{Hp}}^{T}\bm{\Lambda}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}
 \end{equation}
 
 Therefore it is shown that this optimization simplifies to a quadratic problem that can be written up in such a form as follows:
 
 \begin{equation}
-  \Upsilon(\cdot) = \frac{1}{\eta}\Big( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + \bm{c} \Big)
+  \Upsilon(\cdot) = \frac{1}{\eta}\Big( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \Big)
 \end{equation}
 
 \begin{minipage}[t]{0.28\textwidth}
 Where\\
 \hspace*{8mm} $\bm{R} \in \pmb{\mathbb{R}}^{(H_p \times H_p)} $ \\
 \hspace*{8mm} $\bm{b} \in \pmb{\mathbb{R}}^{(H_p \times 1)} $ \\
-\hspace*{8mm} $\bm{c} \in \pmb{\mathbb{R}}^{(H_p \times 1)} $
+\hspace*{8mm} $c \in \mathbb{R}^{(1 \times 1)} $
 \end{minipage}
 
 Therefore the $\bm{R}$ matrix in the quadratic problem can be given as:
@@ -364,16 +364,22 @@ Therefore the $\bm{R}$ matrix in the quadratic problem can be given as:
   \bm{R} = 2\Big(\bm{\Lambda}_{\bm{1,Hp}} + \bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma}\Big) 
 \end{equation}
 
-and the vector $\bm{b}$ can be given as:
+The vector $\bm{b}$ can be given as:
 
 \begin{equation}
-\!\! b = \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} \!+ \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} )\! + \!\bm{\hat{d}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}}\! + \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} )^{T}
-  + \Delta \hat{P}_{wt,Hp}^{T}[0] (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi})^{T} + {\bm{\bar{q}}^{T}}_{\bm{p,Hp}}
+\!\! \bm{b} = \bm{\bar{u}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{1,Hp}} \!+ \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Gamma} )\! + \!\bm{\hat{d}}_{\bm{Hp}}^{T}(\bm{\Lambda}_{\bm{2,Hp}}\! + \!\bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi} )^{T}
+  + \Delta \hat{p}_{wt,Hp}^{T}[0] (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi})^{T} + {\bm{\bar{q}}^{T}}_{\bm{p,Hp}}
+\end{equation}
+
+and $c$ can be given as:
+
+\begin{equation}
+\!\! c = \bm{\bar{u}_{Hp}^T} \bm{\bar{q}_{p,Hp}} + \bm{\bar{u}_{Hp}^T} \bm{\Lambda}_{\bm{2,Hp}} \bm{\hat{d}}_{\bm{Hp}} +  \bm{\bar{u}_{Hp}^T} (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Phi}) \Delta \hat{p}_{wt,Hp}[0] + \bm{\bar{u}_{Hp}^T} (\bm{\Lambda}_{\bm{3,Hp}} \bm{\Psi})  \bm{\hat{d}_{Hp}}
 \end{equation}
 
 Hence the optimization is given by:
 
 \begin{equation}
-\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) = \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + \bm{c} \bigg)
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) = \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)
 \label{eq:obj_final}
 \end{equation}
