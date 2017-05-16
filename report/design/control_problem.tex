@@ -85,7 +85,7 @@ The control problem can be formulated as a minimization problem of the form:
 \underset{\bm{u}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
 %
 \newline
-s.t \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
+s.t. \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
 %
 &\bm{\hat{y}}[k+i|k] = \bm{C_d} \Delta \hat{p}_{wt}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
 %
