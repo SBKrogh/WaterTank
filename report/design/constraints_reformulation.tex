@@ -153,7 +153,7 @@ is the lower-bound of the control input.
 
 In \eqref{eq:inputconstraint}, the full-signal lower-bound constraint equals to zero and from now on in the further discussion, zero is used.
 
-As it is shown, the constraints are all set up as constraints on the input signal in \eqref{eq:output_constraint2}, \eqref{eq:inputconstraint} and in \eqref{eq:stateconstraint}. In order to formulate all the constraints as one linear inequality system, the three constrain inequalities are divided into six inequalities such that the lower-bound for the input is given by:
+As it is shown, the constraints are all set up as constraints on the input signal in \eqref{eq:output_constraint2}, \eqref{eq:inputconstraint} and in \eqref{eq:stateconstraint}. In order to formulate all the constraints as one affine inequality system, the three constrain inequalities are divided into six inequalities such that the lower-bound for the input is given by:
 
 
 \begin{equation}
@@ -192,7 +192,7 @@ The upper-bound of the state is given by:
 \underbrace{\overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} -  \bm{\Phi} \Delta \hat{p}_{wt}[0] - \bm{\Psi} \bm{\hat{d}_{Hp}}}_{\bm{\Delta \hat{p}_{wt,2}}} \geq \bm{\Gamma} \bm{\hat{u}_{Hp}}
 \end{equation}
 
-Collecting all the constraints, the following linear constraint inequality is obtained:
+Collecting all the constraints, the following affine constraint inequality is obtained:
 
 \begin{equation}
 	\begin{bmatrix}
