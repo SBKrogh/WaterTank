@@ -59,14 +59,14 @@ And summing up the matrix multiplications, all signals can be expressed such tha
 \eqref{eq:output_constraint1} defines the equality between the small-signal output and small-signal inputs. Inserting the upper-and lower-bound values of the small-signal outputs in this equation, the inequality constraint is obtained for the outputs as an affine function of the small-signal input signals. It has to be considered however, that the constraints are originally set for full-signal values, therefore in this case the upper and lower values are the maximum allowed and minimum required pressure values delivered to the end-users. As a consequence of this, when inserting the bounds back into \eqref{eq:output_constraint1}, the operating point has to be subtracted at both sides to transform each term to small-signals. The constraint therefore is given as: 
 
 \begin{equation}
-	\underline{\bm{\hat{y}_{Hp}}} - \bm{\bar{y}_{Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+ \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\hat{y}_{Hp}}} - \bm{\bar{y}_{Hp}}
+	\underline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+ \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{y_{Hp}}} - \bm{\bar{y}_{Hp}}
 	\label{eq:output_constraint2}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $ \overline{\bm{\hat{y}_{Hp}}} $ \\
-\hspace*{8mm} $ \underline{\bm{\hat{y}_{Hp}}} $ 
+\hspace*{8mm} $ \overline{\bm{y_{Hp}}} $ \\
+\hspace*{8mm} $ \underline{\bm{y_{Hp}}} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -108,14 +108,14 @@ is the lower-bound of the end-user pressure.
 The constraint on the states can be reformulated using the same idea as for the output, except that it is sufficient to use the extended state dynamic equation such that: 
 
 \begin{equation}
-	\underline{\bm{\Delta \hat{p}_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+  \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\Delta \hat{p}_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} 
+	\underline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+  \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} 
 	\label{eq:stateconstraint}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $ \overline{\bm{\Delta \hat{p}_{wt,Hp}}} $ \\
-\hspace*{8mm} $ \underline{\bm{\Delta \hat{p}_{wt,Hp}}} $ 
+\hspace*{8mm} $ \overline{\bm{\Delta p_{wt,Hp}}} $ \\
+\hspace*{8mm} $ \underline{\bm{\Delta p_{wt,Hp}}} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
