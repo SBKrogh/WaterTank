@@ -1,0 +1,29 @@
+\chapter{Pump linearization and PI controller - V2}
+\label{cha:linear_pump2}
+
+The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
+
+The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}. The steady state error is desired to be zero, which is possible by an integrator pole in the controller. The gain of the controller is then to be found. 
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/pump_lin.tex}  
+\caption{The structure of the PI controller.}
+\label{fig:simple_PI}
+\end{figure}
+
+The output from the MPC is a differential pressure, which is to be controlled through the rotational speed of the pumps. However the pump/valve model in \secref{SystemModel} and seen beneath, is to be used, since the feedback of $\Delta P$ is measured over two valves and a pump, see \figref{fig:subsys_1} in \secref{SystemModel}.
+
+\begin{equation*}
+ \Delta p = \Big(\frac{2}{k_{v100}^2} - a_{h2}\Big)|q| q  + a_{h1} \omega_r q + a_{h0}{\omega_r}^2
+\end{equation*}
+
+The two terms $\omega$ and $q$ are time dependent variables, which is to be linearized around the operating point. Through a first order Taylor approximation the pump expression end up as see in \eqref{eq:taylor_w_q}
+
+\begin{equation}
+	\begin{split}
+	\hat{\Delta P} = (4\bar{q}-4\bar{q}a_2+a_1\bar{\omega})\hat{q} + (a_1\bar{q} + 2a_0\bar{\omega})\hat{\omega}
+	\end{split}
+	\label{eq:taylor_w_q}
+\end{equation}
+
