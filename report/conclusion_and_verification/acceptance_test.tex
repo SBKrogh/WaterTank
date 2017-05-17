@@ -1,2 +1,12 @@
 \chapter{Accepttest}
 \label{accepttest}
+
+In this section the controller designed in \chapref{control_design} will be tested on the available test setup in order to verify if the requirements described in \chapref{Requirements_and_constraints} are meet. 
+
+The designed MPC is implemented as a receding horizon control with a 24 hour control horizon due to the behavior of the electrical price and the water consumption which both have a periodicity of 24 hours. 
+Based on this, a test conducted over a 24 hour period would allow to investigate the main characteristics of the MPC when price and consumption deviations during a day occur due to the periodicity of the data.   
+Due to time limitations the test is scaled down to minimize the time used to conduct the measurements. 
+The scaling factor has been chosen with the dynamics of the WT in mind. 
+The time constant of the WT is determined to approximately 20 minutes, thus the scaling has been chosen in such a way that a one hour period for the MPC will last 10 minutes which is equal to half of the WT time constant. 
+Thereby will the dynamics of the WT still be present and affect the system significantly within each optimization step.
+
