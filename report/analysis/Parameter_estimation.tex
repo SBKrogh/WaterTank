@@ -5,7 +5,7 @@ The behavior of the complete water distribution system is governed by the previo
 \\
 In case of the valves, the conductivity function is dependent on the OD, therefore the parameter of these elements are considered to be known. The centrifugal pumps are fully described by their models and by the coefficients provided by the manufacturer. The hydraulic capacity is also considered as known in case of the WT. However, certain parameters in the model of the pipes are uncertain. Even though the necessary friction parameters can be found in the data sheet provided by the manufacturer, these values are only acceptable for new pipes, as over time material can build up on the inside of the pipes, since the laboratory setup to a large extent is built from PEX/PEM (plastic) pipes. On the other hand, the physical parameters of the pipe volumes are assumed to be known to an accuracy where there is not any benefits from estimating it. Therefore the inertia matrix is known.  
 \\
-Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions and form losses in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to setup a simulation that represents the real test setup. 
+Consequently, the aim of the system identification in case of the water distribution system is to estimate the missing parameters which describe the frictions and form losses in the pipes, therefore define the additional pressure losses. Due to these considerations, the importance of obtaining accurate parameters is essential in order to setup a simulation that represents the real test setup. \todo{Here we forget the most impotent point. That we need the model for the MODEL part of MPC.}
 
 %The parameter estimation is introduced for two different cases with different approaches. One being an estimation method with the model being kept non-linear, the other being a method where the model is  linearized before the estimation. 
 
@@ -27,7 +27,7 @@ In order to obtain measurements from the real life test setup, the system has to
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. 
+where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. \todo{Why do we use both dp and $\Delta p $ for pressure?}
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
@@ -85,7 +85,7 @@ From the system setup $8$ different relative pressures can be measured as explai
 placed in these nodes are relative to the atmospheric pressure. In order to compare the measurements from the system setup and the data 
 obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point. Thus, the relation between the measured 
 outputs and the reference point can be set, resulting in:
-
+\todo{Now we write $\Delta p$ or dP as Dp. Pls find one way of writing this. Furthermore, what is all the Cxx ? We need a where list or something similar. }
 
 \text{\underline{Node 2}} 
 \vspace{4mm}
