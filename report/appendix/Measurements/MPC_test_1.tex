@@ -5,7 +5,7 @@ In this section, the model predictive controller obtained in \chapref{control_de
 
 \subsection*{Purpose:}
 
-To conclude if the controller obtained meets the requirements stated in \chapref{Requirements_and_constraints} and furthermore check if it lower the running cost of the system.
+The purpose of this test is to verify if the designed controller meets the requirements stated in \chapref{Requirements_and_constraints} and thus keeping the pressure at each CP above the desired minimum while minimizing the running cost of the system.
 
 %\subsection{One clamp push} % \label{app:...}
 \subsection*{Test equipment:}
@@ -14,18 +14,32 @@ To conclude if the controller obtained meets the requirements stated in \chapref
 \end{itemize}
 
 \subsection*{Procedure:}
-Due to time limitations the tests has been scaled to minimize the time spend on the measurements. The scaling factor have been chosen with the dynamics of the WT in mind. The time constant of the WT has been found as 1155 seconds, where the scaling have been chosen in such a way that a one hour optimization period should take half a time constant of the WT. This value have been rounded up to 10 minutes. 
-Since the MPC optimize over a horizon of 24 hour, the test will in total take four hours.
+The designed MPC controller is tested on the system for a period corresponding to 24 hours. For the test each hour is scaled to 10 minutes in real time. Prediction data of the electrical price is provided to the MPC and the consumer behavior, resulting in valve opening, is applied to the system, this data can be found under the path: \path{CD:/Data/MPC test/prediction data}. 
+In order to analyze if the MPC is minimizing the energy consumption of the system, a PI controller is implemented and tested under the same conditions as the MPC.    
 
-\begin{enumerate}
-\item ...
-\end{enumerate}
 
+
+%It is intended for the MPC to optimize over a horizon of 24 hour as , the test will in total take four hours. Due to time limitations the test has been scaled to minimize the time spend on the measurements. The scaling factor have been chosen with the dynamics of the WT in mind. The time constant of the WT has been found as 1155 seconds, where the scaling have been chosen in such a way that a one hour optimization period should take half a time constant of the WT. This value have been rounded up to 10 minutes.
 
 \subsection*{Measuring data:}
+The measurements data for the MPC can be found under the path: \path{CD:/Data/MPC test/results}, and the data for PI controller can be found under the path \path{CD:/Data/PI test}. 
 
 \subsection*{Results:}
+The results of the MPC controller:
+\begin{itemize}
+	\item Pma pressures
+	\item WT level
+	\item Running costs
+\end{itemize}	
 
+The results of the PI controller:
+\begin{itemize}
+	\item Pma pressures
+	\item WT level
+	\item Running costs
+\end{itemize}	
+
+Comparison:
 
 \subsection*{Uncertainties of measurement:}
 \begin{itemize}
