@@ -1,7 +1,7 @@
 \chapter{Pump linearization and PI controller - V2}
 \label{cha:linear_pump2}
 
-The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
+The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to be designed. The PI controllers purpose is to use the optimized control output from the MPC as a control reference. 
 
 The control focus of this project has been on the model predictive control, see \secref{sec:MPC}. Therefore a simple PI controller has been design, where the control structure can be seen on \figref{fig:simple_PI}.
 
@@ -40,7 +40,7 @@ f_{t2}(\omega) &= f_2(\bar{\omega}) + f_2'(\bar{\omega})\cdot(\omega - \hat{\ome
 \label{eq:tay_2}
 \end{equation}
 
-From \eqref{eq:tay_1} an expression for the workspace of, $\bar{\Delta P}$, can be made.
+From \eqref{eq:tay_1} an expression for the operating point of, $\bar{\Delta P}$, can be made.
 
 \begin{equation}
 \begin{split}
