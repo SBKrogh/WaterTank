@@ -10,3 +10,11 @@ The scaling factor has been chosen with the dynamics of the WT in mind.
 The time constant of the WT is determined to approximately 20 minutes, thus the scaling has been chosen in such a way that a one hour period for the MPC will last 10 minutes which is equal to half of the WT time constant. 
 Thereby will the dynamics of the WT still be present and affect the system significantly within each optimization step.
 
+The controller will be tested according to the requirements found in \chapref{Requirements_and_constraints}. These will be reduced and thus only containing a requirement for the pressure at each CP and a requirement to minimize the power consumption of the system. Thus will the requirement regarding water exchange in the WT not be investigated any further in this project. The remaining requirements are: 
+
+
+\begin{itemize}
+	\item Pressure at CP, $0.08 < \pmb{p_{cp}} < 0.14 \:[\text{bar}]$
+%
+	\item Minimizing the total cost of running the system
+\end{itemize}    
