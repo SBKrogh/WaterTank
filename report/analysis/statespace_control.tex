@@ -22,7 +22,7 @@ And the dynamic model of the WT pressure:
  \label{WT_eq_repeat}
 \end{equation}
 
-Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it is being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it has being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
 \pmb{\hat{u}} =
@@ -32,6 +32,7 @@ dP_{e08}
 \label{inputvector_control}
 \end{bmatrix} 
 \end{equation}
+\todo{We use dP again insted of $\Delta p$}
 
 This distinction between the parameter estimation and the control is being made because of the different purposes. In case of the parameter estimation the inputs are set to excite the system in order to make different pressure scenarios in the network. Therefore the valve opening degrees and all pumps are controlled manually to create appropriate output measurements. These measurements are then used to achieve a fit with the output of the simulation by changing its parameters. However in the control this is not desired. Here the inputs are chosen for the control and therefore neither the valve opening degrees, nor the pump signals are varied manually. 
 
@@ -42,18 +43,19 @@ The mapping for the two main pump pressures yields:
 \label{mapping_main}
 \end{equation}
 
-\todo{minipage fix}
-
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.12\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G_{c;1}} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\hspace*{8mm} $\pmb{G_{c;1}}$ 
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
+\begin{minipage}[t]{0.12\textwidth}
+\vspace*{2mm}$\in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
 is a matrix representing a linear mapping between the vectorfield $\alpha(dP)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\pmb{G_{c;1}}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_{c;1}}$ can be found in [appendix reference].
+$\pmb{G_{c;1}}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_{c;1}}$ can be found in \todo{[appendix reference]}.
 
 The input matrix for the control system can be written in the form: 
 
@@ -64,7 +66,7 @@ The input matrix for the control system can be written in the form:
 
 Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
 \\
-However, the end-user valves are considered as measurable disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(4 \times 1)}$ as follows: 
+However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(4 \times 1)}$ as follows: 
 
 \begin{equation}
 \pmb{d} =
@@ -112,14 +114,14 @@ Taking the same considerations into account as for the parameter estimation, the
 
 where the system matrix, $\pmb{M_c}$ is the same as the system matrix, $\pmb{M_p}$, in case the parameter estimation. 
 \\
-$\pmb{M_c}$ is invertible for the same reason as described in \eqref{ParameterEstimation}, thus:
+$\pmb{M_c}$ is invertible for the same reason as described in \eqref{Jequation}, thus:
 
  \begin{equation}
  \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
  \label{statespace_control_sys_state}
 \end{equation}
 
-Inserting the states into \eqref{currentlaw_3}:
+Inserting the states into \eqref{currentlaw_4}:
 
  \begin{equation}
 \Delta \dot{\hat{p}}_{WT} = (\pmb{S}\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} + (\pmb{S}\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} 
@@ -174,7 +176,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the matrix consisting of the mapping between the vectorfield,$\mu$, and the output vector. Furthermore it includes the partial derivative matrix of the vectorfield according to the independent states, \\
+is the matrix consisting of the mapping between the vectorfield, $\mu$, and the output vector. Furthermore it includes the partial derivative matrix of the vectorfield according to the independent states, \\
 is the matrix consisting of the mapping between the vectorfield, $\mu$, and the output vector. Furthermore it includes the partial derivative matrix of the vectorfield according to the ODs.
 \end{minipage}
 

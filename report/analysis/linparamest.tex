@@ -142,12 +142,14 @@ The relationship between pressures, where DpCXX describes the pressure differenc
 
 There is no need to define a relation with a referent point for the WT node, since the pressure across the WT is the state of the state-space model. 
 
+\todo{again why dont we use $\Delta p$ like its stated in the symbol list????}
+
 \subsection{Linear Estimation Outcomes}
 In \appref{LinResults} the results of the estimation process are shown, where the $24$ terms defining the pressure across the unknowns edges are estimated.
 From the tests it can be seen a slightly different behavior between the model and the data from the setup, especially at time $t = 350s$. This dissimilar 
 behavior showing up at some time samples could make the model unsuitable for the real setup, thus making it incorrect to be used in a model based control scheme. 
 
-In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_1}, where $M$ is a symmetric matrix, and \eqref{statespace_5}. 
+In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_1}, where $M$ is a symmetric matrix.%, and \eqref{statespace_5}. 
 
 Altogether these matrices sum up to 28 unknown parameters, which are the ones to be estimated. The outputs to be compared with the test setup remain 
 the same as in \secref{LinParamEst_measurements}, as well as the toolbox used for estimating.
@@ -165,7 +167,7 @@ The operating point of the PMA valves is placed at $70\%$ opening corresponding 
 \label{fig:est_OD_data_final}
 \end{figure}
 
-To acheive a 50\% fill level of the WT in steady state combined with the chosen operating point of the valves, the operating point of the two inlet pumps C2 and C16 has to be set at a differential pressure of $\Delta p = 0.2 Bar$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
+To acheive a 50\% fill level of the WT in steady state combined with the chosen operating point of the valves, the operating point of the two inlet pumps C2 and C16 has to be set at a differential pressure of $\Delta p = 0.2 \text{[Bar]}$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
 
 \begin{figure}[H]
 \centering
