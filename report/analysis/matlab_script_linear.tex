@@ -1,9 +1,9 @@
 \section{Linearization of the model} 
 \label{LinParamEst}
 
-As it is shown in \eqref{InputOutputmodel_steadystate}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $dp$\todo{again why dont we use $\Delta p$ like its stated in the symbol list???? and remember the source}, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
+As it is shown in \eqref{InputOutputmodel_steadystate}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
-In this section it is shown how the model describing the network is linearized with the help of Taylor-series. [source] 
+In this section it is shown how the model describing the network is linearized with the help of Taylor-series.\todo{source}
 
 \subsection{Taylor expansion on a simple example}
  \label{Taylorexamplesection}
@@ -29,7 +29,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the operating point ,\\
+is the operating point,\\
 is the deviation from the operating point.
 \end{minipage}
 
@@ -84,31 +84,31 @@ The expression describing the pipes consists of three terms, one responsible for
 The expression describing the pipes can be approximated by its linear model as follows:
 
 \begin{equation}
-  \pmb{B_1} \lambda(\pmb{{B_1^{T}}}\pmb{z}) \approx  \pmb{B_1} \lambda(\pmb{B_1^T \bar{ z}}) + \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
+  \bm{B_1} \lambda(\bm{{B_1^{T}}}\bm{z}) \approx  \bm{B_1} \lambda(\bm{B_1^T \bar{ z}}) + \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}\bm{\hat{z}}
 \label{lambda_lin}
 \end{equation}
 
-where the partial derivative is a of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\pmb{{B_1^{T}}}\pmb{z}$, due to the chain rule the derivative is multiplied by $\pmb{{B_1^{T}}}$. The reason for only $\lambda(\pmb{{B_1^{T}}}\pmb{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
+where the partial derivative is a of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
 
 
-In case of the valves, $\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
+In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
 
 \begin{equation}
 \begin{split}
-  \pmb{B_1} \mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD}) \approx \pmb{B_1} \mu(\pmb{B_1^T \bar{ z}}, \pmb{\bar{OD}}) + 
-  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} \pmb{\hat{z}}
-\\ +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{\hat{OD}}
+  \bm{B_1} \mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD}) \approx \bm{B_1} \mu(\bm{B_1^T \bar{ z}}, \bm{\bar{OD}}) + 
+  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{{B_1^{T}}} \bm{\hat{z}}
+\\ +  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{OD}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{\hat{OD}}
 \label{mu_lin}
 \end{split}
 \end{equation}
 
 
-The Taylor-expansion is carried out in the same manner as in \eqref{lambda_lin}, however the linearized valve model is in the function of two small-signal variables, the flows and the OD. Therefore the partial derivatives are calculated in the operating point defined by the operating value of $\pmb{z}$ and $\pmb{OD}$. 
+The Taylor-expansion is carried out in the same manner as in \eqref{lambda_lin}, however the linearized valve model is in the function of two small-signal variables, the flows and the OD. Therefore the partial derivatives are calculated in the operating point defined by the operating value of $\bm{z}$ and $\bm{OD}$. 
 \\
 For the water tower connection, the same can be concluded as for the pipe model. 
 
 \begin{equation}
-  \pmb{B_1} \gamma(\pmb{{B_1^{T}}}\pmb{z}) \approx  \pmb{B_1} \gamma(\pmb{B_1^T \bar{ z}}) + \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}\pmb{\hat{z}}
+  \bm{B_1} \gamma(\bm{{B_1^{T}}}\bm{z}) \approx  \bm{B_1} \gamma(\bm{B_1^T \bar{ z}}) + \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}\bm{\hat{z}}
 \label{gamma_lin}
 \end{equation}
 
@@ -127,7 +127,7 @@ As it is shown, there is a differential pressure sensor around every pump in the
 The input, in case of the parameter estimation, is defined by the four pumps and four valves. Therefore it is convenient to define an input vector which consists of the four opening degrees controlling the valves and the four differential pressures controlling the pumps: 
 
 \begin{equation}
-\pmb{u} =
+\bm{u} =
 \begin{bmatrix} 
 OD_{e13} \\
 OD_{e15} \\
@@ -146,20 +146,20 @@ It should be noted here, however, that this control input representation is vali
 Considering the input vector, the model of the pumps can be written up in the same manner as the linearized model of pipes and valves: 
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_p} \pmb{u}
+\bm{B_1} \alpha(DP) = \bm{B_1} \bm{G_p} \bm{u}
 \label{gamma_lin}
 \end{equation}
 
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.24\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G_p} \in \pmb{\mathbb{R}}^{(e \times u)} $ 
+\hspace*{8mm} $\bm{G_p} \in \bm{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
+\begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
 is a matrix representing a linear mapping where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\pmb{G_p}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve opening degrees. $\pmb{G_p}$ can be found in \appref{MappingAppendix}.
+$\bm{G_p}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve opening degrees. $\bm{G_p}$ can be found in \appref{MappingAppendix}.
 
 \todo{$G_p$ in the appendix should be corrected}
 
@@ -169,7 +169,7 @@ $\pmb{G_p}$ is an extended matrix for the eight inputs which means that the firs
 For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel} is shown again:  
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
+ \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{B} g(\bm{B}^T \bm{z})+ \bm{B} u(\bm{\omega},\bm{k_v	}, \bm{B}^T \bm{z})
  \label{InputOutputmodel}
 \end{equation}
 
@@ -185,14 +185,14 @@ These two differential equation systems give a full description of the pressures
 Before setting up the state-space form of the system, the following should be considered: 
 
 \begin{equation}
- \pmb{H_1}\pmb{q_1} + \pmb{H_0}q_0 = 0 
+ \bm{H_1}\bm{q_1} + \bm{H_0}q_0 = 0 
  \label{currentlaw_1}
 \end{equation}
 
 In \eqref{currentlaw_1}, the current law is shown for the WT and for the rest of the system. The two current laws sum up to zero taking into account the whole system. Expressing the flow in the WT yields:
 
 \begin{equation}
-q_0 = -\pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1}
+q_0 = -\bm{H^{\dagger}_0}\bm{H_1}\bm{q_1}
  \label{currentlaw_2}
 \end{equation}
 
@@ -201,85 +201,85 @@ Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT,
 \todo{two letters are not the same}
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{q_1} = - \underbrace{\frac{1}{C_H} \pmb{H^{\dagger}_0}\pmb{H_1}\pmb{{B_1^{T}}}}_\text{\pmb{S}} \pmb{z}
+\Delta \dot{p}_{WT} = - \frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{q_1} = - \underbrace{\frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{{B_1^{T}}}}_{\bm{S}} \bm{z}
  \label{currentlaw_3}
 \end{equation}
 
 Therefore the dynamics of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \pmb{S} \pmb{z}
+\Delta \dot{p}_{WT} = - \bm{S} \bm{z}
  \label{currentlaw_4}
 \end{equation}
 
 Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(.)$ and $u(.)$ should be separated according to the small signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_1}
 \end{equation}
 
-In \eqref{statespace_1}, the $\pmb{M}$ matrix consists of the following terms: 
+In \eqref{statespace_1}, the $\bm{M}$ matrix consists of the following terms: 
 
 \begin{equation}
-  \pmb{M} = \pmb{B_1} \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \pmb{{B_1^{T}}} +  \pmb{B_1} \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} \pmb{{B_1^{T}}}
+  \bm{M} = \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}
 \label{Amatrix}
 \end{equation}
 
-And the $\pmb{N}$ matrix consists of the following terms:
+And the $\bm{N}$ matrix consists of the following terms:
 
 \begin{equation}
-  \pmb{N} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \pmb{B_1}\pmb{G_p}  
+  \bm{N} = \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \bm{B_1}\bm{G_p}  
 \label{Bumatrix}
 \end{equation}
 
-$\pmb{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flow(state) or input. 
+$\bm{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flow(state) or input. 
 
 In order to find a good state space representation for the system extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to \todo{[source]}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
- 0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ 0 = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-The small signal value of the state vector can be expressed on the left side of the equation only if $\pmb{M}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
+The small signal value of the state vector can be expressed on the left side of the equation only if $\bm{M}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
 
 \begin{equation}
-  \pmb{M} = \pmb{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}} +
-\bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} +  \bigg[ \frac{\partial{\gamma(\pmb{{B_1^{T}}}\pmb{z})}}{{\partial{\pmb{{B_1^{T}}}\pmb{z}}}}   \bigg]_{\bar{z}}\Bigg] \pmb{{B_1^{T}}}
+  \bm{M} = \bm{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} +
+\bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} +  \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}}\Bigg] \bm{{B_1^{T}}}
 \label{Amatrix_mod}
 \end{equation}
 
-In \eqref{Amatrix_mod}, the $\pmb{M}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
+In \eqref{Amatrix_mod}, the $\bm{M}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
 \\
 Expressing the the state vector the following yields:
 
 \begin{equation}
- \pmb{\hat{z}} = -(\pmb{M^{-1}}\pmb{N})\pmb{\hat{u}} - (\pmb{M^{-1}}\pmb{B_o})\Delta \hat{p}_{WT}    
+ \bm{\hat{z}} = -(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{WT}    
  \label{statespace_2}
 \end{equation}
 
-Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\pmb{S}$ matrix in \eqref{currentlaw_4}. 
+Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\bm{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = (\pmb{S}\pmb{M^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}  + (\pmb{S}\pmb{M^{-1}}\pmb{N}) \pmb{\hat{u}} 
+\Delta \dot{p}_{WT} = (\bm{S}\bm{M^{-1}}\bm{B_o}) \Delta \hat{p}_{WT}  + (\bm{S}\bm{M^{-1}}\bm{N}) \bm{\hat{u}} 
 \label{statespace_3}
 \end{equation}
 
 \eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the state equation can be written as follows:  
 
 \begin{equation}
-\Delta \dot{p}_{WT} = A_p \Delta \hat{p}_{WT}  + \pmb{B_p}\pmb{\hat{u}}  
+\Delta \dot{p}_{WT} = A_p \Delta \hat{p}_{WT}  + \bm{B_p}\bm{\hat{u}}  
  \label{statespace_4}
 \end{equation}
 
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.24\textwidth}
 Where\\
 \hspace*{8mm} $A_p \in \mathbb{R}^{(1 \times 1)} $ \\
 \newline
-\hspace*{8mm} $\pmb{B_p} \in \pmb{\mathbb{R}}^{(1 \times g)} $ 
+\hspace*{8mm} $\bm{B_p} \in \bm{\mathbb{R}}^{(1 \times g)} $ 
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
+\begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
 is the system matrix for the parameter estimation, which in this case is a scalar, \\
 is the input matrix for the parameter estimation.
@@ -289,26 +289,26 @@ An output equation is defined, which represents the pressure difference known fr
 to the data measured in the setup and proceed to estimate the unknown parameters. 
 
 \begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} \hat{z}  + \pmb{C_{2}}\pmb{\hat{u}}  
+\bm{\hat{y}} = \bm{C_{1}} \hat{z}  + \bm{C_{2}}\bm{\hat{u}}  
  \label{statespace_5}
 \end{equation}
 
-As in \eqref{statespace_3}, substituting the state vector, $\pmb{\hat{z}}$, by the expression obtained in \eqref{statespace_2}, the equation above results in 
+As in \eqref{statespace_3}, substituting the state vector, $\bm{\hat{z}}$, by the expression obtained in \eqref{statespace_2}, the equation above results in 
 
 \begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{N})\pmb{\hat{u}} - (\pmb{M^{-1}}\pmb{B_o})\Delta \hat{p}_{WT})  + \pmb{C_{2}}\pmb{\hat{u}}  
+\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{WT})  + \bm{C_{2}}\bm{\hat{u}}  
  \label{statespace_6}
 \end{equation}
 
 Reorganizing the terms
 
 \begin{equation}
-\pmb{\hat{y}} = \pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{B_o})) \Delta \hat{p}_{WT} + (\pmb{C_{1}} (-(\pmb{M^{-1}}\pmb{N})) + \pmb{C_{2}}) \pmb{\hat{u}}  
+\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{B_o})) \Delta \hat{p}_{WT} + (\bm{C_{1}} (-(\bm{M^{-1}}\bm{N})) + \bm{C_{2}}) \bm{\hat{u}}  
  \label{finaloutput}
 \end{equation}
-
+%
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
+  \bm{\hat{y}} = \bm{C_p} \Delta \hat{p}_{WT} + \bm{D_p} \bm{\hat{u}} 
   \label{outputfinaleq}
 \end{equation}
 
@@ -317,21 +317,21 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
 %
 %\begin{equation}
-%\frac{d}{dt} \pmb{x(t)} = \mathcal{F}(\pmb{x(t)},\pmb{u(t)})
+%\frac{d}{dt} \bm{x(t)} = \mathcal{F}(\bm{x(t)},\bm{u(t)})
 % \label{sysfunc_simplified}
 %\end{equation}
 %
 %Where the state and input expressions are considered as: 
 %
 %\begin{equation}
-%\pmb{x(t)} = \pmb{\bar{x(t)}} + \pmb{\hat{x(t)}}
+%\bm{x(t)} = \bm{\bar{x(t)}} + \bm{\hat{x(t)}}
 % \label{gfunc}
 %\end{equation}
 %
 %and 
 %
 %\begin{equation}
-%\pmb{u(t)} = \pmb{\bar{u(t)}} + \pmb{\hat{u(t)}}
+%\bm{u(t)} = \bm{\bar{u(t)}} + \bm{\hat{u(t)}}
 % \label{ufunc}
 %\end{equation}
 %
@@ -340,22 +340,22 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %By expanding the right-hand side into the Taylor series, using \eqref{gfunc} and \eqref{ufunc}, the following yields:
 %
 %\begin{equation}
-%\frac{d}{dt} (\pmb{\bar{x}} + \pmb{\hat{x}})  \approx \mathcal{F}(\pmb{\bar{x}(t)} + \pmb{\hat{x}(t)}, \pmb{\bar{u}(t)} + \pmb{\hat{u}(t)} )
-% = \mathcal{F}(\pmb{\bar{x}},\pmb{\bar{u}}) + \frac{\partial {\mathcal{F}}}{\partial \pmb{x}}_{|\bar{x}, \bar{u}} \pmb{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \pmb{u}}_{|\bar{x}, \bar{u}} \pmb{\hat{u}} 
+%\frac{d}{dt} (\bm{\bar{x}} + \bm{\hat{x}})  \approx \mathcal{F}(\bm{\bar{x}(t)} + \bm{\hat{x}(t)}, \bm{\bar{u}(t)} + \bm{\hat{u}(t)} )
+% = \mathcal{F}(\bm{\bar{x}},\bm{\bar{u}}) + \frac{\partial {\mathcal{F}}}{\partial \bm{x}}_{|\bar{x}, \bar{u}} \bm{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \bm{u}}_{|\bar{x}, \bar{u}} \bm{\hat{u}} 
 % \label{multistate model_full}
 %\end{equation}
 %
 %Thus the small signal model of such a multi-state model can be expressed as: 
 %
 %\begin{equation}
-%\frac{d}{dt} \pmb{\hat{x}}  \approx
-% = \frac{\partial {\mathcal{F}}}{\partial \pmb{x}}_{|\bar{x}, \bar{u}} \pmb{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \pmb{u}}_{|\bar{x}, \bar{u}} \pmb{\hat{u}} 
+%\frac{d}{dt} \bm{\hat{x}}  \approx
+% = \frac{\partial {\mathcal{F}}}{\partial \bm{x}}_{|\bar{x}, \bar{u}} \bm{\hat{x}} + \frac{\partial {\mathcal{F}}}{\partial \bm{u}}_{|\bar{x}, \bar{u}} \bm{\hat{u}} 
 % \label{multistate model_smallsignal}
 %\end{equation}
 %
 %%\begin{equation}
-%%\frac{d}{dt} \pmb{\bar{x}} + \frac{d}{dt} \pmb{\hat{x}}  \approx \mathcal{F}(\pmb{\bar{x(t)}} + \pmb{\hat{x(t)}}, \pmb{\bar{u(t)}} + \pmb{\hat{u(t)}} )
-%% = \mathcal{F}(\pmb{\bar{x}},\pmb{\bar{u}}) 
+%%\frac{d}{dt} \bm{\bar{x}} + \frac{d}{dt} \bm{\hat{x}}  \approx \mathcal{F}(\bm{\bar{x(t)}} + \bm{\hat{x(t)}}, \bm{\bar{u(t)}} + \bm{\hat{u(t)}} )
+%% = \mathcal{F}(\bm{\bar{x}},\bm{\bar{u}}) 
 %%
 %%\label{TaylorExpansion_approx}
 %%\end{equation}
@@ -365,7 +365,7 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %Note: 
 %After this, the general structure of the matrices and the same formulation for the water distribution system will be written. 
 %
-%The linearization procedure of both $g(\pmb{q})$ and $u(\pmb{\omega},\pmb{OD}, \pmb{B^T z})$, is shown:
+%The linearization procedure of both $g(\bm{q})$ and $u(\bm{\omega},\bm{OD}, \bm{B^T z})$, is shown:
 %
 %\begin{equation}
 %  \begin{split}
@@ -393,7 +393,7 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %\end{equation}
 %
 %\begin{equation}
-% \pmb{ \Delta p} = \pmb{J \dot{q_1}} + \lambda(\pmb{q_1}) + \zeta + \mu(\pmb{q_1}, \pmb{OD}) - \alpha(\pmb{dp})
+% \bm{ \Delta p} = \bm{J \dot{q_1}} + \lambda(\bm{q_1}) + \zeta + \mu(\bm{q_1}, \bm{OD}) - \alpha(\bm{dp})
 %\label{NonlinearPressureFunction}
 %\end{equation}
 %
@@ -407,7 +407,7 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %asdf
 %
 %\begin{equation}
-%\pmb{\Delta p_0} =
+%\bm{\Delta p_0} =
 %\begin{bmatrix}
 %         \Delta p_{C32} \\
 %	\Delta p_{WT}
@@ -418,7 +418,7 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %asdf
 %
 %\begin{equation}
-%\pmb{q_0} =
+%\bm{q_0} =
 %\begin{bmatrix}
 %         q_{C32} \\
 %	q_{WT}
@@ -429,7 +429,7 @@ The equation above shows how the output equation includes a feedforward matrix, 
 %Recalling \eqref{InputOutputmodel_steadystate}:
 %
 %\begin{equation}
-% \pmb{B}\pmb{J} \pmb{\dot{q}} = \pmb{B} g(\pmb{q})+ \pmb{B_1} u(\pmb{\omega},\pmb{OD})
+% \bm{B}\bm{J} \bm{\dot{q}} = \bm{B} g(\bm{q})+ \bm{B_1} u(\bm{\omega},\bm{OD})
 % \label{InputOutputmodel_steadystate_linmodel}
 %\end{equation}
 %

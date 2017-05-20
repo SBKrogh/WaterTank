@@ -27,19 +27,18 @@ Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{W
 \begin{equation}
 \pmb{\hat{u}} =
 \begin{bmatrix} 
-dP_{e01} \\
-dP_{e08} 
+\Delta p_{e01} \\
+\Delta p_{e08} 
 \label{inputvector_control}
 \end{bmatrix} 
 \end{equation}
-\todo{We use dP again insted of $\Delta p$}
 
 This distinction between the parameter estimation and the control is being made because of the different purposes. In case of the parameter estimation the inputs are set to excite the system in order to make different pressure scenarios in the network. Therefore the valve opening degrees and all pumps are controlled manually to create appropriate output measurements. These measurements are then used to achieve a fit with the output of the simulation by changing its parameters. However in the control this is not desired. Here the inputs are chosen for the control and therefore neither the valve opening degrees, nor the pump signals are varied manually. 
 
 The mapping for the two main pump pressures yields:
 
 \begin{equation}
-\pmb{B_1} \alpha(DP) = \pmb{B_1} \pmb{G_{c;1}} \pmb{\hat{u}}
+\pmb{B_1} \alpha(\Delta p) = \pmb{B_1} \pmb{G_{c;1}} \pmb{\hat{u}}
 \label{mapping_main}
 \end{equation}
 
@@ -52,7 +51,7 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping between the vectorfield $\alpha(dP)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
+is a matrix representing a linear mapping between the vectorfield $\alpha(\Delta p)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
 $\pmb{G_{c;1}}$ is now a mapping matrix for only the two inputs for the main pumps. $\pmb{G_{c;1}}$ can be found in \todo{[appendix reference]}.
@@ -153,8 +152,8 @@ The output of the control model is defined as two measurement points around the 
 \begin{equation}
 \pmb{y} =
 \begin{bmatrix} 
-dP_{e15} \\
-dP_{e22} 
+\Delta p_{e15} \\
+\Delta p_{e22} 
 \label{outputvector_control}
 \end{bmatrix} 
 \end{equation}

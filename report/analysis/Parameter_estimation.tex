@@ -27,7 +27,7 @@ In order to obtain measurements from the real life test setup, the system has to
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $dp$, because the value of these pressures are available on the test setup. \todo{Why do we use both dp and $\Delta p $ for pressure?}
+where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
@@ -85,54 +85,54 @@ From the system setup $8$ different relative pressures can be measured as explai
 placed in these nodes are relative to the atmospheric pressure. In order to compare the measurements from the system setup and the data 
 obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point. Thus, the relation between the measured 
 outputs and the reference point can be set, resulting in:
-\todo{Now we write $\Delta p$ or dP as Dp. Pls find one way of writing this. Furthermore, what is all the Cxx ? We need a where list or something similar. }
+%\todo{Now we write $\Delta p$ or dP as Dp. Pls find one way of writing this. Furthermore, what is all the Cxx ? We need a where list or something similar. }
 
 \text{\underline{Node 2}} 
 \vspace{4mm}
 \begin{equation}
-    y_1 = DpC2 
+    y_1 = \Delta p_{C2} 
 \end{equation}
 
 \text{\underline{Node 7}}
 \vspace{4mm}
 \begin{equation}
-   y_2 = DpC16 
+   y_2 = \Delta p_{C16} 
  \end{equation}
 
 \text{\underline{Node 4}}
 \vspace{4mm}
 \begin {equation}
-    y_3 = DpC18 + DpC19 + DpC23 + DpC24 
+    y_3 = \Delta p_{C18} + \Delta p_{C19} + \Delta p_{C23} + \Delta p_{C24} 
 \end{equation}
 
 \text{\underline{Node 5}}
 \vspace{4mm}
 \begin {equation}
-    y_4 = DpC25 + DpC26 + DpC30 + DpC31 
+    y_4 = \Delta p_{C25} + \Delta p_{C26} + \Delta p_{C30} + \Delta p_{C31}  
 \end{equation}
 
 \text{\underline{Node 10}}
 \vspace{4mm}
 \begin {equation}
-    y_5 = DpC20 + DpC21
+    y_5 = \Delta p_{C20} + \Delta p_{C21}
 \end{equation}
 
 \text{\underline{Node 11}}
 \vspace{4mm}
 \begin {equation}
-    y_6 = DpC24 
+    y_6 = \Delta p_{C24} 
 \end{equation}
 
 \text{\underline{Node 15}}
 \vspace{4mm}
 \begin {equation}
-   y_7 = DpC28 + DpC27
+   y_7 = \Delta p_{C28} + \Delta p_{C27}
 \end{equation}
 
 \text{\underline{Node 16}}
 \vspace{4mm}
 \begin {equation}
-   y_8 = DpC31 
+   y_8 = \Delta p_{C31} 
 \end{equation}
 
  
