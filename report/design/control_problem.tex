@@ -1,10 +1,10 @@
 \section{Control Problem}
 \label{control_problem}
 %\vspace{-1mm}
-The water distribution system described in \secref{system_overview} is to be controlled with respect to the requirements and constraints stated in \secref{Requirements_and_constraints} and the dynamics of the system described in \secref{SystemLin_control}. For a better clearance, the requirements and constraints are listed again below: 
+The water distribution system described in \secref{system_overview} is to be controlled with respect to the requirements and constraints stated in \secref{Requirements_and_constraints} and the dynamics of the system described in \secref{SystemLin_control}. For a better clearance, the requirements and constraints are stated again: 
 %\vspace{-1mm}
 \begin{itemize}
-	\item Consumer pressure requirements, $0.08 < \bm{y} < 0.14 \:[\text{bar}]$
+	\item Consumer pressure requirements %$0.08 < \bm{y} < 0.14 \:[\text{bar}]$
 %
 	\item Minimizing the total running costs
 %
@@ -12,9 +12,9 @@ The water distribution system described in \secref{system_overview} is to be con
 \end{itemize}
 %\vspace{-1mm}
 %The WT is used in the system to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
-The system consists of four pumps and is fully controlled by the two main pumps. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. The project deals with a control that optimizes the WT such that the pressure at the end-users is maintained and the cost of pumping effort in the main pumps is minimised. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
+The system consists of four pumps and is controlled by the two placed in the main circle. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. The project deals with a control that optimizes the WT such that the pressure at the end-users is maintained and the cost of pumping effort in the main pumps is minimized. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
 
-In order to achieve such an optimal behavior, Model Predictive Control, MPC, is applied. With MPC, the dynamics of the model is used to predict the system behavior, therefore taking the future electrical prices into account. 
+In order to achieve such an optimal behavior, Model Predictive Control, MPC, is considered. With MPC, the dynamics of the model and knowledge about prices and end-user consumption are used to predict the system behavior subject to the constraints in the system. 
 
 Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
 
@@ -27,7 +27,7 @@ Apart from the MPC control, all pumps are controlled by PI controllers in order 
 \label{fig:control_structure}
 \end{figure}
 
-As it is shown, the PI controllers are responsible for setting the control inputs to the main pumps, using the feedback from the differential pressure output. It should be noted however, that typically the flow out of the pumping station is controlled instead of the pressure. Here the use of pressure feedback has the advantage that in case of system failure the pressure is important. The flow would typically either lead to too high or too low pressure or would make the WT overrun. On the other hand, the reference to the PI controllers is set by the MPC algorithm which takes the measurements from the output into account. These references are set as differential pressures. One of the advantage of such a cascade control is that the pump controllers are present for each pump, also including the PMA pumps. At the event of implementation or communication failure between the MPC and the pump controllers, the pumping remains operational. 
+As it is shown, the PI controllers are responsible for setting the control inputs to the main pumps, using the feedback from the differential pressure output. It should be noted however, that typically the flow out of the pumping station is controlled instead of the pressure. Here the use of pressure feedback has the advantage that in case of system failure the pressure is what matters. The flow would typically either lead to high or too low pressure or would make the WT overflow. On the other hand, the reference to the PI controllers is set by the MPC algorithm which takes the measurements from the output into account. These references are set as differential pressures. One of the advantage of such a cascade control is that the pump controllers are present for each pump, also including the PMA pumps. At the event of implementation or communication failure between the MPC and the pump controllers, the pumping remains operational. 
  
 %\vspace{-1mm}
 
@@ -78,14 +78,14 @@ is the electricity price cost sequence.
 \textcolor{White}{te}$\unit{DKK/MWh}$
 \end{minipage}
 
-It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore only the deviation from the operating point would not result in the total amount of energy consumed up by the pumps. 
-\\
-The efficiency of the two main pumps is assumed to be the same for the reason that the pumps are of the same type. Furthermore it is considered as constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not change significantly. 
-\\
+It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore the deviation from the operating point would not result in the total amount of energy consumed up by the pumps. 
+
+The efficiency of the two main pumps is assumed to be the same for the reason that the pumps are of the same type. Furthermore, the efficiency is considered to be constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not vary significantly. 
+\todo{align equations}
 The control problem can be formulated as a minimization problem of the form:
 %\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
-\underset{\bm{u}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c[k+i|k] \label{eqcost1} \\
+\underset{\bm{u}}{min} \:  \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost1} \\
 %
 \newline
 s.t. \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
@@ -115,7 +115,9 @@ s.t. \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]
  \textcolor{White}{te}$\unit{bar}$
  \end{minipage}
 
-As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that the cost of running the pumps is minimized. Therefore the objective function gives a price for all the consumed power over the control horizon, which is a specific future time interval. Furthermore, it should be noted that both the objective function and the constraints are linear, therefore the problem is a linear programming formulation. The minimization is subject to the dynamics of the water distribution network, and the constraints. As can be seen, there is a constraint on the output of the system, which is considered as the pressure demand for the end-users. There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps. 
+As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that the cost of running the pumps is minimized. Therefore the objective function gives a price for all the consumed power over the control horizon, which is a specific future time interval. Furthermore, it should be noted that both the objective function and the constraints are linear, therefore the problem in such form is a linear programming problem. However there is not any direct information about the flows through the pumps, therefore they need to be expressed with other variables of the system which means that the problem is to be reformulated.
+
+The minimization is subject to the dynamics of the water distribution network, and the constraints. As can be seen, there is a constraint on the output of the system, which is considered as the pressure demand for the end-users. There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps. 
 \\
 The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c_p[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
