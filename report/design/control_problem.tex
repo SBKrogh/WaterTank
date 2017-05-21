@@ -41,26 +41,28 @@ As it is shown, the PI controllers are responsible for setting the control input
 
 %For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. 
 In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
-
+%
 \begin{align}
  \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \frac{1}{\eta} \sum_{i=1}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
 \end{align}
-
+%
 %Then considering the total cost of running the system multiple things have to be taken into consideration. Both the model of the water distribution network, the electrical consumption of the pumps, the electrical pricing and the constraints of the system have to be taken into account. Furthermore a constraints securing that the WT do not run dry or overflow is included. By considering the total cost of running, $C_T$, this can be seen as a minimization problem:
 %\todo{The output \textbf{y} is the 8 pressure measurements, here also including $p_{cp}$ and $\Delta{p}_i$ so the notation here need to correcting.}
 %\todo{Furthermore the model have to be discreet and we need to correct $\Delta p$ compared to u.}
-
+%
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
- \hspace*{8mm} $Hp$ \\
+\hspace*{8mm} $\Upsilon$ \\
+\hspace*{8mm} $Hp$ \\
 \hspace*{8mm} $\bm{u}$ \\
 \hspace*{8mm} $\bm{q_p}$ \\
- \hspace*{8mm} $\eta_i$ \\
+\hspace*{8mm} $\eta_i$ \\
 \hspace*{8mm} $c_p[k]$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
- is the prediction horizon, \\
+is the price of running the system, \\
+is the prediction horizon, \\
 is the differential pressure input to the main pumps,\\
 is the flow through the main pumps,\\
 is the efficiency of the main pumps,\\
@@ -68,7 +70,8 @@ is the electricity price cost sequence.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
- \textcolor{White}{te}$\unit{\cdot}$\\
+\textcolor{White}{te}$\unit{DKK}$\\
+\textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{m^3/h}$
  \textcolor{White}{te}$\unit{\cdot}$\\

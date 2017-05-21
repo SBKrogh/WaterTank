@@ -1,16 +1,13 @@
 \section{Convexity}
 \label{convexity}
-
+In the following section convexity of both the objective function and constraints will be discussed. 
 Due to the reformulation of the objective function and constraints, the MPC optimization problem becomes the following: 
 
-\begin{equation}
-\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) = \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)
+\begin{align}
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
 \label{eq:obj_final1}
-\end{equation}
-\\
-\newline
-\begin{equation}
-s.t. \:\:\:\:\:	\begin{bmatrix}
+%
+s.t. \:\:\:\:\:	&\begin{bmatrix}
 		\bm{I} 	\\
 		-\bm{I} 	\\
 		\bm{L_{y}}	\\
@@ -30,12 +27,31 @@ s.t. \:\:\:\:\:	\begin{bmatrix}
 			\bm{\Delta \hat{p}_{wt,1}}	\\
 			\bm{\Delta \hat{p}_{wt,2}}	
 	\end{bmatrix}
-\end{equation}
+\end{align}
 
 As can be seen, the objective function and the constraints are all written up according to the small-signal value of the control signal. 
-\\
-\newline
-In this section:
-\\
--show how the quadratic problem can be solved
--prove positive semi-definiteness
+
+The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project the optimization problem only have to be convex. 
+
+\subsection{Objective function}
+To ensure convexity, the objective function must have a semi positive definite Hessian. Therefor the second order derivative of \eqref{eq:obj_final1} is derived bellow: 
+%
+\begin{align}
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+%
+\Upsilon(\cdot) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+%
+\triangledown \Upsilon(\cdot) &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
+%
+\triangledown(\triangledown \Upsilon(\cdot)) &= \frac{1}{\eta}\cdot \bm{R} 
+%
+\end{align}
+The efficiency, $\eta$, is a positive constant and therefor convexity only depends on $\bm{R}$. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive definite, except $\bm{M_c}$, which is an outcome from the parameter estimation. Therefore $\bm{M_c}$ must be semi positive definite to ensure that the objective function is convex. 
+\subsection{Constraints}
+
+The same procedure is used for the constraints. All constraints are linear and the Hessian of a linear function, $Ax+b$, is always zero. Therefore the constraints will always be convex.
+
+%In this section:
+%\\
+%-show how the quadratic problem can be solved
+%-prove positive semi-definiteness
