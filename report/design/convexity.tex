@@ -36,16 +36,29 @@ The definition of a convex function can be written as, $\triangledown(\triangled
 \subsection{Objective function}
 To ensure convexity, the objective function must have a semi positive definite Hessian. Therefor the second order derivative of \eqref{eq:obj_final1} is derived bellow: 
 %
+%\begin{align}
+%\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+%
+%\Upsilon(\cdot) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+%
+%\triangledown \Upsilon(\cdot) &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
+%
+%\triangledown(\triangledown \Upsilon(\cdot)) &= \frac{1}{\eta}\cdot \bm{R} 
+%
+%\end{align}
+
+
 \begin{align}
 \underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
 %
 \Upsilon(\cdot) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
 %
-\triangledown \Upsilon(\cdot) &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
+\frac{\partial \Upsilon(\cdot)}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
 %
-\triangledown(\triangledown \Upsilon(\cdot)) &= \frac{1}{\eta}\cdot \bm{R} 
+\frac{\partial^2 \Upsilon(\cdot)}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \bm{R} 
 %
 \end{align}
+
 The efficiency, $\eta$, is a positive constant and therefor convexity only depends on $\bm{R}$. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive definite, except $\bm{M_c}$, which is an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be semi positive definite to ensure that the objective function is convex. 
 
 \subsection{Constraints}
