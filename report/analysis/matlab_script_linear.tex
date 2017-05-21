@@ -3,7 +3,7 @@
 
 As it is shown in \eqref{InputOutputmodel_steadystate}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
-In this section it is shown how the model describing the network is linearized with the help of Taylor-series.\todo{source}
+In this section it is shown how the model describing the network is linearized with the use of Taylor-expansion.
 
 \subsection{Taylor expansion on a simple example}
  \label{Taylorexamplesection}
@@ -77,7 +77,7 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
  
 As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega, q))$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
 \\
-Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion \todo{[source]}.
+Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion shown in \eqref{TaylorExpansion_approx}.
 \\
 The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. 
 \\
