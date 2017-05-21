@@ -3,15 +3,13 @@
 
 \section{Components of the System}
 \label{systemcomponents}
-
-\todo{Here all necessary data(from the datasheets) and notations should be listed about the components (pipes, pumps, valves.. etc)}
-
+%
 \input{report/appendix/system_table.tex}
 \input{report/appendix/fitting_table.tex}
 \input{report/appendix/valve_table.tex}
 \input{report/appendix/pump_table.tex}
 
-
+\pagebreak
 
 
 \section{System Topology}
@@ -48,8 +46,9 @@
 \vspace{4mm}
 \begin{equation}
   \label{graph_nodes}
-\resizebox{0.6\hsize}{!}{
-\rotatebox{90}{$H
+%\resizebox{0.6\hsize}{!}{
+%\rotatebox{90}{$
+\begin{adjustbox}{max width=\textwidth}$H
 =
 \left[
 \begin{array}{*{26}c}
@@ -93,7 +92,8 @@ n18 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
 
 
 \end{array}
-\right]$ } }
+\right]$% }}
+\end{adjustbox}
 \end{equation}
 
 \section{Cycle Matrix}
@@ -102,8 +102,9 @@ n18 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
 
 \begin{equation}
   \label{ComponentState}
-\resizebox{0.28\hsize}{!}{
-\rotatebox{90}{$B
+%\resizebox{0.28\hsize}{!}{
+%\rotatebox{90}{$
+\begin{adjustbox}{max width=\textwidth}$B
 =
 \left[
 \begin{array}{*{25}c}
@@ -125,7 +126,8 @@ n18 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 
  0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0   & -1    &-1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0
   
 \end{array}
-\right]$ } }
+\right]$ %} }
+\end{adjustbox}
 \end{equation}
 
 
