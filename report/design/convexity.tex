@@ -4,7 +4,7 @@ In the following section convexity of the objective function is examined.
 Due to the reformulation of the objective function and constraints, the MPC optimization problem becomes the following: 
 
 \begin{align}
-\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\bm{\hat{u}}_{\bm{Hp}}) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
 \label{eq:obj_final1}
 %
 s.t. \:\:\:\:\:	&\begin{bmatrix}
@@ -28,28 +28,57 @@ s.t. \:\:\:\:\:	&\begin{bmatrix}
 			\bm{\Delta \hat{p}_{wt,2}}	
 	\end{bmatrix}
 \end{align}
+\todo{source maybe}
 
-As seen is the objective function and the constraints all written up according to the small-signal value of the control signal. 
-
-The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project is it only required for the optimization problem to be convex. 
-
+As shown, the objective function and the constraints are all written up according to the small-signal value of the control signal. The difficulty of solving this optimization problem simplifies if $\Upsilon$ is convex. This is due to that if the objective function is convex then any local minima is also the global minimum. 
+\\
+The function, $\Upsilon$, defines a quadratic surface. If this surface is convex, then it looks such that in \figref{convexfig}. If the objective function is non-convex, the surface looks such that in \figref{nonconvexfig}. 
 
 \begin{figure}[H]
   \centering
   \begin{minipage}[b]{0.45\textwidth}
     \input{report/tikz/convex.tex} 
     \caption{Quadratic convex surface.}
+    \label{convexfig}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.45\textwidth}
     \input{report/tikz/non_convex.tex} 
-    \caption{Quadratic non-convex surface}
+    \caption{Quadratic non-convex surface.}
+    \label{nonconvexfig}
   \end{minipage}
   \label{fig:nonlinearpumps}
 \end{figure}
 
-\subsection{Objective function}
-To ensure convexity, the objective function must have a positive semidefinite Hessian. Therefore, the second order derivative of \eqref{eq:obj_final1} is derived bellow: 
+ \figref{convexfig} and \figref{nonconvexfig} points out the differences between the two problems. Solving the convex quadratic problem results in a global minima in all cases since the gradient of the function tells the direction in which the change has the greatest rate. In case of convexity, this gradient vector points in the direction of the global minimum, therefore using iterative methods it can be found easily. However, considering non-convexity the same cannot be said, as the non-convex surface implies. 
+\todo{source}
+ In order to ensure convexity, the objective function must have a positive semidefinite Hessian matrix. The Hessian is a square matrix of second order partial derivatives of a scalar-valued function or scalar field. Therefore to obtain an expression that fulfills this condition, the Hessian is written up for \eqref{eq:obj_final1}: 
+
+\begin{align}
+%
+\Upsilon(\bm{\hat{u}}_{\bm{Hp}}) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
+%
+\frac{\partial \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
+%
+\frac{\partial^2 \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \bm{R} 
+\label{hessian}
+%
+\end{align}
+
+\eqref{hessian} shows that convexity is ensured if:
+
+\begin{equation}
+\bm{R} \succeq 0  
+\end{equation}
+
+for all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive constant, therefore does not change the convexity of the function. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive definite, except $\bm{M_c}$, which is an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be positive definite to ensure that the objective function is convex, this requirement has been explained in detail in the formulation of \eqref{statespace_control_sys_state}.  
+
+% The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project is it only required for the optimization problem to be convex. 
+
+
+
+
+
 %
 %\begin{align}
 %\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
@@ -63,18 +92,9 @@ To ensure convexity, the objective function must have a positive semidefinite He
 %\end{align}
 
 
-\begin{align}
-\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\cdot) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
-%
-\Upsilon(\cdot) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
-%
-\frac{\partial \Upsilon(\cdot)}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
-%
-\frac{\partial^2 \Upsilon(\cdot)}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \bm{R} 
-%
-\end{align}
 
-The efficiency, $\eta$, is a positive constant and therefore convexity only depends on $\bm{R}$. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive definite, except $\bm{M_c}$, which is an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be positive definite to ensure that the objective function is convex, this requirement has been explained in detail in the formulation of \eqref{statespace_control_sys_state}.
+
+The efficiency, $\eta$, is a positive constant and therefore convexity only depends on $\bm{R}$. 
 
 \subsection{Constraints}
 
