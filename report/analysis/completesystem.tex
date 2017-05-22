@@ -52,7 +52,10 @@ During the derivation of the dynamic model, the units of the physical variables 
 The pressure sensors fitted on the test setup can measure up to 0.16 bar equal to $18 \cdot 10^3$ Pascals according to the data sheet found at \path{CD:/References/t40.4327da}. Inserting this maximum measurable pressure in the fully open valve model given by \eqref{CompleteValveModel} and setting $k_v=1$ yields a maximum flow of $1.11 \cdot 10^{-4} [m^3/s]$ equal to $0.4 [m^3/h]$. 
 Therefore a unit conversion is carried out from Pascal[Pa] to [bar] and from seconds[s] to hours[h] resulting in numerically closer flow and pressure values. 
 
-Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one bar \cite{keller}. Furthermore are the pressure sensors setup to provide measurements in bar and with the conversion the data can be used without further scaling.  
+Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one bar \cite{keller}. Furthermore the pressure sensors are set up to provide measurements in bar and with the conversion the data can be used without further scaling.  
+
+In addition, the pump equation, see \eqred{eq:PumpModel}, is given by a set of parameters which values are calculated for $[m^3/h]$ flow conditions and [Par] pressure conditions. 
+
 
 %During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it is concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to [bar]s and from seconds[s] to hours[h]. \todo{we need to ref to the chapter where we conclude this or then we need a source} Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one bar \cite{keller}. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow is in $[m^3/h]$ instead of $[m^3/s]$. 
 
