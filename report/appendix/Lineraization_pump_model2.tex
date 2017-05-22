@@ -1,4 +1,4 @@
-\chapter{Pump linearization and PI controller - V2}
+\chapter{Pump linearization and PI controller}
 \label{cha:linear_pump2}
 
 The control structure chosen in \chapref{control_problem} and \figref{fig:control_structure} includes a PI controller, which is to be designed. The PI controllers purpose is to accommodate the pressure reference from the MPC controller. 
@@ -85,95 +85,267 @@ By Laplace transform and solving for the input output relation of the plan G(s),
 % \end{equation}
 
 With the following operating points set for the pumps, the differential pressure over the pumps and their respective valves, as described in \secref{SystemModel} and seen on \figref{systemdiagram}, are measured. 
-The data can be found on the attached storage under the path: \path{CD:/Data/Steady state}.
+The data can be found on the attached storage under the path: \path{CD:/Data/Steady state} and seen on \ref{eq:blablablabla}.
+
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	\bar{\omega}_{C18} &= 0.16,\hspace{20pt} \Delta \bar{P}_{C18} = 0.0877 \\
+% 	\bar{\omega}_{C25} &= 0.4,\hspace{20pt} \Delta \bar{P}_{C25} = 0.2598  \\
+% 	\bar{\omega}_{C2}  &= 0.4,\hspace{20pt} \Delta \bar{P}_{C2} = 0.2008 \\
+% 	\bar{\omega}_{C16} &= 0.4,\hspace{20pt} \Delta \bar{P}_{C16} =0.1960 
+% 	\end{split}
+% \end{equation}
+
 
 \begin{equation}
 \centering
-	\begin{split}
-	\bar{\omega}_{C18} &= 0.16,\hspace{20pt} \Delta \bar{P}_{C18} = 0.0877 \\
-	\bar{\omega}_{C25} &= 0.4,\hspace{20pt} \Delta \bar{P}_{C25} = 0.2598  \\
-	\bar{\omega}_{C2}  &= 0.4,\hspace{20pt} \Delta \bar{P}_{C2} = 0.2008 \\
-	\bar{\omega}_{C16} &= 0.4,\hspace{20pt} \Delta \bar{P}_{C16} =0.1960 
-	\end{split}
+  \begin{minipage}[b]{0.45\textwidth}
+  \begin{equation*}
+  	\begin{split}
+    \bar{\omega}_{C18} &= 0.16\\
+	\bar{\omega}_{C25} &= 0.4\\
+	\bar{\omega}_{C2}  &= 0.4\\
+	\bar{\omega}_{C16} &= 0.4
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  	\Delta \bar{P}_{C18} &= 0.0877 \\
+	\Delta \bar{P}_{C25} &= 0.2598 \\
+	\Delta \bar{P}_{C2} &= 0.2008 \\
+	\Delta \bar{P}_{C16} &=0.1960 
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \label{eq:blablablabla}
 \end{equation}
-
 
 From this the operating flow through the pumps can be estimated by \eqref{omega_notzero} as the respective pump parameters are found in \appref{system_description} and thus q is the only unknown variable.
-Solving for $\bar{q}$ yields two results due to the second order equation, thus only the positive results is used as negative flow trough the pump is infeasible combined with positive differential pressure.
+Solving for $\bar{q}$ yields two results due to the second order equation, thus only the positive results is used as negative flow trough the pump is infeasible combined with positive differential pressure. The flow can be seen in \ref{pump_flow_no_eq}.
 
+% \begin{equation}
+% \centering
+% \begin{split}
+% \bar{q}_{C18} &= 0.229 \hspace{20pt} \bar{q}_{C25} &= 0.430 \hspace{20pt} \bar{q}_{C2} &= 0.442 \hspace{20pt} \bar{q}_{C16} &= 0.440
+% \end{split}
+% \label{pump_flow_no_eq}
+% \end{equation}
+\vspace{-0.5cm}
 \begin{equation}
-\centering
-\begin{split}
-\bar{q}_{C18} &= 0.229 \hspace{20pt} \bar{q}_{C25} &= 0.430 \hspace{20pt} \bar{q}_{C2} &= 0.442 \hspace{20pt} \bar{q}_{C16} &= 0.440
-\end{split}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		\bar{q}_{C2} &= 0.442
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		\bar{q}_{C16} &= 0.440
+  	\end{split}
+  \end{equation*}
+
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		\bar{q}_{C18} &= 0.229
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		\bar{q}_{C25} &= 0.430
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \label{pump_flow_no_eq}
 \end{equation}
+\vspace{-0.2cm}
+
+
+
+
 
 By inserting the values for the linearized model in \eqref{eq:pumpmodel_lin_taylor}, the final models ends up as gains, see \ref{mod:lin_const_pump}, where $G_{c(n)}$ is the different linearized pump models. 
 
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	G_{C18}(s) &= 0.217 \hspace{20pt} G_{C25}(s) &= 0.546 \hspace{20pt} G_{C2}(s) &= 0.966 \hspace{20pt} G_{C16}(s) &= 0.976
+% 	\end{split}
+% 	\label{mod:lin_const_pump}
+% \end{equation}
+
+\vspace{-0.5cm}
+
+
 \begin{equation}
-\centering
-	\begin{split}
-	G_{C18}(s) &= 0.217 \hspace{20pt} G_{C25}(s) &= 0.546 \hspace{20pt} G_{C2}(s) &= 0.966 \hspace{20pt} G_{C16}(s) &= 0.976
-	\end{split}
-	\label{mod:lin_const_pump}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		G_{C2}(s) &= 0.966
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		G_{C16}(s) &= 0.976
+  	\end{split}
+  \end{equation*}
+
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		G_{C18}(s) &= 0.217
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		G_{C25}(s) &= 0.546
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \label{mod:lin_const_pump}
 \end{equation}
 
+
+
+
+
+\vspace{-0.5cm}
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{PI test}
+\subsection*{PI controller}
 
 As it can be seen in \appref{sec:WT_TimeConstant} the time constant of the WT is 1155 seconds. Therefore a controller that can settled within 10 seconds will be considered fast enough for the system.
-
+Furthermore due to the constraints in \todo{include section ref to upper bound on input ($\bar{u}$ = 1), which is the highest measurable differential pressure over the pump - Simon}, the upper bound of the differential pressure over the main pumps is one bar, which also is the highest measurable differential pressure due to limitations of the sensor. Therefore any differential pressure higher than one bar is not measurable. Thus the controller should have no overshoot. 
  
-By using the Matlab design tool box for dynamical systems and having the settling time of 3 seconds in mind, the gains for the PI controller can be found as shown in \eqref{eq:PI_GAINS}. 
-Due to high similarities between these controllers only one step response in shown on \figref{fig:Tikz_PI_PUMP_GAIN}.
+The transfer function for a PI controller can be described by \eqref{eq:PI_equation}
 
 \begin{equation}
-\centering
-	\begin{split}
-	K_{C18} &= 8 \hspace{20pt} K_{C25} &= 3 \hspace{20pt} K_{C2} &= 2 \hspace{20pt} K_{C16} &= 2
-	\end{split}
-	\label{eq:PI_GAINS}
+	PI = K_p + \frac{K_i}{s}
+	\label{eq:PI_equation}
 \end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $ PI $ \\
+\hspace*{8mm} $ k_p $  \\
+\hspace*{8mm} $ K_i $  
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the proportional integral controller, \\
+is the proportional gain, \\
+is the integral gain
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{1.8mm}
+\textcolor{White}{te}$\unit{\cdot}$\\
+\textcolor{White}{te}$\unit{\cdot}$\\
+\textcolor{White}{te}$\unit{\cdot}$
+\end{minipage}
+
+Using the Matlab design tool box for dynamical systems, the PI controller can be found. The proportional and integral gains for the pumps are shown in \eqref{eq:PI_GAINS}. 
+
+\begin{equation}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		k_{p,c2} &= 1.39\\
+  		k_{i,c2} &= 1.39
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		k_{p,c16} &= 1.39\\
+  		k_{i,c16} &= 1.39
+  	\end{split}
+  \end{equation*}
+
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		k_{p,c18} &= 5.89\\
+  		k_{i,c18} &= 5.89
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \begin{minipage}[b]{0.25\textwidth}
+  \begin{equation*}
+  	\begin{split}
+  		k_{p,c25} &= 2.57\\
+  		k_{i,c25} &= 2.57
+  	\end{split}
+  \end{equation*}
+  \end{minipage}
+  \label{eq:PI_GAINS}
+\end{equation}
+
+A step response of the different controllers with their respective linearized pump models, see \ref{mod:lin_const_pump} is shown in \figref{fig:Tikz_PI_PUMP_GAIN}, where it can be seen that they settles within ten seconds and have no overshoot.
 
 \begin{figure}[H]
 \centering
-\input{report/tikz/TIKZ_PI_CONT_GAIN.tex}
-\caption{Step response of one pump PI system.}
+\input{report/tikz/TIKZ_PI_CONT_GAIN1.tex}
+\caption{Closed loop step response of the PI controllers and models.}
 \label{fig:Tikz_PI_PUMP_GAIN}
 \end{figure}
 
 
 
-The PI controller was implemented on the water system described in \chapref{system_overview}. From the test it where concluded that some tuning of the gains had to be done, due to large overshoots and marginal stabilities on some of the pumps. The final values where found by trail and errors and can be seen in \eqref{eq:NEW_PI_GAINS}. 
-
-\begin{equation}
-\centering
-	\begin{split}
-	K_{C18} &= 6 \hspace{20pt} K_{C25} &= 4 \hspace{20pt} K_{C2} &= 1.4 \hspace{20pt} K_{C16} &= 1.4
-	\end{split}
-	\label{eq:NEW_PI_GAINS}
-\end{equation}
-
-With these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed sufficient to this project, since the dynamics of the WT are much slower.
+The PI controller was implemented on the water system described in \chapref{system_overview} and tested. In \figref{fig:Tikz_PI_PUMP_GAINNNN} the step response of the pumps can be seen. The system is starting in a steady state position of 0.15 bars and is then giving a step increase of 0.15 bars to each pump at different times. It can be seen that the pumps has some small deviations. This is however deemed fine, since the largest deviations is between $\pm 1.5$ [mbar]
 
 \begin{figure}[H]
 \centering
-\input{report/tikz/PI_First_Gain.tex}
-\caption{Step response of one pump PI system.}
-\label{fig:Tikz_PI_PUMP_GAIN}
+\input{report/tikz/PI_matlab_gain.tex}
+\caption{Step response of the water system, where the different PI controllers has been implemented for the respective pump.}
+\label{fig:Tikz_PI_PUMP_GAINNNN}
 \end{figure}
 
 
-\begin{figure}[H]
-\centering
-\input{report/tikz/PI_New_Gain.tex}
-\caption{Step response of one pump PI system.}
-\label{fig:Tikz_NEW_PI_PUMP_GAIN}
-\end{figure}
+% From the test it where concluded that some tuning of the gains had to be done, due to large overshoots and marginal stabilities on some of the pumps. The final values where found by trail and errors and can be seen in \eqref{eq:NEW_PI_GAINS}. 
 
-Based on the step response shown in \figref{fig:Tikz_NEW_PI_PUMP_GAIN}, it can be concluded that a pressure controller that satisfies the requirements has been found for each pump. 
+% \begin{equation}
+% \centering
+% 	\begin{split}
+% 	K_{C18} &= 6 \hspace{20pt} K_{C25} &= 4 \hspace{20pt} K_{C2} &= 1.4 \hspace{20pt} K_{C16} &= 1.4
+% 	\end{split}
+% 	\label{eq:NEW_PI_GAINS}
+% \end{equation}
+
+% With these gains the systems gets a slower response than the settling time of 4 seconds. However this is still deemed sufficient to this project, since the dynamics of the WT are much slower.
+
+% \begin{figure}[H]
+% \centering
+% \input{report/tikz/PI_First_Gain.tex}
+% \caption{Step response of one pump PI system.}
+% \label{fig:Tikz_PI_PUMP_GAIN}
+% \end{figure}
+
+
+% \begin{figure}[H]
+% \centering
+% \input{report/tikz/PI_New_Gain.tex}
+% \caption{Step response of one pump PI system.}
+% \label{fig:Tikz_NEW_PI_PUMP_GAIN}
+% \end{figure}
+
+% Based on the step response shown in \figref{fig:Tikz_NEW_PI_PUMP_GAIN}, it can be concluded that a pressure controller that satisfies the requirements has been found for each pump. 
 
