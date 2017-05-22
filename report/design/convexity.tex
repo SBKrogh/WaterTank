@@ -1,6 +1,6 @@
 \section{Convexity}
 \label{convexity}
-In the following section convexity of both the objective function and constraints will be examined. 
+In the following section convexity of the objective function is examined. 
 Due to the reformulation of the objective function and constraints, the MPC optimization problem becomes the following: 
 
 \begin{align}
@@ -32,6 +32,21 @@ s.t. \:\:\:\:\:	&\begin{bmatrix}
 As seen is the objective function and the constraints all written up according to the small-signal value of the control signal. 
 
 The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project is it only required for the optimization problem to be convex. 
+
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/convex.tex} 
+    \caption{Quadratic convex surface.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/non_convex.tex} 
+    \caption{Quadratic non-convex surface}
+  \end{minipage}
+  \label{fig:nonlinearpumps}
+\end{figure}
 
 \subsection{Objective function}
 To ensure convexity, the objective function must have a positive semidefinite Hessian. Therefore, the second order derivative of \eqref{eq:obj_final1} is derived bellow: 
