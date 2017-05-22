@@ -65,14 +65,12 @@ The input matrix for the control system can be written in the form:
 
 Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
 \\
-However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(4 \times 1)}$ as follows: 
+However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
 \pmb{d} =
 \begin{bmatrix} 
-OD_{e13} \\
 OD_{e15} \\
-OD_{e20} \\
 OD_{e22} 
 \label{disturbancevector_control}
 \end{bmatrix} 
@@ -231,12 +229,12 @@ and the output equation:
 Where\\
 \hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
 \hspace*{8mm} $\pmb{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 4)}$ \\
+\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
 \hspace*{8mm} $\pmb{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
 \newline
 \hspace*{8mm} $\pmb{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
 \newline
-\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ 
+\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}

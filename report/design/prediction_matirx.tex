@@ -73,7 +73,7 @@ Therefore the small-signal flow through the main pumps can be written as:
 \begin{minipage}[t]{0.80\textwidth}
 Now define\\
 \hspace*{8mm} $\bm{\Lambda_1} = \,\,\,\,\, \bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
-\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
+\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
 \hspace*{8mm} $\bm{\Lambda_3} = -\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
 \end{minipage}
 
@@ -126,7 +126,7 @@ and the disturbance vector therefore formulated as:
   \vdots  \\
   \bm{d}[k+H_p-1|k]   
  \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(4 H_p \times 1)}
+ \in \pmb{\mathbb{R}}^{(2 H_p \times 1)}
  \label{eq:dhp}
 \end{equation}
 
@@ -270,10 +270,10 @@ and \hspace*{0.7mm} $\bm{\Psi} $
 $\in \pmb{\mathbb{R}}^{(H_p \times 1)}$ \\\newline
 $\in \mathbb{R}^{(1 \times 1)}$ \\\newline
 $\in \pmb{\mathbb{R}}^{(2 H_p \times 1)}$ \\\newline
-$\in \pmb{\mathbb{R}}^{(4 H_p \times 1)}$ \\\newline
+$\in \pmb{\mathbb{R}}^{(2 H_p \times 1)}$ \\\newline
 $\in \pmb{\mathbb{R}}^{(H_p \times 1)}$ \\\newline
 $\in \pmb{\mathbb{R}}^{(H_p \times 2 H_p)}$ \\\newline
-$\in \pmb{\mathbb{R}}^{(H_p \times 4 H_p)}$ 
+$\in \pmb{\mathbb{R}}^{(H_p \times 2 H_p)}$ 
 \end{minipage}
  \begin{minipage}[t]{0.70\textwidth}
  \vspace*{2mm}
@@ -309,7 +309,7 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
  \vdots & \ddots & \vdots\\
  \bm{0} & \hdots & \bm{\Lambda_2} c_p[k+H_p-1|k] 
  \end{bmatrix}
- \in \pmb{\mathbb{R}}^{(2 H_p \times 4 H_p)}
+ \in \pmb{\mathbb{R}}^{(2 H_p \times 2 H_p)}
 \end{equation} 
 \todo{fix equation}
 
