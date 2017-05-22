@@ -133,15 +133,15 @@ OD_{e13} \\
 OD_{e15} \\
 OD_{e20} \\
 OD_{e22} \\
-dP_{e01} \\
-dP_{e08} \\
-dP_{e09} \\
-dP_{e16} 
+-dP_{e01} \\
+-dP_{e08} \\
+-dP_{e09} \\
+-dP_{e16} 
 \label{inputvector}
 \end{bmatrix} 
 \end{equation}
 
-It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. 
+It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. Also important to mention that the in the input vector, the differential pressure inputs to the main pumps are taken into account with a negative sign.
 \\
 Considering the input vector, the model of the pumps can be written up in the same manner as the linearized model of pipes and valves: 
 
@@ -176,7 +176,7 @@ For the sake of clearance, the model describing the water distribution system in
 The dynamics of the WT is described by the equation below: 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = \frac{1}{C_H} q_0
+\Delta \dot{p}_{wt} = \frac{1}{C_H} q_0
  \label{WT_eq}
 \end{equation}
 
@@ -199,21 +199,21 @@ q_0 = -\bm{H^{\dagger}_0}\bm{H_1}\bm{q_1}
 Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{q_1} = - \underbrace{\frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{{B_1^{T}}}}_{\bm{S}} \bm{z}
+\Delta \dot{p}_{wt} = - \frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{q_1} = - \underbrace{\frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{{B_1^{T}}}}_{\bm{S}} \bm{z}
  \label{currentlaw_3}
 \end{equation}
 
 Therefore the dynamics of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = - \bm{S} \bm{z}
+\Delta \dot{p}_{wt} = - \bm{S} \bm{z}
  \label{currentlaw_4}
 \end{equation}
 
-Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(.)$ and $u(.)$ should be separated according to the small signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
+Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
- \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{WT}    
+ \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_1}
 \end{equation}
 
@@ -231,12 +231,12 @@ And the $\bm{N}$ matrix consists of the following terms:
 \label{Bumatrix}
 \end{equation}
 
-$\bm{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flow(state) or input. 
+$\bm{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or input. 
 
-In order to find a good state space representation for the system extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to \todo{[source]}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
+In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to \todo{[source]}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
- 0 = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{WT}    
+ 0 = \bm{M} \bm{\hat{z}} + \bm{N} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_2}
 \end{equation}
 
@@ -253,21 +253,21 @@ In \eqref{Amatrix_mod}, the $\bm{M}$ matrix is invertible for the same reason as
 Expressing the the state vector the following yields:
 
 \begin{equation}
- \bm{\hat{z}} = -(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{WT}    
+ \bm{\hat{z}} = -(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{wt}    
  \label{statespace_2}
 \end{equation}
 
 Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\bm{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{WT} = (\bm{S}\bm{M^{-1}}\bm{B_o}) \Delta \hat{p}_{WT}  + (\bm{S}\bm{M^{-1}}\bm{N}) \bm{\hat{u}} 
+\Delta \dot{p}_{wt} = (\bm{S}\bm{M^{-1}}\bm{B_o}) \Delta \hat{p}_{WT}  + (\bm{S}\bm{M^{-1}}\bm{N}) \bm{\hat{u}} 
 \label{statespace_3}
 \end{equation}
 
 \eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the state equation can be written as follows:  
 
 \begin{equation}
-\Delta \dot{p}_{WT} = A_p \Delta \hat{p}_{WT}  + \bm{B_p}\bm{\hat{u}}  
+\Delta \dot{p}_{wt} = A_p \Delta \hat{p}_{WT}  + \bm{B_p}\bm{\hat{u}}  
  \label{statespace_4}
 \end{equation}
 
@@ -294,19 +294,19 @@ to the data measured in the setup and proceed to estimate the unknown parameters
 As in \eqref{statespace_3}, substituting the state vector, $\bm{\hat{z}}$, by the expression obtained in \eqref{statespace_2}, the equation above results in 
 
 \begin{equation}
-\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{WT})  + \bm{C_{2}}\bm{\hat{u}}  
+\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{N})\bm{\hat{u}} - (\bm{M^{-1}}\bm{B_o})\Delta \hat{p}_{wt})  + \bm{C_{2}}\bm{\hat{u}}  
  \label{statespace_6}
 \end{equation}
 
 Reorganizing the terms
 
 \begin{equation}
-\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{B_o})) \Delta \hat{p}_{WT} + (\bm{C_{1}} (-(\bm{M^{-1}}\bm{N})) + \bm{C_{2}}) \bm{\hat{u}}  
+\bm{\hat{y}} = \bm{C_{1}} (-(\bm{M^{-1}}\bm{B_o})) \Delta \hat{p}_{wt} + (\bm{C_{1}} (-(\bm{M^{-1}}\bm{N})) + \bm{C_{2}}) \bm{\hat{u}}  
  \label{finaloutput}
 \end{equation}
 %
 \begin{equation}
-  \bm{\hat{y}} = \bm{C_p} \Delta \hat{p}_{WT} + \bm{D_p} \bm{\hat{u}} 
+  \bm{\hat{y}} = \bm{C_p} \Delta \hat{p}_{wt} + \bm{D_p} \bm{\hat{u}} 
   \label{outputfinaleq}
 \end{equation}
 

@@ -27,7 +27,7 @@ In order to obtain measurements from the real life test setup, the system has to
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(.)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(.)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(.)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
+where the vectorfield $u(\cdot)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(\cdot)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(\cdot)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
