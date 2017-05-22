@@ -20,6 +20,7 @@ In order to help the reader, the equation used for the reformulation of the pump
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
+\hspace*{8mm} $\bm{G^T} \in \bm{\mathbb{R}}^{(2 \times e)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -29,7 +30,7 @@ is a matrix representing a linear mapping between the flow through the two main 
 The system dynamics are only valid for small-signal values of the chord flows, and therefore for the small-signal values of the pump flows. As a consequence of this, $\bm{q_p}[k]$ can be written as a sum of the operating point and the deviation:  
 
 \begin{equation}
-\bm{q_p}[k]  = \bm{\bar{q}_p} + \bm{\hat{q}_p}[k] = \bm{\bar{q}_p} + \bm{G^T \bm{B_{1}^T}  \bm{\hat{z}}[k]
+\bm{q_p}[k]  = \bm{\bar{q}_p} + \bm{\hat{q}_p}[k] = \bm{\bar{q}_p} + \bm{G^T} \bm{B_{1}^T}  \bm{\hat{z}}[k]
 \label{mapping_mainP_1}
 \end{equation}
 
@@ -58,7 +59,7 @@ Plugging the expression for the small-signal chord flows given in \eqref{statesp
 %\end{align}
 
  \begin{equation}
- \bm{\hat{q_{p}}}[k] =   \bm{G^T \bm{B_{1}^T}(\bm{M_c^{-1}}\bm{N_c} \cdot \bm{\hat{u}}[k] -\bm{M_c^{-1}}\bm{Q_c} \cdot \bm{\hat{d}}[k] -\bm{M_c^{-1}}\bm{B_{o}} \cdot \Delta \hat{p}_{wt}[k])   
+ \bm{\hat{q_{p}}}[k] =   \bm{G^T} \bm{B_{1}^T}(\bm{M_c^{-1}}\bm{N_c} \cdot \bm{\hat{u}}[k] -\bm{M_c^{-1}}\bm{Q_c} \cdot \bm{\hat{d}}[k] -\bm{M_c^{-1}}\bm{B_{o}} \cdot \Delta \hat{p}_{wt}[k])   
  \label{mappingandstates}
 \end{equation}
 
@@ -71,9 +72,9 @@ Therefore the small-signal flow through the main pumps can be written as:
 
 \begin{minipage}[t]{0.80\textwidth}
 Now define\\
-\hspace*{8mm} $\bm{\Lambda_1} = \bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
-\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
-\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
+\hspace*{8mm} $\bm{\Lambda_1} = \,\,\,\,\, \bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
+\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
 \end{minipage}
 
 Hence the objective function:
@@ -141,7 +142,7 @@ For $i = 1$, the iteration of the state equation gives:
 	\Delta \hat p_{wt}[1] = A_d\Delta \hat p_{wt}[0] + \bm{B_d} \bm{\hat{u}}[0] + \bm{E_d} \bm{\hat{d}}[0]
 \end{equation}
 
-Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\Delta \hat{p_{wt}}[1]$ substituted: 
+Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\Delta \hat{p}_{wt}[1]$ substituted: 
 
 \begin{equation}
 	\Delta \hat p_{wt}[2] = A_d\big[A_d\Delta \hat p_{wt}[0] + \bm{B_d}  \bm{\hat{u}}[0] + \bm{E_d}  \bm{\hat{d}}[0]\big] + \bm{B_d} \bm{\hat{u}}[1] + \bm{E_d} \bm{\hat{d}}[1]\\ 
@@ -149,54 +150,109 @@ Now $\Delta \hat p_{wt}[2]$ is calculated in the same way, but with $\Delta \hat
 
 As can be seen, moving further in time steps, the predicted states only depend on the past values of the input, disturbance and the initial state measurement. Writing up the matrix equation until the $i = H_p - 1$ time steps, thus until the end of the prediction horizon, the following state dynamic matrix equation yields:
 
+% \begin{align}\hspace{-0.8cm}
+% \underbrace{\begin{bmatrix}
+% \Delta \hat p_{wt}[k\!+\!1|k] \\ 
+% \Delta \hat p_{wt}[k\!+\!2|k]\\ 
+% \vdots \\ 
+% \Delta \hat p_{wt}[k+H_p]\\ 
+% \end{bmatrix}}_{\bm{\Delta \hat{p}}_{wt,Hp}}
+% \!=\!
+% &\underbrace{\begin{bmatrix}
+% A_d \\ 
+% A_d^2\\ 
+% \vdots \\ 
+% A_d^{H_p}\\ 
+% \end{bmatrix}}_{\bm{\Phi}}
+% \! \Delta \hat{p}_{wt}[0]\!+\!\nonumber
+% \underbrace{\begin{bmatrix}
+%  \bm{B_d}         & \bm{0}                &\hdots & \bm{0}\\ 
+%  A_d\bm{B_d}      &  \bm{B_d}             &\hdots & \bm{0}\\ 
+% \vdots            &\vdots                 &\ddots  & \vdots\\ 
+%  A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}   &\hdots & \bm{B_d}
+% \end{bmatrix}}_{\bm{\Gamma}}
+% \underbrace{\begin{bmatrix}
+%  \bm{\hat{u}}[k|k] \\ 
+%  \bm{\hat{u}}[k+1|k]\\ 
+% \vdots \\ 
+%  \bm{\hat{u}}[k\!+\!H_p\!-\!1|k]\\ 
+% \end{bmatrix}}_{\bm{\hat{u}}_{Hp}} \\
+% \!\!&+\! 
+% \underbrace{\begin{bmatrix}
+%  \bm{E_d}& 0 & \hdots  & 0\\ 
+%  A_d\bm{E_d}&  \bm{E_d}& \hdots & 0\\ 
+% \vdots &\vdots  & \ddots  & \vdots\\ 
+%  A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  & \hdots  & \bm{E_d}
+% \end{bmatrix}}_{\bm{\Psi}}
+% \underbrace{\begin{bmatrix}
+%  \bm{\hat{d}}[k|k] \\ 
+%  \bm{\hat{d}}[k+1|k]\\ 
+% \vdots \\ 
+%  \bm{\hat{d}}[k+H_p-1|k]\\ 
+% \end{bmatrix}}_{\bm{\hat{d}}_{Hp}}
+% \label{dynamic_matrix_eq} 
+% \end{align}
+
 \begin{align}\hspace{-0.8cm}
 \underbrace{\begin{bmatrix}
+\Delta \hat p_{wt}[0] \\
 \Delta \hat p_{wt}[k\!+\!1|k] \\ 
 \Delta \hat p_{wt}[k\!+\!2|k]\\ 
 \vdots \\ 
-\Delta \hat p_{wt}[k+H_p]\\ 
+\Delta \hat p_{wt}[k+H_p-1]\\ 
 \end{bmatrix}}_{\bm{\Delta \hat{p}}_{wt,Hp}}
 \!=\!
 &\underbrace{\begin{bmatrix}
+1 \\
 A_d \\ 
 A_d^2\\ 
 \vdots \\ 
-A_d^{H_p}\\ 
+A_d^{(H_p-1)}\\ 
 \end{bmatrix}}_{\bm{\Phi}}
 \! \Delta \hat{p}_{wt}[0]\!+\!\nonumber
 \underbrace{\begin{bmatrix}
+ 0        & \bm{0}                &\hdots & \bm{0}\\ 
  \bm{B_d}         & \bm{0}                &\hdots & \bm{0}\\ 
  A_d\bm{B_d}      &  \bm{B_d}             &\hdots & \bm{0}\\ 
 \vdots            &\vdots                 &\ddots  & \vdots\\ 
- A_d^{H_p}\bm{B_d}& A_d^{H_p-1}\bm{B_d}   &\hdots & \bm{B_d}
-\end{bmatrix}}_{\bm{\Gamma}}
+ A_d^{(H_p-1)}\bm{B_d}& A_d^{(H_p-2)}\bm{B_d}   &\hdots & 0\end{bmatrix}}_{\bm{\Gamma}}
 \underbrace{\begin{bmatrix}
  \bm{\hat{u}}[k|k] \\ 
  \bm{\hat{u}}[k+1|k]\\ 
+  \bm{\hat{u}}[k+2|k]\\ 
 \vdots \\ 
  \bm{\hat{u}}[k\!+\!H_p\!-\!1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{u}}_{Hp}} \\
 \!\!&+\! 
 \underbrace{\begin{bmatrix}
+0 & 0 & \hdots  & 0\\ 
  \bm{E_d}& 0 & \hdots  & 0\\ 
  A_d\bm{E_d}&  \bm{E_d}& \hdots & 0\\ 
 \vdots &\vdots  & \ddots  & \vdots\\ 
- A_d^{H_p}\bm{E_d}& A_d^{H_p-1}\bm{E_d}  & \hdots  & \bm{E_d}
+ A_d^{(H_p-1)}\bm{E_d}& A_d^{(H_p-2)}\bm{E_d}  & \hdots  & 0
 \end{bmatrix}}_{\bm{\Psi}}
 \underbrace{\begin{bmatrix}
  \bm{\hat{d}}[k|k] \\ 
  \bm{\hat{d}}[k+1|k]\\ 
+  \bm{\hat{d}}[k+2|k]\\ 
 \vdots \\ 
  \bm{\hat{d}}[k+H_p-1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{d}}_{Hp}} 
 \end{align}
 
-Which in short form, expressed with the newly introduced vectors and matrices can be written as: 
+As it is shown, the first line of the dynamics describes the following trivial equation:
+
+\begin{equation}
+\Delta {\hat{p}_{wt}[0]} = \Delta {\hat{p}_{wt}[0]}
+\end{equation} 
+
+The dynamics, expressed with the newly introduced vectors and matrices, can be written as: 
 
 \begin{equation}
 	\Delta \hat{p}_{wt,H_p} = \bm{\Phi} \Delta \hat{p}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} + \bm{\Psi} \bm{\hat{d}}_{\bm{Hp}}
 	\label{extendedmatrix}
 \end{equation}
+\todo{Fix minipage}
 
 \begin{minipage}[t]{0.15\textwidth}
 Where\\
@@ -229,7 +285,7 @@ $\in \pmb{\mathbb{R}}^{(H_p \times 4 H_p)}$
  is the disturbance matrix along the prediction horizon, taking the $A_d$ and $\bm{E_d}$ matrix into account at each time step . \\ 
  \end{minipage}
 
-It is shown therefore that the state, input and disturbance matrices, described above, may be calculated prior to solving the MPC optimization. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon. Furthermore, it is noted here that these matrices now describe the variables for the whole prediction horizon, and therefore the signals are subscripted with $H_p$, as mentioned above. 
+It is shown therefore that the state, input and disturbance matrices, described above, may be calculated prior to solving the MPC optimization because they consist of the matrices describing the model. \eqref{extendedmatrix} defines the future state trajectories for each time step and for the whole prediction horizon. Furthermore, it is noted here that these matrices now describe the variables for the whole prediction horizon, and therefore the signals are subscripted with $H_p$, as mentioned above. 
 \\
 \newline
 The objective function formulated in \eqref{eqcost_3} consists of the product of the $\bm{\Lambda_{1,2,3}}$ matrices and the signals. In order to express the objective function in vectorial form, the cost function is multiplied with these $\bm{\Lambda_{1,2,3}}$ matrices such that:
