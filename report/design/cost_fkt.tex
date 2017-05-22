@@ -2,7 +2,7 @@
 %W.r.t. the term 'cost function', I think it's a bit misplaced here. What you have in the graph is the cost-of-energy as a function of time. However, when you use the term 'cost function' it might be confused with the term 'objective function', which in your case will be the product between the cost-of-energy and the energy consumed.}
 %
 %
-To minimize the running cost of the system the power consumption of the pumps, $P_e$ Cf. \secref{PumpModel}, and the electrical price, $c[k]$, is needed. Predicting future prices is an extensive task that depends on many factors e.g user consumption and weather conditions. Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, data gathered from \cite{Electrical_price} is used instead. The pricing can be seen on \figref{fig:electrical_price}. 
+To minimize the running cost of the system, the power consumption of the pumps, $P_e$ Cf. \secref{PumpModel}, and the electrical price, $c_p$, is considered. Predicting future prices is an extensive task that depends on many factors e.g user consumption and weather conditions. Due to the fact that the main focus of this project is not to derive a high precision predictive model that describe future electrical prices, data is used from \cite{Electrical_price} instead. The price function can be seen in \figref{fig:electrical_price}. 
 
 
 % Due to the fact that the learning goals of this project is not to derive a high precision predictive model that describe future electrical prices, a simple model that mimics real electrical pricing is created. This model is based on electrical pricing in Denmark from the period 27-03-2017 to 02-04-2017.  
@@ -27,7 +27,7 @@ To minimize the running cost of the system the power consumption of the pumps, $
 \label{fig:electrical_price} 
 \end{figure}
 
-As this is real data from a given period, it will most likely not fit the pricing in any other given week, as the pricing is fluctuating a lot from day to day. However the data indicates the pricing is higher in the morning and evening which is applicable for any given week and thereby a general property of the time dependent pricing. This behavior can be seen as the periodicity of the data with two peaks a day. The chosen data will thus give a realistic idea of the improvement the controller can achieved in a real world scenario based on the week the data is recorded.  
+As this is a real data from a given period, most likely it does not fit the pricing in any other given week, as the pricing is fluctuating a lot from day to day. However, the data indicates that the pricing is higher in the morning and evening which is applicable for any given week and thereby is a general property of the time dependent pricing. This behavior can be seen as the periodicity of the data with two peaks a day. The chosen data thus gives a realistic idea of the improvement of the controller which can be achieved in a real world scenario based on the week on which the data is recorded.  
 
 %However $\frac{1}{\eta}\cdot\Delta p \cdot q \cdot \Gamma(k)$ 
 

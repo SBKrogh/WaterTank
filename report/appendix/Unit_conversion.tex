@@ -2,7 +2,7 @@
 \label{unitCON}
 \textbf{Unit transformation for the pipe model}
 
-Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to Bar is made.
+Due to the large difference between the SI-units of flow, [$\text{m}^3/\text{s}$], and pressure, [Pa], a conversion from seconds to hours and pascal to bar is made.
 
 The final pipe model from \eqref{FinalPipeModel}, is shown below.   
 
@@ -14,7 +14,7 @@ The final pipe model from \eqref{FinalPipeModel}, is shown below.
 \label{UnitCon_eq}
 \end{equation}
 
-$1 [\text{bar}] = 10^5[\text{Pa}]$. Therefore we can rewrite \eqref{UnitCon_eq} to: 
+$1 [\text{bar}] = 10^5[\text{Pa}]$. Therefore \eqref{UnitCon_eq} can be rewritren as: 
 
 \begin{equation}
 \begin{split}
@@ -23,20 +23,19 @@ $1 [\text{bar}] = 10^5[\text{Pa}]$. Therefore we can rewrite \eqref{UnitCon_eq} 
 \end{split}
 \end{equation}
 
-The conversion from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ is $\frac{m^3}{s} 3600 = \frac{m^3}{s}$. \eqref{UnitCon_eq} can be written as:
+The conversion from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ can be done by multiplying by 3600 on the left-hand side. \eqref{UnitCon_eq} can be written as:
 
 \begin{equation}
    \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z \rho g}{10^5}
 \end{equation}
 
-There is no need to apply the unit conversion to the final valve model from \eqref{CompleteValveModel}, due to the parameter $k_v$ being designed for the water flow in $m^3$
-through the  valve in one hour and at a pressure drop across the valve of 1 Bar. 
+There is not any need to apply unit conversion to the final valve model described in \eqref{CompleteValveModel}, since the parameter, $k_v$, being designed for the water flow in $[m^3]$ taking into account one hour at a pressure drop across the valve of 1 Bar. 
 
-In the pump final model \eqref{eq:PumpModel} the constants are scaled so the pump equation has the units in Bar and the flow has the units in $m^3/h$.
+In the pump final model \eqref{eq:PumpModel}, the constants are scaled so the pump equation has the units in $[bar]$ and the flow has the units in $[m^3/h]$.
 
 \textbf{Water Tower Hydraulic Capacitance Unit Transformation}
 
-In \secref{WaterTankModel} the units of the WT hydraulic capacitance, $C_H$ are shown. This units are given in S.I units which makes it necessary to convert them into the unit system followed throughout the project. Below the unit conversion procedure for $C_H$ is carried out. 
+In \secref{WaterTankModel}, the unit of the WT hydraulic capacitance, $C_H$ is shown. This unit is given in SI which makes it necessary to convert it into the unit system followed throughout the project. Below the procedure of the unit conversion for $C_H$ is shown: 
 
 \begin{equation}
 	C_H = \frac{A}{\rho g} = \frac{m^2}{\frac{kg}{m^3} \frac{m}{s^2}} = \frac{m^2}{\frac{F}{m^2} \frac{1}{m}} =  \frac{m^2}{\frac{P}{m}} = \frac{m^3}{P}
@@ -59,7 +58,7 @@ is Pressure\\
 \textcolor{White}{te}$\unit{Pa}$
 \end{minipage}
 
-As well as with the pipes equation the pressure need to be converted from [Bar] to [Pa], applying unit conversion to \eqref{WT_unit}:
+As well as with the pipes equation, the pressure needs to be converted from [bar] to [Pa], applying unit conversion to \eqref{WT_unit}:
 
 \begin{equation}
 	C_H = \frac{m^{3} \cdot 10^5}{P}
