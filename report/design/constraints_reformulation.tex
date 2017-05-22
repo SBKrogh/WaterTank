@@ -104,11 +104,11 @@ is the lower-bound of the end-user pressure.
 
 % \eqref{eqnewcon_state} and \eqref{eqnewcon_out} will be used in the implementation and recalculated for every optimization iteration. 
 
-
+\todo{equation fix}
 The constraint on the states can be reformulated using the same idea as for the output, except that it is sufficient to use the extended state dynamic equation such that: 
 
 \begin{equation}
-	\underline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} \leq \bm{\Theta} \bm{\Phi} \Delta \hat{p}_{wt}[0] +  (\bm{\Theta} \bm{\Gamma}+  \bm{\Omega}) \bm{\hat{u}_{Hp}} + (\bm{\Theta} \bm{\Psi} + \bm{\Pi})  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} 
+	\underline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} \leq \bm{\Phi} \Delta \hat{p}_{wt}[0] +   \bm{\Gamma} \bm{\hat{u}_{Hp}} + \bm{\Psi}  \bm{\hat{d}_{Hp}} \leq \overline{\bm{\Delta p_{wt,Hp}}} - \bm{\Delta \bar{p}_{wt,Hp}} 
 	\label{eq:stateconstraint}
 \end{equation}
 
@@ -157,7 +157,7 @@ As it is shown, the constraints are all set up as constraints on the input signa
 
 
 \begin{equation}
-\underbrace{\bm{0}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
+\underbrace{\underline{\bm{{u}}} - \bm{\bar{u}_{Hp}}}_{\bm{\hat{u}_{1}}} \leq \bm{\hat{u}_{H_p}}
 \end{equation}
 
 %\underline{\bm{u}} - \bm{\bar{u}_{Hp}}
