@@ -7,30 +7,29 @@ The minimization problem formulated in \secref{control_problem} describes the op
 In order to help the reader, the equation used for the reformulation of the pump flows is recalled:
 
  \begin{equation}
- \pmb{\hat{z}} =  - (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
+ \pmb{\hat{z}} =   (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}    
  \label{statespace_control_sys_state_recall}
 \end{equation}
 
 \eqref{statespace_control_sys_state_recall} explains how the independent flows of the network can be  calculated with the system matrices. Using this equation and plugging this into the objective function, the flows through the pumps can be obtained. Recalling that all flows can be obtained from the independent variables, the flow through the pumps can be given with a linear mapping such that: 
 
 \begin{equation}
-\bm{q_p}[k]  = \bm{G_{2}} \bm{B_{1}^T}  \bm{z}[k]
+\bm{q_p}[k]  = \bm{G^T} \bm{B_{1}^T}  \bm{z}[k]
 \label{mapping_mainP}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\bm{G_{2}} \in \bm{\mathbb{R}}^{(2 \times e)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping between the flow through the two main pumps and the edge flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is the number of main pumps. 
+is a matrix representing a linear mapping between the flow through the two main pumps and the edge flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is the number of main pumps. This mapping matrix is the same as the mapping described in \eqref{mapping_main}.
 \end{minipage} 
 
-The system dynamics are only valid for small-signal values of the chord flows, and therefore for the small-signal values of the pump flows. As a consequence of this, $\bm{q_p}[k]$ can be written up as a sum of the operating point and the deviation from it:  
+The system dynamics are only valid for small-signal values of the chord flows, and therefore for the small-signal values of the pump flows. As a consequence of this, $\bm{q_p}[k]$ can be written as a sum of the operating point and the deviation:  
 
 \begin{equation}
-\bm{q_p}[k]  = \bm{\bar{q}_p} + \bm{\hat{q}_p}[k] = \bm{\bar{q}_p} + \bm{G_{2}} \bm{B_{1}^T}  \bm{\hat{z}}[k]
+\bm{q_p}[k]  = \bm{\bar{q}_p} + \bm{\hat{q}_p}[k] = \bm{\bar{q}_p} + \bm{G^T \bm{B_{1}^T}  \bm{\hat{z}}[k]
 \label{mapping_mainP_1}
 \end{equation}
 
@@ -59,7 +58,7 @@ Plugging the expression for the small-signal chord flows given in \eqref{statesp
 %\end{align}
 
  \begin{equation}
- \bm{\hat{q_{p}}}[k] =   \bm{G_{2}} \bm{B_{1}^T}(-\bm{M_c^{-1}}\bm{N_c} \cdot \bm{\hat{u}}[k] -\bm{M_c^{-1}}\bm{Q_c} \cdot \bm{\hat{d}}[k] -\bm{M_c^{-1}}\bm{B_{o}} \cdot \Delta \hat{p}_{wt}[k])   
+ \bm{\hat{q_{p}}}[k] =   \bm{G^T \bm{B_{1}^T}(\bm{M_c^{-1}}\bm{N_c} \cdot \bm{\hat{u}}[k] -\bm{M_c^{-1}}\bm{Q_c} \cdot \bm{\hat{d}}[k] -\bm{M_c^{-1}}\bm{B_{o}} \cdot \Delta \hat{p}_{wt}[k])   
  \label{mappingandstates}
 \end{equation}
 
@@ -72,19 +71,20 @@ Therefore the small-signal flow through the main pumps can be written as:
 
 \begin{minipage}[t]{0.80\textwidth}
 Now define\\
-\hspace*{8mm} $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
-\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
-\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
+\hspace*{8mm} $\bm{\Lambda_1} = \bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\hspace*{8mm} $\bm{\Lambda_2} = -\bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{Q_c} \in \pmb{\mathbb{R}}^{(2 \times 4)}$ \\
+\hspace*{8mm} $\bm{\Lambda_3} = -\bm{G^T \bm{B_{1}^T}\bm{M_c^{-1}}\bm{B_{o}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ 
 \end{minipage}
 
 Hence the objective function:
 
 \begin{equation}
-\! \Upsilon(\cdot) \!=\! \frac{1}{\eta}\! \sum_{i=0}^{H_p-1}\! \Big[ \bm{u^T}[k+i|k] \cdot \Big(\bm{\bar{q}_p} +  \bm{\Lambda_1} \bm{\hat{u}}[k+i|k] + \bm{\Lambda_2} \bm{\hat{d}}[k+i|k] + \bm{\Lambda_3} \Delta \hat{p}_{wt}[k+i|k]\!\Big)\!\Big] \! \cdot c_p[k+i|k]
+ \frac{1}{\eta}\! \sum_{i=0}^{H_p-1}\! \Big[ \bm{u^T}[k+i|k] \cdot \Big(\bm{\bar{q}_p} +  \bm{\Lambda_1} \bm{\hat{u}}[k+i|k] + \bm{\Lambda_2} \bm{\hat{d}}[k+i|k] + \bm{\Lambda_3} \Delta \hat{p}_{wt}[k+i|k]\!\Big)\!\Big] \! \cdot c_p[k+i|k]
 \label{eqcost_3} 
+%\! \Upsilon(\cdot) \!=\!
 \end{equation}
 
-As can be seen in \eqref{eqcost_3}, the objective function now includes both the full- and small-signal inputs, the small-signal disturbances and the small-signal pressure in the WT. It is important to point out that the system dynamics are described by small-signals, however as it is mentioned in the problem formulation, the optimization for the cost has to be according to full-signals. Since the dynamics are meant to be plugged into the objective function, the following has to be considered: 
+As can be seen in \eqref{eqcost_3}, the objective function now includes both the full- and small-signal inputs, the small-signal disturbances and the small-signal pressure in the WT. It is important to point out that the system dynamics are described by small-signals, however as it is stated in the problem formulation, the optimization for the cost has to be according to full-signals. Since the dynamics are meant to be plugged into the objective function, the following has to be considered: 
 
 \begin{equation}
 \bm{u} = \bm{\bar{u}} + \bm{\hat{u}}
@@ -95,7 +95,7 @@ and\\
 \bm{d} = \bm{\bar{d}} + \bm{\hat{d}}
 \end{equation}
 
-which shows that the signals are decomposed to their constant values in the operating point and the small- signal deviations. 
+which shows that the signals are decomposed to their constant values in the operating point and the small-signal deviations. 
 
 As it was shown before, the WT pressure is described as a state in the dynamics governing the water distribution system. Therefore the state-space model in \eqref{dyn} can be used to substitute this pressure term in \eqref{eqcost_3}.
 

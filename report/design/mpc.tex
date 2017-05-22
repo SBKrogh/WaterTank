@@ -2,7 +2,7 @@
 \label{sec:MPC}
 
 Model predictive control (MPC) is an advanced control method that depends on the dynamic model of the plant. It is model based in the sense that it uses an explicit internal model to generate predictions of future plant behavior. Therefore MPC allows to calculate an optimal control signal taking the future costs of some matter into account. The control structure of MPC is in general:
-
+\todo{Wrong notation in the block diagram!}
 \begin{figure}[H]
 \centering
 \input{report/tikz/MPC_diagram.tex} 
@@ -13,11 +13,10 @@ Model predictive control (MPC) is an advanced control method that depends on the
 \figref{mpc_structure} is of the same structure as \figref{fig:control_structure}, however here the MPC block is specified. A MPC is an iterative process that can be summarized as follows: 
 
 \begin{itemize}
-\item[1:] A model predict the future outputs, $\bm{\tilde y}$.
-\item[2:] The future outputs are feed back to the optimizer that calculate the future inputs $\bm{\tilde u}$.
-\item[3:] $\tilde u(k|k)$, the optimal control signal to the current time k, is sent as the control signal.
-\item[4:] $\bm{\tilde u}$ are applied to the model, together with the old output.
-\item[5:] Go back to step 1 
+\item[1:] A measurement is taken on either the outputs or directly on the states if state measurement is available. Otherwise the states are estimated. 
+\item[2:] The optimizer calculates a set of predicted values over the prediction horizon, according to the objective of the control and the constraints. The predicted inputs are defined by $\bm{\tilde{u}}$.
+\item[3:] $\tilde u(k|k)$, the first entry of the calculated control sequence at the current time k, is applied.
+\item[4:] A new measurement is taken and everything starts over. 
 \end{itemize}
 
 The future outputs $\bm{\tilde y}$ and the future inputs $\bm{\tilde u}$ are defined by:
