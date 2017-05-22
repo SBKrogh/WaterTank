@@ -30,9 +30,11 @@ s.t. \:\:\:\:\:	&\begin{bmatrix}
 \end{align}
 \todo{source maybe}
 
-As shown, the objective function and the constraints are all written up according to the small-signal value of the control signal. The difficulty of solving this optimization problem simplifies if $\Upsilon$ is convex. This is due to that if the objective function is convex then any local minima is also the global minimum. 
+\textbf{Objective function}
+
+As shown, the objective function and the constraints are all written up according to the small-signal value of the control signal. The difficulty of solving this optimization problem simplifies however, if $\Upsilon$ is convex. This is due to the fact that if the objective function is convex then any local minima is also the global minimum. 
 \\
-The function, $\Upsilon$, defines a quadratic surface. If this surface is convex, then it looks such that in \figref{convexfig}. If the objective function is non-convex, the surface looks such that in \figref{nonconvexfig}. 
+The function, $\Upsilon$, defines a quadratic surface. If this surface is convex, then it looks such that in \figref{convexfig}. If the objective function is non-convex, the surface has a form such that in \figref{nonconvexfig}. 
 
 \begin{figure}[H]
   \centering
@@ -49,8 +51,9 @@ The function, $\Upsilon$, defines a quadratic surface. If this surface is convex
   \end{minipage}
   \label{fig:nonlinearpumps}
 \end{figure}
+%The gradient of the objective function tells the direction in which the change has the greatest rate. In case of convexity, this gradient vector points in the direction of the global minimum, therefore using iterative methods it can be found easily.
 
- \figref{convexfig} and \figref{nonconvexfig} points out the differences between the two problems. Solving the convex quadratic problem results in a global minima in all cases since the gradient of the function tells the direction in which the change has the greatest rate. In case of convexity, this gradient vector points in the direction of the global minimum, therefore using iterative methods it can be found easily. However, considering non-convexity the same cannot be said, as the non-convex surface implies. 
+ \figref{convexfig} and \figref{nonconvexfig} points out the differences between the two problems. Solving the convex quadratic problem results in a global minima in all cases. There is only one point along the curve when the first derivative equals to zero. However, considering non-convexity the same cannot be said, as the non-convex surface implies. 
 \todo{source}
  In order to ensure convexity, the objective function must have a positive semidefinite Hessian matrix. The Hessian is a square matrix of second order partial derivatives of a scalar-valued function or scalar field. Therefore to obtain an expression that fulfills this condition, the Hessian is written up for \eqref{eq:obj_final1}: 
 
@@ -71,7 +74,7 @@ The function, $\Upsilon$, defines a quadratic surface. If this surface is convex
 \bm{R} \succeq 0  
 \end{equation}
 
-for all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive constant, therefore does not change the convexity of the function. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = -\bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive definite, except $\bm{M_c}$, which is an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be positive definite to ensure that the objective function is convex, this requirement has been explained in detail in the formulation of \eqref{statespace_control_sys_state}.  
+for all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive constant, therefore does not change the convexity of the function. $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} = \bm{G_{2}} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$. Every term in this expression is know and semi positive-definite, except $\bm{M_c}$, which includes all the resistance terms as an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be positive semi-definite. To ensure that the objective function is convex, this requirement has been explained in detail in the formulation of \eqref{statespace_control_sys_state}.  
 
 % The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project is it only required for the optimization problem to be convex. 
 
@@ -93,12 +96,9 @@ for all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive co
 
 
 
+\textbf{Constraints}
 
-The efficiency, $\eta$, is a positive constant and therefore convexity only depends on $\bm{R}$. 
-
-\subsection{Constraints}
-
-The convexity of the constraints is investigated with the same procedure as the used for the objective function. All constraints are linear and the Hessian of a linear function, $Ax+b$, is always zero. Therefore the constraints will always be convex.
+The convexity of the constraints is investigated with the same procedure as for the objective function. All constraints are linear and the Hessian of a linear function, $Ax+b$, is always zero. Therefore the constraints are always convex.
 
 %In this section:
 %\\
