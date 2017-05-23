@@ -14,7 +14,7 @@ The purpose of this test is to verify if the designed controller meets the requi
 \end{itemize}
 
 \subsection*{Procedure:}
-The designed MPC controller is tested on the system for a period corresponding to 24 hours. For the test each hour is scaled to 10 minutes in real time. Prediction data of the electrical price is provided to the MPC and the consumer behavior, resulting in valve opening, is applied to the system, this data can be found under the path: \path{CD:/Data/MPC test/prediction data}. 
+The designed MPC controller is tested on the system for a period corresponding to 24 hours. During the test each hour is scaled to 5 minutes in real time as decribed in \chapref{accepttest}. Prediction data of the electrical price is provided to the MPC and described in \secref{sec:cost_fkt}. The consumer behavior, resulting in valve opening, is applied to the system, this data can be found under the path: \path{CD:/Data/MPC test/prediction data}. 
 In order to analyze if the MPC is minimizing the energy consumption of the system, a PI controller is implemented and tested under the same conditions as the MPC.    
 
 \subsection*{Measuring data:}
