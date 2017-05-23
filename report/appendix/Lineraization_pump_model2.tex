@@ -8,7 +8,7 @@ The control focus of this project has been on the model predictive control, see 
 \begin{figure}[H]
 \centering
 \input{report/tikz/pump_lin.tex}  
-\caption{The structure of the PI controller and the plant, where D(s) is the PI controller and G(s) is the plant i.e the two valves and the pump.}
+\caption{The structure of the PI controller and the plant, where D(s) is the PI controller and G(s) is the plant i.e the two valves and the pump. The input is the pressure differential reference.}
 \label{fig:simple_PI}
 \end{figure}
 
@@ -23,7 +23,7 @@ By the assumption that the flow is constant, the expression can through a Taylor
 
 \begin{equation}
 	\begin{split}
-		\hat{\Delta P} &= a_{h1}q\hat{\omega} + 2a_{h0}{\omega_r}\hat{\omega}_r\\
+		\hat{\Delta p} &= a_{h1}q\hat{\omega} + 2a_{h0}{\omega_r}\hat{\omega}_r\\
 					   &= (a_{h1}q + 2a_{h0}{\omega_r}) \hat{\omega}_r
 	\end{split}
 	\label{eq:pump_lin_taylor_approx}
@@ -33,7 +33,7 @@ By Laplace transform and solving for the input output relation of the plant G(s)
 
 \begin{equation}
 	\begin{split}
-		G(s) = \frac{\hat{\Delta P}}{\hat{\omega}} = a_1q + 2a_0\bar{\omega}
+		G(s) = \frac{\hat{\Delta p}}{\hat{\omega}} = a_1q + 2a_0\bar{\omega}
 	\end{split}
 	\label{eq:pumpmodel_lin_taylor}
 \end{equation}
@@ -232,8 +232,7 @@ By inserting the values for the linearized model in \eqref{eq:pumpmodel_lin_tayl
 \subsection*{PI controller}
 
 As it can be seen in \appref{sec:WT_TimeConstant} the time constant of the WT is 1155 seconds. Therefore a controller that can settled within 10 seconds will be considered fast enough for the system.
-Furthermore due to the constraints in \todo{include section ref to upper bound on input ($\bar{u}$ = 1), which is the highest measurable differential pressure over the pump - Simon}, the upper bound of the differential pressure over the main pumps is one bar, which also is the highest measurable differential pressure due to limitations of the sensor. Therefore any differential pressure higher than one bar is not measurable. Thus the controller should have no overshoot. 
- 
+Furthermore due to the constraints in \todo{include section ref to upper bound on input ($\bar{u}$ = 0.95),- Simon}, the upper bound of the differential pressure over the main pumps is one 0.95 bar, which is 0.05 bars below the highest measurable differential pressure. Therefore the overshoot and steady state error should not exceed 5\% of the reference value as this will saturate the differential sensors.
 The transfer function for a PI controller can be described by \eqref{eq:PI_equation}
 
 \begin{equation}
