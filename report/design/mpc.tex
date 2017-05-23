@@ -2,7 +2,7 @@
 \label{sec:MPC}
 
 Model predictive control (MPC) is an advanced control method that depends on the dynamic model of the plant. It is model based in the sense that it uses an explicit internal model to generate predictions of future plant behavior. Therefore MPC allows to calculate an optimal control signal taking the future costs of some matter into account. The control structure of MPC is in general:
-\todo{Wrong notation in the block diagram!}
+
 \begin{figure}[H]
 \centering
 \input{report/tikz/MPC_diagram.tex} 
@@ -14,39 +14,39 @@ Model predictive control (MPC) is an advanced control method that depends on the
 
 \begin{itemize}
 \item[1:] A measurement is taken on either the outputs or directly on the states if state measurement is available. Otherwise the states are estimated. 
-\item[2:] The optimizer calculates a set of predicted values over the prediction horizon, according to the objective of the control and the constraints. The predicted inputs are defined by $\bm{\tilde{u}}$.
-\item[3:] $\tilde u(k|k)$, the first entry of the calculated control sequence at the current time k, is applied.
+\item[2:] The optimizer calculates a set of predicted values over the prediction horizon, according to the objective of the control and the constraints. The predicted inputs are defined by $\bm{u_}{Hp}$.
+\item[3:] $\bm{u}_{Hp}[k|k]$, the first entry of the calculated control sequence at the current time k, is applied.
 \item[4:] A new measurement is taken and everything starts over. 
 \end{itemize}
 
-The future outputs $\bm{\tilde y}$ and the future inputs $\bm{\tilde u}$ are defined by:
+The future outputs $\bm{y}_{Hp}$ and the future inputs $\bm{u}_{Hp}$ are defined by:
 
 \begin{equation}
-\bm{\tilde y} =  
+\bm{y_{Hp}} =  
  \begin{bmatrix}
-  \tilde y(k|k)\\
+  \bm{y}[k|k]\\
   \vdots  \\
-  \tilde y(k+H_p|k)   
+  \bm{y}[k+H_p-1|k]   
  \end{bmatrix}
 \end{equation}
 
 \begin{equation}
-\bm{\tilde u} =  
+\bm{u_{Hp}} =  
  \begin{bmatrix}
-  \tilde u(k|k)\\
+  \bm{u}[k|k]\\
   \vdots  \\
-  \tilde u(k+H_p|k)   
+  \bm{u}[k+H_p-1|k]   
  \end{bmatrix}
 \end{equation}
 
  \begin{minipage}[t]{0.20\textwidth}
  Where\\
- \hspace*{8mm} $\tilde y(k|k)$ \\
+ \hspace*{8mm} $\bm{y}[k|k]$ \\
 % \textcolor{White}{te} \\
  %\hspace*{8mm} $H_w$ \\
  \hspace*{8mm} $H_p$ \\
  %\hspace*{8mm} $\tilde u(k|k)$\\
- and \hspace*{0.7mm} $\tilde u(k|k)$	
+ and \hspace*{0.7mm} $\bm{u}[k|k]$	
  \end{minipage}
  \begin{minipage}[t]{0.68\textwidth}
  \vspace*{2mm}
