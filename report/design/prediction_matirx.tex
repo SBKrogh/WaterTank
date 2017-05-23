@@ -209,7 +209,7 @@ A_d^2\\
 \vdots \\ 
 A_d^{(H_p-1)}\\ 
 \end{bmatrix}}_{\bm{\Phi}}
-\! \Delta \hat{p}_{wt}[0]\!+\!\nonumber
+\! \Delta \hat{p}_{wt}[0]\!\\&+\!\nonumber
 \underbrace{\begin{bmatrix}
  \bm{0}        & \bm{0}                &\hdots & \bm{0}\\ 
  \bm{B_d}         & \bm{0}                &\hdots & \bm{0}\\ 
@@ -239,7 +239,6 @@ A_d^{(H_p-1)}\\
  \bm{\hat{d}}[k+H_p-1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{d}}_{Hp}} 
 \end{align}
-\todo{fix equation}
 
 As it is shown, the first line of the dynamics describes the following trivial equation:
 
@@ -342,12 +341,13 @@ And then the dynamics of the system can be plugged into \eqref{obj_hp}:
 \end{equation}
 
 By expressing the terms in \eqref{obj_hp_dyn}, the following yields:
-\todo{fix equation}
+
 \begin{equation}
 \begin{aligned} 
- \Upsilon({\bm{\hat{u}}}_{\bm{{Hp}}}) = & \frac{1}{\eta} \bigg[ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\bar{q}}}_{\bm{p,Hp}}}_{\RN{1}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}}}_{\RN{2}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
- }_{\RN{3}}  \\
- & + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Phi} \Delta \hat{p}_{wt,Hp}[0]}_{\RN{4}}+ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}}_{\RN{5}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}}_{\RN{6}} \bigg]
+ \Upsilon({\bm{\hat{u}}}_{\bm{{Hp}}}) = & \frac{1}{\eta} \bigg[ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\bar{q}}}_{\bm{p,Hp}}}_{\RN{1}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{1,Hp}} {\bm{\hat{u}}}_{\bm{Hp}}}_{\RN{2}}\\
+ &+ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{2,Hp}} {\bm{\hat{d}}}_{\bm{Hp}} 
+ }_{\RN{3}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Phi} \Delta \hat{p}_{wt,Hp}[0]}_{\RN{4}}\\ 
+ &+ \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}}}_{\RN{5}} + \underbrace{({\bm{\bar{u}}}_{\bm{{Hp}}} + {\bm{\hat{u}}}_{\bm{{Hp}}})^{T}{\bm{\Lambda}}_{\bm{3,Hp}}\bm{\Psi}\bm{\hat{d}}_{\bm{Hp}}}_{\RN{6}} \bigg]
  \end{aligned}
 \end{equation}
 
