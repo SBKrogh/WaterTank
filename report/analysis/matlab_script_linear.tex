@@ -133,10 +133,10 @@ OD_{e13} \\
 OD_{e15} \\
 OD_{e20} \\
 OD_{e22} \\
-dP_{e01} \\
-dP_{e08} \\
-dP_{e09} \\
-dP_{e16} 
+\Delta p_{e01} \\
+\Delta p_{e08} \\
+\Delta p_{e09} \\
+\Delta p_{e16} 
 \label{inputvector}
 \end{bmatrix} 
 \end{equation}
@@ -146,7 +146,7 @@ It should be noted here, however, that this control input representation is vali
 Considering the input vector, the mapping is taken into account with this negative sign, since the mapping is only for the pumps, not for the valves. Therefore the negative pressure can be taken into account with the following mapping: 
 
 \begin{equation}
-\bm{B_1} \alpha(DP) = -\bm{B_1} \bm{G_p} \bm{u}
+\bm{B_1} \alpha(\omega, q) = -\bm{B_1} \bm{G_p} \bm{u}
 \label{gamma_lin}
 \end{equation}
 
@@ -213,7 +213,7 @@ Therefore the dynamics of the WT can be expressed with the incidence matrix for 
 Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
- \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
+ \bm{B}\bm{J {B}}^T \bm{\dot{\hat{z}}} = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_1}
 \end{equation}
 
@@ -260,14 +260,14 @@ Expressing the the state vector the following yields:
 Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\bm{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
-\Delta \dot{p}_{wt} = (\bm{S}\bm{M_p^{-1}}\bm{B_o}) \Delta \hat{p}_{WT}  + (\bm{S}\bm{M_p^{-1}}\bm{N_p}) \bm{\hat{u}} 
+\Delta \dot{\hat{p}}_{wt} = (\bm{S}\bm{M_p^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  + (\bm{S}\bm{M_p^{-1}}\bm{N_p}) \bm{\hat{u}} 
 \label{statespace_3}
 \end{equation}
 
-\eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the state equation can be written as follows:  
+\eqref{statespace_3} represents the linear system with the pressure drop across the water tank as a state, and the input vector consisting of differential pressures from the pumps and OD values from the end-user valves. The general formulation of the small-signal state equation can be written as follows:  
 
 \begin{equation}
-\Delta \dot{p}_{wt} = A_p \Delta \hat{p}_{wt}  + \bm{B_p}\bm{\hat{u}}  
+\Delta \dot{\hat{p}}_{wt} = A_p \Delta \hat{p}_{wt}  + \bm{B_p}\bm{\hat{u}}  
  \label{statespace_4}
 \end{equation}
 
@@ -306,7 +306,7 @@ Reorganizing the terms
 \end{equation}
 %
 \begin{equation}
-  \bm{\hat{y}} = \bm{C_{p,1}} \Delta \hat{p}_{wt} + \bm{D_p} \bm{\hat{u}} 
+  \bm{\hat{y}} = \bm{C_{p}} \Delta \hat{p}_{wt} + \bm{D_p} \bm{\hat{u}} 
   \label{outputfinaleq}
 \end{equation}
 

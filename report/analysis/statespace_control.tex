@@ -1,31 +1,31 @@
 \section{State space model for control}
  \label{SystemLin_control}
  
-For the sake of clarity the steady-state, state-space representation for the parameter estimation for small-signal values is restated here:
+For reference, the steady-state, state-space representation of the parameter estimation for small-signal values is restated here:
  
  \begin{equation}
- 0 = \pmb{M} \pmb{\hat{z}} + \pmb{N} \pmb{\hat{u}} + \pmb{B_o} \Delta \hat{p}_{WT}    
+ 0 = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_param_sys}
 \end{equation}
 
 The equation for the outputs:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_p} \Delta \hat{p}_{WT} + \pmb{D_p} \pmb{\hat{u}} 
+  \bm{\hat{y}} = \bm{C_p} \Delta \hat{p}_{wt} + \bm{D_p} \bm{\hat{u}} 
    \label{statespace_param_out}
 \end{equation}
 
 And the dynamic model of the WT pressure:
 
 \begin{equation}
-\Delta \dot{p}_{WT} = \frac{1}{C_H} q_0
+\Delta \dot{\hat{p}}_{wt} = \frac{1}{C_H} \hat{q}_0
  \label{WT_eq_repeat}
 \end{equation}
 
-Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it has being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\pmb{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it has being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\bm{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
-\pmb{\hat{u}} =
+\bm{\hat{u}} =
 \begin{bmatrix} 
 \Delta p_{e01} \\
 \Delta p_{e08} 
@@ -38,37 +38,37 @@ This distinction between the parameter estimation and the control is being made 
 The mapping for the two main pump pressures yields:
 
 \begin{equation}
-\pmb{B_1} \alpha(\Delta p) = -\pmb{B_1} \pmb{G} \pmb{\hat{u}}
+\bm{B_1} \alpha(\omega,q) = -\bm{B_1} \bm{G} \bm{\hat{u}}
 \label{mapping_main}
 \end{equation}
 
 \begin{minipage}[t]{0.12\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{G_{c;1}}$ 
+\hspace*{8mm} $\bm{G}$ 
 \end{minipage}
 \begin{minipage}[t]{0.12\textwidth}
 \vspace*{2mm}$\in \pmb{\mathbb{R}}^{(e \times u)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
-is a matrix representing a linear mapping between the vectorfield $\alpha(\Delta p)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
+is a matrix representing a linear mapping between the vectorfield $\alpha(\omega,q)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. As can be seen, the mapping here is taken into account with a negative sign, since the input signals to the main pumps are written up as positive. This is a different representation from the one being described at the parameter estimation due to the fact that here only differential pressures to the pumps are taken into account as inputs. $\pmb{G}$ can be found in \todo{[appendix reference]}.
+$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. As can be seen, the mapping here is taken into account with a negative sign, since the input signals to the main pumps are written up as positive. This is a different representation from the one being described at the parameter estimation due to the fact that here only differential pressures to the pumps are taken into account as inputs. $\bm{G}$ can be found in \todo{[appendix reference]}.
 
 The input matrix for the control system can be written in the form: 
 
 \begin{equation}
-  \pmb{N_c} =  \pmb{B_1}\pmb{G_{c;1}}  
+  \bm{N_c} =  \bm{B_1}\bm{G}  
 \label{inputmatrix_control}	
 \end{equation}
 
 Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
 \\
-However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\pmb{d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\bm{d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
-\pmb{d} =
+\bm{d} =
 \begin{bmatrix} 
 OD_{e15} \\
 OD_{e22} 
@@ -98,45 +98,45 @@ As can be seen, the PMA pumps are neither considered as inputs, nor as disturban
 The disturbance matrix for the state space model consists of the linearized terms of the end-user valves. The matrix can be formulated as follows: 
 
 \begin{equation}
-  \pmb{Q_c} = \pmb{B_1} \bigg[ \frac{\partial{\mu(\pmb{{B_1^{T}}}\pmb{z}, \pmb{OD})}}{{\partial{\pmb{d}}}}  \bigg]_{(\bar{z}, \bar{u})}  
+  \bm{Q_c} = \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{d}}}}  \bigg]_{(\bar{z}, \bar{u})}  
 \label{disturbance_matrix}
 \end{equation}
 
 Taking the same considerations into account as for the parameter estimation, the steady-state, state equation for small signals can be formulated as: 
 
  \begin{equation}
- 0 = \pmb{M_c} \pmb{\hat{z}} - \pmb{N_c} \pmb{\hat{u}} + \pmb{Q_c} \pmb{\hat{d}} + \pmb{B_o} \Delta \hat{p}_{wt}    
+ 0 = \bm{M_c} \bm{\hat{z}} - \bm{N_c} \bm{\hat{u}} + \bm{Q_c} \bm{\hat{d}} + \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_control_sys}
 \end{equation}
 
-where the system matrix, $\pmb{M_c}$ is the same as the system matrix, $\pmb{M_p}$, in case the parameter estimation. 
+where the system matrix, $\bm{M_c}$ is the same as the system matrix, $\bm{M_p}$, in case the parameter estimation. 
 \\
-$\pmb{M_c}$ is invertible for the same reason as described in \eqref{Jequation}, thus:
+$\bm{M_c}$ is invertible for the same reason as described in \eqref{Jequation}, thus:
 
  \begin{equation}
- \pmb{\hat{z}} =  (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{wt}    
+ \bm{\hat{z}} =  (\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} - (\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} - (\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}    
  \label{statespace_control_sys_state}
 \end{equation}
 
 Inserting the states into \eqref{currentlaw_4}:
 
  \begin{equation}
-\Delta \dot{\hat{p}}_{wt} = (\pmb{S}\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{wt}  - (\pmb{S}\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} + (\pmb{S}\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} 
+\Delta \dot{\hat{p}}_{wt} = (\bm{S}\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  - (\bm{S}\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} + (\bm{S}\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} 
  \label{statespace_control_sys_state_1}
 \end{equation}
 
 Which in standard state-space form can be written as: 
 
  \begin{equation}
-\Delta \dot{\hat{p}}_{WT} = A_c \Delta \hat{p}_{WT}  + \pmb{B_c} \pmb{\hat{u}} + \pmb{E_c} \pmb{\hat{d}} 
+\Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
  \label{statespace_control_sys_state_2}
 \end{equation}
 
 \begin{minipage}[t]{0.40\textwidth}
 Where\\
-\hspace*{8mm} $A_c = \pmb{S}\pmb{M_c^{-1}}\pmb{B_o} $ \\
-\hspace*{8mm} $\pmb{B_c} = \pmb{S}\pmb{M_c^{-1}}\pmb{N_c} $ \\
-\hspace*{8mm} $\pmb{E_c} = \pmb{S}\pmb{M_c^{-1}}\pmb{Q_c} $
+\hspace*{8mm} $A_c = \bm{S}\bm{M_c^{-1}}\bm{B_o} $ \\
+\hspace*{8mm} $\bm{B_c} = -\bm{S}\bm{M_c^{-1}}\bm{N_c} $ \\
+\hspace*{8mm} $\bm{E_c} = \bm{S}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
 \vspace*{1mm}
@@ -148,7 +148,7 @@ is the disturbance matrix for the control.
 The output of the control model is defined as two measurement points around the valves in the two different PMAs. Therefore the output vector is defined as: 
 
 \begin{equation}
-\pmb{y} =
+\bm{y} =
 \begin{bmatrix} 
 \Delta p_{e15} \\
 \Delta p_{e22} 
@@ -159,17 +159,17 @@ The output of the control model is defined as two measurement points around the 
 Since the outputs are pressures around two end-user valves, the output expression should be written in the form:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_1} \pmb{\hat{z}} + \pmb{C_2} \pmb{\hat{d}}  
+  \bm{\hat{y}} = \bm{C_{c,1}} \bm{\hat{z}} + \bm{C_{1,2}} \bm{\hat{d}}  
    \label{statespace_control_output}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{C_1}$ \\
+\hspace*{8mm} $\bm{C_{c,1}}$ \\
 \newline
 \newline
 \newline
-\hspace*{8mm} $\pmb{C_2}$ 
+\hspace*{8mm} $\bm{C_{c,2}}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -182,22 +182,22 @@ As it is shown, the output equation includes feedforward from the measured distu
 Expressing the independent flow variables with \eqref{statespace_control_sys_state}, the following yields: 
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_1} \big[- (\pmb{M_c^{-1}}\pmb{N_c}) \pmb{\hat{u}} - (\pmb{M_c^{-1}}\pmb{Q_c}) \pmb{\hat{d}} - (\pmb{M_c^{-1}}\pmb{B_o}) \Delta \hat{p}_{WT}\big] + \pmb{C_2} \pmb{\hat{d}}  
+  \bm{\hat{y}} = \bm{C_{c,1}} \big[ (\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} - (\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} - (\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}\big] + \bm{C_{c,2}} \bm{\hat{d}}  
    \label{statespace_control_output}
 \end{equation}
 
 And the output equation in standard state-space form:
 
 \begin{equation}
-  \pmb{\hat{y}} = \pmb{C_c} \Delta \hat{p}_{WT} + \pmb{D_c} \pmb{\hat{u}} + \pmb{K_c} \pmb{\hat{d}}
+  \bm{\hat{y}} = \bm{C_c} \Delta \hat{p}_{wt} + \bm{D_c} \bm{\hat{u}} + \bm{K_c} \bm{\hat{d}}
 \label{statespace_control_output_standard}
 \end{equation}
 
 \begin{minipage}[t]{0.40\textwidth}
 Where\\
-\hspace*{8mm} $C_c = -\pmb{C_1}\pmb{M_c^{-1}}\pmb{B_o} $ \\
-\hspace*{8mm} $\pmb{D_c} = - \pmb{C_1}\pmb{M_c^{-1}}\pmb{N_c} $ \\
-\hspace*{8mm} $\pmb{K_c} = \pmb{C_2} -\pmb{C_1}\pmb{M_c^{-1}}\pmb{Q_c} $
+\hspace*{8mm} $\bm{C_c} = -\bm{C_{c,1}}\bm{M_c^{-1}}\bm{B_o} $ \\
+\hspace*{8mm} $\bm{D_c} =  \bm{C_{c,1}}\bm{M_c^{-1}}\bm{N_c} $ \\
+\hspace*{8mm} $\bm{K_c} = \bm{C_{c,2}} -\bm{C_{c,1}}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
 \vspace*{1mm}
@@ -211,30 +211,52 @@ The continuous state space representation thus given by \eqref{statespace_contro
 \subsection{Discretization of state space model}
  \label{discrete_SS}
  
-The dynamics of the water distribution system are now described. To use this linear continuous model to be subjected to MPC, the model needs to be discretized by assuming zero-order-hold(ZOH) of the variables at specified sampling points. This means that the variables are constant between these points. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{WT}[k]$, $\pmb{\hat{u}}[k]$ and $\pmb{\hat{d}}[k]$. The method is chosen as forward Euler-method and the detailed presentation can be found in \appref{cha:discret_SS}. The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
+The dynamics of the water distribution system is described. In order to use this linear continuous model subjected to MPC, the model needs to be discretized. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{wt}[k]$, $\bm{\hat{u}}[k]$ and $\bm{\hat{d}}[k]$ signals. The method is chosen as forward Euler-method, which can be formulated as follows:
+
+\begin{equation}
+\Delta \dot{\hat{p}}_{wt} \approx  \frac{\Delta \hat{p}_{wt}[k+1] - \hat{p}_{wt}[k]}{T_s} 
+ \label{statespace_discrete_state}
+\end{equation}
+
+In order to carry out the discretization on the model, the time constant of the dynamics has to be considered which is the time constant of the WT. Recalling the dynamic equation:
+
+\begin{equation}
+\Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
+ \label{statespace_control_sys_state_22}
+\end{equation}
+
+the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. Since the dynamics are described by a scalar equation, the natural frequency is defined by $A_c$. According to the Nyquist-Shannon sampling theorem,\todo{source}
+the sampling frequency must be at least two times higher than the natural frequency of the continues model. Therefore the sampling time is defined such that:
+
+\begin{equation}
+T_s = \frac{1}{2A_c}
+ \label{sampling}
+\end{equation}
+
+The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
 
  \begin{equation}
-\Delta \hat{p}_{WT} [k+1] = A_d \Delta \hat{p}_{WT}[k]  + \pmb{B_d} \pmb{\hat{u}}[k] + \pmb{E_d} \pmb{\hat{d}}[k] 
+\Delta \hat{p}_{wt} [k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
 
 and the output equation:
 
 \begin{equation}
-  \pmb{\hat{y}}[k] = \pmb{C_d} \Delta \hat{p}_{WT}[k] + \pmb{D_d} \pmb{\hat{u}}[k] + \pmb{K_d} \pmb{\hat{d}}[k]
+  \bm{\hat{y}}[k] = \bm{C_d} \Delta \hat{p}_{WT}[k] + \bm{D_d} \bm{\hat{u}}[k] + \bm{K_d} \bm{\hat{d}}[k]
 \label{statespace_control_output_discrete}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
-\hspace*{8mm} $\pmb{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\pmb{E_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\pmb{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
+\hspace*{8mm} $\bm{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
+\hspace*{8mm} $\bm{E_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
+\hspace*{8mm} $\bm{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
 \newline
-\hspace*{8mm} $\pmb{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+\hspace*{8mm} $\bm{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
 \newline
-\hspace*{8mm} $\pmb{K_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ 
+\hspace*{8mm} $\bm{K_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
