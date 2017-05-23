@@ -81,16 +81,15 @@ is the electricity price cost sequence.
 It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore the deviation from the operating point would not result in the total amount of energy consumed up by the pumps. 
 
 The efficiency of the two main pumps is assumed to be the same for the reason that the pumps are of the same type. Furthermore, the efficiency is considered to be constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not vary significantly. 
-\todo{align equations}
 The control problem can be formulated as a minimization problem of the form:
 %\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
 \underset{\bm{u}}{min} \:  \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost1} \\
 %
 \newline
-s.t. \:\:\:\:\: & \Delta \hat{p}_{wt} [k+i+1|k] = A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
+s.t. \:\:\:\:\:  \Delta \hat{p}_{wt} [k+i+1|k] &= A_d \Delta \hat{p}_{wt}[k+i|k]  + \bm{B_d} \bm{\hat{u}}[k+i|k] + \bm{E_d} \bm{\hat{d}}[k+i|k] \label{dyn}  \\ 
 %
-&\bm{\hat{y}}[k+i|k] = \bm{C_d} \Delta \hat{p}_{wt}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
+\bm{\hat{y}}[k+i|k] &= \bm{C_d} \Delta \hat{p}_{wt}[k+i|k] + \bm{D_d} \bm{\hat{u}}[k+i|k] + \bm{K_d} \bm{\hat{d}}[k+i|k] \\
 %
 & \underline{y} \leq \bm{y} \leq \overline{y} \\
 %
