@@ -109,7 +109,7 @@ As shown in \eqref{ChordRelation}, the $i^{th}$ flow in the system is defined by
 \\
 
 
-Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is on case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not acts as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
+Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not acts as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
 
 % However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
 
@@ -125,6 +125,7 @@ Before writing up an expression that describes all parts, the component model, \
   \label{ComponentFunction}
 \end{equation}
 
+\todo{When are we introduced to "$C_{pi}/C_{vi}$"}
 Where\\
 \begin{align}
 \tilde{f}_i &= -\bm{C_{pi} q_i} |\bm{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\

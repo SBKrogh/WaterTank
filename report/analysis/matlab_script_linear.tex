@@ -55,7 +55,7 @@ In case of a pipe or a valve component, the pressure drop across the element is 
 \label{fig:linearization}
 \end{figure}
 
-As can be seen, the line inserted in the operating point, $O$, describes the model accurately only if the deviation is very small from this point, for example $O'$. Therefore the linearized model describes the system behavior in the new coordinate system $(\bar{q},\Delta \bar{p})$. It is important to mention that in \figref{fig:linearization} the function $f(q)$ is an illustration of a non-linear function and not the exact same as for a pipe element. 
+As can be seen, the line inserted in the operating point, $O$, describes the model accurately only if the deviation is very small from this point, for example $O'$. Therefore the linearized model describes the system behavior in the new coordinate system $(\bar{q},\Delta \bar{p})$. It is important to mention that in \figref{fig:linearization}, the function $f(q)$ is an illustration of a non-linear function and not the exact same as for a pipe element. 
 
 %
 %asdf
@@ -77,7 +77,7 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
  
 As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega, q))$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
 \\
-Among these functions, the pipes, valves, the pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion shown in \eqref{TaylorExpansion_approx}.
+Among these functions, the pipes, valves, pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion shown in \eqref{TaylorExpansion_approx}.
 \\
 The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. 
 \\
@@ -88,7 +88,7 @@ The expression describing the pipes can be approximated by its linear model as f
 \label{lambda_lin}
 \end{equation}
 
-where the partial derivative is a of all first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
+where the partial derivative is a first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule, the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
 
 
 In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
@@ -141,7 +141,7 @@ OD_{e22} \\
 \end{bmatrix} 
 \end{equation}
 
-It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. Also important to mention that the in the input vector, the differential pressure inputs to the main pumps are taken into account with a negative sign.
+It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. It is also important to mention that in the input vector, the differential pressure inputs to the main pumps are taken into account with a negative sign.
 \\
 Considering the input vector, the mapping is taken into account with this negative sign, since the mapping is only for the pumps, not for the valves. Therefore the negative pressure can be taken into account with the following mapping: 
 
@@ -180,7 +180,7 @@ The dynamics of the WT is described by the equation below:
  \label{WT_eq}
 \end{equation}
 
-These two differential equation systems give a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
+These two differential equation systems gives a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
 \\
 Before setting up the state-space form of the system, the following should be considered: 
 
@@ -231,9 +231,9 @@ And the $\bm{N}$ matrix consists of the following terms:
 \label{Bumatrix}
 \end{equation}
 
-$\bm{B_o}$ is the cycle matrix belonging to the WT. As can be seen, the linearized terms which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or input. 
+$\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or input. 
 
-In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, two kind of elements have dynamics, the pipes and the WT. The pipes, compared to the WT, assumed to have very fast response time, which means that their time constants are small, therefore the decay time is short. Considering the control and also the parameter estimation, it means that they reach steady-state condition very quick compared to the WT. According to \todo{[source]}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
+In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, the pipes and the WT have dynamics. The pipes, compared to the WT, is assumed to have a very fast response time, which means that their time constants are small, therefore the decay time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
  0 = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
@@ -310,7 +310,7 @@ Reorganizing the terms
   \label{outputfinaleq}
 \end{equation}
 
-The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs.
+The equation above shows how the output equation includes a feedforward matrix, due to the outputs being affected directly by the inputs. \todo{Write why there is a feedforward.}
 
 %Using the same logic as for the one state-one input system, it can be assumed that the system dynamics in the proximity of the operating point trajectories can be approximated by the first terms of Taylor series. Since the system dynamics consist of time dependant non-linear vectorfields, the system model can be considered as: 
 %

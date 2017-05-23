@@ -27,12 +27,12 @@ In order to obtain measurements from the real life test setup, the system has to
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(\cdot)$ contains all the functions for the elements which are dependent on the inputs and the vectorfield $g(\cdot)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(\cdot)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
+where the vectorfield $u(\cdot)$ contains all the functions for the elements, which are dependent on the inputs and the vectorfield $g(\cdot)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(\cdot)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
-$n_2$ $n_4$ $n_5$ $n_7$ $n_{10}$ $n_{11}$ $n_{15}$ $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
+$n_2$, $n_4$, $n_5$, $n_7$, $n_{10}$, $n_{11}$, $n_{15}$, and  $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
 
-It is important to point out that the estimation is applied for steady-state which is reasonable, since the unknown parameters are the resistances and form losses and the inertia and the capacitance only affect the dynamics, therefore have no influence on the steady-state. The inertia of the pipes, and the capacitance of the WT are considered as known parameters. 
+It is important to point out that the estimation is applied for steady-state, since the unknown parameters are the resistances and form losses. The inertia and the capacitance only affect the dynamics, therefore have no influence on the steady-state. The inertia of the pipes, and the capacitance of the WT are considered as known parameters. 
 
 Taking the steady-state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
@@ -81,7 +81,7 @@ is the $i^{th}$ pressure in the output vector in the model .
 \end{minipage}
 \subsection{Measurements on the test setup}
 
-From the system setup $8$ different relative pressures can be measured as explained in the previous section. The measurements obtained from the pressure sensors 
+From the system setup, $8$ different relative pressures can be measured , \figref{systemdiagram}. The measurements obtained from the pressure sensors 
 placed in these nodes are relative to the atmospheric pressure. In order to compare the measurements from the system setup and the data 
 obtained from the simulation in Matlab, an atmospheric pressure node, $n_1$, is set as reference point. Thus, the relation between the measured 
 outputs and the reference point can be set, resulting in:
@@ -139,7 +139,7 @@ outputs and the reference point can be set, resulting in:
 \subsection{Estimation method} 
 \label{MatlabScript}
 
-In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox is used \cite{MatlabGreyBox}. This toolbox 
+In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox\cite{MatlabGreyBox}, is used. This toolbox 
 estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
 Thereby, a nonlinear model has to be designed to complete the simulation. 
 
