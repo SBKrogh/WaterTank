@@ -2,13 +2,13 @@
 \label{Discussion}
 
 The constrained MPC problem implemented on the system is capable of minimizing the running cost of the water distribution test setup. If this was to be used in a real world situation some challenges could arise. A main concern is violation of the constrains, as this could in worst case lead to failure or in less severe cases, an unsatisfying performance. 
-The MPC is minimizing a numerical problem and if the optimal solution is found within the contains, it is used, thus will the MPC be able to operate until the very boundaries of the stated contains. 
+The MPC is minimizing a numerical problem and if the optimal solution is found within the constraints, it is used, thus will the MPC be able to operate until the very boundaries of the stated constraints. 
 
-In the case of the water distribution system both the forecast of the electrical price and the water consumption will, in a real world scenario, be affected by uncertainty. Additionally will some deviation between the model and plant be present, especially when the model is obtained by linearizing and parameter estimating around a specific operating point. Thus will the state of the WT be affected by these uncertainties and e.g. in a situation were the consumption is unexpected high the MPC could violate the constraints. 
+In the case of the water distribution system both the forecast of the electrical price and the water consumption will, in a real world scenario, be affected by uncertainty. Additionally will some deviation between the model and plant be present, especially when the model is obtained by linearizing and parameter estimating around a specific operating point. Thus will the state of the WT be affected by these uncertainties and e.g. in a situation were the consumption is highly unexpected, the MPC could violate the constraints. 
 
-In a situation were prediction error, model deviation and disturbance uncertainty is present, constraints can be violation even though the MPC originally computes otherwise. If the cause is not corrected this could continuing infinitely, thus losing control as no feasible solution can be found.    
+In a situation were prediction error, model deviation and disturbance uncertainty is present, constraints can be violated even though the MPC originally computes otherwise. If the cause is not corrected this could continuing infinitely, thus losing control as no feasible solution can be found.    
 
-A method to avoid this situation is to soften the constraints. Changing constraints from hand to soft can be done by having requirements that must be satisfied, changed to be dependent on a variable that will be penalized by the cost function, if the variable is outside a desired range. Thus infeasibility can not occur and the MPC will instead try to bring the solution inside the optimal constraint region due to the penalized variable.   
+A method to avoid this situation is to soften the constraints. Changing constraints from hard to soft can be done by having requirements that must be satisfied, changed to be dependent on a variable that will be penalized by the cost function, if the variable is outside a desired range. Thus infeasibility can not occur and the MPC will instead try to bring the solution inside the optimal constraint region due to the penalized variable.   
 
 Introducing such a ``slack'' variable is not always possible as some constraints are bound by physical parameters ensuring system safety, but can by applied to any other constraints. 
 
