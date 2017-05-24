@@ -12,7 +12,7 @@ The method that describes the linear parameter estimation is shown in \figref{fi
 \label{fig:parame_block_lin}
 \end{figure}
 
-In this case small-signal inputs are applied to both the test setup and the model.  Now the linearized model is compared to the real system, therefore the operating point is taken into account. Since the linear model is only valid for small deviations around the operating point, the real system has to be excited around the same operating point to obtain identical behavior. In order to achieve it, the operating values are added to both the input and the output such as: 
+In this case, small-signal inputs are applied to both the test setup and the model. The linearized model is compared to the real system, therefore the operating point is taken into account. Since the linear model is only valid for small deviations around the operating point, the real system has to be excited around the same operating point to obtain identical behavior. In order to achieve it, the operating values are added to both the input and the output such as: 
 
 \begin{equation}
 u_{sys} = \bar{u} + \hat{u}
@@ -67,6 +67,7 @@ is the output from the real-life system.
 During the linear parameter estimation, the same problem is solved as it is shown in \eqref{ObjectiveFunction}. In this case, however, the parameters are varied according to the comparison of the small-signal outputs.  
 
 \subsection{Model Parameters}
+\todo{Simon here!}
 \label{estimateParameters}
 In order to obtain a complete model of the physical setup, all the parameters describing the components have to be defined. In \secref{SubSecEstimation} a detailed
 description of the known parameters of the system has been done. Nevertheless, in the linearized state-space model more parameters have to be identified

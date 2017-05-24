@@ -218,20 +218,31 @@ The dynamics of the water distribution system is described. In order to use this
  \label{statespace_discrete_state}
 \end{equation}
 
-In order to carry out the discretization on the model, the time constant of the dynamics has to be considered which is the time constant of the WT. Recalling the dynamic equation:
+In order to carry out the discretization on the model, the time constant of the dynamics has to be considered which is the time constant of the first order system. Recalling the dynamic equation:
 
-\begin{equation}
+\begin{equation*}
 \Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
  \label{statespace_control_sys_state_22}
+\end{equation*}
+
+the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. The dynamics are described by the system constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
+\begin{equation}
+  \begin{split}
+  s\Delta \dot{\hat{p}}_{wt} &= A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} \\
+  \Delta \dot{\hat{p}}_{wt} &= \frac{B_c\hat{u}+E_c\hat{d}}{s-A_c}
+  \end{split}
+  \label{eq:time_constnt_first_order_sys}
 \end{equation}
 
-the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. Since the dynamics are described by a scalar equation, the natural frequency is defined by $A_c$. According to the Nyquist-Shannon sampling theorem,\todo{source}
-the sampling frequency must be at least two times higher than the natural frequency of the continues model. Therefore the sampling time is defined such that:
+According to the Nyquist-Shannon sampling theorem \citep{franklin1994feedback},
+the sampling frequency have to be twice as fast as the highest frequency that is to be sampled. Therefore the sampling time is defined such that:
 
 \begin{equation}
 T_s = \frac{1}{2A_c}
  \label{sampling}
 \end{equation}
+
+However this is the minimum for fulfilling the Nyquist criterion. Therefore, for this project a sample frequency ten times faster has been chosen.
 
 The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
 
@@ -239,6 +250,7 @@ The final discretized state-space model is stated here with respect to the sampl
 \Delta \hat{p}_{wt} [k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
+\todo{How does the sampling time affect this equation? - Tom}
 
 and the output equation:
 
