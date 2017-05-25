@@ -67,10 +67,9 @@ is the output from the real-life system.
 During the linear parameter estimation, the same problem is solved as it is shown in \eqref{ObjectiveFunction}. In this case, however, the parameters are varied according to the comparison of the small-signal outputs.  
 
 \subsection{Model Parameters}
-\todo{Simon here!}
 \label{estimateParameters}
 In order to obtain a complete model of the physical setup, all the parameters describing the components have to be defined. In \secref{SubSecEstimation} a detailed
-description of the known parameters of the system has been done. Nevertheless, in the linearized state-space model more parameters have to be identified
+description of the known parameters of the system has been done. Nevertheless, in the linearized state-space model, more parameters have to be identified
 due to the introduction of the operating points values. Hence, in the current chapter a detailed compilation of the unknown parameters of the physical water distribution setup is carried out.
 
 
@@ -99,7 +98,7 @@ The system has $15$ pipes in total,  from \eqref{lambda_lin} it can be seen that
 value of the pressure across the pipes, $\lambda(\pmb{{B_1^{T}}}\pmb{z})$. For this reason the pressure across the 15 pipes is estimated.
 
 The linearized valve expression, see \eqref{mu_lin}, consists of the term depending on the chord flows and the one depending on the $OD$. Both terms include the operating 
-point of the chord flows inside them, thus, the pressure difference given by both terms has to be estimated. In the system 4 valves take part, 
+point of the chord flows inside them, thus, the pressure difference, given by both terms, has to be estimated. In the system 4 valves take part, 
 resulting in 8 unknowns in total. 
 
 The WT connection edge, see \eqref{gamma_lin}, is conformed by two valves and one pump. Although the parameters corresponding to the pump are considered as known, the ones 
@@ -109,7 +108,7 @@ All in all, the system has $24$ unknown terms which will be calculated following
 \subsection{Measurements on the test setup}
 \label{LinParamEst_measurements}
 
-In order to verify the state-space model derived in \chapref{LinParamEst} with the physical setup, an estimation for the parameters defined in \secref{estimateParameters}
+In order to verify the state-space model, derived in \chapref{LinParamEst}, with the physical setup, an estimation for the parameters defined in \secref{estimateParameters}
 is carried out.
 
 From the system setup, $9$ different relative pressures can be measured, following \figref{systemdiagram} notation the sensors are placed in: 
@@ -169,7 +168,7 @@ The operating point of the PMA valves is placed at $70\%$ opening corresponding 
 \label{fig:est_OD_data_final}
 \end{figure}
 
-To acheive a 50\% fill level of the WT in steady state combined with the chosen operating point of the valves, the operating point of the two inlet pumps C2 and C16 has to be set at a differential pressure of $\Delta p = 0.2 \text{[Bar]}$. The required operating point is found by experimental tests made on the setup, the small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
+To acheive a 50\% fill level of the WT in steady state combined with the chosen operating point of the valves, the operating point of the two inlet pumps, C2 and C16, has to be set at a differential pressure of $\Delta p = 0.2 \text{[Bar]}$. The required operating point is found by experimental tests made on the setup. The small signal values used in the estimation are shown in \figref{fig:est_deltap_data_final}. 
 
 \begin{figure}[H]
 \centering
@@ -216,6 +215,6 @@ The following figures show the comparison between the data obtained from the lab
 
 
 With the estimated parameters it is seen that the model follows the behavior of the measured data and that the fit percentage is within a decent margin. 
-Based on these results can the system model and the parameters contained inside now be used for control purposes, as a description approximating the 
-system is now obtained.   
+Based on these results, the system model and the parameters contained inside can now be used for control purposes, as a description approximating the 
+system is obtained.   
 

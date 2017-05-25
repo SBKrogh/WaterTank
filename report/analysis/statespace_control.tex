@@ -22,7 +22,7 @@ And the dynamic model of the WT pressure:
  \label{WT_eq_repeat}
 \end{equation}
 
-Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it has being restructured. While the input vector for the parameter estimation consists of all the four pump differential pressures along with the four valve opening degrees, in case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\bm{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+Although \eqref{statespace_param_sys}, \eqref{statespace_param_out} and \eqref{WT_eq_repeat} include all the linearized terms that are necessary to describe the system, for the control it has being restructured. The input vector for the parameter estimation consists of four pump differential pressures along with four valve opening degrees. In case of the control, only the two main pumps are considered as inputs. The control input for the system is therefore defined as $\bm{\hat{u}} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
 
 \begin{equation}
 \bm{\hat{u}} =
@@ -54,7 +54,7 @@ Where\\
 is a matrix representing a linear mapping between the vectorfield $\alpha(\omega,q)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. As can be seen, the mapping here is taken into account with a negative sign, since the input signals to the main pumps are written up as positive. This is a different representation from the one being described at the parameter estimation due to the fact that here only differential pressures to the pumps are taken into account as inputs. $\bm{G}$ can be found in \todo{[appendix reference]}.
+$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. As it can be seen, the mapping here is taken into account with a negative sign, since the input signals to the main pumps are written up as positive. This is a different representation from the one being described at the parameter estimation due to the fact that here only differential pressures to the pumps are taken into account as inputs. $\bm{G}$ can be found in \todo{[appendix reference]}.
 
 The input matrix for the control system can be written in the form: 
 
@@ -63,9 +63,9 @@ The input matrix for the control system can be written in the form:
 \label{inputmatrix_control}	
 \end{equation}
 
-Compared to the input matrix in the parameter estimation in \eqref{Bumatrix}, it can be seen that now the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
+Compared to the input matrix in \eqref{Bumatrix}, it can be seen that the linearized terms belonging to the valves are not part of the matrix since valves are not considered as control inputs. 
 \\
-However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\bm{d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ as follows: 
+However, the end-user valves are considered as known disturbances in the control system. Therefore the disturbance is defined as $\bm{d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$: 
 
 \begin{equation}
 \bm{d} =
@@ -250,7 +250,7 @@ The final discretized state-space model is stated here with respect to the sampl
 \Delta \hat{p}_{wt} [k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
-\todo{How does the sampling time affect this equation? - Tom}
+\todo{Tom: How does the sampling time affect this equation?, Solution: maybe we have to put this equation into the general expression in the start of this section? By doing so we can see that the state space matrix Ac }
 
 and the output equation:
 
