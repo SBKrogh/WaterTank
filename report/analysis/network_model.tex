@@ -110,7 +110,7 @@ Before writing up an expression that describes all parts however, the component 
 
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_{v;k})}_\text{Valve} - \underbrace{\tilde{\alpha}_k(\omega_k)}_\text{Pump+valves} + \underbrace{\Delta p_{wt;k}}_\text{Water tank} + \underbrace{\gamma_k (q_k)}_\text{WT-connection}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_{v;k})}_\text{Valve} + \underbrace{\Delta p_{wt;k}}_\text{Water tank} + \underbrace{\gamma_k (q_k)}_\text{WT-connection} - \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
@@ -131,56 +131,56 @@ Where\\
 \end{minipage}
 
 %In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\bm{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
+Gathering the functions of the pipes, valves, the WT and the WT-connection the, following vectorfield is introduced:
 
 \begin{equation}
-  \tilde{f}_i(\bm{q_{i}}, \bm{\omega_i}, \bm{k_v}) = \lambda_i(\bm{q_{i}}) + \zeta_i + \mu_i(\bm{q_{i}}, \bm{k_v}) - \tilde{\alpha}_i(\bm{\omega_i}) + \gamma_i (\bm{q_i})
+  f(\bm{q}, \bm{\omega}, \bm{k}) = \lambda(\bm{q}) + \bm{\zeta} + \mu(\bm{q}, \bm{k_v}) + \gamma (\bm{q}) + \bm{\Delta p_{wt}}
   \label{ComponentFunction}
 \end{equation}
-\todo{$\gamma $ is missing}
-\todo{When are we introduced to "$C_{pi}/C_{vi}$"}
+
 Where\\
 \begin{align}
-\tilde{f}_i &= -\bm{C_{pi} q_i} |\bm{q_i}|  \hskip 2cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
-\tilde{f}_i &= -\bm{C_{vi} q_i} |\bm{q_i}|  \hspace{6.95cm} \text{for}\:i = 13,15,20,22\\
-\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\bm{q_i}| \bm{q_i}  + a_{h1i} \bm{\omega_{i}} \bm{q_i} + a_{h0i}\bm{{\omega_i}}^2 \hspace{1.875cm} \text{for}\: i = 1,8,9,16 \\
-\tilde{f}_i &= \Big(\frac{2}{k_{v100}^2} - a_{h2i}\Big)|\bm{q_i}| \bm{q_i}  \hspace{5.43cm} \text{for}\: i = 24 \\
-\tilde{f}_i &= \Delta p_{WT}  \hspace{7.69cm} \text{for}\:i = 25
+f_k &= \lambda_k (q_k) + \zeta_k  \hskip 1cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
+f_k &= \mu_k (q_k, k_{v;k})  \hspace{1cm} \text{for}\:i = 13,15,20,22\\
+f_k &= \gamma_k (q_k)  \hspace{1.8cm} \text{for}\: i = 24 \\
+f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:i = 25
 \end{align}
 
-The following hydraulic network model shows an overall model along with the above-mentioned considerations.%The inertia matrix, J, was defined in \secref{CompletePipe}.
+It is important to point out that in \eqref{ComponentFunction} the functions for the different components take the flow as a vector in their arguments. It means that the right hand-side of the equation returns a vector with a size of $\bm{q}$. The elevation and the pressure drop across the WT therefore are also treated as vector that returns the appropriate value only for edges where elevation or the WT is present. 
+
+Taking the newly introduced vectorfield, $f(\bm{q}, \bm{\omega}, \bm{k})$ into account, the model for the whole network can be written up such that:
 
 \begin{equation}
-  \bm{\Delta p_1} =  \bm{J} \bm{\dot{q}_1} + \tilde{f}(\bm{q_1}, \bm{w}, \bm{k_v})
+  \bm{\Delta p} =  \bm{J} \bm{\dot{q}} + f(\bm{q}, \bm{w}, \bm{k_v}) - \alpha (\bm{\omega},\bm{q})
   \label{NoTowerModel}
 \end{equation}
 
-In \eqref{NoTowerModel} the hydraulic network model is described in terms of the 
-flow through all the nodes and derived from the inertia model in \secref{CompletePipe}. In order to reduce the order of the model and hence, 
-the amount of unknowns, the chord flows according to \eqref{ChordRelation} are applied. 
+In \eqref{NoTowerModel} the hydraulic network model is described in terms of the independent flows through all the nodes and shows the inputs to the system separately. The vectorfield, $f(\bm{q}, \bm{\omega}, \bm{kv})$, represents the pressure drops across elements as one vector. The $k^{th}$ element of the vector, for example, represents a pressure drop accross a valve only if $\mu(\bm{q},\bm{kv})$ is nonzero, which is the case if the $k^{th}$ edge is a valve. the same can be said in case of pipes, the WT and the connection. 
+
+In order to reduce the order of the model and hence, the amount of unknowns, chord flows are introduced according to \eqref{ChordRelation}. 
 
 \begin{equation}
-  \Delta \bm{p_1} =  \bm{J} {\bm{B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
+    \bm{\Delta p} =  \bm{J} \bm{B^T} \bm{\dot{z}} + f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) - \alpha (\bm{\omega},\bm{B^T}\bm{z})
   \label{ChordsModel}
 \end{equation}
 
 Making use of $KVL$ shown in \eqref{KVL}, the following is obtained
 
 \begin{equation}
-  0 = \bm{B_1} \bm{\Delta p_1} = \bm{B_1} [ \bm{J {B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})] 
+ \bm{B}\bm{\Delta p} = \bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} + \bm{B} f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) - \bm{B}\alpha (\bm{\omega},\bm{B^T}\bm{z}) = 0
  \end{equation}
 
 Isolating the inertia matrix to the left side
 
 \begin{equation}
- - \bm{B_1} \bm{J} \bm{{B_1}}^T \bm{\dot{z}}  = \bm{B_1} f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
+  \bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) + \bm{B}\alpha (\bm{\omega},\bm{B^T}\bm{z}) 
  \label{isolateZ}
  \end{equation}
 
 It is desired to know the value of the flow through the chords, hence the equation above is solved 
-for $\bm{\dot{z}}$. In order to invert $(\bm{B_1 J} \bm{{B_1}}^T)$ it has to be non-singular i.e. invertible. 
+for $\bm{\dot{z}}$. In order to invert $(\bm{B J} \bm{{B}}^T)$ it has to be non-singular i.e. invertible. 
 
-Setting $\bm{\mathcal{J}} = \bm{B_1 J} \bm{{B_1}}^T $, then for the term $\bm{\mathcal{J}}$ to be positive-definite it has to be a square matrix and its 
-determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
+Setting $\bm{\mathcal{J}} = \bm{B J} \bm{{B}}^T $, then for the term $\bm{\mathcal{J}}$ in order to be positive-definite it has to be a square matrix and its determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
 
 \begin{equation}
   \label{Jequation}
@@ -234,7 +234,7 @@ Thus, \eqref{Jequation} is positive definite and it provides a sufficient condit
 Therefore, the system can be described as follows
 
 \begin{equation}
-   \bm{\dot{z}}  = - (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})
+   \bm{\dot{z}} = -\mathcal{J}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) + \bm{B}\alpha (\bm{\omega},\bm{B^T}\bm{z}) \Big ]
    \label{ParatModelFinal}
  \end{equation}
 
@@ -248,27 +248,21 @@ Therefore, the system can be described as follows
 %   \label{RecallModel}
 % \end{equation*}
 
-\eqref{NoTowerModel} describes the system by the pressure across each element except the part including the water tower. The dynamics are determined by the inertia of the pipes while the pressure relations are described by the vectorfield $f$. 
-The same equation can be expressed with a reduced set of equation system with the help of the chord flows: 
+\eqref{NoTowerModel} describes the system by the pressure across each element. The dynamics are determined by the inertia of the pipes while the pressure drop relation is described by the vectorfield $f$ and the input pressure is provided by the pumps, $\alpha$. 
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus an expression for $ \bm{\Delta p} $ can be expressed by plugging the flow rate into \eqref{ChordsModel}: 
 
 \begin{equation}
-  \bm{\Delta p_1} =  \bm{J {B_1}}^T \bm{\dot{z}} + f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
- \end{equation}
-
-The flow rate through the chords is found in \eqref{ParatModelFinal}, thus the expression for $ \bm{\Delta p_1} $ can be rewritten as
-
-\begin{equation}
- \bm{ \Delta p_1} = \bm{ J {B_1}}^T [- (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})] + f({\bm{B_1}}^T \bm{z},\bm{ w}, \bm{k_v})
+ \bm{\Delta p} =  -\bm{J} \bm{B^T}\mathcal{J}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) + \bm{B}\alpha (\bm{\omega},\bm{B^T}\bm{z}) \Big ] + f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) - \alpha (\bm{\omega},\bm{B^T}\bm{z})
   \label{PressureLarge}
  \end{equation}
  
 Writing in short form:
  
  \begin{equation}
-  \bm{\Delta p_1} =  (-\bm{J {B_1}}^T (\bm{B_1 J {B_1}}^T)^{-1}\bm{B_1} + \bm{\mathcal{I}}) f({\bm{B_1}}^T \bm{z}, \bm{w}, \bm{k_v})
+  \bm{\Delta p} = (\mathcal{I} - \bm{J} \bm{B^T}\mathcal{J}^{-1} ) f(\bm{B^T}\bm{z}, \bm{w}, \bm{k_v}) - (\mathcal{I} + \bm{J} \bm{B^T}\mathcal{J}^{-1} ) \alpha (\bm{\omega},\bm{B^T}\bm{z})
   \label{PressureShort}
  \end{equation}
 
-a general form of the network without the part corresponding to the WT ($\bm{p_0}$ and $\bm{q_0}$) is obtained. It should be noted that the same structure applies for the complete network, which is extended with the WT. In the following sections this general model is used in a slightly different form, which is suitable for the different estimation methods. 
+a general form of the pressure across all elements of the network is obtained. 
 
 

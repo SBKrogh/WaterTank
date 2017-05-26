@@ -22,7 +22,7 @@ The complete model consists of the pipe model, \eqref{CompactValveModel}, the va
 
 \begin{equation}
 \label{CompleteModel}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(\omega_k)}_\text{Pump} + \underbrace{\Delta p_{wt;k}}_\text{Water tank}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_v)}_\text{Valve} - \underbrace{\alpha_k(\omega_k,q_k)}_\text{Pump} + \underbrace{\Delta p_{wt;k}}_\text{Water tank}
 \end{equation}
 
 The complete component model, \eqref{CompleteModel}, is used to represent the pressure loss or contribution across each component. In order to describe every part of the system by \eqref{CompleteModel}, the parameters and functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network. In other words, if the $k^{th}$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
