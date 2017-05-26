@@ -129,16 +129,16 @@ The input, in case of the parameter estimation, is defined by the four pumps and
 \begin{equation}
 \bm{u} =
 \begin{bmatrix} 
-OD_{e13} \\
-OD_{e15} \\
-OD_{e20} \\
-OD_{e22} \\
-\Delta p_{e01} \\
-\Delta p_{e08} \\
-\Delta p_{e09} \\
+OD_{e13},\hspace{4pt} 
+OD_{e15},\hspace{4pt} 
+OD_{e20},\hspace{4pt} 
+OD_{e22},\hspace{4pt} 
+\Delta p_{e01},\hspace{4pt} 
+\Delta p_{e08},\hspace{4pt} 
+\Delta p_{e09},\hspace{4pt} 
 \Delta p_{e16} 
 \label{inputvector}
-\end{bmatrix} 
+\end{bmatrix} ^T
 \end{equation}
 
 It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. It is also important to mention that in the input vector, the differential pressure inputs to the main pumps are taken into account with a negative sign.
