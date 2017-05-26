@@ -43,26 +43,25 @@ From the denominator, the time constant of the WT can be directly read as seen i
 	\label{eq:direct_time_constant}
 \end{equation}
 
- Since A in \eqref{statespace_4} is a constant, due to the tank only having one state, the WT has one time constant. However the unit of A is in $[\frac{m^3}{h}]$ and needs to be convert to seconds. \todo{Convert from $m^3/h$ and see how much it fits compared to the test below}
+ Since A in \eqref{statespace_4} is a constant, due to the tank only having one state, the WT has one time constant. However the unit of A is in $[\frac{m^3}{h}]$ and needs to be convert to seconds. \todo{Convert from $m^3/h$ and see how much it fits compared to the test below - Ignacio}
 
 As the dynamics of the WT are described by a first order system, the time constant can be found as the time the system uses to reach $63.2\%$ of the steadystate pressure.
 This pressure at $63.2\%$ of the steadystate values is based on the minimum and maximum pressure values during the step and determined to:
 
 \begin{equation}
-(0.137 - 0.127)*63.2 \% = 0.0063 \rightarrow 0.127 + 0.0063 = 0.133 Bar 
+(0.137 - 0.127)\cdot63.2 \% = 0.0063 \rightarrow 0.127 + 0.0063 = 0.133 Bar 
 \end{equation}
 
 Based on the data is it found that at a pressure of 0.133 bar the time is passed is 1155 seconds corresponding to 19,25 minutes. 
-\todo{change the y axis of the WT measurement}
 On \figref{fig:Test_WT_Timeconstant} the measurement data used to determine the time constant of the WT is shown. A small red dot indicates the time constant for the tank.
 
 \begin{figure}[H]
-\input{report/tikz/Time_constant_Water_Tank}
+\input{report/tikz/Time_constant_Water_Tank2}
 \caption{The WT pressure during a step and a red dot indicating the time constant.}
 \label{fig:Test_WT_Timeconstant}
 \end{figure}
 
-Based on the determined time constant and the first order model, the settling time of the tank can be found as $1155\cdot 5 = 5775$ seconds equal to 1.6 hours.
+% Based on the determined time constant and the first order model, the settling time of the tank can be found as $1155\cdot 5 = 5775$ seconds equal to 1.6 hours.
 
 \subsection*{Uncertainties of measurement:}
 \begin{itemize}
@@ -70,4 +69,4 @@ Based on the determined time constant and the first order model, the settling ti
 \end{itemize}
 
 \subsection*{Conclusion:}
-From this test both the time constant and the settling time of the WT are determined. The results are based on the fact that the WT dynamics can be described by a first order system, thereby is the time constant found by applying a step to the system and determined to be 19,25 minutes. Furthermore is the settling determined to be 1.6 hours. It can thus be concluded that the purpose of this test is fulfilled and the dynamics of the WT are found.  
+From this test both the time constant are determined. The results are based on the fact that the WT dynamics can be described by a first order system, thereby is the time constant found by applying a step to the system and determined to be 19,25 minutes. 
