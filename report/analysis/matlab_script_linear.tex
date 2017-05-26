@@ -170,11 +170,12 @@ $\bm{G_p}$ is an extended matrix for the eight inputs which means that the first
 \subsection{State space model for linear parameter estimation}
  \label{SystemLin}
 
-For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel} is shown again:  
-\todo{wrong reference}
+For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel2} is shown again:  
+
 \begin{equation}
- \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{B} g(\bm{B}^T \bm{z})+ \bm{B} u(\bm{\omega},\bm{k_v	}, \bm{B}^T \bm{z})
- \label{InputOutputmodel}
+\bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
+ %\pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v  }, \pmb{B}^T \pmb{z})
+ \label{InputOutputmodel3}
 \end{equation}
 
 The dynamics of the WT is described by the equation below: 
