@@ -20,14 +20,23 @@ The block diagram of a general parameter identification method is described in \
 
 As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation introducing the same input for both systems. 
 
-In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. The inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the expressions for the inputs and states are isolated. Such an expression can be obtained for the whole network from the general model as follows: 
+In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. The inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the terms for the inputs and states are isolated. Recalling \eqref{isolateZ}, the system equation is exactly in such a form, except that the input only considers the two main and two PMA pumps: 
 
 \begin{equation}
- \pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
+\bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) 
+ %\pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v	}, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel}
 \end{equation}
 
-where the vectorfield $u(\cdot)$ contains all the functions for the elements, which are dependent on the inputs and the vectorfield $g(\cdot)$ describes the rest of the resistance terms which are responsible for the pressure drops in any part of the network. Although $u(\cdot)$ is a function of $\omega$ and $k_v$, in the simulation the inputs to the pumps are specified as pressure differences, $\Delta p$, because the value of these pressures are available on the test setup.
+Reformulating \eqref{InputOutputmodel} such that all valves and pumps are isolated in the input, the following yields:
+
+\begin{equation}
+\bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
+ %\pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v  }, \pmb{B}^T \pmb{z})
+ \label{InputOutputmodel2}
+\end{equation}
+
+where the vectorfield $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the functions for the elements, which are dependent on the inputs and the vectorfield $f(\bm{B^T}\bm{z})$ describes the rest of the resistance terms which are responsible for the pressure drops in the network. Although $u(\cdot)$ takes the inputs as $\omega$ and $OD$, during the estimation and the control, the inputs to the pumps are specified as pressure differences, $\Delta p$. The argument for this is given where the estimation is described.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$, $n_4$, $n_5$, $n_7$, $n_{10}$, $n_{11}$, $n_{15}$, and  $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until they fit.
@@ -37,11 +46,11 @@ It is important to point out that the estimation is applied for steady-state, si
 Taking the steady-state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
 \begin{equation}
- 0 = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v}, \pmb{B}^T \pmb{z})
+ 0 = - \bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
  \label{InputOutputmodel_steadystate}
 \end{equation}
 
-The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the model. The general parameter estimation problem is the problem of the minimization of the following objective function over the variable $\pmb{z}$: 
+The aim of the parameter identification is therefore to obtain a minimum difference between the outputs by adjusting the parameters of the resistance terms. The general parameter estimation problem is the problem of the minimization of the following objective function over the variable $\bm{z}$: 
 
 %\begin{equation}
 %
@@ -51,7 +60,7 @@ The aim of the parameter identification is therefore to obtain a minimum differe
 %\end{equation}
 
  \begin{equation}
- \min_{z} \sum_{i=1}^{n}\Big(g(z_i) + B_i^Tu_i\Big)^T \Big(g(z_i)     + B_i^Tu_i\Big) + \big(y_{sys;i} - y(z_i)\big)^T  \big(y_{sys;i} - y(z_i)\big)
+ \min_{z} \Big[(g(z_i) + B_i^Tu_i\Big)^T \Big(g(z_i)     + B_i^Tu_i\Big) + \big(y_{sys;i} - y(z_i)\big)^T  \big(y_{sys;i} - y(z_i)\big)
   \label{ObjectiveFunction}
  \end{equation}
  
