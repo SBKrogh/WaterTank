@@ -113,21 +113,24 @@ Before writing up an expression that describes all parts however, the component 
 \Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, k_{v;k})}_\text{Valve} + \underbrace{\Delta p_{wt;k}}_\text{Water tank} + \underbrace{\gamma_k (q_k)}_\text{WT-connection} - \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
-\begin{minipage}[t]{0.20\textwidth}
+\hspace{-0.1cm}
+\begin{minipage}[t]{0.15\textwidth}
 Where\\
-\hspace*{8mm} $q_k \in \mathbb{R}^{(1 \times 1)} $ \\
-\hspace*{8mm} $\lambda_k (q_k) = C_{p,k} q_k |q_k| $ \\
-\hspace*{8mm} $\mu_k (q_k) = C_{v,k} q_k |q_k| $ \\
-\hspace*{8mm} $\tilde{\alpha}_k(\omega_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k  + a_{h1k} \omega_{k} q_k + a_{h0k}{\omega_k}^2$  \\
-\hspace*{8mm} $\gamma_k (q_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k $ 
+\begin{align*}
+&q_k \\[-13pt]\\ 
+&\lambda_k (q_k) + \zeta_k= C_{p,k} q_k |q_k|\\\\
+\\[8pt]&\mu_k (q_k) = C_{v,k} q_k |q_k|  \\\\
+\\[1pt]&\tilde{\alpha}_k(\omega_k,q_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k \\& + a_{h1k} \omega_{k} q_k + a_{h0k}{\omega_k}^2  \\\\
+\\[-30pt]&\gamma_k (q_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k  
+\end{align*}
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-\hspace*{4mm} is the $k^{th}$ element of $\bm{q}$, \\
-\hspace*{4mm} is the $k^{th}$ element of the vectorfield which describes the pressure drop around the pipe elements and $C_{p,k}$ is the resistance of the pipe, \\
-\hspace*{4mm} is the $k^{th}$ element of the vectorfield which describes the pressure drop around the valve elements and $C_{p,k}$ is the resistance of the valve, \\
-\hspace*{4mm} is the $k^{th}$ element of the vectorfield which describes the pressure contribution of the $k^{th}$ pump, \\
-\hspace*{4mm} is the $k^{th}$ element of the vectorfield which describes the pressure drop around the WT-connection.  
+\hspace{0.1cm}
+\begin{minipage}[t]{0.5\textwidth}
+ \vspace{1cm}is the $k^{th}$ element of $\bm{q}$, \vspace{5pt}\\
+ is the $k^{th}$ element of the vectorfield which describes the pressure drop around the pipe elements and $C_{p,k}$ is the resistance of the pipe, \vspace{4pt} \\
+ is the $k^{th}$ element of the vectorfield which describes the pressure drop around the valve elements and $C_{p,k}$ is the resistance of the valve,\vspace{4pt} \\
+ is the $k^{th}$ element of the vectorfield which describes the pressure contribution of the $k^{th}$ pump,\vspace{10pt} \\
+ is the $k^{th}$ element of the vectorfield which describes the pressure drop around the WT-connection.  
 \end{minipage}
 
 %In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\bm{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
