@@ -22,7 +22,7 @@ In order to help the reader, the equation used for the reformulation of the pump
 Where\\
 \hspace*{8mm} $\bm{G^T} \in \bm{\mathbb{R}}^{(2 \times e)} $ 
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
+\begin{minipage}[t]{0.78\textwidth}
 \vspace*{2mm}
 is a matrix representing a linear mapping between the flow through the two main pumps and the edge flows in the system. The dimension $e$ is the number of edges without the WT while the number of rows is the number of main pumps. This mapping matrix is the same as the mapping described in \eqref{mapping_main}.
 \end{minipage} 
@@ -252,7 +252,7 @@ The dynamics, expressed with the newly introduced vectors and matrices, can be w
 	\Delta \hat{p}_{wt,H_p} = \bm{\Phi} \Delta \hat{p}_{wt}[0] + \bm{\Gamma} \bm{\hat{u}}_{\bm{Hp}} + \bm{\Psi} \bm{\hat{d}}_{\bm{Hp}}
 	\label{extendedmatrix}
 \end{equation}
-\todo{Fix minipage}
+
 
 \begin{minipage}[t]{0.15\textwidth}
 Where\\
@@ -264,7 +264,7 @@ Where\\
 \hspace*{8mm} $\bm{\Gamma}$ \\\newline
 and \hspace*{0.7mm} $\bm{\Psi} $ 
 \end{minipage}
-\begin{minipage}[t]{0.13\textwidth}
+\begin{minipage}[t]{0.16\textwidth}
 \vspace*{2mm}
 $\in \pmb{\mathbb{R}}^{(H_p \times 1)}$ \\\newline
 $\in \mathbb{R}^{(1 \times 1)}$ \\\newline
@@ -274,7 +274,7 @@ $\in \pmb{\mathbb{R}}^{(H_p \times 1)}$ \\\newline
 $\in \pmb{\mathbb{R}}^{(H_p \times 2 H_p)}$ \\\newline
 $\in \pmb{\mathbb{R}}^{(H_p \times 2 H_p)}$ 
 \end{minipage}
- \begin{minipage}[t]{0.70\textwidth}
+ \begin{minipage}[t]{0.67\textwidth}
  \vspace*{2mm}
  is the predicted state vector calculated for the whole prediction horizon, \\
  is the initial state describing the whole prediction horizon, \\
@@ -310,7 +310,6 @@ The objective function formulated in \eqref{eqcost_3} consists of the product of
  \end{bmatrix}
  \in \pmb{\mathbb{R}}^{(2 H_p \times 2 H_p)}
 \end{equation} 
-\todo{fix equation}
 
 \begin{equation}
 \bm{\Lambda_{3,Hp}} =
