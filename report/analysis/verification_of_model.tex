@@ -1,0 +1,28 @@
+\section{Verification of model}
+\label{verification_of_model}
+
+The model have now med linearized, \secref{Linearization}, the parameters have been estimated, \secref{LinParamEst}, arranged on SS form, \secref{SystemLin_control}, and discretized, \secref{discrete_SS}. In this section different steps are applied to the model to consider if the result seems reasonable. First the time constant for the WT is compared to real measurements, then an input is applied to both pumps in order to see how the pressure at the CP change and then the disturbance, OD of the values, is changed to see how the pressure at the CP change. 
+
+\begin{figure}[H]
+   \centering
+    \input{report/tikz/simulation_time_constant.tex}
+    \caption{The first plot show a simulation where a step is applied to both pumps on the final model. The second plot show the measurement described in \appref{sec:WT_TimeConstant}.}
+    \label{simulation_time_constant}
+\end{figure}
+
+At \figref{simulation_time_constant} a step is applied to both the model and the real system. Then the 
+
+
+\begin{figure}[H]
+   \centering
+    \input{report/tikz/input_simulation.tex}
+    \caption{A series of steps are applied to the pumps and it can be seen that the pressure follows is expected.}
+    \label{input_simulation}
+\end{figure}
+
+\begin{figure}[H]
+   \centering
+    \input{report/tikz/disturbance_simulation.tex}
+    \caption{A series of steps are applied to the values and it can be seen that the pressure follows is expected.}
+    \label{disturbance_simulation}
+\end{figure}
