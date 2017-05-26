@@ -1,31 +1,33 @@
 \section{Verification of model}
 \label{verification_of_model}
 
-The model have now med linearized, \secref{Linearization}, the parameters have been estimated, \secref{LinParamEst}, arranged on SS form, \secref{SystemLin_control}, and discretized, \secref{discrete_SS}. In this section the model is excited in different ways, to consider if the behavior  seems reasonable. First the time constant for the WT is compared to real measurements, then an input is applied to both pumps in order to see how the pressure at the CP change and then the disturbance, OD of the values, is changed to see how the pressure at the CP change. 
+A model of the water distribution system is obtained, this has now been linearized, \secref{Linearization}, the parameters have been estimated, \secref{LinParamEst}, the model is arranged on SS form, \secref{SystemLin_control}, and finally discretized, \secref{discrete_SS}. In this section the model is excited in different ways, to consider if the behavior is deemed reasonable compared to the test setup. First the time constant for the WT is compared to real measurements, then an input is applied to both pumps in order to see how the pressure at the CP changes and then the disturbance, given as OD of the values, is changed to see how the pressure at the CP changes. 
 
 \begin{figure}[H]
    \centering
     \input{report/tikz/simulation_time_constant.tex}
-    \caption{The first plot show a simulation where a step is applied to both pumps on the final model. The second plot show the measurement described in \appref{sec:WT_TimeConstant}.}
+    \caption{The first plot shows a small signal simulation where a step is applied to both pumps on the final model. The second plot shows the measurement described in \appref{sec:WT_TimeConstant}.}
     \label{simulation_time_constant}
 \end{figure}
 
-At \figref{simulation_time_constant} a positive step is applied to both the model and the real system. As it can be seen the pressure rises, meaning that the level of the WT rises. Furthermore the time constant is marked with a blue dot on both plots. From this a time constant for the simulation of 903 seconds, and a time constant for the real system of 1155 seconds are obtained. 
+At \figref{simulation_time_constant} a positive step is applied to both the model and the real system. As it can be seen the pressure rises, meaning that the level of the WT rises. Furthermore the time constant is marked with a blue dot on both plots. From this a time constant for the simulation of 903 seconds, and a time constant for the real system of 1155 seconds are obtained. The model is thus faster than the system but within a reasonable range.
 
 \begin{figure}[H]
    \centering
     \input{report/tikz/input_simulation.tex}
-    \caption{A series of steps are applied to the pumps and it can be seen that the pressure follows is expected.}
+    \caption{A series of steps are applied to the pumps and it can be seen that the PMA pressure follows as expected.}
     \label{input_simulation}
 \end{figure}
 
-At \figref{input_simulation} a series of step are applied to the model and the pressure change at the CP is plotted. Here it can be seen that the when a positive step is applied the pressure increases positive, and the opposite with a negative step. Furthermore it can be seen that there is a pressure different between PMA1 and PMA2. This is also expected because of the height different.  
+At \figref{input_simulation} a series of step are applied to the model and the pressure change at the CP is plotted. Here it can be seen that when a positive step is applied, the pressure at the PMA increases positive, and the opposite with a negative step. Furthermore it can be seen that there is a pressure different between PMA1 and PMA2. This is also expected because of the height difference.  
 
 \begin{figure}[H]
    \centering
     \input{report/tikz/disturbance_simulation.tex}
-    \caption{A series of steps are applied to the values and it can be seen that the pressure follows is expected.}
+    \caption{A series of steps are applied to the values and it can be seen that the PMA pressure follows as expected.}
     \label{disturbance_simulation}
 \end{figure}
 
-At \figref{disturbance_simulation} a series of step is applied to the values, in order to see how a change in disturbance affect the pressure at the CP. Here a pressure drop can be seen when OD is increased and an increase in pressure when OD is lowered. 
+At \figref{disturbance_simulation} a series of steps are applied to the values, in order to see how a change in disturbance affect the pressure at the CP. Here a pressure drop can be seen when OD is increased and an increase in pressure when OD is lowered, this behavior corresponds to the expected as opening a valve at constant differential pump pressure should decrease the PMA pressure and vice versa.
+
+Based on these three tests the overall behavior of the model is validated as the model behaves correctly and consists of the same dynamic properties as the test setup.   
