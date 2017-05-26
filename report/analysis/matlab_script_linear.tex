@@ -1,5 +1,5 @@
 \section{Linearization of the model} 
-\label{LinParamEst}
+\label{Linearization}
 
 As it is shown in \eqref{InputOutputmodel_steadystate}, both $g(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
@@ -75,11 +75,16 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
 \subsection{Linear system model}
  \label{SystemLin}
  
-As it is shown in \eqref{CompleteModel_extended}, the vectorfield describing the pressure in the network consists of the pressure drops of each different elements, such as pipes$(\lambda(q) + \zeta + J \dot{q})$, valves$(\mu(q,OD))$, pumps$(\alpha(\omega, q))$, the WT $(\Delta p_{WT})$ and the WT connection $(\gamma(q))$.
+\eqref{CompleteModel_extended} is recalled to show how the pressure drop is obtained for each element in the network:
+
+\begin{equation}
+\label{CompleteModel_extended_2}
+\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tank} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
+\end{equation}
+
+Among these functions, the pipes, valves, pumps and the edge describing the WT connection are non-linear functions of the edge flows, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion as it is described in \eqref{TaylorExpansion_approx}.
 \\
-Among these functions, the pipes, valves, pumps and the edge describing the WT connection are non-linear functions, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion shown in \eqref{TaylorExpansion_approx}.
-\\
-The expression describing the pipes consists of three terms, one responsible for the resistances and form losses, one for the dynamics, and the last one for the elevation if there is any present. 
+The expression describing the pipes consists of three terms, one responsible for the resistances and form losses,$\lambda_k$, one for the dynamics, $J_k\dot{q}_k$, and the last one for the elevation, $\zeta_k$, if there is any present. 
 \\
 The expression describing the pipes can be approximated by its linear model as follows:
 
@@ -88,8 +93,7 @@ The expression describing the pipes can be approximated by its linear model as f
 \label{lambda_lin}
 \end{equation}
 
-where the partial derivative is a first-order partial derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule, the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows.
-
+where the partial derivatives are first-order derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule, the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows. 
 
 In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
 
@@ -146,7 +150,7 @@ It should be noted here, however, that this control input representation is vali
 Considering the input vector, the mapping is taken into account with this negative sign, since the mapping is only for the pumps, not for the valves. Therefore the negative pressure can be taken into account with the following mapping: 
 
 \begin{equation}
-\bm{B_1} \alpha(\omega, q) = -\bm{B_1} \bm{G_p} \bm{u}
+\bm{B_1} \alpha(\omega, q) = \bm{B_1} \bm{G_p} \bm{u}
 \label{gamma_lin}
 \end{equation}
 
@@ -167,7 +171,7 @@ $\bm{G_p}$ is an extended matrix for the eight inputs which means that the first
  \label{SystemLin}
 
 For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel} is shown again:  
-
+\todo{wrong reference}
 \begin{equation}
  \bm{B}\bm{J {B}}^T \bm{\dot{z}} = \bm{B} g(\bm{B}^T \bm{z})+ \bm{B} u(\bm{\omega},\bm{k_v	}, \bm{B}^T \bm{z})
  \label{InputOutputmodel}

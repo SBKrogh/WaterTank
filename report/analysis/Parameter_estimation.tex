@@ -18,7 +18,7 @@ The block diagram of a general parameter identification method is described in \
 \label{fig:parame_block}
 \end{figure}
 
-As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation introducing the same input for both systems. 
+As it is shown in the figure, the measurements from the real life system are compared to the output of the simulation introducing the same input for both systems. In the figure, $C_{res}$ denotes the unknown resistance parameters.
 
 In order to obtain measurements from the real life test setup, the system has to be excited by various input signals. The inputs to the system are the input signals to the pumps, however in case of the parameter estimation the OD of the valves is also considered as an input. Therefore it is reasonable to reformulate the equation describing the network in \eqref{ParatModelFinal} into such a form where the terms for the inputs and states are isolated. Recalling \eqref{isolateZ}, the system equation is exactly in such a form, except that the input only considers the two main and two PMA pumps: 
 
@@ -46,7 +46,7 @@ It is important to point out that the estimation is applied for steady-state, si
 Taking the steady-state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
 \begin{equation}
- 0 = - \bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
+ 0 = \underbrace {-\bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) }_{\mathcal{\bm{X}}}
  \label{InputOutputmodel_steadystate}
 \end{equation}
 
@@ -58,33 +58,25 @@ The aim of the parameter identification is therefore to obtain a minimum differe
 %
 %\label{ObjectiveFunction}
 %\end{equation}
-
+\todo{Explain this better and correct notation!!!}
  \begin{equation}
- \min_{z} \Big[(g(z_i) + B_i^Tu_i\Big)^T \Big(g(z_i)     + B_i^Tu_i\Big) + \big(y_{sys;i} - y(z_i)\big)^T  \big(y_{sys;i} - y(z_i)\big)
+ \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y(B^T z)}_{sys} - \bm{y(B^T z)}_{model}\big)^T  \big(\bm{ y(B^T z)}_{sys} - \bm{ y(B^T z)}_{model}\big)
   \label{ObjectiveFunction}
  \end{equation}
  
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $n$ \\
-\hspace*{8mm} $g(z_i)$ \\
-\hspace*{8mm} $u$ \\
-\hspace*{8mm} $y_{sys;i}$ \\
+\hspace*{8mm} $y(\bm{z})_{sys}$ \\
+\hspace*{8mm} $y(\bm{z})_{sys}$ \\
 \hspace*{8mm} $y_{sys}(z_i)$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the number of edges in the graph-based network,\\
-is the vectorfield with all resistance terms(parameters),\\
-is the vectorfield with the inputs,\\
 is the pressure measurement over the $i^{th}$ edge on the system,\\
 is the $i^{th}$ pressure in the output vector in the model .
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{\cdot}$
-\textcolor{White}{te}$\unit{bar}$
-\textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \end{minipage}

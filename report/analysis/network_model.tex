@@ -107,10 +107,10 @@ Where\\
 Before writing up an expression that describes all parts however, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not acts as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
 
 % However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
-
+\todo{B1 - B0 multiplication -> very important to describe! }
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt;k}}_\text{Water tank} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
+\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tank} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
 \hspace{-0.1cm}

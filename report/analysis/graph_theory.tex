@@ -6,8 +6,8 @@ A graph is a formal mathematical way for representing a network, which can be ap
 The modelling of the water distribution network is done with the help of Graph Theory(GT). Each terminal of the network is associated with a node and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
 \subsection*{Incidence matrix} 
 \label{IncidenceSection}
-The incidence matrix, $\pmb{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
-defined by $\pmb{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
+The incidence matrix, $\bm{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
+defined by $\bm{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
 Additionally, the particular node and edge is denoted with the indices $i$ and 
 $j$.
 
@@ -45,9 +45,9 @@ In order to obtain the spanning tree it is necessary to remove an edge from each
 \end{equation}
 
 By adding an chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as there is chords\cite{GraphModel}.  
-The set of fundamental cycles correspond to the fundamental cycle matrix $\pmb{B}$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
+The set of fundamental cycles correspond to the fundamental cycle matrix $\bm{B}$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
-The cycle matrix of a directed graph can be expressed with $\pmb{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
+The cycle matrix of a directed graph can be expressed with $\bm{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
 
 \begin{equation}
 \label{DiGraphCycle}
@@ -102,7 +102,7 @@ the pressure drop across them:
 
 \begin{equation}
 %\[
-\pmb{\Delta p(t)} =
+\bm{\Delta p(t)} =
 \begin{bmatrix}
          \Delta p_c \\
 	\Delta p_f \\ 
@@ -110,7 +110,7 @@ the pressure drop across them:
 	\Delta p_e \\
 \end{bmatrix}
 \text{and}\hspace{0.3cm}
-\pmb{q(t)} =
+\bm{q(t)} =
 \begin{bmatrix}
          q_c \\
 	q_f \\ 
@@ -139,17 +139,17 @@ $\pmb{H}$ and $\pmb{B}$ matrix, such as:
 
 \begin{equation}
 %\[
-\pmb{H} = [\pmb{H_c} \quad \pmb{H_f}]
+\bm{H} = [\bm{H_c} \quad \bm{H_f}]
 \hspace{0.1cm} \text{and}\hspace{0.3cm}
-\pmb{B} = [\pmb{B_c}  \quad \pmb{B_f}] = [\pmb{I} \quad \pmb{B_f}]
+\bm{B} = [\bm{B_c}  \quad \bm{B_f}] = [\bm{I} \quad \bm{B_f}]
 %\]
 \label{HandB}
 \end{equation}
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\pmb{H_c} \quad \text{and} \quad \pmb{B_c}$ \\
-\hspace*{8mm} $\pmb{H_f} \quad \text{and} \quad \pmb{B_f}$ 
+\hspace*{8mm} $\bm{H_c} \quad \text{and} \quad \bm{B_c}$ \\
+\hspace*{8mm} $\bm{H_f} \quad \text{and} \quad \bm{B_f}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -164,7 +164,7 @@ Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving 
 
 \begin{equation}
   \label{KCL}
-  \pmb{H} \cdot \pmb{q(t)} = 0
+  \bm{H} \bm{q(t)} = 0
 \end{equation}
 
 Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure drops in a cycle 
@@ -172,7 +172,7 @@ is zero. In terms of matrix form:
 
 \begin{equation}
  \label{KVL} 
- \pmb{B} \cdot \pmb{\Delta p (t)} = 0
+ \pmb{B}  \pmb{\Delta p (t)} = 0
 \end{equation}
 
 where the fundamental loops have a reference direction given by the direction of the 
