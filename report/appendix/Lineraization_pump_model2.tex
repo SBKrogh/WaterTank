@@ -23,7 +23,7 @@ By the assumption that the flow is constant, the expression can through a Taylor
 
 \begin{equation}
 	\begin{split}
-		\hat{\Delta p} &= a_{h1}q\hat{\omega} + 2a_{h0}{\omega_r}\hat{\omega}_r\\
+		\Delta \hat{p} &= a_{h1}q\hat{\omega} + 2a_{h0}{\omega_r}\hat{\omega}_r\\
 					   &= (a_{h1}q + 2a_{h0}{\omega_r}) \hat{\omega}_r
 	\end{split}
 	\label{eq:pump_lin_taylor_approx}
@@ -33,7 +33,7 @@ By Laplace transform and solving for the input output relation of the plant G(s)
 
 \begin{equation}
 	\begin{split}
-		G(s) = \frac{\hat{\Delta p}}{\hat{\omega}} = a_1q + 2a_0\bar{\omega}
+		G(s) = \frac{\Delta \hat{p}}{\hat{\omega}} = a_1q + 2a_0\bar{\omega}
 	\end{split}
 	\label{eq:pumpmodel_lin_taylor}
 \end{equation}

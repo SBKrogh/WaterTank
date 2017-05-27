@@ -6,7 +6,7 @@
 The Kv value as a function of the opening degree above $35\degree$ is for a valve in the system given by:
 
 \begin{equation}
-	Kv(OD)=kv_{100} e^{(n_{gl} \gamma)}
+	Kv(OD)=kv_{100} e^{(n_{gl} (\gamma-1))}
 \end{equation}
 
 
@@ -16,10 +16,10 @@ The pressure across the valve as a function of the flow is given by:
 	\mu(q)=\frac{1}{(Kv)^2} q |q|
 \end{equation}
 
-Gathering the two previous equations allows to describe the pressure pressure across the valve as a combined function of both the flow and the opening degree.
+Gathering the two previous equations allows to describe the pressure across the valve as a combined function of both the flow and the opening degree.
 
 \begin{equation}
-	M(q,OD)=\frac{1}{(kv_{100} e^{(n_{gl} \gamma)})^2} q |q| 
+	M(q,OD)=\frac{1}{(kv_{100} e^{(n_{gl} (\gamma-1))})^2} q |q| 
 \end{equation}	
 
 
@@ -83,7 +83,7 @@ The first order linear Taylor expansion in the operating point $\bar{q}$ is give
 \bigskip 
 \textbf{Pump equation}
 
-Concerning the pump that connects the WT with the remaining system the rotational speed is zero. Therefore will the pumps influence be described by a resistive term which is gives a differential pressure drop as a function of the flow.
+Concerning the pump that connects the WT with the remaining system the rotational speed is zero. Therefore will the pumps influence be described by a resistive term which gives a differential pressure drop as a function of the flow.
 
 \begin{equation}
 	\Delta p = (\frac{2}{{kv_{100}^2}} - a_{h2}) q |q|
