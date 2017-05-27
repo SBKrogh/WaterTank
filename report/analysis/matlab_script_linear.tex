@@ -1,7 +1,7 @@
 \section{Linearization of the model} 
 \label{Linearization}
 
-As it is shown in \eqref{InputOutputmodel_steadystate}, both $f(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
+As it is shown in \eqref{InputOutputmodel_steadystate}, both $\tilde f(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
 In this section it is shown how the model describing the network is linearized with the use of Taylor-expansion.
 
@@ -145,7 +145,7 @@ OD_{e22},\hspace{4pt}
 \end{bmatrix} ^T
 \end{equation}
 
-It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input terms. In order to build up such an input vector, linear mapping between the corresponding edges and the input is required. The vectorfield describing the pumps, $\alpha$ can be used to show this mapping, although it is important to mention that $\alpha$ consists of the nonlinear terms of the pump pressure contribution. However, the terms are non-zero at edges where a pump is present, therefore it is only used to show how the resulting differential pressure contribution of these terms can be mapped into $u$.
+It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input terms. In order to build up such an input vector, linear mapping between the corresponding edges and the input is required. The vectorfield describing the pumps, $\alpha$ can be used to show this mapping, although it is important to mention that $\alpha$ consists of the nonlinear terms of the pump pressure contribution. However, the terms are non-zero at edges where a pump is present, therefore it is only used to show how the resulting differential pressure contribution of these terms can be mapped into $\bm{u}$.
 
 \begin{equation}
 \bm{B_1} \alpha(\omega, q) = \bm{B_1} \bm{G_p} \bm{u}
@@ -171,7 +171,7 @@ $\bm{G_p}$ is an extended matrix for the eight inputs which means that the first
 For the sake of clearance, the model describing the water distribution system in \eqref{InputOutputmodel2} is shown again:  
 
 \begin{equation}
-\bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
+\bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} \tilde f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) 
  %\pmb{B}\pmb{J {B}}^T \pmb{\dot{z}} = \pmb{B} g(\pmb{B}^T \pmb{z})+ \pmb{B} u(\pmb{\omega},\pmb{k_v  }, \pmb{B}^T \pmb{z})
  \label{InputOutputmodel3}
 \end{equation}
@@ -183,7 +183,7 @@ The dynamics of the WT is described by the equation below:
  \label{WT_eq}
 \end{equation}
 
-These two differential equation systems gives a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
+These two differential equation systems give a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
 \\
 Before setting up the state-space form of the system, the following should be considered: 
 
@@ -213,7 +213,7 @@ Therefore the dynamics of the WT can be expressed with the incidence matrix for 
  \label{currentlaw_4}
 \end{equation}
 
-Getting back to the original system model described in \eqref{InputOutputmodel}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
+Getting back to the original system model described in \eqref{InputOutputmodel2}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
  \bm{B}\bm{J {B}}^T \bm{\dot{\hat{z}}} = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
@@ -223,14 +223,14 @@ Getting back to the original system model described in \eqref{InputOutputmodel},
 In \eqref{statespace_1}, the $\bm{M}$ matrix consists of the following terms: 
 
 \begin{equation}
-  \bm{M_p} = \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}
+  \bm{M_p} \approx \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}
 \label{Amatrix}
 \end{equation}
 
 And the $\bm{N}$ matrix consists of the following terms:
 
 \begin{equation}
-  \bm{N_p} = \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{u}}}}  \bigg]_{(\bar{z}, \bar{u})} - \bm{B_1}\bm{G_p}  
+  \bm{N_p} \approx \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{u}}}}  \bigg]_{(\bar{z}, \bar{u})} - \bm{B_1}\bm{G_p}  
 \label{Bumatrix}
 \end{equation}
 
@@ -246,7 +246,7 @@ In order to find a good state space representation for the system, extended with
 The small signal value of the state vector can be expressed on the left side of the equation only if $\bm{M_p}$ is invertible. In \eqref{Amatrix}, the equation can be rewritten as follows: 
 
 \begin{equation}
-  \bm{M_p} = \bm{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} +
+  \bm{M_p} \approx \bm{B_1}\Bigg[ \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} +
 \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} +  \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}}\Bigg] \bm{{B_1^{T}}}
 \label{Amatrix_mod}
 \end{equation}
