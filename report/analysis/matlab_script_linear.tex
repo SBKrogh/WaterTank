@@ -1,7 +1,7 @@
 \section{Linearization of the model} 
 \label{Linearization}
 
-As it is shown in \eqref{InputOutputmodel_steadystate}, both $\tilde f(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
+As it is shown in \eqref{InputOutputmodel2}, both $\tilde f(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
 \\
 In this section it is shown how the model describing the network is linearized with the use of Taylor-expansion.
 
@@ -213,30 +213,30 @@ Therefore the dynamics of the WT can be expressed with the incidence matrix for 
  \label{currentlaw_4}
 \end{equation}
 
-Getting back to the original system model described in \eqref{InputOutputmodel2}, in order to formulate a state space representation, the linearized terms in  vectorfields $g(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
+Getting back to the original system model described in \eqref{InputOutputmodel2}, in order to formulate a state space representation, the linearized terms in  vector fields $\tilde f(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
- \bm{B}\bm{J {B}}^T \bm{\dot{\hat{z}}} = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
+ \bm{B}\bm{J {B}}^T \bm{\dot{\hat{z}}} = -\bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} - \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_1}
 \end{equation}
 
-In \eqref{statespace_1}, the $\bm{M}$ matrix consists of the following terms: 
+In \eqref{statespace_1}, the $\bm{M_p}$ matrix consists of the following terms: 
 
 \begin{equation}
   \bm{M_p} \approx \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}  \bigg]_{(\bar{z}, \bar{OD})} \bm{{B_1^{T}}} +  \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}
 \label{Amatrix}
 \end{equation}
 
-And the $\bm{N}$ matrix consists of the following terms:
+And the $\bm{N_p}$ matrix consists of the following terms:
 
 \begin{equation}
-  \bm{N_p} \approx \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{u}}}}  \bigg]_{(\bar{z}, \bar{u})} - \bm{B_1}\bm{G_p}  
+  \bm{N_p} \approx \bm{B_1} \bigg[ \frac{\partial{\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})}}{{\partial{\bm{u}}}}  \bigg]_{(\bar{z}, \bar{u})} + \bm{B_1}\bm{G_p}  
 \label{Bumatrix}
 \end{equation}
 
-$\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or input. 
+$\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or inputs. 
 
-In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, the pipes and the WT have dynamics. The pipes, compared to the WT, is assumed to have a very fast response time, which means that their time constants are small, therefore the decay time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
+In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, the pipes and the WT have dynamics. The pipes, compared to the WT, are assumed to have a very fast response time, which means that their time constants are small, therefore the decay time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
  0 = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
