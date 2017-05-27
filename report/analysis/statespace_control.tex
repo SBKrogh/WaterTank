@@ -54,7 +54,7 @@ Where\\
 is a matrix representing a linear mapping between the vectorfield $\alpha(\omega,q)$, describing the pressure contribution of the pumps, and between the input vector defined in \eqref{inputvector_control} where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. As it can be seen, the mapping here is taken into account with a negative sign, since the input signals to the main pumps are written up as positive. This is a different representation from the one being described at the parameter estimation due to the fact that here only differential pressures to the pumps are taken into account as inputs. $\bm{G}$ can be found in \appref{MappingAppendix}.
+$\bm{G}$ is now a mapping matrix for only the two inputs for the main pumps. $\bm{G}$ can be found in \appref{MappingAppendix}.
 
 The input matrix for the control system can be written in the form: 
 
@@ -93,7 +93,7 @@ OD_{e22}
 %\vspace*{2mm}
 %the dimension $d$ is the number of disturbances and $e$ is the number of edges without the WT. 
 %\end{minipage} 
-As can be seen, the PMA pumps are neither considered as inputs, nor as disturbances. The input for the PMA pumps is excluded in the linearized model for the reason that the system is described by deviation variables. It means that if the PMA pumps were included as disturbances, they would not have an effect on the linearized system because they are kept constant all the time. 
+As can be seen, the PMA pumps are neither considered as inputs, nor as disturbances. The input for the PMA pumps is excluded from the linearized model for the reason that the system is described by deviation variables. It means that if the PMA pumps were included as disturbances, they would not have an effect on the linearized system because they are kept constant all the time. 
 \\
 The disturbance matrix for the state space model consists of the linearized terms of the end-user valves. The matrix can be formulated as follows: 
 
