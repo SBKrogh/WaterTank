@@ -158,13 +158,18 @@ Altogether these matrices sum up to 28 unknown parameters which are the ones to 
 The obtained model now fits the behavior of the system during the whole simulation data and the fit is significantly better than the previous model. However is the model fit with note 16 still not satisfying. 
 Furthermore are the model dynamics of the WT to fast compared to real world measurements found in \appref{sec:WT_TimeConstant}. The time constant of the WT level is approximately 20 minutes based on step response measurements, where the obtained model based on the parameter estimated matrices has a settling time under 15 seconds.
 
-Due to these model misbehaviors of especially the water tower dynamics compared to the real world system, is it chosen to change the used estimation data. The new data has a duration of approximately 8 hours in order to catch more of the WT dynamics. Using the same estimation procedure of estimating the final values of the state-space matrices stated in \eqref{statespace_1}, results in poor results and a significantly worse model. Thus another estimation approach is attempted. 
+Due to these model misbehaviors of especially the water tower dynamics compared to the real world system, is it chosen to change the used estimation data. The new data has a duration of approximately 8 hours in order to catch more of the WT dynamics. Furthermore only one input is changed at a time and the system inputs are returned to their respective operating point values before a new input step is applied. Thus can each type of input change be distinguished from each other in the output data. 
 
-Instead of estimating the final value of the matrices stated in \eqref{statespace_1} it is chosen to estimate the final values of the complete state space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}.               
-The outputs to be compared with the test are reduced to the WT, note 10 and note 15, in order to facilitate the estimation procedure. The toolbox used for estimating remains the same. 
+%Using the same estimation procedure of estimating the final values of the state-space matrices stated in \eqref{statespace_1}, results in poor results and a significantly worse model. Thus another estimation approach is attempted. 
+%Instead of estimating the final value of the matrices stated in \eqref{statespace_1} it is chosen to estimate the final values of the complete state space matrices stated in \eqref{statespace_4} and \eqref{outputfinaleq}.               
+
+The model outputs to be compared with the test data are reduced to the WT, note 10 and note 15, in order to facilitate the data gathering due to connection problems at the test setup when running longer tests. The toolbox used for estimating remains the same. 
+
 To obtain satisfying results by this approach the estimation process is divided into two parts. 
-The first part estimates all system matrices to fit only the behavior of the WT, from this estimation the final result for the state and input matrices according to \eqref{statespace_4} are obtained, as only the state is output from the model.
-The next part consist of estimating the system matrices to fit the output behavior described by note 10 and 15. From this the final result for the disturbance and output matrices are obtained. 
+The first part estimates the system matrices from \eqref{statespace_1} to fit only the behavior of the WT, from this estimation the final result for these is thus obtained, as the state in this part is the only output from the model.
+
+The next part consist of estimating the remaining system matrices from \eqref{statespace_6} to fit the output behavior described by note 10 and 15. From this the final result for $ \bm{C_{p,1}} $ and $ \bm{C_{p,1}}$ is obtained. 
+
 In the following will both the input data used and the results obtained by this approach be shown.    
 
 
