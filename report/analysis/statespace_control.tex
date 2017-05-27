@@ -225,15 +225,17 @@ In order to carry out the discretization on the model, the time constant of the 
 \label{eq:cons_model_}
 \end{equation}
 
-the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. The frequency component is described by the constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
+the time constant can be determined by showing the output and input relation between the WT pressure, the inputs to the main pumps and the disturbance. The frequency component is described by the constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
 
 \begin{equation}
-  s\Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
+  s\Delta \hat{P}_{wt}(s) = A_c \Delta \hat{p}_{wt}(s)  + \bm{B_c} \bm{\hat{u}}(s) + \bm{E_c} \bm{\hat{u}} (s)
     \label{eq:time_constnt_first_order_sys1}
 \end{equation}
 
+After Laplace transforming \eqref{eq:time_constnt_first_order_sys1}, due to superposition law the time constant of the system can be shown as follows: 
+
 \begin{equation}
-  \Delta \dot{\hat{p}}_{wt} = \frac{B_c\hat{u}+E_c\hat{d}}{s-A_c}
+  \Delta \hat{p}_{wt}(s) = \frac{\bm{B_c}}{s-A_c} \bm{\hat{u}}(s) + \frac{\bm{E_c}}{s-A_c} \bm{\hat{d}}(s)
   \label{eq:time_constnt_first_order_sys}
 \end{equation}
 
@@ -259,7 +261,7 @@ By inserting \eqref{eq:cons_model_} into \eqref{statespace_discrete_state1}, the
 
 \begin{equation}
   \begin{split}
-  \Delta p_{wt}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c}T_s \bm{\hat{u}}+\bm{E_c} T_s \bm{\hat{d}}
+  \Delta p_{wt}[k+1] \approx (A_cT_s+1)\hat{p}_{wt}+\bm{B_c}T_s \bm{\hat{u}}+\bm{E_c} T_s \bm{\hat{d}}
   \end{split}
   \label{eq:dist_statespace_forward_euler}
 \end{equation}
@@ -267,7 +269,7 @@ By inserting \eqref{eq:cons_model_} into \eqref{statespace_discrete_state1}, the
 where the discrete model is defined as seen in \eqref{statespace_discrete_state}.
 
 \begin{equation}
-\Delta p_{wt}[k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
+\Delta p_{wt}[k+1] \approx A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
 
