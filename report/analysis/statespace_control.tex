@@ -4,7 +4,7 @@
 For reference, the steady-state, state-space representation of the parameter estimation for small-signal values is restated here:
  
  \begin{equation}
- 0 = \bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + \bm{B_o} \Delta \hat{p}_{wt}    
+ 0 = -\bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} + -\bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_param_sys}
 \end{equation}
 
@@ -38,7 +38,7 @@ This distinction between the parameter estimation and the control is being made 
 The mapping for the two main pump pressures yields:
 
 \begin{equation}
-\bm{B_1} \alpha(\omega,q) = -\bm{B_1} \bm{G} \bm{\hat{u}}
+\bm{B_1} \tilde{\alpha}(\omega,q) = \bm{B_1} \bm{G} \bm{\hat{u}}
 \label{mapping_main}
 \end{equation}
 
@@ -105,7 +105,7 @@ The disturbance matrix for the state space model consists of the linearized term
 Taking the same considerations into account as for the parameter estimation, the steady-state, state equation for small signals can be formulated as: 
 
  \begin{equation}
- 0 = \bm{M_c} \bm{\hat{z}} - \bm{N_c} \bm{\hat{u}} + \bm{Q_c} \bm{\hat{d}} + \bm{B_o} \Delta \hat{p}_{wt}    
+ 0 = -\bm{M_c} \bm{\hat{z}} + \bm{N_c} \bm{\hat{u}} - \bm{Q_c} \bm{\hat{d}} - \bm{B_o} \Delta \hat{p}_{wt}    
  \label{statespace_control_sys}
 \end{equation}
 
@@ -121,7 +121,7 @@ $\bm{M_c}$ is invertible for the same reason as described in \eqref{Jequation}, 
 Inserting the states into \eqref{currentlaw_4}:
 
  \begin{equation}
-\Delta \dot{\hat{p}}_{wt} = (\bm{S}\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  - (\bm{S}\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} + (\bm{S}\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} 
+\Delta \dot{\hat{p}}_{wt} = -(\bm{S}\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  + (\bm{S}\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} + (\bm{S}\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} 
  \label{statespace_control_sys_state_1}
 \end{equation}
 
@@ -134,8 +134,8 @@ Which in standard state-space form can be written as:
 
 \begin{minipage}[t]{0.40\textwidth}
 Where\\
-\hspace*{8mm} $A_c = \bm{S}\bm{M_c^{-1}}\bm{B_o} $ \\
-\hspace*{8mm} $\bm{B_c} = -\bm{S}\bm{M_c^{-1}}\bm{N_c} $ \\
+\hspace*{8mm} $A_c = -\bm{S}\bm{M_c^{-1}}\bm{B_o} $ \\
+\hspace*{8mm} $\bm{B_c} = \bm{S}\bm{M_c^{-1}}\bm{N_c} $ \\
 \hspace*{8mm} $\bm{E_c} = \bm{S}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
