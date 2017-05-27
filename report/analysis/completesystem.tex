@@ -6,7 +6,7 @@ The model of the WT is described by a first order differential equation, consist
 
 \begin{equation}
   \label{CompleteWTModel}
-  \Delta \dot{p}_{WT;k} = \frac{1}{C_{H;k}} q_k 
+  \Delta \dot{p}_{wt;k} = \frac{1}{C_{H;k}} q_k 
 \end{equation}
 
 Although \eqref{CompleteWTModel} includes indexing for the pressure drops across the WTs, it is worth mentioning that the water distribution system consists of only one WT.
@@ -22,7 +22,7 @@ The complete model consists of the pipe model, \eqref{CompactValveModel}, the va
 
 \begin{equation}
 \label{CompleteModel}
-\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, OD)}_\text{Valve} - \underbrace{\alpha_k(\omega_k,q_k)}_\text{Pump} + \underbrace{\Delta p_{wt,k}}_\text{Water tank}
+\Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, OD)}_\text{Valve} - \underbrace{\alpha_k(\omega_k,q_k)}_\text{Pump} + \underbrace{\Delta p_{wt,k}}_\text{Water tower}
 \end{equation}
 
 The complete component model, \eqref{CompleteModel}, is used to represent the pressure loss or contribution across each component. In order to describe every part of the system by \eqref{CompleteModel}, the parameters and functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network. In other words, if the $k^{th}$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
