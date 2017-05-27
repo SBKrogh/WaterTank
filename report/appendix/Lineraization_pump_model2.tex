@@ -232,7 +232,7 @@ By inserting the values for the linearized model in \eqref{eq:pumpmodel_lin_tayl
 \subsection*{PI controller}
 
 As it can be seen in \appref{sec:WT_TimeConstant} the time constant of the WT is 1155 seconds. Therefore a controller that can settled within 10 seconds will be considered fast enough for the system.
-Furthermore due to the constraints in \todo{include section ref to upper bound on input ($\bar{u}$ = 0.95),- Simon}, the upper bound of the differential pressure over the main pumps is one 0.95 bar, which is 0.05 bars below the highest measurable differential pressure, see \citep{grunnn_psi_diff} "DPI, 0 - 1.0 bar". Therefore the overshoot and steady state error should not exceed 5\% of the reference value as this will saturate the differential sensors.
+Furthermore the input to the pumps have to be within 0 - 1.0 bar, due to saturation, see \citep{grunnn_psi_diff} "DPI, 0 - 1.0 bar". Due to this constraints, the upper bound of the differential pressure over the main pumps is set to 0.95 bar, which is 0.05 bars below the maximum. Therefore the overshoot and steady state error should not exceed 5\% of the reference value as this will saturate the differential sensors.
 The transfer function for a PI controller can be described by \eqref{eq:PI_equation}
 
 \begin{equation}
