@@ -1,0 +1,15 @@
+\chapter{Control System Implementation}
+\label{implementation_of_controller}
+
+This chapter will explain how the controller designed in \chapref{Controller} is implemented in MATLAB Simulink.
+
+\section{}
+The MPC controller is implemented in MATLAB Simulink, which is connected to the model as shown if \figref{fig:control_sketch}:
+\begin{figure}[H]
+\centering
+\input{report/tikz/Control_Layout.tex} 
+\caption{Sketch of the control implementation.}
+\label{fig:control_sketch}
+\end{figure}
+
+In order to solve the MPC and find a minimum for the problem specified in \eqref{min_func_MPC} MATLAB quadratic solver, \textit{quadprog}, is used. This solver, solves the preceding problem subject to the specified constraints and restrictions set to the convex function. The interior-point-convex algorithm is chosen to carry out the calculation of the control inputs. 
