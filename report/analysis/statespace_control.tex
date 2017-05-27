@@ -215,17 +215,18 @@ The dynamics of the water distribution system is described. In order to use this
 
 \begin{equation}
 \Delta \dot{\hat{p}}_{wt} \approx  \frac{\Delta \hat{p}_{wt}[k+1] - \hat{p}_{wt}[k]}{T_s} 
- \label{statespace_discrete_state}
+ \label{statespace_discrete_state1}
 \end{equation}
 
 In order to carry out the discretization on the model, the time constant of the dynamics has to be considered which is the time constant of the first order system. Recalling the dynamic equation:
 
-\begin{equation*}
+\begin{equation}
 \Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
- \label{statespace_control_sys_state_22}
-\end{equation*}
+\label{eq:cons_model_}
+\end{equation}
 
-the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. The dynamics are described by the system constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
+the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. The frequency component is described by the constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
+
 \begin{equation}
   \begin{split}
   s\Delta \dot{\hat{p}}_{wt} &= A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} \\
@@ -244,13 +245,45 @@ T_s = \frac{1}{2A_c}
 
 However this is the minimum for fulfilling the Nyquist criterion. Therefore, for this project a sample frequency ten times faster has been chosen.
 
-The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
+% The final discretized state-space model is stated here with respect to the sampling time $T_s$: 
 
- \begin{equation}
-\Delta \hat{p}_{wt} [k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
+%  \begin{equation}
+% \Delta \hat{p}_{wt} [k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
+%  \label{statespace_discrete_state}
+% \end{equation}
+% \todo{Tom: How does the sampling time affect this equation?, Solution: maybe we have to put this equation into the general expression in the start of this section? By doing so we can see that the state space matrix Ac }
+
+By inserting \eqref{statespace_discrete_state1} into \eqref{eq:cons_model_}, the discretization of the continues model can be derived as
+
+\begin{equation}
+  \begin{split}
+  \Delta\dot{\hat{p_{wt}}}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c\hat{u}}T_s+\bm{E_c\hat{d}}T_s
+  \end{split}
+  \label{eq:dist_statespace_forward_euler}
+\end{equation}
+
+where the discrete model will be defined as see in \eqref{statespace_discrete_state}.
+
+\begin{equation}
+\Delta\dot{\hat{p_{wt}}}[k+1]  = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
-\todo{Tom: How does the sampling time affect this equation?, Solution: maybe we have to put this equation into the general expression in the start of this section? By doing so we can see that the state space matrix Ac }
+
+\begin{minipage}[t]{0.2\textwidth}
+Where\vspace{-3mm}
+\hspace*{8mm}\begin{equation*}
+\begin{split}
+ \hspace*{8mm} A_d &= A_cT_s+1  \\
+ \hspace*{8mm} \bm{B_d} &= \bm{B_c}T_s\\
+ \hspace*{8mm} \bm{E_d} &= \bm{E_c}T_s
+ \end{split}
+ \end{equation*}
+\end{minipage}
+\begin{minipage}[t]{0.78\textwidth}
+\vspace{2mm}\hspace*{8mm}is the discrete state matrix, \\
+\vspace{2mm}\hspace*{8mm}is the discrete input matrix, \\
+\hspace*{8mm}is the discrete disturbance matrix. \\ 
+\end{minipage}
 
 and the output equation:
 
@@ -261,22 +294,37 @@ and the output equation:
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
-\hspace*{8mm} $\bm{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\bm{E_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
-\hspace*{8mm} $\bm{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
-\newline
-\hspace*{8mm} $\bm{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
-\newline
-\hspace*{8mm} $\bm{K_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ 
+\hspace*{8mm} $\bm{C_d}$ \\
+\hspace*{8mm} $\bm{D_d}$ \\\\
+\hspace*{8mm} $\bm{K_d}$ 
 \end{minipage}
 \begin{minipage}[t]{0.78\textwidth}
 \vspace*{2mm}
-is the discrete state matrix, \\
-is the discrete input matrix, \\
-is the discrete disturbance matrix, \\ 
-is the discrete output matrix, which is the same as in continuous case \\
-is the discrete feed-forward matrix, which is the same as in continuous case \\
-is the discrete disturbance matrix affecting the output, which is the same as in continuous case \\
+is the discrete output matrix, which is the same as in continuous case, \\
+is the discrete feed-forward matrix, which is the same as in continuous case, \\
+is the discrete disturbance matrix affecting the output, which is the same as in continuous case. \\
 \end{minipage}
+
+
+
+% \begin{minipage}[t]{0.20\textwidth}
+% Where\\
+% \hspace*{8mm} $A_d \in \mathbb{R}^{(1 \times 1)}$ \\
+% \hspace*{8mm} $\bm{B_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
+% \hspace*{8mm} $\bm{E_d} \in \pmb{\mathbb{R}}^{(1 \times 2)}$ \\
+% \hspace*{8mm} $\bm{C_d} \in \pmb{\mathbb{R}}^{(2 \times 1)}$ \\
+% \newline
+% \hspace*{8mm} $\bm{D_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ \\
+% \newline
+% \hspace*{8mm} $\bm{K_d} \in \pmb{\mathbb{R}}^{(2 \times 2)}$ 
+% \end{minipage}
+% \begin{minipage}[t]{0.78\textwidth}
+% \vspace*{2mm}
+% is the discrete state matrix, \\
+% is the discrete input matrix, \\
+% is the discrete disturbance matrix, \\ 
+% is the discrete output matrix, which is the same as in continuous case \\
+% is the discrete feed-forward matrix, which is the same as in continuous case \\
+% is the discrete disturbance matrix affecting the output, which is the same as in continuous case \\
+% \end{minipage}
 
