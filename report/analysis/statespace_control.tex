@@ -259,7 +259,7 @@ By inserting \eqref{eq:cons_model_} into \eqref{statespace_discrete_state1}, the
 
 \begin{equation}
   \begin{split}
-  \Delta\dot{\hat{p_{wt}}}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c}T_s \bm{\hat{u}}+\bm{E_c} T_s \bm{\hat{d}}
+  \Delta p_{wt}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c}T_s \bm{\hat{u}}+\bm{E_c} T_s \bm{\hat{d}}
   \end{split}
   \label{eq:dist_statespace_forward_euler}
 \end{equation}
@@ -267,7 +267,7 @@ By inserting \eqref{eq:cons_model_} into \eqref{statespace_discrete_state1}, the
 where the discrete model is defined as seen in \eqref{statespace_discrete_state}.
 
 \begin{equation}
-\Delta\dot{\hat{p_{wt}}}[k+1]  = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
+\Delta p_{wt}[k+1] = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
  \label{statespace_discrete_state}
 \end{equation}
 

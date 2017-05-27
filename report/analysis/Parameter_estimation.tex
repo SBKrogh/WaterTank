@@ -60,23 +60,25 @@ The aim of the parameter identification is therefore to obtain a minimum differe
 %\end{equation}
 \todo{Explain this better and correct notation!!!}
  \begin{equation}
- \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y(B^T z)}_{sys} - \bm{y(B^T z)}_{model}\big)^T  \big(\bm{ y(B^T z)}_{sys} - \bm{ y(B^T z)}_{model}\big)
-  \label{ObjectiveFunction}
+ \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y_{s}(B^T z)} - \bm{y_{m}(B^T z)} \big)^T  \big(\bm{ y_{s}(B^T z)} - \bm{ y_{m}(B^T z)}\big)
+  \label{ObjectiveFunction11}
  \end{equation}
  
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $y(\bm{z})_{sys}$ \\
-\hspace*{8mm} $y(\bm{z})_{sys}$ \\
-\hspace*{8mm} $y_{sys}(z_i)$ 
+\hspace*{8mm} $\bm{y_{s}(B^T z)}$ \\
+\hspace*{8mm} $\bm{y_{m}(B^T z)}$ \\
+\hspace*{8mm} $\mathcal{\bm{X}}$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the pressure measurement over the $i^{th}$ edge on the system,\\
-is the $i^{th}$ pressure in the output vector in the model .
+is the vector of pressure measurements on the system,\\
+is the vector of outputs in the model, \\
+is the term defined in \eqref{ObjectiveFunction11}.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
+\textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \textcolor{White}{te}$\unit{bar}$
 \end{minipage}
