@@ -60,7 +60,7 @@ The aim of the parameter identification is therefore to obtain a minimum differe
 %\end{equation}
 \todo{Explain this better and correct notation!!!}
  \begin{equation}
- \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y_{s}(B^T z)} - \bm{y_{m}(B^T z)} \big)^T  \big(\bm{ y_{s}(B^T z)} - \bm{ y_{m}(B^T z)}\big)
+ \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y_{s}(B^T z)} - \bm{y_{m}(B^T z)} \big)^T  \big(\bm{ y_{s}(B^T z)} - \bm{ y_{m}(B^T z)\big)}\Big)
   \label{ObjectiveFunction11}
  \end{equation}
  
@@ -142,7 +142,7 @@ outputs and the reference point can be set, resulting in:
 \subsection{Estimation method} 
 \label{MatlabScript}
 
-In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box toolbox\cite{MatlabGreyBox}, is used. This toolbox 
+In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box (MNGB) toolbox\cite{MatlabGreyBox}, is used. This toolbox 
 estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
 Thereby, a nonlinear model has to be designed to complete the simulation. 
 
@@ -150,18 +150,18 @@ The comparison between the test setup measurements and the estimated data is don
 plot, the normalized root mean square (NRMSE) measure is also added which measures the goodness of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
 
 \begin{equation}
-  fit = 100 \bigg(1 - \frac{||y - \hat{y}||}{||y - mean(y)||}\bigg)
+  fit = 100 \bigg(1 - \frac{||y_s - y_m||}{||y_s - mean(y_s)||}\bigg)
   \label{fitequation}
 \end{equation} 
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $y$ \\
-\hspace*{8mm} $\hat{y}$ \\
+\hspace*{8mm} $y_s$ \\
+\hspace*{8mm} $y_m$ \\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the validation data, \\
+is the validation data, the outcome of the measurement \\
 is the output of the model\\
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}

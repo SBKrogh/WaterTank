@@ -145,9 +145,7 @@ OD_{e22},\hspace{4pt}
 \end{bmatrix} ^T
 \end{equation}
 
-It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model being described here and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input components. It is also important to mention that in the input vector, the differential pressure inputs to the main pumps are taken into account with a negative sign.
-\\
-Considering the input vector, the mapping is taken into account with this negative sign, since the mapping is only for the pumps, not for the valves. Therefore the negative pressure can be taken into account with the following mapping: 
+It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input terms. In order to build up such an input vector, linear mapping between the corresponding edges and the input is required. The vectorfield describing the pumps, $\alpha$ can be used to show this mapping, although it is important to mention that $\alpha$ consists of the nonlinear terms of the pump pressure contribution. However, the terms are non-zero at edges where a pump is present, therefore it is only used to show how the resulting differential pressure contribution of these terms can be mapped into $u$.
 
 \begin{equation}
 \bm{B_1} \alpha(\omega, q) = \bm{B_1} \bm{G_p} \bm{u}
