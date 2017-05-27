@@ -370,15 +370,26 @@ sharp turns in pipelines. The coefficient for the losses in elbows is determined
 In \eqref{DarcyWeisbach} and \eqref{Formloss}, the head loss of the friction losses are determined. These terms are introduced in \eqref{PressureDrop} in terms of pressure. The friction factors are multiplied by the water density and gravity. Nevertheless, the head loss due to elevation has to be added in the model, yielding the final expression:
 
 \begin{equation}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta z \rho 
-   g
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - h_f \rho g - h_m \rho g - \Delta b \rho g
 \end{equation}
+ \begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\Delta b$ \\
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+the head loss due to elevation.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{m}$
+\end{minipage}
 
 Substituting the terms $h_f$ and $h_m$ with their respective values:
 
 \begin{equation}
 \label{FinalPipeModel}
-   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fL}{\pi^{2}gD^5} \rho g  |q| q - k_f \frac{8}{\pi^2gD^4} \rho g |q| q - \Delta z \rho g 
+   \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fL}{\pi^{2}gD^5} \rho g  |q| q - k_f \frac{8}{\pi^2gD^4} \rho g |q| q - \Delta b \rho g 
 \end{equation}
 
 \eqref{FinalPipeModel} describes the rate of flow in terms of pressure losses due to pressure change, frictions and elevation. A more compact form can be expressed for the $k$th component as such:
