@@ -149,12 +149,12 @@ There is no need to define a relation with a referent point for the WT node, sin
 
 Obtaining a precise model from parameter estimation that describes all aspects of the system well, has been proven challenging. Thus a number of different parameter estimation approaches concerning estimation parameters and data choices has been preformed.   
 
-The first attempt is based on relative short data set with both valve and pump input variations and a complete duration of approximately 15 minutes. Here the $24$ terms defining the pressure across the unknowns edges are estimated. 
+The first attempt is based on relative short data set with both valve and pump input variations and a complete duration of approximately 15 minutes. Here the $24$ terms defining the pressure across the unknowns edges are estimated. In \appref{LinResults_worst} the results of the estimation are presented.
 From the tests a different behavior between the model and the data from the setup is observed at some time intervals. This dissimilar behavior showing up at some time samples deems it incorrect to be used in a model based control scheme. 
 
 In light of the above considerations, a different approach for the parameter estimation is attempted. In \secref{estimateParameters} it has been described how the unknown pressures across the edges are estimated in order to build up the state-space matrices of the system. Nonetheless, as the estimation did not succeed it has been decided to estimate the final values of the state-space matrices stated in \eqref{statespace_1}, where $M$ is a symmetric matrix.
 
-Altogether these matrices sum up to 28 unknown parameters which are the ones to be estimated, furthermore is the data duration extended to approximately 38 minutes to capture more of the system dynamics. In \appref{LinResults} the results of this estimation technique is displayed. 
+Altogether these matrices sum up to 28 unknown parameters which are the ones to be estimated, furthermore is the data duration extended to approximately 38 minutes to capture more of the system dynamics. In \appref{LinResults_2} the results of this estimation technique is displayed. 
 The obtained model now fits the behavior of the system during the whole simulation data and the fit is significantly better than the previous model. However is the model fit with note 16 still not satisfying. 
 Furthermore are the model dynamics of the WT to fast compared to real world measurements found in \appref{sec:WT_TimeConstant}. The time constant of the WT level is approximately 20 minutes based on step response measurements, where the obtained model based on the parameter estimated matrices has a settling time under 15 seconds.
 
