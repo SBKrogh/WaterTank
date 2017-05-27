@@ -1,8 +1,8 @@
-\section{Water tower time constant}
+\section{System time constant}
 \label{sec:WT_TimeConstant}
 
 \subsection*{Purpose:}
-The purpose of this test is to determine the time constant and settling time of WT.
+The purpose of this test is to determine the time constant and settling time of the water distribution network.
 
 
 %\subsection{One clamp push} % \label{app:...}
@@ -16,7 +16,7 @@ The following procedure was made for finding the time constant:
 \begin{enumerate}
 \item Wait for the system to get into a steady state position with the following system setup: valve opening at $0.7 \%$ for all consumer valves and differential pressure over pumps at $C2 = C16 = 0.2 Bar$, $C18 = 0.1 Bar$, $C25 = 0.25 Bar$.
 \item Increase the differential pressure over C2 with 0.1 Bar.
-\item Wait 1.5 hour.
+\item Wait 1.5 hour for the level in the WT to settle.
 \end{enumerate}
 
 
@@ -25,34 +25,34 @@ The measurements data can be found on the attached storage under the path: \path
 
 \subsection*{Results:}
 
-The time constant of the WT can be found through the linear differential equation shown in \eqref{statespace_4}. By Laplace transform and solving for the input output relation, the standard form of the transfer function for the WT can be derived as see in \eqref{eq:std_trans_tank_time}
+The time constant of the system can be found through the linear differential equation shown in \eqref{statespace_4}. By Laplace transform and solving for the input output relation, the standard form of the transfer function for the system can be derived as see in \eqref{eq:std_trans_tank_time}
 
 \begin{equation}
 	\begin{split}
-	&\Delta \dot{p}_{WT} = A_p \Delta \hat{p}_{WT}  + \pmb{B_p}\pmb{\hat{u}}\\
-	&s\Delta p_{WT}(s) = A_p \Delta \hat{p}_{WT}(s)  + \pmb{B_p}\pmb{\hat{u}(s)}\\
-	&\frac{\Delta p_{WT}(s)}{u(s)} = \frac{B}{s-A} = \frac{\frac{B}{A}}{\frac{1}{A}s + 1}
+	&\Delta \dot{p}_{wt} = A_p \Delta \hat{p}_{wt}  + \pmb{B_p}\pmb{\hat{u}}\\
+	&s\Delta p_{wt}(s) = A_p \Delta \hat{p}_{wt}(s)  + \pmb{B_p}\pmb{\hat{u}(s)}\\
+	&\frac{\Delta p_{wt}(s)}{u(s)} = \frac{B}{s-A} = \frac{\frac{B}{A}}{\frac{1}{A}s + 1}
 	\end{split}
 	\label{eq:std_trans_tank_time}
 \end{equation}
 
-From the denominator, the time constant of the WT can be directly read as seen in \eqref{eq:direct_time_constant}
+From the denominator, the time constant of the system can be directly read as seen in \eqref{eq:direct_time_constant}
 
 \begin{equation}
 	\tau s + 1
 	\label{eq:direct_time_constant}
 \end{equation}
 
- Since A in \eqref{statespace_4} is a constant, due to the tank only having one state, the WT has one time constant. However the unit of A is in $[\frac{m^3}{h}]$ and needs to be convert to seconds. \todo{Convert from $m^3/h$ and see how much it fits compared to the test below - Ignacio}
+ Since A in \eqref{statespace_4} is a scalar, due to the first order model only having one state, the system has one time constant. 
 
-As the dynamics of the WT are described by a first order system, the time constant can be found as the time the system uses to reach $63.2\%$ of the steadystate pressure.
-This pressure at $63.2\%$ of the steadystate values is based on the minimum and maximum pressure values during the step and determined to:
+As the dynamics of the water distribution network are described by a first order system, the time constant can be found as the time the system uses to reach $63.2\%$ of the steady-state pressure.
+This pressure at $63.2\%$ of the steady-state values is based on the minimum and maximum pressure values during the step and determined to:
 
 \begin{equation}
 (0.137 - 0.127)\cdot63.2 \% = 0.0063 \rightarrow 0.127 + 0.0063 = 0.133 Bar 
 \end{equation}
 
-Based on the data is it found that at a pressure of 0.133 bar the time is passed is 1155 seconds corresponding to 19,25 minutes. 
+Based on the data is it determined that at a pressure of 0.133 bar has 1155 seconds passed which corresponds to 19,25 minutes, thus the time constant is determined. 
 On \figref{fig:Test_WT_Timeconstant} the measurement data used to determine the time constant of the WT is shown. A small red dot indicates the time constant for the tank.
 
 \begin{figure}[H]
@@ -65,8 +65,8 @@ On \figref{fig:Test_WT_Timeconstant} the measurement data used to determine the 
 
 \subsection*{Uncertainties of measurement:}
 \begin{itemize}
-\item The settling time for the initial state was not reached after 1.5 hours, which would affect the calculated timeconstant.
+\item The settling time for the initial state was not reached after 1.5 hours, which would affect the calculated time constant.
 \end{itemize}
 
 \subsection*{Conclusion:}
-From this test both the time constant are determined. The results are based on the fact that the WT dynamics can be described by a first order system, thereby is the time constant found by applying a step to the system and determined to be 19,25 minutes. 
+From this test the time constant is determined. The results is based on the fact that the water distribution network dynamics can be described by a first order system, thereby is the time constant found by applying a step to the system and determined to be 19,25 minutes. 
