@@ -1,45 +1,57 @@
-\section{Test of model predictive control}
+\chapter{Thoughts about testing of the model predictive control}
 \label{sec:MPT_test}
 
-In this section, the model predictive controller obtained in \chapref{control_design} is implemented and tested on the water system available at Aalborg university. 
+In this section some considerations about how the controller, designed in \chapref{control_design}, should have been tested on the available test setup in order to verify if the requirements described in \chapref{Requirements_and_constraints} and thus keeping the pressure at each CP above the desired minimum while minimizing the running cost of the system.
 
-\subsection*{Purpose:}
+%\subsection*{Purpose:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The purpose of this test is to verify if the designed controller meets the requirements stated in \chapref{Requirements_and_constraints} and thus keeping the pressure at each CP above the desired minimum while minimizing the running cost of the system.
+The MPC is designed with a receding horizon control with a 24 hour control horizon due to the behavior of the electrical price and the water consumption which both have a periodicity of 24 hours. 
+Based on this, a test conducted over a 24 hour period would allow to investigate the main characteristics of the MPC when price and consumption deviations during a day occur due to the periodicity of the data. The controller will be tested according to the requirements found in \chapref{Requirements_and_constraints}, these are: 
+%\todo{wrong notation and missing requirements}
+\begin{itemize}
+	\item Pressure at CP, $0.08 < \bm{y} < 0.14 \:[\text{bar}]$
+%
+	\item Minimizing the total cost of running the system
+\end{itemize}    
+
+A results of such a test could then be compared to a system without MPC in order to verify if the MPC is apple is capable of saving money, and in what degree.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\subsection{One clamp push} % \label{app:...}
-\subsection*{Test equipment:}
-\begin{itemize}
-\item The water system at Aalborg university [AAU No: 100911]
-\end{itemize}
+% \subsection*{Test equipment:}
+% \begin{itemize}
+% \item The water system at Aalborg university [AAU No: 100911]
+% \end{itemize}
 
-\subsection*{Procedure:}
-The designed MPC controller is tested on the system for a period corresponding to 24 hours. During the test each hour is scaled to 5 minutes in real time as decribed in \chapref{accepttest}. Prediction data of the electrical price is provided to the MPC and described in \secref{sec:cost_fkt}. The consumer behavior, resulting in valve opening, is applied to the system, this data can be found under the path: \path{CD:/Data/MPC test/prediction data}. 
-In order to analyze if the MPC is minimizing the energy consumption of the system, a PI controller is implemented and tested under the same conditions as the MPC.    
+% \subsection*{Procedure:}
+% The designed MPC controller is tested on the system for a period corresponding to 24 hours. During the test each hour is scaled to 5 minutes in real time as decribed in \chapref{accepttest}. Prediction data of the electrical price is provided to the MPC and described in \secref{sec:cost_fkt}. The consumer behavior, resulting in valve opening, is applied to the system, this data can be found under the path: \path{CD:/Data/MPC test/prediction data}. 
+% In order to analyze if the MPC is minimizing the energy consumption of the system, a PI controller is implemented and tested under the same conditions as the MPC.    
 
-\subsection*{Measuring data:}
-The measurements data for the MPC can be found under the path: \path{CD:/Data/MPC test/results}, and the data for PI controller can be found under the path \path{CD:/Data/PI test}. 
+% \subsection*{Measuring data:}
+% The measurements data for the MPC can be found under the path: \path{CD:/Data/MPC test/results}, and the data for PI controller can be found under the path \path{CD:/Data/PI test}. 
 
-\subsection*{Results:}
-The results of the MPC controller:
-\begin{itemize}
-	\item Pma pressures
-	\item WT level
-	\item Running costs
-\end{itemize}	
+% \subsection*{Results:}
+% The results of the MPC controller:
+% \begin{itemize}
+% 	\item Pma pressures
+% 	\item WT level
+% 	\item Running costs
+% \end{itemize}	
 
-The results of the PI controller:
-\begin{itemize}
-	\item Pma pressures
-	\item WT level
-	\item Running costs
-\end{itemize}	
+% The results of the PI controller:
+% \begin{itemize}
+% 	\item Pma pressures
+% 	\item WT level
+% 	\item Running costs
+% \end{itemize}	
 
-Comparison:
+% Comparison:
 
-\subsection*{Uncertainties of measurement:}
-\begin{itemize}
-\item ...
-\end{itemize}
+% \subsection*{Uncertainties of measurement:}
+% \begin{itemize}
+% \item ...
+% \end{itemize}
 
-\subsection*{Conclusion:}
+% \subsection*{Conclusion:}
