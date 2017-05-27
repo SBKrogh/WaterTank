@@ -211,7 +211,7 @@ The continuous state space representation thus given by \eqref{statespace_contro
 \subsection{Discretization of state space model}
  \label{discrete_SS}
  
-The dynamics of the water distribution system is described. In order to use this linear continuous model subjected to MPC, the model needs to be discretized. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{wt}[k]$, $\bm{\hat{u}}[k]$ and $\bm{\hat{d}}[k]$ signals. The method used is forward Euler-method, which can be formulated as follows:
+The dynamics of the water distribution system is described. In order to use this linear model subjected to MPC, the model needs to be discretized. The aim is to have a linear discrete-time state-space model with piecewise constant $\Delta \hat{p}_{wt}[k]$, $\bm{\hat{u}}[k]$ and $\bm{\hat{d}}[k]$ signals. The method used for discretization is forward Euler-method \citep{franklin1994feedback}, which can be formulated as follows:
 
 \begin{equation}
 \Delta \dot{\hat{p}}_{wt} \approx  \frac{\Delta \hat{p}_{wt}[k+1] - \hat{p}_{wt}[k]}{T_s} 
@@ -228,18 +228,20 @@ In order to carry out the discretization on the model, the time constant of the 
 the time constant can be determined by defining the output and input relation between the WT pressure and the inputs to the main pumps. The frequency component is described by the constant $A_c$, see \eqref{eq:time_constnt_first_order_sys}, where the time constant is $\frac{1}{A_c}$.
 
 \begin{equation}
-  \begin{split}
-  s\Delta \dot{\hat{p}}_{wt} &= A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} \\
-  \Delta \dot{\hat{p}}_{wt} &= \frac{B_c\hat{u}+E_c\hat{d}}{s-A_c}
-  \end{split}
+  s\Delta \dot{\hat{p}}_{wt} = A_c \Delta \hat{p}_{wt}  + \bm{B_c} \bm{\hat{u}} + \bm{E_c} \bm{\hat{d}} 
+    \label{eq:time_constnt_first_order_sys1}
+\end{equation}
+
+\begin{equation}
+  \Delta \dot{\hat{p}}_{wt} = \frac{B_c\hat{u}+E_c\hat{d}}{s-A_c}
   \label{eq:time_constnt_first_order_sys}
 \end{equation}
 
 According to the Nyquist-Shannon sampling theorem \citep{franklin1994feedback},
-the sampling frequency have to be twice as fast as the highest frequency that is to be sampled. Therefore the sampling time is defined such that:
+the sampling frequency has to be at least twice as fast as the highest frequency that is to be sampled. Therefore the sampling time is defined such that:
 
 \begin{equation}
-T_s = \frac{1}{2A_c}
+T_s \geq \frac{1}{2A_c}
  \label{sampling}
 \end{equation}
 
@@ -253,16 +255,16 @@ However this is the minimum for fulfilling the Nyquist criterion. Therefore, for
 % \end{equation}
 % \todo{Tom: How does the sampling time affect this equation?, Solution: maybe we have to put this equation into the general expression in the start of this section? By doing so we can see that the state space matrix Ac }
 
-By inserting \eqref{statespace_discrete_state1} into \eqref{eq:cons_model_}, the discretization of the continues model can be derived as
+By inserting \eqref{eq:cons_model_} into \eqref{statespace_discrete_state1}, the discretization of the continues model can be derived as
 
 \begin{equation}
   \begin{split}
-  \Delta\dot{\hat{p_{wt}}}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c\hat{u}}T_s+\bm{E_c\hat{d}}T_s
+  \Delta\dot{\hat{p_{wt}}}[k+1] = (A_cT_s+1)\hat{p}_{wt}+\bm{B_c}T_s \bm{\hat{u}}+\bm{E_c} T_s \bm{\hat{d}}
   \end{split}
   \label{eq:dist_statespace_forward_euler}
 \end{equation}
 
-where the discrete model will be defined as see in \eqref{statespace_discrete_state}.
+where the discrete model is defined as seen in \eqref{statespace_discrete_state}.
 
 \begin{equation}
 \Delta\dot{\hat{p_{wt}}}[k+1]  = A_d \Delta \hat{p}_{wt}[k]  + \bm{B_d} \bm{\hat{u}}[k] + \bm{E_d} \bm{\hat{d}}[k] 
