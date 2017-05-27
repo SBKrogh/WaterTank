@@ -27,12 +27,14 @@
 	$C_H$				&	Hydraulic capacitance								   		& [$m^3/(N/m^2)$]\\
 	$D$					&	Diameter									     			& [$m$]\\
 	$f$					&	Moody friction factor									    & [$\cdot$]\\
+	$f(q,OD)$			&	Pressure drops, due to friction and the WT capacitance		& [$bar$]\\
 	$F$					&	Force									     				& [$N$]\\
 	$g$					&	Acceleration due to gravity									& [$m/s^2$]\\
 	$h$					&	height of the fluid in the water Tower						& [$m$]\\
 	$h_f$				&	Pressure given in head									    & [$m$]\\
 	$h_m$				&	Form loss									    			& [$m$]\\
 	$I$					&	Electric Current 											& [$A$]\\
+	$\bm{\mathcal{I}}$  &	The identity matrix 										& [$\cdot$]\\
 	$J_k$				&	Water inertia of the $k^{th}$ component						& [$kg/m^4$]\\
 	$k_f$				&	Form loss coefficient								    	& [$\cdot$]\\
 	$L$					&	Length									     				& [$m$]\\
@@ -40,6 +42,7 @@
 	$M$					&	Linear momentum									     		& [$kgm/s$]\\
 	$n_i$				&	The $i^{th}$ node of the distribution network     			& [$\cdot$]\\
 	$n_{gl}$			&	Valve characteristic curve factor							& [$\cdot$]\\
+	$OD$				&	The opening 							& [$\cdot$]\\	
 	$p_a$				&	Atmospheric pressure							      		& [$bar$]\\
 	$P_e$				&	Power consumption of the pump					      		& [$W$]\\
 	$\Delta p_k$		&	The pressure drop across the $i^{th}$ component      		& [$bar$]\\
@@ -48,10 +51,13 @@
 	$\bm{Re}$			&	Reynolds Number								     			& [$\cdot$]\\
 	$T$					&	Temperature									     			& [$\degree$]\\
 	$U$					&	Electric voltage 											& [$V$]\\
+	$u(\cdot)$			&	Vector field for inputs pressure drops 						& [$bar$]\\
 	$v$					&	Velocity									     			& [$m/s$]\\
 	$V_t$				&	Volume of the water in the water tower						& [$m^3$]\\
 	$y$					&	The pressure at a critical points							& [$bar$]\\	
+	$z$					&	The flow through the chords									& [$m^3/h$]\\
 	$\alpha_k(\cdot)$	&	The pressure boost given by the	$k^{th}$ pump				& [$bar$]\\
+	$\gamma_k(\cdot)$	&	Function of hydraulic resistance in WT-connection			& [$bar$]\\
 	$\epsilon$			&	Average roughness									     	& [$m$]\\
 	$\zeta$				&	Pressure drop from elevation difference across the $k^{th}$ component	& [$bar$]\\
 	$\eta$				&	The efficiency of the pump								   	& [$\cdot$]\\
@@ -62,18 +68,23 @@
 	$\mu_k(\cdot)$		&	Function of hydraulic resistance in the $k^{th}$ valve		& [$bar$]\\
 	$\nu$				&	Kinematic viscosity									     	& [$kg/ms$]\\
 	$\rho$				&	Density									     				& [$kg/m^3$]\\
-	$\omega_r$			&	Impeller rotational speed									& [$rad/s$]\\
-	
+	$\omega_r$			&	Impeller rotational speed									& [$rad/s$]\\	
 \end{tabular}
 
-\subsection*{Graph representation}
+\subsection*{Graph theory}
 
 \begin{tabular}{l l l} 
 	\textbf{Symbol}		&	\textbf{Description}										& \textbf{Unit}	\\\hline
-	$H$					&	The incidence matrix									    & [$m^2$]\\
-	$\omega_r$			&	Impeller rotational speed									& [$rad/s$]\\
-	
-\end{tabular}
+	$H$					&	The incidence matrix									    & [$\cdot$]\\
+	$H_c$				&	The incidence matrix corresponding to the chords		    & [$\cdot$]\\
+	$H_f$				&	The incidence matrix corresponding to the spanning tree		& [$\cdot$]\\
+	$\mathcal{G}$		&	The system Graph											& [$\cdot$]\\
+	$T$					&	The spanning tree											& [$\cdot$]\\
+	$l$					&	The number of chords										& [$\cdot$]\\
+	$B$					&	Cycle matrix 												& [$\cdot$]\\
+	$B_c$				&	Cycle matrix corresponding to the chords				    & [$\cdot$]\\
+	$B_f$				&	Cycle matrix corresponding to the spanning tree				& [$\cdot$]\\
+\end{tabular}	
 % \section*{Mathematical tools}
 % vectorfields
 % \\

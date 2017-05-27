@@ -103,7 +103,7 @@ A new parameter, $\theta_{max}$, is introduced which describes the maximum angle
 
 \begin{equation}
 \label{ValveAngle}
- \gamma =  \frac{\theta_{OD}-\theta_{off}}{\theta_{max}-\theta_{off}}
+ \kappa =  \frac{\theta_{OD}-\theta_{off}}{\theta_{max}-\theta_{off}}
 \end{equation}
 
   \begin{minipage}[t]{0.20\textwidth}
@@ -127,9 +127,9 @@ In case of the water distribution system \eqref{kvFunction} modifies to:
 		\left\{
 		\begin{array}{ll}
 		
-		k_{v100} \, \gamma \, n_{gl} \, e^{(1-n_{gl})} \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
+		k_{v100} \, \kappa \, n_{gl} \, e^{(1-n_{gl})} \text{,} & \mbox{ if } 	\kappa \leq \frac{1}					{n_{gl}} \text{;}
 \\
-		k_{v100} \, e^{(n_{gl} \,(\gamma-1))} \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
+		k_{v100} \, e^{(n_{gl} \,(\kappa-1))} \text{,} & \mbox{ if } \kappa \geq \frac{1}{n_{gl}}
 
 		\end{array}
 		\right.
@@ -142,9 +142,9 @@ As it is shown, the conductivity function of the valve consists of two types of 
 		\left\{
 		\begin{array}{ll}
 		
-		k_v(\theta_{OD}) \sim linear() \text{,} & \mbox{ if } 	\gamma \leq \frac{1}					{n_{gl}} \text{;}
+		k_v(\theta_{OD}) \sim linear() \text{,} & \mbox{ if } 	\kappa \leq \frac{1}					{n_{gl}} \text{;}
 \\
-		k_v(\theta_{OD}) \sim exponential() \text{,} & \mbox{ if } \gamma \geq \frac{1}{n_{gl}}
+		k_v(\theta_{OD}) \sim exponential() \text{,} & \mbox{ if } \kappa \geq \frac{1}{n_{gl}}
 
 		\end{array}
 		\right.

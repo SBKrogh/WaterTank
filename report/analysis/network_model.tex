@@ -110,7 +110,7 @@ Before writing up an expression that describes all parts however, the component 
 \todo{B1 - B0 multiplication -> very important to describe! }
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tank} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
+\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tower} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
 \hspace{-0.1cm}
@@ -141,7 +141,10 @@ Gathering the functions of the pipes, valves, the WT and the WT-connection the, 
   \label{ComponentFunction}
 \end{equation}
 
-Where\\
+Where $f(\bm{q}, \bm{OD}) $ is a vector field describing the pressure drops, due to friction and the WT capacitance, across each corresponding component. 
+
+
+Where
 \begin{align}
 f_k &= \lambda_k (q_k) + \zeta_k  \hskip 1cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
 f_k &= \mu_k (q_k, OD_{k})  \hspace{0.85cm} \text{for}\:i = 13,15,20,22\\
@@ -237,7 +240,7 @@ Thus, \eqref{Jequation} is positive definite and it provides a sufficient condit
 Therefore, the system can be described as follows
 
 \begin{equation}
-   \bm{\dot{z}} = -\mathcal{J}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ]
+   \bm{\dot{z}} = -\bm{\mathcal{J}}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ]
    \label{ParatModelFinal}
  \end{equation}
 
@@ -255,17 +258,17 @@ Therefore, the system can be described as follows
 The flow rate through the chords is found in \eqref{ParatModelFinal}, thus an expression for $ \bm{\Delta p} $ can be expressed by plugging the flow rate into \eqref{ChordsModel}: 
 
 \begin{equation}
- \bm{\Delta p} =  -\bm{J} \bm{B^T}\mathcal{J}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ] + f(\bm{B^T}\bm{z},\bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
+ \bm{\Delta p} =  -\bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ] + f(\bm{B^T}\bm{z},\bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
   \label{PressureLarge}
  \end{equation}
  
 Writing in short form:
  
  \begin{equation}
-  \bm{\Delta p} = (\mathcal{I} - \bm{J} \bm{B^T}\mathcal{J}^{-1} ) f(\bm{B^T}\bm{z}, \bm{OD}) - (\mathcal{I} + \bm{J} \bm{B^T}\mathcal{J}^{-1} ) \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
+  \bm{\Delta p} = (\bm{\mathcal{I}} - \bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} ) f(\bm{B^T}\bm{z}, \bm{OD}) - (\bm{\mathcal{I}} + \bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} ) \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
   \label{PressureShort}
  \end{equation}
 
-a general form of the pressure across all elements of the network is obtained. 
+a general form of the pressure across all elements of the network is obtained. $\bm{\mathcal{I}}$ is the identity matrix. 
 
 
