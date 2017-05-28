@@ -1,17 +1,8 @@
 \subsection{Complete component model}
 \label{CompleteSystemModel}
-Gathering the pressure drops across each type of component in the system, a complete system model can be obtained. This model includes the pipe, valve, pump elements and the WT. 
+Gathering the pressure drops across each type of component in the system, a complete system model is obtained.
 
-The model of the WT is described by a first order differential equation, consisting of the first time derivative of the pressure drop. The final expression is shown in \eqref{CompleteWTModel}:
-
-\begin{equation}
-  \label{CompleteWTModel}
-  \Delta \dot{p}_{wt,k} = \frac{1}{C_{H,k}} q_k 
-\end{equation}
-
-Although \eqref{CompleteWTModel} includes indexing for the pressure drops across the WTs, it is worth mentioning that the water distribution system consists of only one WT.
-\\
-The complete model consists of the pipe model, \eqref{CompactValveModel}, the valve model, \eqref{eq:PumpModel}, the pump model and the WT, \eqref{CompleteWTModel}. For the pressure drop across the $k^{th}$ component the following expression can be written: 
+The complete component model consists of the pipe model, valve model, pump model and the WT, see \textit{Equation (\itref{FinalPipeModelSimplified}, \itref{CompactValveModel}, \itref{eq:PumpModel}, \itref{CompleteWTModel})}. For the pressure drop across the $k^{th}$ component the following expression can be written: 
 
 %\begin{equation}
 %\label{CompletePressure}
@@ -25,18 +16,18 @@ The complete model consists of the pipe model, \eqref{CompactValveModel}, the va
 \Delta p_k = \underbrace{\lambda_k (q_k) + \zeta_k + J_k \dot{q_k}}_\text{Pipe} + \underbrace{\mu_k (q_k, OD)}_\text{Valve} - \underbrace{\alpha_k(\omega_k,q_k)}_\text{Pump} + \underbrace{\Delta p_{wt,k}}_\text{Water tower}
 \end{equation}
 
-The complete component model, \eqref{CompleteModel}, is used to represent the pressure loss or contribution across each component. In order to describe every part of the system by \eqref{CompleteModel}, the parameters and functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network. In other words, if the $k^{th}$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
+The complete component model, \eqref{CompleteModel}, is used to represent the pressure loss or contribution across each component. In order to describe every part of the system by \eqref{CompleteModel}, the functions corresponding to the specific part of the system are selected. The remaining expressions are set to zero if the model does not match the specific part of the network e.g. if the $k^{th}$ element of the system is a pump, then only $\alpha_k(u_k)$ is taken into account and the rest of the expressions are set to zero. 
 %At the time of modelling the components, the proper components will be annulled to zero. 
 \tabref{tab:parametrization_model} shows the parametrization of the system: 
 
 \begin{figure}[H]
 	\centering
 \begin{tabular}{c|cccccc} 
-		\bfseries Component    &     $J_k$  &$\lambda_k$    &    $\mu_k$    &   $\alpha_k$   &  $\zeta_k$   &  $\Delta p_{WT;k}$ \\\hline
+		\bfseries Component    &     $J_k$  &$\lambda_k$    &    $\mu_k$    &   $\alpha_k$   &  $\zeta_k$   &  $\Delta p_{wt,k}$ \\\hline
 		Pipe			  	   &     $J_k$  &$\lambda_k$    &    0          &   0            &  $\zeta_k$   &  0	    			\\ 
 		Valve       	       &     0      &0              &    $\mu_k$    &   0 		     &  0    		&  0					\\ 
-		Pump 		    	   &     0      &0              &    0          &   $\alpha_k$   &  0    		&  0	    			\\
-		Water tower 	   	   &     0      &0              &    0          &   0            &  0    		&  $1$	
+		Pump 		    	   &     0      &0              &    0          &   $-\alpha_k$   &  0    		&  0	    			\\
+		Water tower 	   	   &     0      &0              &    0          &   0            &  0    		&  $\Delta p_{wt,k}$	
 		%\Delta p_{WT;k}    
 \end{tabular}
 \captionof{table}{Complete model parametrization.}
@@ -49,12 +40,12 @@ The complete component model, \eqref{CompleteModel}, is used to represent the pr
 
 During the derivation of the dynamic model, the units of the physical variables are considered as pascals and seconds. The flow will however be significantly small compared to the pressure if these SI-units are kept.
 
-The pressure sensors fitted on the test setup can measure up to 0.16 bar equal to $18 \cdot 10^3$ Pascals according to the data sheet found at \path{CD:/References/t40.4327da}. Inserting this maximum measurable pressure in the fully open valve model given by \eqref{CompleteValveModel} and setting $k_v=1$ yields a maximum flow of $1.11 \cdot 10^{-4} [m^3/s]$ equal to $0.4 [m^3/h]$. 
-Therefore a unit conversion is carried out from Pascal[Pa] to [bar] and from seconds[s] to hours[h] resulting in numerically closer flow and pressure values. 
+The pressure sensors fitted on the test setup can measure up to 0.16 [bar] equal to $18 \cdot 10^3$ [Pa] according to the data sheet found at \path{CD:/References/t40.4327da}. Inserting this maximum measurable pressure in the fully open valve model given by \eqref{CompleteValveModel} and setting $k_v=1$ yields a maximum flow of $1.11 \cdot 10^{-4} [m^3/s]$ equal to $0.4 [m^3/h]$. 
+Therefore an unit conversion is carried out from [Pa] to [bar] and from seconds[s] to hours[h] resulting in numerically closer flow and pressure values. 
 
-Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one bar \cite{keller}. Furthermore the pressure sensors are set up to provide measurements in bar and with the conversion the data can be used without further scaling.  
+Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one [bar] \cite{keller}. Furthermore, the pressure sensors are set up to provide measurements in [bar] and with the conversion the data can be used without further scaling.  
 
-In addition, the pump equation, see \eqref{eq:PumpModel}, is given by a set of parameters which values are calculated for $[m^3/h]$ flow conditions and [Par] pressure conditions. 
+In addition, the pump equation, see \eqref{eq:PumpModel}, is given by a set of parameters which values are calculated for $[m^3/h]$ flow conditions and [bar] pressure conditions. 
 
 
 %During the derivation of the dynamic model, the unit of the physical variables are considered as pascals and seconds. However, it is concluded in a later chapter that the flow is significantly small compared to the pressure if the SI-units are kept. Therefore a unit conversion is carried out from Pascal[Pa] to [bar]s and from seconds[s] to hours[h]. \todo{we need to ref to the chapter where we conclude this or then we need a source} Another reason which makes this conversion reasonable is that the conductivity function, $k_{v100}$ in \secref{OD}, is derived under the condition that the pressure drop is one bar \cite{keller}. The time scaling is due to conventions. Among the research community in hydraulics, a convenient way to handle the volumetric flow is in $[m^3/h]$ instead of $[m^3/s]$. 
@@ -62,5 +53,5 @@ In addition, the pump equation, see \eqref{eq:PumpModel}, is given by a set of p
 The detailed derivation of the unit conversion can be found in \appref{unitCON}. The result is stated here: 
 
 \begin{equation}
-   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \Delta \frac{p}{10^5} - \Big(\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}\Big) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z_h \rho g}{10^5}
+   \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \frac{\Delta p}{10^5} - \Big(\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}\Big) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z_h \rho g}{10^5}
 \end{equation}
