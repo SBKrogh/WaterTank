@@ -11,13 +11,12 @@
 
 
 
-This project covers the modelling and predictive control of a water distribution network with the aim of minimizing energy and economic cost. The system consists of four pumps and a water tower.\\
-At first a non-linear model of the components and the dynamics of the system are modelled based on a graph-based approach which leads to a state space representation of the whole network.\\ 
-System identification is carried out on the non-linear model due to the uncertain parameters of the pipe components, which showed bad results. The non-linear model is linearized and a new parameter estimations is done, which shows better results.\\
-A model predictive controller is designed to minimize the running cost of the linearized model while maintaining pressure, upper and lower bound constraints for the system.\\
-Furthermore, four PI controllers are designed to controller the pumps in the system. Two of which are to make a constant pressure lift where the last two are to follow the reference set by the model predictive controller. \\
-Simulations of the controller shows, when energy prices increases the pressure reference are also increased, which is not expected.\\
-At the end a discussion and conclusion is made, with suggestion on what should be edited to get the implementation of the controller to work.  
+This project covers the modelling and predictive control of a water distribution network with the aim of minimizing economic cost. The system consists of four pumps and a water tower.\\
+At first a non-linear model of the components and the dynamics of the system is modelled with a graph-based approach.\\ 
+System identification is carried out on the non-linear model due to the uncertainties in the network. The non-linear model is however linearized and a new parameter estimation is carried out with acceptable results. \\
+A model predictive controller is designed to minimize the running cost of the linearized model subject to constraints based on a real-world test system. Furthermore, PI controllers are designed to control the system with the reference set by the MPC. \\
+Verification of the controller is attempted by simulation.\\
+At the end, a discussion and conclusion is made. 
 
 
 
