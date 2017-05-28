@@ -1,15 +1,15 @@
 \section{Simplification and electrical analogy}  
 \label{SystemModel}
 
-After deriving the dynamics of all elements in the network, the complete system can be drawn. In \appref{systemdiagram}, the topology of the test system is described in detail. In the following section, all conclusions and notations are based on the system diagram placed in the appendix. 
+After deriving the dynamics of all elements in the network, the complete system is drawn. In \appref{systemdiagram}, the topology of the test system is described in detail. In the following section, all conclusions and notations are based on the system diagram placed in the appendix. 
 
 The way of modelling a hydraulic system is in some way analogous to an electric circuit. Hydraulic components can be represented as electronic equivalents with some restrictions. It should be emphasized that in hydraulic networks there are not such phenomenon as magnetic flux. 
 \\
-In the block diagram of the system, nodes are introduced which represent different potential points in the system. This is equivalent to hydraulic pressures. Nodes represent points in the system where pressure have different values due to the pressure drop across the elements e.g pipes, valves and pumps, placed between them. These points represent interconnection between hydraulic components and take into account the fact that each individual component in the system has an effect on the pressure drop across their corresponding endpoints.
+In the block diagram of the system, nodes are introduced which represent different potential points in the system. This is equivalent to hydraulic pressures. Nodes represent points in the system where pressure have different values due to the pressure drop across the elements e.g. pipes, valves and pumps, placed between them. These points represent interconnection between hydraulic components and take into account the fact that each individual component in the system has an effect on the pressure drop across their corresponding endpoints.
 \\
-In the network, volumetric flow is equivalent to current and the quantity of water has similar representation as charge in an electric circuit. Again, it should be noted that e.g. the water quantity cannot be affected by magnetic fields, therefore the word: similar.
+In the network, volumetric flow is equivalent to current and the quantity of water has similar representation as charge in an electric circuit. 
 \\ 
-Although nodes can be placed across all the component endpoints, some simplifications are introduced in the network. These simplifications do not change the way how the system is described. There are two different types of simplification in the network. %For a better transparency, these parts of the system are shown in \figref{fig:subsys_1} and \figref{fig:subsys_2}: 
+Although nodes can be placed across all the component endpoints, some simplifications are introduced in the network. These simplifications do not change the way the system is described. There are two different types of simplifications in the network. %For a better transparency, these parts of the system are shown in \figref{fig:subsys_1} and \figref{fig:subsys_2}: 
 
 %%picture of test system
 %\begin{figure}[H]
@@ -26,7 +26,7 @@ Although nodes can be placed across all the component endpoints, some simplifica
 	  \label{fig:subsys_1}
 \end{figure}
 
-The WT is connected to the rest of the system with three components, a pump, $C_{32}$, and two valves. This is shown in \figref{fig:subsys_1}, where the components are shown between $n_3$ and $n_{18}$ which also connects the WT to the system. In this particular case the pump is turned off, however contributes to the pressure drop due to its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead the series connection is seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pump, \eqref{eq:PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega_r = 0$:
+The WT is connected to the rest of the system with three components, a pump, $C_{32}$, and two valves. This is shown in \figref{fig:subsys_1}, where the components are shown between $n_3$ and $n_{18}$, which also connects the WT to the system. In this particular case the pump is turned off, however contributes to the pressure drop due to its resistance. The same can be said for the valves, except that they are fully open at all time but they modify the flow. Extra nodes are not introduced between the valves and the pump, instead the series connection is seen as one component. This can be modelled by lumping the resistance of the valve, \eqref{CompleteValveModel}, into the model of the pump, \eqref{eq:PumpModel}, when the rotational speed is zero. Thus the following model yields for the case when $\omega_r = 0$:
 
 \begin{equation}
   \Delta p = \Big(\frac{2}{k_{v100}^2} - a_{h2}\Big)|q| q 
@@ -44,9 +44,9 @@ The case when $\omega_r = 0$ applies to one component between ($n_3$-$n_{18}$). 
 \\
 % The case when $\omega = 0$ applies to one component between ($n_3$-$n_{18}$). The case when $\omega \neq 0$ applies to the two main pumps and the pumps in the PMAs, between ($n_1$-$n_2$), ($n_1$-$n_7$) and ($n_4$-$n_8$), ($n_5$-$n_{13}$). It should be mentioned however that all these subsystems inside this simplified model are modelled as described in \secref{CompleteSystemModel}. 
 % \\
-Since the components influence the pressure between the endpoints, they behave similarly as electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and they have a resistance depending on the OD.
+Since the components influence the pressure between the endpoints, they behave similar to electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and they have a resistance depending on the OD.
 The model of the pipes is equivalent to a series connection of a linear inductor and a non-linear resistor. %and a voltage source which stands for the elevation, gravity term%
-The pumps provide pressure and therefore drive flow into the system. They can be seen as voltage generators. An analogy can be made between an electronic circuit and the hydraulic system, where the WT acts as a capacitor.  Deriving the relationship between the voltage and the charge of the capacitor:
+The pumps provide pressure and therefore drive flow through the system. They can be seen as voltage generators. The WT acts as a capacitor in the network. Deriving the relationship between the voltage and the charge of the capacitor:
 
 \begin{equation}
   I = C \frac{dU}{dt}
@@ -55,21 +55,24 @@ The pumps provide pressure and therefore drive flow into the system. They can be
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
+\hspace*{8mm} $I$ \\
 \hspace*{8mm} $U$ \\
 \hspace*{8mm} $C$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
+is the current,\\
 is the voltage,\\
 is the capacitance.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
+\textcolor{White}{te}$\unit{A}$
 \textcolor{White}{te}$\unit{V}$
 \textcolor{White}{te}$\unit{F}$
 \end{minipage}
 
-In \eqref{FlowConservation} the volume flow rate, $q$, is equivalent to the current, $I$, in a circuit and the constant term, $\frac{A_{wt}}{\rho g}$, is equivalent to the capacitance of an electric capacitor, $C$. The voltage drop is analogous to the pressure drop in the water system.
+In \eqref{FlowConservation} the volumetric flow, $q$, is equivalent to the current, $I$, in a circuit and the constant term, $\frac{A_{wt}}{\rho g}$, is equivalent to the capacitance of an electric capacitor, $C$. The voltage drop is analogous to the pressure drop in the water system.
 
 
 %
@@ -86,7 +89,7 @@ The equivalence between the hydraulic and electric system is summarized in \tabr
 			WT 		          &     Capacitor       \\
 			Pressure	 	  &     Voltage    \\
 			Flow 		      &     Current       \\  
-			Pumps 		      &     Voltage source           
+			Pump 		      &     Voltage source           
 \end{tabular}
 \captionof{table}{Equivalence of an electrical and hydraulic network.}
 		\label{tab:hydraulic_electrical}
