@@ -1,7 +1,7 @@
 \chapter{Control System Implementation}
 \label{implementation_of_controller}
 
-This chapter will explain how the controller designed in \chapref{Controller} is implemented on the system at Aalborg university.  
+This chapter will explain how the controller designed in \chapref{Controller} is implemented on the scaled system at Aalborg university.  
 
 \section{Simulink implementation}
 \label{simulink_intro}
@@ -36,7 +36,7 @@ The end-users are assumed to have a periodic behavior in the water consumption. 
 
 
 \section{Simulink results}
-The MPC problem set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex. In this way, the main feature of this controller is the ability to reduce the power consumption based on the electric price and the WT level. 
+The MPC problem set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex. In this way, the main feature of this controller is the ability to reduce the cost of running th system based on the electric price and the WT level. 
 
 After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem deemed convex is, at first, implemented with only the input constraints. This is done to check that the simpler optimization problem can be solved. The input constraints are added to guarantee that pumps do not run outside their physical limits. 
 
@@ -51,10 +51,12 @@ Since there are no constraints applied to either the pressure at the WT or the C
 
 On \figref{fig:Implementation_shit} the electrical price and both input signal to the pumps can be seen. Here it can be seen that the input to the first pump is constant at $0.05$ and $0.03$, the lower bounds for the pumps respectively. If an input signal lower then this is applied to the pumps they will start acting unstable. 
 
-In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single point x.
+Then the other constraints, to the pressure at the WT and the CP, is added and then no infeasible solution is found. This is also the case then only one of the constraint are added. 
 
+This could occur because the model, used in the implementation is simplification of the real world. In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single solution $\bm{u}$.
 
-
+%\subsection{Summary of implementation}
+%The MPC, from \chapref{Controller}, is tried implemented and seems to be work at first. 
 
 
 %seemed to be infeasible. As a results of this no minimum was found. MUltiple attempts to solve this problem was done and 
