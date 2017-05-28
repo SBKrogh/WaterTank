@@ -1,20 +1,20 @@
-This section will give an introduction to the available test system, including structure and components overview.  
+This section gives an introduction to the available test system, including structure and components overview.  
 
 \section{System overview}
 \label{system_overview}
-To develop and test different control methods for a water distribution system a test setup is required.
+To develop and test different control methods for a water distribution system, a test setup is required.
 Such a setup is available at Aalborg university which is based on a real water distribution system, though as a 1:20 downscaled version.
 
 %picture of test system
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{report/pictures/test_system_wide}
+\includegraphics[width=0.65\textwidth]{report/pictures/test_system_wide}
 \caption{The available test setup used to represent a real water distribution system.}
 \label{fig:test_setup}
 \end{figure}
 
 
-The test setup represents a real system, thus the same structure concerning piping, leveling and all the other components. To achieve different elevation levels between system parts, the setup is mounted on a wall. This also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios other equipment is also present in the test setup shown in \figref{fig:test_setup}, enabling the test system to mimic a variety of different system types and scenarios. A simplified diagram representing the structure of the test setup that will be used in this project is shown in \figref{fig:sys_model_overview}. 
+The test setup represents a real system, thus the same structure concerning piping, leveling and all the other components. In order to achieve different elevation levels between system parts, the setup is mounted on a wall. This also allows for a quick overview of the complete setup and eases access to the components. As the system is used for various test scenarios, other different equipment is also present in the test setup shown in \figref{fig:test_setup}, enabling the test system to mimic a variety of different system types and scenarios. A simplified diagram representing the structure of the setup that is used in this project is shown in \figref{fig:sys_model_overview}. 
 
 %tikz of our system
 \begin{figure}[H]
@@ -26,8 +26,8 @@ The test setup represents a real system, thus the same structure concerning pipi
 \end{figure}
 
 The system can be split up into different parts, where the main part is a water reservoir placed at ground level, used to supply the system. Two pumps are connected to the reservoir and they supply water to a main water ring formed around the PMA's. 
-A water tower is also connected to the main water ring, and will act as an additional water reservoir and furthermore pressurize the ring due to the elevation of the tower. The direction of water flow, with respect to the tower, will depend on the pressure in the main ring. The tower can thus be filled by pressurizing the ring or be used to pressurize and supply water to the ring instead of the pumps.  
-From the water ring, two PMA's are connected, each via their own pump. In each PMA a measuring point, called the critical point (CP), is placed and the pressure at this point shall be kept to accommodate supply demands of the consumers. Furthermore two consumers are placed in each PMA, these are simulated by valves with a variable opening degree where the water flows back to the main reservoir.    
+A WT is also connected to the main water ring, and acts as an additional water reservoir pressurizes the ring due to the elevation of the WT. The direction of water flow, with respect to the WT, depends on the pressure in the main ring. The tower can thus be filled by pressurizing the ring or be used to pressurize and supply water to the ring instead of the pumps.  
+From the water ring, two PMA's are connected, each via their own pump. In each PMA a measuring point, called the critical point (CP), is placed and the pressure at this point shall be kept to accommodate supply demands of the consumers. Furthermore, two consumers are placed in each PMA, these are simulated by valves with a variable opening degree where the water flows back to the main reservoir.    
 
 %As the test setup consist of different components as valves, pumps and pipes, a basic water distribution network is shown in \figref{fig:Basic_example_sys} which will be used to illustrate and explain the individual components in the system and their functionality.   
 	
@@ -57,14 +57,14 @@ From the water ring, two PMA's are connected, each via their own pump. In each P
 % 	\end{minipage}
 % \end{figure}
 
-In the system two different types of Grundfos pumps are used. For supplying the water ring, two pumps, of the type UPMXL GEO 25-125\cite{waterpump1}, are used. Whereas the pumps used in each PMA are of the type UPM2 25-60\cite{waterpump2}, which is a smaller pump type and typically applied at the end-user. 
+In the system two different types of Grundfos pumps are used. For supplying the water ring, two pumps, of the type UPMXL GEO 25-125\cite{waterpump1}, are used. Whereas the pumps used in each PMA are of the type UPM2 25-60\cite{waterpump2}, which is a smaller pump type and typically applied at the end-users. 
 
-In order to close off parts of the system that will not be used for a specific scenario or to simulate faulty behavior, manual rotary ball valves are placed trough out the system. 
-To simulate a consumer, an electronically controlled belimo valve is used. Thereby is it possible to vary the opening degree of the valve over time according to a specific consumer behavior. 
-For the pipes there are used two different material types. The pipes used in the main ring, which connect the reservoir and the water tower, are made of polyethylene grade 80 called PE80\cite{PE100}.
+In order to close off parts of the system that will not be used for a specific scenario or to simulate faulty behavior, manual rotary ball valves are placed throughout the system. 
+To simulate a consumer, an electronically controlled Belimo valve is used. Thereby it is possible to vary the opening degree of the valves over time according to a specific consumer behavior. 
+For the pipes two different material types are used. The pipes used in the main ring, which connect the reservoir and the WT, are made of polyethylene grade 80 called PE80\cite{PE100}.
 %The pipes used in the main ring, the connections to both the reservoir and the water tower are made of polyethylene grade 80 called PE80\cite{PE100}.
- The pipes used to connect the PMA's to the ring and the internal connections in the PMA's are made of polyethylene with cross-links called PEX. In addition to the pipes, fittings, bends, and elbows are also present and found in various metals as iron and brass.     
+ The pipes used to connect the PMA's to the ring and the internal connections in the PMAs are made of polyethylene with cross-links called PEX. In addition, the pipes, fittings, bends, and elbows are also present and found in various metals as iron and brass.     
 
-The pressure measuring in each PMA is done with a Jumo pressure sensor. The pressure is measured relative to a reference called Gnd, for the test system, Gnd is atmospheric pressure. Furthermore both the differential pressure over each pump and the absolute pressure at the pump is measured with a Grundfos direct sensor DPI v.1 and a Danfoss mbs32/33 pressure sensor, respectively.    
+The pressure measurement in each PMA is carried out with Jumo pressure sensors. The pressure is measured relative to the ground, Gnd, for the test system. Gnd is equal to the atmospheric pressure. Furthermore, both the differential pressure over each pump and the absolute pressure are measured with a Grundfos direct sensor DPI v.1 and a Danfoss mbs32/33 pressure sensor, respectively.    
 
-The main reservoir has a volume of 700 L and the WT a volume of 200 L. The volume of the WT in this report is denoted as $V_t$. A full description of each component in the test setup including type, naming and relevant technical information can be found in \appref{system_description} and a diagram of the entire test setup can be seen in \appref{systemdiagram}.
+The main reservoir has a volume of 700 L and the WT a volume of 200 L. The volume of the WT in this report is denoted as $V_t$. A full description of each component in the test setup, including type, naming and relevant technical information can be found in \appref{system_description} and a diagram of the entire test setup can be seen in \appref{systemdiagram}.
