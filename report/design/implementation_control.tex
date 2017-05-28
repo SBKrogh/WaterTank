@@ -37,12 +37,23 @@ The end-users are assumed to have a periodic behavior in the water consumption. 
 
 \section{Simulink results}
 
-After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem deemed convex in \secref{convexity} seemed to be infeasible. As a results of this no minimum was found. MUltiple attempts to solve this problem was done and 
+After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem deemed convex in \secref{convexity} is implemented unconstrained. Here it is expected to see that then the electrical price increases the control signal should decrease in order to reduce the cost. The control signal for the pumps might not be 
+
+seemed to be infeasible. As a results of this no minimum was found. MUltiple attempts to solve this problem was done and 
 
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/Implementation_shit.tex} 
-\caption{Implemented optimizer, without constraints, that give a wrong behavior. Pump one can be seen in red and pump two as blue.}
+\caption{Implemented optimizer, without constraints. The first figure show the two pumps, pump one can be seen in red and pump two as blue. The second figure shows the cost of electricity for the first 24 hours.}
 \label{fig:Implementation_shit}
 \end{figure}
+
+
+%
+% vis at vores optimering virker når vi kun bruger lb og ub. Dog kan det ses at intputet stiger når prisen stiger, hvilket kunne tyde på en fortegnsfejl
+%
+% Når vi tilføjer flere constrints går det helt galt og problemet er infeasible  
+%
+%
+%
