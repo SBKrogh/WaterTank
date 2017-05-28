@@ -17,11 +17,9 @@ xmin=0,
 xmax=23,
 xmajorgrids,
 ymin=-0.4,
-ymax=-0.25,
+ymax=-0.2,
 ymajorgrids,
-axis background/.style={fill=white},
-title style={font=\bfseries},
-title={$\text{u}_{\text{hp1}}$}
+axis background/.style={fill=white}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -50,24 +48,8 @@ title={$\text{u}_{\text{hp1}}$}
 22	-0.33633206106221\\
 23	-0.341786804661069\\
 };
-\end{axis}
 
-\begin{axis}[%
-width=4.521in,
-height=0.766in,
-at={(0.758in,1.792in)},
-scale only axis,
-xmin=0,
-xmax=23,
-xmajorgrids,
-ymin=-0.28,
-ymax=-0.2,
-ymajorgrids,
-axis background/.style={fill=white},
-title style={font=\bfseries},
-title={$\text{u}_{\text{hp2}}$}
-]
-\addplot [color=mycolor1,solid,forget plot]
+\addplot [color=red,solid,forget plot]
   table[row sep=crcr]{%
 0	-0.255539239876202\\
 1	-0.25626975504531\\
@@ -99,7 +81,7 @@ title={$\text{u}_{\text{hp2}}$}
 \begin{axis}[%
 width=4.521in,
 height=0.766in,
-at={(0.758in,0.481in)},
+at={(0.758in,1.792in)},
 scale only axis,
 xmin=0,
 xmax=25,
@@ -107,9 +89,7 @@ xmajorgrids,
 ymin=150,
 ymax=300,
 ymajorgrids,
-axis background/.style={fill=white},
-title style={font=\bfseries},
-title={Energy price}
+axis background/.style={fill=white}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%

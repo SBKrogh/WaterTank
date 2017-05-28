@@ -4,8 +4,7 @@ In the following section convexity of the objective function is examined.
 Due to the reformulation of the objective function and constraints, the MPC optimization problem becomes the following: 
 
 \begin{align}
-\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\bm{\hat{u}}_{\bm{Hp}}) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
-\label{eq:obj_final1}
+\underset{\bm{\hat{u}_{Hp}}}{min} \:  \Upsilon(\bm{\hat{u}}_{\bm{Hp}}) &= \underset{\bm{\hat{u}_{Hp}}}{min} \:  \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg) \label{eq:obj_final1}\\
 %
 s.t. \:\:\:\:\:	&\begin{bmatrix}
 		\bm{I} 	\\
@@ -26,7 +25,7 @@ s.t. \:\:\:\:\:	&\begin{bmatrix}
 			\bm{\hat{y}_{2}}	\\
 			\bm{\Delta \hat{p}_{wt,1}}	\\
 			\bm{\Delta \hat{p}_{wt,2}}	
-	\end{bmatrix}
+	\end{bmatrix} \nonumber
 \end{align}
 \todo{source maybe}
 
