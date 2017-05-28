@@ -1,7 +1,7 @@
 \subsection{Water Tower} 
 \label{WaterTankModel}
 
-WTs are used to maintain the correct pressure level in different systems, ensure reliability and to improve the optimality of the water supply. The WT plays a determinative role in the control. Therefore its dynamic model must be derived. 
+Water towers are used to maintain the correct pressure in different systems, ensure reliability and to improve the optimality of the water supply. The WT plays a determinative role in the control. Therefore it is dynamic model must be derived. 
 
 Similarly to the modelling of the other components, the relation between the two dual variables, pressure difference and flow is derived. The structure of the WT is illustrated in \figref{fig:watertower_sketch}.
 
@@ -15,11 +15,11 @@ Similarly to the modelling of the other components, the relation between the two
 \label{fig:watertower_sketch}
 \end{figure}
 
-In \figref{fig:watertower_sketch}, $p_a$ represents the pressure at the surface of the water, thus is it always describing the atmospheric value. The variable $p$ is used to describe the pressure value on the bottom of the tank. \\
+In \figref{fig:watertower_sketch}, $p_a$ represents the pressure at the surface of the water, thus it always describes the atmospheric value. The variable $p$ is used to describe the pressure value on the bottom of the tank. \\
 The rate of change of the fluid volume in the water tower is proportional to the volumetric flow at which water enters or leaves the tank. 
 
 \begin{equation}
-  q = \frac{dV_t}{dt} = A \frac{dh}{dt}
+  q = \frac{dV_t}{dt} = A_{wt} \frac{dh}{dt}
   \label{Flowequation}
 \end{equation}
 
@@ -27,7 +27,7 @@ The rate of change of the fluid volume in the water tower is proportional to the
 Where\\
 \hspace*{8mm} $h$ \\
 \hspace*{8mm} $V_t$ \\
-\hspace*{8mm} $A$ \\
+\hspace*{8mm} $A_{wt}$ \\
 \hspace*{8mm} \\
 and \hspace*{0.7mm} $q$ \\
 \end{minipage}
@@ -50,7 +50,7 @@ is the volumetric flow.
 The force on the bottom of the WT is due to the weight of water. According to Newton's second law: 
 
 \begin{equation}
-  F = mg = \rho g V_t
+  F = m_wg = \rho g V_t
   \label{Newton_WT}
 \end{equation}
 
@@ -71,14 +71,14 @@ is the density of water.
 \eqref{Newton_WT} can be rewritten in terms of pressure such as: 
 
 \begin{equation}
-  \frac{F}{A} = \rho g h = p - p_a = \Delta p
+  \frac{F}{A_{wt}} = \rho g h = p - p_a = \Delta p
   \label{Pressuredifference}
 \end{equation}
 
 The total pressure on the bottom of the WT is a result of the pressure difference, $p$, and the atmospheric pressure, $p_a$. However, the model is derived in such a way that the atmospheric pressure is set to zero. Therefore, if the water is assumed to be incompressible, density does not change with pressure and \eqref{Flowequation} can be written as: 
 
 \begin{equation}
-q = \frac{dV}{dt} = \frac{A}{\rho g} \frac{d}{dt} \Delta p = C_H \Delta \dot{p}
+q = \frac{dV}{dt} = \frac{A_{wt}}{\rho g} \frac{d}{dt} \Delta p = C_H \Delta \dot{p}
   \label{FlowConservation}
 \end{equation}
 
@@ -92,36 +92,10 @@ is the hydraulic capacitance.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{\frac{m^3}{N/m^2}}$
+\textcolor{White}{te}$\unit{\frac{m^3}{Pa}}$
 \end{minipage}
 
-This equation shows proportionality between pressure and the volume of water, which is exactly the defining characteristic of a fluid capacitor. When the fluid capacitance is large, corresponding to a tank with a large area, a large increase in volume is accompanied by a small increase in pressure. 
-
-An analogy can be made between an electronic circuit and the hydraulic system, where the WT acts as a capacitor.  Deriving the relationship between the voltage and the charge of the capacitor:
-
-\begin{equation}
-  I = C \frac{dU}{dt}
-  \label{ElecCircuirt}
-\end{equation}
-
-\begin{minipage}[t]{0.20\textwidth}
-Where\\
-\hspace*{8mm} $U$ \\
-\hspace*{8mm} $C$ 
-\end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
-\vspace*{2mm}
-is the voltage,\\
-is the capacitance.
-\end{minipage}
-\begin{minipage}[t]{0.10\textwidth}
-\vspace*{2mm}
-\textcolor{White}{te}$\unit{V}$
-\textcolor{White}{te}$\unit{F}$
-\end{minipage}
-
-In \eqref{FlowConservation} the volume flow rate, $q$, is equivalent to the current, $I$, in a circuit and the constant term, $\frac{A}{\rho g}$, is equivalent to the capacitance of an electric capacitor, $C$. The voltage drop is analogous to the pressure drop in the water system.
-
+This equation shows proportionality between pressure and the volume of water, which is the defining characteristic of a fluid capacitor. When the fluid capacitance is large, corresponding to a tank with a large area, a large increase in volume is accompanied by a small increase in pressure. 
 
 
 %---------------------------------------------------

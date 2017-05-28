@@ -47,7 +47,36 @@ The case when $\omega_r = 0$ applies to one component between ($n_3$-$n_{18}$). 
 % \\
 Since the components influence the pressure between the endpoints, they behave similarly as electric components. Valves are considered as nonlinear resistors, since the pressure is the quadratic function of the flow and they have a resistance depending on the OD.
 The model of the pipes is equivalent to a series connection of a linear inductor and a non-linear resistor. %and a voltage source which stands for the elevation, gravity term%
-The pumps provide pressure and therefore drive flow in the system. They can be seen as voltage generators. The WT is a capacitor, as it is described in \secref{WaterTankModel}. The equivalence between the hydraulic and electric system is summarized in \tabref{tab:hydraulic_electrical}.
+The pumps provide pressure and therefore drive flow in the system. They can be seen as voltage generators. An analogy can be made between an electronic circuit and the hydraulic system, where the WT acts as a capacitor.  Deriving the relationship between the voltage and the charge of the capacitor:
+
+\begin{equation}
+  I = C \frac{dU}{dt}
+  \label{ElecCircuirt}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $U$ \\
+\hspace*{8mm} $C$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+is the voltage,\\
+is the capacitance.
+\end{minipage}
+\begin{minipage}[t]{0.10\textwidth}
+\vspace*{2mm}
+\textcolor{White}{te}$\unit{V}$
+\textcolor{White}{te}$\unit{F}$
+\end{minipage}
+
+In \eqref{FlowConservation} the volume flow rate, $q$, is equivalent to the current, $I$, in a circuit and the constant term, $\frac{A_{wt}}{\rho g}$, is equivalent to the capacitance of an electric capacitor, $C$. The voltage drop is analogous to the pressure drop in the water system.
+
+
+%
+%The WT is a capacitor, as it is described in \secref{WaterTankModel}. 
+%
+The equivalence between the hydraulic and electric system is summarized in \tabref{tab:hydraulic_electrical}.
 
 \begin{figure}[H]
 	\centering
