@@ -49,7 +49,7 @@ Since there are no constraints applied to either the pressure at the WT or the C
 \label{fig:Implementation_shit}
 \end{figure}
 
-On \figref{Implementation_shit} the electrical price and both input signal to the pumps can be seen. Here it can be seen that the input to the first pump is constant at $0.05$ and $0.03$, the lower bounds for the pumps respectively. If an input signal lower then this is applied to the pumps they will start acting unstable. 
+On \figref{fig:Implementation_shit} the electrical price and both input signal to the pumps can be seen. Here it can be seen that the input to the first pump is constant at $0.05$ and $0.03$, the lower bounds for the pumps respectively. If an input signal lower then this is applied to the pumps they will start acting unstable. 
 
 In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single point x.
 
