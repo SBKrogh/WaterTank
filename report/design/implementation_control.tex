@@ -37,10 +37,9 @@ The end-users are assumed to have a periodic behavior in the water consumption. 
 
 \section{Simulink results}
 
-After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem deemed convex in \secref{convexity} is implemented unconstrained. Here it is expected to see that then the electrical price increases the control signal should decrease in order to reduce the cost. The control signal for the pumps might not be 
+After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem deemed convex in \secref{convexity} is, at first, implemented with only the input constraints. This is done to check that the simpler optimization problem can be solved. The input constraints are added because it make no sens to run the pumps outside their physical limits. 
 
-seemed to be infeasible. As a results of this no minimum was found. MUltiple attempts to solve this problem was done and 
-
+Because there are no constraints to either the pressure at the WT or the CP it is expected to see that the input signal is as low as possible at all time. This makes sanes, compared to the real system, because the cheapest way of running the pumps wold be as slow as possible. 
 
 \begin{figure}[H]
 \centering
@@ -49,6 +48,14 @@ seemed to be infeasible. As a results of this no minimum was found. MUltiple att
 \label{fig:Implementation_shit}
 \end{figure}
 
+On \figref{Implementation_shit} the electrical price and both input signal to the pumps can be seen. Here it can be seen that the input to the first pump is constant at $0.05$ and $0.03$, the lower bounds for the pumps respectively. If an input signal lower then this is applied to the pumps they will start acting unstable. 
+
+Then the other constraints, to the pressure at the WT and the CP, is added and then no infeasible solution is found.   
+
+
+
+
+%seemed to be infeasible. As a results of this no minimum was found. MUltiple attempts to solve this problem was done and 
 
 %
 % vis at vores optimering virker når vi kun bruger lb og ub. Dog kan det ses at intputet stiger når prisen stiger, hvilket kunne tyde på en fortegnsfejl
