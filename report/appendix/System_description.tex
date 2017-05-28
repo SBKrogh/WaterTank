@@ -13,6 +13,34 @@
 
 
 \section{System Topology}
+
+% \begin{figure}[H]
+%   \centering
+%   % \begin{minipage}[b]{0.45\textwidth}
+%   %   \centering
+%   %  % \tikzsetnextfilename{basic_example_sys}
+%   %   \input{report/tikz/basic_example_sys} 
+%   %   \caption{Basic water distribution network.}
+%   %   \label{fig:Basic_example_sys}
+%   % \end{minipage}
+%   % \hspace{15pt}
+%   \begin{minipage}[b]{0.45\textwidth}
+%     \begin{tabular}{|c|c|} \hline
+%       \bfseries Symbol                                                         & \bfseries Name                \\ \hline
+%       %\tikzsetnextfilename{pump}\input{report/tikz/pump}                       & Pump                          \\ \hline
+%       %\tikzsetnextfilename{manual_valve}\input{report/tikz/manual_valve}       & Manual valve                  \\ \hline
+%       \begin{figure}\tikzsetnextfilename{elec_valve}\input{report/tikz/elec_valve.tex}\end{figure}           & Electronic valve              \\ \hline
+%       %\tikzsetnextfilename{pipe}\input{report/tikz/pipe}                       & Pipe segment                  \\ \hline
+%       %\tikzsetnextfilename{pressure_sensor}\input{report/tikz/pressure_sensor} & Pressure sensor              \\ \hline
+%       %\tikzsetnextfilename{dif_pres_sens}\input{report/tikz/dif_pres_sens}     & Differential pressure sensor  \\ \hline
+%       %\tikzsetnextfilename{gnd}\input{report/tikz/gnd}                         & Gnd                           \\ \hline
+%     \end{tabular}
+%     \captionof{table}{Symbol and name for component in the water network.}  
+%     \label{tab:sys_comp_overview}
+%   \end{minipage}
+% \end{figure}
+
+
 \label{systemdiagram}
 %tikz of system diagram
 \begin{figure}[H]
@@ -22,6 +50,25 @@
 %\caption{system diagram}
 \label{systemdiagram}
 \end{figure}
+
+\begin{figure}[H]
+  \begin{minipage}[b]{0.45\textwidth}
+    \begin{tabular}{|c|c|} \hline
+      \bfseries Symbol                      & \bfseries Name                \\ \hline
+      \input{report/tikz/pump}              & Pump                          \\ \hline
+      \input{report/tikz/manual_valve}      & Manual valve                  \\ \hline
+      \input{report/tikz/elec_valve}        & Electronic valve              \\ \hline
+      \input{report/tikz/pipe}              & Pipe segment                  \\ \hline
+      \input{report/tikz/pressure_sensor}   & Pressure sensor              \\ \hline
+      \input{report/tikz/dif_pres_sens}     & Differential pressure sensor  \\ \hline
+      \input{report/tikz/gnd}               & Gnd                           \\ \hline
+    \end{tabular}
+    \captionof{table}{Symbol and name for component in the water network.}  
+    \label{tab:sys_comp_overview}
+  \end{minipage}
+\end{figure}
+
+
 
 \section{System Graph}
 \label{systemgraph}
