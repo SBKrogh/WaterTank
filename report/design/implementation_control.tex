@@ -5,7 +5,8 @@ This chapter will explain how the controller designed in \chapref{Controller} is
 
 \section{Simulink implementation}
 \label{simulink_intro}
-It is worth mentioning, that for the implementation of the control, the second linear model attempt is used as it is the most suitable model to work with. The MPC controller is implemented in MATLAB Simulink, which is connected to the model as shown in \figref{fig:control_sketch}:
+In the implementation of the control the model estimated in \secref{estim_results} is used. Although, the fit percentage with differs from the real data the behavior and dynamics of the WT are correctly caught, making this model the most suitable one to work with. 
+% It is worth mentioning, that for the implementation of the control, the second linear model attempt is used as it is the most suitable model to work with. The MPC controller is implemented in MATLAB Simulink, which is connected to the model as shown in \figref{fig:control_sketch}:
 
 \begin{figure}[H]
 \centering
@@ -14,7 +15,11 @@ It is worth mentioning, that for the implementation of the control, the second l
 \label{fig:control_sketch}
 \end{figure}
 
-In order to solve the MPC and find a global minimum for the problem specified in \eqref{eq:obj_final1},  MATLABs quadratic solver, \textit{quadprog}, is used. This solver, finds out the preceding problem subject to the specified constraints and restrictions set to the convex function. The interior-point-convex algorithm is chosen to carry out the calculation of the control inputs. This algorithm solves the problem by simplifying the constraints, and then it iterates in the interior of the feasible set, then progressively adds the constraints and reconstructs the original problem \cite{Convex_optimization}. 
+From the state-space model the WT pressure is sent to the MPC, as the current state takes part both in the optimization of the problem and in the constraints.
+
+In order to solve the MPC and find a global minimum for the problem specified in \eqref{eq:obj_final1},  MATLABs quadratic solver, \textit{quadprog}, is used. This solver, finds out the preceding problem subject to the specified constraints and restrictions set to the convex function. The interior-point-convex algorithm is chosen to carry out the calculation of the control inputs. This algorithm solves the problem by simplifying the constraints, and then and then by iterating in the interior of the feasible set, progressively adds the constraint and reconstructs the original problem \cite{Convex_optimization}. 
+
+
 
 In previous sections the number of predictions, $H_p$, is introduced. It is decided to predict 24 hour forward due to the periodicity of the daily rhythm of the population. Therefore, the control input to the state-space model and the disturbance added by the end-users consumption are updated every hour. The sampling time for the control input will differ from the sample time determined for the state space model, which is $T_s = 87.5s$. 
 
