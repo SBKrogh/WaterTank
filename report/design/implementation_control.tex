@@ -55,6 +55,8 @@ Then the other constraints, to the pressure at the WT and the CP, is added and t
 
 This could occur because the model, used in the implementation is simplification of the real world. In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single solution $\bm{u}$.
 
+The optimizing problem design is hereby finished as the MPC control has been implemented together with the estimated model. On the one hand, it is shown that the unconstrained problem is solvable and expected values are obtained. On the other hand, the problem cannot be completed due to the incapability to calculate a control input once the constraints of the system are set. Any further discussion on the subject is brought up in the following chapter. 
+
 %\subsection{Summary of implementation}
 %The MPC, from \chapref{Controller}, is tried implemented and seems to be work at first. 
 
