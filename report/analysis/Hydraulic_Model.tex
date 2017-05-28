@@ -1,7 +1,7 @@
 \section{Hydraulic modelling}
 \label{HydraulicModel}
 
-Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consisting of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop across the two endpoints and the flow through the element \cite{Kallesoe2009}.  \eqref{onecomponent} shows the dual variables which describes one component. 
+Water distribution networks are designed to deliver water to consumers in terms of sufficient pressure and appropriate chemical composition. Distribution systems as such are generally consisting of four main components: pipes, pumps, valves and reservoirs. The common property is that they are all two-terminal components, therefore they can be characterized by the dynamic relationship between the pressure drop across the two endpoints and the flow through the element \cite{Kallesoe2009}.  \eqref{onecomponent} shows the dual variables which describe one component. 
 
 \begin{equation}
 \label{onecomponent}
@@ -29,16 +29,16 @@ is the flow through the element.
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{Pa}$\\
-\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$
+\textcolor{White}{te}$\unit{\frac{m^{3}}{s}}$ 
 \end{minipage}
 
-In the following chapter the hydraulic model of the system is derived by control volume approach \cite{Hunt_Fluidmechanics}. The relationship between the two variables are introduced for each component in the hydraulic network.
+In the following chapter, the hydraulic model of the system is derived by control volume approach \cite{Hunt_Fluidmechanics}. The relationship between the two variables is introduced for each component in the hydraulic network.
 
 \subsection{Pipe model} 
 \label{PipeModel}
-Pipes are important components of water distribution systems since they are used for carrying pressurized and treated fresh water. A detailed model of pipes has to be derived in order to describe the relationship of pressure and flow for each pipe component.  
+Pipes are important components of water distribution systems since they are used for carrying pressurized water. A detailed model of the pipes has to be derived in order to understand the relationship of pressure and flow for each pipe component.  
 %
-The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change of the momentum of the water and the force acting on it.
+The dynamic model of a pipe can be originated from Newton's second law. \eqref{NewtonLaw} describes the proportionality between the rate of change regarding the momentum of the water and the force acting on it.
 
 \begin{equation}
   \frac{d}{dt} M = \sum_i F_i
@@ -61,9 +61,9 @@ is the set of forces acting on the water.
 \textcolor{White}{te}$\unit{N}$
 \end{minipage}
 
-The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe. In other words, all pipes in the system are filled up fully with water all the time. Thus the density of water and the volume of the fluid is constant in time, as is the mass of the water.
+The dynamic model of a pipe component is derived under the assumption that the flow of the fluid is uniformly distributed along the cross sectional area of the pipe. In other words, all pipes in the system are filled up fully with water all the time. Thus, the density of water and the volume of the fluid is constant in time, as the mass of the water.
 \\
-Rewriting \eqref{NewtonLaw}, because of the above-mentioned asumptions, the mass of the water can be taken out in front of the derivative.
+Rewriting \eqref{NewtonLaw}, due to the above-mentioned asumptions, the mass of the water can be taken out in front of the derivative.
 
 \begin{equation}
   \frac{d}{dt} M = {\frac{d(m_w v)}{dt}} = m_w \frac{dv}{dt} = \sum_i F_i
@@ -85,8 +85,8 @@ is the value of the velocity of the water at each point of the pipe.
 \textcolor{White}{te}$\unit{\frac{m}{s}}$
 \end{minipage}
 
-The sum of the forces acting on the control volume can be seen as input forces, acting on the inlet of the pipe, output forces, acting on the outlet, resistance forces and gravitational force effect.  
-These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. In \figref{fig:pipe_freebody} all forces acting on a pipe segment are shown:
+The sum of the forces acting on the control volume can be seen as input forces, acting on the inlet of the pipe and output forces acting on the outlet. Furthermore, resistance forces and the effect of gravitational force is present.  
+These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. In \figref{fig:pipe_freebody}, all forces acting on a pipe segment are shown:
 
 %tikz of the pipe freebody diagram
 \begin{figure}[H]
@@ -126,7 +126,7 @@ area, $A$, resulting in:\\
 	\label{EquationOfContinuity}
 \end{equation}
 
- In \eqref{LinearMomentum} the forces acting on the pipe are included. The difference between $F_{in}$ and $F_{out}$ is the pressure drop between two endpoints, the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
+ In \eqref{LinearMomentum} the forces acting on the pipe are included. The difference between $F_{in}$ and $F_{out}$ defines the ideal pressure drop between the two endpoints, without taking into account the resistance forces $F_{res}$ and the gravitational force effect due to change in elevation $F_{elev}$.
 
 \begin{equation}
   m_w \frac{dv}{dt} = F_{in} - F_{out} - F_{res} - F_{elev} \\
@@ -143,7 +143,6 @@ In order to obtain an equation consisting of only pressure variables, the relati
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $m_w$ \\
-\hspace*{8mm} $A$ \\
 \hspace*{8mm} $L$ \\
 \hspace*{8mm} $\rho$\\
 and \hspace*{0.7mm} $p$ 
@@ -151,28 +150,26 @@ and \hspace*{0.7mm} $p$
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the mass of the water,\\
-is the cross sectional area of a pipe,\\
 is the length of a pipe,\\
-is the density of water,\\
-is the pressure at a point.
+is the water density,\\
+is the pressure.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{kg}$\\
-\textcolor{White}{te}$\unit{m^2}$\\
 \textcolor{White}{te}$\unit{m}$\\
 \textcolor{White}{te}$\unit{\frac{kg}{m^{3}}}$
 \textcolor{White}{te}$\unit{Pa}$\\
 \end{minipage}
 %
 Rewriting the velocity in terms of volumetric water flow and cross sectional 
-area. 
+area according to \eqref{EquationOfContinuity}:
 
 \begin{equation}
     A L \rho \frac{d}{dt} \frac{q}{A} = A (\textit{p}_{in} -  \textit{p}_{out}) - F_{res} - F_{elev}\\
 \end{equation}
 
-By dividing the equation with the cross sectional area it can be seen that the equation is dependant on the pressure difference between two endpoints.
+By dividing the equation with the cross sectional area it can be seen that the equation is dependent on the pressure difference between two endpoints.
 %Reducing the cross sectional area to obtain an expression for the pressure: 
 
 \begin{equation}
@@ -190,10 +187,11 @@ In \eqref{PressureDrop}, the term $F_{res}$ is the resistance force acting on th
 pipe, which consists of two parts: surface resistance($h_{f}$) and the form resistance($h_{m}$) due to the fittings. % $F_{elev}$ is the force of gravity due to change in elevation, $\Delta z$.
 
 \textbf{Surface resistance (\texorpdfstring{$h_f$}{})} \\
-The flow of a liquid through a pipe suffers resistance from 
-the turbulence occurring along the internal walls of the pipe, caused by the roughness of the surface. This surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
+The flow of liquid through pipes is affected by resistance from 
+the turbulence occurring along the internal walls of the pipe, caused by the roughness of the pipe surface. The surface resistance is given by the Darcy-Weisbach equation \cite{Design_Water}.
 
-\todo{Should we find another formulation then "pressure given in head" - Kind of wierd to to have pressure given as 'm'}
+%\todo{Should we find another formulation then "pressure given in head" - Kind of wierd to to have pressure given as 'm'}
+
 \begin{equation}
   h_f = \frac{fLv^2}{2gD}
   \label{Darcy}
@@ -203,25 +201,22 @@ the turbulence occurring along the internal walls of the pipe, caused by the rou
 Where\\
 \hspace*{8mm} $f$ \\
 \hspace*{8mm} $h_f$ \\
-\hspace*{8mm} $g$ \\
-and \hspace*{0.7mm} $D$ 
+and\hspace*{0.7mm} $g$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
 is the Moody friction factor,\\ 
-is the pressure given in head,\\ 
-is acceleration due to gravity,\\
-is the diameter of the pipe.
+is the pressure given in head,\\   
+is the gravitational constant.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
 \textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{m}$\\
-\textcolor{White}{te}$\unit{\frac{m}{s^2}}$\\
-\textcolor{White}{te}$\unit{m}$
+\textcolor{White}{te}$\unit{\frac{m}{s^2}}$
 \end{minipage}
 
-\eqref{Darcy} is under the assumption that $v>0$. %, therefore it is not dependant on $|v|v$ but on $v^2$. \\
+\eqref{Darcy} is valid under the assumption that $v>0$. %, therefore it is not dependant on $|v|v$ but on $v^2$. \\
  Assuming that the flow is not unidirectional and substituting the velocity by the volumetric flow and pipe area:
 
 \begin{equation}
@@ -229,15 +224,15 @@ is the diameter of the pipe.
   \label{DarcyWeisbach}
 \end{equation} 
  
- The unknown parameter in \refeq{DarcyWeisbach} is the Moody friction factor 
- which is non-dimensional and is a function of the Reynold´s number, \textbf{Re}. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
+ The unknown parameter in \eqref{DarcyWeisbach} is the Moody friction factor 
+ which is non-dimensional and is a function of the Reynold's number, $Re$. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
  
  
-The Reynold´s number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $\bm{Re}<2300$ as laminar, if $2300<\bm{Re}<4000$ as transient and if
-$\bm{Re}>4000$ as turbulent. 
+The Reynold's number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
+$Re>4000$ as turbulent. 
 
 \begin{equation}
-   \bm{Re} = \frac{vD}{\nu}
+   Re = \frac{vD}{\nu}
    \label{Reynolds}
  \end{equation}
  
@@ -255,10 +250,10 @@ is the kinematic viscosity.
 \textcolor{White}{te}$\unit{\frac{kg}{ms}}$
 \end{minipage}
 
-The kinematic viscosity in \cite{Design_Water} is given by :
+The kinematic viscosity according to \cite{Design_Water} is given by :
 
 \begin{equation}
-  \nu = 1.792 \cdot 10^{-6} \bigg[1+{\bigg(\frac{T}{25}\bigg)}^{1.165} \bigg]^{-1}
+  \nu = 1.792 \cdot 10^{-6} \Bigg[1+{\bigg(\frac{T}{25}\bigg)}^{1.165} \Bigg]^{-1}
 \end{equation}
 
   \begin{minipage}[t]{0.20\textwidth}
@@ -285,16 +280,16 @@ the pipes are considered \cite{Urban_Design}.
 % \end{itemize}
 
 \begin{itemize}
-  \item $ v \in [0.5,1.5] \quad \frac{m}{s}$
-  \item $ D \in [50,1500]\quad mm$
-  \item $T \in [10,20] \quad ^{\circ} C$
+  \item $ v \in [0.5,1.5] \unit{\frac{m}{s}}$
+  \item $ D \in [50,1500]\unit{mm}$
+  \item $T \in [10,20] \unit{^{\circ} C} $
 \end{itemize}
 
-These values result in a Reynold's number between 19000 and 225000, which is considered a turbulent fluid flow through the pipes. For turbulent flow the 
+These values result in a Reynold's number between 19000 and 225000, which is considered as turbulent fluid flow through the pipes. For turbulent flow, the 
 Moody friction factor is given by \cite{Design_Water}: 
 
 \begin{equation}
-  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{\pmb{Re}^{0.9}}\bigg)\bigg)^{-2}
+  f = 1.325 \bigg(ln\bigg(\frac{\epsilon}{3.7 D}+\frac{5.74}{Re^{0.9}}\bigg)\bigg)^{-2}
   \label{turbulent}
 \end{equation}
 
@@ -315,8 +310,7 @@ is the average roughness of the wall inside the pipe.
 \textbf{Form resistance (\texorpdfstring{$h_m$}{})} 
 \label{FormResistance}
 
-Form resistance losses, appears at any time the flow changes direction, due to elbows, bends,
-or due to enlargers and reducers. It is a particular frictional resistance due to the 
+Form resistance losses are present at any time the flow changes direction, due to elbows, bends, enlargers and reducers. It is a particular frictional resistance due to the 
 fittings of a pipe. Form loss can be expressed as: 
 
 \begin{equation}
@@ -348,7 +342,7 @@ The form-loss coefficient can be split into different losses depending on the
 fitting of the pipes. 
 \\
 Pipe bends are principally determined by the 
-bend angle $\alpha$ and bend radius $r$, this is given by the following 
+bend angle $\alpha$ and bend radius $r$. This is given by the following 
 expression \cite{Design_Water}: 
 
 \begin{equation}
@@ -356,7 +350,7 @@ expression \cite{Design_Water}:
   \label{kfriction}
 \end{equation}
 
-Pipe elbows are also used to change the direction of the flow but providing 
+Pipe elbows are also used to change the direction of the flow, however providing 
 sharp turns in pipelines. The coefficient for the losses in elbows is determined by the angle of an elbow $\alpha$ and is given by:
 
 \begin{equation}
@@ -392,7 +386,7 @@ Substituting the terms $h_f$ and $h_m$ with their respective values:
    \frac{L \rho}{A} \frac{dq}{dt} =\Delta p - \frac{8fL}{\pi^{2}gD^5} \rho g  |q| q - k_f \frac{8}{\pi^2gD^4} \rho g |q| q - \Delta b \rho g 
 \end{equation}
 
-\eqref{FinalPipeModel} describes the rate of flow in terms of pressure losses due to pressure change, frictions and elevation. A more compact form can be expressed for the $k$th component as such:
+\eqref{FinalPipeModel} describes the rate of flow in terms of pressure losses due to pressure change, frictions and elevation. Introducing a function for the pressure drop due to friction in the pipes, the following expression can be written up for the $k^{th}$component:
 
 \begin{equation}
 \label{FinalPipeModelCompact}
@@ -409,12 +403,12 @@ and \hspace*{0.7mm} $\zeta_k$
 \vspace*{2mm}
 is an analogous parameter as inertia for the water,\\ 
 is the friction as a function of flow,\\
-is the pressure drop due to the elevation.
+is the pressure drop due to elevation.
 \end{minipage}
 
-As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k$th pipe is described by $J_k$, which is an analogous parameter as inertia in mechanical systems. $J_k$ is a diagonal matrix with zeros for the diagonal elements not related to a pipe, $\pmb{J} = diag(J_i)$.
+As can be seen in \eqref{FinalPipeModelCompact}, the flow dynamics of the $k^{th}$ pipe is described by $J_k$, which is an analogous parameter as inertia in mechanical systems. $\bm{J}$ is a diagonal matrix with zeros for the diagonal elements not related to pipe components, $\pmb{J} = diag(J_k)$.
 
-It is assumed, prior to the tests carried out on the system, that the presence of the water tower in the system has a slow effect on the flow due to slow integration behavior. This means that the water tower might have a relatively big time constant compared to the time constant of the pipes. Due to this consideration, a fair assumption would be that the parameter $J_k$ does not influence the flow in the system significantly and it could be neglected. However, the parameter is kept until this assumption is verified by tests. The complete model of a pipe yields: 
+It is assumed, prior to the tests carried out on the system, that the presence of the WT in the system has a slow effect on the flow due to slow integration behavior. This means that the water tower might have a relatively big time constant compared to the time constant of the pipes. Due to this consideration, a fair assumption would be that the parameter $J_k$ does not influence the flow in the system significantly and it could be neglected. However, the parameter is kept until this assumption is verified by tests. The complete model of a pipe yields: 
   
 \begin{equation}
 \label{FinalPipeModelSimplified}
