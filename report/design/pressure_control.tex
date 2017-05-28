@@ -39,7 +39,7 @@ In \appref{cha:linear_pump2} a linearized pump model is derived. Whit the operat
 
 The controllers are design through the Matlab toolbox \textit{Control System Designer App}\citep{GSTWTCSD}, with the approach of the same control characteristics. Since the time constant of the water system is measured to be 1155 seconds, see \secref{sec:WT_TimeConstant}, the settling time of the PI controllers has been chosen to be under 10 seconds, which is deemed sufficient. The steady state error and the overshoot should not exceed 5 \% as this in the worst case will saturate the differential feedback sensors.
 
-The controllers are derived in \appref{cha:linear_pump2} and found to be
+The controllers are and found to be
 \begin{equation*}
   \begin{minipage}[b]{0.45\textwidth}
   \begin{equation*}
@@ -59,10 +59,7 @@ The controllers are derived in \appref{cha:linear_pump2} and found to be
   \end{minipage}
 \end{equation*}
 
-
-
-
-
+From the design and test conducted in \appref{cha:linear_pump2}, it is shown that the controllers meet the desired requirements and thus can be implemented on the test setup. 
 
 
 % For convenience the simple controller, that should be used for the PMA pumps, is also chosen as a PI controller. The two set of pumps are very similar, only deviating in a few parameters. Therefor only one of the controller will be explained in this section.  
