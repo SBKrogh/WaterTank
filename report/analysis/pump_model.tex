@@ -1,13 +1,13 @@
 \subsection{Pump model} 
 \label{PumpModel}
 In order to move water from the reservoirs to the consumers, pumping is required. To guarantee that the water reaches every end-user with the appropriate pressure, different pumps can be used in the water distribution system.\\
-Centrifugal pumps are good for this purpose, as the output is steady and consistent. 
+Centrifugal pumps are suitable for this purpose, as the output is steady and consistent. 
 %They generate pressure within they guarantee a constant flow of water at a constant pressure for any given set of conditions. 
 A model describing the pressure drop is derived which is presented in detail in \cite{Phd_Carsten}. The pressure provided by the pump is given by:
 %\todo{The list bellow should be with units.}
 
 \begin{equation}
-  \Delta p = -a_{h2}{q_i}^2 + a_{h1} \omega_r q_i + a_{h0}{\omega_r}^2
+  \Delta p = -a_{h2}{q_p}^2 + a_{h1} \omega_r q_p + a_{h0}{\omega_r}^2
   \label{eq:PumpModel}
 \end{equation}
 
@@ -15,7 +15,7 @@ A model describing the pressure drop is derived which is presented in detail in 
 Where\\
 \hspace*{8mm} $\Delta p$ \\
 \hspace*{8mm} $a_{h2}$, $a_{h1}$, $a_{h0}$ \\
-\hspace*{8mm} $q_i$ \\
+\hspace*{8mm} $q_p$ \\
 and \hspace*{0.7mm} $\omega_r$ 
 
 \end{minipage}
@@ -28,17 +28,17 @@ is the impeller rotational speed.
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
-\textcolor{White}{te}$\unit{Bar}$\\
+\textcolor{White}{te}$\unit{bar}$\\
 \textcolor{White}{te}$\unit{\cdot}$\\
 \textcolor{White}{te}$\unit{\frac{m^3}{h}}$\\
 \textcolor{White}{te}$\unit{\frac{rad}{s}}$
 \end{minipage}	
 
-The pump model is based on the parameters $a_{h2}$, $a_{h1}$, $a_{h0}$, which are provided in the data sheet and are scaled to units of pressure in [Bar] and the unit for flow in ${[\frac{m^3}{h}]}$.
+The pump model is based on the parameters $a_{h2}$, $a_{h1}$, $a_{h0}$, which are provided in the data sheet and are scaled to units of pressure in [bar] and the unit for flow in ${[\frac{m^3}{h}]}$.
 
 \subsubsection*{Hydraulic power and efficiency}
 \label{pump_power}
-To minimize the running cost of the plant, it is necessary to know the power consumption of the pumps to describe how much energy these consume. The electricity consumption of the pump, as a function of flow $q$, is described in \cite{master_aau}. This expression can be used to calculate the efficiency $\eta$, as a function of flow $q$ of the pump. By assuming $\eta$ to be constant the expression becomes simpler, however $\eta$ must be chosen within the operating area of the pump. The electrical power can then be calculated by taking the hydraulic power created by the pumps and the efficient of the pumps into account. 
+In order to minimize the running cost of the plant, it is necessary to know the power consumption to describe how much energy is consumed. The electricity consumption of the pump, as a function of flow $q$, is described in \cite{master_aau}. This expression can be used to calculate the efficiency $\eta$, as a function of flow $q$ of the pump. By assuming $\eta$ to be constant the expression becomes simpler, however $\eta$ must be chosen within the operating area of the pump. The electrical power can then be calculated by taking the hydraulic power created by the pumps and the efficient of the pumps into account. 
 
 The hydraulic power created by a pump can be described by an equivalent to Joule's law, that is in terms of the pressure difference across the pump, multiplied with the flow through it, see \eqref{eq:Hyd_Pow}.
 
