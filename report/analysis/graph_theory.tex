@@ -8,10 +8,10 @@ The modelling of the water distribution network is done with the help of Graph T
 \label{IncidenceSection}
 The incidence matrix, $\bm{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
 defined by $\bm{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
-Additionally, the particular node and edge is denoted with the indices $i$ and 
+Additionally, the particular node and edge is noted with the indices $i$ and 
 $j$.
 
-In case of a hydraulic network, the edges are directed in order to keep track of the direction of the flows in the system. It results in a directed incidence matrix as described below:
+In case of a hydraulic networks, the edges are directed in order to keep track of the direction of the flows in the system. This results in a directed incidence matrix as described below:
 
 \begin{equation}
 \label{DiGraph}
@@ -37,15 +37,15 @@ shown.
 \subsection*{Cycle matrix}
 \label{CycleSection}
 A spanning tree, $T \in \mathcal{G}$ is a subgraph which contains all nodes of $\mathcal{G}$ but has no cycles \cite{GraphModel}. 
-In order to obtain the spanning tree it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, are governed by the following expression:
+In order to obtain the spanning tree, it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, are governed by the following expression:
 
 \begin{equation}
   \label{Numberofchords}
   l = e - n +1
 \end{equation}
 
-By adding an chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as there is chords\cite{GraphModel}.  
-The set of fundamental cycles correspond to the fundamental cycle matrix $\bm{B}$, such as the number of rows and columns are defined by the amount of chords and edges, respectively. 
+By adding a chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as many chords there are\cite{GraphModel}.  
+The set of fundamental cycles correspond to the fundamental cycle matrix $\bm{B}$, such that the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
 The cycle matrix of a directed graph can be expressed with $\bm{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
 
@@ -73,8 +73,7 @@ shown.
 \label{KirchhoffSection}
 
 In the same way as it is described in \secref{HydraulicModel}, the graph of a hydraulic network assigns dual variables to every edge: 
-the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$, is a function of time. These two variables are vectors containing the individual flows through the edges and 
-the pressure drop across them:
+the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$. These two variables can be set as vectors containing the individual flows through the edges and the pressure drop across them:
 
 % \begin{minipage}{0.45\linewidth}
 % \begin{equation}
