@@ -7,21 +7,24 @@
 \definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 \definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
 %
-\begin{tikzpicture} [scale=0.6,transform shape]
+\begin{tikzpicture}
 
 \begin{axis}[%
-width=3.5556in,
-height=3.02135in,
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
+width=2.13in,
+height=1.8in,
 at={(0.758in,0.481in)},
 scale only axis,
 xmin=0,
 xmax=500,
 xlabel style={font=\color{white!15!black}},
-xlabel={Seconds},
+xlabel={Time [sec]},
 ymin=-0.04,
 ymax=0.05,
 ylabel style={font=\color{white!15!black}},
-ylabel={Bar},
+ylabel={Pressure [Bar]},
 axis background/.style={fill=white},
 title style={font=\bfseries},
 title={Relative pump pressures},

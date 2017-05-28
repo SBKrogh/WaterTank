@@ -10,17 +10,20 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=2.0556in,
 height=1.62135in,
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=0,
 xmax=500,
-xlabel={Time [s]},
+xlabel={Time [sec]},
 xmajorgrids,
 ymin=-0.004,
 ymax=0.012,
-ylabel={Amplitude [Bar]},
+ylabel={Pressure [Bar]},
 ymajorgrids,
 axis background/.style={fill=white},
 title style={font=\bfseries},

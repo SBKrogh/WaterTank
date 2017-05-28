@@ -7,11 +7,14 @@
 \definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 \definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
 %
-\begin{tikzpicture} [scale=0.6,transform shape]
+\begin{tikzpicture} 
 
 \begin{axis}[%
-width=3.5556in,
-height=3.02135in,
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
+width=2.13in,
+height=1.8in,
 at={(0.758in,0.481in)},
 scale only axis,
 xmin=0,

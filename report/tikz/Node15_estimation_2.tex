@@ -10,6 +10,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=5.328in,
 height=1.3in,
 at={(1.011in,0.642in)},
@@ -21,7 +24,7 @@ xlabel={Time [min]},
 ymin=-0.02,
 ymax=0.02,
 ylabel style={font=\color{white!15!black}},
-ylabel={Amplitude [Bar]},
+ylabel={Pressure [Bar]},
 axis background/.style={fill=white},
 %title style={font=\bfseries},
 %title={Node 11},

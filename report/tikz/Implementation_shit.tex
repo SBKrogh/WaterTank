@@ -10,6 +10,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
 height=1.453in,
 at={(0.758in,2.554in)},
@@ -17,13 +20,13 @@ scale only axis,
 xmin=0,
 xmax=23,
 xmajorgrids,
+xlabel={Hours},
 ymin=0,
 ymax=0.06,
 ymajorgrids,
+ylabel={Pressure [bar]},
 %symbolic y coords={0.00,0.02,0.04,0.06},
 axis background/.style={fill=white},
-title style={font=\bfseries},
-title={Input signal to pumps},
 legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot[const plot,color=mycolor1,solid] plot table[row sep=crcr] {%
@@ -95,9 +98,8 @@ xmajorgrids,
 ymin=150,
 ymax=300,
 ymajorgrids,
-axis background/.style={fill=white},
-title style={font=\bfseries},
-title={Energy price}
+ylabel={DKK/MW},
+axis background/.style={fill=white}
 ]
 \addplot[const plot,color=mycolor1,solid,forget plot] plot table[row sep=crcr] {%
 0	210.15\\
