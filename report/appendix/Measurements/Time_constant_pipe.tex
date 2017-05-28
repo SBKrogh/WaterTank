@@ -1,0 +1,60 @@
+\section{System dynamics}
+\label{sec:pipe_dynamics}
+
+In this section the speed of dynamics for the test setup without the water tank is investigated.
+
+%\subsection{One clamp push} % \label{app:...}
+\subsection*{Test equipment:}
+\begin{itemize}
+\item The water distribution system at AAU.
+\end{itemize}
+
+\subsection*{Procedure:}
+The following procedure was made for finding the time constant:
+\begin{enumerate}
+\item Disconnect the WT from the test setup.  
+\item The initial setup of the system at time t=0 is chosen as, the valve opening at 0.7 for all consumer valves and the rotational speed of the pumps set to C2 = C16 = 3, C18 = 0.7, C25 = 4.2.
+\item Reduce the rotational speed of C2 and C16 to 1.2 at time t=30.
+\item Increase the rotational speed of C2 and C16 to 2.5 at time t=45.
+\item Reduce the rotational speed of C2 and C16 to 1.5 at time t=60.
+\item Increase the rotational speed of C2 and C16 to 3 at time t=75.
+\end{enumerate}
+
+\subsection*{Measuring data:}
+The measurements data can be found on the attached storage under the path: \path{CD:/Data/system dynamics}.
+
+\subsection*{Results:}
+
+The step input given to the rotational speed of the two main pumps results in a change of differential pressure across the pumps. The measured differential pressure is shown in \figref{fig:Test_pipe_pumpdiff}. 
+
+\begin{figure}[H]
+\input{report/tikz/Time_constant_pipe_pump}
+\caption{The measured differential pressure across the pumps.}
+\label{fig:Test_pipe_pumpdiff}
+\end{figure}
+
+The differential pressure change across the pumps affects the remaining system and the resulting pressures in the main ring and the PMA's.
+The pressure in the ring is measured at node 4 and node 5, the measurements are shown in \figref{fig:Test_pipe_ring}. 
+The pressure in the pma is measured at node 10 and node 15, the measurements are shown in \figref{fig:Test_pipe_pma}.   
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+  \input{report/tikz/Time_constant_pipe_ring.tex}
+    \caption{Estimation comparison for node 10.}
+    \label{fig:Test_pipe_ring}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \input{report/tikz/Time_constant_pipe_pma.tex}
+    \caption{Estimation comparison for node 11.}
+    \label{fig:Test_pipe_pma}
+  \end{minipage}
+\end{figure}
+
+From the measurement data it is seen that the pressure in both the PMA and the main ring follows the pressure changes across the main pumps. Furthermore it is seen that this is happening without noticeable time delay. An absent time delay between the change in pump pressure and the pressure in the systems suggest that the dynamics of the system describing flow and pressure in the pipes is faster that the pump dynamics. This is furthermore indicated by the pressure in the system, which settles with the pumps and thus the true pipe dynamics are not exposed at the system cannot be excited sufficiently.
+
+Based on these results it can be concluded that the dominating timeconstant in the full system is the one of the WT which is determined to approximately 20 minutes and further described in \appref{sec:WT_TimeConstant}.       
+
+\subsection*{Conclusion:}
+From this test the dynamics of the system without the WT are tested. It is found that the pressure in the nodes settles almost simultaneously with the pump pressure, thus indicating that the observable dynamics found in this test are bound by the pump dynamics.   
