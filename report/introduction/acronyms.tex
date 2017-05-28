@@ -21,57 +21,55 @@
 \begin{tabular}{l l l} 
 	\textbf{Symbol}		&	\textbf{Description}										& \textbf{Unit}	\\\hline
 	$A$					&	Cross sectional area									    & [$m^2$]\\
-	$b$					&	The head loss due to elevation. 						    & [$m$]\\
-	$C_k$				&	The $k^{th}$ component of the distribution network     		& [$\cdot$]\\
+	$b$					&	Head loss due to elevation. 						    	& [$m$]\\
+	$C_k$				&	$k^{th}$ component of the distribution network     			& [$\cdot$]\\
 	$C$					&	Electric capacitance								   		& [$F$]\\
 	$C_H$				&	Hydraulic capacitance								   		& [$m^3/(N/m^2)$]\\
 	$D$					&	Diameter									     			& [$m$]\\
-	$e$					&	The number of edges									     	& [$\cdot$]\\	
 	$f$					&	Moody friction factor									    & [$\cdot$]\\
-	$f(q,OD)$			&	Pressure drops, due to friction and the WT capacitance		& [$bar$]\\
+	$f(\bm{q},\bm{OD})$	&	Vector field describing the pressure drops					& [$bar$]\\
 	$F$					&	Force									     				& [$N$]\\
 	$g$					&	Acceleration due to gravity									& [$m/s^2$]\\
-	$h$					&	height of the fluid in the water Tower						& [$m$]\\
+	$h$					&	Height of the fluid in the water Tower						& [$m$]\\
 	$h_f$				&	Pressure given in head									    & [$m$]\\
 	$h_m$				&	Form loss									    			& [$m$]\\
 	$I$					&	Electric Current 											& [$A$]\\
-	$\bm{\mathcal{I}}$  &	The identity matrix 										& [$\cdot$]\\
-	$J_k$				&	Water inertia of the $k^{th}$ component						& [$kg/m^4$]\\
+	$\bm{\mathcal{I}}$  &	Identity matrix 											& [$\cdot$]\\
+	$J_k$				&	Inertia of the $k^{th}$ component							& [$kg/m^4$]\\
 	$k_f$				&	Form loss coefficient								    	& [$\cdot$]\\
-	$k_v(\bm{OD})$		&	The conductivity function								    & [$\cdot$]\\	
+	$k_v(\bm{OD})$		&	Conductivity function								   	 	& [$\cdot$]\\	
 	$L$					&	Length									     				& [$m$]\\
 	$m$					&	Mass of body									     		& [$kg$]\\
 	$M$					&	Linear momentum									     		& [$kgm/s$]\\
-	$n_i$				&	The $i^{th}$ node of the distribution network     			& [$\cdot$]\\
 	$n_{gl}$			&	Valve characteristic curve factor							& [$\cdot$]\\
-	$OD$				&	The opening Degree 											& [$\cdot$]\\	
+	$OD$				&	Opening Degree 												& [$\cdot$]\\	
 	$p_a$				&	Atmospheric pressure							      		& [$bar$]\\
-	$P_e$				&	Power consumption of the pump					      		& [$W$]\\
-	$\Delta p_k$		&	The pressure drop across the $i^{th}$ component      		& [$bar$]\\
+	$P_e$				&	Power consumption of the pumps					      		& [$W$]\\
+	$\Delta p_k$		&	Pressure drop across the $i^{th}$ component      			& [$bar$]\\
 	$P_h$				&	Hydraulic power									      		& [$W$]\\
 	$q_k$				&	Flow through the $k^{th}$ component 		     			& [$m^3/h$]\\
-	$\bm{Re}$			&	Reynolds Number								     			& [$\cdot$]\\
+	$Re$				&	Reynolds Number								     			& [$\cdot$]\\
 	$T$					&	Temperature									     			& [$\degree$]\\
 	$U$					&	Electric voltage 											& [$V$]\\
-	$u(\cdot)$			&	Vector field for inputs pressure drops 						& [$bar$]\\
+	$u(\cdot)$			&	Vector field describing inputs 								& [$bar$]\\
 	$v$					&	Velocity									     			& [$m/s$]\\
-	$V_t$				&	Volume of the water in the water tower						& [$m^3$]\\
-	$y$					&	The pressure at a critical points							& [$bar$]\\	
-	$z$					&	The flow through the chords									& [$m^3/h$]\\
-	$\alpha_k(\cdot)$	&	The pressure boost given by the	$k^{th}$ pump				& [$bar$]\\
-	$\gamma_k(\cdot)$	&	Function of hydraulic resistance in WT-connection			& [$bar$]\\
+	$V_t$				&	Volume of water in the water tower							& [$m^3$]\\
+	$\bm{y}$			&	Vector describing the model outputs							& [$bar$]\\	
+	$z$					&	Flow through the chords										& [$m^3/h$]\\
+	$\alpha_k(\cdot)$	&	Pressure boost given by the	$k^{th}$ pump					& [$bar$]\\
+	$\gamma_k(\cdot)$	&	Pressure drop across the WT-connection						& [$bar$]\\
 	$\epsilon$			&	Average roughness									     	& [$m$]\\
-	$\zeta$				&	Pressure drop from elevation difference across the $k^{th}$ component	& [$bar$]\\
-	$\eta$				&	The efficiency of the pump								   	& [$\cdot$]\\
-	$\theta_{max}$		&	Maximum angle of the opening degree						    & [$\degree$]\\
+	$\zeta$				&	Pressure drop from elevation across the $k^{th}$ component	& [$bar$]\\
+	$\eta$				&	Efficiency of the pumps								   		& [$\cdot$]\\
+	$\theta_{max}$		&	Maximum angle of the valve opening degree					& [$\degree$]\\
 	$\theta_{off}$		&	Minimum angle where the valve closes						& [$\degree$]\\
-	$\theta_{OD}$		&	Angle of opening degree										& [$\degree$]\\
-	$\lambda_k(\cdot)$	&	Function of hydraulic resistance in the $k^{th}$ pipe		& [$bar$]\\
-	$\mu_k(\cdot)$		&	Function of hydraulic resistance in the $k^{th}$ valve		& [$bar$]\\
+	$\theta_{OD}$		&	Angle of valve opening degree								& [$\degree$]\\
+	$\lambda_k(\cdot)$	&	Pressure drop across the $k^{th}$ pipe						& [$bar$]\\
+	$\mu_k(\cdot)$		&	Pressure drop across the $k^{th}$ valve						& [$bar$]\\
 	$\nu$				&	Kinematic viscosity									     	& [$kg/ms$]\\
 	$\rho$				&	Density									     				& [$kg/m^3$]\\
-	$\Upsilon$			&	The price of running the system								& [$DKK$]\\
-	$\omega_r$			&	Impeller rotational speed									& [$rad/s$]\\	
+	$\Upsilon$			&	Objective function for the minimization 					& [$DKK$]\\
+	$\omega_r$			&	Pump impeller rotational speed									& [$rad/s$]\\	
 \end{tabular}
 \end{adjustbox}
 
@@ -79,15 +77,18 @@
 
 \begin{tabular}{l l l} 
 	\textbf{Symbol}		&	\textbf{Description}										& \textbf{Unit}	\\\hline
-	$H$					&	The incidence matrix									    & [$\cdot$]\\
-	$H_c$				&	The incidence matrix corresponding to the chords		    & [$\cdot$]\\
-	$H_f$				&	The incidence matrix corresponding to the spanning tree		& [$\cdot$]\\
-	$\mathcal{G}$		&	The system Graph											& [$\cdot$]\\
-	$T$					&	The spanning tree											& [$\cdot$]\\
-	$l$					&	The number of chords										& [$\cdot$]\\
-	$B$					&	Cycle matrix 												& [$\cdot$]\\
-	$B_c$				&	Cycle matrix corresponding to the chords				    & [$\cdot$]\\
-	$B_f$				&	Cycle matrix corresponding to the spanning tree				& [$\cdot$]\\
+	$e$					&	Number of edges in the graph							    & [$\cdot$]\\	
+	$\bm{H}$			&	Incidence matrix									    	& [$\cdot$]\\
+	$\bm{H_c}$			&	Incidence matrix corresponding to the chords		    	& [$\cdot$]\\
+	$\bm{H_f}$			&	Incidence matrix corresponding to the spanning tree			& [$\cdot$]\\
+	$\mathcal{G}$		&	System Graph												& [$\cdot$]\\
+	$\mathcal{T}$		&	Spanning tree												& [$\cdot$]\\
+	$l$					&	Number of chords											& [$\cdot$]\\
+	$\bm{B}$			&	Cycle matrix 												& [$\cdot$]\\
+	$\bm{B_c}$			&	Cycle matrix corresponding to the chords				    & [$\cdot$]\\
+	$\bm{B_f}$			&	Cycle matrix corresponding to the spanning tree				& [$\cdot$]\\
+	$n_i$				&	$i^{th}$ node of the distribution network     				& [$\cdot$]\\
+
 \end{tabular}	
 % \section*{Mathematical tools}
 % vectorfields
