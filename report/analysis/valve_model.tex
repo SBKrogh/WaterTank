@@ -3,7 +3,7 @@
 
 %R2015-1-S1 type valve
 
-Valves in the water distribution system are modeled according to the assumption that the length of each valve, $L$, and the change in elevation, $\Delta z_h$, is zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints. The fact that the length of a valve is considerably smaller than the length of a pipe makes this a fair assumption. Another assumption is that in case of a valve, elevation is not present. 
+Valves in the water distribution system are modelled according to the assumption that the length of each valve, $L$, and the change in elevation, $\Delta z_h$, is zero. Therefore it is assumed that the length of the valve does not influence the flow and the pressure between the endpoints. The fact that the length of a valve is considerably smaller than the length of a pipe makes this a fair assumption. Another assumption is that in case of a valve, elevation is not present. 
 
 In the given system, valves are considered as end-user components since they are placed only in the PMAs. These user valves have a variable Opening Degree(OD) which influences the pressure drop across the endpoints. 
 
@@ -17,7 +17,7 @@ In the given system, valves are considered as end-user components since they are
 
 %In \eqref{ValveModel}, the form-loss coefficient is taken into account in order to determine the pressure drop. Although $k_f$ is a coefficient that describes the resistance of the valve,
 
-In case of valves, manufacturers provide a parameter which indicates the valve capacity. This coefficient is called the $k_{v100}$- factor that describes the conductivity of the valve at maximum OD. This parameter sets the relationship between the water flow through the valve in $m^{3}$ in one hour. The experiments were carried out with a pressure drop of $\Delta p = 1 [bar]$ at a fully open state of the valve. According to \cite{kvvalve}, the properties of water fulfil the requirements which allows to write up the following expression for flow and pressure: 
+In case of valves, manufacturers provide a parameter which indicates the valve capacity. This coefficient is called the $k_{v100}$- factor that describes the conductivity of the valve at maximum OD. This parameter sets the relationship between the water flow through the valve in $[m^{3}]$ in one hour. The conductivity function is determined experimentally by the manufacturer with a pressure drop of $\Delta p = 1 [bar]$ at a fully open state of the valve. According to \cite{kvvalve}, the experiments are carried out on water, therefore $k_{v100}$ can be used for the valves in the water distribution system. 
 
 \begin{equation}
 \label{kvequation}
@@ -42,7 +42,7 @@ is the valve maximum capacity factor.
 \textbf{Valve conductivity function \texorpdfstring{$k_v(OD)$}{}}
 \label{OD}
 
-Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies. \cite{Kallesoe2009}.
+Instead of $k_{v100}$, more generally $k_v(OD)$ can be used which is a function of the opening degree, where $OD \in  [0,1]$. In case of user-operated valves, $k_{v}$ does not remain constant, it ranges over a compact set of values as the opening degree varies \cite{Kallesoe2009}.
 
 All valves in the system share the same characteristics, therefore the following characteristics of $k_{v}$ are valid for all of them. 
 
@@ -61,7 +61,7 @@ All valves in the system share the same characteristics, therefore the following
 \label{valve_conductivity}
 \end{figure}
 
-According to \cite{keller}, the following definition can be written up generally for the conductivity function, $k_v(OD)$:
+According to \cite{keller}, the following general definition can be written up for the conductivity function, $k_v(OD)$:
 
 
 \begin{equation}
@@ -120,7 +120,7 @@ is the minimum angle where the valve opens.
 \textcolor{White}{te}$\unit{\degree}$
 \end{minipage}
 
-In case of the water distribution system \eqref{kvFunction} modifies to: 
+In case of the water distribution system, \eqref{kvFunction} modifies to: 
 
 \begin{equation}
  k_v(OD) =
@@ -150,7 +150,7 @@ As it is shown, the conductivity function of the valve consists of two types of 
 		\right.
 \end{equation}	
 
-Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential has to be continuously differentiable and predetermined by $n_{gl}$ \citep{Kallesoe2009,keller} 
+Since exponential functions never cross the zero point, it is reasonable to use linear characteristics in the lower range. The transition from linear to exponential has to be continuously differentiable and predetermined by $n_{gl}$ \citep{Kallesoe2009,keller}.
 
 
 \textbf{Complete valve model}
@@ -163,14 +163,14 @@ Using \eqref{kvequation} with the conductivity function $k_v(OD)$ and expressing
  \Delta p = \frac{1}{k_v(OD)^2} |q| q
 \end{equation}
 
-Describing it in a compact form for the $k^{th}$ valve in the network yields: 
+Introducing a function for the pressure drop across the $k^{th}$ valve, the model of the valves can be written as: 
 
 \begin{equation}
 \label{CompactValveModel}
  \Delta p_k = \mu_k(q_k,k_v(OD)) 
 \end{equation}
 
-In the further discussion of the valves or at any places where $\mu$ is mentioned, the input variable is considered as the $OD$. Therefore concerning the notation of the $k^{th}$ valve, it is written as: 
+In the further sections at any places where $\mu$ is mentioned, the input variable is considered as the $OD$. This is due to the fact that OD is the only input parameter for $k_v(OD)$. Hence, in notation only $OD$ is written. Therefore the notation of the $k^{th}$ valve, it yields: 
 
 \begin{equation}
 \label{CompactValveModel}
