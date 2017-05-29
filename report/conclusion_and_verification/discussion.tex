@@ -9,7 +9,8 @@ In a situation were prediction error, model deviation and disturbance uncertaint
 
 A method to avoid this situation is to soften the constraints. Changing constraints from hard to soft can be done by having requirements that must be satisfied changed to be dependent on a variable that will be penalized by the cost function, if the variable is outside a desired range. Thus infeasibility can not occur and the MPC will instead try to bring the solution inside the optimal constraint region due to the penalized variable.\\   
 Introducing such a variable is not always possible as some constraints are bound by physical parameters ensuring system safety, but can by applied to other constraints.\\
-Another approach could be to include an adaptive part to the model predictive controller. This could tune the parameters in the controller, such when deviations in e.g. water consumption, electrical prices or the water tower level is appearing, the adaptive part would adjust the parameters such the deviations would become smaller.
+
+Another approach could be to include an adaptive control part to the MPC. This could tune the parameters in the controller, such that when deviations in e.g. water consumption, electrical prices or the water tower level are appearing, the adaptive part would adjust the parameters such that the deviations would become smaller.
 
 
 
