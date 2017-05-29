@@ -58,7 +58,7 @@ For initial testing, the MPC is implemented such that only the constraint on the
 \label{fig:Implementation_shit}
 \end{figure}
 
-In \figref{fig:Implementation_shit} it can be seen that the full-signal input to pumps is constant at $0.05$ and $0.03$, which are the two different lower bounds for the pumps, respectively. Constraints on the pumps are set in order to avoid the lower bound hysteresis of the pumps and not to exceed the upper bound. 
+In \figref{fig:Implementation_shit} it can be seen that the full-signal input to pumps is constant at $0.05$ and $0.03$ [bar], which are the two different lower bounds for the pumps, respectively. Constraints on the pumps are set in order to avoid the lower bound hysteresis of the pumps and not to exceed the upper bound. 
 
 As the input drops down to its minimum value, the WT level is expected to follow the same behavior and empty the water inside. In the following figure it can be seen how the WT pressure decreases until it reaches the steady-state for the input signal.
 
@@ -69,7 +69,8 @@ As the input drops down to its minimum value, the WT level is expected to follow
 \label{fig:WT_input}
 \end{figure}
 
-The initial pressure in the WT from $0.132$ [bar] drops and reflects the dynamics of how the tank is being emptied as it is expected. Since the optimal solution for the control signal is bounded by the lower constraint, the WT is not emptied completely.   
+The initial pressure in the WT from $0.132$ [bar] drops and shows the dynamics of how the tank is being emptied. Since the optimal solution for the control signal is bounded by the lower constraint, the WT is not emptied completely. This result is reasonable and expected, as the lower constraints for the pumps are small values and the initial condition set for the WT is above the operating point
+
 The PMA pressures also experience a pressure drop, due to the decrease on the control input in the pumps as seen in \figref{fig:Output_input}.
 
 \begin{figure}[H]
