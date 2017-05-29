@@ -85,21 +85,23 @@ In the introduction of the section it has been explained how the QP solver finds
 \begin{figure}[H]
 \centering
 \input{report/tikz/state_constraint/Input_ev.tex} 
-\caption{Input pressures for simulation with input constraint.}
+\caption{Input pressures for simulation with all the constraints.}
 \label{fig:Output_input}
 \end{figure}
+
+The input values are no longer in the lower bounds values of the constraints, as seen in \figref{fig:Implementation_shit}, and they vary over time. However, the behavior shown in \figref{fig:Output_input} is not the expected one, since the path followed by the input has nothing to do with the price curve shown in \secref{fig:Implementation_shit}. It would be expected the input to be maximized when the price is low and the opposite with high prices. Considering the unsatisfactory behavior for the input, the same is expected for the state and outputs values. 
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/state_constraint/State_ev.tex} 
-\caption{State pressures for simulation with input constraint.}
+\caption{State pressure for simulation with all the constraints.}
 \label{fig:Output_input}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/state_constraint/Output_ev.tex} 
-\caption{Output pressures for simulation with input constraint.}
+\caption{Output pressures for simulation with all the constraints.}
 \label{fig:Output_input}
 \end{figure}
 
