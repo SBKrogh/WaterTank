@@ -31,7 +31,7 @@ s.t. \:\:\:\:\:	&\begin{bmatrix}
 
 \textbf{Objective function}
 
-As shown, the objective function and the constraints are all written up according to the small-signal value of the control signal. The difficulty of solving this optimization problem simplifies however, if $\Upsilon$ is convex. This is due to the fact that if the objective function is convex then any local minima are also the global minimum. 
+The objective function and the constraints are all written up according to the small-signal value of the control signal. The difficulty of solving this optimization problem simplifies however, if $\Upsilon$ is convex. This is due to the fact that if the objective function is convex then any local minimum is also the global minimum \cite{Convex_constraints}.  
 \\
 The function, $\Upsilon$, defines a quadratic surface. If this surface is convex, then it can be visualized as in \figref{convexfig}. If the objective function is non-convex, the surface has a form such as in \figref{nonconvexfig}. 
 
@@ -54,16 +54,16 @@ The function, $\Upsilon$, defines a quadratic surface. If this surface is convex
 \end{figure}
 %The gradient of the objective function tells the direction in which the change has the greatest rate. In case of convexity, this gradient vector points in the direction of the global minimum, therefore using iterative methods it can be found easily.
 
- \figref{convexfig} and \figref{nonconvexfig} points out the differences between the two minimization problems. Solving the convex quadratic problem will results in obtaining the global minimum, which can be found determining the first derivative of the function and solving it for to zero. 
- In order to ensure convexity, the objective function must have a positive semi-definite Hessian matrix. The Hessian is a square matrix of second order partial derivatives of a scalar-valued function or scalar field. Therefore, to obtain an expression that fulfills this condition, the Hessian for \eqref{eq:obj_final1} is analyzed : 
+ \figref{convexfig} and \figref{nonconvexfig} point out the differences between the two minimization problems. Solving the convex quadratic problem will result in obtaining the global minimum, which can be found determining the first derivative of the function and solving it when equal to zero. 
+ In order to ensure convexity, the objective function must have a positive semi-definite Hessian matrix. The Hessian is a square matrix of second order partial derivatives of a scalar valued function or scalar field. To obtain an expression that fulfills this condition, the Hessian for \eqref{eq:obj_final1} is analyzed: 
 
 \begin{align}
 %
 \Upsilon(\bm{\hat{u}}_{\bm{Hp}}) &= \frac{1}{\eta}\bigg( \frac{1}{2} \bm{\hat{u}}_{\bm{Hp}}^{T} \bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \bm{\hat{u}}_{\bm{Hp}} + c \bigg)\\
 %
-\frac{\partial \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
+\frac{\partial \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial \bm{\hat{u}}_{\bm{Hp}}} &= \frac{1}{\eta} \big(\bm{R} \bm{\hat{u}}_{\bm{Hp}} + \bm{b} \big)\\
 %
-\frac{\partial^2 \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial {\bm{\hat{u}}}^{2}_{\bm{Hp}}} &= \frac{1}{\eta}\cdot \bm{R} 
+\frac{\partial^2 \Upsilon(\bm{\hat{u}}_{\bm{Hp}})}{\partial {\bm{\hat{u}}}^{2}_{\bm{Hp}}} &= \frac{1}{\eta} \bm{R} 
 \label{hessian}
 %
 \end{align}
@@ -71,10 +71,10 @@ The function, $\Upsilon$, defines a quadratic surface. If this surface is convex
 \eqref{hessian} shows that convexity is ensured if:
 
 \begin{equation}
-\bm{R} \succeq 0  
+\bm{R} \geq 0  
 \end{equation}
 
-for all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive constant, therefore does not change the convexity of the function. 
+For all $\bm{\hat{u}}_{\bm{Hp}} $, since the efficiency, $\eta$ is a positive constant, therefore does not change the convexity of the function. 
 
 Recalling \eqref{R_quadratic}, $\bm{R}$ depends on $\bm{\Lambda_1}$ from \eqref{pumpflows_simplified}, which is defined as $\bm{\Lambda_1} =\bm{G^T} \bm{B_{1}^T}\bm{M_c^{-1}}\bm{N_c}$.
 
@@ -84,20 +84,20 @@ Bringing back the structure of $\bm{N_c} = \bm{B_1} \bm{G}$, the above equation 
 \bm{\Lambda_1} =\bm{N_c}^{T} \bm{M_c^{-1}}\bm{N_c}
 \end{equation}
 
-In \secref{} $\bm{M_c}$ has been defined as a symmetric positive definite matrix, the same procedure as in \eqref{PosDefi} is followed. The above equation is multiplied by a non-zero vector column $\bm{x}$ and its transpose $\bm{x}^{T}$
+In \eqref{Jequation} $\bm{M_c}$ has been defined as a symmetric positive definite matrix, the same procedure as in \eqref{PosDefi} is followed. The above equation is multiplied by a non-zero vector column $\bm{x}$ and its transpose $\bm{x}^{T}$
 
 \begin{equation}
 	\bm{x}^{T}\bm{N_c}^{T} \bm{M_c^{-1}}\bm{N_c}\bm{x}
 \end{equation}
 
-A new variable is defined $\bm{y} = \bm{N_c}\bm{x}$, now making usage of the definition of positive definiteness 
+A new variable is defined $\bm{y} = \bm{N_c}\bm{x}$, now making use of the definition of positive definiteness: 
 
 \begin{equation}
 	\bm{y}^{T} \bm{M_c^{-1}} \bm{y} \geqslant 0
 	\label{Def_Mc}
 \end{equation}
 
- With $\bm{M_c}$ fulfilling the requirements for positive definiteness, the Hessian $\bm{R}$ can be certified to be greater than zero, hence convex.
+ With $\bm{M_c}$ fulfilling the requirements for positive definiteness, the Hessian of $\bm{R}$ can be certified to be greater than zero, hence convex.
  % Every term in this expression is known and positive semi-definite, except $\bm{M_c}$, which includes all the resistance terms as an outcome of the parameter estimation. Therefore $\bm{M_c}$ must be positive semi-definite. To ensure that the objective function is convex, this requirement has been explained in detail in the formulation of \eqref{statespace_control_sys_state}.  
 
 % The definition of a convex function can be written as, $\triangledown(\triangledown g(\cdot)) \geq 0$,  and the definition of a strictly convex function as $\triangledown(\triangledown g(\cdot)) > 0$. For the purpose of this project is it only required for the optimization problem to be convex. 
@@ -122,7 +122,7 @@ A new variable is defined $\bm{y} = \bm{N_c}\bm{x}$, now making usage of the def
 
 \textbf{Constraints}
 
-The constraints are given by linear inequalities which define half-spaces that are contained the quadratic function. A half-space is half-space is a set of points that satisfy a single inequality constraint, hence, each constraint defines a half-space \cite{van2005formulation}. Every half-space is a convex set and the intersection of any number of convex sets is convex \cite{Convex_constraints}.
+The constraints are given by linear inequalities which define half-spaces that are contained in the quadratic function. A half-space is a set of points that satisfy a single inequality constraint, hence, each constraint defines a half-space \cite{van2005formulation}. Every half-space is a convex set and the intersection of any number of convex sets is convex \cite{Convex_constraints}.
 % The convexity of the constraints is investigated with the same procedure as for the objective function. All constraints are linear and the Hessian of a linear function, $Ax+b$, is always zero. Therefore the constraints are always convex.
 
 %In this section:
