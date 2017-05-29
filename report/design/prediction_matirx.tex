@@ -50,7 +50,7 @@ is the small-signal value of the flows through the main pumps.
 \textcolor{White}{te}$\unit{m^3/h}$
 \end{minipage}
 
-The operating value for the pump flows can be determined by the nonlinear model of the pumps with the available pressure measurements. This is described in detail in \appref{cha:linear_pump2}. 
+The operating value for the pump flows is determined by the nonlinear model of the pumps with the available pressure measurements. This is described in detail in \appref{cha:linear_pump2}. 
 \\
 Inserting the expression for the small-signal chord flows given in \eqref{statespace_control_sys_state_recall} into \eqref{mapping_mainP_1} and then into the objective function, which yields:
 
@@ -192,8 +192,8 @@ Moving further in time steps, the predicted states only depend on the past value
 % \end{bmatrix}}_{\bm{\hat{d}}_{Hp}}
 % \label{dynamic_matrix_eq} 
 % \end{align}
-
-\begin{align}\hspace{-0.8cm}
+\begin{equation}\hspace{-0.8cm}
+\begin{split}
 \underbrace{\begin{bmatrix}
 \Delta \hat p_{wt}[0] \\
 \Delta \hat p_{wt}[k\!+\!1|k] \\ 
@@ -209,7 +209,7 @@ A_d^2\\
 \vdots \\ 
 A_d^{(H_p-1)}\\ 
 \end{bmatrix}}_{\bm{\Phi}}
-\! \Delta \hat{p}_{wt}[0]\!\\&+\!\nonumber
+\! \Delta \hat{p}_{wt}[0]\!\\&+\!
 \underbrace{\begin{bmatrix}
  \bm{0}        & \bm{0}                &\hdots & \bm{0}\\ 
  \bm{B_d}         & \bm{0}                &\hdots & \bm{0}\\ 
@@ -238,7 +238,8 @@ A_d^{(H_p-1)}\\
 \vdots \\ 
  \bm{\hat{d}}[k+H_p-1|k]\\ 
 \end{bmatrix}}_{\bm{\hat{d}}_{Hp}} 
-\end{align}
+\end{split}
+\end{equation}
 
 The first line of the dynamics describes the following trivial equation:
 
