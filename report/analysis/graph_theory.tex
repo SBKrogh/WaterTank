@@ -37,14 +37,14 @@ shown.
 \subsection*{Cycle matrix}
 \label{CycleSection}
 A spanning tree, $T \in \mathcal{G}$ is a subgraph which contains all nodes of $\mathcal{G}$ but has no cycles \cite{GraphModel}. 
-In order to obtain the spanning tree, it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, are governed by the following expression:
+In order to obtain the spanning tree, it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, is governed by the following expression:
 
 \begin{equation}
   \label{Numberofchords}
   l = e - n +1
 \end{equation}
 
-By adding a chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as many chords there are\cite{GraphModel}.  
+By adding a chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as there are chords\cite{GraphModel}.  
 The set of fundamental cycles correspond to the fundamental cycle matrix $\bm{B}$, such that the number of rows and columns are defined by the amount of chords and edges, respectively. 
 
 The cycle matrix of a directed graph can be expressed with $\bm{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
@@ -119,7 +119,7 @@ the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$. These two variables can b
 %\]
 \end{equation}
 
-
+Where the subscript \textit{c} denotes the chords and the subscript \textit{f$_{\cdots}$e} denotes all the edges in the spanning tree.  
 In order to derive a model for the hydraulic network, a set of independent flow variables are identified \cite{TowerModel}. These flow variables have the property that their values can be set independently from other flows in the network and they coincide with the flows through the chords. 
 Therefore it is convenient to choose the column indexing of the 
 $\pmb{H}$ and $\pmb{B}$ matrix, such as:

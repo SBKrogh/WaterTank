@@ -1,12 +1,12 @@
 \subsection{Network model}  
 \label{ParameterEstimation}
 
-Once the corresponding incidence and cycle matrices are identified, and the analogy between hydraulic and electrical circuits is concluded, the whole hydraulic network can be described as a set of differential equations. In this section an abstract and general form of the network model is derived using all the previously obtained expressions. 
+Once the corresponding incidence and cycle matrices are identified, and the analogy between hydraulic and electrical circuits is concluded, the hydraulic network is described as a set of differential equations. In this section a general form of the network model is derived using all the previously obtained expressions. 
 \\
-In \appref{IncidenceSection}, the form of the incidence matrix is shown. The last column of $\bm{H}$ represents the edge that belongs to the WT. 
+In \appref{IncidenceSection}, the incidence matrix is shown. The last column of $\bm{H}$ represents the edge that belongs to the WT. 
 %The number of edges representing the WT is one and in the further model description is denoted with $w$. 
 \\
-Hence, the $\bm{H}$ matrix can be written as 
+Hence, the $\bm{H}$ matrix can be written as:
 % It is worth mentioning that it is been also followed the structure such as the last 
 % column of the H matrix agrees with the WT edge. Hence, the H matrix can 
 % be written as
@@ -58,7 +58,7 @@ As mentioned in \secref{KirchhoffSection}, $\bm{q}$ is a vector containing all t
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
 \hspace*{8mm} $\bm{q_1} \in \mathbb{R}^{(e-1) \times 1}$  \\
-\hspace*{8mm} $\bm{q_0} \in \mathbb{R}^{1 \times 1} $ 
+and \hspace*{0.7mm} $\bm{q_0} \in \mathbb{R}^{1 \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -66,7 +66,7 @@ Where\\
 \hspace*{4mm} is the flow through the edge belonging to the WT. 
 \end{minipage}
 
-The vector containing the pressures at the nodes can be also structured as
+The vector containing the pressures at the nodes can be structured as
 
 \begin{equation}
 \bm{p} =
@@ -79,7 +79,7 @@ The vector containing the pressures at the nodes can be also structured as
 \begin{minipage}[t]{0.24\textwidth}
 Where\\
 \hspace*{8mm} $\bm{p_1} \in \mathbb{R}^{(n-1) \times 1}$  \\
-\hspace*{8mm} $\bm{p_0} \in \mathbb{R}^{1 \times 1} $ 
+and \hspace*{0.7mm} $\bm{p_0} \in \mathbb{R}^{1 \times 1} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -97,20 +97,20 @@ The chord flows make it possible to deal with less variables, thus making the se
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\bm{z} \in \mathbb{R}^{(1 \times g)} $ 
+\hspace*{8mm} $\bm{z} \in \mathbb{R}^{(1 \times l)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-\hspace*{4mm} is the chord flow vector and g is the number of elements.
+\hspace*{4mm} is the chord flow vector and $l$ is the number of chords.
 \end{minipage}
 
-Before writing up an expression that describes all parts however, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As mentioned in \secref{SystemModel}, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump act as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not acts as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as  \eqref{CompleteModel_extended}.
+Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As specified, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However, there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump acts as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as:%  \eqref{CompleteModel_extended}.
 
 % However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
 \todo{B1 - B0 multiplication -> very important to describe! }
 \begin{equation}
 \label{CompleteModel_extended}
-\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tower} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
+\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tower} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
 \hspace{-0.1cm}
@@ -130,11 +130,11 @@ Where\\
  is the $k^{th}$ element of the vectorfield which describes the pressure drop around the pipe elements and $C_{p,k}$ is the resistance of the pipe, \vspace{4pt} \\
  is the $k^{th}$ element of the vectorfield which describes the pressure drop around the valve elements and $C_{p,k}$ is the resistance of the valve,\vspace{4pt} \\
  is the $k^{th}$ element of the vectorfield which describes the pressure contribution of the $k^{th}$ pump,\vspace{10pt} \\
- is the $k^{th}$ element of the vectorfield which describes the pressure drop around the WT-connection.  
+ is the $k^{th}$ element of the vectorfield which describes the pressure drop around the WT connection.  
 \end{minipage}
 
 %In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\bm{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
-Gathering the functions of the pipes, valves, the WT and the WT-connection the, following vectorfield is introduced:
+Gathering the functions of the pipes, valves, the WT and its connection the following vectorfield is introduced:
 
 \begin{equation}
   f(\bm{q}, \bm{OD}) = \lambda(\bm{q}) + \bm{\zeta} + \mu(\bm{q}, \bm{OD}) + \gamma (\bm{q}) + \bm{\Delta p_{wt}}
@@ -154,7 +154,7 @@ f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:i = 25
 
 It is important to point out that in \eqref{ComponentFunction} the functions for the different components take the flow as a vector in their arguments. It means that the right hand-side of the equation returns a vector with a size of $\bm{q}$. The elevation and the pressure drop across the WT therefore are also treated as vector that returns the appropriate value only for edges where elevation or the WT is present. 
 
-Taking the newly introduced vectorfield, $f(\bm{q}, \bm{OD})$ into account, the model for the whole network can be written up such that:
+Taking the newly introduced vector field, $f(\bm{q}, \bm{OD})$ into account, the model for the network can be written up such that:
 
 \begin{equation}
   \bm{\Delta p} =  \bm{J} \bm{\dot{q}} + f(\bm{q}, \bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{q})
