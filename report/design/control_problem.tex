@@ -12,7 +12,9 @@ The water distribution system described in \secref{system_overview} is to be con
 \end{itemize}
 %\vspace{-1mm}
 %The WT is used in the system to reduce the operation cost of the water distribution network. Therefor the system has to be controlled in a way that obtains the lowest cost of operation. 
-The system consists of four pumps and is controlled by the two placed in the main circle. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. The project deals with a control that optimizes the WT such that the pressure at the end-users is maintained and the cost of pumping effort in the main pumps is minimized. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
+The system consists of four pumps and is controlled by the two placed in the main ring. The two pumps in the PMAs influence only the operating point with a fixed pressure lift. 
+
+The project deals with a control scheme that minimizes the cost of running the system, by controlling the main pumps and using the WT, such that the pressure at the end-users is maintained. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
 
 In order to achieve such an optimal behavior, Model Predictive Control, MPC, is considered. With MPC, the dynamics of the model and knowledge about prices and end-user consumption are used to predict the system behavior subject to the constraints in the system. 
 
