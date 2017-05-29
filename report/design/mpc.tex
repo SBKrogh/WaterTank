@@ -1,7 +1,7 @@
 \section{Model predictive control}
 \label{sec:MPC}
 
-Model predictive control is an advanced control method that depends on the dynamic model of the system. It is model based in the sense that it uses an explicit internal model to generate predictions of future system behavior. Therefore MPC allows to calculate an optimal control signal taking the future costs of some matter into account. The control structure of MPC is in general:
+Model predictive control is an advanced control method that depends on the dynamic model of the system. It is model based as it uses an explicit internal model to generate predictions of future system behavior. Therefore MPC allows to calculate an optimal control signal taking the future model and disturbance behavior into account. The control structure of MPC is in general:
 
 \begin{figure}[H]
 \centering
@@ -15,8 +15,8 @@ Model predictive control is an advanced control method that depends on the dynam
 \begin{itemize}
 \item[1:] A measurement is taken on either the outputs or directly on the states if state measurement is available. Otherwise the states are estimated. 
 \item[2:] The optimizer calculates a set of predicted values over the prediction horizon, according to the objective of the control and the constraints. The predicted inputs are defined by $\bm{u_}{Hp}$.
-\item[3:] $\bm{u}_{Hp}[k|k]$, the first entry of the calculated control sequence at the current time k, is applied.
-\item[4:] A new measurement is taken and everything starts over. 
+\item[3:] $\bm{u}_{Hp}[k|k]$, the first entry of the calculated control sequence at the current time $k$, is applied.
+\item[4:] Go back to 1. 
 \end{itemize}
 
 The future outputs $\bm{y}_{Hp}$ and the future inputs $\bm{u}_{Hp}$ are defined by:
@@ -53,11 +53,11 @@ The future outputs $\bm{y}_{Hp}$ and the future inputs $\bm{u}_{Hp}$ are defined
  is the predicted output to time $k$ based on the current output, \\
  %is the window horizon,\\
  is the prediction horizon,\\
- is the predicted optimal control signal to the current time k.
+ is the predicted optimal control signal to the current time $k$.
  %is the control horizon.s
  \end{minipage}
 
-To calculate the constraint matrices $H_p$ need to be determined. In \secref{sec:cost_fkt} it can be seen that the price fluctuates a lot but some periodicity can be seen every 24 hours. Furthermore water consumption can be seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefore $H_p$ is chosen to 24. 
+To calculate the matrices, $H_p$ need to be determined. In \secref{sec:cost_fkt} it is seen that the price fluctuates a lot but some periodicity is seen every 24 hours. Furthermore, water consumption is seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefore, $H_p$ is chosen to 24. 
 
 %$H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
 
