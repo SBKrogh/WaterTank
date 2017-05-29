@@ -8,7 +8,7 @@ Such a setup is available at Aalborg university which is based on a real water d
 %picture of test system
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.65\textwidth]{report/pictures/test_system_wide}
+\includegraphics[width=0.95\textwidth]{report/pictures/test_system_wide}
 \caption{The available test setup used to represent a real water distribution system.}
 \label{fig:test_setup}
 \end{figure}
@@ -23,8 +23,7 @@ The test setup represents a real system, thus the same structure concerning pipi
 \input{report/tikz/sys_model_overview.tex} 
 \caption{Overview of the reduced system that fulfills the scenario of this project.}
 \label{fig:sys_model_overview}
-\end{figure}
-
+\end{figure}\vspace{-0.5cm}
 The system can be split up into different parts, where the main part is a water reservoir placed at ground level, used to supply the system. Two pumps are connected to the reservoir and they supply water to a main water ring formed around the PMA's. 
 A WT is also connected to the main water ring, and acts as an additional water reservoir pressurizes the ring due to the elevation of the WT. The direction of water flow, with respect to the WT, depends on the pressure in the main ring. The tower can thus be filled by pressurizing the ring or be used to pressurize and supply water to the ring instead of the pumps.  
 From the water ring, two PMA's are connected, each via their own pump. In each PMA a measuring point, called the critical point (CP), is placed and the pressure at this point shall be kept to accommodate supply demands of the consumers. Furthermore, two consumers are placed in each PMA, these are simulated by valves with a variable opening degree where the water flows back to the main reservoir.    
@@ -65,6 +64,4 @@ For the pipes two different material types are used. The pipes used in the main 
 %The pipes used in the main ring, the connections to both the reservoir and the water tower are made of polyethylene grade 80 called PE80\cite{PE100}.
  The pipes used to connect the PMA's to the ring and the internal connections in the PMAs are made of polyethylene with cross-links called PEX. In addition, the pipes, fittings, bends, and elbows are also present and found in various metals as iron and brass.     
 
-The pressure measurement in each PMA is carried out with Jumo pressure sensors. The pressure is measured relative to the ground, Gnd, for the test system. Gnd is equal to the atmospheric pressure. Furthermore, both the differential pressure over each pump and the absolute pressure are measured with a Grundfos direct sensor DPI v.1 and a Danfoss mbs32/33 pressure sensor, respectively.    
-
-The main reservoir has a volume of 700 L and the WT a volume of 200 L. The volume of the WT in this report is denoted as $V_t$. A full description of each component in the test setup, including type, naming and relevant technical information can be found in \appref{system_description} and a diagram of the entire test setup can be seen in \appref{systemdiagram}.
+The pressure measurement in each PMA is carried out with Jumo pressure sensors. The pressure is measured relative to the ground, Gnd, for the test system. Gnd is equal to the atmospheric pressure. Furthermore, both the differential pressure over each pump and the absolute pressure are measured with a Grundfos direct sensor DPI v.1 and a Danfoss mbs32/33 pressure sensor, respectively. The main reservoir has a volume of 700 L and the WT a volume of 200 L. The volume of the WT in this report is denoted as $V_t$. A full description of each component in the test setup, including type, naming and relevant technical information can be found in \appref{system_description} and a diagram of the entire test setup can be seen in \appref{systemdiagram}.

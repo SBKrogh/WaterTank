@@ -69,12 +69,12 @@ Rewriting \eqref{NewtonLaw}, due to the above-mentioned asumptions, the mass of 
   \frac{d}{dt} M = {\frac{d(m_w v)}{dt}} = m_w \frac{dv}{dt} = \sum_i F_i
 \end{equation} 
 
-\begin{minipage}[t]{0.20\textwidth}
+\begin{minipage}[t]{0.16\textwidth}
 Where\\
 \hspace*{8mm} $m_w$ \\
 and \hspace*{0.7mm} $v$ 
 \end{minipage}
-\begin{minipage}[t]{0.68\textwidth}
+\begin{minipage}[t]{0.72\textwidth}
 \vspace*{2mm}
 is the mass of the water,\\
 is the value of the velocity of the water at each point of the pipe.
@@ -87,7 +87,7 @@ is the value of the velocity of the water at each point of the pipe.
 
 The sum of the forces acting on the control volume can be seen as input forces, acting on the inlet of the pipe and output forces acting on the outlet. Furthermore, resistance forces and the effect of gravitational force is present.  
 These forces are expressed in terms of pressure in order to obtain the model of the pressure drop in the pipes. In \figref{fig:pipe_freebody}, all forces acting on a pipe segment are shown:
-
+%
 %tikz of the pipe freebody diagram
 \begin{figure}[H]
 \centering
@@ -95,7 +95,7 @@ These forces are expressed in terms of pressure in order to obtain the model of 
 \caption{Free-body diagram describing the forces acting on a segment of a pipe.}
 \label{fig:pipe_freebody}
 \end{figure}
-
+%
 The pipe is assumed to have a cylindrical structure. Furthermore, the cross section of the pipe, $A(x)$, is constant for every $x \in [0,L]$, where $L$ is the length of the pipe:
 
 \begin{equation}
@@ -225,8 +225,7 @@ is the gravitational constant.
 \end{equation} 
  
  The unknown parameter in \eqref{DarcyWeisbach} is the Moody friction factor 
- which is non-dimensional and is a function of the Reynold's number, $Re$. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}. \\
- 
+ which is non-dimensional and is a function of the Reynold's number, $Re$. This friction factor depends on whether the flow is laminar, transient or turbulent, and the roughness of the pipe \cite{Intro_Fluid}.  
  
 The Reynold's number can be used to determine the regime of the flow \cite{Intro_Fluid}. When $Re<2300$ as laminar, if $2300<Re<4000$ as transient and if
 $Re>4000$ as turbulent. 
