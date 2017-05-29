@@ -16,9 +16,9 @@ The system consists of four pumps and is controlled by the two placed in the mai
 
 The project deals with a control scheme that minimizes the cost of running the system, by controlling the main pumps and using the WT, such that the pressure at the end-users is maintained. In other words, the use of the main pumps and the WT is controlled according to the constraints and requirements stated above. 
 
-In order to achieve such an optimal behavior, Model Predictive Control, MPC, is considered. With MPC, the dynamics of the model and knowledge about prices and end-user consumption are used to predict the system behavior subject to the constraints in the system. 
+In order to achieve such an optimal behavior, Model Predictive Control (MPC) is considered. With MPC, the dynamics of the model, knowledge about prices and end-user consumption are used to predict the system behavior subject to the constraints in the system. 
 
-Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required minimum pressure to the end-users. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the two control method, the following cascade structure can be formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
+Apart from the MPC control, all pumps are controlled by PI controllers in order to deliver the required differential pressure. The MPC could be used to control the main pumps directly, but to mimic a real world scenario, without PMA pumps, it is chosen to let the MPC set differential pressure references to the main pumps. As a consequence of the chosen control method, the following cascade structure is formulated for the two main pumps as it is shown in \figref{fig:control_structure}: 
 
 %However, as it is explained above, the two main pumps are also controlled by MPC. 
 
@@ -29,7 +29,7 @@ Apart from the MPC control, all pumps are controlled by PI controllers in order 
 \label{fig:control_structure}
 \end{figure}
 
-As it is shown, the PI controllers are responsible for setting the control inputs to the main pumps, using the feedback from the differential pressure output. It should be noted however, that typically the flow out of the pumping station is controlled instead of the pressure. Here the use of pressure feedback has the advantage that in case of system failure the pressure is what matters. The flow would typically either lead to high or too low pressure or would make the WT overflow. On the other hand, the reference to the PI controllers is set by the MPC algorithm which takes the measurements from the output into account. These references are set as differential pressures. One of the advantage of such a cascade control is that the pump controllers are present for each pump, also including the PMA pumps. At the event of implementation or communication failure between the MPC and the pump controllers, the pumping remains operational. 
+The PI controllers are responsible for setting the control inputs to the main pumps, using the feedback from the differential pressure output. It should be noted that typically the flow out of the pumping station is controlled instead of the pressure. Here the use of pressure feedback has the advantage that in case of system failure the pressure is what matters. The flow would typically either lead to high or low pressure or it will make the WT overflow. The reference to the PI controllers is set by the MPC algorithm, which takes the measurements from the output into account. The references are set as differential pressures. One of the advantages of such a cascade control is that the pump controllers are present at each pump, also including the PMA pumps. At the event of implementation or communication failure between the MPC and the pump controllers, the pumping remains operational. 
  
 %\vspace{-1mm}
 
@@ -42,7 +42,7 @@ As it is shown, the PI controllers are responsible for setting the control input
 %%
 
 %For the MPC the systems operating area, $C_T(\pmb{\Delta{p}},\pmb{q},\Gamma(k))$ has to be described. 
-In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account along with the hydraulic power consumption of the pumps. Such an objective function can be written in the form: 
+In order to define an objective function for the MPC problem, the cost of running the system has to be taken into account based on the power consumption of the pumps and the electrical price. Such an objective function can be written in the form: 
 %
 \begin{align}
  \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \frac{1}{\eta} \sum_{i=1}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot  \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost} 
@@ -59,7 +59,7 @@ Where\\
 \hspace*{8mm} $\bm{u}$ \\
 \hspace*{8mm} $\bm{q_p}$ \\
 \hspace*{8mm} $\eta_i$ \\
-\hspace*{8mm} $c_p[k]$ 
+and \hspace*{0.7mm} $c_p$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
@@ -80,10 +80,10 @@ is the electricity price cost sequence.
 \textcolor{White}{te}$\unit{DKK/MWh}$
 \end{minipage}
 
-It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore the deviation from the operating point would not result in the total amount of energy consumed up by the pumps. 
+It should be pointed out that the input and flow variables of the objective function are not small signal values since the energy is to be optimized. Therefore the deviation from the operating point would not result in the total amount of energy consumed by the pumps. 
 
-The efficiency of the two main pumps is assumed to be the same for the reason that the pumps are of the same type. Furthermore, the efficiency is considered to be constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not vary significantly. 
-The control problem can be formulated as a minimization problem of the form:
+The efficiency of the two main pumps is assumed to be the same as the pumps are of the same type. Furthermore, the efficiency is considered to be constant since the operating point is the same for the main pumps and it is assumed that for small deviations in flow and pressure the efficiency does not vary significantly. 
+The control problem is formulated as a minimization problem of the form:
 %\pmb{u}[k],\pmb{q_p}[k],c[k]
 \begin{align}
 \underset{\bm{u}}{min} \:  \Upsilon(\bm{u}[k],\bm{q_p}[k],c_p[k]) &= \underset{\bm{u}}{min} \: \frac{1}{\eta} \sum_{i=0}^{H_p-1} \Big( \bm{u^T}[k+i|k] \cdot \bm{q_{p}}[k+i|k]\Big)\cdot c_p[k+i|k] \label{eqcost1} \\
@@ -97,13 +97,13 @@ s.t. \:\:\:\:\:  \Delta \hat{p}_{wt} [k+i+1|k] &= A_d \Delta \hat{p}_{wt}[k+i|k]
 %
 & \underline{\Delta p_{wt}} \leq \Delta p_{wt} \leq \overline{\Delta p_{wt}} \\
 %
-& \bm{u} \leq \overline{u} \label{eqconst2} 
+& \underline{u} \leq \bm{u} \leq \overline{u} \label{eqconst2} 
 \end{align}
 
  \begin{minipage}[t]{0.24\textwidth}
  Where\\
  \hspace*{8mm} $\bm{y}$ \\
- \hspace*{8mm} $\Delta p_{wt}$ 
+and \hspace*{0.7mm} $\Delta p_{wt}$ 
  \end{minipage}
  \begin{minipage}[t]{0.63\textwidth}
  \vspace*{2mm}
@@ -116,11 +116,11 @@ s.t. \:\:\:\:\:  \Delta \hat{p}_{wt} [k+i+1|k] &= A_d \Delta \hat{p}_{wt}[k+i|k]
  \textcolor{White}{te}$\unit{bar}$
  \end{minipage}
 
-As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that the cost of running the pumps is minimized. Therefore the objective function gives a price for all the consumed power over the control horizon, which is a specific future time interval. Furthermore, it should be noted that both the objective function and the constraints are linear, therefore the problem in such form is a linear programming problem. However there is not any direct information about the flows through the pumps, therefore they need to be expressed with other variables of the system which means that the problem is to be reformulated.
+As it is shown in \eqref{eqcost1} the optimal input signal is obtained such that the cost of running the pumps is minimized. Therefore, the objective function gives a price for all the consumed power over the control horizon, which is a specific future time interval. No direct information about the flows through the pumps are available, therefore the flows need to be expressed as other variables, leading to the problem being reformulated.
 
-The minimization is subject to the dynamics of the water distribution network, and the constraints. As can be seen, there is a constraint on the output of the system, which is considered as the pressure demand for the end-users. There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps. 
-\\
-The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c_p[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
+The minimization is subject to the dynamics of the water distribution network, and the constraints. The constraint on the output of the system, is considered as the pressure demand for the end-users. Furthermore, two constraints to the pressure in the WT and the input signal to the pumps are present. 
+%There is a constraint on the pressure in the WT which represents the states in the dynamics and furthermore, there is a constraint on the input signal to the pumps.
+%The dynamic model of the system is explained in \chapref{modelling} and linearized in \secref{LinParamEst}. The electrical price, $c_p[k]$, is described in \appref{sec:cost_fkt}. %From this the input vector $\pmb{u}$ should be obtained, so the cost of running the system, within the bounds of the constrains, is minimized. 
 
 In the following sections the design of the control system is explained. 
 
