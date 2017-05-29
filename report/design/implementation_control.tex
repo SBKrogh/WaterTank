@@ -5,7 +5,7 @@ This chapter will explain how the controller designed in \chapref{Controller} is
 
 \section{Simulink implementation}
 \label{simulink_intro}
-In the implementation of the control the model estimated in \secref{estim_results} is used. Although, the fit percentage differs from the real data the behavior and dynamics of the WT are correctly caught, making this model the most suitable one to work with. 
+In the implementation of the control, the model estimated in \secref{estim_results} is used. Although, the fit percentage differs from the real data, the behavior and dynamics of the WT are correctly caught, making this model the most suitable and realistic to work with. \figref{fig:control_sketch} shows the implementation strategy for the control design on the model of the water distribution system.
 % It is worth mentioning, that for the implementation of the control, the second linear model attempt is used as it is the most suitable model to work with. The MPC controller is implemented in MATLAB Simulink, which is connected to the model as shown in \figref{fig:control_sketch}:
 
 \begin{figure}[H]
@@ -15,15 +15,13 @@ In the implementation of the control the model estimated in \secref{estim_result
 \label{fig:control_sketch}
 \end{figure}
 
-From the state-space model the WT pressure is sent to the MPC, as the current state takes part both in the optimization of the problem and in the constraints.
+From the state-space model, the WT pressure is sent to the MPC block at each iteration, as the current initial state is measured and required for calculating the constraints and the objective function. 
 
-In order to solve the optimization problem and find a global minimum for the problem specified in \eqref{eq:obj_final1},  MATLABs quadratic solver, \textit{quadprog}, is used. This solver, finds out the preceding problem subject to the specified constraints and restrictions set to the convex function. The interior-point-convex algorithm is chosen to carry out the calculation of the control inputs. This algorithm solves the problem by simplifying the constraints, and then by iterating in the interior of the feasible set, progressively adds the constraint and reconstructs the original problem \cite{Convex_optimization}. 
+In order to solve the optimization problem and find a global minimum for the problem specified in \eqref{eq:obj_final1},  Quadratic Programming(QP) is used. Solvers for QP problems in Matlab find out the preceding problem subject to the specified constraints and restrictions set to the convex function. The method chosen is interior-point-convex algorithm which solves the problem by simplifying the constraints and then by iterating in the interior of the feasible set.  Progressively, it adds the constraints and reconstructs the original problem \cite{Convex_optimization}. 
 
+In previous sections, the length of the prediction horizon, $H_p$, is introduced. It is decided to predict 24 hour forward due to the periodicity of the electricity price and the behavior of the end-user consumption. Therefore, the control input to the state-space model and the disturbance due to the end-users are updated every hour. The sampling time for the control input will differ from the sample time determined for the discrete time state-space model, which is $T_s = 87.5s$. 
 
-
-In previous sections the number of predictions, $H_p$, is introduced. It is decided to predict 24 hour forward due to the periodicity of the daily rhythm of the population. Therefore, the control input to the state-space model and the disturbance added by the end-users consumption are updated every hour. The sampling time for the control input will differ from the sample time determined for the state space model, which is $T_s = 87.5s$. 
-
-In \appref{sec:cost_fkt}, the electric price model is shown. Nevertheless, for the implementation of the control not only the electric price model is needed but also a model for the end-users water consumption. This can be seen on \figref{fig:water_consumption}
+In \appref{sec:cost_fkt}, the electric price model is shown. Nevertheless, for the implementation of the control not only the electric price model is needed but also a model for the end-user water consumption. This can be seen in \figref{fig:water_consumption}
 
 \begin{figure}[H]
 \centering
@@ -32,15 +30,15 @@ In \appref{sec:cost_fkt}, the electric price model is shown. Nevertheless, for t
 \label{fig:water_consumption}
 \end{figure}
 
-The end-users are assumed to have a periodic behavior in the water consumption. In this case the model is made to lasts a week day and then repeats. 
+In this case the model is created to last for a week and then repeats. 
 
 
 \section{Simulink results}
-The MPC problem set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex, in \secref{convexity}. In this way, the main feature of this controller is the ability to reduce the cost of running th system based on the electric price and the WT level. 
+The MPC problem set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex, in \secref{convexity}. In this way, the main feature of this controller is the ability to reduce the cost of running the system based on the electric price and the WT level. 
 
 After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem is implemented with only the input constraints. This is done to check that the simpler optimization problem can be solved. The input constraints are added to guarantee that pumps do not run outside their physical limits. 
 
-Since there are no constraints applied to either the pressure at the WT or the CP, it is expected to see that the input signal is as low as possible the during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
+Since there are not any constraints applied to either the pressure at the WT or the CP, it is expected to see that the input signal is as low as possible the during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
 
 \begin{figure}[H]
 \centering
