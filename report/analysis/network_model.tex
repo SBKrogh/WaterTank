@@ -154,14 +154,14 @@ f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:i = 25
 
 It is important to point out that in \eqref{ComponentFunction} the functions for the different components take the flow as a vector in their arguments. It means that the right hand-side of the equation returns a vector with a size of $\bm{q}$. The elevation and the pressure drop across the WT therefore are also treated as vector that returns the appropriate value only for edges where elevation or the WT is present. 
 
-Taking the newly introduced vector field, $f(\bm{q}, \bm{OD})$ into account, the model for the network can be written up such that:
+Taking the newly introduced vector field, $f(\bm{q}, \bm{OD})$ into account, the model for the network, \eqref{CompleteModel_extended}, can be written up such that:
 
 \begin{equation}
   \bm{\Delta p} =  \bm{J} \bm{\dot{q}} + f(\bm{q}, \bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{q})
   \label{NoTowerModel}
 \end{equation}
 
-In \eqref{NoTowerModel} the hydraulic network model is described in terms of the independent flows through all the nodes and shows the inputs to the system separately. The vectorfield, $f(\bm{q}, \bm{OD})$, represents the pressure drops across elements as one vector. The $k^{th}$ element of the vector, for example, represents a pressure drop accross a valve only if $\mu(\bm{q},\bm{OD})$ is nonzero, which is the case if the $k^{th}$ edge is a valve. the same can be said in case of pipes, the WT and the connection. 
+In \eqref{NoTowerModel} the hydraulic network model is described in terms of the independent flows through all the nodes and shows the inputs to the system separately. The vectorfield, $f(\bm{q}, \bm{OD})$, represents the pressure drops across elements as one vector. The $k^{th}$ element of the vector, e.g. represents a pressure drop accross a valve only if $\mu(\bm{q},\bm{OD})$ is nonzero, which is the case if the $k^{th}$ edge is a valve. The same can be said in case of pipes, the WT and the connection. 
 
 In order to reduce the order of the model and hence, the amount of unknowns, chord flows are introduced according to \eqref{ChordRelation}. 
 
@@ -186,7 +186,7 @@ Isolating the inertia matrix to the left side
 It is desired to know the value of the flow through the chords, hence the equation above is solved 
 for $\bm{\dot{z}}$. In order to invert $(\bm{B J} \bm{{B}}^T)$ it has to be non-singular i.e. invertible. 
 
-Setting $\bm{\mathcal{J}} = \bm{B J} \bm{{B}}^T $, then for the term $\bm{\mathcal{J}}$ in order to be positive-definite it has to be a square matrix and its determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
+Defining $\bm{\mathcal{J}} = \bm{B J} \bm{{B}}^T $, then for the term $\bm{\mathcal{J}}$ in order to be positive-definite it has to be a square matrix and its determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
 
 \begin{equation}
   \label{Jequation}
@@ -254,8 +254,8 @@ Therefore, the system can be described as follows
 %   \label{RecallModel}
 % \end{equation*}
 
-\eqref{NoTowerModel} describes the system by the pressure across each element. The dynamics are determined by the inertia of the pipes while the pressure drop relation is described by the vectorfield $f$ and the input pressure is provided by the pumps, $\alpha$. 
-The flow rate through the chords is found in \eqref{ParatModelFinal}, thus an expression for $ \bm{\Delta p} $ can be expressed by plugging the flow rate into \eqref{ChordsModel}: 
+\eqref{NoTowerModel} describes the system by the pressure across each element. The dynamics are determined by the inertia of the pipes while the pressure drop relation is described by the vectorfield $f$ and the input pressure is provided by the pumps, $\tilde\alpha$. 
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus an expression for $ \bm{\Delta p} $ can be expressed by substituting the flow rate into \eqref{ChordsModel}: 
 
 \begin{equation}
  \bm{\Delta p} =  -\bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ] + f(\bm{B^T}\bm{z},\bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
