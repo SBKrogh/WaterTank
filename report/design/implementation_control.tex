@@ -69,9 +69,9 @@ As the input drops down to its minimum value, the WT level is expected to follow
 \label{fig:WT_input}
 \end{figure}
 
-The initial pressure in the WT from $0.132$ [bar] drops and shows the dynamics of how the tank is being emptied. Since the optimal solution for the control signal is bounded by the lower constraint, the WT is not emptied completely. This result is reasonable and expected, as the lower constraints for the pumps are small values and the initial condition set for the WT is above the operating point
+The initial pressure in the WT from $0.132$ [bar] drops and shows the dynamics of how the tank is being emptied. Since the optimal solution for the control signal is bounded by the lower constraint, the WT is not emptied completely. This result is reasonable and expected, as the lower constraints for the pumps are small values and the initial condition set for the WT is significantly high. The pressure in the WT is dominant in the system, compared to the pressure provided by the pumps, thus the water level decreases.
 
-The PMA pressures also experience a pressure drop, due to the decrease on the control input in the pumps as seen in \figref{fig:Output_input}.
+The PMA pressures also experience a pressure drop due to the decrease in the control input in the pumps, as seen in \figref{fig:Output_input}.
 
 \begin{figure}[H]
 \centering
@@ -80,9 +80,9 @@ The PMA pressures also experience a pressure drop, due to the decrease on the co
 \label{fig:Output_input}
 \end{figure}
 
-As it is seen in the previous figures, when only the state constraint is added the behaviour of the state, inputs and outputs is as it would be expected. 
+As it is seen in the previous figures, when only the state constraint is added, the behavior of the state, inputs and outputs is as expected. 
 
-In the introduction of the section it has been explained how the QP solver finds no feasible solution when the output and states constraints are inserted. Nevertheless, in favor of showing the implementation of the MPC, the contraints regions have been shifted so the problem becames feasible. Therefore, it can be guarantee that the input, state and output constraints are respected is spite of the constraint regions not being the original ones. 
+In the introduction of the section it is explained how the QP solver cannot find any feasible solution when the output and state constraints are inserted. Nevertheless, in order to show implementation of the MPC, the constraints regions are shifted so the problem becomes feasible. Therefore, it can be guaranteed that the input, state and output constraints are respected in spite of the constraints regions not being the original ones. 
 
 \begin{figure}[H]
 \centering
@@ -91,23 +91,27 @@ In the introduction of the section it has been explained how the QP solver finds
 \label{fig:Output_input}
 \end{figure}
 
-The controller inputs are no longer in the lower bounds values of the constraints, as seen in \figref{fig:Implementation_shit}, and they vary over time. However, the behavior shown in \figref{fig:Output_input} is not the expected one, since the path followed by the input has nothing to do with the price curve shown in \figref{fig:Implementation_shit}. It would be expected the input to be maximized when the price is low and the opposite with high prices. Considering the unsatisfactory behavior for the input, the same is anticipate for the state and outputs values. 
+The controller inputs are no longer in the lower bound values of the constraints, as seen in \figref{fig:Implementation_shit}, and they vary over time. However, the behavior shown in \figref{fig:Output_input} is not expected, since the path followed by the input has nothing to do with the price curve shown in \figref{fig:Implementation_shit}. It would be expected that the input is maximized when the price is low and the opposite with high prices. Considering the unsatisfactory behavior for the input, the same is anticipated for the state and output values. 
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/state_constraint/State_ev.tex} 
-\caption{State pressure for simulation with all the constraints.}
+\caption{WT pressure with all the constraints.}
 \label{fig:Output_input}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/state_constraint/Output_ev.tex} 
-\caption{Output pressures for simulation with all the constraints.}
+\caption{Output pressures with all the constraints.}
 \label{fig:Output_input}
 \end{figure}
 
 
 % This could occur because the model, used in the implementation is simplification of the real world. In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single solution $\bm{u}$.
 
-The optimizing problem designed is hereby finished as the MPC control has been implemented together with the estimated model. On the one hand, it is shown that the constrained problem for the input is solvable and expected values are obtained. On the other hand, the problem cannot be completed due to the incapability to calculate a control input once the constraints of the system are set. Thereby, it has been proved that by expanding the regions within the constraints are set, the problem is proved to be solvable although the results obtained are not the expected ones. Any further discussion on the subject is brought up in the following chapter. 
+It is shown that the output and WT pressure outcomes of the optimizations with and without the inequality constraints are the same. 
+
+% By making the optimization problem feasible, these constraints are also set inactive, therefore they do not influence the constraints set in the input. 
+
+The optimizing problem designed is hereby finished as the MPC control has been implemented together with the estimated model. On the one hand, it is shown that the constrained problem for the input is solvable and expected values are obtained. On the other hand, the problem cannot be completed due to the incapability to calculate a control input once the constraints of the system are set. Thereby, it has been proved that by expanding the region of the constraints, the problem is proved to be solvable, although the results obtained are not the expected ones. 
