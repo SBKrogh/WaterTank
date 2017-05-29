@@ -121,7 +121,7 @@ The matrix $\bm{M_c}$ is invertible for the same reason as described in \eqref{J
 Inserting the states into \eqref{currentlaw_4}:
 
  \begin{equation}
-\Delta \dot{\hat{p}}_{wt} = -(\bm{S}\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  + (\bm{S}\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} + (\bm{S}\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} 
+\Delta \dot{\hat{p}}_{wt} = (\bm{S}\bm{M_c^{-1}}\bm{B_o}) \Delta \hat{p}_{wt}  - (\bm{S}\bm{M_c^{-1}}\bm{N_c}) \bm{\hat{u}} + (\bm{S}\bm{M_c^{-1}}\bm{Q_c}) \bm{\hat{d}} 
  \label{statespace_control_sys_state_1}
 \end{equation}
 
@@ -135,7 +135,7 @@ Which in standard state-space form can be written as:
 \begin{minipage}[t]{0.40\textwidth}
 Where\\
 \hspace*{8mm} $A_c = -\bm{S}\bm{M_c^{-1}}\bm{B_o} $ \\
-\hspace*{8mm} $\bm{B_c} = \bm{S}\bm{M_c^{-1}}\bm{N_c} $ \\
+\hspace*{8mm} $\bm{B_c} = -\bm{S}\bm{M_c^{-1}}\bm{N_c} $ \\
 and \hspace*{0.7mm} $\bm{E_c} = \bm{S}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}

@@ -1,7 +1,7 @@
 \chapter{Discussion}
 \label{Discussion}
 
-When the only constraints is the set for the input reference to the pumps, the MPC acts as supposed, where the reference is set to the minimum value for the pumps. However, when more constraints are added, the MPC problem can not be solved as the solution becomes infeasible.  
+When only constraints set for the input to the pumps are present, the MPC acts as supposed, as the reference is set to the minimum value no matter what the price is. However, when the rest of the constraints are added, the optimization fails to find a solution in the feasible region. Changing the upper and lower bounds of the WT and output pressure constraints, the problem can be turned to a feasible 
 
 For the MPC to work in a real world water distribution network, the model will be affected by uncertainties in the prediction e.g. estimations of electricity price and water consumptions. At some point the model will deviate from the actual plant, especially in this case where a small signal model has been derived around a specific operating point. Therefore, the state of the water tower will be affect by these uncertainties e.g. in a situation were the consumption is highly unexpected, the MPC could violate the constraints.
 
