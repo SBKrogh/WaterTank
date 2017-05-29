@@ -36,7 +36,7 @@ Reformulating \eqref{InputOutputmodel} such that all valves and pumps are isolat
  \label{InputOutputmodel2}
 \end{equation}
 
-where the vectorfield $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the functions for the elements, which are dependent on the inputs. The vectorfield $\tilde f(\bm{B^T}\bm{z})$ describes the rest of the resistance terms which are responsible for the pressure drops in the network. Although $u(\cdot)$ takes the inputs as $\omega$ and $OD$, during the estimation and the control, the inputs to the pumps are specified as pressure differences, $\Delta p$.
+where the vectorfield $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the functions for the elements, which are dependent on the inputs. The vectorfield $\tilde f(\bm{B^T}\bm{z})$ describes the rest of the resistance terms which are responsible for the pressure drops in the network. Although $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ takes the inputs as $\omega$ and $OD$, during the estimation and the control, the inputs to the pumps are specified as pressure differences, $\Delta p$.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$, $n_4$, $n_5$, $n_7$, $n_{10}$, $n_{11}$, $n_{15}$, and  $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until the model fits the data.
@@ -142,12 +142,11 @@ outputs and the reference point can be set, resulting in:
 \subsection{Estimation method} 
 \label{MatlabScript}
 
-In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box (MNGB) toolbox\cite{MatlabGreyBox}, is used. This toolbox 
-estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
-Thereby, a nonlinear model has to be designed to complete the simulation. 
+In order to carry out the parameter estimation of the water distribution, Matlab NonLinear Grey Box (MNGB) toolbox\cite{MatlabGreyBox}, is used. This toolbox estimates previously defined coefficients of nonlinear differential equations, to fit with the desired data. 
+Thereby, a nonlinear model has to be implemented in Matlab to carry out the simulation. 
 
-The comparison between the test setup measurements and the estimated data is done with Matlab function \textit{compare}. Together with the comparison 
-plot, the normalized root mean square (NRMSE) measure is also added which measures the goodness of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
+The comparison between the test setup measurements and the model output is done with the Matlab function \textit{compare}. Together with the comparison 
+plot, the normalized root mean square (NRMSE) measure is also added which measures the quality of the fit. This fit is calculated as a percentage \cite{MatlabFit} using:
 
 \begin{equation}
   fit = 100 \bigg(1 - \frac{||y_s - y_m||}{||y_s - mean(y_s)||}\bigg)
@@ -157,12 +156,12 @@ plot, the normalized root mean square (NRMSE) measure is also added which measur
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
 \hspace*{8mm} $y_s$ \\
-\hspace*{8mm} $y_m$ \\
+and \hspace*{0.7mm} $y_m$ \\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the validation data, the outcome of the measurement \\
-is the output of the model\\
+is the validation data, the outcome of the measurement, \\
+is the output of the model.\\
 \end{minipage}
 \begin{minipage}[t]{0.10\textwidth}
 \vspace*{2mm}
@@ -172,11 +171,8 @@ is the output of the model\\
 
 \subsection{Nonlinear Estimation Outcomes} 
 \label{NonLiOutcome}
-The results of the nonlinear parameter estimation are shown in \appref{NonLinResults}. It is obvious that the estimation has been unsuccessful, seeing 
-that the model and the measured data follow different behaviors. This might be due to the incapability to excite the system sufficiently in order to estimated the pipe parameters correctly due to limited information in the measured data. Moreover, the dynamics of the valves are slower in comparison with dynamics of the pipes, resulting in the information of the pipes being hidden into the dynamics of the valves. Thus preventing the estimation process from obtaining the correct values for the resistance as only the valve dynamic are present in the output data.
+The results of the nonlinear parameter estimation are shown in \appref{NonLinResults}. It is concluded that the estimation has been unsuccessful, seeing that the model and the measured data follow different behaviors. This might be due to the incapability to excite the system sufficiently in order to estimated the pipe parameters correctly due to limited information in the measured data. Moreover, the dynamics of the valves are slower in comparison with dynamics of the pipes, resulting in the information of the pipes being hidden into the dynamics of the valves. Thus preventing the estimation process from obtaining the correct values for the resistance as only the valves dynamics are present in the output data.
 
-An alternative could be to only use the pumps as inputs without affecting
-the valves dynamics. However in order to obtain accurate values for the parameters, different scenarios have to be simulated which include varying the water consumption 
-of the end-users as the pumps cannot excite the system sufficiently on there own. 
+An alternative could be to only use the pumps as inputs without affecting the valves dynamics. However in order to obtain accurate values for the parameters, different scenarios have to be simulated which include varying the water consumption of the end-users as the pumps cannot excite the system sufficiently on there own. Furthermore, it is indicated that the dynamics of the pipes are faster than the pumps, this is shown in \appref{sec:pipe_dynamics}.
 
-Therefore, after seeing that the nonlinear approach is not suitable to estimate the unknown parameters for this test setup, the model will be linearized in order to preform a linear parameter estimation.
+Therefore, after seeing that the nonlinear approach is not suitable to estimate the unknown parameters for this test setup, the model will be linearized in order to perform a linear parameter estimation.

@@ -1,21 +1,21 @@
 \section{Linearization of the model} 
 \label{Linearization}
 
-As it is shown in \eqref{InputOutputmodel2}, both $\tilde f(.)$ and $u(.)$ are vector-valued non-linear functions of the flow. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first-order non-linear systems of differential equations. The number of equations are defined by the number of free variables, therefore the number of states.
+As it is shown in \eqref{InputOutputmodel2}, both $\tilde f(\bm{B^T}\bm{z})$ and $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ are vector fields. Since the flows, the ODs and the differential pressure inputs, $\Delta p$, are all functions of time, it can be stated that the differential equation describing the system is a first order nonlinear system of differential equations. The number of equations are defined by the number of free variables, therefore the number of states, as mentioned in \secref{ParameterEstimation}.
 \\
-In this section it is shown how the model describing the network is linearized with the use of Taylor-expansion.
+In this section the results are shown of how the model, describing the network, is linearized with the use of Taylor expansion.
 
 \subsection{Taylor expansion on a simple example}
  \label{Taylorexamplesection}
 
-The method of linearization is introduced on a simple one-state, one-input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
+The method of linearization is introduced on a simple one state, one input variable system. The consideration behind the example is analogous to the method applied for the water distribution system. In \eqref{example_system} the system with one state variable and one input can be seen: 
 
 \begin{equation}
 \frac{d}{dt} x = f(x,u)
  \label{example_system}
 \end{equation}
 
-$f(x,u)$ can be written up with Taylor-series with the assumption that it is continuously differentiable, therefore the partial derivatives exist in the operating point: 
+$f(x,u)$ can be written up with Taylor series with the assumption that it is continuously differentiable, therefore the partial derivatives exist in the operating point: 
 
 \begin{equation}
 f(x,u) = f(\bar{x},\bar{u}) + \frac{\partial f}{\partial x}_{|\bar{x}, \bar{u}} \hat{x} + \frac{\partial f}{\partial u}_{|\bar{x}, \bar{u}} \hat{u} + higher \; order \; terms  
@@ -29,13 +29,13 @@ Where\\
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
-is the operating point,\\
-is the deviation from the operating point.
+are the operating points,\\
+are the deviations from the operating points.
 \end{minipage}
 
-The aim of the linearization is to describe the function $f(x,u)$ around an operating point as a linear function. However, it should be noted that the approximation around this point is only valid for cases when the deviation from this point is small. Therefore the linearized version of a dynamic model is often called the small-signal model of the system. 
+The aim of the linearization is to describe the function $f(x,u)$ around an operating point as a linear function. It should be noted that the approximation around this point is only valid for cases when the deviation from this point is small. Therefore, the linearized version of a dynamic model is often called the small-signal model of the system. 
 \\
-In \eqref{TaylorExpansion}, the linearized term of $f(x,u)$ can be expressed. The operating point is chosen such that $f(\bar{x},\bar{u}) = 0$,  hence an equilibrium for the system is given with input $\bar{u}$. The higher order terms are not taken into account in the approximation. Since the model is described by small-signals, quadratic and higher order terms result in very small values, therefore they are negligible. 
+In \eqref{TaylorExpansion}, the linearized term of $f(x,u)$ is expressed. The operating point is chosen such that $f(\bar{x},\bar{u}) = 0$,  hence an equilibrium for the system is given with input $\bar{u}$. The higher order terms are not taken into account in the approximation. Since the model is described by small-signals, quadratic and higher order terms result in very small values, therefore they are negligible. 
 \\
 The following expression in \eqref{TaylorExpansion_approx} gives the approximation of the function: 
 %As it is shown in \eqref{TaylorExpansion}, the linearized version of $f$ can be expressed as the function value in the operating point, the partial derivatives of $f$ according to the input and state variable in the operating points, and the higher order versions of the partial derivatives. Since $\hat{x} = x - \bar{x}$ describe small deviations from the operating point, it is unnecessary to consider higher than first order terms. 
@@ -45,17 +45,17 @@ The following expression in \eqref{TaylorExpansion_approx} gives the approximati
  \label{TaylorExpansion_approx}
 \end{equation}
 
-In case of a pipe or a valve component, the pressure drop across the element is described by a quadratic function of the flow if steady-state is considered and the dynamics are neglected. For the sake of illustration, \figref{fig:linearization} describes a non-linear function, $f(q)$, and its linearized interpretation for the operating values of pressure and flow. 
+In case of a pipe or a valve component, the pressure drop across the element is described by a quadratic function of the flow, if steady-state is considered and the dynamics are neglected. \figref{fig:linearization} describes a nonlinear function, $f(q)$, and its linearized interpretation for the operating values of pressure and flow. 
 
 %tikz of the linearization
 \begin{figure}[H]
 \centering
 \input{report/tikz/linearization.tex} 
-\caption{Linearization of a non-linear function $f(q).$}
+\caption{Linearization of a nonlinear function $f(q).$}
 \label{fig:linearization}
 \end{figure}
 
-As can be seen, the line inserted in the operating point, $O$, describes the model accurately only if the deviation is very small from this point, for example $O'$. Therefore the linearized model describes the system behavior in the new coordinate system $(\bar{q},\Delta \bar{p})$. It is important to mention that in \figref{fig:linearization}, the function $f(q)$ is an illustration of a non-linear function and not the exact same as for a pipe element. 
+As can be seen, the line inserted in the operating point, $O$, describes the model accurately only if the deviation is very small from this point, e.g. $O'$. Therefore the linearized model describes the system behavior in the new coordinate system $(\bar{q},\Delta \bar{p})$. It is important to mention that in \figref{fig:linearization}, the function $f(q)$ is an illustration of a non-linear function and not the exact same as for a pipe element. 
 
 %
 %asdf
@@ -75,27 +75,27 @@ As can be seen, the line inserted in the operating point, $O$, describes the mod
 \subsection{Linear system model}
  \label{SystemLin}
  
-\eqref{CompleteModel_extended} is recalled to show how the pressure drop is obtained for each element in the network:
+Recalling \eqref{CompleteModel_extended} to show how the pressure drop is obtained for each element in the network:
 
 \begin{equation}
 \label{CompleteModel_extended_2}
 \Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tank} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT-connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
 \end{equation}
 
-Among these functions, the pipes, valves, pumps and the edge describing the WT connection are non-linear functions of the edge flows, therefore they need to be linearized. The linearization is carried out according to Taylor-expansion as it is described in \eqref{TaylorExpansion_approx}.
+Among these functions, the pipes, valves, pumps and the edge describing the WT connection are nonlinear functions of the edge flows, therefore they need to be linearized. The linearization is carried out according to Taylor expansion as it is described in \eqref{TaylorExpansion_approx}.
 \\
-The expression describing the pipes consists of three terms, one responsible for the resistances and form losses,$\lambda_k$, one for the dynamics, $J_k\dot{q}_k$, and the last one for the elevation, $\zeta_k$, if there is any present. 
+The expression describing the pipes consists of three terms, the resistances and form losses, $\lambda_k$, the dynamics, $J_k\dot{q}_k$, and the elevation, $\zeta_k$, if there is any present. 
 \\
-The expression describing the pipes can be approximated by its linear model as follows:
+Applying the KVL as in \eqref{model4lin}, the expression describing the pipes is approximated by its linear model as follows:
 
 \begin{equation}
   \bm{B_1} \lambda(\bm{{B_1^{T}}}\bm{z}) \approx  \bm{B_1} \lambda(\bm{B_1^T \bar{ z}}) + \bm{B_1} \bigg[ \frac{\partial{\lambda(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}\bm{\hat{z}}
 \label{lambda_lin}
 \end{equation}
 
-where the partial derivatives are first-order derivatives of the vectorfield, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$, due to the chain rule, the derivative is multiplied by $\bm{{B_1^{T}}}$. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows. 
+where the partial derivatives are first order derivatives of the vector field, $\lambda$, in the operating point $\bar{z}$. Since the derivation is according to $\bm{{B_1^{T}}}\bm{z}$ the derivative is multiplied by $\bm{{B_1^{T}}}$, due to the chain rule. The reason for only $\lambda(\bm{{B_1^{T}}}\bm{z})$ being expressed is because the elevation is constant and the inertia term is a linear function of the flows. 
 
-In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$ is the function of OD, which can vary in time. Therefore the linearization has to be done according to the flow and the OD: 
+In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the function of the independent flows, but also the opening degree. The conductivity function, $k_v$,  which is a function of OD, can vary over time. Therefore the linearization has to be done according to the flow and the OD: 
 
 \begin{equation}
 \begin{split}
@@ -107,16 +107,16 @@ In case of the valves, $\mu(\bm{{B_1^{T}}}\bm{z}, \bm{OD})$ is not only the func
 \end{equation}
 
 
-The Taylor-expansion is carried out in the same manner as in \eqref{lambda_lin}, however the linearized valve model is in the function of two small-signal variables, the flows and the OD. Therefore the partial derivatives are calculated in the operating point defined by the operating value of $\bm{z}$ and $\bm{OD}$. 
+The Taylor expansion is carried out in the same manner as in \eqref{lambda_lin}, however the linearized valve model is in the function of two small-signal variables, the flow and the OD. Therefore the partial derivatives are calculated in the operating point defined by the operating value of $\bm{z}$ and $\bm{OD}$. 
 \\
-For the water tower connection, the same can be concluded as for the pipe model. 
+For the WT connection, the same is applied as for the pipe model. 
 
 \begin{equation}
   \bm{B_1} \gamma(\bm{{B_1^{T}}}\bm{z}) \approx  \bm{B_1} \gamma(\bm{B_1^T \bar{ z}}) + \bm{B_1} \bigg[ \frac{\partial{\gamma(\bm{{B_1^{T}}}\bm{z})}}{{\partial{\bm{{B_1^{T}}}\bm{z}}}}   \bigg]_{\bar{z}} \bm{{B_1^{T}}}\bm{\hat{z}}
 \label{gamma_lin}
 \end{equation}
 
-The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around each pump are taken into account. Although this model is both dependant on the OD of the valves and the flow through the pumps, it is unnecessary to linearize it for the following reason, explained with the help of \figref{fig:pump_model_block} below: 
+The pumps are operating according to the model described in \eqref{omega_notzero}, where the valves around each pump are taken into account. Although this model is both dependent on the OD of the valves and the flow through the pumps, it is unnecessary to linearize it for the following reason, explained with the help of \figref{fig:pump_model_block}. 
 
 %tikz of the pump with dp sensor
 \begin{figure}[H]
@@ -126,9 +126,9 @@ The pumps are operating according to the model described in \eqref{omega_notzero
 \label{fig:pump_model_block}
 \end{figure}
 
-As it is shown, there is a differential pressure sensor around every pump in the system. Angular velocity is therefore not used directly as input to the system, rather the differential pressure is set. It is shown in a later chapter, \chapref{control_design}, that around the pumps cascade control is designed. The pumps are controlled by PI controllers in an inner loop with control variable chosen as the differential pressure. This inner control loop linearizes the pumps and therefore the differential pressure becomes the control input. 
+As it is shown, there is a differential pressure sensor around every pump in the system. The angular velocity is therefore not used directly as input to the system, rather the measured differential pressure is used. It is shown in a later chapter, \chapref{control_design}, that around the pumps a cascade control is designed. The pumps are chosen to be controlled by PI controllers in an inner loop with the control variable as the differential pressure. This inner control loop linearizes the pumps and therefore the differential pressure becomes the control input. 
 \\
-The input, in case of the parameter estimation, is defined by the four pumps and four valves. Therefore it is convenient to define an input vector which consists of the four opening degrees controlling the valves and the four differential pressures controlling the pumps: 
+The input, in case of the parameter estimation, is defined by the four pumps and four valves. Therefore, it is convenient to define an input vector which consists of the four opening degrees controlling the valves and the four differential pressures controlling the pumps: 
 
 \begin{equation}
 \bm{u} =
@@ -145,7 +145,7 @@ OD_{e22},\hspace{4pt}
 \end{bmatrix} ^T
 \end{equation}
 
-It should be noted here, however, that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input terms. In order to build up such an input vector, linear mapping between the corresponding edges and the input is required. The vectorfield describing the pumps, $\alpha$ can be used to show this mapping, although it is important to mention that $\alpha$ consists of the nonlinear terms of the pump pressure contribution. However, the terms are non-zero at edges where a pump is present, therefore it is only used to show how the resulting differential pressure contribution of these terms can be mapped into $\bm{u}$.
+It should be noted here that this control input representation is valid only for the parameter estimation. It is shown in a later chapter, \chapref{control_design}, that for the control, the structure of the model and the input vector is structured differently. However, in this case it is convenient to handle all pumps and valves as input terms. In order to build up such an input vector, linear mapping between the corresponding edges and the input is required. The vector field describing the pumps, $\tilde\alpha$ can be used to show this mapping, although it is important to mention that $\tilde\alpha$ consists of the nonlinear terms of the pump pressure contribution. However, the terms are nonzero at edges where a pump is present, therefore it is only used to show how the resulting differential pressure contribution of these terms can be mapped into $\bm{u}$.
 
 \begin{equation}
 \bm{B_1} \tilde{\alpha}(\omega, q) = \bm{B_1} \bm{G_p} \bm{u}
@@ -161,7 +161,7 @@ Where\\
 is a matrix representing a linear mapping where the dimension $u$ is the number of inputs and $e$ is the number of edges without the WT. 
 \end{minipage} 
 
-$\bm{G_p}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve opening degrees. $\bm{G_p}$ can be found in \appref{MappingAppendix}.
+$\bm{G_p}$ is an extended matrix for the eight inputs which means that the first four columns consist of zeros, since the first four elements of the input vector are the valve ODs. $\bm{G_p}$ can be found in \appref{MappingAppendix}.
 
 \subsection{State space model for linear parameter estimation}
  \label{SystemLin}
@@ -174,16 +174,16 @@ For the sake of clearance, the nonlinear model describing the water distribution
  \label{InputOutputmodel3}
 \end{equation}
 
-The dynamics of the WT is described by the equation below: 
+The behavior of the WT is described by the equation below: 
 
 \begin{equation}
 \Delta \dot{p}_{wt} = \frac{1}{C_H} q_0
  \label{WT_eq}
 \end{equation}
 
-These two differential equation systems give a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, the linear system is desired to formulate into the general state-space representation with inputs, outputs and states separated. 
+These two differential equation systems give a full description of the pressures in the whole network, and  describe the effect of the WT on the system. However, due to the linearization, it is desired to reformulate the linear system into the general state-space representation with inputs, outputs and states separated. 
 \\
-Before setting up the state-space form of the system, the following should be considered: 
+Before setting up the state-space form of the system, the following relation should be considered: 
 
 \begin{equation}
  \bm{H_1}\bm{q_1} + \bm{H_0}q_0 = 0 
@@ -197,21 +197,21 @@ q_0 = -\bm{H^{\dagger}_0}\bm{H_1}\bm{q_1}
  \label{currentlaw_2}
 \end{equation}
 
-Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, the following yields:
+Where $\bm{H^{\dagger}_0}$ is the pseudoinverse of $\bm{H_0}$. Inserting \eqref{currentlaw_2} into \eqref{WT_eq}, the original model of the WT, results in:
 
 \begin{equation}
 \Delta \dot{p}_{wt} = - \frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{q_1} = - \underbrace{\frac{1}{C_H} \bm{H^{\dagger}_0}\bm{H_1}\bm{{B_1^{T}}}}_{\bm{S}} \bm{z}
  \label{currentlaw_3}
 \end{equation}
 
-Therefore the dynamics of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
+Therefore the dynamic of the WT can be expressed with the incidence matrix for the whole system in terms of the independent chord flow variables as follows: 
 
 \begin{equation}
 \Delta \dot{p}_{wt} = - \bm{S} \bm{z}
  \label{currentlaw_4}
 \end{equation}
 
-In order to formulate a linear standard state space representation, the linearized terms in vector fields $\tilde f(\cdot)$ and $u(\cdot)$ should be separated according to the small-signal values of the chord flows, the inputs and the pressure contribution from the WT. Flows represent states, and the pressure contribution of the WT is taken into account. The representation is shown in \eqref{statespace_1}: 
+In order to formulate a linear standard state-space representation, the linearized terms in vectorfields $\tilde f(\bm{B^T}\bm{z})$ and $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ should be separated according to the small-signal values of the chord flows, the inputs and the pressure contribution from the WT. The representation is shown in \eqref{statespace_1}: 
 
 \begin{equation}
  \bm{B}\bm{J {B}}^T \bm{\dot{\hat{z}}} = -\bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} - \bm{B_o} \Delta \hat{p}_{wt}    
@@ -232,9 +232,9 @@ And the $\bm{N_p}$ matrix consists of the following terms:
 \label{Bumatrix}
 \end{equation}
 
-$\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element-wise model description in \eqref{CompleteModel_extended}, are separated based on if they are multiplied by the small signal values of flows or inputs. 
+Where $\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element wise model description in \eqref{CompleteModel_extended}, are separated if they are multiplied by the small signal values of flows or inputs. 
 
-In order to find a good state space representation for the system, extended with the WT, first the dynamics has to be considered. As it is discussed in a previous section, the pipes and the WT have dynamics. The pipes, compared to the WT, are assumed to have a very fast response time, which means that their time constants are small, therefore the decay time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not take part in the dynamics effectively, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
+In order to find a good state-space representation for the system, extended with the WT, the dynamics of the system have to be considered. The pipes, compared to the WT, are assumed to have a considerably faster response time, which means that their time constants are small, therefore the settling time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not effectively take part in the dynamics of the system, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
  0 = -\bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} -\bm{B_o} \Delta \hat{p}_{wt}    
@@ -249,8 +249,7 @@ The small signal value of the state vector can be expressed on the left side of 
 \label{Amatrix_mod}
 \end{equation}
 
-In \eqref{Amatrix_mod}, the $\bm{M_p}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix. The proof of this statement can be found in that section. 
-\\
+In \eqref{Amatrix_mod}, the $\bm{M_p}$ matrix is invertible for the same reason as it is described in \secref{ParameterEstimation}, for the inertia matrix.
 Expressing the the state vector the following yields:
 
 \begin{equation}
@@ -260,7 +259,7 @@ Expressing the the state vector the following yields:
 
 \eqref{statespace_2} shows the relation between flows and inputs. If the input is increased then the flow increases. 
 \\
-Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously-derived WT model with the $\bm{S}$ matrix in \eqref{currentlaw_4}. 
+Having the independent states expressed, \eqref{statespace_2} can be inserted in the previously derived WT model with the $\bm{S}$ matrix in \eqref{currentlaw_4}. 
 
 \begin{equation}
 \Delta \dot{\hat{p}}_{wt} =  \underbrace{(\bm{S}\bm{M_p^{-1}}\bm{B_o})}_\text{$A_p$} \Delta \hat{p}_{wt}   \underbrace{-(\bm{S}\bm{M_p^{-1}}\bm{N_p})}_\text{$\bm{B_p}$} \bm{\hat{u}} 
@@ -278,7 +277,7 @@ Having the independent states expressed, \eqref{statespace_2} can be inserted in
 Where\\
 \hspace*{8mm} $A_p \in \mathbb{R}^{(1 \times 1)} $ \\
 \newline
-\hspace*{8mm} $\bm{B_p} \in \bm{\mathbb{R}}^{(1 \times g)} $ 
+and \hspace*{0.7mm} $\bm{B_p} \in \bm{\mathbb{R}}^{(1 \times g)} $ 
 \end{minipage}
 \begin{minipage}[t]{0.74\textwidth}
 \vspace*{2mm}
@@ -286,7 +285,7 @@ is the system matrix for the parameter estimation, which in this case is a scala
 is the input matrix for the parameter estimation.
 \end{minipage} 
 
-An output equation is defined, which represents the pressure difference known from the system setup. In this way, the output equation can be compared 
+An output equation is defined, which represents the pressure difference available from the system setup. In this way, the output equation can be compared 
 to the data measured in the setup and proceed to estimate the unknown parameters. 
 
 \begin{equation}
@@ -302,7 +301,7 @@ By substituting the expression for the state vector in \eqref{statespace_2} into
  \label{statespace_6}
 \end{equation}
 
-Reorganizing the terms
+Reorganizing the terms:
 
 \begin{equation}
 \bm{\hat{y}} = \underbrace{\bm{C_{p,1}} (\bm{M_p^{-1}}\bm{B_o})}_\text{$\bm{C_{p}}$} \Delta \hat{p}_{wt} + \underbrace{(\bm{C_{p,1}} (-(\bm{M_p^{-1}}\bm{N_p})) + \bm{C_{p,2}})}_\text{$\bm{D_p}$} \bm{\hat{u}}  
