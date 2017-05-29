@@ -139,7 +139,7 @@ Where\\
 and \hspace*{0.7mm} $\bm{E_c} = \bm{S}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
-\vspace*{1mm}
+\vspace*{2mm}
 is the system matrix for the control, \\
 is the input matrix for the control, \\
 is the disturbance matrix for the control.
@@ -199,7 +199,7 @@ Where\\
 and \hspace*{0.7mm} $\bm{K_c} = \bm{C_{c,2}} -\bm{C_{c,1}}\bm{M_c^{-1}}\bm{Q_c} $
 \end{minipage}
 \begin{minipage}[t]{0.58\textwidth}
-\vspace*{1mm}
+\vspace*{2mm}
 is the output matrix for the control, \\
 is the feed-forward matrix for the control, \\
 is the disturbance matrix affecting the output.
@@ -272,22 +272,20 @@ where the discrete model is defined as seen in \eqref{statespace_discrete_state}
  \label{statespace_discrete_state}
 \end{equation}
 
-\begin{minipage}[h]{0.2\textwidth}
-Where
-\hspace*{8mm}\begin{equation*}
-\begin{split}
- \hspace*{8mm} A_d &= A_cT_s+1  \\
- \hspace*{8mm} \bm{B_d} &= \bm{B_c}T_s\\
- \hspace*{8mm} \bm{E_d} &= \bm{E_c}T_s
- \end{split}
- \end{equation*}
+\begin{minipage}[h]{0.25\textwidth}
+Where\\
+\hspace*{8mm} $A_d = A_cT_s+1 $\\
+\hspace*{8mm} $\bm{B_d} = \bm{B_c}T_s$\\
+and \hspace*{0.7mm} $\bm{E_d} = \bm{E_c}T_s$
 \end{minipage}
-\begin{minipage}[h]{0.78\textwidth}
-\vspace{2mm}\hspace*{8mm}is the discrete state matrix, \\
-\vspace{2mm}\hspace*{8mm}is the discrete input matrix, \\
-\hspace*{8mm}is the discrete disturbance matrix. \\ 
+\begin{minipage}[h]{0.73\textwidth}
+\vspace*{2.5mm}
+is the discrete state matrix, \\
+is the discrete input matrix, \\
+is the discrete disturbance matrix. 
 \end{minipage}
-\todo{vinkel}
+
+
 and the output equation:
 
 \begin{equation}
@@ -297,7 +295,7 @@ and the output equation:
 
 \begin{minipage}[t]{0.20\textwidth}
 Where\\
-\hspace*{8mm} $\bm{C_d}$ \\
+\hspace*{8mm} $\bm{C_d}$ \\\\
 \hspace*{8mm} $\bm{D_d}$ \\\\
 and \hspace*{0.7mm} $\bm{K_d}$ 
 \end{minipage}
