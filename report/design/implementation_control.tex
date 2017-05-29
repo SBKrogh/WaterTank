@@ -34,22 +34,24 @@ In this case the model is created to last for a week and then repeats.
 
 
 \section{Simulink results}
-The MPC problem set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex, in \secref{convexity}. In this way, the main feature of this controller is the ability to reduce the cost of running the system based on the electric price and the WT level. 
+The objective function set up to optimize the power consumption of the pumps, developed through \secref{sec:MPC}, has been proved to be convex, in \secref{convexity}. 
 
-After implementing the MPC, described in \secref{simulink_intro}, multiple complications occurred. The optimization problem is implemented with only the input constraints. This is done to check that the simpler optimization problem can be solved. The input constraints are added to guarantee that pumps do not run outside their physical limits. 
+%In this way, the main feature of this controller is the ability to reduce the cost of running the system based on the electric price and the WT level. 
 
-Since there are not any constraints applied to either the pressure at the WT or the CP, it is expected to see that the input signal is as low as possible the during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
+Although the objective function for the minimization is convex, difficulties with infeasibility occurred while solving the constrained problem. Infeasibility means that no solution of $\bm{u_{hp}}$ exists which could satisfy all the constraints defined by the measurements on the test setup. The QP solver detects this problem automatically at the presolve phase of each optimization run, thus the MPC box in the block diagram gives no solution in these cases. As it is mentioned in \secref{verification_of_model}, the model is verified, however in some respects lacks the ability to give back the real-world behavior of the system. As described in \secref{estim_results}, the estimation has been carried out so the dynamics of the WT are reflect the same behavior as the real-world system. However, the model does not fit perfectly. The physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. The physical limitations of the system setup have been determined such that they are obtained under the operating point values, so that they remain under reasonable regions for the linearized model. However, the constraints introduced for the pressure in the WT and the output pressure for the end-users make the problem infeasible. 
+
+For initial testing, the MPC is implemented such that only the constraint on the input is kept with the appropriate low and great bounds. An implementation of such would make no sense on the test setup since the constraints on the water tower are the most important limits concerning this control problem. In a real life scenario, leaving out the pressure constraint in the WT would mean that the optimal input empties the tank, disregarding what the price is. However, this test is suitable for verifying if the minimization works correctly or not.Therefore it is expected to see that the input signal is constant and as low as possible during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
 
 \begin{figure}[H]
 \centering
 \input{report/tikz/Implementation_shit.tex} 
-\caption{Implemented optimizer, without constraints. The first figure show the two pumps, pump one can be seen in red and pump two as blue. The second figure shows the cost of electricity for the first 24 hours.}
+\caption{Implemented optimizer, without constraints. The first figure show the two pumps, pump one can be seen in red and pump two in blue. The second figure shows the cost of electricity for the first 24 hours.}
 \label{fig:Implementation_shit}
 \end{figure}
 
-In \figref{fig:Implementation_shit} the electrical price and both input signal to the pumps can be seen. Here it can be seen that the input to the first pump is constant at $0.05$ and $0.03$, the lower bounds for the pumps respectively. If an input signal lower then this is applied to the pumps they will start acting unstable. 
+In \figref{fig:Implementation_shit} it can be seen that the full-signal input to the first pump is constant at $0.05$ and $0.03$, for the two different the lower bounds of the pumps, respectively. Constraints on the pumps are set in order to avoid the lower bound hysteresis of the pumps and to not exceed the maximal available upper bound. 
 
-The remaining constraints, consisting of the pressure at the WT and the CP, are added and consequently no infeasible solution is found. This is also the case when only one of the constraint is added. 
+The remaining constraints, consisting of the pressure at the WT and the CP, are added and consequently no feasible solution is found. This is also the case when only one of the constraint is added. 
 
 This could occur because the model, used in the implementation is simplification of the real world. In order to set up the constraints for the optimizing problem, the physical limitations of the system setup have been determined. These values are obtained under the operating point conditions of the system, so that they remain under reasonable regions for the linearized model. Nevertheless, these values would be feasible for the estimated model if and only if the model had represented the real setup perfectly. As described in \secref{estim_results} the estimation has been carried out so the dynamics of the WT are prioritized rather than obtaining a closer fit percentage for the model. Therefore, the physical limits calculated for the real setup cannot be utilized for the simulation model, making the quadratic problem to be infeasible within the specified constraints. This infeasibility means that not all constraints can be satisfied at a single solution $\bm{u}$.
 
