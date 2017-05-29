@@ -38,15 +38,18 @@ The convexity of the objective function set up to optimize the power consumption
 
 %In this way, the main feature of this controller is the ability to reduce the cost of running the system based on the electric price and the WT level. 
 
-Although the objective function for the minimization is convex, difficulties with infeasibility occur while solving the constrained problem. When constraints for the pressure in the WT and for the pressure in the PMAs included, there is not any feasible solution for the problem exist. However, when constraints only on the input signals are included, the algorithm can find a global minimum of the objective function. Infeasibility means that no solution of $\bm{u_{hp}}$ exists which could satisfy all the constraints defined by the measurements carried out on the test setup. The QP solver detects this problem automatically at the presolve phase of each optimization run, thus the MPC box in the block diagram of the implementation gives no solution in these cases. 
-As it is mentioned in \secref{verification_of_model}, the model is verified, however in some respects lacks the ability to give back the real-world behavior of the system. As described in \secref{estim_results}, the estimation has been carried out so the dynamics of the WT reflect the same behavior as the real-world system. However, the model does not fit perfectly. Considering the differences between the model and the test setup, the conclusion can be made that the model is qualitatively correct but quantitatively is not perfect. Although the physical limitations are calculated from the measurements on the real test setup, it still should be possible to solve the optimization with the defined constraints and utilize the simulation model for them. Considering the fact that in real world completely perfect models are nearly impossible to make, blaming the accuracy of the model for infeasibility is not the right argument. Therefore it is assumed that there is a qualitative error in the two constraints concerning the WT and output pressures. The most probable argument is that there is an error while transforming the original constraints for the control signal, $\bm{u_{Hp}}$. It is a reasonable assumption, since the two inequalities for the constraints can be modified such that the optimization problem becomes feasible, however the prediction does not work as expected, according to the varying prices. 
+Although the objective function for the minimization is convex, difficulties with infeasibility occur while solving the constrained problem. When constraints for the pressure in the WT and for the pressure in the PMAs are included, there is not any feasible solution for the problem exist. However, when constraints only on the input signals are included, the algorithm can find a global minimum of the objective function. Infeasibility means that no solution of $\bm{u_{hp}}$ exists which could satisfy all the constraints defined by the measurements carried out on the test setup. The QP solver detects this problem automatically at the presolve phase of each optimization run, thus the MPC box in the block diagram of the implementation gives no solution in these cases. 
 
-In order to present the implementation of the controller, some of the incorrect constraints are modified and therefore are suitable to show that the algorithm works and keeps the control values within the upper and lower bounds. In order to show the deficiencies of the optimization with the incorrect constraints, several results are compared and a conclusion is made concerning the expected behavior of the control. 
+As it is mentioned in \secref{verification_of_model}, the model is verified, however in some respects lacks the ability to give back the real-world behavior of the system. As described in \secref{estim_results}, the estimation has been carried out so the dynamics of the WT reflect the same behavior as the real-world system. However, the model does not fit perfectly. Considering the differences between the model and the test setup, the conclusion can be made that the model is qualitatively correct but quantitatively is not perfect. Although the physical limitations are calculated from the measurements on the real test setup, it still should be possible to solve the optimization with the defined constraints and utilize the simulation model for them.
+
+ Considering the fact that in real world completely perfect models are nearly impossible to make, blaming the accuracy of the model for infeasibility is not the right argument. Therefore it is assumed that there is a qualitative error in the two constraints concerning the WT and output pressures. The most probable argument is that there is an error while transforming the original constraints for the control signal, $\bm{u_{Hp}}$. It is a reasonable assumption, since the two inequalities for the constraints can be modified such that the optimization problem becomes feasible, however the prediction does not work as expected, according to the varying of prices. 
+
+In order to present the implementation of the controller, some of the incorrect constraints are modified and to make them suitable to show that the algorithm works and keeps the control values within the upper and lower bounds. In order to show the deficiencies of the optimization with the incorrect constraints, several results are compared and a conclusion is made concerning the expected behavior of the control. 
 
 \section{Implementation with input constraint}
 \label{input constraint}
 
-For initial testing, the MPC is implemented such that only the constraint on the input is kept with the appropriate low and upper bounds. An implementation of such would make no sense on the test setup since the constraints on the WT are the most important limits concerning the control problem. In a real life scenario, leaving out the pressure constraint in the WT would mean that the optimal input empties the tank, disregarding what the price is. However, this test is suitable for verifying if the minimization works correctly or not.Therefore it is expected to see that the input signal is constant and as low as possible during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
+For initial testing, the MPC is implemented such that only the constraint on the input is kept with the appropriate low and upper bounds. An implementation of such would make no sense on the test setup since the constraints on the WT are the most important boundaries concerning the control problem. In a real life scenario, leaving out the pressure constraint in the WT would mean that the optimal input empties the tank, disregarding what the price is. However, this test is suitable for verifying if the minimization works correctly or not. Therefore it is expected to see that the input signal is constant and as low as possible during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps would be as slow as possible. 
 
 \begin{figure}[H]
 \centering
@@ -56,6 +59,50 @@ For initial testing, the MPC is implemented such that only the constraint on the
 \end{figure}
 
 In \figref{fig:Implementation_shit} it can be seen that the full-signal input to the first pump is constant at $0.05$ and $0.03$, for the two different the lower bounds of the pumps, respectively. Constraints on the pumps are set in order to avoid the lower bound hysteresis of the pumps and to not exceed the maximal available upper bound. 
+
+In this way, as the input drops down to its minimum value the WT level is expected to follow the same behavior and empty its initial level. In the following figure it can be seen how the WT pressure decreases until it reaches the steady-state for the input signal.
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/state_constraint/State_u.tex} 
+\caption{WT pressure for simulation with input constraint.}
+\label{fig:WT_input}
+\end{figure}
+
+The PMA pressures also experience a pressure drop, due to the decrease on the control input in the pumps as see in \figref{fig:Output_input}.
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/state_constraint/Output_u.tex} 
+\caption{PMA pressures for simulation with input constraint.}
+\label{fig:Output_input}
+\end{figure}
+
+As it is seen in the previous figures, when only the state constraint is added the behaviour of the state, inputs and outputs is as it would be expected. 
+
+In the introduction of the section it has been explained how the QP solver finds no feasible solution when the output and states constraints are inserted. Nevertheless, in favor of showing the implementation of the MPC, the contraints regions have been shifted so the problem becames feasible. Therefore, it can be guarantee that the input, state and output constraints are respected is spite of the constraint regions not being the original ones. 
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/state_constraint/Input_ev.tex} 
+\caption{Input pressures for simulation with input constraint.}
+\label{fig:Output_input}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/state_constraint/State_ev.tex} 
+\caption{State pressures for simulation with input constraint.}
+\label{fig:Output_input}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/state_constraint/Output_ev.tex} 
+\caption{Output pressures for simulation with input constraint.}
+\label{fig:Output_input}
+\end{figure}
+
 
 
 The remaining constraints, consisting of the pressure at the WT and the CP, are added and consequently no feasible solution is found. This is also the case when only one of the constraint is added. 
