@@ -36,7 +36,7 @@ Reformulating \eqref{InputOutputmodel} such that all valves and pumps are isolat
  \label{InputOutputmodel2}
 \end{equation}
 
-where the vectorfield $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the functions for the elements, which are dependent on the inputs. The vectorfield $\tilde f(\bm{B^T}\bm{z})$ describes the rest of the resistance terms which are responsible for the pressure drops in the network. Although $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ takes the inputs as $\omega$ and $OD$, during the estimation and the control, the inputs to the pumps are specified as pressure differences, $\Delta p$.
+where the vector field $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the functions for the elements, which are dependent on the inputs. The vector field $\tilde f(\bm{B^T}\bm{z})$ describes the rest of the resistance terms which are responsible for the pressure drops in the network. Although $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ takes the inputs as $\omega$ and $OD$, during the estimation and the control, the inputs to the pumps are specified as pressure differences, $\Delta p$.
 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$, $n_4$, $n_5$, $n_7$, $n_{10}$, $n_{11}$, $n_{15}$, and  $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until the model fits the data.
