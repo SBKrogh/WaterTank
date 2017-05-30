@@ -14,13 +14,12 @@ scaled y ticks = false,
  y tick label style={/pgf/number format/fixed,
 /pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
-height=1.453in,
+height=1.253in,
 at={(0.758in,2.554in)},
 scale only axis,
 xmin=0,
 xmax=23,
 xmajorgrids,
-xlabel={Time [hours]},
 ymin=0,
 ymax=0.06,
 ymajorgrids,
@@ -89,16 +88,17 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 
 \begin{axis}[%
 width=4.521in,
-height=1.453in,
-at={(0.758in,0.481in)},
+height=1.253in,
+at={(0.758in,0.881in)},
 scale only axis,
 xmin=0,
 xmax=23,
 xmajorgrids,
+xlabel={Time [hours]},
 ymin=150,
 ymax=300,
 ymajorgrids,
-ylabel={DKK/MW},
+ylabel={Price [DKK/MWh]},
 axis background/.style={fill=white}
 ]
 \addplot[const plot,color=mycolor1,solid,forget plot] plot table[row sep=crcr] {%

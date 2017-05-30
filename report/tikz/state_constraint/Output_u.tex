@@ -10,21 +10,22 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
 height=1.453in,
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=0,
 xmax=25,
-xlabel={Hours},
+xlabel={Time [hours]},
 xmajorgrids,
 ymin=0.07,
 ymax=0.15,
 ylabel={Pressure [bar]},
 ymajorgrids,
-axis background/.style={fill=white},
-axis x line*=bottom,
-axis y line*=left
+axis background/.style={fill=white}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%

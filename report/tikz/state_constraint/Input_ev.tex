@@ -12,7 +12,7 @@
 \begin{axis}[%
 scaled y ticks = false,
  y tick label style={/pgf/number format/fixed,
-/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
 height=1.453in,
 at={(1.011in,0.642in)},
@@ -24,6 +24,7 @@ xmajorgrids,
 ymin=0.091,
 ymax=0.099,
 ylabel={Pressure [bar]},
+yticklabel style={/pgf/number format/.cd,fixed,precision=3},
 ymajorgrids,
 axis background/.style={fill=white}
 ]

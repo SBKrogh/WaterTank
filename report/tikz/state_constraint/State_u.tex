@@ -9,13 +9,16 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
 height=1.453in,
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=0,
 xmax=25,
-xlabel={Hours},
+xlabel={Time [hours]},
 xmajorgrids,
 ymin=0.06,
 ymax=0.14,

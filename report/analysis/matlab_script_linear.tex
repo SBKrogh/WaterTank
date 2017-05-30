@@ -234,7 +234,7 @@ And the $\bm{N_p}$ matrix consists of the following terms:
 
 Where $\bm{B_o}$ is the cycle matrix belonging to the WT. As it can be seen, the linearized terms, which are represented in the element wise model description in \eqref{CompleteModel_extended}, are separated if they are multiplied by the small-signal values of flows or inputs. 
 
-In order to find a good state space representation for the system, extended with the WT, the dynamics of the system have to be considered. The pipes, compared to the WT, are assumed to have a considerably faster response time, which means that their time constants are small, therefore the settling time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not effectively take part in the dynamics of the system, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
+In order to find a good state-space representation for the system, extended with the WT, the dynamics of the system have to be considered. The pipes, compared to the WT, are assumed to have a considerably faster response time, which means that their time constants are small, therefore the settling time is short. According to \citep{franklin1994feedback}, in cases like this, the dynamics with the small time constant does not effectively take part in the dynamics of the system, therefore they can be neglected. Due to this consideration, \eqref{statespace_1} is rewritten in steady-state form, where the derivative of the states are set to zero:
 
 \begin{equation}
  0 = -\bm{M_p} \bm{\hat{z}} + \bm{N_p} \bm{\hat{u}} -\bm{B_o} \Delta \hat{p}_{wt}    

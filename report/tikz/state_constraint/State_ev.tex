@@ -9,6 +9,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+%scaled y ticks = false,
+% y tick label style={/pgf/number format/fixed,
+%/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
 width=4.521in,
 height=1.453in,
 at={(1.011in,0.642in)},
@@ -19,8 +22,10 @@ xlabel={Time [hours]},
 xmajorgrids,
 ymin=0.085,
 ymax=0.135,
-ylabel={Pressure [bar]},
 ymajorgrids,
+ylabel={Pressure [bar]},
+ytick={0.085,0.1,0.115,0.130},
+yticklabel style={/pgf/number format/.cd,fixed,precision=4},
 axis background/.style={fill=white}
 ]
 \addplot [color=mycolor1,solid,forget plot]

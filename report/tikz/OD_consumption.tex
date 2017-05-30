@@ -6,11 +6,11 @@
 %
 \definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
 %
-\begin{tikzpicture} [scale=0.7,transform shape]
+\begin{tikzpicture} [scale=1,transform shape]
 
 \begin{axis}[%
-width=4.521in,
-height=2in,
+width=0.8\textwidth,
+height=1.6in,
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=1,
@@ -21,9 +21,7 @@ ymin=-10,
 ymax=8,
 ylabel={OD [\%]},
 ymajorgrids,
-axis background/.style={fill=white},
-title style={font=\bfseries},
-title={End-user water consumption}
+axis background/.style={fill=white}
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
