@@ -153,10 +153,10 @@ Where $f(\bm{q}, \bm{OD}) $ is a vector field describing the pressure drops, due
 
 Where
 \begin{align}
-f_k &= \lambda_k (q_k) + \zeta_k  \hskip 1cm  \text{for}\: i = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
-f_k &= \mu_k (q_k, OD_{k})  \hspace{0.85cm} \text{for}\:i = 13,15,20,22\\
-f_k &= \gamma_k (q_k)  \hspace{1.8cm} \text{for}\: i = 24 \\
-f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:i = 25
+f_k &= \lambda_k (q_k) + \zeta_k  \hskip 1cm  \text{for}\: k = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
+f_k &= \mu_k (q_k, OD_{k})  \hspace{0.85cm} \text{for}\:k = 13,15,20,22\\
+f_k &= \gamma_k (q_k)  \hspace{1.8cm} \text{for}\: k = 24 \\
+f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:k = 25
 \end{align}
 
 It is important to point out that in \eqref{ComponentFunction} the functions for the different components take the flow as a vector in their arguments. It means that the right hand-side of the equation returns a vector with a size of $\bm{q}$. The elevation and the pressure drop across the WT therefore are also treated as vector that returns the appropriate value only for edges where elevation or the WT is present. 
