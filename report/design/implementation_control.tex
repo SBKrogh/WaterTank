@@ -49,7 +49,7 @@ In order to present the implementation of the controller, some of the incorrect 
 \section{Implementation with input constraint}
 \label{input constraint}
 
-For initial testing, the MPC is implemented such that only the constraint on the input is kept with the appropriate low and upper bounds. An implementation of such would make no sense on the test setup since the constraints on the WT are the most important boundaries concerning the control problem. In a real life scenario, leaving out the pressure constraint in the WT would mean that the optimal input empties the tank, disregarding what the price is. However, this test is suitable for verifying whether the minimization works correctly or not. It is expected to see that the input signal is constant and as low as possible during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps is the slowest as possible. 
+For initial testing, the MPC is implemented such that only the constraint on the input is kept with the appropriate low and upper bounds. An implementation of such would make no sense on the test setup since the constraints on the WT are the most important boundaries concerning the control problem. In a real life scenario, leaving out the pressure constraint in the WT would mean that the optimal input empties the tower, disregarding what the price is. However, this test is suitable for verifying whether the minimization works correctly or not. It is expected to see that the input signal is constant and as low as possible during operation. This behavior, compared to the real system, is expected because the cheapest way of running the pumps is the slowest as possible. 
 
 \begin{figure}[H]
 \centering
