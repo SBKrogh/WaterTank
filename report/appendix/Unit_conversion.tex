@@ -29,7 +29,7 @@ The coordinate transformation from $[\frac{m^3}{s}]$ to $[\frac{m^3}{h}]$ can be
    \frac{L \rho}{A\cdot10^5} \frac{d}{dt}\frac{q}{3600} = \frac{\Delta p}{10^5} - (\frac{8fL}{\pi^{2}gD^5\cdot10^5} + k_f \frac{8}{\pi^2gD^4\cdot10^5}) \rho g \frac{|q|}{3600} \frac{q}{3600} - \frac{\Delta z_h \rho g}{10^5}
 \end{equation}
 
-There is not any need to apply unit conversion to the final valve model described in \eqref{CompleteValveModel}, since the parameter, $k_v$, being designed for the water flow in $[m^3]$ taking into account one hour at a pressure drop across the valve of 1 bar. 
+There is not any need to apply unit conversion to the final valve model described in \eqref{CompleteValveModel}, since the parameter, $k_v$, being designed for the water flow in $[m^3]$ taking into account one hour at a pressure drop across the valve of 1 [bar]. 
 \\
 In the pump final model \eqref{eq:PumpModel}, the constants are scaled so the pump equation has the units in $[bar]$ and the flow has the units in $[\frac{m^3}{h}]$.
 
@@ -43,7 +43,7 @@ In \secref{WaterTankModel}, the unit of the WT hydraulic capacitance, $C_H$ is s
 \end{equation}
 
 
-As well as with the pipes equation, the pressure needs to be converted from [Pa] to [Bar], applying unit conversion to \eqref{WT_unit}:
+As well as with the pipes equation, the pressure needs to be converted from [Pa] to [bar], applying unit conversion to \eqref{WT_unit}:
 
 \begin{equation}
 	C_H \Bigg[\frac{m^3}{Pa}\Bigg] = K \cdot C_H \Bigg[\frac{m^{3}}{Bar}\Bigg]
@@ -51,4 +51,4 @@ As well as with the pipes equation, the pressure needs to be converted from [Pa]
 \end{equation}
 
 
-Where $K = 10^5$, which converts the pressure to [Bar]. 
+Where $K = 10^5$, which converts the pressure to [bar]. 
