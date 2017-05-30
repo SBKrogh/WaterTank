@@ -1,8 +1,32 @@
 \chapter{Conclusion}
 \label{Conclusion}
 
-In this project the main focus has been on deriving, estimating and controlling the water distribution system with an attached water tower at Aalborg university. Multiple models that describe the pressure loss over different components in the system has been used to gather a fully expression that describe the pressure loss over a specific part in the system. To represent the fully system, graph based theory has been used to describe the flow and pressure. 
+In this project the main focus has been on deriving, estimating and controlling the water distribution system with an attached water tower at Aalborg University. Multiple models that describe the pressure loss over different components in the system have been used, in order to obtain a detailed description of the water distribution. Due to the uncertainties introduced by the pipe model parameters, parameter estimations have been carried out. 
 
-The system has been linearized through a first order Taylor expansion and unknown parameters has then been estimated through the \textit{Linear Grey-Box Models} tool in Matlab. A verification of the estimates has been made, where the behavior of the models has followed the expectation. 
+\textbf{Hydraulic model}\\
+The water distribution network consists of four main components, pipes, pumps, valves and a  water tower (WT). A detailed dynamical model is derived for each of the components and gathered together into a complete final expression. This expression is used to describe the nonlinear relation between flows and pressure in each individual component.
 
-A model predictive controller has been derived, with varieties of constraints i.e. on the input and output. Without constraints simulations shows expected behavior. With constraints a feasible solution is not possible. 
+\textit{Graph representation}\\
+In order to represent the water network in a mathematical way, the Graph Theory is used. Once the network is described, the analogy between hydraulic and electrical circuits is concluded. 
+
+\textbf{Parameter estimation}\\
+Certain parameters, corresponding to the pipes dynamics, are unknown, therefore a nonlinear parameter identification toolbox is utilized. This estimation is deemed unsuccessful due to the dynamics of the valves and pumps being slower than the dynamics of the pipes, thus this last ones being hidden in the slower dynamics.\\
+Alternatively, a linearized approach is attempted, resulting in an improved model in comparison to the nonlinear model.\\
+Following the linear parameter estimation a verification of the model is carried out. This validation shows that the model behaves correctly and consists of the same dynamic as the system setup.  
+
+\textbf{Control problem}\\
+A model predictive control(MPC) problem is designed in order to reduce the power consumption of the pumps, taking into account the electrical price. By controlling the main pumps and using the WT, the pressure at the end-users is maintained within the desired constraints. A minimization problem is set up, which is subject to the dynamics of the water distribution network, and the constraints. Furthermore, constraints to the pressure in the WT, the pressure demand for the end-users and the input signal to the pumps are set.
+
+\textbf{Control System Implementation}\\
+The MPC problem is implemented in Matlab Simulink. For initial testing, only the constraints in the inputs are kept, where the obtained results are as expected. Furthermore, when adding the remaining constraints the system, there are not any feasible solutions existing for the problem. Therefore, the constraints regions are shifted so the problem becomes feasible, in order to show that the control is implemented correctly. 
+% The parameter estimation has been verified through comparison of data measured on the setup and simulations. 
+
+% A model predictive controller has been derived and implemented into the system model. 
+
+% gather a fully expression that describe the pressure loss over a specific part in the system. 
+
+% To represent the fully system, graph based theory has been used to describe the flow and pressure. 
+
+% The system has been linearized through a first order Taylor expansion and unknown parameters has then been estimated through the \textit{Linear Grey-Box Models} tool in Matlab. A verification of the estimates has been made, where the behavior of the models has followed the expectation. 
+
+% A model predictive controller has been derived, with varieties of constraints i.e. on the input and output. Without constraints simulations shows expected behavior. With constraints a feasible solution is not possible. 
