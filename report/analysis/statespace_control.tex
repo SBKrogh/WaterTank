@@ -102,7 +102,7 @@ The disturbance matrix for the state-space model consists of the linearized term
 \label{disturbance_matrix}
 \end{equation}
 
-Taking the same considerations into account as for the parameter estimation, see \eqref{InputOutputmodel_steadystate}, the steady-state equation for small-signals can be formulated as: 
+Taking the same considerations into account as for the parameter estimation, see \eqref{InputOutputmodel_steadystate}, the steady state equation for small-signals can be formulated as: 
 
  \begin{equation}
  0 = -\bm{M_c} \bm{\hat{z}} + \bm{N_c} \bm{\hat{u}} - \bm{Q_c} \bm{\hat{d}} - \bm{B_o} \Delta \hat{p}_{wt}    
@@ -176,7 +176,7 @@ is the matrix consisting of the mapping between the vector field, $\mu$, and the
 is the matrix consisting of the mapping between the vector field, $\mu$, and the output vector. Furthermore it includes the partial derivative matrix of the vector field according to the ODs.
 \end{minipage}
 
-The output equation includes feed-forward from the measured disturbances. 
+The output equation includes feedforward from the measured disturbances. 
 \\
 Expressing the independent flow variables with \eqref{statespace_control_sys_state}, the following yields: 
 
@@ -201,7 +201,7 @@ and \hspace*{0.7mm} $\bm{K_c} = \bm{C_{c,2}} -\bm{C_{c,1}}\bm{M_c^{-1}}\bm{Q_c} 
 \begin{minipage}[t]{0.58\textwidth}
 \vspace*{2mm}
 is the output matrix for the control, \\
-is the feed-forward matrix for the control, \\
+is the feedforward matrix for the control, \\
 is the disturbance matrix affecting the output.
 \end{minipage} 
 
@@ -302,7 +302,7 @@ and \hspace*{0.7mm} $\bm{K_d}$
 \begin{minipage}[t]{0.78\textwidth}
 \vspace*{2mm}
 is the discrete output matrix, which is the same as in the continuous case, \\
-is the discrete feed-forward matrix, which is the same as in the continuous case, \\
+is the discrete feedforward matrix, which is the same as in the continuous case, \\
 is the discrete disturbance matrix affecting the output, which is the same as in the continuous case. \\
 \end{minipage}
 

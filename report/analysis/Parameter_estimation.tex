@@ -41,9 +41,9 @@ where the vector field $u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD})$ contains all the 
 In the system, outputs are defined as differential pressures according to the available sensors on the test setup. From the system setup $8$ different relative pressures can be measured. Following the notation of \figref{systemdiagram}, sensors are placed in: 
 $n_2$, $n_4$, $n_5$, $n_7$, $n_{10}$, $n_{11}$, $n_{15}$, and  $n_{16}$. During the parameter identification, these measurements are compared to the output from the simulation and the parameters are varied until the model fits the data.
 
-It is important to point out that the estimation is applied for steady-state, since the unknown parameters are the resistances and form losses. The inertia and the capacitance only affect the dynamics, therefore have no influence during steady-state. The inertia of the pipes, and the capacitance of the WT are considered as known parameters. 
+It is important to point out that the estimation is applied for steady state, since the unknown parameters are the resistances and form losses. The inertia and the capacitance only affect the dynamics, therefore have no influence during steady-state. The inertia of the pipes, and the capacitance of the WT are considered as known parameters. 
 
-Taking the steady-state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
+Taking the steady state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
 \begin{equation}
  0 = \underbrace {-\bm{B} \tilde f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) }_{\mathcal{\bm{X}}}
