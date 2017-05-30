@@ -46,11 +46,11 @@ It is important to point out that the estimation is applied for steady state, si
 Taking the steady state into account, the system equation for the nonlinear parameter estimation can be rewritten as: 
 
 \begin{equation}
- 0 = \underbrace {-\bm{B} \tilde f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) }_{\mathcal{\bm{X}}}
+ 0 = \underbrace {-\bm{B} \tilde f(\bm{B^T}\bm{z}) + \bm{B} u(\bm{\omega},\bm{B^T}\bm{z},\bm{OD}) }_{\mathcal{\bm{X}}_p}
  \label{InputOutputmodel_steadystate}
 \end{equation}
 
-The aim of the parameter identification is to obtain a minimum difference between the outputs by adjusting the parameters of the resistance terms. The general parameter estimation problem is a minimization problem with the following objective function over the variable $\bm{z}$: 
+The aim of the parameter identification is to obtain a minimum difference between the outputs by adjusting the parameters of the resistance terms in $\tilde{f}(\cdot)$. The general parameter estimation problem is a minimization problem with the following objective function: 
 
 %\begin{equation}
 %
@@ -60,7 +60,7 @@ The aim of the parameter identification is to obtain a minimum difference betwee
 %\end{equation}
 \todo{Explain this better and correct notation!!!}
  \begin{equation}
- \min_{z} \Big(\mathcal{\bm{X}}^T \mathcal{\bm{X}} + \big(\bm{y_{s}(B^T z)} - \bm{y_{m}(B^T z)} \big)^T  \big(\bm{ y_{s}(B^T z)} - \bm{ y_{m}(B^T z)\big)}\Big)
+ \min_{p} \Big(\mathcal{\bm{X}}_p^T \mathcal{\bm{X}}_p + \big(\bm{y_{s}(B^T z)} - \bm{y_{m}(B^T z)} \big)^T  \big(\bm{ y_{s}(B^T z)} - \bm{ y_{m}(B^T z)\big)}\Big)
   \label{ObjectiveFunction11}
  \end{equation}
  
@@ -68,7 +68,7 @@ The aim of the parameter identification is to obtain a minimum difference betwee
 Where\\
 \hspace*{8mm} $\bm{y_{s}(B^T z)}$ \\
 \hspace*{8mm} $\bm{y_{m}(B^T z)}$ \\
-and \hspace*{0.7mm} $\mathcal{\bm{X}}$ 
+and \hspace*{0.7mm} $\mathcal{\bm{X}}_p$ 
 \end{minipage}
 \begin{minipage}[t]{0.68\textwidth}
 \vspace*{2mm}
